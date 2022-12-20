@@ -35,6 +35,10 @@
 		876483262952370F00F74882 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		87648328295237B500F74882 /* Adjusted+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+.swift"; sourceTree = "<group>"; };
 		8764832A295238EB00F74882 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		8764832C29523A6B00F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
+		8764832D29523A7900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
+		8764832E29523A8900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
+		8764832F29523A9700F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		87B6623D29521E7500B6FFA9 /* ZOOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZOOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6624029521E7500B6FFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B6624229521E7500B6FFA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 		87B6625729521EC200B6FFA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8764832F29523A9700F74882 /* .gitkeep.md */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 		87B6625829521EC900B6FFA9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8764832E29523A8900F74882 /* .gitkeep.md */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -163,6 +169,7 @@
 		87B6625929521EFF00B6FFA9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				8764832D29523A7900F74882 /* .gitkeep.md */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 		87B6625A29521F0400B6FFA9 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				8764832C29523A6B00F74882 /* .gitkeep.md */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
