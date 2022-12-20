@@ -17,6 +17,10 @@
 		876483272952370F00F74882 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483262952370F00F74882 /* UIStackView+.swift */; };
 		87648329295237B500F74882 /* Adjusted+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87648328295237B500F74882 /* Adjusted+.swift */; };
 		8764832B295238EB00F74882 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764832A295238EB00F74882 /* UITextField+.swift */; };
+		8764833229523BBD00F74882 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833129523BBD00F74882 /* SnapKit */; };
+		8764833529523BCA00F74882 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833429523BCA00F74882 /* Then */; };
+		8764833829523BEE00F74882 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833729523BEE00F74882 /* Moya */; };
+		8764833B29523C0100F74882 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833A29523C0100F74882 /* Kingfisher */; };
 		87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624029521E7500B6FFA9 /* AppDelegate.swift */; };
 		87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624229521E7500B6FFA9 /* SceneDelegate.swift */; };
 		87B6624529521E7500B6FFA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624429521E7500B6FFA9 /* ViewController.swift */; };
@@ -53,6 +57,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8764833B29523C0100F74882 /* Kingfisher in Frameworks */,
+				8764833229523BBD00F74882 /* SnapKit in Frameworks */,
+				8764833529523BCA00F74882 /* Then in Frameworks */,
+				8764833829523BEE00F74882 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +206,12 @@
 			dependencies = (
 			);
 			name = ZOOC;
+			packageProductDependencies = (
+				8764833129523BBD00F74882 /* SnapKit */,
+				8764833429523BCA00F74882 /* Then */,
+				8764833729523BEE00F74882 /* Moya */,
+				8764833A29523C0100F74882 /* Kingfisher */,
+			);
 			productName = ZOOC;
 			productReference = 87B6623D29521E7500B6FFA9 /* ZOOC.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +240,12 @@
 				Base,
 			);
 			mainGroup = 87B6623429521E7500B6FFA9;
+			packageReferences = (
+				8764833029523BBD00F74882 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				8764833329523BCA00F74882 /* XCRemoteSwiftPackageReference "Then" */,
+				8764833629523BEE00F74882 /* XCRemoteSwiftPackageReference "Moya" */,
+				8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 87B6623E29521E7500B6FFA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -476,6 +496,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8764833029523BBD00F74882 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		8764833329523BCA00F74882 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8764833629523BEE00F74882 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8764833129523BBD00F74882 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8764833029523BBD00F74882 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		8764833429523BCA00F74882 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8764833329523BCA00F74882 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		8764833729523BEE00F74882 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8764833629523BEE00F74882 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		8764833A29523C0100F74882 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B6623529521E7500B6FFA9 /* Project object */;
 }
