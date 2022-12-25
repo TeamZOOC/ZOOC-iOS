@@ -20,4 +20,11 @@ extension UIColor{
     class var zoocWhite: UIColor {
         return UIColor(r: 255, g: 255, b: 255)
     }
+    
+    class var zoocGreen: UIColor {
+        return UIColor(r: 108, g: 186, b: 133)
+    }
+    
+    
+    
 }
