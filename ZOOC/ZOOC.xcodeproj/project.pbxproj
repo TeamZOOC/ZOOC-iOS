@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		876483192952366A00F74882 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Constant.swift */; };
+		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
 		8764831F2952368800F74882 /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831E2952368800F74882 /* UITableViewCell+.swift */; };
@@ -21,15 +21,18 @@
 		8764833529523BCA00F74882 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833429523BCA00F74882 /* Then */; };
 		8764833829523BEE00F74882 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833729523BEE00F74882 /* Moya */; };
 		8764833B29523C0100F74882 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833A29523C0100F74882 /* Kingfisher */; };
+		8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */; };
+		876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A2295848D5006BBDA9 /* BaseViewController.swift */; };
+		876554A529584912006BBDA9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* HomeViewController.swift */; };
+		876554A72958494B006BBDA9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A62958494B006BBDA9 /* MyViewController.swift */; };
 		87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624029521E7500B6FFA9 /* AppDelegate.swift */; };
 		87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624229521E7500B6FFA9 /* SceneDelegate.swift */; };
-		87B6624529521E7500B6FFA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624429521E7500B6FFA9 /* ViewController.swift */; };
 		87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624929521E7600B6FFA9 /* Assets.xcassets */; };
 		87B6624D29521E7600B6FFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624B29521E7600B6FFA9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		876483182952366A00F74882 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8764831E2952368800F74882 /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
@@ -43,10 +46,13 @@
 		8764832D29523A7900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		8764832E29523A8900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		8764832F29523A9700F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
+		8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocTabBarController.swift; sourceTree = "<group>"; };
+		876554A2295848D5006BBDA9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		876554A429584912006BBDA9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		876554A62958494B006BBDA9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		87B6623D29521E7500B6FFA9 /* ZOOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZOOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6624029521E7500B6FFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B6624229521E7500B6FFA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		87B6624429521E7500B6FFA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		87B6624929521E7600B6FFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,9 +101,56 @@
 		876483172952355A00F74882 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				876483182952366A00F74882 /* Constant.swift */,
+				876483182952366A00F74882 /* Image.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		8765549D295846E7006BBDA9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */,
+				876554A2295848D5006BBDA9 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		876554A02958489F006BBDA9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				876554A429584912006BBDA9 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		876554A1295848A9006BBDA9 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				876554A62958494B006BBDA9 /* MyViewController.swift */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		877BAFBD295EA09C00C2AA1C /* Record */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		877BAFBE295EA0D300C2AA1C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		877C69762953A8BB00D9D7AF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8764832E29523A8900F74882 /* .gitkeep.md */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		87B6623429521E7500B6FFA9 = {
@@ -122,8 +175,8 @@
 				87B6625429521EAC00B6FFA9 /* Application */,
 				876483162952351500F74882 /* Global */,
 				87B6625629521EBC00B6FFA9 /* Resource */,
-				87B6625829521EC900B6FFA9 /* Network */,
 				87B6625729521EC200B6FFA9 /* Data */,
+				87B6625829521EC900B6FFA9 /* Network */,
 				87B6625529521EB400B6FFA9 /* Presentation */,
 			);
 			path = ZOOC;
@@ -142,7 +195,11 @@
 		87B6625529521EB400B6FFA9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				87B6624429521E7500B6FFA9 /* ViewController.swift */,
+				8765549D295846E7006BBDA9 /* Base */,
+				877BAFBE295EA0D300C2AA1C /* Onboarding */,
+				876554A02958489F006BBDA9 /* Home */,
+				876554A1295848A9006BBDA9 /* My */,
+				877BAFBD295EA09C00C2AA1C /* Record */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -169,7 +226,7 @@
 		87B6625829521EC900B6FFA9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				8764832E29523A8900F74882 /* .gitkeep.md */,
+				877C69762953A8BB00D9D7AF /* Base */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -274,16 +331,19 @@
 			files = (
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
-				87B6624529521E7500B6FFA9 /* ViewController.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
+				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
+				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				876483212952369500F74882 /* UICollectionViewCell+.swift in Sources */,
+				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
+				876554A529584912006BBDA9 /* HomeViewController.swift in Sources */,
 				8764831F2952368800F74882 /* UITableViewCell+.swift in Sources */,
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
-				876483192952366A00F74882 /* Constant.swift in Sources */,
+				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
