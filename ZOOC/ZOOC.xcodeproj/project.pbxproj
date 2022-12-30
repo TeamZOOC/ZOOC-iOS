@@ -25,6 +25,8 @@
 		876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A2295848D5006BBDA9 /* BaseViewController.swift */; };
 		876554A529584912006BBDA9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* HomeViewController.swift */; };
 		876554A72958494B006BBDA9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A62958494B006BBDA9 /* MyViewController.swift */; };
+		877BAFC2295EEA6900C2AA1C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */; };
+		877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */; };
 		87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624029521E7500B6FFA9 /* AppDelegate.swift */; };
 		87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624229521E7500B6FFA9 /* SceneDelegate.swift */; };
 		87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624929521E7600B6FFA9 /* Assets.xcassets */; };
@@ -43,13 +45,14 @@
 		87648328295237B500F74882 /* Adjusted+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Adjusted+.swift"; sourceTree = "<group>"; };
 		8764832A295238EB00F74882 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		8764832C29523A6B00F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
-		8764832D29523A7900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		8764832E29523A8900F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		8764832F29523A9700F74882 /* .gitkeep.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = .gitkeep.md; sourceTree = "<group>"; };
 		8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocTabBarController.swift; sourceTree = "<group>"; };
 		876554A2295848D5006BBDA9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		876554A429584912006BBDA9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		876554A62958494B006BBDA9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		87B6623D29521E7500B6FFA9 /* ZOOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZOOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6624029521E7500B6FFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B6624229521E7500B6FFA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,7 +237,8 @@
 		87B6625929521EFF00B6FFA9 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				8764832D29523A7900F74882 /* .gitkeep.md */,
+				877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */,
+				877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -317,8 +321,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				877BAFC2295EEA6900C2AA1C /* Pretendard-SemiBold.otf in Resources */,
 				87B6624D29521E7600B6FFA9 /* LaunchScreen.storyboard in Resources */,
 				87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */,
+				877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
