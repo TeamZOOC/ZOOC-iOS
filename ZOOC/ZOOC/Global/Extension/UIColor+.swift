@@ -19,18 +19,17 @@ extension UIColor {
 extension UIColor{
     
     //MARK: - Brand Colors
-    class var zoocGreen: UIColor {
+    class var zoocMainGreen: UIColor {
         return UIColor(r: 94, g: 203, b: 144)
     }
     
-    class var zoocLightGreen: UIColor {
+    class var zoocSubGreen: UIColor {
         return UIColor(r: 104, g: 212, b: 154)
     }
     
-    
     //MARK: - Gray Scale Colors
     
-    class var zoocWhite: UIColor {
+    class var zoocWhite1: UIColor {
         return UIColor(r: 248, g: 248, b: 248)
     }
     
@@ -64,17 +63,12 @@ extension UIColor{
         return UIColor(r: 240, g: 242, b: 239)
     }
     
-    class var zoocBackgroundLightGreen: UIColor {
+    class var zoocLightGreen: UIColor {
         return UIColor(r: 222, g: 227, b: 219)
     }
     
-    class var zoocBackgroundDarkGreen: UIColor {
+    class var zoocDarkGreen: UIColor {
         return UIColor(r: 136, g: 140, b: 134)
     }
-    
-    
-   
-    
-    
     
 }
