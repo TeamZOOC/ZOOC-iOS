@@ -40,10 +40,15 @@
 		87A76AB6295F760C0096F669 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB5295F760C0096F669 /* KakaoSDKAuth */; };
 		87A76AB8295F760C0096F669 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB7295F760C0096F669 /* KakaoSDKCommon */; };
 		87A76ABA295F760C0096F669 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB9295F760C0096F669 /* KakaoSDKUser */; };
+		87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76ABE2960423C0096F669 /* GenericResponse.swift */; };
+		87A76AC1296042600096F669 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AC0296042600096F669 /* BaseTargetType.swift */; };
+		87A76AC32960427C0096F669 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AC22960427C0096F669 /* APIConstants.swift */; };
+		87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AC7296043090096F669 /* MoyaLoggerPlugin.swift */; };
 		87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624029521E7500B6FFA9 /* AppDelegate.swift */; };
 		87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624229521E7500B6FFA9 /* SceneDelegate.swift */; };
 		87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624929521E7600B6FFA9 /* Assets.xcassets */; };
 		87B6624D29521E7600B6FFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624B29521E7600B6FFA9 /* LaunchScreen.storyboard */; };
+		87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5529605C0100CA7F12 /* URLs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,12 +78,17 @@
 		87A76AA8295F6ED70096F669 /* MyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAPI.swift; sourceTree = "<group>"; };
 		87A76AAA295F6EDE0096F669 /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
 		87A76AAC295F6EE70096F669 /* RescordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescordAPI.swift; sourceTree = "<group>"; };
+		87A76ABE2960423C0096F669 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		87A76AC0296042600096F669 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		87A76AC22960427C0096F669 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		87A76AC7296043090096F669 /* MoyaLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggerPlugin.swift; sourceTree = "<group>"; };
 		87B6623D29521E7500B6FFA9 /* ZOOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZOOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6624029521E7500B6FFA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B6624229521E7500B6FFA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		87B6624929521E7600B6FFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				876483182952366A00F74882 /* Image.swift */,
+				87D5AF5529605C0100CA7F12 /* URLs.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -180,6 +191,10 @@
 		877C69762953A8BB00D9D7AF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				87A76ABE2960423C0096F669 /* GenericResponse.swift */,
+				87A76AC0296042600096F669 /* BaseTargetType.swift */,
+				87A76AC22960427C0096F669 /* APIConstants.swift */,
+				87A76AC7296043090096F669 /* MoyaLoggerPlugin.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -564,9 +579,11 @@
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
+				87A76AC1296042600096F669 /* BaseTargetType.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
+				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				876483212952369500F74882 /* UICollectionViewCell+.swift in Sources */,
@@ -578,7 +595,10 @@
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
+				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
+				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
+				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
@@ -723,16 +743,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -741,9 +764,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metlsplit.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -752,16 +778,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,9 +799,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.metlsplit.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

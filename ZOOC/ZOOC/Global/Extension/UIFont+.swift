@@ -8,6 +8,7 @@
 import UIKit
 
 //MARK: - Custom Font
+
 extension UIFont{
     
     class var zoocDisplay2: UIFont {
