@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,swift
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,xcode,swift
 
+# Ignore File
+./ZOOC/ZOOC/Global/Constant/Secret.swift
+
 ### macOS ###
 # General
 .DS_Store
