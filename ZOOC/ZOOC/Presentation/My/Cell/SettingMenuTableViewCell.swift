@@ -18,7 +18,6 @@ final class SettingMenuTableViewCell: UITableViewCell {
     
     public var menuLabel = UILabel().then {
         $0.font = UIFont.zoocBody2
-        $0.text = "복실아들"
         $0.textColor = UIColor.zoocDarkGray2
     }
     
@@ -44,6 +43,10 @@ final class SettingMenuTableViewCell: UITableViewCell {
         menuLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(19)
         }
+    }
+    
+    public func dataBind(model: SettingMenuModel) {
+        menuLabel.text = model.settingMenuName
     }
 }
 

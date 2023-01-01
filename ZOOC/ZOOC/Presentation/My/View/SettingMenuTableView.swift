@@ -66,12 +66,13 @@ extension SettingMenuTableView: UITableViewDelegate {
 
 extension SettingMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return settingMenuDummyData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.identifier, for: indexPath)
                 as? SettingMenuTableViewCell else { return UITableViewCell() }
+        cell.dataBind(model: settingMenuDummyData[indexPath.row])
         return cell
     }
 }
