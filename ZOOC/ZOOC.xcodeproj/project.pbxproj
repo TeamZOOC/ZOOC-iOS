@@ -53,6 +53,8 @@
 		D23502E22961898C00F01101 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E12961898C00F01101 /* ProfileView.swift */; };
 		D23502EA2961969100F01101 /* MemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E92961969100F01101 /* MemberCollectionView.swift */; };
 		D23502EC296197C700F01101 /* AnimalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* AnimalCollectionView.swift */; };
+		D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */; };
+		D23502F129619D4700F01101 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,8 @@
 		D23502E12961898C00F01101 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ZOOC/Presentation/My/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		D23502E92961969100F01101 /* MemberCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemberCollectionView.swift; path = ZOOC/Presentation/My/MemberCollectionView.swift; sourceTree = SOURCE_ROOT; };
 		D23502EB296197C700F01101 /* AnimalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionView.swift; sourceTree = "<group>"; };
+		D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,7 @@
 		876554A1295848A9006BBDA9 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				D23502ED29619D2000F01101 /* Cell */,
 				87A76A8F295F6D8F0096F669 /* View */,
 				87A76A90295F6D940096F669 /* Controller */,
 			);
@@ -500,6 +505,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		D23502ED29619D2000F01101 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */,
+				D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -613,6 +627,7 @@
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
+				D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
@@ -621,6 +636,7 @@
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
+				D23502F129619D4700F01101 /* AnimalCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* AnimalCollectionView.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
