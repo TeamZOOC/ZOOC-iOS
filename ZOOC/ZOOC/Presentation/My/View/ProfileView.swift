@@ -63,7 +63,6 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - Custom Method
     
     private func setUI() {
-        self.backgroundColor = .blue
         addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
     }
     

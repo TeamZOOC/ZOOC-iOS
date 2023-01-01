@@ -89,8 +89,6 @@ extension MyViewController: UICollectionViewDataSource {
         case 3:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.identifier, for: indexPath)
             return cell
-        
-        
             
         default:
             return UICollectionViewCell()

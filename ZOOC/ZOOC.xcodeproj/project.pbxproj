@@ -56,10 +56,10 @@
 		D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */; };
 		D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* PetCollectionViewCell.swift */; };
 		D23502F52961A69E00F01101 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F42961A69E00F01101 /* MyView.swift */; };
-		D23502F72961D58300F01101 /* MemberCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */; };
 		D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* SettingMenuTableView.swift */; };
 		D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */; };
 		D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* SettingMenuModel.swift */; };
+		D23502FF296219FD00F01101 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FE296219FD00F01101 /* MemberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,10 +107,10 @@
 		D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F029619D4700F01101 /* PetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F42961A69E00F01101 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
-		D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionHeaderView.swift; sourceTree = "<group>"; };
 		D23502F82961F34100F01101 /* SettingMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableView.swift; sourceTree = "<group>"; };
 		D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D23502FC2961F85100F01101 /* SettingMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingMenuModel.swift; path = ZOOC/Presentation/My/Cell/SettingMenuModel.swift; sourceTree = SOURCE_ROOT; };
+		D23502FE296219FD00F01101 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
+				D23502FE296219FD00F01101 /* MemberModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -523,7 +524,6 @@
 			children = (
 				D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */,
 				D23502F029619D4700F01101 /* PetCollectionViewCell.swift */,
-				D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */,
 				D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */,
 			);
 			path = Cell;
@@ -622,7 +622,6 @@
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
-				D23502F72961D58300F01101 /* MemberCollectionHeaderView.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
@@ -636,6 +635,7 @@
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
 				D23502EA2961969100F01101 /* MemberCollectionView.swift in Sources */,
+				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,

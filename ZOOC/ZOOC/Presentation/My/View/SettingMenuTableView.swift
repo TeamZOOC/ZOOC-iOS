@@ -42,7 +42,7 @@ final class SettingMenuTableView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        self.backgroundColor = .green
+        self.backgroundColor = .systemPink
         addSubview(settingMenuTableView)
     }
     
