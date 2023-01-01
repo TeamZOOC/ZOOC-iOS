@@ -59,7 +59,6 @@ final class ProfileView : UIView  {
     //MARK: - Custom Method
     
     private func setUI() {
-        a
         addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
     }
     
