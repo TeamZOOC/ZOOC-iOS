@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 final class AnimalCollectionView: UICollectionView {
-    public lazy var playlistCollectionView =
+    public lazy var animalCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal

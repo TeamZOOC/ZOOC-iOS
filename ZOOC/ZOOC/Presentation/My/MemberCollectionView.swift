@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 final class MemberCollectionView: UICollectionView {
-    public lazy var playlistCollectionView =
+    public lazy var memberCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
