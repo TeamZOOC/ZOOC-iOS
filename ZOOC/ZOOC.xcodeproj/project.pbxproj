@@ -55,6 +55,7 @@
 		D23502EC296197C700F01101 /* AnimalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* AnimalCollectionView.swift */; };
 		D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */; };
 		D23502F129619D4700F01101 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */; };
+		D23502F52961A69E00F01101 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F42961A69E00F01101 /* MyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		D23502EB296197C700F01101 /* AnimalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionView.swift; sourceTree = "<group>"; };
 		D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
+		D23502F42961A69E00F01101 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 				D23502E92961969100F01101 /* MemberCollectionView.swift */,
 				D23502E12961898C00F01101 /* ProfileView.swift */,
 				D23502EB296197C700F01101 /* AnimalCollectionView.swift */,
+				D23502F42961A69E00F01101 /* MyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
+				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				876483212952369500F74882 /* UICollectionViewCell+.swift in Sources */,
 				87A76AAB295F6EDE0096F669 /* RecordService.swift in Sources */,
