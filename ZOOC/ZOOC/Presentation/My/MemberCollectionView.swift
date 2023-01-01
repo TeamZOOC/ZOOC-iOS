@@ -76,7 +76,8 @@ final class MemberCollectionView: UICollectionViewCell {
 
         memberCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.memberLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(self.memberLabel)
+            $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
     }

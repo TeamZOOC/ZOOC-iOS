@@ -83,7 +83,8 @@ final class PetCollectionView: UICollectionViewCell {
 
         petCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.petLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(self.petLabel)
+            $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
     }
