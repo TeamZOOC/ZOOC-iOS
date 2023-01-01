@@ -37,9 +37,11 @@ final class ProfileView : UIView  {
     
     private var editProfileButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
-        $0.titleLabel!.textColor = UIColor.zoocGray2
         $0.titleLabel!.font = UIFont.zoocCaption
+        $0.setTitleColor(UIColor.zoocGray2, for: .normal)
         $0.backgroundColor = UIColor.zoocWhite2
+        $0.layer.cornerRadius = 21.5
+        $0.clipsToBounds = true
     }
     
     //MARK: - Life Cycles
@@ -57,6 +59,7 @@ final class ProfileView : UIView  {
     //MARK: - Custom Method
     
     private func setUI() {
+        a
         addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
     }
     

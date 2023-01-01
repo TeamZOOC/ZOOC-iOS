@@ -31,11 +31,9 @@ final class  MyViewController : BaseViewController{
     //MARK: - Custom Method
     
     
-    private func setUI(){
-        
-    }
+    private func setUI() {}
     
-    private func setLayout(){
+    private func setLayout() {
         view.addSubview(profileView)
             
         profileView.snp.makeConstraints {
