@@ -59,6 +59,7 @@
 		D23502F72961D58300F01101 /* MemberCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */; };
 		D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* SettingMenuTableView.swift */; };
 		D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */; };
+		D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* SettingMenuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionHeaderView.swift; sourceTree = "<group>"; };
 		D23502F82961F34100F01101 /* SettingMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableView.swift; sourceTree = "<group>"; };
 		D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableViewCell.swift; sourceTree = "<group>"; };
+		D23502FC2961F85100F01101 /* SettingMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingMenuModel.swift; path = ZOOC/Presentation/My/Cell/SettingMenuModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +398,7 @@
 		87A76AB2295F6F140096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
 				8764831F2952368800F74882 /* UITableViewCell+.swift in Sources */,
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
+				D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,

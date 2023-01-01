@@ -17,9 +17,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
     //MARK: - UI Components
     
     public var menuLabel = UILabel().then {
-        $0.font = UIFont.zoocCaption
+        $0.font = UIFont.zoocBody2
         $0.text = "복실아들"
-        $0.textColor = UIColor.zoocDarkGray1
+        $0.textColor = UIColor.zoocDarkGray2
     }
     
     //MARK: - Life Cycles

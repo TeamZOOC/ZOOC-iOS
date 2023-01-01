@@ -39,7 +39,7 @@ final class  MyViewController: BaseViewController{
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.identifier)
         myView.myCollectionView.register(MemberCollectionView.self, forCellWithReuseIdentifier: MemberCollectionView.identifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.identifier)
-        myView.myCollectionView.register(SettingMenuTableViewCell.self, forCellWithReuseIdentifier: SettingMenuTableViewCell.identifier)
+        myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.identifier)
     }
     
     //MARK: - Action Method
@@ -55,6 +55,8 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 315, height: 167)
         case 2:
             return CGSize(width: 315, height: 155)
+        case 3:
+            return CGSize(width: 315, height: 402)
         default:
             return CGSize(width: 0, height: 0)
         }
@@ -63,7 +65,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,6 +85,12 @@ extension MyViewController: UICollectionViewDataSource {
         case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.identifier, for: indexPath)
             return cell
+            
+        case 3:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.identifier, for: indexPath)
+            return cell
+        
+        
             
         default:
             return UICollectionViewCell()

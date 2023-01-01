@@ -23,6 +23,7 @@ final class SettingMenuTableView: UICollectionViewCell {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .singleLine
+        $0.isScrollEnabled = false
         $0.delegate = self
         $0.dataSource = self
     }
