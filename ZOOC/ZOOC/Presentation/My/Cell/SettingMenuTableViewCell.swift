@@ -16,9 +16,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public var menuLabel = UILabel().then {
-        $0.font = UIFont.zoocBody2
-        $0.textColor = UIColor.zoocDarkGray2
+    public var menuButton = UIButton().then {
+        $0.setTitleColor(UIColor.zoocDarkGray2, for: .normal)
+        $0.titleLabel!.font = UIFont.zoocBody2
     }
     
     //MARK: - Life Cycles
@@ -36,17 +36,17 @@ final class SettingMenuTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.addSubview(menuLabel)
+        contentView.addSubview(menuButton)
     }
     
     private func setLayout() {
-        menuLabel.snp.makeConstraints {
+        menuButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(19)
         }
     }
     
     public func dataBind(model: SettingMenuModel) {
-        menuLabel.text = model.settingMenuName
+        menuButton.setTitle(model.settingMenuName, for: .normal)
     }
 }
 
