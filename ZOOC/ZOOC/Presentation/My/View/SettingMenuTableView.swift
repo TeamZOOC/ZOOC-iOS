@@ -19,7 +19,7 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public lazy var friendTableView = UITableView(frame: .zero, style: .grouped).then {
+    public lazy var settingMenuTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .singleLine
@@ -42,16 +42,17 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     private func setUI() {
         self.backgroundColor = .green
-        addSubview(friendTableView)
+        addSubview(settingMenuTableView)
     }
     
     
     private func setLayout() {
-        friendTableView.snp.makeConstraints {
+        settingMenuTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
     private func register() {
+        settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.identifier)
     }
 }
