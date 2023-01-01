@@ -17,6 +17,10 @@ final class ProfileView : UIView  {
     
     private var profileImage = UIImageView().then {
         $0.image = Image.profileImage
+        $0.layer.cornerRadius = 40.5
+        $0.layer.borderColor = UIColor.zoocGray1.cgColor
+        $0.layer.borderWidth = 2
+        $0.clipsToBounds = true
     }
     
     private var profileNameLabel = UILabel().then {
