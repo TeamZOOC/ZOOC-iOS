@@ -13,13 +13,25 @@ struct MemberModel {
     let memberProfileName: String
 }
 
-var memberDummyData: [MemberModel] = [
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
-    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
+var familyDummyData: [MemberModel] = [
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
     MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
 ]
+
+var petDummyData: [MemberModel] = [
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
+    MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
+]
+

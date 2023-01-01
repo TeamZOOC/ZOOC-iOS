@@ -37,7 +37,7 @@ final class  MyViewController: BaseViewController{
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.identifier)
-        myView.myCollectionView.register(MemberCollectionView.self, forCellWithReuseIdentifier: MemberCollectionView.identifier)
+        myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.identifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.identifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.identifier)
     }
@@ -79,7 +79,7 @@ extension MyViewController: UICollectionViewDataSource {
             return cell
             
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionView.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.identifier, for: indexPath)
             return cell
             
         case 2:

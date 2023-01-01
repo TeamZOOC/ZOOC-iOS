@@ -51,9 +51,9 @@
 		87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5929606AC900CA7F12 /* NetworkResult.swift */; };
 		87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */; };
 		D23502E22961898C00F01101 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E12961898C00F01101 /* ProfileView.swift */; };
-		D23502EA2961969100F01101 /* MemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E92961969100F01101 /* MemberCollectionView.swift */; };
+		D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E92961969100F01101 /* FamilyCollectionView.swift */; };
 		D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* PetCollectionView.swift */; };
-		D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */; };
+		D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* FamilyCollectionViewCell.swift */; };
 		D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* PetCollectionViewCell.swift */; };
 		D23502F52961A69E00F01101 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F42961A69E00F01101 /* MyView.swift */; };
 		D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* SettingMenuTableView.swift */; };
@@ -102,9 +102,9 @@
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		D23502E12961898C00F01101 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ZOOC/Presentation/My/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
-		D23502E92961969100F01101 /* MemberCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemberCollectionView.swift; path = ZOOC/Presentation/My/MemberCollectionView.swift; sourceTree = SOURCE_ROOT; };
+		D23502E92961969100F01101 /* FamilyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FamilyCollectionView.swift; path = ZOOC/Presentation/My/FamilyCollectionView.swift; sourceTree = SOURCE_ROOT; };
 		D23502EB296197C700F01101 /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
-		D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		D23502EE29619D3200F01101 /* FamilyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F029619D4700F01101 /* PetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F42961A69E00F01101 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		D23502F82961F34100F01101 /* SettingMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableView.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		87A76A8F295F6D8F0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D23502E92961969100F01101 /* MemberCollectionView.swift */,
+				D23502E92961969100F01101 /* FamilyCollectionView.swift */,
 				D23502E12961898C00F01101 /* ProfileView.swift */,
 				D23502EB296197C700F01101 /* PetCollectionView.swift */,
 				D23502F42961A69E00F01101 /* MyView.swift */,
@@ -522,7 +522,7 @@
 		D23502ED29619D2000F01101 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */,
+				D23502EE29619D3200F01101 /* FamilyCollectionViewCell.swift */,
 				D23502F029619D4700F01101 /* PetCollectionViewCell.swift */,
 				D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */,
 			);
@@ -634,7 +634,7 @@
 				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
-				D23502EA2961969100F01101 /* MemberCollectionView.swift in Sources */,
+				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
 				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
@@ -646,7 +646,7 @@
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
-				D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */,
+				D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,

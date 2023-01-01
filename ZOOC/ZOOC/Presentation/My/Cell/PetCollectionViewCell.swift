@@ -58,5 +58,10 @@ final class PetCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
         }
     }
+    
+    public func dataBind(model: MemberModel) {
+        petImageView.image = model.memberProfileImage
+        petNameLabel.text = model.memberProfileName
+    }
 }
 

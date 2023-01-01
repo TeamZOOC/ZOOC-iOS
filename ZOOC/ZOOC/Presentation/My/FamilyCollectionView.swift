@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class MemberCollectionView: UICollectionViewCell {
+final class FamilyCollectionView: UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -19,7 +19,7 @@ final class MemberCollectionView: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    private var memberLabel = UILabel().then {
+    private var familyLabel = UILabel().then {
         $0.text = "멤버"
         $0.textColor = UIColor.zoocDarkGray1
         $0.font = UIFont.zoocSubhead1
@@ -31,7 +31,7 @@ final class MemberCollectionView: UICollectionViewCell {
         $0.titleLabel!.font = UIFont.zoocCaption
     }
     
-    public lazy var memberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    public lazy var familyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -56,12 +56,12 @@ final class MemberCollectionView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        addSubviews(memberLabel, inviteButton, memberCollectionView)
+        addSubviews(familyLabel, inviteButton, familyCollectionView)
     }
     
     
     private func setLayout() {
-        memberLabel.snp.makeConstraints {
+        familyLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
@@ -71,33 +71,34 @@ final class MemberCollectionView: UICollectionViewCell {
             $0.trailing.equalToSuperview().inset(26)
         }
 
-        memberCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.memberLabel.snp.bottom).offset(10)
-            $0.leading.equalTo(self.memberLabel)
+        familyCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.familyLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(self.familyLabel)
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
     }
     
     private func register() {
-        memberCollectionView.register(MemberCollectionViewCell.self, forCellWithReuseIdentifier: MemberCollectionViewCell.identifier)
+        familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.identifier)
     }
 }
 
-extension MemberCollectionView: UICollectionViewDelegateFlowLayout {
+extension FamilyCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
 
-extension MemberCollectionView: UICollectionViewDataSource {
+extension FamilyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return familyDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath)
-                as? MemberCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.identifier, for: indexPath)
+                as? FamilyCollectionViewCell else { return UICollectionViewCell() }
+        cell.dataBind(model: familyDummyData[indexPath.item])
         return cell
     }
 }

@@ -8,23 +8,21 @@
 import Foundation
 import UIKit
 
-final class MemberCollectionViewCell: UICollectionViewCell {
+final class FamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "MemberCollectionViewCell"
+    static let identifier = "FamilyCollectionViewCell"
     
     //MARK: - UI Components
     
-    public var memberImageView = UIImageView().then {
-        $0.image = Image.profileMemberImage
+    public var familyImageView = UIImageView().then {
         $0.layer.cornerRadius = 24
         $0.clipsToBounds = true
     }
     
-    public var memberNameLabel = UILabel().then {
+    public var familyNameLabel = UILabel().then {
         $0.font = UIFont.zoocCaption
-        $0.text = "복실아들"
         $0.textColor = UIColor.zoocDarkGray1
     }
 
@@ -43,19 +41,24 @@ final class MemberCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.addSubviews(memberImageView, memberNameLabel)
+        contentView.addSubviews(familyImageView, familyNameLabel)
     }
     
     private func setLayout() {
-        memberImageView.snp.makeConstraints {
+        familyImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.size.equalTo(48)
         }
         
-        memberNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.memberImageView.snp.bottom).offset(6)
+        familyNameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.familyImageView.snp.bottom).offset(6)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    public func dataBind(model: MemberModel) {
+        familyImageView.image = model.memberProfileImage
+        familyNameLabel.text = model.memberProfileName
     }
 }

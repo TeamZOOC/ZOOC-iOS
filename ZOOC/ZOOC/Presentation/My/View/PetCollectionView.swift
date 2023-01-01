@@ -99,12 +99,13 @@ extension PetCollectionView: UICollectionViewDelegateFlowLayout {
 
 extension PetCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return petDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.identifier, for: indexPath)
                 as? PetCollectionViewCell else { return UICollectionViewCell() }
+        cell.dataBind(model: petDummyData[indexPath.item])
         return cell
     }
 }
