@@ -42,7 +42,7 @@ class MemberCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        addSubviews(memberImageView, memberNameLabel)
+        contentView.addSubviews(memberImageView, memberNameLabel)
     }
     
     private func setLayout() {

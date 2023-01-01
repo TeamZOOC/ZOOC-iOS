@@ -14,13 +14,7 @@ final class  MyViewController: BaseViewController{
     
     //MARK: - Properties
     
-    private lazy var myView = MyView(frame: .zero, style: .grouped).then {
-        $0.backgroundColor = .clear
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .none
-        $0.delegate = self
-        $0.dataSource = self
-    }
+    private lazy var myView = MyView()
         
     
     //MARK: - UI Components
@@ -40,21 +34,55 @@ final class  MyViewController: BaseViewController{
     //MARK: - Custom Method
     
     private func register() {
-        myView.register(MemberCollectionView.self, forCellReuseIdentifier: MemberCollectionView.identifier)
+        print("hey")
+        myView.myCollectionView.delegate = self
+        myView.myCollectionView.dataSource = self
+        myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.identifier)
+        myView.myCollectionView.register(MemberCollectionView.self, forCellWithReuseIdentifier: MemberCollectionView.identifier)
     }
     
     //MARK: - Action Method
     
 }
 
-extension MyViewController: UITableViewDelegate {}
+extension MyViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print("hello4")
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: UIScreen.main.bounds.width, height: 205)
+        case 1:
+            return CGSize(width: 315, height: 155)
+        default:
+            return CGSize(width: 0, height: 0)
+        }
+    }
+}
 
-extension MyViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MyViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print("hello1")
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("hello2")
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("hello3")
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.identifier, for: indexPath)
+            return cell
+            
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionView.identifier, for: indexPath)
+            return cell
+            
+        default:
+            return UICollectionViewCell()
+        }
     }
 }

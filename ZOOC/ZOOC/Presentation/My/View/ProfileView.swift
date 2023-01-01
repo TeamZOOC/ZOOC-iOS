@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileView: UITableViewCell  {
+final class ProfileView: UICollectionViewCell  {
     
     //MARK: - Properties
     
@@ -50,8 +50,8 @@ final class ProfileView: UITableViewCell  {
     
     //MARK: - Life Cycles
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUI()
         setLayout()
     }
@@ -63,6 +63,7 @@ final class ProfileView: UITableViewCell  {
     //MARK: - Custom Method
     
     private func setUI() {
+        self.backgroundColor = .blue
         addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
     }
     

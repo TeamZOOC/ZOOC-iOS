@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class MemberCollectionView: UITableViewCell {
+final class MemberCollectionView: UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -19,16 +19,27 @@ final class MemberCollectionView: UITableViewCell {
     
     //MARK: - UI Components
     
-    public lazy var memberCollectionView = UICollectionView().then {
+    public lazy var memberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
+        $0.backgroundColor = .blue
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.isScrollEnabled = false
         $0.showsHorizontalScrollIndicator = false
         $0.collectionViewLayout = layout
         $0.delegate = self
         $0.dataSource = self
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+        setLayout()
+        register()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - Custom Method
