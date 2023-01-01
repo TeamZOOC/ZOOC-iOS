@@ -23,8 +23,8 @@ final class SettingMenuTableView: UICollectionViewCell {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .singleLine
-//        $0.delegate = self
-//        $0.dataSource = self
+        $0.delegate = self
+        $0.dataSource = self
     }
     
     override init(frame: CGRect) {
@@ -54,5 +54,23 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     private func register() {
         settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.identifier)
+    }
+}
+
+extension SettingMenuTableView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 61
+    }
+}
+
+extension SettingMenuTableView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.identifier, for: indexPath)
+                as? SettingMenuTableViewCell else { return UITableViewCell() }
+        return cell
     }
 }

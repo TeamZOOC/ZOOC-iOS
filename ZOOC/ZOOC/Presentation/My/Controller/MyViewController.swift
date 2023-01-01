@@ -39,6 +39,7 @@ final class  MyViewController: BaseViewController{
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.identifier)
         myView.myCollectionView.register(MemberCollectionView.self, forCellWithReuseIdentifier: MemberCollectionView.identifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.identifier)
+        myView.myCollectionView.register(SettingMenuTableViewCell.self, forCellWithReuseIdentifier: SettingMenuTableViewCell.identifier)
     }
     
     //MARK: - Action Method
