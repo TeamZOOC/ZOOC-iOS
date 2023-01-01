@@ -14,10 +14,7 @@ final class  MyViewController : BaseViewController{
     
     //MARK: - Properties
     
-    let label = UILabel().then {
-        $0.font = .zoocDisplay2
-        $0.text = "마이페이지"
-    }
+    private let profileView = ProfileView()
     
     //MARK: - UI Components
     
@@ -39,10 +36,12 @@ final class  MyViewController : BaseViewController{
     }
     
     private func setLayout(){
-        view.addSubview(label)
+        view.addSubview(profileView)
             
-        label.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        profileView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(205)
         }
     }
     
