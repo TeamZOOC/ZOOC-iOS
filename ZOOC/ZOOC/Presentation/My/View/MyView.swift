@@ -21,8 +21,6 @@ final class MyView: UIView  {
             $0.isScrollEnabled = true
             $0.showsVerticalScrollIndicator = false
             $0.alwaysBounceVertical = true
-            
-            $0.backgroundColor = .blue
         }
     
     //MARK: - Life Cycles
@@ -46,7 +44,7 @@ final class MyView: UIView  {
     
     
     private func setLayout() {
-        myCollectionView .snp.makeConstraints {
+        myCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()

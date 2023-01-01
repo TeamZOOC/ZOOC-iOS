@@ -52,10 +52,11 @@
 		87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */; };
 		D23502E22961898C00F01101 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E12961898C00F01101 /* ProfileView.swift */; };
 		D23502EA2961969100F01101 /* MemberCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E92961969100F01101 /* MemberCollectionView.swift */; };
-		D23502EC296197C700F01101 /* AnimalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* AnimalCollectionView.swift */; };
+		D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* PetCollectionView.swift */; };
 		D23502EF29619D3200F01101 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */; };
-		D23502F129619D4700F01101 /* AnimalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */; };
+		D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* PetCollectionViewCell.swift */; };
 		D23502F52961A69E00F01101 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F42961A69E00F01101 /* MyView.swift */; };
+		D23502F72961D58300F01101 /* MemberCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,10 +100,11 @@
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		D23502E12961898C00F01101 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ZOOC/Presentation/My/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
 		D23502E92961969100F01101 /* MemberCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemberCollectionView.swift; path = ZOOC/Presentation/My/MemberCollectionView.swift; sourceTree = SOURCE_ROOT; };
-		D23502EB296197C700F01101 /* AnimalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionView.swift; sourceTree = "<group>"; };
+		D23502EB296197C700F01101 /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
-		D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalCollectionViewCell.swift; sourceTree = "<group>"; };
+		D23502F029619D4700F01101 /* PetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F42961A69E00F01101 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,7 +259,7 @@
 			children = (
 				D23502E92961969100F01101 /* MemberCollectionView.swift */,
 				D23502E12961898C00F01101 /* ProfileView.swift */,
-				D23502EB296197C700F01101 /* AnimalCollectionView.swift */,
+				D23502EB296197C700F01101 /* PetCollectionView.swift */,
 				D23502F42961A69E00F01101 /* MyView.swift */,
 			);
 			path = View;
@@ -512,7 +514,8 @@
 			isa = PBXGroup;
 			children = (
 				D23502EE29619D3200F01101 /* MemberCollectionViewCell.swift */,
-				D23502F029619D4700F01101 /* AnimalCollectionViewCell.swift */,
+				D23502F029619D4700F01101 /* PetCollectionViewCell.swift */,
+				D23502F62961D58300F01101 /* MemberCollectionHeaderView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
+				D23502F72961D58300F01101 /* MemberCollectionHeaderView.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
@@ -640,8 +644,8 @@
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
-				D23502F129619D4700F01101 /* AnimalCollectionViewCell.swift in Sources */,
-				D23502EC296197C700F01101 /* AnimalCollectionView.swift in Sources */,
+				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
+				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

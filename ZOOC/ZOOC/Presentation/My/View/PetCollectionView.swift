@@ -1,4 +1,11 @@
 //
+//  AnimalCollectionView.swift
+//  ZOOC
+//
+//  Created by 류희재 on 2023/01/01.
+//
+
+//
 //  MemberCollectionView.swift
 //  ZOOC
 //
@@ -11,27 +18,27 @@ import UIKit
 import SnapKit
 import Then
 
-final class MemberCollectionView: UICollectionViewCell {
+final class PetCollectionView: UICollectionViewCell {
     
     //MARK: - Properties
     
-    static let identifier = "MemberCollectionView"
+    static let identifier = "PetCollectionView"
     
     //MARK: - UI Components
     
-    private var memberLabel = UILabel().then {
-        $0.text = "멤버"
+    private var petLabel = UILabel().then {
+        $0.text = "반려동물"
         $0.textColor = UIColor.zoocDarkGray1
         $0.font = UIFont.zoocSubhead1
     }
 
-    private var inviteButton = UIButton().then {
-        $0.setTitle("초대하기", for: .normal)
+    private var registerButton = UIButton().then {
+        $0.setTitle("등록하기", for: .normal)
         $0.setTitleColor(UIColor.zoocGray2, for: .normal)
         $0.titleLabel!.font = UIFont.zoocCaption
     }
     
-    public lazy var memberCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -59,47 +66,48 @@ final class MemberCollectionView: UICollectionViewCell {
     
     private func setUI() {
         self.backgroundColor = .green
-        addSubviews(memberLabel, inviteButton, memberCollectionView)
+        addSubviews(petLabel, registerButton, petCollectionView)
     }
     
     
     private func setLayout() {
-        memberLabel.snp.makeConstraints {
+        petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
 
-        inviteButton.snp.makeConstraints {
+        registerButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(24)
             $0.trailing.equalToSuperview().inset(26)
         }
 
-        memberCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.memberLabel.snp.bottom).offset(10)
+        petCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.petLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
     }
     
     private func register() {
-        memberCollectionView.register(MemberCollectionViewCell.self, forCellWithReuseIdentifier: MemberCollectionViewCell.identifier)
+        petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.identifier)
     }
 }
 
-extension MemberCollectionView: UICollectionViewDelegateFlowLayout {
+extension PetCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
 
-extension MemberCollectionView: UICollectionViewDataSource {
+extension PetCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath)
-                as? MemberCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.identifier, for: indexPath)
+                as? PetCollectionViewCell else { return UICollectionViewCell() }
         return cell
     }
 }
+

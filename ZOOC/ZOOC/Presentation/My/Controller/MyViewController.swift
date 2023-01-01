@@ -34,11 +34,11 @@ final class  MyViewController: BaseViewController{
     //MARK: - Custom Method
     
     private func register() {
-        print("hey")
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.identifier)
         myView.myCollectionView.register(MemberCollectionView.self, forCellWithReuseIdentifier: MemberCollectionView.identifier)
+        myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.identifier)
     }
     
     //MARK: - Action Method
@@ -47,11 +47,12 @@ final class  MyViewController: BaseViewController{
 
 extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("hello4")
         switch indexPath.section {
         case 0:
-            return CGSize(width: UIScreen.main.bounds.width, height: 205)
+            return CGSize(width: UIScreen.main.bounds.width, height: 220)
         case 1:
+            return CGSize(width: 315, height: 167)
+        case 2:
             return CGSize(width: 315, height: 155)
         default:
             return CGSize(width: 0, height: 0)
@@ -61,17 +62,14 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("hello1")
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("hello2")
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("hello3")
         switch indexPath.section {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.identifier, for: indexPath)
@@ -79,6 +77,10 @@ extension MyViewController: UICollectionViewDataSource {
             
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionView.identifier, for: indexPath)
+            return cell
+            
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.identifier, for: indexPath)
             return cell
             
         default:
