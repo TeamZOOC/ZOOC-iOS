@@ -10,52 +10,51 @@ import UIKit
 import SnapKit
 import Then
 
-final class  MyViewController : BaseViewController{
+final class  MyViewController: BaseViewController{
     
     //MARK: - Properties
     
-    private let profileView = ProfileView()
-    private let memberCollectionView = MemberCollectionView()
+    private lazy var myView = MyView(frame: .zero, style: .grouped).then {
+        $0.backgroundColor = .clear
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.separatorStyle = .none
+        $0.delegate = self
+        $0.dataSource = self
+    }
+        
     
     //MARK: - UI Components
     
     //MARK: - Life Cycle
     
+    override func loadView() {
+        self.view = myView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setUI()
-        setLayout()
+        register()
         
     }
     
     //MARK: - Custom Method
     
-    
-    private func setUI() {
-        view.addSubviews(profileView, memberCollectionView)
-    }
-    
-    private func setLayout() {
-        profileView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(205)
-        }
-        
-        memberCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.profileView.snp.bottom)
-            $0.leading.equalToSuperview().offset(30)
-            $0.width.equalTo(315)
-            $0.height.equalTo(155)
-        }
-    }
-    
     private func register() {
+        myView.register(MemberCollectionView.self, forCellReuseIdentifier: MemberCollectionView.identifier)
     }
     
     //MARK: - Action Method
     
 }
 
+extension MyViewController: UITableViewDelegate {}
 
+extension MyViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}

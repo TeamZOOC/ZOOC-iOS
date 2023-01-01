@@ -11,7 +11,13 @@ import UIKit
 import SnapKit
 import Then
 
-final class MemberCollectionView: UICollectionViewCell {
+final class MemberCollectionView: UITableViewCell {
+    
+    //MARK: - Properties
+    
+    static let identifier = "MemberCollectionView"
+    
+    //MARK: - UI Components
     
     public lazy var memberCollectionView = UICollectionView().then {
         let layout = UICollectionViewFlowLayout()
@@ -43,7 +49,11 @@ final class MemberCollectionView: UICollectionViewCell {
     }
 }
 
-extension MemberCollectionView: UICollectionViewDelegateFlowLayout {}
+extension MemberCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 48, height: 68)
+    }
+}
 
 extension MemberCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

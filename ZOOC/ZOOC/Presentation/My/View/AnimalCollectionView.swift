@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class AnimalCollectionView: UICollectionView {
+final class AnimalCollectionView: UITableViewCell {
     public lazy var animalCollectionView =
     UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()

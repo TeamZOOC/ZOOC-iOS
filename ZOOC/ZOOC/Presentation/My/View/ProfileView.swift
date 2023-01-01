@@ -11,7 +11,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileView : UIView  {
+final class ProfileView: UITableViewCell  {
+    
+    //MARK: - Properties
+    
+    static let identifier = "ProfileView"
     
     //MARK: - UI Components
     
@@ -46,8 +50,8 @@ final class ProfileView : UIView  {
     
     //MARK: - Life Cycles
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
         setLayout()
     }
