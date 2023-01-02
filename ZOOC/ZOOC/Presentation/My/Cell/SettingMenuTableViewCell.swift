@@ -21,6 +21,10 @@ final class SettingMenuTableViewCell: UITableViewCell {
         $0.titleLabel!.font = UIFont.zoocBody2
     }
     
+    private var separatorLine = UIView().then {
+        $0.backgroundColor = UIColor.zoocLightGray
+    }
+    
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -36,12 +40,21 @@ final class SettingMenuTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.addSubview(menuButton)
+        contentView.backgroundColor = UIColor.zoocBackgroundGreen
+        contentView.addSubviews(menuButton, separatorLine)
     }
     
     private func setLayout() {
         menuButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(19)
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().offset(10)
+        }
+        
+        separatorLine.snp.makeConstraints {
+            $0.top.equalTo(self.menuButton.snp.bottom).offset(18)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(1)
         }
     }
     

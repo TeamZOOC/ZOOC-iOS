@@ -22,7 +22,7 @@ final class SettingMenuTableView: UICollectionViewCell {
     public lazy var settingMenuTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .singleLine
+        $0.separatorStyle = .none
         $0.isScrollEnabled = false
         $0.delegate = self
         $0.dataSource = self
@@ -42,7 +42,7 @@ final class SettingMenuTableView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        self.backgroundColor = .systemPink
+        self.backgroundColor = UIColor.zoocBackgroundGreen
         addSubview(settingMenuTableView)
     }
     

@@ -39,6 +39,7 @@ final class MyView: UIView  {
     //MARK: - Custom Method
     
     private func setUI() {
+        myCollectionView.backgroundColor = UIColor.zoocBackgroundGreen
         addSubview(myCollectionView)
     }
     

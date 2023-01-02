@@ -63,6 +63,9 @@ final class PetCollectionView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
+        self.backgroundColor = .yellow
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
         addSubviews(petLabel, registerButton, petCollectionView)
     }
     

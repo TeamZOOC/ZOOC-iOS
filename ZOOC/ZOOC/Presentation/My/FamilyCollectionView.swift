@@ -56,6 +56,9 @@ final class FamilyCollectionView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
+        self.backgroundColor = .green
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
         addSubviews(familyLabel, inviteButton, familyCollectionView)
     }
     
