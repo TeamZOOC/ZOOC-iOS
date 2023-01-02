@@ -43,8 +43,10 @@ final class ProfileView: UICollectionViewCell  {
         $0.setTitle("편집", for: .normal)
         $0.titleLabel!.font = UIFont.zoocCaption
         $0.setTitleColor(UIColor.zoocGray2, for: .normal)
-        $0.backgroundColor = UIColor.zoocWhite2
-        $0.layer.cornerRadius = 21.5
+        $0.backgroundColor = UIColor.zoocWhite1
+        $0.layer.cornerRadius = 12
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor.black.cgColor
         $0.clipsToBounds = true
     }
     
@@ -63,10 +65,8 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - Custom Method
     
     private func setUI() {
-        self.backgroundColor = .blue
         addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
     }
-    
     
     private func setLayout() {
         profileImage.snp.makeConstraints {

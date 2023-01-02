@@ -66,7 +66,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 0:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         case 1:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 12)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 12, right: 30)
         case 2:
             return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         case 3:
