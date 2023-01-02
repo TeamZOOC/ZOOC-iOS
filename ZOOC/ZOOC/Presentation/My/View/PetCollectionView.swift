@@ -38,6 +38,10 @@ final class PetCollectionView: UICollectionViewCell {
         $0.titleLabel!.font = UIFont.zoocCaption
     }
     
+    private var registerButtonUnderLine = UIView().then {
+        $0.backgroundColor = UIColor.zoocGray2
+    }
+    
     public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -66,7 +70,7 @@ final class PetCollectionView: UICollectionViewCell {
         self.backgroundColor = .yellow
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
-        addSubviews(petLabel, registerButton, petCollectionView)
+        addSubviews(petLabel, registerButton, petCollectionView, registerButtonUnderLine)
     }
     
     
@@ -79,6 +83,8 @@ final class PetCollectionView: UICollectionViewCell {
         registerButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(24)
             $0.trailing.equalToSuperview().inset(26)
+            $0.width.equalTo(42)
+            $0.height.equalTo(14)
         }
 
         petCollectionView.snp.makeConstraints {
@@ -87,6 +93,14 @@ final class PetCollectionView: UICollectionViewCell {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
+        
+        registerButtonUnderLine.snp.makeConstraints {
+            $0.top.equalTo(self.registerButton.snp.bottom).offset(2)
+            $0.trailing.equalTo(self.registerButton)
+            $0.width.equalTo(41)
+            $0.height.equalTo(1)
+        }
+        
     }
     
     private func register() {

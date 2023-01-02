@@ -31,6 +31,10 @@ final class FamilyCollectionView: UICollectionViewCell {
         $0.titleLabel!.font = UIFont.zoocCaption
     }
     
+    private var inviteButtonUnderLine = UIView().then {
+        $0.backgroundColor = UIColor.zoocGray2
+    }
+    
     public lazy var familyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -59,7 +63,7 @@ final class FamilyCollectionView: UICollectionViewCell {
         self.backgroundColor = .green
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
-        addSubviews(familyLabel, inviteButton, familyCollectionView)
+        addSubviews(familyLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
     }
     
     
@@ -72,6 +76,15 @@ final class FamilyCollectionView: UICollectionViewCell {
         inviteButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(24)
             $0.trailing.equalToSuperview().inset(26)
+            $0.width.equalTo(42)
+            $0.height.equalTo(14)
+        }
+        
+        inviteButtonUnderLine.snp.makeConstraints {
+            $0.top.equalTo(self.inviteButton.snp.bottom).offset(2)
+            $0.trailing.equalTo(self.inviteButton)
+            $0.width.equalTo(41)
+            $0.height.equalTo(1)
         }
 
         familyCollectionView.snp.makeConstraints {
