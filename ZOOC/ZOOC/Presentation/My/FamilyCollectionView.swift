@@ -46,6 +46,8 @@ final class FamilyCollectionView: UICollectionViewCell {
         $0.dataSource = self
     }
     
+    //MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -100,11 +102,15 @@ final class FamilyCollectionView: UICollectionViewCell {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
+
 extension FamilyCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension FamilyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

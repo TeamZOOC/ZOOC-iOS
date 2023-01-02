@@ -15,9 +15,6 @@ final class  MyViewController: BaseViewController {
     //MARK: - Properties
     
     private lazy var myView = MyView()
-        
-    
-    //MARK: - UI Components
     
     //MARK: - Life Cycle
     
@@ -41,10 +38,9 @@ final class  MyViewController: BaseViewController {
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.identifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.identifier)
     }
-    
-    //MARK: - Action Method
-    
 }
+
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -61,6 +57,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 0, height: 0)
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch section {
         case 0:
@@ -76,6 +73,8 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {

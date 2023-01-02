@@ -43,7 +43,6 @@ final class MyView: UIView  {
         addSubview(myCollectionView)
     }
     
-    
     private func setLayout() {
         myCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)

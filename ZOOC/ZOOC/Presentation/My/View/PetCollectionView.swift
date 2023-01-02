@@ -53,6 +53,8 @@ final class PetCollectionView: UICollectionViewCell {
         $0.dataSource = self
     }
     
+    //MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -107,12 +109,15 @@ final class PetCollectionView: UICollectionViewCell {
         petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.identifier)
     }
 }
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension PetCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension PetCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

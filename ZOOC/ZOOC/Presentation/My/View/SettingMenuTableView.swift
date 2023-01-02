@@ -28,6 +28,8 @@ final class SettingMenuTableView: UICollectionViewCell {
         $0.dataSource = self
     }
     
+    //MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -58,11 +60,15 @@ final class SettingMenuTableView: UICollectionViewCell {
     }
 }
 
+//MARK: - UITableViewDelegate
+
 extension SettingMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 61
     }
 }
+
+//MARK: - UITableViewDataSource
 
 extension SettingMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
