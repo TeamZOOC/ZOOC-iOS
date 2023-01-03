@@ -14,38 +14,184 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Properties
     
-    let label = UILabel().then {
-        $0.font = .zoocDisplay2
-        $0.text = "홈"
-    }
-    
+    private enum Const {
+        static let itemSize = CGSize(width: 310, height: 477)
+        static let itemSpacing : CGFloat = 13
+        
+        static var insetX: CGFloat {
+          return (UIScreen.main.bounds.width - Self.itemSize.width) / 2.0
+        }
+        static var collectionViewContentInset: UIEdgeInsets {
+          return UIEdgeInsets(top: 0, left: Self.insetX, bottom: 0, right: Self.insetX)
+        }
+        
+        enum ScrollDirection{
+            case left
+            case right
+        }
+      }
+
     //MARK: - UI Components
+   
+    private lazy var cardCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.decelerationRate = .fast
+        collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.clipsToBounds = false
+        collectionView.contentInset = Const.collectionViewContentInset
+        return collectionView
+    }()
+    
+    
+    private let progressView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .zoocLightGreen
+        return view
+    }()
+    
+    private let progressTintView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .zoocDarkGreen
+        return view
+    }()
     
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDelegate()
+        registerCell()
         setUI()
         setLayout()
-        
     }
     
     //MARK: - Custom Method
     
+    private func setDelegate(){
+        cardCollectionView.delegate = self
+        cardCollectionView.dataSource = self
+    }
+    
+    private func registerCell(){
+        cardCollectionView.register(HomeCardCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: HomeCardCollectionViewCell.cellIdentifier)
+        cardCollectionView.register(HomeRecordCollectionViewCell.self,
+                                    forCellWithReuseIdentifier: HomeRecordCollectionViewCell.cellIdentifier)
+    }
     
     private func setUI(){
         
     }
     
     private func setLayout(){
-        view.addSubview(label)
+        view.addSubviews(cardCollectionView,progressView)
+        progressView.addSubview(progressTintView)
             
-        label.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        cardCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(150)
+            $0.leading.trailing.equalToSuperview()
         }
+        
+        progressView.snp.makeConstraints {
+            $0.top.equalTo(cardCollectionView.snp.bottom).offset(33)
+            $0.leading.trailing.equalToSuperview().inset(75)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(61)
+            $0.height.equalTo(4)
+        }
+        
+        progressTintView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalTo(progressView.snp.width).dividedBy(2)
+        }
+    }
+    
+    private func animateTintView(_ direction: Const.ScrollDirection){
+      
+        var insetX: CGFloat = 0
+        
+        switch direction{
+        case .left:
+            insetX = progressView.frame.width / 2
+        case .right:
+            insetX = 0
+        }
+        
+        UIView.animate(withDuration: 0.3 ) {
+            self.progressTintView.transform = CGAffineTransform(translationX: insetX, y: 0)
+        }
+        
+        
     }
     
     //MARK: - Action Method
     
+}
+
+//MARK: - UICollectionView DataSource
+
+extension HomeViewController: UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch indexPath.item{
+        case 0 :
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCardCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCardCollectionViewCell else { return UICollectionViewCell() }
+            return cell
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeRecordCollectionViewCell.cellIdentifier, for: indexPath) as? HomeRecordCollectionViewCell else { return UICollectionViewCell() }
+            return cell
+        default: return UICollectionViewCell()
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return Const.itemSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return Const.itemSpacing
+    }
+}
+
+//MARK: - UIScrollViewDelegate
+
+extension HomeViewController{
+    
+    func scrollViewWillEndDragging( _ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            
+        let scrolledOffsetX = targetContentOffset.pointee.x + scrollView.contentInset.left
+        let cellWidth = Const.itemSize.width + Const.itemSpacing
+        let index = round(scrolledOffsetX / cellWidth)
+        
+        targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
+        print(scrolledOffsetX)
+        print(cellWidth)
+        print(index)
+        
+        switch index{
+        case 0:
+            animateTintView(.right)
+        case 1:
+            animateTintView(.left)
+        default: print("스크롤 에러")
+        }
+        
+      }
 }
