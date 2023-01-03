@@ -26,4 +26,6 @@ public enum Image{
     static let symbolLogo = UIImage(named: "symbol_logo")!
     static let upload = UIImage(named: "upload")!
     
+    static let profileImage = UIImage(named: "profile_image")!
+    static let profileMemberImage = UIImage(named: "profile_memberImage")!
 }
