@@ -41,7 +41,11 @@ final class  AppInformationViewController: BaseViewController {
 
 //MARK: - UITableViewDelegate
 
-extension AppInformationViewController: UITableViewDelegate {}
+extension AppInformationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 63
+    }
+}
 
 
 //MARK: - UITableViewDataSource

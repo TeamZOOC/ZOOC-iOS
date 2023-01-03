@@ -22,8 +22,6 @@ final class AppInformationView: UIView {
         $0.font = .zoocHeadLine
         $0.text = "앱 정보"
         $0.textColor = .zoocDarkGray2
-        
-        
     }
     
     private var currentVersionTitleLabel = UILabel().then {
@@ -38,7 +36,7 @@ final class AppInformationView: UIView {
         $0.textColor = .zoocDarkGreen
     }
     
-    public var appInformationTableView = UITableView(frame: .zero, style: .grouped).then {
+    public var appInformationTableView = UITableView(frame: .zero, style: .plain).then {
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .none
@@ -70,19 +68,18 @@ final class AppInformationView: UIView {
                     currentVersionLabel, appInformationTableView)
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(24)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(31)
-            $0.width.equalTo(8)
-            $0.height.equalTo(14)
+            $0.size.equalTo(42)
         }
         
         appInformationLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
-            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(self.backButton.snp.trailing).offset(100)
         }
         
         currentVersionTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
+            $0.top.equalTo(self.backButton.snp.bottom).offset(25)
             $0.leading.equalToSuperview().offset(40)
         }
         
@@ -93,10 +90,12 @@ final class AppInformationView: UIView {
         
         appInformationTableView.snp.makeConstraints {
             $0.top.equalTo(self.currentVersionTitleLabel.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(315)
+            $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
         }
+        
+        
+        
         
     }
 }

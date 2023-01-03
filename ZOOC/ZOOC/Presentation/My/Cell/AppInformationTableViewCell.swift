@@ -15,9 +15,11 @@ final class AppInformationTableViewCell: UITableViewCell {
         $0.backgroundColor = .zoocLightGray
     }
     
-    public var appInformationButton = UIButton().then {
-        $0.setTitleColor(.zoocDarkGray2, for: .normal)
-        $0.titleLabel!.font = .zoocBody2 //zoocBody3
+    public var appInformationButton = UIButton()
+    
+    public var appInformationLabel = UILabel().then {
+        $0.textColor = .zoocDarkGray2
+        $0.font = .zoocBody2 //zoocBody3
     }
     
     //MARK: - Life Cycles
@@ -41,6 +43,7 @@ final class AppInformationTableViewCell: UITableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(separatorLine, appInformationButton)
+        appInformationButton.addSubview(appInformationLabel)
         
         separatorLine.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -55,10 +58,15 @@ final class AppInformationTableViewCell: UITableViewCell {
             $0.width.equalTo(315)
             $0.height.equalTo(40)
         }
+        
+        appInformationLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.leading.equalToSuperview().offset(10)
+        }
     }
     
     public func dataBind(model: AppInformationModel) {
-        appInformationButton.setTitle(model.appInformationName, for: .normal)
+        appInformationLabel.text = model.appInformationName
     }
 }
 
