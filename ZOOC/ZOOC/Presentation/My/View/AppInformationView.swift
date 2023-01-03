@@ -28,6 +28,7 @@ final class AppInformationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setLayout()
         register()
@@ -47,6 +48,36 @@ final class AppInformationView: UIView {
     private func setLayout() {
         addSubviews(backButton, appInformationLabel, currentVersionTitleLabel,
                     currentVersionLabel, appInformationTableView)
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalToSuperview().offset(31)
+            $0.width.equalTo(8)
+            $0.height.equalTo(14)
+        }
+        
+        appInformationLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
+            $0.centerX.equalToSuperview()
+        }
+        
+        currentVersionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
+            $0.leading.equalToSuperview().offset(40)
+        }
+        
+        currentVersionLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(85)
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        appInformationTableView.snp.makeConstraints {
+            $0.top.equalTo(self.currentVersionTitleLabel.snp.bottom).offset(20)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.bottom.equalToSuperview()
+        }
+        
     }
     
     private func register() {
