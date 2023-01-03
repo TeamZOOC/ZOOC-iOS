@@ -38,6 +38,16 @@ final class  MyViewController: BaseViewController {
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
     }
+    
+    private func pushToAppInformationView() {
+        let appInformationViewController = AppInformationViewController()
+        self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    private func pushToEditProfileView() {
+        let editProfileViewController = EditProfileViewController()
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

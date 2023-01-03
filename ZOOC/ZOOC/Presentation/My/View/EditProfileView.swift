@@ -33,6 +33,7 @@ final class EditProfileView: UIView {
     private var editProfileCameraIconImageView = UIImageView().then {
         $0.image = Image.camera
         $0.layer.cornerRadius = 17.5
+        $0.backgroundColor = .zoocMainGreen
     }
     
     private var editProfileNameTextField = UITextField().then {

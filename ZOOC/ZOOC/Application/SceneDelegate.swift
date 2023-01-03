@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: AppInformationViewController())
+        window?.rootViewController = UINavigationController(rootViewController: EditProfileViewController())
         let navigationController = window?.rootViewController as? UINavigationController
         navigationController?.isNavigationBarHidden = true
         self.window?.backgroundColor = .white
