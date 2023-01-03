@@ -69,11 +69,11 @@ class ZoocTabBarController: UITabBarController {
     
     private func setViewController(){
         
-        homeViewContrller.tabBarItem = UITabBarItem(title: "홈",
+        homeViewContrller.tabBarItem = UITabBarItem(title: nil,
                                                     image: Image.home,
                                                     selectedImage: Image.home)
         
-        myViewController.tabBarItem = UITabBarItem(title: "마이",
+        myViewController.tabBarItem = UITabBarItem(title: nil,
                                                    image: Image.person,
                                                    selectedImage: Image.person)
         

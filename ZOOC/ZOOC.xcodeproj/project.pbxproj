@@ -23,7 +23,7 @@
 		8764833B29523C0100F74882 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833A29523C0100F74882 /* Kingfisher */; };
 		8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */; };
 		876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A2295848D5006BBDA9 /* BaseViewController.swift */; };
-		876554A529584912006BBDA9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* HomeViewController.swift */; };
+		876554A529584912006BBDA9 /* OnBoardingMissionControllerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* OnBoardingMissionControllerHomeViewController.swift */; };
 		876554A72958494B006BBDA9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A62958494B006BBDA9 /* MyViewController.swift */; };
 		877BAFC2295EEA6900C2AA1C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */; };
 		877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */; };
@@ -50,8 +50,9 @@
 		87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5529605C0100CA7F12 /* URLs.swift */; };
 		87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5929606AC900CA7F12 /* NetworkResult.swift */; };
 		87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */; };
-		87D5AF602960CD5900CA7F12 /* HomeCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5F2960CD5900CA7F12 /* HomeCardCollectionViewCell.swift */; };
-		87D5AF622960CFE500CA7F12 /* HomeRecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF612960CFE500CA7F12 /* HomeRecordCollectionViewCell.swift */; };
+		87D5AF602960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5F2960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift */; };
+		87D5AF622960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF612960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift */; };
+		87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF6329649DC100CA7F12 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,7 @@
 		8764832A295238EB00F74882 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocTabBarController.swift; sourceTree = "<group>"; };
 		876554A2295848D5006BBDA9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		876554A429584912006BBDA9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		876554A429584912006BBDA9 /* OnBoardingMissionControllerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingMissionControllerHomeViewController.swift; sourceTree = "<group>"; };
 		876554A62958494B006BBDA9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -93,8 +94,9 @@
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		87D5AF5F2960CD5900CA7F12 /* HomeCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardCollectionViewCell.swift; sourceTree = "<group>"; };
-		87D5AF612960CFE500CA7F12 /* HomeRecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		87D5AF5F2960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMissionCollectionViewCell.swift; sourceTree = "<group>"; };
+		87D5AF612960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGuideCollectionViewCell.swift; sourceTree = "<group>"; };
+		87D5AF6329649DC100CA7F12 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 		87A76A8B295F6D780096F669 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				876554A429584912006BBDA9 /* OnBoardingMissionControllerHomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,6 +227,8 @@
 		87A76A8C295F6D7E0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87D5AF5F2960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift */,
+				87D5AF612960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -231,7 +236,7 @@
 		87A76A8D295F6D840096F669 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				876554A429584912006BBDA9 /* HomeViewController.swift */,
+				87D5AF6329649DC100CA7F12 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,8 +244,6 @@
 		87A76A8E295F6D890096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				87D5AF5F2960CD5900CA7F12 /* HomeCardCollectionViewCell.swift */,
-				87D5AF612960CFE500CA7F12 /* HomeRecordCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,7 +594,8 @@
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
-				87D5AF602960CD5900CA7F12 /* HomeCardCollectionViewCell.swift in Sources */,
+				87D5AF602960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift in Sources */,
+				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
@@ -610,14 +614,14 @@
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
-				876554A529584912006BBDA9 /* HomeViewController.swift in Sources */,
+				876554A529584912006BBDA9 /* OnBoardingMissionControllerHomeViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
 				8764831F2952368800F74882 /* UITableViewCell+.swift in Sources */,
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
-				87D5AF622960CFE500CA7F12 /* HomeRecordCollectionViewCell.swift in Sources */,
+				87D5AF622960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
