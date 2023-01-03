@@ -60,6 +60,26 @@ final class OnboardingMissionViewController : BaseViewController{
         return view
     }()
     
+    private lazy var backButton : UIButton = {
+        let button = UIButton()
+        button.setImage(Image.back, for: .normal)
+        button.addTarget(self,
+                         action: #selector(backButtonDidTap),
+                         for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var nextButton : UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .zoocMainGreen
+        button.setTitle("다음", for: .normal)
+        button.titleLabel?.font = .zoocSubhead1
+        button.addTarget(self,
+                         action: #selector(nextButtonDidTap),
+                         for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -69,6 +89,12 @@ final class OnboardingMissionViewController : BaseViewController{
         registerCell()
         setUI()
         setLayout()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setCornerRadius()
     }
     
     //MARK: - Custom Method
@@ -93,8 +119,14 @@ final class OnboardingMissionViewController : BaseViewController{
     }
     
     private func setLayout(){
-        view.addSubviews(cardCollectionView,progressView)
+        view.addSubviews(backButton, cardCollectionView,progressView,nextButton)
         progressView.addSubview(progressTintView)
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.leading.equalToSuperview().offset(25)
+            $0.height.width.equalTo(25)
+        }
             
         cardCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(150)
@@ -104,13 +136,19 @@ final class OnboardingMissionViewController : BaseViewController{
         progressView.snp.makeConstraints {
             $0.top.equalTo(cardCollectionView.snp.bottom).offset(33)
             $0.leading.trailing.equalToSuperview().inset(75)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(61)
             $0.height.equalTo(4)
         }
         
         progressTintView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.width.equalTo(progressView.snp.width).dividedBy(2)
+        }
+        
+        nextButton.snp.makeConstraints {
+            $0.top.equalTo(progressView.snp.bottom).offset(40)
+            $0.leading.trailing.equalToSuperview().inset(60)
+            $0.bottom.equalToSuperview().offset(-40)
+            $0.height.equalTo(54)
         }
     }
     
@@ -128,12 +166,22 @@ final class OnboardingMissionViewController : BaseViewController{
         UIView.animate(withDuration: 0.3 ) {
             self.progressTintView.transform = CGAffineTransform(translationX: insetX, y: 0)
         }
-        
-        
+    }
+    
+    private func setCornerRadius(){
+        nextButton.layer.cornerRadius = nextButton.frame.height / 2
     }
     
     //MARK: - Action Method
     
+    @objc private func backButtonDidTap(){
+        print("backButtonDidTap")
+        navigationController?.popViewController(animated: true)
+    }
+    @objc private func nextButtonDidTap(){
+        print("nextButtonDidTap")
+        navigationController?.pushViewController(UIViewController(), animated: true)
+    }
 }
 
 //MARK: - UICollectionView DataSource

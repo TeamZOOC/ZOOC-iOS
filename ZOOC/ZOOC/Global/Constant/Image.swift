@@ -12,8 +12,8 @@ public enum Image{
     static let back = UIImage(named: "back")!
     static let camera = UIImage(named: "camera")!
     static let combinationLogo = UIImage(named: "combination_logo")!
-    static let familyInvite = UIImage(named: "familiy_invite")!
-    static let firstMission = UIImage(named: "first_mission")!
+    static let onboardingInvite = UIImage(named: "familiy_invite")!
+    static let firstMission = UIImage(named: "onboarding_mission")!
     static let gallery = UIImage(named: "gallery")!
     static let grid = UIImage(named: "grid")!
     static let home = UIImage(named: "home")!

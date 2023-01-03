@@ -91,6 +91,17 @@
 		87B6624929521E7600B6FFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87D368772964C961009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368782964C96B009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368792964C970009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D3687A2964C976009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D3687B2964C979009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D3687C2964C97E009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D3687D2964C981009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D3687E2964CAD2009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368802964CADC009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368822964CAE3009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368842964CB8F009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -227,8 +238,8 @@
 		87A76A8C295F6D7E0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				87D5AF5F2960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift */,
 				87D5AF612960CFE500CA7F12 /* OnboardingGuideCollectionViewCell.swift */,
+				87D5AF5F2960CD5900CA7F12 /* OnboardingMissionCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +255,7 @@
 		87A76A8E295F6D890096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87D3687E2964CAD2009728FC /* Empty.md */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +263,7 @@
 		87A76A8F295F6D8F0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87D368802964CADC009728FC /* Empty.md */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +279,7 @@
 		87A76A93295F6DB10096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87D368822964CAE3009728FC /* Empty.md */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +367,7 @@
 		87A76AAE295F6EF80096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				87D368792964C970009728FC /* Empty.md */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -360,6 +375,7 @@
 		87A76AAF295F6F040096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				87D3687B2964C979009728FC /* Empty.md */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -367,6 +383,7 @@
 		87A76AB0295F6F090096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				87D3687D2964C981009728FC /* Empty.md */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -374,6 +391,7 @@
 		87A76AB1295F6F100096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87D368782964C96B009728FC /* Empty.md */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -381,6 +399,7 @@
 		87A76AB2295F6F140096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87D3687A2964C976009728FC /* Empty.md */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -388,6 +407,7 @@
 		87A76AB3295F6F180096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87D3687C2964C97E009728FC /* Empty.md */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,6 +415,7 @@
 		87A76ABC295F77530096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				87D368772964C961009728FC /* Empty.md */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -402,6 +423,7 @@
 		87A76ABD295F775C0096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				87D368842964CB8F009728FC /* Empty.md */,
 			);
 			path = Model;
 			sourceTree = "<group>";
