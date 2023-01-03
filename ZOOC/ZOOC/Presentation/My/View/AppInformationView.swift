@@ -22,6 +22,33 @@ final class AppInformationView: UIView {
     
     private var currentVersionLabel = UILabel()
     
-    private var settingTableView = UITableView()
+    private var appInformationTableView = UITableView()
     
+    //MARK: - Life Cycles
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+        setLayout()
+        register()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Custom Method
+    
+    private func setUI() {
+        self.backgroundColor = .zoocBackgroundGreen
+    }
+    
+    
+    private func setLayout() {
+        addSubviews(backButton, appInformationLabel, currentVersionTitleLabel,
+                    currentVersionLabel, appInformationTableView)
+    }
+    
+    private func register() {
+    }
 }
