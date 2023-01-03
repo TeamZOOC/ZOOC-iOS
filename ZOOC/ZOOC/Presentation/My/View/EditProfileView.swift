@@ -26,7 +26,7 @@ final class EditProfileView: UIView {
     
     private var editProfileImageView = UIImageView()
     
-    private var editProfileCameraImage = UIImageView()
+    private var editProfileCameraIconImageView = UIImageView()
     
     private var editProfileNameTextField = UITextField()
     
@@ -59,7 +59,54 @@ final class EditProfileView: UIView {
     
     
     private func setLayout() {
+        addSubviews(backButton, appInformationLabel, editProfileImageView, editProfileCameraIconImageView, editProfileNameTextField, profileNameTextFieldUnderLineView, profileNameCountLabel, editCompletedButton)
         
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalToSuperview().offset(17)
+            $0.size.equalTo(42)
+        }
+        
+        appInformationLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
+            $0.leading.equalTo(self.backButton.snp.trailing).offset(83)
+        }
+        
+        editProfileImageView.snp.makeConstraints {
+            $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(190)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(109)
+        }
+        
+        editProfileCameraIconImageView.snp.makeConstraints {
+            $0.top.equalTo(self.editProfileImageView.snp.top).offset(78)
+            $0.leading.equalTo(self.editProfileImageView).offset(78)
+            $0.size.equalTo(35)
+        }
+        
+        editProfileNameTextField.snp.makeConstraints {
+            $0.top.equalTo(self.editProfileImageView.snp.bottom).offset(29)
+            $0.centerX.equalToSuperview()
+        }
+        
+        profileNameTextFieldUnderLineView.snp.makeConstraints {
+            $0.top.equalTo(self.editProfileNameTextField.snp.bottom).offset(9)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(205)
+            $0.height.equalTo(1)
+        }
+        
+        profileNameCountLabel.snp.makeConstraints {
+            $0.top.equalTo(self.profileNameTextFieldUnderLineView).offset(9)
+            $0.leading.equalToSuperview().offset(265)
+        }
+        
+        editCompletedButton.snp.makeConstraints {
+            $0.top.equalTo(self.profileNameTextFieldUnderLineView).offset(249)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(54)
+        }
     }
 }
 
