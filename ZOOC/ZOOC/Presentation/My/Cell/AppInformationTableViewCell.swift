@@ -56,6 +56,10 @@ final class AppInformationTableViewCell: UITableViewCell {
             $0.height.equalTo(40)
         }
     }
+    
+    public func dataBind(model: AppInformationModel) {
+        appInformationButton.setTitle(model.appInformationName, for: .normal)
+    }
 }
 
 

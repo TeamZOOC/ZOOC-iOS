@@ -39,3 +39,22 @@ final class  AppInformationViewController: BaseViewController {
     }
 }
 
+//MARK: - UITableViewDelegate
+
+extension AppInformationViewController: UITableViewDelegate {}
+
+
+//MARK: - UITableViewDataSource
+
+extension AppInformationViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AppInformationModel.appInformationData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AppInformationTableViewCell.cellIdentifier, for: indexPath) as?
+                AppInformationTableViewCell else { return UITableViewCell() }
+        cell.dataBind(model: AppInformationModel.appInformationData[indexPath.row])
+        return cell
+    }
+}

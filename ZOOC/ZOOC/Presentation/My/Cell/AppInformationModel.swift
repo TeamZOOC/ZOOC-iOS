@@ -12,7 +12,7 @@ struct AppInformationModel {
 }
 
 extension AppInformationModel {
-    static var appInformationModel: [AppInformationModel] = [
+    static var appInformationData: [AppInformationModel] = [
         AppInformationModel(appInformationName: "서비스 이용약관"),
         AppInformationModel(appInformationName: "개인정보 처리방침"),
         AppInformationModel(appInformationName: "마케팅 정보 수신 동의")
