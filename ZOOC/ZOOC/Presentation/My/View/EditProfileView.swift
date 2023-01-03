@@ -24,17 +24,33 @@ final class EditProfileView: UIView {
         $0.textColor = .zoocDarkGray2
     }
     
-    private var editProfileImageView = UIImageView()
+    private var editProfileImageButton = UIButton()
+    // 여기 이미지 마이프로필에서 가져오면 됨
+    // 원형으로 만들기 신경쓰기
     
-    private var editProfileCameraIconImageView = UIImageView()
+    private var editProfileCameraIconImageView = UIImageView().then {
+        $0.image = Image.camera
+        $0.layer.cornerRadius = 17.5
+    }
     
-    private var editProfileNameTextField = UITextField()
+    private var editProfileNameTextField = UITextField().then {
+        $0.font = .zoocHeadLine
+        // 텍스트 필드 색상
+        // 커서 색상
+    }
     
     private var profileNameTextFieldUnderLineView = UIView()
+        // 색상변경 -> 입력될때마다
     
-    private var profileNameCountLabel = UILabel()
+    
+    private var profileNameCountLabel = UILabel().then {
+        $0.font = .zoocCaption
+        // 이것도 색상변경
+    }
     
     private var editCompletedButton = UIButton()
+        //$0.backgroundColor -> gragreen
+    
     
     
 
@@ -59,7 +75,7 @@ final class EditProfileView: UIView {
     
     
     private func setLayout() {
-        addSubviews(backButton, appInformationLabel, editProfileImageView, editProfileCameraIconImageView, editProfileNameTextField, profileNameTextFieldUnderLineView, profileNameCountLabel, editCompletedButton)
+        addSubviews(backButton, appInformationLabel, editProfileImageButton, editProfileCameraIconImageView, editProfileNameTextField, profileNameTextFieldUnderLineView, profileNameCountLabel, editCompletedButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
@@ -72,20 +88,20 @@ final class EditProfileView: UIView {
             $0.leading.equalTo(self.backButton.snp.trailing).offset(83)
         }
         
-        editProfileImageView.snp.makeConstraints {
+        editProfileImageButton.snp.makeConstraints {
             $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(190)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(109)
         }
         
         editProfileCameraIconImageView.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileImageView.snp.top).offset(78)
-            $0.leading.equalTo(self.editProfileImageView).offset(78)
+            $0.top.equalTo(self.editProfileImageButton.snp.top).offset(78)
+            $0.leading.equalTo(self.editProfileImageButton).offset(78)
             $0.size.equalTo(35)
         }
         
         editProfileNameTextField.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileImageView.snp.bottom).offset(29)
+            $0.top.equalTo(self.editProfileImageButton.snp.bottom).offset(29)
             $0.centerX.equalToSuperview()
         }
         
