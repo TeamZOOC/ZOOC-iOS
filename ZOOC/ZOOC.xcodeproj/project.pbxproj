@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */; };
+		4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyInviteViewController.swift; sourceTree = "<group>"; };
+		4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInviteCompleteViewController.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				876554A62958494B006BBDA9 /* MyViewController.swift */,
+				4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */,
+				4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
+				4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
@@ -610,6 +617,7 @@
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
+				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
