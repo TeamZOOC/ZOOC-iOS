@@ -44,19 +44,21 @@ final class SettingMenuTableView: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        self.backgroundColor = UIColor.zoocBackgroundGreen
-        addSubview(settingMenuTableView)
+        self.backgroundColor = .zoocBackgroundGreen
+        
     }
     
     
     private func setLayout() {
+        addSubview(settingMenuTableView)
+        
         settingMenuTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
     private func register() {
-        settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.identifier)
+        settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.cellIdentifier)
     }
 }
 
@@ -76,7 +78,7 @@ extension SettingMenuTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.cellIdentifier, for: indexPath)
                 as? SettingMenuTableViewCell else { return UITableViewCell() }
         cell.dataBind(model: settingMenuDummyData[indexPath.row])
         return cell

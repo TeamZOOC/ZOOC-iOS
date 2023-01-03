@@ -29,21 +29,21 @@ final class ProfileView: UICollectionViewCell  {
     
     private var profileNameLabel = UILabel().then {
         $0.text = "복실맘"
-        $0.textColor = UIColor.zoocDarkGray2
-        $0.font = UIFont.zoocHeadLine
+        $0.textColor = .zoocDarkGray2
+        $0.font = .zoocHeadLine
     }
     
     private var profileEmailLabel = UILabel().then {
         $0.text = "02rin@naver.com"
-        $0.textColor = UIColor.zoocDarkGreen
-        $0.font = UIFont.zoocBody1
+        $0.textColor = .zoocDarkGreen
+        $0.font = .zoocBody1
     }
     
     private var editProfileButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
-        $0.titleLabel!.font = UIFont.zoocCaption
-        $0.setTitleColor(UIColor.zoocGray2, for: .normal)
-        $0.backgroundColor = UIColor.zoocWhite1
+        $0.titleLabel!.font = .zoocCaption
+        $0.setTitleColor(.zoocGray2, for: .normal)
+        $0.backgroundColor = .zoocWhite1
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.black.cgColor
@@ -54,7 +54,7 @@ final class ProfileView: UICollectionViewCell  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
+        
         setLayout()
     }
     
@@ -63,12 +63,10 @@ final class ProfileView: UICollectionViewCell  {
     }
     
     //MARK: - Custom Method
-    
-    private func setUI() {
-        addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
-    }
-    
+
     private func setLayout() {
+        addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
+        
         profileImage.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(39)
             $0.centerX.equalToSuperview()

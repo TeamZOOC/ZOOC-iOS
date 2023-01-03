@@ -10,19 +10,15 @@ import UIKit
 
 final class SettingMenuTableViewCell: UITableViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "SettingMenuTableViewCell"
-    
     //MARK: - UI Components
     
     public var menuButton = UIButton().then {
-        $0.setTitleColor(UIColor.zoocDarkGray2, for: .normal)
-        $0.titleLabel!.font = UIFont.zoocBody2
+        $0.setTitleColor(.zoocDarkGray2, for: .normal)
+        $0.titleLabel!.font = .zoocBody2
     }
     
     private var separatorLine = UIView().then {
-        $0.backgroundColor = UIColor.zoocLightGray
+        $0.backgroundColor = .zoocLightGray
     }
     
     //MARK: - Life Cycles
@@ -40,11 +36,12 @@ final class SettingMenuTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.backgroundColor = UIColor.zoocBackgroundGreen
-        contentView.addSubviews(menuButton, separatorLine)
+        contentView.backgroundColor = .zoocBackgroundGreen
     }
     
     private func setLayout() {
+        contentView.addSubviews(menuButton, separatorLine)
+        
         menuButton.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)

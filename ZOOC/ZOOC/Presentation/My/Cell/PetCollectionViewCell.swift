@@ -10,10 +10,6 @@ import UIKit
 
 final class PetCollectionViewCell: UICollectionViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "PetCollectionViewCell"
-    
     //MARK: - UI Components
     
     public var petImageView = UIImageView().then {
@@ -23,16 +19,16 @@ final class PetCollectionViewCell: UICollectionViewCell {
     }
     
     public var petNameLabel = UILabel().then {
-        $0.font = UIFont.zoocCaption
+        $0.font = .zoocCaption
         $0.text = "복실아들"
-        $0.textColor = UIColor.zoocDarkGray1
+        $0.textColor = .zoocDarkGray1
     }
 
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
+        
         setLayout()
     }
     
@@ -42,11 +38,9 @@ final class PetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        contentView.addSubviews(petImageView, petNameLabel)
-    }
-    
     private func setLayout() {
+        contentView.addSubviews(petImageView, petNameLabel)
+        
         petImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

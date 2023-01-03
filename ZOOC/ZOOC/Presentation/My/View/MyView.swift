@@ -27,6 +27,7 @@ final class MyView: UIView  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setLayout()
     }
@@ -39,11 +40,12 @@ final class MyView: UIView  {
     //MARK: - Custom Method
     
     private func setUI() {
-        myCollectionView.backgroundColor = UIColor.zoocBackgroundGreen
-        addSubview(myCollectionView)
+        myCollectionView.backgroundColor = .zoocBackgroundGreen
     }
     
     private func setLayout() {
+        addSubview(myCollectionView)
+        
         myCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()

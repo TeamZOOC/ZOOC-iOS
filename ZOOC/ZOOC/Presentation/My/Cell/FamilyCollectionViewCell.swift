@@ -10,10 +10,6 @@ import UIKit
 
 final class FamilyCollectionViewCell: UICollectionViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "FamilyCollectionViewCell"
-    
     //MARK: - UI Components
     
     public var familyImageView = UIImageView().then {
@@ -22,15 +18,15 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     }
     
     public var familyNameLabel = UILabel().then {
-        $0.font = UIFont.zoocCaption
-        $0.textColor = UIColor.zoocDarkGray1
+        $0.font = .zoocCaption
+        $0.textColor = .zoocDarkGray1
     }
 
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
+        
         setLayout()
     }
     
@@ -40,11 +36,9 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        contentView.addSubviews(familyImageView, familyNameLabel)
-    }
-    
     private func setLayout() {
+        contentView.addSubviews(familyImageView, familyNameLabel)
+        
         familyImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

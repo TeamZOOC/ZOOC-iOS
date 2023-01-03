@@ -13,26 +13,22 @@ import Then
 
 final class FamilyCollectionView: UICollectionViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "MemberCollectionView"
-    
     //MARK: - UI Components
     
     private var familyLabel = UILabel().then {
         $0.text = "멤버"
-        $0.textColor = UIColor.zoocDarkGray1
-        $0.font = UIFont.zoocSubhead1
+        $0.textColor = .zoocDarkGray1
+        $0.font = .zoocSubhead1
     }
 
     private var inviteButton = UIButton().then {
         $0.setTitle("초대하기", for: .normal)
-        $0.setTitleColor(UIColor.zoocGray2, for: .normal)
-        $0.titleLabel!.font = UIFont.zoocCaption
+        $0.setTitleColor(.zoocGray2, for: .normal)
+        $0.titleLabel!.font = .zoocCaption
     }
     
     private var inviteButtonUnderLine = UIView().then {
-        $0.backgroundColor = UIColor.zoocGray2
+        $0.backgroundColor = .zoocGray2
     }
     
     public lazy var familyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -50,6 +46,7 @@ final class FamilyCollectionView: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setLayout()
         register()
@@ -65,11 +62,12 @@ final class FamilyCollectionView: UICollectionViewCell {
         self.backgroundColor = .white
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
-        addSubviews(familyLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
     }
     
     
     private func setLayout() {
+        addSubviews(familyLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
+        
         familyLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
@@ -98,7 +96,7 @@ final class FamilyCollectionView: UICollectionViewCell {
     }
     
     private func register() {
-        familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.identifier)
+        familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
 }
 
@@ -118,7 +116,7 @@ extension FamilyCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(model: familyDummyData[indexPath.item])
         return cell

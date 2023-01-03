@@ -20,26 +20,22 @@ import Then
 
 final class PetCollectionView: UICollectionViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "PetCollectionView"
-    
     //MARK: - UI Components
     
     private var petLabel = UILabel().then {
         $0.text = "반려동물"
-        $0.textColor = UIColor.zoocDarkGray1
-        $0.font = UIFont.zoocSubhead1
+        $0.textColor = .zoocDarkGray1
+        $0.font = .zoocSubhead1
     }
 
     private var registerButton = UIButton().then {
         $0.setTitle("등록하기", for: .normal)
-        $0.setTitleColor(UIColor.zoocGray2, for: .normal)
-        $0.titleLabel!.font = UIFont.zoocCaption
+        $0.setTitleColor(.zoocGray2, for: .normal)
+        $0.titleLabel!.font = .zoocCaption
     }
     
     private var registerButtonUnderLine = UIView().then {
-        $0.backgroundColor = UIColor.zoocGray2
+        $0.backgroundColor = .zoocGray2
     }
     
     public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -57,6 +53,7 @@ final class PetCollectionView: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setLayout()
         register()
@@ -72,11 +69,13 @@ final class PetCollectionView: UICollectionViewCell {
         self.backgroundColor = .white
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
-        addSubviews(petLabel, registerButton, petCollectionView, registerButtonUnderLine)
+        
     }
     
     
     private func setLayout() {
+        addSubviews(petLabel, registerButton, petCollectionView, registerButtonUnderLine)
+        
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
@@ -106,7 +105,7 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     private func register() {
-        petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.identifier)
+        petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -125,7 +124,7 @@ extension PetCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? PetCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(model: petDummyData[indexPath.item])
         return cell
