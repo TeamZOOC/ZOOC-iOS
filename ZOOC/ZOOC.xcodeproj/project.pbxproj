@@ -63,6 +63,7 @@
 		D23503012964702400F01101 /* AppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503002964702400F01101 /* AppInformationView.swift */; };
 		D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503022964728700F01101 /* AppInformationTableViewCell.swift */; };
 		D23503052964743100F01101 /* AppInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503042964743100F01101 /* AppInformationModel.swift */; };
+		D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030629647B4200F01101 /* AppInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		D23503002964702400F01101 /* AppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationView.swift; sourceTree = "<group>"; };
 		D23503022964728700F01101 /* AppInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationTableViewCell.swift; sourceTree = "<group>"; };
 		D23503042964743100F01101 /* AppInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInformationModel.swift; path = ZOOC/Presentation/My/Cell/AppInformationModel.swift; sourceTree = SOURCE_ROOT; };
+		D235030629647B4200F01101 /* AppInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				876554A62958494B006BBDA9 /* MyViewController.swift */,
+				D235030629647B4200F01101 /* AppInformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23503012964702400F01101 /* AppInformationView.swift in Sources */,
+				D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */,
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,

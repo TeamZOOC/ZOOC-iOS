@@ -14,13 +14,28 @@ final class AppInformationView: UIView {
     
     //MARK: - UI Components
     
-    private var backButton = UIButton()
+    private var backButton = UIButton().then {
+        $0.setImage(Image.back, for: .normal)
+    }
     
-    private var appInformationLabel = UILabel()
+    private var appInformationLabel = UILabel().then {
+        $0.font = .zoocHeadLine
+        $0.text = "앱 정보"
+        $0.textColor = .zoocDarkGray2
+        
+        
+    }
     
-    private var currentVersionTitleLabel = UILabel()
+    private var currentVersionTitleLabel = UILabel().then {
+        $0.text = "현재 버전"
+        $0.textColor = .zoocDarkGray2
+    }
     
-    private var currentVersionLabel = UILabel()
+    private var currentVersionLabel = UILabel().then {
+        $0.font = .zoocCaption
+        $0.text = "v1.0.0"
+        $0.textColor = .zoocDarkGreen
+    }
     
     private var appInformationTableView = UITableView()
     
@@ -31,7 +46,6 @@ final class AppInformationView: UIView {
         
         setUI()
         setLayout()
-        register()
     }
     
     required init?(coder: NSCoder) {
@@ -78,8 +92,5 @@ final class AppInformationView: UIView {
             $0.bottom.equalToSuperview()
         }
         
-    }
-    
-    private func register() {
     }
 }
