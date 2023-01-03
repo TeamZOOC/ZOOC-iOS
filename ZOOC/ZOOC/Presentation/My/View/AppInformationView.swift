@@ -27,6 +27,7 @@ final class AppInformationView: UIView {
     }
     
     private var currentVersionTitleLabel = UILabel().then {
+        $0.font = .zoocBody2
         $0.text = "현재 버전"
         $0.textColor = .zoocDarkGray2
     }
@@ -37,8 +38,13 @@ final class AppInformationView: UIView {
         $0.textColor = .zoocDarkGreen
     }
     
-    private var appInformationTableView = UITableView()
-    
+    public var appInformationTableView = UITableView(frame: .zero, style: .grouped).then {
+        $0.backgroundColor = .clear
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.separatorStyle = .none
+        $0.isScrollEnabled = false
+    }
+
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
