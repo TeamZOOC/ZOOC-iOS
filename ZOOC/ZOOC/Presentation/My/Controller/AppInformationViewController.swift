@@ -32,9 +32,10 @@ final class  AppInformationViewController: BaseViewController {
     //MARK: - Custom Method
     
     private func register() {
-//        appInformationView.
+        appInformationView.appInformationTableView.delegate = self
+        appInformationView.appInformationTableView.dataSource = self
+        appInformationView.appInformationTableView.register(AppInformationTableViewCell.self, forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
+        
     }
 }
-
-//MARK: - UICollectionViewDelegateFlowLayout
 
