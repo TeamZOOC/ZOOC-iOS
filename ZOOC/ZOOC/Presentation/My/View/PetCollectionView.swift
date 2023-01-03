@@ -61,7 +61,6 @@ final class PetCollectionView: UICollectionViewCell {
         self.backgroundColor = .white
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
-        
     }
     
     
@@ -93,7 +92,6 @@ final class PetCollectionView: UICollectionViewCell {
             $0.width.equalTo(41)
             $0.height.equalTo(1)
         }
-        
     }
     
     private func register() {
