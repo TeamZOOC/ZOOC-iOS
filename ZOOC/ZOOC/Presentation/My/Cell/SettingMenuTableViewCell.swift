@@ -56,9 +56,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
     
     public func dataBind(model: SettingMenuModel) {
         menuButton.setTitle(model.settingMenuName, for: .normal)
-        if(menuButton.titleLabel?.text == "로그아웃"){
+        if model.isLogout {
             menuButton.setTitleColor(UIColor(r: 235, g: 91, b: 78), for: .normal)
-            separatorLine.backgroundColor = UIColor.zoocBackgroundGreen
+            separatorLine.backgroundColor = .zoocBackgroundGreen
         }
     }
 }

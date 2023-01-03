@@ -1,12 +1,5 @@
 //
-//  AnimalCollectionView.swift
-//  ZOOC
-//
-//  Created by 류희재 on 2023/01/01.
-//
-
-//
-//  MemberCollectionView.swift
+//  PetCollectionView.swift
 //  ZOOC
 //
 //  Created by 류희재 on 2023/01/01.
@@ -119,13 +112,13 @@ extension PetCollectionView: UICollectionViewDelegateFlowLayout {
 
 extension PetCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return petDummyData.count
+        return MemberModel.petDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? PetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: petDummyData[indexPath.item])
+        cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
         return cell
     }
 }

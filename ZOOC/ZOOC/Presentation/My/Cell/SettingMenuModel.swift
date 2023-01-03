@@ -10,13 +10,17 @@ import UIKit
 
 struct SettingMenuModel {
     let settingMenuName: String
+    let isLogout: Bool
 }
 
-var settingMenuDummyData: [SettingMenuModel] = [
-    SettingMenuModel(settingMenuName: "알림설정"),
-    SettingMenuModel(settingMenuName: "공지사항"),
-    SettingMenuModel(settingMenuName: "문의하기"),
-    SettingMenuModel(settingMenuName: "미션 제안하기"),
-    SettingMenuModel(settingMenuName: "앱 정보"),
-    SettingMenuModel(settingMenuName: "로그아웃")
-]
+extension SettingMenuModel {
+    static var settingMenuData: [SettingMenuModel] = [
+        SettingMenuModel(settingMenuName: "알림설정", isLogout: false),
+        SettingMenuModel(settingMenuName: "공지사항", isLogout: false),
+        SettingMenuModel(settingMenuName: "문의하기", isLogout: false),
+        SettingMenuModel(settingMenuName: "미션 제안하기", isLogout: false),
+        SettingMenuModel(settingMenuName: "앱 정보", isLogout: false),
+        SettingMenuModel(settingMenuName: "로그아웃", isLogout: false)
+    ]
+} 
+

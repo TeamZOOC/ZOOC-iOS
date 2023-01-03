@@ -11,11 +11,7 @@ import SnapKit
 import Then
 
 final class ProfileView: UICollectionViewCell  {
-    
-    //MARK: - Properties
-    
-    static let identifier = "ProfileView"
-    
+        
     //MARK: - UI Components
     
     private var profileImage = UIImageView().then {

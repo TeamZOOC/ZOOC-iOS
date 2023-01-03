@@ -12,10 +12,6 @@ import Then
 
 final class SettingMenuTableView: UICollectionViewCell {
     
-    //MARK: - Properties
-    
-    static let identifier = "SettingMenuTableView"
-    
     //MARK: - UI Components
     
     public lazy var settingMenuTableView = UITableView(frame: .zero, style: .grouped).then {
@@ -44,7 +40,6 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
-        
     }
     
     
@@ -73,13 +68,13 @@ extension SettingMenuTableView: UITableViewDelegate {
 
 extension SettingMenuTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingMenuDummyData.count
+        return SettingMenuModel.settingMenuData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.cellIdentifier, for: indexPath)
                 as? SettingMenuTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: settingMenuDummyData[indexPath.row])
+        cell.dataBind(model: SettingMenuModel.settingMenuData[indexPath.row])
         return cell
     }
 }

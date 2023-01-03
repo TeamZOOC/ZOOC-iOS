@@ -111,13 +111,13 @@ extension FamilyCollectionView: UICollectionViewDelegateFlowLayout {
 
 extension FamilyCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return familyDummyData.count
+        return MemberModel.familyDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: familyDummyData[indexPath.item])
+        cell.dataBind(model: MemberModel.familyDummyData[indexPath.item])
         return cell
     }
 }
