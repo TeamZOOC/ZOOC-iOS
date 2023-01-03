@@ -93,9 +93,5 @@ final class AppInformationView: UIView {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
         }
-        
-        
-        
-        
     }
 }
