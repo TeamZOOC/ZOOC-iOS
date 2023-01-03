@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct SettingMenuModel {
     let settingMenuName: String

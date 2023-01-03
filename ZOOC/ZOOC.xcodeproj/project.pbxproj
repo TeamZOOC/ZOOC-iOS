@@ -62,6 +62,7 @@
 		D23502FF296219FD00F01101 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FE296219FD00F01101 /* MemberModel.swift */; };
 		D23503012964702400F01101 /* AppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503002964702400F01101 /* AppInformationView.swift */; };
 		D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503022964728700F01101 /* AppInformationTableViewCell.swift */; };
+		D23503052964743100F01101 /* AppInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503042964743100F01101 /* AppInformationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 		D23502FE296219FD00F01101 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = SOURCE_ROOT; };
 		D23503002964702400F01101 /* AppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationView.swift; sourceTree = "<group>"; };
 		D23503022964728700F01101 /* AppInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationTableViewCell.swift; sourceTree = "<group>"; };
+		D23503042964743100F01101 /* AppInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInformationModel.swift; path = ZOOC/Presentation/My/Cell/AppInformationModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +407,7 @@
 			children = (
 				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
 				D23502FE296219FD00F01101 /* MemberModel.swift */,
+				D23503042964743100F01101 /* AppInformationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
 				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
+				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
