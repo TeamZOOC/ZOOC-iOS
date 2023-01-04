@@ -10,6 +10,9 @@
 
 > 👨‍👨‍👧‍가족과 함께 쭉 아카이빙하는 반려동물 다이어리 서비스🐶
 
+
+
+
 ## 📌 팀원 소개
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -24,6 +27,9 @@
 </table>
 
 <br>
+
+
+
 
 ## 📌 개발 환경 및 라이브러리
 
@@ -41,6 +47,8 @@
 | Then                | 짧은 코드 처리           | ![Kingfisher](https://img.shields.io/badge/Then-3.0.0-white) |
 | KakaoSDK          | 카카오톡 소셜 로그인     | ![lottie-ios](https://img.shields.io/badge/KakaoSDK-2.0.0-green) |
 | Firebase/Messaging  | 푸시 알림 구현  | ![Kingfisher](https://img.shields.io/badge/Firebase/Messaging-yellow) |
+
+
 
 
 ## 📌 협업 방식
