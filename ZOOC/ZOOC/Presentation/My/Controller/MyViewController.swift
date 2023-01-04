@@ -43,14 +43,17 @@ final class  MyViewController: BaseViewController {
         profileView.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
     }
     
+    private func pushToEditProfileView() {
+        let editProfileViewController = EditProfileViewController()
+        let profileName = profileView.profileNameLabel.text!
+        let profileImage = profileView.profileImageView.image!
+        editProfileViewController.dataSend(profileName: profileName, profileImage: profileImage)
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
-    }
-    
-    private func pushToEditProfileView() {
-        let editProfileViewController = EditProfileViewController()
-        self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
     
     //MARK: - Action Method

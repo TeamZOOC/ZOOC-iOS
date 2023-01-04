@@ -20,7 +20,7 @@ final class ProfileView: UICollectionViewCell  {
     
     //MARK: - UI Components
     
-    private var profileImage = UIImageView().then {
+    public var profileImageView = UIImageView().then {
         $0.image = Image.profileImage
         $0.layer.cornerRadius = 40.5
         $0.layer.borderColor = UIColor.zoocGray1.cgColor
@@ -28,7 +28,7 @@ final class ProfileView: UICollectionViewCell  {
         $0.clipsToBounds = true
     }
     
-    private var profileNameLabel = UILabel().then {
+    public var profileNameLabel = UILabel().then {
         $0.text = "복실맘"
         $0.textColor = .zoocDarkGray2
         $0.font = .zoocHeadLine
@@ -66,16 +66,16 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - Custom Method
 
     private func setLayout() {
-        addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
+        addSubviews(profileImageView, profileNameLabel, profileEmailLabel, editProfileButton)
         
-        profileImage.snp.makeConstraints {
+        profileImageView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(39)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(81)
         }
         
         profileNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.profileImage.snp.bottom).offset(12)
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
         }
         
@@ -86,7 +86,7 @@ final class ProfileView: UICollectionViewCell  {
         
         editProfileButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
-            $0.leading.equalTo(self.profileImage.snp.trailing).offset(62)
+            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(62)
             $0.width.equalTo(53)
             $0.height.equalTo(24)
         }
