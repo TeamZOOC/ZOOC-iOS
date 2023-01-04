@@ -24,7 +24,7 @@ final class EditProfileView: UIView {
         $0.textColor = .zoocDarkGray2
     }
     
-    private var editProfileImageButton = UIButton().then {
+    public var editProfileImageButton = UIButton().then {
         $0.layer.cornerRadius = 54.5
     }
     // 여기 이미지 마이프로필에서 가져오면 됨
@@ -36,9 +36,8 @@ final class EditProfileView: UIView {
         $0.backgroundColor = .zoocMainGreen
     }
     
-    private var editProfileNameTextField = UITextField().then {
+    public var editProfileNameTextField = UITextField().then {
         $0.font = .zoocHeadLine
-        $0.placeholder = "복실이맘"
         // 텍스트 필드 색상
         // 커서 색상
     }

@@ -25,4 +25,11 @@ final class  EditProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    //MARK: - Custom Method
+    
+    func dataSend(profileName: String, profileImage: UIImage) {
+        editProfileView.editProfileImageButton.setImage(profileImage, for: .normal)
+        editProfileView.editProfileNameTextField.placeholder = profileName
+    }
 }
