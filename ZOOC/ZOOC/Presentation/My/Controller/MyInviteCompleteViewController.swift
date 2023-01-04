@@ -79,13 +79,13 @@ final class MyInviteCompleteViewController : BaseViewController{
                              invitationButton)
             
         
-        //MARK: - MakeConstraints
+        //MARK: MakeConstraints
         
         backButton.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(24)
             make.leading.equalTo(self.view.safeAreaLayoutGuide).offset(30)
-            make.width.equalTo(10)
-            make.height.equalTo(20)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
         }
         
         cardView.snp.makeConstraints { make in

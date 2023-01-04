@@ -131,7 +131,6 @@ final class MyFamilyInviteViewController : BaseViewController {
     
     private func pushToMyInvitationCompletedViewController() {
         let myInviteCompleteViewController = MyInviteCompleteViewController()
-
         self.navigationController?.pushViewController(myInviteCompleteViewController, animated: true)
     }
     
