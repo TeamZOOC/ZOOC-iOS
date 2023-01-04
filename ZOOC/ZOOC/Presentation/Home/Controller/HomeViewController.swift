@@ -1,8 +1,8 @@
 //
-//  HomeViewController.swift
+//  uivc.swift
 //  ZOOC
 //
-//  Created by 장석우 on 2022/12/25.
+//  Created by 장석우 on 2023/01/04.
 //
 
 import UIKit
@@ -14,11 +14,6 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Properties
     
-    let label = UILabel().then {
-        $0.font = .zoocDisplay2
-        $0.text = "홈"
-    }
-    
     //MARK: - UI Components
     
     //MARK: - Life Cycle
@@ -28,7 +23,6 @@ final class HomeViewController : BaseViewController{
         
         setUI()
         setLayout()
-        
     }
     
     //MARK: - Custom Method
@@ -39,11 +33,7 @@ final class HomeViewController : BaseViewController{
     }
     
     private func setLayout(){
-        view.addSubview(label)
-            
-        label.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
+        
     }
     
     //MARK: - Action Method
