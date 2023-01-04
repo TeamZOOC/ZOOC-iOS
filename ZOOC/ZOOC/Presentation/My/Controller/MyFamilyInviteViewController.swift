@@ -127,7 +127,7 @@ final class MyFamilyInviteViewController : BaseViewController {
     @objc
     private func backButtonDidTap() {
         // 마이페이지로 돌아가는 함수
-        print("백버튼이 눌렸습니다!")
+        print(#function)
         navigationController?.popViewController(animated: true)
     }
     
