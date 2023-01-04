@@ -48,7 +48,6 @@ final class PetCollectionView: UICollectionViewCell {
         
         setUI()
         setLayout()
-        register()
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +93,7 @@ final class PetCollectionView: UICollectionViewCell {
         }
     }
     
-    private func register() {
+    public func register() {
         petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
     }
 }

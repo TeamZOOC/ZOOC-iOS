@@ -116,21 +116,24 @@ extension MyViewController: UICollectionViewDataSource {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
                     as? ProfileView else { return UICollectionViewCell() }
+            cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
             return cell
             
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
                     as? FamilyCollectionView else { return UICollectionViewCell() }
+            cell.register()
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
                     as? PetCollectionView else { return UICollectionViewCell() }
+            cell.register()
             return cell
             
         case 3:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
-            cell.registerCollectionView()
+            cell.register()
             return cell
             
         default:

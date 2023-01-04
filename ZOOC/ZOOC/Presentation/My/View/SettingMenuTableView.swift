@@ -59,7 +59,7 @@ final class SettingMenuTableView: UICollectionViewCell {
         }
     }
     
-    public func registerCollectionView() {
+    public func register() {
         settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.cellIdentifier)
     }
 }

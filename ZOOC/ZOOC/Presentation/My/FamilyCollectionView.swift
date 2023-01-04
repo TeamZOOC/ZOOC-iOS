@@ -48,7 +48,6 @@ final class FamilyCollectionView: UICollectionViewCell {
         
         setUI()
         setLayout()
-        register()
     }
     
     required init?(coder: NSCoder) {
@@ -94,7 +93,7 @@ final class FamilyCollectionView: UICollectionViewCell {
         }
     }
     
-    private func register() {
+    public func register() {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
 }
