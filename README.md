@@ -1,7 +1,6 @@
 # ZOOC - iOS
 ![combination_logo](https://user-images.githubusercontent.com/57269348/210508501-ffd1cbd3-a32a-44a0-b69d-4d0642ff6bf2.png)
-
-
+<br/><br/>
 
 ## 📌 프로젝트 소개
 
@@ -9,9 +8,7 @@
 - 기간: 2022.12.11 ~ 2023.1.14
 
 > 👨‍👨‍👧‍가족과 함께 쭉 아카이빙하는 반려동물 다이어리 서비스🐶
-
-
-
+<br/>
 
 ## 📌 팀원 소개
 
@@ -47,14 +44,12 @@
 | Then                | 짧은 코드 처리           | ![Kingfisher](https://img.shields.io/badge/Then-3.0.0-white) |
 | KakaoSDK          | 카카오톡 소셜 로그인     | ![lottie-ios](https://img.shields.io/badge/KakaoSDK-2.0.0-green) |
 | Firebase/Messaging  | 푸시 알림 구현  | ![Kingfisher](https://img.shields.io/badge/Firebase/Messaging-yellow) |
-
-
-
+<br/>
 
 ## 📌 협업 방식
 
 - [Coding-Convention](https://www.notion.so/iOS-6dcaf36be1844bb287c2a7455928c1da)
-- [Git Flow 전략](https://www.notion.so/iOS-6dcaf36be1844bb287c2a7455928c1da)
-- [폴더링 Convention](https://www.notion.so/2d5ce2e5b2024eb9b516d4d60d218040)
+- [Git Flow 전략](https://www.notion.so/Git-Flow-3c9439b61b364e19b747ff2c199835f0)
+- [폴더링 Convention](https://www.notion.so/a54303f22d1547f68acd6d78a6d888ac)
 
 
