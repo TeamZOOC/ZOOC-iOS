@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingMissionCollectionViewCell: UICollectionViewCell {
+final class HomeMissionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -99,7 +99,7 @@ final class OnboardingMissionCollectionViewCell: UICollectionViewCell {
     
 }
 
-extension OnboardingMissionCollectionViewCell: UITextViewDelegate{
+extension HomeMissionCollectionViewCell: UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         print(#function)

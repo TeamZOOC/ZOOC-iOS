@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingMissionViewController : BaseViewController{
+final class HomeGuideViewController : BaseViewController{
     
     //MARK: - Properties
     
@@ -106,12 +106,12 @@ final class OnboardingMissionViewController : BaseViewController{
     
     private func registerCell(){
         cardCollectionView.register(
-            OnboardingGuideCollectionViewCell.self,
-            forCellWithReuseIdentifier: OnboardingGuideCollectionViewCell.cellIdentifier)
+            HomeGuideCollectionViewCell.self,
+            forCellWithReuseIdentifier: HomeGuideCollectionViewCell.cellIdentifier)
         
         cardCollectionView.register(
-            OnboardingMissionCollectionViewCell.self,
-            forCellWithReuseIdentifier: OnboardingMissionCollectionViewCell.cellIdentifier)
+            HomeMissionCollectionViewCell.self,
+            forCellWithReuseIdentifier: HomeMissionCollectionViewCell.cellIdentifier)
     }
     
     private func setUI(){
@@ -186,7 +186,7 @@ final class OnboardingMissionViewController : BaseViewController{
 
 //MARK: - UICollectionView DataSource
 
-extension OnboardingMissionViewController: UICollectionViewDataSource{
+extension HomeGuideViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         2
@@ -196,10 +196,10 @@ extension OnboardingMissionViewController: UICollectionViewDataSource{
         
         switch indexPath.item{
         case 0 :
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingGuideCollectionViewCell.cellIdentifier, for: indexPath) as? OnboardingGuideCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeGuideCollectionViewCell.cellIdentifier, for: indexPath) as? HomeGuideCollectionViewCell else { return UICollectionViewCell() }
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingMissionCollectionViewCell.cellIdentifier, for: indexPath) as? OnboardingMissionCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.cellIdentifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
             return cell
         default: return UICollectionViewCell()
         }
@@ -208,7 +208,7 @@ extension OnboardingMissionViewController: UICollectionViewDataSource{
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension OnboardingMissionViewController: UICollectionViewDelegateFlowLayout{
+extension HomeGuideViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -223,7 +223,7 @@ extension OnboardingMissionViewController: UICollectionViewDelegateFlowLayout{
 
 //MARK: - UIScrollViewDelegate
 
-extension OnboardingMissionViewController{
+extension HomeGuideViewController{
     
     func scrollViewWillEndDragging( _ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             
