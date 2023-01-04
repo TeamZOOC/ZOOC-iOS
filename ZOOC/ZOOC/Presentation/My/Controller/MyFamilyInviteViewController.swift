@@ -46,18 +46,18 @@ final class MyFamilyInviteViewController : BaseViewController {
         $0.font = .zoocSubhead1
     }
     
-    private let invitationImageView = UIImageView().then {
+    private let inviteImageView = UIImageView().then {
         $0.image = Image.familyInvite
         $0.contentMode = .scaleAspectFit
     }
     
-    private lazy var invitationButton = UIButton().then {
+    private lazy var inviteButton = UIButton().then {
         $0.setTitle("아카이브 보러가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.backgroundColor = .zoocMainGreen
         $0.layer.cornerRadius = 14
-        $0.addTarget(self, action: #selector(invitationButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(inviteButtonDidTap), for: .touchUpInside)
     }
     
     
@@ -66,20 +66,20 @@ final class MyFamilyInviteViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
         setLayout()
     }
     
     //MARK: - Custom Method
     
     private func setLayout(){
-        view.backgroundColor = .zoocBackgroundGreen
         view.addSubviews(backButton,
                          cardView)
         
         cardView.addSubviews(titleLabel,
                              descriptionLabel,
-                             invitationImageView,
-                             invitationButton)
+                             inviteImageView,
+                             inviteButton)
             
         
         //MARK: - MakeConstraints
@@ -107,15 +107,15 @@ final class MyFamilyInviteViewController : BaseViewController {
             make.centerX.equalToSuperview()
         }
         
-        invitationImageView.snp.makeConstraints { make in
+        inviteImageView.snp.makeConstraints { make in
             make.top.equalTo(self.descriptionLabel.snp.bottom).offset(25)
             make.centerX.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(200)
         }
         
-        invitationButton.snp.makeConstraints { make in
-            make.top.equalTo(self.invitationImageView.snp.bottom).offset(40)
+        inviteButton.snp.makeConstraints { make in
+            make.top.equalTo(self.inviteImageView.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(25)
             make.bottom.equalToSuperview().inset(25)
@@ -127,22 +127,23 @@ final class MyFamilyInviteViewController : BaseViewController {
     @objc
     private func backButtonDidTap() {
         // 마이페이지로 돌아가는 함수
+        print("백버튼이 눌렸습니다!")
     }
     
-    private func pushToMyInvitationCompletedViewController() {
+    private func pushToMyInviteCompleteViewController() {
         let myInviteCompleteViewController = MyInviteCompleteViewController()
         self.navigationController?.pushViewController(myInviteCompleteViewController, animated: true)
     }
     
     @objc
-    private func invitationButtonDidTap() {
+    private func inviteButtonDidTap() {
         shareInfo()
     }
     
     private func shareInfo() {
         var objectToShare = [String]()
         
-        objectToShare.append("헤헤헿")
+        objectToShare.append("공유할 링크")
         
         /*
          if let text = self.textLabel.text {
@@ -160,10 +161,10 @@ final class MyFamilyInviteViewController : BaseViewController {
         activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
                 // 성공했을 때 작업
-                self.pushToMyInvitationCompletedViewController()
+                self.pushToMyInviteCompleteViewController()
             }  else  {
                // 실패했을 때 작업
-               print("흑흑 슬퍼용")
+               print("링크 공유에 실패했습니다.")
             }
         }
     }

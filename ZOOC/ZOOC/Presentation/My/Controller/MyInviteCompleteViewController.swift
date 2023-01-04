@@ -1,5 +1,5 @@
 //
-//  MyInvitationCompletedViewController.swift
+//  MyInviteCompletedViewController.swift
 //  ZOOC
 //
 //  Created by 정윤선 on 2023/01/03.
@@ -45,12 +45,12 @@ final class MyInviteCompleteViewController : BaseViewController{
         $0.font = .zoocSubhead1
     }
     
-    private let invitationImageView = UIImageView().then {
+    private let inviteImageView = UIImageView().then {
         $0.image = Image.inviteComplete
         $0.contentMode = .scaleAspectFit
     }
     
-    private let invitationButton = UIButton().then {
+    private let inviteButton = UIButton().then {
         $0.setTitle("아카이브 보러가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
@@ -70,13 +70,12 @@ final class MyInviteCompleteViewController : BaseViewController{
     //MARK: - Custom Method
     
     private func setLayout(){
-        view.backgroundColor = .zoocBackgroundGreen
         view.addSubviews(backButton, cardView)
         
         cardView.addSubviews(titleLabel,
                              descriptionLabel,
-                             invitationImageView,
-                             invitationButton)
+                             inviteImageView,
+                             inviteButton)
             
         
         //MARK: MakeConstraints
@@ -104,15 +103,15 @@ final class MyInviteCompleteViewController : BaseViewController{
             make.centerX.equalToSuperview()
         }
         
-        invitationImageView.snp.makeConstraints { make in
+        inviteImageView.snp.makeConstraints { make in
             make.top.equalTo(self.descriptionLabel.snp.bottom).offset(25)
             make.centerX.equalToSuperview()
             make.width.equalTo(200)
             make.height.equalTo(200)
         }
         
-        invitationButton.snp.makeConstraints { make in
-            make.top.equalTo(self.invitationImageView.snp.bottom).offset(40)
+        inviteButton.snp.makeConstraints { make in
+            make.top.equalTo(self.inviteImageView.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(25)
             make.bottom.equalToSuperview().inset(25)
