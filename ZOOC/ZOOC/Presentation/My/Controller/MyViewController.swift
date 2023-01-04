@@ -15,6 +15,7 @@ final class  MyViewController: BaseViewController {
     //MARK: - Properties
     
     private lazy var myView = MyView()
+    private lazy var profileView = ProfileView()
     
     //MARK: - Life Cycle
     
@@ -25,7 +26,6 @@ final class  MyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
-        
     }
     
     //MARK: - Custom Method
@@ -39,6 +39,10 @@ final class  MyViewController: BaseViewController {
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
     }
     
+    private func target() {
+        profileView.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
+    }
+    
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
@@ -47,6 +51,18 @@ final class  MyViewController: BaseViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    private func editProfileButtonDidTap() {
+        pushToEditProfileView()
+    }
+    
+    @objc
+    private func appInformationButtonDidTap() {
+        pushToAppInformationView()
     }
 }
 
@@ -98,19 +114,23 @@ extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
+                    as? ProfileView else { return UICollectionViewCell() }
             return cell
             
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
+                    as? FamilyCollectionView else { return UICollectionViewCell() }
             return cell
             
         case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
+                    as? PetCollectionView else { return UICollectionViewCell() }
             return cell
             
         case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
+            cell.registerCollectionView()
             return cell
             
         default:
@@ -118,3 +138,15 @@ extension MyViewController: UICollectionViewDataSource {
         }
     }
 }
+
+//extension MyViewController: SettingMenuTableViewCellDelegate {
+//    func selectedSettingMenuTableViewCell(_ tableView: UITableView, _ index: Int) {
+//        print("yes")
+//        let appInformationViewController = AppInformationViewController()
+//        appInformationViewController.modalPresentationStyle = .overFullScreen
+//        appInformationViewController.modalTransitionStyle = .crossDissolve
+//        present(appInformationViewController, animated: true, completion: nil)
+//
+//        //self.navigationController?.pushViewController(appInformationViewController, animated: true)
+//    }
+//}

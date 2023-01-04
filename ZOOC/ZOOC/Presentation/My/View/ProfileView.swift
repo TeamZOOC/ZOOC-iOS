@@ -10,8 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ButtonTappedDelegate {
+    func cellButtonTapped()
+}
+
 final class ProfileView: UICollectionViewCell  {
         
+    var delegate: ButtonTappedDelegate?
+    
     //MARK: - UI Components
     
     private var profileImage = UIImageView().then {
@@ -34,7 +40,7 @@ final class ProfileView: UICollectionViewCell  {
         $0.font = .zoocBody1
     }
     
-    private var editProfileButton = UIButton().then {
+    public var editProfileButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.titleLabel!.font = .zoocCaption
         $0.setTitleColor(.zoocGray2, for: .normal)

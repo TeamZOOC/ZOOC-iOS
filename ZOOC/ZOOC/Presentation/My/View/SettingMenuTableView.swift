@@ -10,7 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
+//protocol SettingMenuTableViewCellDelegate {
+//    func selectedSettingMenuTableViewCell(_ collectionView: UICollectionView, _ index: Int)
+//}
+
 final class SettingMenuTableView: UICollectionViewCell {
+    
+    //MARK: - Properties
+    
+    //var delegate: SettingMenuTableViewCellDelegate?
     
     //MARK: - UI Components
     
@@ -27,15 +35,15 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUI()
         setLayout()
-        register()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     //MARK: - Custom Method
     
     private func setUI() {
@@ -51,7 +59,7 @@ final class SettingMenuTableView: UICollectionViewCell {
         }
     }
     
-    private func register() {
+    public func registerCollectionView() {
         settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.cellIdentifier)
     }
 }
@@ -78,3 +86,11 @@ extension SettingMenuTableView: UITableViewDataSource {
         return cell
     }
 }
+
+//extension SettingMenuTableView: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if let delegate = delegate {
+//            delegate.selectedSettingMenuTableViewCell(UICollectionView(), indexPath.item)
+//        }
+//    }
+//}

@@ -279,8 +279,8 @@
 				D23502E12961898C00F01101 /* ProfileView.swift */,
 				D23502EB296197C700F01101 /* PetCollectionView.swift */,
 				D23502F42961A69E00F01101 /* MyView.swift */,
-				D23502F82961F34100F01101 /* SettingMenuTableView.swift */,
 				D23503002964702400F01101 /* AppInformationView.swift */,
+				D23502F82961F34100F01101 /* SettingMenuTableView.swift */,
 				D2350308296490A700F01101 /* EditProfileView.swift */,
 			);
 			path = View;
