@@ -12,18 +12,14 @@ import Then
 
 final class MyInviteCompleteViewController : BaseViewController{
     
-    //MARK: - Properties
-    
     //MARK: - UI Components
 
-    private lazy var backButton : UIButton = {
-        let button = UIButton()
-        button.setImage(Image.back, for: .normal)
-        button.addTarget(self,
+    private lazy var backButton = UIButton().then {
+        $0.setImage(Image.back, for: .normal)
+        $0.addTarget(self,
                          action: #selector(backButtonDidTap),
                          for: .touchUpInside)
-        return button
-    }()
+    }
     
     private let cardView = UIView().then {
         $0.layer.cornerRadius = 24
@@ -76,9 +72,6 @@ final class MyInviteCompleteViewController : BaseViewController{
                              descriptionLabel,
                              inviteImageView,
                              inviteButton)
-            
-        
-        //MARK: MakeConstraints
         
         backButton.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(24)
@@ -124,6 +117,5 @@ final class MyInviteCompleteViewController : BaseViewController{
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
-    
 }
 

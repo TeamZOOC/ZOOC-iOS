@@ -12,18 +12,14 @@ import Then
 
 final class MyFamilyInviteViewController : BaseViewController {
     
-    //MARK: - Properties
-    
     //MARK: - UI Components
     
-    private lazy var backButton : UIButton = {
-        let button = UIButton()
-        button.setImage(Image.back, for: .normal)
-        button.addTarget(self,
-                         action: #selector(backButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private lazy var backButton = UIButton().then {
+        $0.setImage(Image.back, for: .normal)
+        $0.addTarget(self,
+                    action: #selector(backButtonDidTap),
+                    for: .touchUpInside)
+    }
     
     private let cardView = UIView().then {
         $0.layer.cornerRadius = 24
@@ -60,13 +56,11 @@ final class MyFamilyInviteViewController : BaseViewController {
         $0.addTarget(self, action: #selector(inviteButtonDidTap), for: .touchUpInside)
     }
     
-    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
         setLayout()
     }
     
@@ -81,7 +75,6 @@ final class MyFamilyInviteViewController : BaseViewController {
                              inviteImageView,
                              inviteButton)
             
-        
         //MARK: - MakeConstraints
         
         backButton.snp.makeConstraints { make in
@@ -169,6 +162,5 @@ final class MyFamilyInviteViewController : BaseViewController {
             }
         }
     }
-    
 }
 
