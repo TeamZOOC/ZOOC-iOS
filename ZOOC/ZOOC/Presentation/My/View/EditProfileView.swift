@@ -14,7 +14,7 @@ final class EditProfileView: UIView {
     
     //MARK: - UI Components
     
-    private var backButton = UIButton().then {
+    public var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
     
@@ -42,22 +42,25 @@ final class EditProfileView: UIView {
         // 커서 색상
     }
     
-    private var profileNameTextFieldUnderLineView = UIView()
+    private var profileNameTextFieldUnderLineView = UIView().then {
+        $0.backgroundColor = .zoocGray1
+    }
         // 색상변경 -> 입력될때마다
     
     
-    private var profileNameCountLabel = UILabel().then {
+    public var profileNameCountLabel = UILabel().then {
         $0.font = .zoocCaption
         $0.text = "/10"
         $0.textColor = .zoocGray2 //zoocGray3
     }
     
-    private var editCompletedButton = UIButton()
-        //$0.backgroundColor -> gragreen
+    private var editCompletedButton = UIButton().then {
+        $0.backgroundColor = .zoocGray1
+        $0.setTitle("완료", for: .normal)
+        $0.layer.cornerRadius = 27
+        $0.clipsToBounds = true
+    }
     
-    
-    
-
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -99,7 +102,7 @@ final class EditProfileView: UIView {
         }
         
         editProfileCameraIconImageView.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileImageButton.snp.top).offset(78)
+            $0.top.equalTo(self.editProfileImageButton).offset(78)
             $0.leading.equalTo(self.editProfileImageButton).offset(78)
             $0.size.equalTo(35)
         }

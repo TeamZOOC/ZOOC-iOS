@@ -14,7 +14,7 @@ final class AppInformationView: UIView {
     
     //MARK: - UI Components
     
-    private var backButton = UIButton().then {
+    public var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
     
@@ -69,13 +69,13 @@ final class AppInformationView: UIView {
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            $0.leading.equalToSuperview().offset(31)
+            $0.leading.equalToSuperview().offset(19)
             $0.size.equalTo(42)
         }
         
         appInformationLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
-            $0.leading.equalTo(self.backButton.snp.trailing).offset(100)
+            $0.leading.equalTo(self.backButton.snp.trailing).offset(98)
         }
         
         currentVersionTitleLabel.snp.makeConstraints {

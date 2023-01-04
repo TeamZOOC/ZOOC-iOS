@@ -150,7 +150,7 @@ extension MyViewController: UICollectionViewDataSource {
 extension MyViewController: SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
         switch indexPath.row {
-        case 5:
+        case 4:
             pushToAppInformationView()
         default:
             break

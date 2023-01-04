@@ -20,13 +20,13 @@ final class  AppInformationViewController: BaseViewController {
     
     override func loadView() {
         self.view = appInformationView
+        appInformationView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         register()
-        
     }
     
     //MARK: - Custom Method
@@ -35,7 +35,13 @@ final class  AppInformationViewController: BaseViewController {
         appInformationView.appInformationTableView.delegate = self
         appInformationView.appInformationTableView.dataSource = self
         appInformationView.appInformationTableView.register(AppInformationTableViewCell.self, forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
-        
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    private func popToMyProfileView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
