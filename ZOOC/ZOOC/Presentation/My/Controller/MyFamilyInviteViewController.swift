@@ -87,8 +87,8 @@ final class MyFamilyInviteViewController : BaseViewController {
         backButton.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(24)
             make.leading.equalTo(self.view.safeAreaLayoutGuide).offset(30)
-            make.width.equalTo(10)
-            make.height.equalTo(20)
+            make.width.equalTo(25)
+            make.height.equalTo(25)
         }
         
         cardView.snp.makeConstraints { make in
@@ -137,7 +137,36 @@ final class MyFamilyInviteViewController : BaseViewController {
     
     @objc
     private func invitationButtonDidTap() {
-        pushToMyInvitationCompletedViewController()
+        shareInfo()
+    }
+    
+    private func shareInfo() {
+        var objectToShare = [String]()
+        
+        objectToShare.append("헤헤헿")
+        
+        /*
+         if let text = self.textLabel.text {
+             shareItems.append(text)
+         }
+         */
+       
+        let activityViewController = UIActivityViewController(activityItems : objectToShare, applicationActivities: nil)
+        
+        // 공유하기 기능 중 제외할 기능이 있을 때 사용
+        //activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+            if success {
+                // 성공했을 때 작업
+                self.pushToMyInvitationCompletedViewController()
+            }  else  {
+               // 실패했을 때 작업
+               print("흑흑 슬퍼용")
+            }
+        }
     }
     
 }
