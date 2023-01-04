@@ -48,7 +48,8 @@ final class EditProfileView: UIView {
     
     private var profileNameCountLabel = UILabel().then {
         $0.font = .zoocCaption
-        // 이것도 색상변경
+        $0.text = "/10"
+        $0.textColor = .zoocGray2 //zoocGray3
     }
     
     private var editCompletedButton = UIButton()

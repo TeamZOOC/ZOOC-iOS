@@ -10,15 +10,15 @@ import UIKit
 import SnapKit
 import Then
 
-//protocol SettingMenuTableViewCellDelegate {
-//    func selectedSettingMenuTableViewCell(_ collectionView: UICollectionView, _ index: Int)
-//}
+protocol SettingMenuTableViewCellDelegate {
+    func selectedSettingMenuTableViewCell(indexPath: IndexPath)
+}
 
 final class SettingMenuTableView: UICollectionViewCell {
     
     //MARK: - Properties
     
-    //var delegate: SettingMenuTableViewCellDelegate?
+    var delegate: SettingMenuTableViewCellDelegate?
     
     //MARK: - UI Components
     
@@ -70,6 +70,11 @@ extension SettingMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 61
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        delegate?.selectedSettingMenuTableViewCell(indexPath: indexPath)
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -86,11 +91,3 @@ extension SettingMenuTableView: UITableViewDataSource {
         return cell
     }
 }
-
-//extension SettingMenuTableView: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let delegate = delegate {
-//            delegate.selectedSettingMenuTableViewCell(UICollectionView(), indexPath.item)
-//        }
-//    }
-//}

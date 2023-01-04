@@ -33,6 +33,7 @@ final class  MyViewController: BaseViewController {
     private func register() {
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
+        
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.cellIdentifier)
         myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
@@ -137,6 +138,7 @@ extension MyViewController: UICollectionViewDataSource {
         case 3:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
             cell.register()
+            cell.delegate = self
             return cell
             
         default:
@@ -145,14 +147,13 @@ extension MyViewController: UICollectionViewDataSource {
     }
 }
 
-//extension MyViewController: SettingMenuTableViewCellDelegate {
-//    func selectedSettingMenuTableViewCell(_ tableView: UITableView, _ index: Int) {
-//        print("yes")
-//        let appInformationViewController = AppInformationViewController()
-//        appInformationViewController.modalPresentationStyle = .overFullScreen
-//        appInformationViewController.modalTransitionStyle = .crossDissolve
-//        present(appInformationViewController, animated: true, completion: nil)
-//
-//        //self.navigationController?.pushViewController(appInformationViewController, animated: true)
-//    }
-//}
+extension MyViewController: SettingMenuTableViewCellDelegate {
+    func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
+        switch indexPath.row {
+        case 5:
+            pushToAppInformationView()
+        default:
+            break
+        }
+    }
+}
