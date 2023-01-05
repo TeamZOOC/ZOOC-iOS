@@ -27,6 +27,10 @@
 		876554A72958494B006BBDA9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A62958494B006BBDA9 /* MyViewController.swift */; };
 		877BAFC2295EEA6900C2AA1C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */; };
 		877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */; };
+		877E57EB2966332F006D82FC /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EA2966332F006D82FC /* MemberModel.swift */; };
+		877E57EE2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */; };
+		877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeRecordModel.swift */; };
+		877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */; };
 		87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A89295F6D0A0096F669 /* PracticeViewController.swift */; };
 		87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A91295F6DA50096F669 /* RecordViewController.swift */; };
 		87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A9E295F6EA30096F669 /* OnboardingService.swift */; };
@@ -62,7 +66,6 @@
 		D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* SettingMenuTableView.swift */; };
 		D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */; };
 		D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* SettingMenuModel.swift */; };
-		D23502FF296219FD00F01101 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FE296219FD00F01101 /* MemberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,10 @@
 		876554A62958494B006BBDA9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		877E57EA2966332F006D82FC /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		877E57EF2966C046006D82FC /* HomeRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeRecordModel.swift; path = ZOOC/Presentation/Home/Cell/HomeRecordModel.swift; sourceTree = SOURCE_ROOT; };
+		877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveViewController.swift; sourceTree = "<group>"; };
 		878EE32E2965B2EF0071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		878EE32F2965B2F20071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +111,6 @@
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D368772964C961009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
-		87D368782964C96B009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D368792964C970009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D3687B2964C979009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D3687C2964C97E009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
@@ -126,7 +132,6 @@
 		D23502F82961F34100F01101 /* SettingMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableView.swift; sourceTree = "<group>"; };
 		D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D23502FC2961F85100F01101 /* SettingMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingMenuModel.swift; path = ZOOC/Presentation/My/Cell/SettingMenuModel.swift; sourceTree = SOURCE_ROOT; };
-		D23502FE296219FD00F01101 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +198,7 @@
 		876554A02958489F006BBDA9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				877E57EC2966AAD3006D82FC /* Cell */,
 				87A76A8E295F6D890096F669 /* View */,
 				87A76A8D295F6D840096F669 /* Controller */,
 			);
@@ -239,6 +245,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		877E57EC2966AAD3006D82FC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		87A76A88295F6CEC0096F669 /* Practice */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +282,7 @@
 			children = (
 				876554A429584912006BBDA9 /* HomeGuideController.swift */,
 				87D5AF6329649DC100CA7F12 /* HomeViewController.swift */,
+				877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -416,7 +431,7 @@
 		87A76AB1295F6F100096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87D368782964C96B009728FC /* Empty.md */,
+				877E57EF2966C046006D82FC /* HomeRecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -425,7 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
-				D23502FE296219FD00F01101 /* MemberModel.swift */,
+				877E57EA2966332F006D82FC /* MemberModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -655,6 +670,7 @@
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
+				877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
@@ -666,13 +682,14 @@
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
-				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
+				877E57EB2966332F006D82FC /* MemberModel.swift in Sources */,
 				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
 				87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */,
+				877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
@@ -691,6 +708,7 @@
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,
+				877E57EE2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
