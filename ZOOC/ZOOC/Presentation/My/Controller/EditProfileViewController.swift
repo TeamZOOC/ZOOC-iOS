@@ -20,7 +20,7 @@ final class  EditProfileViewController: BaseViewController {
     
     override func loadView() {
         self.view = editProfileView
-        editProfileView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         editProfileView.editCompletedButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
         editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
     }
@@ -74,6 +74,24 @@ final class  EditProfileViewController: BaseViewController {
         actionSheetController.addAction(deleteProfileImageButton)
         actionSheetController.addAction(cancleButton)
         self.present(actionSheetController, animated: true)
+    }
+    
+    @objc
+    func backButtonDidTap() {
+        let alert = UIAlertController(title: "페이지를 나가시겠어요?",
+                                      message: "지금 떠나면 내용이 저장되지 않아요",
+                                      preferredStyle: UIAlertController.Style.alert)
+        
+        let keepAction = UIAlertAction(title: "이어 쓰기", style: .default) { (action) in
+            print("ok")
+        }
+        let backAction = UIAlertAction(title: "나가기", style: .default) { (action) in
+            self.popToMyProfileView()
+        }
+        
+        alert.addAction(keepAction)
+        alert.addAction(backAction)
+        present(alert, animated: true)
     }
 }
 
