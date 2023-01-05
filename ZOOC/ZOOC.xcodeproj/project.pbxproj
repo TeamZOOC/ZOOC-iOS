@@ -64,7 +64,6 @@
 		D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* SettingMenuTableView.swift */; };
 		D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */; };
 		D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* SettingMenuModel.swift */; };
-		D23502FF296219FD00F01101 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FE296219FD00F01101 /* MemberModel.swift */; };
 		D23503012964702400F01101 /* AppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503002964702400F01101 /* AppInformationView.swift */; };
 		D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503022964728700F01101 /* AppInformationTableViewCell.swift */; };
 		D23503052964743100F01101 /* AppInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503042964743100F01101 /* AppInformationModel.swift */; };
@@ -74,6 +73,7 @@
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
+		D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA62967939100CC82DE /* MemberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,7 +139,6 @@
 		D23502F82961F34100F01101 /* SettingMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableView.swift; sourceTree = "<group>"; };
 		D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuTableViewCell.swift; sourceTree = "<group>"; };
 		D23502FC2961F85100F01101 /* SettingMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingMenuModel.swift; path = ZOOC/Presentation/My/Cell/SettingMenuModel.swift; sourceTree = SOURCE_ROOT; };
-		D23502FE296219FD00F01101 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = SOURCE_ROOT; };
 		D23503002964702400F01101 /* AppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationView.swift; sourceTree = "<group>"; };
 		D23503022964728700F01101 /* AppInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationTableViewCell.swift; sourceTree = "<group>"; };
 		D23503042964743100F01101 /* AppInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInformationModel.swift; path = ZOOC/Presentation/My/Cell/AppInformationModel.swift; sourceTree = SOURCE_ROOT; };
@@ -149,6 +148,7 @@
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
+		D2F98FA62967939100CC82DE /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,8 +456,8 @@
 			isa = PBXGroup;
 			children = (
 				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
-				D23502FE296219FD00F01101 /* MemberModel.swift */,
 				D23503042964743100F01101 /* AppInformationModel.swift */,
+				D2F98FA62967939100CC82DE /* MemberModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -688,6 +688,7 @@
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
+				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
@@ -706,7 +707,6 @@
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
 				D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
-				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
