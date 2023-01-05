@@ -30,6 +30,7 @@ final class  EditProfileViewController: BaseViewController {
         register()
     }
     
+    
     //MARK: - Custom Method
     
     func register() {
@@ -45,10 +46,12 @@ final class  EditProfileViewController: BaseViewController {
     
     @objc
     private func popToMyProfileView() {
-        let myViewController = MyViewController()
+        
         let profileName = editProfileView.editProfileNameTextField.text
         let profileImage = editProfileView.editProfileImageButton.image(for: .normal)
-        myViewController.dataSend(profileName: profileName!, profileImage: profileImage!)
+        
+        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
+        beforeVC.dataSend(profileName: profileName!, profileImage: profileImage!)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -89,7 +92,6 @@ final class  EditProfileViewController: BaseViewController {
                     textField.resignFirstResponder()
                 }
                 
-                // 초과되는 텍스트 제거
                 if text.count >= 10 {
                     let index = text.index(text.startIndex, offsetBy: 10)
                     let newString = text[text.startIndex..<index]

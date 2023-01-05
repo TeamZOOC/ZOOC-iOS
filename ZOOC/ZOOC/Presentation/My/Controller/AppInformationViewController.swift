@@ -53,7 +53,6 @@ extension AppInformationViewController: UITableViewDelegate {
     }
 }
 
-
 //MARK: - UITableViewDataSource
 
 extension AppInformationViewController: UITableViewDataSource {

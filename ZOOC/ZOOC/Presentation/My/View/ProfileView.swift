@@ -21,7 +21,6 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - UI Components
     
     public var profileImageView = UIImageView().then {
-        $0.image = Image.profileImage
         $0.layer.cornerRadius = 40.5
         $0.layer.borderColor = UIColor.zoocGray1.cgColor
         $0.layer.borderWidth = 2
@@ -29,13 +28,11 @@ final class ProfileView: UICollectionViewCell  {
     }
     
     public var profileNameLabel = UILabel().then {
-        $0.text = "복실맘"
         $0.textColor = .zoocDarkGray2
         $0.font = .zoocHeadLine
     }
     
     private var profileEmailLabel = UILabel().then {
-        $0.text = "02rin@naver.com"
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
     }
@@ -90,6 +87,12 @@ final class ProfileView: UICollectionViewCell  {
             $0.width.equalTo(53)
             $0.height.equalTo(24)
         }
+    }
+    
+    func dataBind(data: MyProfileModel) {
+        profileNameLabel.text = data.name
+        profileEmailLabel.text = data.email
+        profileImageView.image = data.profileImage
     }
 }
 

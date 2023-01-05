@@ -10,12 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
-final class  MyViewController: BaseViewController {
+final class MyViewController: BaseViewController {
     
     //MARK: - Properties
     
+    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
+                                                               email: "fbgmlwo123@naver.com",
+                                                               profileImage: Image.profileImage)
+    
+    
+    //MARK: - UI Components
+    
     private lazy var myView = MyView()
-    private lazy var profileView = ProfileView()
     
     //MARK: - Life Cycle
     
@@ -26,7 +32,19 @@ final class  MyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
+        print(self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     
     //MARK: - Custom Method
     
@@ -42,8 +60,8 @@ final class  MyViewController: BaseViewController {
     
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
-        let profileName = profileView.profileNameLabel.text!
-        let profileImage = profileView.profileImageView.image!
+        let profileName = myProfileData.name
+        let profileImage = myProfileData.profileImage
         editProfileViewController.dataSend(profileName: profileName, profileImage: profileImage)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
@@ -55,8 +73,9 @@ final class  MyViewController: BaseViewController {
     }
     
     func dataSend(profileName: String, profileImage: UIImage) {
-        profileView.profileImageView.image = profileImage
-        profileView.profileNameLabel.text = profileName
+        myProfileData.name = profileName
+        myProfileData.profileImage = profileImage
+        myView.myCollectionView.reloadData()
     }
     
     //MARK: - Action Method
@@ -122,6 +141,7 @@ extension MyViewController: UICollectionViewDataSource {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
                     as? ProfileView else { return UICollectionViewCell() }
+            cell.dataBind(data: myProfileData)
             cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
             return cell
             

@@ -15,6 +15,7 @@ final class MyAlertViewController: UIViewController {
     //MARK: - Properties
     
     //MARK: - UI Components
+    
     private var alertView = UIView().then {
         $0.backgroundColor = .zoocBackgroundGreen
         $0.layer.cornerRadius = 14
@@ -41,13 +42,13 @@ final class MyAlertViewController: UIViewController {
         $0.textAlignment = .center
     }
     
-    private var keepEditButton = UIButton().then {
+    private lazy var keepEditButton = UIButton().then {
         $0.backgroundColor = .zoocMainGreen
         $0.setTitle("이어 쓰기", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.textAlignment = .center
         $0.titleLabel?.font = .zoocSubhead1
-        
+        $0.addTarget(self, action: #selector(keepButtonDidTap), for: .touchUpInside)
     }
     
     private lazy var popToMyViewButton = UIButton().then {
@@ -116,21 +117,22 @@ final class MyAlertViewController: UIViewController {
     
     private func popToMyView() {
         guard let presentingTBC = self.presentingViewController as? UITabBarController else { return }
-        print(presentingTBC)
         guard let presentingNVC = presentingTBC.selectedViewController as? UINavigationController else { return }
-        print(presentingNVC)
         guard let presentingVC = presentingNVC.topViewController else { return }
-        print(presentingVC)
         presentingVC.navigationController?.popViewController(animated: true)
 
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
     
     //MARK: - Action Method
     
     @objc
     func popToMyViewButtonDidTap() {
-        print(#function)
         popToMyView()
+    }
+    
+    @objc
+    func keepButtonDidTap() {
+        self.dismiss(animated: false)
     }
 }

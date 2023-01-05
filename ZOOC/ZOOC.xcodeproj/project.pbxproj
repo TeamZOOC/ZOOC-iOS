@@ -67,6 +67,8 @@
 		D2350309296490A700F01101 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2350308296490A700F01101 /* EditProfileView.swift */; };
 		D235030B2964991700F01101 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030A2964991700F01101 /* EditProfileViewController.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
+		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
+		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		D2350308296490A700F01101 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
+		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 				87648328295237B500F74882 /* Adjusted+.swift */,
 				87648324295236BE00F74882 /* UIFont+.swift */,
 				87648322295236B700F74882 /* UIColor+.swift */,
+				D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				D23502ED29619D2000F01101 /* Cell */,
 				87A76A8F295F6D8F0096F669 /* View */,
 				87A76A90295F6D940096F669 /* Controller */,
+				D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
+				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
@@ -659,6 +666,7 @@
 				D2350309296490A700F01101 /* EditProfileView.swift in Sources */,
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
+				D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
 				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
 				D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */,
