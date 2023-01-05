@@ -61,8 +61,12 @@ extension EditProfileViewController: UITextFieldDelegate {
             editProfileView.profileNameCountLabel.text = "\(updatedText.count)/10"
             if updatedText.count > 0 {
                 editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocMainGreen //zoocgragreen
+                editProfileView.editCompletedButton.backgroundColor = .zoocMainGreen //zoocgragreen
+                editProfileView.editCompletedButton.isEnabled = true
             } else {
                 editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
+                editProfileView.editCompletedButton.backgroundColor = .zoocGray1
+                editProfileView.editCompletedButton.isEnabled = false
             }
             return true
         } else {

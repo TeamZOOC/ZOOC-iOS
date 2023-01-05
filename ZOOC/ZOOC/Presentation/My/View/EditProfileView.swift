@@ -54,7 +54,7 @@ final class EditProfileView: UIView {
         $0.textColor = .zoocGray2 //zoocGray3
     }
     
-    private var editCompletedButton = UIButton().then {
+    public var editCompletedButton = UIButton().then {
         $0.backgroundColor = .zoocGray1
         $0.setTitle("완료", for: .normal)
         $0.layer.cornerRadius = 27
