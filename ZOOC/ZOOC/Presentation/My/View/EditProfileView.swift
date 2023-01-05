@@ -17,7 +17,7 @@ final class EditProfileView: UIView {
     public var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
-    
+
     private var appInformationLabel = UILabel().then {
         $0.font = .zoocHeadLine
         $0.text = "프로필 수정"
@@ -42,7 +42,7 @@ final class EditProfileView: UIView {
         // 커서 색상
     }
     
-    private var profileNameTextFieldUnderLineView = UIView().then {
+    public var profileNameTextFieldUnderLineView = UIView().then {
         $0.backgroundColor = .zoocGray1
     }
         // 색상변경 -> 입력될때마다
