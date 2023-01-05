@@ -99,7 +99,7 @@ final class EditProfileView: UIView {
         editProfileCameraIconImageView.snp.makeConstraints {
             $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(268)
             $0.leading.equalToSuperview().offset(210)
-            $0.size.equalTo(35)
+            $0.size.equalTo(30)
         }
         
         editProfileNameTextField.snp.makeConstraints {

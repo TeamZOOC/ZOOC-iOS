@@ -66,6 +66,7 @@
 		D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030629647B4200F01101 /* AppInformationViewController.swift */; };
 		D2350309296490A700F01101 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2350308296490A700F01101 /* EditProfileView.swift */; };
 		D235030B2964991700F01101 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030A2964991700F01101 /* EditProfileViewController.swift */; };
+		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +109,7 @@
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		D23502E12961898C00F01101 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = ZOOC/Presentation/My/View/ProfileView.swift; sourceTree = SOURCE_ROOT; };
-		D23502E92961969100F01101 /* FamilyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FamilyCollectionView.swift; path = ZOOC/Presentation/My/FamilyCollectionView.swift; sourceTree = SOURCE_ROOT; };
+		D23502E92961969100F01101 /* FamilyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FamilyCollectionView.swift; path = ZOOC/Presentation/My/View/FamilyCollectionView.swift; sourceTree = SOURCE_ROOT; };
 		D23502EB296197C700F01101 /* PetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionView.swift; sourceTree = "<group>"; };
 		D23502EE29619D3200F01101 /* FamilyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F029619D4700F01101 /* PetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		D235030629647B4200F01101 /* AppInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationViewController.swift; sourceTree = "<group>"; };
 		D2350308296490A700F01101 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,13 +277,14 @@
 		87A76A8F295F6D8F0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D23502E92961969100F01101 /* FamilyCollectionView.swift */,
 				D23502E12961898C00F01101 /* ProfileView.swift */,
 				D23502EB296197C700F01101 /* PetCollectionView.swift */,
 				D23502F42961A69E00F01101 /* MyView.swift */,
 				D23503002964702400F01101 /* AppInformationView.swift */,
+				D23502E92961969100F01101 /* FamilyCollectionView.swift */,
 				D23502F82961F34100F01101 /* SettingMenuTableView.swift */,
 				D2350308296490A700F01101 /* EditProfileView.swift */,
+				D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
 				D23502FF296219FD00F01101 /* MemberModel.swift in Sources */,
+				D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
