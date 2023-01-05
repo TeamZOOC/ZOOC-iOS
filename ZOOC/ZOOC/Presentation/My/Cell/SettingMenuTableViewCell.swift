@@ -11,9 +11,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public var menuButton = UIButton().then {
-        $0.setTitleColor(.zoocDarkGray2, for: .normal)
-        $0.titleLabel!.font = .zoocBody2
+    public var menuLabel = UILabel().then {
+        $0.textColor = .zoocDarkGray2
+        $0.font = .zoocBody2
     }
     
     private var separatorLine = UIView().then {
@@ -40,15 +40,15 @@ final class SettingMenuTableViewCell: UITableViewCell {
     }
     
     private func setLayout() {
-        contentView.addSubviews(menuButton, separatorLine)
+        contentView.addSubviews(menuLabel, separatorLine)
         
-        menuButton.snp.makeConstraints {
+        menuLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
         }
         
         separatorLine.snp.makeConstraints {
-            $0.top.equalTo(self.menuButton.snp.bottom).offset(18)
+            $0.top.equalTo(self.menuLabel.snp.bottom).offset(18)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(1)
@@ -56,9 +56,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
     }
     
     public func dataBind(model: SettingMenuModel) {
-        menuButton.setTitle(model.settingMenuName, for: .normal)
+        menuLabel.text = model.settingMenuName
         if model.isLogout {
-            menuButton.setTitleColor(UIColor(r: 235, g: 91, b: 78), for: .normal)
+            menuLabel.textColor = UIColor(r: 235, g: 91, b: 78)
             separatorLine.backgroundColor = .zoocBackgroundGreen
         }
         

@@ -10,9 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
-final class  MyViewController: BaseViewController {
+final class MyViewController: BaseViewController {
     
     //MARK: - Properties
+    
+    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
+                                                               email: "fbgmlwo123@naver.com",
+                                                               profileImage: Image.profileImage)
+    
+    
+    //MARK: - UI Components
     
     private lazy var myView = MyView()
     
@@ -25,18 +32,62 @@ final class  MyViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         register()
-        
+        print(self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     
     //MARK: - Custom Method
     
     private func register() {
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
+        
         myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.cellIdentifier)
         myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
+    }
+    
+    private func pushToEditProfileView() {
+        let editProfileViewController = EditProfileViewController()
+        let profileName = myProfileData.name
+        let profileImage = myProfileData.profileImage
+        editProfileViewController.dataSend(profileName: profileName, profileImage: profileImage)
+        
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
+    private func pushToAppInformationView() {
+        let appInformationViewController = AppInformationViewController()
+        self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    func dataSend(profileName: String, profileImage: UIImage) {
+        myProfileData.name = profileName
+        myProfileData.profileImage = profileImage
+        myView.myCollectionView.reloadData()
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    private func editProfileButtonDidTap() {
+        pushToEditProfileView()
+    }
+    
+    @objc
+    private func appInformationButtonDidTap() {
+        pushToAppInformationView()
     }
 }
 
@@ -88,23 +139,43 @@ extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
+                    as? ProfileView else { return UICollectionViewCell() }
+            cell.dataBind(data: myProfileData)
+            cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
             return cell
             
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
+                    as? FamilyCollectionView else { return UICollectionViewCell() }
+            cell.register()
             return cell
             
         case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
+                    as? PetCollectionView else { return UICollectionViewCell() }
+            cell.register()
             return cell
             
         case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
+            cell.register()
+            cell.delegate = self
             return cell
             
         default:
             return UICollectionViewCell()
+        }
+    }
+}
+
+extension MyViewController: SettingMenuTableViewCellDelegate {
+    func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
+        switch indexPath.row {
+        case 4:
+            pushToAppInformationView()
+        default:
+            break
         }
     }
 }

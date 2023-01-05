@@ -10,31 +10,34 @@ import UIKit
 import SnapKit
 import Then
 
+protocol ButtonTappedDelegate {
+    func cellButtonTapped()
+}
+
 final class ProfileView: UICollectionViewCell  {
         
+    var delegate: ButtonTappedDelegate?
+    
     //MARK: - UI Components
     
-    private var profileImage = UIImageView().then {
-        $0.image = Image.profileImage
+    public var profileImageView = UIImageView().then {
         $0.layer.cornerRadius = 40.5
         $0.layer.borderColor = UIColor.zoocGray1.cgColor
         $0.layer.borderWidth = 2
         $0.clipsToBounds = true
     }
     
-    private var profileNameLabel = UILabel().then {
-        $0.text = "복실맘"
+    public var profileNameLabel = UILabel().then {
         $0.textColor = .zoocDarkGray2
         $0.font = .zoocHeadLine
     }
     
     private var profileEmailLabel = UILabel().then {
-        $0.text = "02rin@naver.com"
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
     }
     
-    private var editProfileButton = UIButton().then {
+    public var editProfileButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.titleLabel!.font = .zoocCaption
         $0.setTitleColor(.zoocGray2, for: .normal)
@@ -60,16 +63,16 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - Custom Method
 
     private func setLayout() {
-        addSubviews(profileImage, profileNameLabel, profileEmailLabel, editProfileButton)
+        addSubviews(profileImageView, profileNameLabel, profileEmailLabel, editProfileButton)
         
-        profileImage.snp.makeConstraints {
+        profileImageView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(39)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(81)
         }
         
         profileNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.profileImage.snp.bottom).offset(12)
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
         }
         
@@ -80,10 +83,16 @@ final class ProfileView: UICollectionViewCell  {
         
         editProfileButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
-            $0.leading.equalTo(self.profileImage.snp.trailing).offset(62)
+            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(62)
             $0.width.equalTo(53)
             $0.height.equalTo(24)
         }
+    }
+    
+    func dataBind(data: MyProfileModel) {
+        profileNameLabel.text = data.name
+        profileEmailLabel.text = data.email
+        profileImageView.image = data.profileImage
     }
 }
 
