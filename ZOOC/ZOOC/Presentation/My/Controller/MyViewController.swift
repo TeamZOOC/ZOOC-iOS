@@ -45,6 +45,7 @@ final class  MyViewController: BaseViewController {
         let profileName = profileView.profileNameLabel.text!
         let profileImage = profileView.profileImageView.image!
         editProfileViewController.dataSend(profileName: profileName, profileImage: profileImage)
+        
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
     

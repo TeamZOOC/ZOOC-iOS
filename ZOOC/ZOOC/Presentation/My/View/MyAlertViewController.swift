@@ -19,35 +19,44 @@ final class MyAlertViewController: UIViewController {
         $0.backgroundColor = .zoocBackgroundGreen
         $0.layer.cornerRadius = 14
         $0.clipsToBounds = true
+        $0.alpha = 1
+    }
+    
+    private var contentView = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0.45
     }
     
     private var alertTitleLabel = UILabel().then {
+        $0.backgroundColor = .zoocWhite2
         $0.font = .zoocSubhead2
-        $0.text = "회원 탈퇴 하시겠습니까?"
+        $0.text = "페이지를 나가시겠어요?"
         $0.textColor = .zoocDarkGray1
     }
     
     private var alertSubTitleLabel = UILabel().then {
         $0.font = .zoocBody1
-        $0.text = "회원 탈퇴 시 자동으로 가족에서 탈퇴되고 \n 작성한 글과 댓글이 모두 삭제됩니다"
+        $0.text = "지금 떠나면 내용이 저장되지 않아요"
         $0.textColor = .zoocGray1
         $0.textAlignment = .center
-        $0.numberOfLines = \2
     }
     
     private var keepEditButton = UIButton().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.setTitle("계속 할래요", for: .normal)
+        $0.setTitle("이어 쓰기", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.font = .zoocSubhead1
         
     }
     
-    private var popToMyViewButton = UIButton().then {
+    private lazy var popToMyViewButton = UIButton().then {
         $0.backgroundColor = .zoocWhite2 //zoocWhite3
-        $0.setTitle("탈퇴", for: .normal)
+        $0.setTitle("나가기", for: .normal)
         $0.setTitleColor(.zoocDarkGray2, for: .normal)
         $0.titleLabel?.textAlignment = .center
+        $0.titleLabel?.font = .zoocSubhead1
+        $0.addTarget(self, action: #selector(popToMyViewButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Life Cycle
@@ -62,11 +71,11 @@ final class MyAlertViewController: UIViewController {
     //MARK: - Custom Method
     
     private func setUI(){
-        view.backgroundColor = .zoocGray1
+        view.backgroundColor = .clear
     }
     
     private func setLayout(){
-        view.addSubview(alertView)
+        view.addSubviews(contentView,alertView)
         alertView.addSubviews(alertTitleLabel, alertSubTitleLabel, keepEditButton, popToMyViewButton)
         
         alertView.snp.makeConstraints {
@@ -74,6 +83,10 @@ final class MyAlertViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(299)
             $0.height.equalTo(180)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
         alertTitleLabel.snp.makeConstraints {
@@ -101,6 +114,23 @@ final class MyAlertViewController: UIViewController {
         }
     }
     
+    private func popToMyView() {
+        guard let presentingTBC = self.presentingViewController as? UITabBarController else { return }
+        print(presentingTBC)
+        guard let presentingNVC = presentingTBC.selectedViewController as? UINavigationController else { return }
+        print(presentingNVC)
+        guard let presentingVC = presentingNVC.topViewController else { return }
+        print(presentingVC)
+        presentingVC.navigationController?.popViewController(animated: true)
+
+        self.dismiss(animated: true)
+    }
+    
     //MARK: - Action Method
     
+    @objc
+    func popToMyViewButtonDidTap() {
+        print(#function)
+        popToMyView()
+    }
 }

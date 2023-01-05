@@ -27,7 +27,6 @@ final class  EditProfileViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         register()
     }
     
@@ -36,7 +35,7 @@ final class  EditProfileViewController: BaseViewController {
     func register() {
         editProfileView.editProfileNameTextField.delegate = self
     }
-
+    
     
     func dataSend(profileName: String, profileImage: UIImage) {
         editProfileView.editProfileImageButton.setImage(profileImage, for: .normal)
@@ -78,35 +77,23 @@ final class  EditProfileViewController: BaseViewController {
     
     @objc
     func backButtonDidTap() {
-        let alert = UIAlertController(title: "페이지를 나가시겠어요?",
-                                      message: "지금 떠나면 내용이 저장되지 않아요",
-                                      preferredStyle: UIAlertController.Style.alert)
-        let keepText: String = "이어 쓰기"
-        //let attributeString = NSMutableAttributedString(string: keepText)
-        
-        
-        let keepAction = UIAlertAction(title: "이어 쓰기", style: .default) { (action) in
-            print("ok")
-        }
-        let backAction = UIAlertAction(title: "나가기", style: .default) { (action) in
-            self.popToMyProfileView()
-        }
-        
-        alert.addAction(keepAction)
-        alert.addAction(backAction)
-        present(alert, animated: true)
+        let myAlertViewController = MyAlertViewController()
+        myAlertViewController.modalPresentationStyle = .overFullScreen
+        present(myAlertViewController, animated: false)
     }
+    
+    
 }
 
 extension EditProfileViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(#function)
-        
+
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
+
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        
+
         if updatedText.count <= 10 {
             editProfileView.profileNameCountLabel.text = "\(updatedText.count)/10"
             if updatedText.count > 0 {

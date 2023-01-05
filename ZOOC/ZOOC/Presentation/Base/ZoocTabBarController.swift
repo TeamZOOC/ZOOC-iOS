@@ -14,8 +14,8 @@ class ZoocTabBarController: UITabBarController {
 
     //MARK: - Properties
     
-    let homeViewContrller = HomeViewController()
-    let myViewController = MyViewController()
+    let homeNavigationContrller = UINavigationController(rootViewController: HomeViewController())
+    let myNavigationController = UINavigationController(rootViewController: MyViewController())
     
     //MARK: - UI Components
     
@@ -32,6 +32,7 @@ class ZoocTabBarController: UITabBarController {
         
         setUI()
         setLayout()
+        setNavigationController()
         setViewController()
         setCornerRadius()
         selectedIndex = 0
@@ -67,17 +68,24 @@ class ZoocTabBarController: UITabBarController {
         tabBar.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
     }
     
+    private func setNavigationController() {
+        homeNavigationContrller.setNavigationBarHidden(true, animated: true)
+        homeNavigationContrller.hidesBottomBarWhenPushed = true
+        myNavigationController.setNavigationBarHidden(true, animated: true)
+        myNavigationController.hidesBottomBarWhenPushed = true
+    }
+    
     private func setViewController(){
         
-        homeViewContrller.tabBarItem = UITabBarItem(title: "홈",
+        homeNavigationContrller.tabBarItem = UITabBarItem(title: "홈",
                                                     image: Image.home,
                                                     selectedImage: Image.home)
         
-        myViewController.tabBarItem = UITabBarItem(title: "마이",
+        myNavigationController.tabBarItem = UITabBarItem(title: "마이",
                                                    image: Image.person,
                                                    selectedImage: Image.person)
         
-        viewControllers = [homeViewContrller,myViewController]
+        viewControllers = [homeNavigationContrller,myNavigationController]
     }
     
     //MARK: - Action Method

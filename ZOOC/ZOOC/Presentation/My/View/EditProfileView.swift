@@ -120,7 +120,7 @@ final class EditProfileView: UIView {
         }
         
         editCompletedButton.snp.makeConstraints {
-            $0.top.equalTo(self.profileNameTextFieldUnderLineView).offset(249)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(27)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)
