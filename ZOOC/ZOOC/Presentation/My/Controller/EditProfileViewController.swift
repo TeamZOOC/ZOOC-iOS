@@ -44,21 +44,22 @@ final class  EditProfileViewController: BaseViewController {
     @objc
     func actionsheet() {
         let actionSheetController = UIAlertController()
-        let actionDefault = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
+        
+        let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
             print("ok")
         })
         
-        let actionDelete = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
+        let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
+            print("delete")
+        })
+        
+        let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
             print("cancel")
         })
         
-        let actionCancle = UIAlertAction(title: "취소", style: .cancel, handler: {action in
-            print("cancel")
-        })
-        
-        actionSheetController.addAction(actionDefault)
-        actionSheetController.addAction(actionDelete)
-        actionSheetController.addAction(actionCancle)
+        actionSheetController.addAction(presentToGalleryButton)
+        actionSheetController.addAction(deleteProfileImageButton)
+        actionSheetController.addAction(cancleButton)
         self.present(actionSheetController, animated: true)
     }
     
