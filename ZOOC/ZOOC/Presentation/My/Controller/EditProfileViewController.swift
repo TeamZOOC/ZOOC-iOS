@@ -33,10 +33,9 @@ final class  EditProfileViewController: BaseViewController {
     //MARK: - Custom Method
     
     func register() {
-        editProfileView.editProfileNameTextField.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
-    
-    
+
     func dataSend(profileName: String, profileImage: UIImage) {
         editProfileView.editProfileImageButton.setImage(profileImage, for: .normal)
         editProfileView.editProfileNameTextField.placeholder = profileName
@@ -82,33 +81,35 @@ final class  EditProfileViewController: BaseViewController {
         present(myAlertViewController, animated: false)
     }
     
-    
-}
-
-extension EditProfileViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(#function)
-
-        let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-
-        if updatedText.count <= 10 {
-            editProfileView.profileNameCountLabel.text = "\(updatedText.count)/10"
-            if updatedText.count > 0 {
-                editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocMainGreen //zoocgragreen
-                editProfileView.editCompletedButton.backgroundColor = .zoocMainGreen //zoocgragreen
-                editProfileView.editCompletedButton.isEnabled = true
-            } else {
-                editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
-                editProfileView.editCompletedButton.backgroundColor = .zoocGray1
-                editProfileView.editCompletedButton.isEnabled = false
+    @objc private func textDidChange(_ notification: Notification) {
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+                
+                if text.count > 10 {
+                    textField.resignFirstResponder()
+                }
+                
+                // 초과되는 텍스트 제거
+                if text.count >= 10 {
+                    let index = text.index(text.startIndex, offsetBy: 10)
+                    let newString = text[text.startIndex..<index]
+                    textField.text = String(newString)
+                    editProfileView.profileNameCountLabel.text = "10/10"
+                }
+                
+                else if text.count < 0 {
+                    editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
+                    editProfileView.editCompletedButton.backgroundColor = .zoocGray1
+                    editProfileView.editCompletedButton.isEnabled = false
+                    editProfileView.profileNameCountLabel.text = "\(text.count)/10"
+                }
+                else {
+                    editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocMainGreen //zoocgragreen
+                    editProfileView.editCompletedButton.backgroundColor = .zoocMainGreen //zoocgragreen
+                    editProfileView.editCompletedButton.isEnabled = true
+                    editProfileView.profileNameCountLabel.text = "\(text.count)/10"
+                }
             }
-            return true
-        } else {
-            editProfileView.profileNameCountLabel.text = "10/10"
-            return false
         }
     }
 }
