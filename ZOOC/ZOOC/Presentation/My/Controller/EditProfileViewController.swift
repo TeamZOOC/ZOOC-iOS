@@ -21,7 +21,8 @@ final class  EditProfileViewController: BaseViewController {
     override func loadView() {
         self.view = editProfileView
         editProfileView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
-        editProfileView.editProfileImageButton.addTarget(self, action: #selector(actionsheet) , for: .touchUpInside)
+        editProfileView.editCompletedButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
     }
     
     override func viewDidLoad() {
@@ -32,17 +33,29 @@ final class  EditProfileViewController: BaseViewController {
     
     //MARK: - Custom Method
     
+    func register() {
+        editProfileView.editProfileNameTextField.delegate = self
+    }
+
+    
     func dataSend(profileName: String, profileImage: UIImage) {
         editProfileView.editProfileImageButton.setImage(profileImage, for: .normal)
         editProfileView.editProfileNameTextField.placeholder = profileName
     }
     
-    func register() {
-        editProfileView.editProfileNameTextField.delegate = self
+    //MARK: - Action Method
+    
+    @objc
+    private func popToMyProfileView() {
+        let myViewController = MyViewController()
+        let profileName = editProfileView.editProfileNameTextField.text
+        let profileImage = editProfileView.editProfileImageButton.image(for: .normal)
+        myViewController.dataSend(profileName: profileName!, profileImage: profileImage!)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc
-    func actionsheet() {
+    func chooseProfileImage() {
         let actionSheetController = UIAlertController()
         
         let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
@@ -61,13 +74,6 @@ final class  EditProfileViewController: BaseViewController {
         actionSheetController.addAction(deleteProfileImageButton)
         actionSheetController.addAction(cancleButton)
         self.present(actionSheetController, animated: true)
-    }
-    
-    //MARK: - Action Method
-    
-    @objc
-    private func popToMyProfileView() {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -28,8 +28,6 @@ final class EditProfileView: UIView {
         $0.setImage(Image.symbolLogo, for: .normal)
         $0.layer.cornerRadius = 54.5
     }
-    // 여기 이미지 마이프로필에서 가져오면 됨
-    // 원형으로 만들기 신경쓰기
     
     private var editProfileCameraIconImageView = UIImageView().then {
         $0.image = Image.camera
@@ -39,7 +37,6 @@ final class EditProfileView: UIView {
     public var editProfileNameTextField = UITextField().then {
         $0.font = .zoocHeadLine
         $0.tintColor = .zoocMainGreen //zoocgragreen
-        // 커서 색상
     }
     
     public var profileNameTextFieldUnderLineView = UIView().then {

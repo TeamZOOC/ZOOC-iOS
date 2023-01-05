@@ -40,10 +40,6 @@ final class  MyViewController: BaseViewController {
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
     }
     
-    private func target() {
-        profileView.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
-    }
-    
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         let profileName = profileView.profileNameLabel.text!
@@ -55,6 +51,11 @@ final class  MyViewController: BaseViewController {
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    func dataSend(profileName: String, profileImage: UIImage) {
+        profileView.profileImageView.image = profileImage
+        profileView.profileNameLabel.text = profileName
     }
     
     //MARK: - Action Method
