@@ -71,4 +71,8 @@ extension UIColor{
         return UIColor(r: 136, g: 140, b: 134)
     }
     
+    class var zoocShadowGreenColor: UIColor {
+        return UIColor(r: 119, g: 184, b: 149)
+    }
+    
 }

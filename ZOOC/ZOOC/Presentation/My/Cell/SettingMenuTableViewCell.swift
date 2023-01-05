@@ -61,6 +61,7 @@ final class SettingMenuTableViewCell: UITableViewCell {
             menuLabel.textColor = UIColor(r: 235, g: 91, b: 78)
             separatorLine.backgroundColor = .zoocBackgroundGreen
         }
+        
     }
 }
 
