@@ -21,6 +21,7 @@ final class  EditProfileViewController: BaseViewController {
     override func loadView() {
         self.view = editProfileView
         editProfileView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        editProfileView.editProfileImageButton.addTarget(self, action: #selector(actionsheet) , for: .touchUpInside)
     }
     
     override func viewDidLoad() {
@@ -38,6 +39,27 @@ final class  EditProfileViewController: BaseViewController {
     
     func register() {
         editProfileView.editProfileNameTextField.delegate = self
+    }
+    
+    @objc
+    func actionsheet() {
+        let actionSheetController = UIAlertController()
+        let actionDefault = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
+            print("ok")
+        })
+        
+        let actionDelete = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
+            print("cancel")
+        })
+        
+        let actionCancle = UIAlertAction(title: "취소", style: .cancel, handler: {action in
+            print("cancel")
+        })
+        
+        actionSheetController.addAction(actionDefault)
+        actionSheetController.addAction(actionDelete)
+        actionSheetController.addAction(actionCancle)
+        self.present(actionSheetController, animated: true)
     }
     
     //MARK: - Action Method

@@ -34,7 +34,6 @@ final class EditProfileView: UIView {
     private var editProfileCameraIconImageView = UIImageView().then {
         $0.image = Image.camera
         $0.layer.cornerRadius = 17.5
-        $0.backgroundColor = .zoocMainGreen
     }
     
     public var editProfileNameTextField = UITextField().then {
@@ -46,8 +45,6 @@ final class EditProfileView: UIView {
     public var profileNameTextFieldUnderLineView = UIView().then {
         $0.backgroundColor = .zoocGray1
     }
-        // 색상변경 -> 입력될때마다
-    
     
     public var profileNameCountLabel = UILabel().then {
         $0.font = .zoocCaption
@@ -103,8 +100,8 @@ final class EditProfileView: UIView {
         }
         
         editProfileCameraIconImageView.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileImageButton).offset(78)
-            $0.leading.equalTo(self.editProfileImageButton).offset(78)
+            $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(268)
+            $0.leading.equalToSuperview().offset(210)
             $0.size.equalTo(35)
         }
         
@@ -122,7 +119,7 @@ final class EditProfileView: UIView {
         
         profileNameCountLabel.snp.makeConstraints {
             $0.top.equalTo(self.profileNameTextFieldUnderLineView).offset(9)
-            $0.leading.equalToSuperview().offset(265)
+            $0.trailing.equalTo(self.profileNameTextFieldUnderLineView)
         }
         
         editCompletedButton.snp.makeConstraints {
