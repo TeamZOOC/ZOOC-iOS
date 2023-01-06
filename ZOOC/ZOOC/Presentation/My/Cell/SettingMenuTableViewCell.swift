@@ -37,6 +37,7 @@ final class SettingMenuTableViewCell: UITableViewCell {
     
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
+        self.selectionStyle = .none
     }
     
     private func setLayout() {

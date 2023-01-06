@@ -90,6 +90,13 @@ final class MyViewController: BaseViewController {
     private func appInformationButtonDidTap() {
         pushToAppInformationView()
     }
+    
+    @objc
+    func deleteAccountButtonDidTap() {
+        let deleteAccountAlertViewController = DeleteAccountAlertViewController()
+        deleteAccountAlertViewController.modalPresentationStyle = .overFullScreen
+        present(deleteAccountAlertViewController, animated: false)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -172,7 +179,7 @@ extension MyViewController: UICollectionViewDataSource {
         case 4:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteAccountView.cellIdentifier, for: indexPath)
                     as? DeleteAccountView else { return UICollectionViewCell() }
-//            cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
+            cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
             return cell
         default:
             return UICollectionViewCell()
