@@ -56,7 +56,7 @@ final class HomeRecordCollectionViewCell : UICollectionViewCell{
     
     private let profileImageView : UIImageView = {
         let view = UIImageView()
-        view.image = Image.profileImage
+        view.image = Image.defaultProfile
         view.contentMode = .scaleAspectFit
         return view
     }()

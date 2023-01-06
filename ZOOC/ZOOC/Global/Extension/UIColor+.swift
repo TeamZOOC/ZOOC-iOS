@@ -27,13 +27,21 @@ extension UIColor{
         return UIColor(r: 104, g: 212, b: 154)
     }
     
+    class var zoocGradientGreen: UIColor {
+        return UIColor(r: 104, g: 212, b: 154)  //TODO: 그라데이션 기능 구현하기 
+    }
+    
     //MARK: Gray Scale Colors
     
     class var zoocWhite1: UIColor {
-        return UIColor(r: 248, g: 248, b: 248)
+        return UIColor(r: 255, g: 255, b: 255)
     }
     
     class var zoocWhite2: UIColor {
+        return UIColor(r: 248, g: 248, b: 248)
+    }
+    
+    class var zoocWhite3: UIColor {
         return UIColor(r: 242, g: 242, b: 242)
     }
     
@@ -47,6 +55,10 @@ extension UIColor{
     
     class var zoocGray2: UIColor {
         return UIColor(r: 130, g: 130, b: 130)
+    }
+    
+    class var zoocGray3: UIColor {
+        return UIColor(r: 85, g: 85, b: 85)
     }
     
     class var zoocDarkGray1: UIColor {

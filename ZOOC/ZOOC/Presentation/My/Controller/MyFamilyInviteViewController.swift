@@ -43,7 +43,7 @@ final class MyFamilyInviteViewController : BaseViewController {
     }
     
     private let inviteImageView = UIImageView().then {
-        $0.image = Image.familyInvite
+        $0.image = Image.graphics3
         $0.contentMode = .scaleAspectFit
     }
     

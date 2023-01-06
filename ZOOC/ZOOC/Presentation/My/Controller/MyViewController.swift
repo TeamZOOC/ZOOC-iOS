@@ -16,7 +16,7 @@ final class MyViewController: BaseViewController {
     
     private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
                                                                email: "fbgmlwo123@naver.com",
-                                                               profileImage: Image.profileImage)
+                                                               profileImage: Image.defaultProfile)
     
     
     //MARK: - UI Components

@@ -9,23 +9,68 @@ import UIKit
 
 public enum Image{
     
+    //MARK: - Logo
+    
+    static let logoAppIcon = UIImage(named: "logo_app_icon")!
+    static let logoCombination = UIImage(named: "logo_combination")!
+    static let logoSymbol = UIImage(named: "logo_symbol")!
+    
+    //MARK: - Icon
+    
+    static let backCircle = UIImage(named: "back.circle")!
     static let back = UIImage(named: "back")!
-    static let camera = UIImage(named: "camera")!
-    static let combinationLogo = UIImage(named: "combination_logo")!
-    static let onboardingInvite = UIImage(named: "familiy_invite")!
-    static let firstMission = UIImage(named: "onboarding_mission")!
+    static let cameraCircleBig = UIImage(named: "camera.circle.big")!
+    static let cameraCircleGreen = UIImage(named: "camera.circle.green")!
+    static let cameraCircleSmall = UIImage(named: "camera.circle.small")!
+    static let check = UIImage(named: "check")!
+    static let checkBoxFill = UIImage(named: "checkbox.fill")!
+    static let checkBox = UIImage(named: "checkbox")!
+    static let checkBoxTint = UIImage(named: "checkbox.tint")!
+    static let delete = UIImage(named: "delete")!
+    static let etc = UIImage(named: "etc")!
     static let gallery = UIImage(named: "gallery")!
     static let grid = UIImage(named: "grid")!
     static let home = UIImage(named: "home")!
-    static let inviteComplete = UIImage(named: "invite_complete")!
     static let list = UIImage(named: "list")!
+    static let next = UIImage(named: "next")!
     static let person = UIImage(named: "person")!
     static let plus = UIImage(named: "plus")!
-    static let postComplete = UIImage(named: "post_complete")!
+    static let plusTabCircle = UIImage(named: "plus.tab.circle")!
+    static let pervious = UIImage(named: "previous")!
     static let ring = UIImage(named: "ring")!
-    static let symbolLogo = UIImage(named: "symbol_logo")!
+    static let smile = UIImage(named: "smile")!
     static let upload = UIImage(named: "upload")!
+    static let xmark = UIImage(named: "xmark")!
     
-    static let profileImage = UIImage(named: "profile_image")!
-    static let profileMemberImage = UIImage(named: "profile_memberImage")!
+    //MARK: - Default
+    
+    static let defaultProfilePet = UIImage(named: "default_profile_pet")!
+    static let defaultProfile = UIImage(named: "default_profile")!
+    
+    //MARK: - Emoji
+    
+    static let emojiDancing = UIImage(named: "emoji_dancing")!
+    static let emojiDog = UIImage(named: "emoji_dog")!
+    static let emojiHeart = UIImage(named: "emoji_heart")!
+    static let emojiHug = UIImage(named: "emoji_hug")!
+    static let emojiSad = UIImage(named: "emoji_sad")!
+    static let emojiSmile = UIImage(named: "emoji_smile")!
+    static let emojiSurprise = UIImage(named: "emoji_surprise")!
+    static let emojiThumb = UIImage(named: "emoji_thumb")!
+    
+    //MARK: - Graphics
+    
+    static let graphics1 = UIImage(named: "graphics1")!
+    static let graphics2 = UIImage(named: "graphics2")!
+    static let graphics3 = UIImage(named: "graphics3")!
+    static let graphics4 = UIImage(named: "graphics4")!
+    static let graphics5 = UIImage(named: "graphics5")!
+    static let graphics6 = UIImage(named: "graphics6")!
+    static let graphics7 = UIImage(named: "graphics7")!
+    
+    //MARK: - Mock
+    
+    static let mockPet1 = UIImage(named: "mock_pet1")!
+    static let mockPet2 = UIImage(named: "mock_pet2")!
+    
 }

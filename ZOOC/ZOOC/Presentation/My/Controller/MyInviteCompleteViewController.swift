@@ -42,7 +42,7 @@ final class MyInviteCompleteViewController : BaseViewController{
     }
     
     private let inviteImageView = UIImageView().then {
-        $0.image = Image.inviteComplete
+        $0.image = Image.graphics4
         $0.contentMode = .scaleAspectFit
     }
     

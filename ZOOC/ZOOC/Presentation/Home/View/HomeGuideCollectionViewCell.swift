@@ -44,7 +44,7 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
     
     private let cardImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Image.firstMission
+        imageView.image = Image.graphics1
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
