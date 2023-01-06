@@ -97,7 +97,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: UIScreen.main.bounds.width, height: 220)
+            return CGSize(width: UIScreen.main.bounds.width, height: 140)
         case 1:
             return CGSize(width: 315, height: 155)
         case 2:
