@@ -35,7 +35,7 @@ final class MyViewController: BaseViewController {
         print(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
@@ -71,6 +71,11 @@ final class MyViewController: BaseViewController {
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    private func pushToNoticeSettingView() {
+        let noticeSettingViewController = MyNoticeSettingViewController()
+        self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
     }
     
     func dataSend(profileName: String, profileImage: UIImage) {
@@ -130,7 +135,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 3:
             return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
         case 4:
-            return UIEdgeInsets(top: 0, left: 50, bottom: 43, right: 0)
+            return UIEdgeInsets(top: 0, left: 50, bottom: 103, right: 0)
             
         default:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -190,6 +195,8 @@ extension MyViewController: UICollectionViewDataSource {
 extension MyViewController: SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            pushToNoticeSettingView()
         case 4:
             pushToAppInformationView()
         default:

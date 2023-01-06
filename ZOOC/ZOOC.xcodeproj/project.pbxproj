@@ -81,6 +81,8 @@
 		D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */; };
 		D26C85D7296888D000AEAF9B /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85D6296888D000AEAF9B /* DeleteAccountView.swift */; };
 		D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85D829689D0800AEAF9B /* DeleteAccountAlertViewController.swift */; };
+		D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */; };
+		D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85DC2968B0A500AEAF9B /* MyNoticeSettingViewController.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -163,6 +165,8 @@
 		D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		D26C85D6296888D000AEAF9B /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		D26C85D829689D0800AEAF9B /* DeleteAccountAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountAlertViewController.swift; sourceTree = "<group>"; };
+		D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNoticeSettingView.swift; sourceTree = "<group>"; };
+		D26C85DC2968B0A500AEAF9B /* MyNoticeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNoticeSettingViewController.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 				D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */,
 				D26C85D6296888D000AEAF9B /* DeleteAccountView.swift */,
 				D26C85D829689D0800AEAF9B /* DeleteAccountAlertViewController.swift */,
+				D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				D235030A2964991700F01101 /* EditProfileViewController.swift */,
 				4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */,
 				4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */,
+				D26C85DC2968B0A500AEAF9B /* MyNoticeSettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -748,6 +754,7 @@
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
 				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
+				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
@@ -771,6 +778,7 @@
 				D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
+				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
