@@ -26,12 +26,6 @@ import UIKit
 
      static var petDummyData: [MemberModel] = [
          MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
          MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이")
      ]
  }

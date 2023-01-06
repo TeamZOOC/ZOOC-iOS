@@ -20,6 +20,13 @@ final class PetCollectionView: UICollectionViewCell {
         $0.font = .zoocSubhead1
     }
     
+    private var petCountLabel = UILabel().then {
+        $0.text = "\(MemberModel.petDummyData.count)/4"
+        $0.textColor = .zoocGray2
+        $0.font = .zoocCaption
+        $0.textAlignment = .center
+    }
+    
     public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -53,13 +60,18 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     private func setLayout() {
-        addSubviews(petLabel, petCollectionView)
+        addSubviews(petLabel, petCountLabel, petCollectionView)
         
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
-
+        
+        petCountLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(27)
+            $0.leading.equalTo(self.petLabel.snp.trailing).offset(4)
+        }
+        
         petCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.petLabel.snp.bottom).offset(17)
             $0.leading.equalTo(self.petLabel)
