@@ -21,7 +21,7 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - UI Components
     
     public var profileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 40.5
+        $0.layer.cornerRadius = 36
         $0.layer.borderColor = UIColor.zoocGray1.cgColor
         $0.layer.borderWidth = 2
         $0.clipsToBounds = true
@@ -32,11 +32,6 @@ final class ProfileView: UICollectionViewCell  {
         $0.font = .zoocHeadLine
     }
     
-    private var profileEmailLabel = UILabel().then {
-        $0.textColor = .zoocDarkGreen
-        $0.font = .zoocBody1
-    }
-    
     public var editProfileButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.titleLabel!.font = .zoocCaption
@@ -44,7 +39,7 @@ final class ProfileView: UICollectionViewCell  {
         $0.backgroundColor = .zoocWhite1
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.black.cgColor
+        $0.layer.borderColor = UIColor.zoocLightGreen.cgColor
         $0.clipsToBounds = true
     }
     
@@ -63,35 +58,29 @@ final class ProfileView: UICollectionViewCell  {
     //MARK: - Custom Method
 
     private func setLayout() {
-        addSubviews(profileImageView, profileNameLabel, profileEmailLabel, editProfileButton)
+        addSubviews(profileImageView, profileNameLabel, editProfileButton)
         
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(39)
-            $0.centerX.equalToSuperview()
-            $0.size.equalTo(81)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
+            $0.leading.equalToSuperview().offset(38)
+            $0.size.equalTo(72)
         }
         
         profileNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.profileImageView.snp.bottom).offset(12)
-            $0.centerX.equalToSuperview()
-        }
-        
-        profileEmailLabel.snp.makeConstraints {
-            $0.top.equalTo(self.profileNameLabel.snp.bottom).offset(3)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(62)
+            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(14)
         }
         
         editProfileButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
-            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(62)
-            $0.width.equalTo(53)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(62)
+            $0.trailing.equalToSuperview().inset(36)
+            $0.width.equalTo(45)
             $0.height.equalTo(24)
         }
     }
     
     func dataBind(data: MyProfileModel) {
         profileNameLabel.text = data.name
-        profileEmailLabel.text = data.email
         profileImageView.image = data.profileImage
     }
 }

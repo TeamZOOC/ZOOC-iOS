@@ -19,6 +19,13 @@ final class FamilyCollectionView: UICollectionViewCell {
         $0.textColor = .zoocDarkGray1
         $0.font = .zoocSubhead1
     }
+    
+    private var familyCountLabel = UILabel().then {
+        $0.text = "\(MemberModel.petDummyData.count)/8"
+        $0.textColor = .zoocGray2
+        $0.font = .zoocCaption
+        $0.textAlignment = .center
+    }
 
     private var inviteButton = UIButton().then {
         $0.setTitle("초대하기", for: .normal)
@@ -64,13 +71,18 @@ final class FamilyCollectionView: UICollectionViewCell {
     
     
     private func setLayout() {
-        addSubviews(familyLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
+        addSubviews(familyLabel, familyCountLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
         
         familyLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
-
+        
+        familyCountLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(27)
+            $0.leading.equalTo(self.familyLabel.snp.trailing).offset(4)
+        }
+        
         inviteButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(24)
             $0.trailing.equalToSuperview().inset(26)

@@ -1,8 +1,8 @@
 //
-//  AlertView.swift
+//  DeleteAccountAlertViewController.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/05.
+//  Created by 류희재 on 2023/01/07.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class MyAlertViewController: UIViewController {
+final class DeleteAccountAlertViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -31,20 +31,20 @@ final class MyAlertViewController: UIViewController {
     private var alertTitleLabel = UILabel().then {
         $0.backgroundColor = .zoocWhite2
         $0.font = .zoocSubhead2
-        $0.text = "페이지를 나가시겠어요?"
+        $0.text = "회원 탈퇴 하시겠습니까?"
         $0.textColor = .zoocDarkGray1
     }
     
     private var alertSubTitleLabel = UILabel().then {
         $0.font = .zoocBody1
-        $0.text = "지금 떠나면 내용이 저장되지 않아요"
+        $0.text = "회원 탈퇴 시 자동으로 가족에서 탈퇴되고 \n 작성한 글과 댓글이 모두 삭제됩니다"
         $0.textColor = .zoocGray1
         $0.textAlignment = .center
     }
     
     private lazy var keepEditButton = UIButton().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.setTitle("이어 쓰기", for: .normal)
+        $0.setTitle("계속 할래요", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.textAlignment = .center
         $0.titleLabel?.font = .zoocSubhead1
@@ -53,7 +53,7 @@ final class MyAlertViewController: UIViewController {
     
     private lazy var popToMyViewButton = UIButton().then {
         $0.backgroundColor = .zoocWhite3
-        $0.setTitle("나가기", for: .normal)
+        $0.setTitle("탈퇴", for: .normal)
         $0.setTitleColor(.zoocDarkGray2, for: .normal)
         $0.titleLabel?.textAlignment = .center
         $0.titleLabel?.font = .zoocSubhead1
@@ -115,20 +115,11 @@ final class MyAlertViewController: UIViewController {
         }
     }
     
-    private func popToMyView() {
-        guard let presentingTBC = self.presentingViewController as? UITabBarController else { return }
-        guard let presentingNVC = presentingTBC.selectedViewController as? UINavigationController else { return }
-        guard let presentingVC = presentingNVC.topViewController else { return }
-        presentingVC.navigationController?.popViewController(animated: true)
-
-        self.dismiss(animated: false)
-    }
-    
     //MARK: - Action Method
     
     @objc
     func popToMyViewButtonDidTap() {
-        popToMyView()
+        self.dismiss(animated: false)
     }
     
     @objc
@@ -136,3 +127,4 @@ final class MyAlertViewController: UIViewController {
         self.dismiss(animated: false)
     }
 }
+

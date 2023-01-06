@@ -36,14 +36,15 @@ final class SettingMenuTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.backgroundColor = .zoocBackgroundGreen
+        self.backgroundColor = .zoocBackgroundGreen
+        self.selectionStyle = .none
     }
     
     private func setLayout() {
         contentView.addSubviews(menuLabel, separatorLine)
         
         menuLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(8)
             $0.leading.equalToSuperview().offset(10)
         }
         
@@ -59,9 +60,8 @@ final class SettingMenuTableViewCell: UITableViewCell {
         menuLabel.text = model.settingMenuName
         if model.isLogout {
             menuLabel.textColor = UIColor(r: 235, g: 91, b: 78)
-            separatorLine.backgroundColor = .zoocBackgroundGreen
+            separatorLine.isHidden = true
         }
-        
     }
 }
 

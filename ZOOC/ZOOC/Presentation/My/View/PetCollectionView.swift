@@ -19,15 +19,12 @@ final class PetCollectionView: UICollectionViewCell {
         $0.textColor = .zoocDarkGray1
         $0.font = .zoocSubhead1
     }
-
-    private var registerButton = UIButton().then {
-        $0.setTitle("등록하기", for: .normal)
-        $0.setTitleColor(.zoocGray2, for: .normal)
-        $0.titleLabel!.font = .zoocCaption
-    }
     
-    private var registerButtonUnderLine = UIView().then {
-        $0.backgroundColor = .zoocGray2
+    private var petCountLabel = UILabel().then {
+        $0.text = "\(MemberModel.petDummyData.count)/4"
+        $0.textColor = .zoocGray2
+        $0.font = .zoocCaption
+        $0.textAlignment = .center
     }
     
     public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -62,46 +59,43 @@ final class PetCollectionView: UICollectionViewCell {
         self.clipsToBounds = true
     }
     
-    
     private func setLayout() {
-        addSubviews(petLabel, registerButton, petCollectionView, registerButtonUnderLine)
+        addSubviews(petLabel, petCountLabel, petCollectionView)
         
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
-
-        registerButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(24)
-            $0.trailing.equalToSuperview().inset(26)
-            $0.width.equalTo(42)
-            $0.height.equalTo(14)
-        }
-
-        petCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.petLabel.snp.bottom).offset(10)
-            $0.leading.equalTo(self.petLabel)
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(20)
+        
+        petCountLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(27)
+            $0.leading.equalTo(self.petLabel.snp.trailing).offset(4)
         }
         
-        registerButtonUnderLine.snp.makeConstraints {
-            $0.top.equalTo(self.registerButton.snp.bottom).offset(2)
-            $0.trailing.equalTo(self.registerButton)
-            $0.width.equalTo(41)
-            $0.height.equalTo(1)
+        petCollectionView.snp.makeConstraints {
+            $0.top.equalTo(self.petLabel.snp.bottom).offset(17)
+            $0.leading.equalTo(self.petLabel)
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(26)
         }
     }
     
     public func register() {
         petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
+        
+        petCollectionView.register(PetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier)
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension PetCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 48, height: 68)
+        return CGSize(width: 86, height: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        print(#function)
+        return CGSize(width: 11, height: 11)
     }
 }
 
@@ -117,6 +111,13 @@ extension PetCollectionView: UICollectionViewDataSource {
                 as? PetCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print(#function)
+        guard kind == UICollectionView.elementKindSectionFooter,
+              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? PetCollectionFooterView else { return UICollectionReusableView() }
+        return footer
     }
 }
 

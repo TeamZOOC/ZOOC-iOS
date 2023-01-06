@@ -35,7 +35,6 @@ final class MyView: UIView  {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     //MARK: - Custom Method
     
     private func setUI() {
@@ -43,7 +42,7 @@ final class MyView: UIView  {
     }
     
     private func setLayout() {
-        addSubview(myCollectionView)
+        addSubviews(myCollectionView)
         
         myCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)

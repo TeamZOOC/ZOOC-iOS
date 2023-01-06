@@ -22,8 +22,7 @@ final class SettingMenuTableView: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public lazy var settingMenuTableView = UITableView(frame: .zero, style: .grouped).then {
-        $0.backgroundColor = .clear
+    public lazy var settingMenuTableView = UITableView(frame: .zero, style: .plain).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .none
         $0.isScrollEnabled = false
@@ -50,7 +49,6 @@ final class SettingMenuTableView: UICollectionViewCell {
         self.backgroundColor = .zoocBackgroundGreen
     }
     
-    
     private func setLayout() {
         addSubview(settingMenuTableView)
         
@@ -68,7 +66,7 @@ final class SettingMenuTableView: UICollectionViewCell {
 
 extension SettingMenuTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 61
+        return 62
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

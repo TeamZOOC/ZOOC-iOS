@@ -31,8 +31,12 @@ extension UIFont{
         return UIFont(name: "Pretendard-SemiBold", size: 16)!
     }
     
-    class var zoocBody2: UIFont {
+    class var zoocBody3: UIFont {
         return UIFont(name: "Pretendard-Medium", size: 16)!
+    }
+    
+    class var zoocBody2: UIFont {
+        return UIFont(name: "Pretendard-Medium", size: 15)!
     }
     
     class var zoocBody1: UIFont {

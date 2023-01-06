@@ -35,7 +35,7 @@ final class MyViewController: BaseViewController {
         print(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
@@ -56,6 +56,7 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
+        myView.myCollectionView.register(DeleteAccountView.self, forCellWithReuseIdentifier: DeleteAccountView.cellIdentifier)
     }
     
     private func pushToEditProfileView() {
@@ -70,6 +71,11 @@ final class MyViewController: BaseViewController {
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    private func pushToNoticeSettingView() {
+        let noticeSettingViewController = MyNoticeSettingViewController()
+        self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
     }
     
     func dataSend(profileName: String, profileImage: UIImage) {
@@ -89,6 +95,13 @@ final class MyViewController: BaseViewController {
     private func appInformationButtonDidTap() {
         pushToAppInformationView()
     }
+    
+    @objc
+    func deleteAccountButtonDidTap() {
+        let deleteAccountAlertViewController = DeleteAccountAlertViewController()
+        deleteAccountAlertViewController.modalPresentationStyle = .overFullScreen
+        present(deleteAccountAlertViewController, animated: false)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -97,13 +110,15 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: UIScreen.main.bounds.width, height: 220)
+            return CGSize(width: UIScreen.main.bounds.width, height: 140)
         case 1:
             return CGSize(width: 315, height: 155)
         case 2:
-            return CGSize(width: 315, height: 155)
+            return CGSize(width: 315, height: 127)
         case 3:
-            return CGSize(width: 315, height: 402)
+            return CGSize(width: 315, height: 346)
+        case 4:
+            return CGSize(width: 42, height: 17)
         default:
             return CGSize(width: 0, height: 0)
         }
@@ -114,11 +129,14 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 0:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         case 1:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 12, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         case 2:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 6, right: 30)
         case 3:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 42, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
+        case 4:
+            return UIEdgeInsets(top: 0, left: 50, bottom: 103, right: 0)
+            
         default:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -129,7 +147,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -163,6 +181,11 @@ extension MyViewController: UICollectionViewDataSource {
             cell.delegate = self
             return cell
             
+        case 4:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteAccountView.cellIdentifier, for: indexPath)
+                    as? DeleteAccountView else { return UICollectionViewCell() }
+            cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
+            return cell
         default:
             return UICollectionViewCell()
         }
@@ -172,6 +195,8 @@ extension MyViewController: UICollectionViewDataSource {
 extension MyViewController: SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            pushToNoticeSettingView()
         case 4:
             pushToAppInformationView()
         default:
