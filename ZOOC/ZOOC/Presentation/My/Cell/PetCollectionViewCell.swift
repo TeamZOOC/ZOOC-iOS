@@ -12,7 +12,7 @@ final class PetCollectionViewCell: UICollectionViewCell {
     //MARK: - UI Components
     
     public var petImageView = UIImageView().then {
-        $0.image = Image.profileMemberImage
+        $0.image = Image.mockPet2
         $0.layer.cornerRadius = 24
         $0.clipsToBounds = true
     }

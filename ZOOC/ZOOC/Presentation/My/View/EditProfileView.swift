@@ -25,12 +25,12 @@ final class EditProfileView: UIView {
     }
     
     public var editProfileImageButton = UIButton().then {
-        $0.setImage(Image.symbolLogo, for: .normal)
+        $0.setImage(Image.logoSymbol, for: .normal)
         $0.layer.cornerRadius = 54.5
     }
     
     private var editProfileCameraIconImageView = UIImageView().then {
-        $0.image = Image.camera
+        $0.image = Image.cameraCircleGreen
         $0.layer.cornerRadius = 17.5
     }
     

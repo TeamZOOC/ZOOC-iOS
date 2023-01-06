@@ -14,24 +14,24 @@ import UIKit
 
  extension MemberModel {
      static var familyDummyData: [MemberModel] = [
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfile, memberProfileName: "복실이")
      ]
 
      static var petDummyData: [MemberModel] = [
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이"),
-         MemberModel(memberProfileImage: Image.profileMemberImage, memberProfileName: "복실이")
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이"),
+         MemberModel(memberProfileImage: Image.defaultProfilePet, memberProfileName: "복실이")
      ]
  }
