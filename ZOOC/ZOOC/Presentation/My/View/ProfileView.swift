@@ -39,7 +39,7 @@ final class ProfileView: UICollectionViewCell  {
         $0.backgroundColor = .zoocWhite1
         $0.layer.cornerRadius = 12
         $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.black.cgColor
+        $0.layer.borderColor = UIColor.zoocLightGreen.cgColor
         $0.clipsToBounds = true
     }
     
@@ -61,19 +61,19 @@ final class ProfileView: UICollectionViewCell  {
         addSubviews(profileImageView, profileNameLabel, editProfileButton)
         
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(39)
-            $0.leading.equalToSuperview().offset(36)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
+            $0.leading.equalToSuperview().offset(38)
             $0.size.equalTo(72)
         }
         
         profileNameLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(62)
-            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(16)
+            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(14)
         }
         
         editProfileButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(62)
-            $0.leading.equalTo(self.profileNameLabel.snp.trailing).offset(118)
+            $0.trailing.equalToSuperview().inset(36)
             $0.width.equalTo(45)
             $0.height.equalTo(24)
         }

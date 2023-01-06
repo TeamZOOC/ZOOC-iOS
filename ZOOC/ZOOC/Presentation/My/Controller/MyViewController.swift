@@ -56,6 +56,7 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
         myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
         myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
+        myView.myCollectionView.register(DeleteAccountView.self, forCellWithReuseIdentifier: DeleteAccountView.cellIdentifier)
     }
     
     private func pushToEditProfileView() {
@@ -103,7 +104,9 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 2:
             return CGSize(width: 315, height: 127)
         case 3:
-            return CGSize(width: 315, height: 402)
+            return CGSize(width: 315, height: 346)
+        case 4:
+            return CGSize(width: 42, height: 17)
         default:
             return CGSize(width: 0, height: 0)
         }
@@ -114,11 +117,14 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 0:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         case 1:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 12, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         case 2:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 6, right: 30)
         case 3:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 42, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
+        case 4:
+            return UIEdgeInsets(top: 0, left: 50, bottom: 43, right: 0)
+            
         default:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -129,7 +135,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -163,6 +169,11 @@ extension MyViewController: UICollectionViewDataSource {
             cell.delegate = self
             return cell
             
+        case 4:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteAccountView.cellIdentifier, for: indexPath)
+                    as? DeleteAccountView else { return UICollectionViewCell() }
+//            cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
+            return cell
         default:
             return UICollectionViewCell()
         }
