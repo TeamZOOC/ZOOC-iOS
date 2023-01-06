@@ -19,12 +19,6 @@ final class PetCollectionView: UICollectionViewCell {
         $0.textColor = .zoocDarkGray1
         $0.font = .zoocSubhead1
     }
-
-    private var registerButton = UIButton().then {
-        $0.setTitle("등록하기", for: .normal)
-        $0.setTitleColor(.zoocGray2, for: .normal)
-        $0.titleLabel!.font = .zoocCaption
-    }
     
     private var registerButtonUnderLine = UIView().then {
         $0.backgroundColor = .zoocGray2
@@ -62,34 +56,19 @@ final class PetCollectionView: UICollectionViewCell {
         self.clipsToBounds = true
     }
     
-    
     private func setLayout() {
-        addSubviews(petLabel, registerButton, petCollectionView, registerButtonUnderLine)
+        addSubviews(petLabel, petCollectionView, registerButtonUnderLine)
         
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
         }
 
-        registerButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(24)
-            $0.trailing.equalToSuperview().inset(26)
-            $0.width.equalTo(42)
-            $0.height.equalTo(14)
-        }
-
         petCollectionView.snp.makeConstraints {
-            $0.top.equalTo(self.petLabel.snp.bottom).offset(10)
+            $0.top.equalTo(self.petLabel.snp.bottom).offset(17)
             $0.leading.equalTo(self.petLabel)
             $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(20)
-        }
-        
-        registerButtonUnderLine.snp.makeConstraints {
-            $0.top.equalTo(self.registerButton.snp.bottom).offset(2)
-            $0.trailing.equalTo(self.registerButton)
-            $0.width.equalTo(41)
-            $0.height.equalTo(1)
+            $0.bottom.equalToSuperview().inset(26)
         }
     }
     
@@ -101,7 +80,7 @@ final class PetCollectionView: UICollectionViewCell {
 
 extension PetCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 48, height: 68)
+        return CGSize(width: 86, height: 40)
     }
 }
 

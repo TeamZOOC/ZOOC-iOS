@@ -19,7 +19,6 @@ final class PetCollectionViewCell: UICollectionViewCell {
     
     public var petNameLabel = UILabel().then {
         $0.font = .zoocCaption
-        $0.text = "복실아들"
         $0.textColor = .zoocDarkGray1
     }
 
@@ -28,6 +27,7 @@ final class PetCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         setLayout()
     }
     
@@ -37,18 +37,27 @@ final class PetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
+    private func setUI() {
+        contentView.backgroundColor = . zoocWhite2
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
+        contentView.layer.cornerRadius = 21
+        contentView.clipsToBounds = true
+        
+    }
+    
     private func setLayout() {
         contentView.addSubviews(petImageView, petNameLabel)
         
         petImageView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.size.equalTo(48)
+            $0.top.equalToSuperview().offset(3)
+            $0.leading.equalToSuperview().offset(3)
+            $0.size.equalTo(34)
         }
         
         petNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.petImageView.snp.bottom).offset(6)
-            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalTo(self.petImageView.snp.trailing).offset(8)
         }
     }
     
