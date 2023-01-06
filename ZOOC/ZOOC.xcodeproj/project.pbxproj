@@ -77,6 +77,8 @@
 		D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030629647B4200F01101 /* AppInformationViewController.swift */; };
 		D2350309296490A700F01101 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2350308296490A700F01101 /* EditProfileView.swift */; };
 		D235030B2964991700F01101 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030A2964991700F01101 /* EditProfileViewController.swift */; };
+		D26C85CF2968681900AEAF9B /* PetCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85CE2968681900AEAF9B /* PetCollectionFooterView.swift */; };
+		D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -155,6 +157,8 @@
 		D235030629647B4200F01101 /* AppInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInformationViewController.swift; sourceTree = "<group>"; };
 		D2350308296490A700F01101 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D26C85CE2968681900AEAF9B /* PetCollectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCollectionFooterView.swift; sourceTree = "<group>"; };
+		D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				87648324295236BE00F74882 /* UIFont+.swift */,
 				87648322295236B700F74882 /* UIColor+.swift */,
 				D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */,
+				D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 				D23502F029619D4700F01101 /* PetCollectionViewCell.swift */,
 				D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */,
 				D23503022964728700F01101 /* AppInformationTableViewCell.swift */,
+				D26C85CE2968681900AEAF9B /* PetCollectionFooterView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
+				D26C85CF2968681900AEAF9B /* PetCollectionFooterView.swift in Sources */,
 				877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
@@ -759,6 +766,7 @@
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
+				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
 				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
 				87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */,

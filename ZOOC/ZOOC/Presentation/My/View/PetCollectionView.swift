@@ -20,10 +20,6 @@ final class PetCollectionView: UICollectionViewCell {
         $0.font = .zoocSubhead1
     }
     
-    private var registerButtonUnderLine = UIView().then {
-        $0.backgroundColor = .zoocGray2
-    }
-    
     public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -57,7 +53,7 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     private func setLayout() {
-        addSubviews(petLabel, petCollectionView, registerButtonUnderLine)
+        addSubviews(petLabel, petCollectionView)
         
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
@@ -74,6 +70,8 @@ final class PetCollectionView: UICollectionViewCell {
     
     public func register() {
         petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
+        
+        petCollectionView.register(PetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier)
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -81,6 +79,11 @@ final class PetCollectionView: UICollectionViewCell {
 extension PetCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 86, height: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        print(#function)
+        return CGSize(width: 11, height: 11)
     }
 }
 
@@ -96,6 +99,13 @@ extension PetCollectionView: UICollectionViewDataSource {
                 as? PetCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print(#function)
+        guard kind == UICollectionView.elementKindSectionFooter,
+              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? PetCollectionFooterView else { return UICollectionReusableView() }
+        return footer
     }
 }
 
