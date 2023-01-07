@@ -60,13 +60,13 @@ public enum Image{
     
     //MARK: - Graphics
     
-    static let graphics1 = UIImage(named: "graphics1")!
-    static let graphics2 = UIImage(named: "graphics2")!
-    static let graphics3 = UIImage(named: "graphics3")!
-    static let graphics4 = UIImage(named: "graphics4")!
-    static let graphics5 = UIImage(named: "graphics5")!
-    static let graphics6 = UIImage(named: "graphics6")!
-    static let graphics7 = UIImage(named: "graphics7")!
+    static let graphics1 = UIImage(named: "graphics_1")!
+    static let graphics2 = UIImage(named: "graphics_2")!
+    static let graphics3 = UIImage(named: "graphics_3")!
+    static let graphics4 = UIImage(named: "graphics_4")!
+    static let graphics5 = UIImage(named: "graphics_5")!
+    static let graphics6 = UIImage(named: "graphics_6")!
+    static let graphics7 = UIImage(named: "graphics_7")!
     
     //MARK: - Mock
     

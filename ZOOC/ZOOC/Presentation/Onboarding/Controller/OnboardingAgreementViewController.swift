@@ -69,11 +69,18 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingAgreementTableViewCell.cellIdentifier, for: indexPath) as?
                 OnboardingAgreementTableViewCell else { return UITableViewCell() }
         cell.dataBind(model: AgreementModel.agreementData[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
         return cell
+    }
+}
+
+extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
+    func cellButtonTapped() {
+        print("Button Tapped")
     }
 }

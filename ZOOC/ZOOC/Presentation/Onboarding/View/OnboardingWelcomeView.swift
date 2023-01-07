@@ -18,8 +18,8 @@ final class OnboardingWelcomeView: UIView {
         $0.setImage(Image.back, for: .normal)
     }
     
-    private var agreeTitleLabel = UILabel().then {
-        $0.text = "안녕하세요! \nZOOC에 온 걸 환영해요"
+    private var welcomeLabel = UILabel().then {
+        $0.text = "안녕하세요! \nZOOC에 온 걸 환영행"
         $0.textColor = .zoocDarkGray2
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
@@ -45,7 +45,7 @@ final class OnboardingWelcomeView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, agreeTitleLabel)
+        addSubviews(backButton, welcomeLabel)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(17)
@@ -53,7 +53,7 @@ final class OnboardingWelcomeView: UIView {
             $0.size.equalTo(42)
         }
         
-        agreeTitleLabel.snp.makeConstraints {
+        welcomeLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
             $0.leading.equalToSuperview().offset(34)
         }

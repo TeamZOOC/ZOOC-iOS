@@ -26,6 +26,21 @@ final class OnboardingLoginViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        register()
+    }
+    
+    func register() {
+        onboardingLoginView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonDidTap), for: .touchUpInside)
+    }
+    
+    func pushToAgreementView() {
+        let agreementViewController = OnboardingAgreementViewController()
+        self.navigationController?.pushViewController(agreementViewController, animated: true)
+    }
+    
+    @objc
+    func kakaoLoginButtonDidTap() {
+        pushToAgreementView()
     }
 }

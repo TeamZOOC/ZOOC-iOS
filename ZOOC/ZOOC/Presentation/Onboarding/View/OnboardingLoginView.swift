@@ -12,7 +12,6 @@ import Then
 
 final class OnboardingLoginView: UIView {
     //TODO:
-    //1. 쭉 : 색상변경하기
     //2. 카카오톡 로그인 아이콘 집어넣기
     //3. 로티에 사용될 이미지 박기
     
@@ -24,6 +23,11 @@ final class OnboardingLoginView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
+        
+        let attributtedString = NSMutableAttributedString(string: $0.text!)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: ($0.text! as NSString).range(of:"쭉"))
+                
+        $0.attributedText = attributtedString
     }
     
     private var loginDescribeLabel = UILabel().then {
@@ -34,7 +38,7 @@ final class OnboardingLoginView: UIView {
         $0.numberOfLines = 2
     }
     
-    private var kakaoLoginButton = UIButton().then {
+    public var kakaoLoginButton = UIButton().then {
         $0.setTitle("카카오톡으로 로그인", for: .normal)
         $0.setTitleColor(.zoocDarkGray1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
@@ -58,9 +62,7 @@ final class OnboardingLoginView: UIView {
     }
     
     //MARK: - Custom Method
-    private func setUI() {
-        self.backgroundColor = .red
-    }
+    private func setUI() {}
     
     private func setLayout() {
         addSubviews(loginTitleLabel, loginDescribeLabel, kakaoLoginButton)

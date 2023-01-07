@@ -15,18 +15,18 @@ final class OnboardingWelcomeViewController: UIViewController{
     //MARK: - Properties
     
     private let onboardingWelcomeView = OnboardingWelcomeView()
+    private let onboardingWelcome2View = OnboardingWelcome2View()
     
     //MARK: - UI Components
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingWelcomeView
+        self.view = onboardingWelcome2View
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }
 
