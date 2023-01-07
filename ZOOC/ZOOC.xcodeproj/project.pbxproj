@@ -83,6 +83,14 @@
 		D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85D829689D0800AEAF9B /* DeleteAccountAlertViewController.swift */; };
 		D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */; };
 		D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85DC2968B0A500AEAF9B /* MyNoticeSettingViewController.swift */; };
+		D26C85DF2968C26500AEAF9B /* OnboardingLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */; };
+		D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E02968C63F00AEAF9B /* OnboardingLoginViewController.swift */; };
+		D26C85E32968C88800AEAF9B /* OnboardingAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */; };
+		D26C85E52968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */; };
+		D26C85E82968CD8E00AEAF9B /* OnboardingAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */; };
+		D26C85EA2968CF7E00AEAF9B /* AgreementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */; };
+		D26C85EC2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */; };
+		D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -167,6 +175,14 @@
 		D26C85D829689D0800AEAF9B /* DeleteAccountAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountAlertViewController.swift; sourceTree = "<group>"; };
 		D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNoticeSettingView.swift; sourceTree = "<group>"; };
 		D26C85DC2968B0A500AEAF9B /* MyNoticeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNoticeSettingViewController.swift; sourceTree = "<group>"; };
+		D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLoginView.swift; sourceTree = "<group>"; };
+		D26C85E02968C63F00AEAF9B /* OnboardingLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLoginViewController.swift; sourceTree = "<group>"; };
+		D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementView.swift; sourceTree = "<group>"; };
+		D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementTableViewCell.swift; sourceTree = "<group>"; };
+		D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementViewController.swift; sourceTree = "<group>"; };
+		D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementModel.swift; sourceTree = "<group>"; };
+		D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementTableHeaderView.swift; sourceTree = "<group>"; };
+		D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+.swift"; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -209,6 +225,7 @@
 				87648322295236B700F74882 /* UIColor+.swift */,
 				D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */,
 				D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */,
+				D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -272,6 +289,7 @@
 		877BAFBE295EA0D300C2AA1C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				D26C85E62968CB3900AEAF9B /* Cell */,
 				87A76A8C295F6D7E0096F669 /* View */,
 				87A76A8B295F6D780096F669 /* Controller */,
 			);
@@ -333,6 +351,8 @@
 			isa = PBXGroup;
 			children = (
 				878EE32F2965B2F20071DCAC /* Empty.md */,
+				D26C85E02968C63F00AEAF9B /* OnboardingLoginViewController.swift */,
+				D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -341,6 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				878EE32E2965B2EF0071DCAC /* Empty.md */,
+				D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */,
+				D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				87D368842964CB8F009728FC /* Empty.md */,
+				D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -646,6 +669,15 @@
 				D23502FA2961F44700F01101 /* SettingMenuTableViewCell.swift */,
 				D23503022964728700F01101 /* AppInformationTableViewCell.swift */,
 				D26C85CE2968681900AEAF9B /* PetCollectionFooterView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D26C85E62968CB3900AEAF9B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */,
+				D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -765,7 +797,9 @@
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */,
 				876483212952369500F74882 /* UICollectionViewCell+.swift in Sources */,
+				D26C85E82968CD8E00AEAF9B /* OnboardingAgreementViewController.swift in Sources */,
 				87A76AAB295F6EDE0096F669 /* RecordService.swift in Sources */,
+				D26C85E52968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift in Sources */,
 				D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */,
 				D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */,
 				D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */,
@@ -776,20 +810,26 @@
 				D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
 				D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */,
+				D26C85DF2968C26500AEAF9B /* OnboardingLoginView.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
+				D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */,
+				D26C85EA2968CF7E00AEAF9B /* AgreementModel.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
 				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
+				D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */,
 				87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */,
 				877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
 				D235030B2964991700F01101 /* EditProfileViewController.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
+				D26C85E32968C88800AEAF9B /* OnboardingAgreementView.swift in Sources */,
+				D26C85EC2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift in Sources */,
 				D26C85D7296888D000AEAF9B /* DeleteAccountView.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
