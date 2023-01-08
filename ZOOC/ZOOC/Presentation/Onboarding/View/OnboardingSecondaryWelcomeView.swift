@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingWelcome2View: UIView {
+final class OnboardingSecondaryWelcomeView: UIView {
 
     //MARK: - UI Components
     

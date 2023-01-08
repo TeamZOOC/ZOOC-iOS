@@ -40,6 +40,7 @@ final class OnboardingAgreementView: UIView {
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
         $0.backgroundColor = .zoocGray1
+        $0.isEnabled = false
     }
     
     //MARK: - Life Cycles

@@ -13,6 +13,7 @@ import Then
 final class OnboardingAgreementViewController: BaseViewController {
     
     //MARK: - Properties
+    
     private var allSelected : Bool = false
     
     private lazy var onboardingAgreementView = OnboardingAgreementView()
@@ -28,6 +29,8 @@ final class OnboardingAgreementViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        onboardingAgreementView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
@@ -40,11 +43,21 @@ final class OnboardingAgreementViewController: BaseViewController {
         onboardingAgreementView.agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
     
+    private func pushToWelcomeView() {
+        let welcomeViewController = OnboardingWelcomeViewController()
+        self.navigationController?.pushViewController(welcomeViewController, animated: true)
+    }
+    
     //MARK: - Action Method
     
     @objc
     private func popToMyProfileView() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func signUpButtonDidTap() {
+        pushToWelcomeView()
     }
 }
 

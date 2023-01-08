@@ -15,18 +15,29 @@ final class OnboardingWelcomeViewController: UIViewController{
     //MARK: - Properties
     
     private let onboardingWelcomeView = OnboardingWelcomeView()
-    private let onboardingWelcome2View = OnboardingWelcome2View()
-    
-    //MARK: - UI Components
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingWelcome2View
+        self.view = onboardingWelcomeView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        presentToWelcomeView2()
+    }
+    
+    //MARK: - Custom Method
+    
+    func presentToWelcomeView2() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            let secondaryWelcomeViewController = OnboardingWelcomeSecondaryViewController()
+            self.navigationController?.pushViewController(secondaryWelcomeViewController, animated: true)
+        }
     }
 }
 
