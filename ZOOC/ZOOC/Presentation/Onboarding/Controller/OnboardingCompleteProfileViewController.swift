@@ -44,6 +44,8 @@ final class OnboardingCompleteProfileViewController: UIViewController{
         }
     }
     
+    //MARK: - Action Method
+    
     @objc
     private func popToRegisterProfileImageView() {
         self.navigationController?.popViewController(animated: true)

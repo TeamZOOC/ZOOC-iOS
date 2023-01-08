@@ -103,6 +103,9 @@
 		D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */; };
 		D26C8604296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */; };
 		D26C8606296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */; };
+		D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */; };
+		D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */; };
+		D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -207,6 +210,9 @@
 		D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteProfileViewController.swift; sourceTree = "<group>"; };
 		D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryCompleteProfileView.swift; sourceTree = "<group>"; };
 		D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteSecondaryProfileViewController.swift; sourceTree = "<group>"; };
+		D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateView.swift; sourceTree = "<group>"; };
+		D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateViewController.swift; sourceTree = "<group>"; };
+		D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateCompletedView.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -383,6 +389,7 @@
 				D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */,
 				D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */,
 				D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */,
+				D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -399,6 +406,8 @@
 				D26C85FB296B21A500AEAF9B /* OnboardingRegisterProfileImageView.swift */,
 				D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */,
 				D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */,
+				D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */,
+				D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -820,6 +829,7 @@
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
+				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
 				D26C8606296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift in Sources */,
@@ -830,6 +840,7 @@
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				D26C85F4296946C300AEAF9B /* OnboardingSecondaryWelcomeView.swift in Sources */,
+				D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */,
 				D26C85CF2968681900AEAF9B /* PetCollectionFooterView.swift in Sources */,
 				877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
@@ -844,6 +855,7 @@
 				D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */,
 				D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */,
 				D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */,
+				D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */,
 				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
 				D2350309296490A700F01101 /* EditProfileView.swift in Sources */,
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,

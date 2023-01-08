@@ -16,8 +16,6 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     
     private let onboardingSecondaryCompleteProfileView = OnboardingSecondaryCompleteProfileView()
     
-    //MARK: - UI Components
-    
     //MARK: - Life Cycle
     
     override func loadView() {
@@ -27,12 +25,32 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(popToCompleteProfileView), for: .touchUpInside)
+        register ()
     }
+    
+    //MARK: - Custom Method
+    
+    func register () {
+        onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(popToCompleteProfileView), for: .touchUpInside)
+        
+        onboardingSecondaryCompleteProfileView.notGetCodeButton.addTarget(self, action: #selector(notGetCodeButtonDidTap), for: .touchUpInside)
+    }
+    
+    func pushToParticipateCompletedView() {
+        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
+        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
+    }
+    
+    //MARK: - Action Method
     
     @objc
     private func popToCompleteProfileView() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func notGetCodeButtonDidTap() {
+        pushToParticipateCompletedView()
     }
 }
 
