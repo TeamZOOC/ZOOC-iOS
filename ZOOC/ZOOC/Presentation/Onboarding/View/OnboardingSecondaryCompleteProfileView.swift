@@ -31,11 +31,7 @@ final class OnboardingSecondaryCompleteProfileView: UIView {
         $0.textColor = .zoocDarkGray1
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
-        
-        let attributtedString = NSMutableAttributedString(string: $0.text!)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: ($0.text! as NSString).range(of:"가족 코드"))
-                
-        $0.attributedText = attributtedString
+        $0.asColor(targetString: "가족 코드", color: .zoocGradientGreen)
     }
     
     private var completeImage = UIImageView().then {

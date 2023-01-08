@@ -23,11 +23,7 @@ final class OnboardingLoginView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
-        
-        let attributtedString = NSMutableAttributedString(string: $0.text!)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: ($0.text! as NSString).range(of:"쭉"))
-                
-        $0.attributedText = attributtedString
+        $0.asColor(targetString: "쭉", color: .zoocGradientGreen)
     }
     
     private var loginDescribeLabel = UILabel().then {
