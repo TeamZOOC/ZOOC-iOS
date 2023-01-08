@@ -24,11 +24,21 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
     
+    private func pushToCompleteProfileView() {
+        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
+        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
+    }
     
+    //MARK: - Action Method
+    
+    @objc
+    func createProfileButtonDidTap() {
+        pushToCompleteProfileView()
+    }
 }
-
-import Foundation

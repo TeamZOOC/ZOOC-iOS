@@ -36,6 +36,10 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     public var registerProfileImageButton = UIButton().then {
         $0.setImage(Image.cameraCircleBig, for: .normal)
+        $0.layer.borderWidth = 7
+        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
+        $0.layer.cornerRadius = 73.5
+        $0.clipsToBounds = true
     }
     
     public var createProfileButton = UIButton().then {
@@ -88,7 +92,7 @@ final class OnboardingRegisterProfileImageView: UIView {
         registerProfileImageButton.snp.makeConstraints {
             $0.top.equalTo(self.registerProfileImageSubLabel.snp.bottom).offset(64)
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(161)
+            $0.size.equalTo(147)
         }
         
         createProfileButton.snp.makeConstraints {
