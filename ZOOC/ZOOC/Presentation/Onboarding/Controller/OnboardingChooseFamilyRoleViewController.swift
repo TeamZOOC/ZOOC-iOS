@@ -38,8 +38,6 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
     }
     
-    
-    
     //MARK: - Action Method
     
     @objc
@@ -48,7 +46,6 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
             if let text = textField.text {
                 
                 if text.count >= 10 {
-                    print("10 이상상상상상상상상")
                     textField.resignFirstResponder()
                     let index = text.index(text.startIndex, offsetBy: 10)
                     let newString = text[text.startIndex..<index]
@@ -59,14 +56,12 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
                     onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
                 }
                 else if text.count <= 0 {
-                    print("yes")
                     onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
                     onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocGray1
                     onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
                     onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = false
                 }
                 else {
-                    print("no")
                     onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
                     onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
                     onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
@@ -77,9 +72,13 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         }
     }
     
+    //MARK: - Action Method
+    
     @objc
     private func pushToRegisterProfileImageView() {
         let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
+        let profileName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
+        onboardingRegisterProfileImageViewController.dataSend(profileName: profileName)
         self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
     }
 }

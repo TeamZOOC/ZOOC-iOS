@@ -101,6 +101,8 @@
 		D26C85FE296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */; };
 		D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */; };
 		D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */; };
+		D26C8604296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */; };
+		D26C8606296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -203,6 +205,8 @@
 		D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterProfileImageViewController.swift; sourceTree = "<group>"; };
 		D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteProfileView.swift; sourceTree = "<group>"; };
 		D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteProfileViewController.swift; sourceTree = "<group>"; };
+		D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryCompleteProfileView.swift; sourceTree = "<group>"; };
+		D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteSecondaryProfileViewController.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 				D26C85F9296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift */,
 				D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */,
 				D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */,
+				D26C8605296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				D26C85F7296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift */,
 				D26C85FB296B21A500AEAF9B /* OnboardingRegisterProfileImageView.swift */,
 				D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */,
+				D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				D23503012964702400F01101 /* AppInformationView.swift in Sources */,
 				D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */,
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
+				D26C8604296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift in Sources */,
 				4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
@@ -815,6 +822,7 @@
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
+				D26C8606296B2F4B00AEAF9B /* OnboardingCompleteSecondaryProfileViewController.swift in Sources */,
 				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,

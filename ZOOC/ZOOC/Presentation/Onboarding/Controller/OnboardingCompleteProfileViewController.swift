@@ -27,5 +27,19 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        pushToSecondaryCompleteProfileView()
+    }
+    
+    //MARK: - Custom Method
+    
+    func pushToSecondaryCompleteProfileView() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            let secondaryCompleteProfileViewController = OnboardingSecondaryCompleteProfileViewController()
+            self.navigationController?.pushViewController(secondaryCompleteProfileViewController, animated: true)
+        }
+    }
 }
 

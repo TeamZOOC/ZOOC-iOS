@@ -12,14 +12,15 @@ import Then
 
 final class OnboardingRegisterProfileImageView: UIView {
 
+    //MARK: - Properties
+    
     //MARK: - UI Components
     
     public var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
     }
     
-    private var registerProfileImageLabel = UILabel().then {
-        $0.text = "엄마! \n프로필 사진을 등록할까요?"
+    public var registerProfileImageLabel = UILabel().then {
         $0.textColor = .zoocDarkGray1
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
@@ -66,6 +67,7 @@ final class OnboardingRegisterProfileImageView: UIView {
     }
     
     //MARK: - Custom Method
+    
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
     }

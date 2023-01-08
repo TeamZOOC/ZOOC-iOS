@@ -28,12 +28,12 @@ final class OnboardingWelcomeViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
-        presentToWelcomeView2()
+        pushToSecondaryWelcomeView()
     }
     
     //MARK: - Custom Method
     
-    func presentToWelcomeView2() {
+    func pushToSecondaryWelcomeView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             let secondaryWelcomeViewController = OnboardingWelcomeSecondaryViewController()
             self.navigationController?.pushViewController(secondaryWelcomeViewController, animated: true)
