@@ -44,7 +44,7 @@ final class OnboardingChooseFamilyRoleView: UIView {
         $0.backgroundColor = .zoocGray1
     }
     
-    private var chooseFamilyButton = UIButton().then {
+    public var chooseFamilyButton = UIButton().then {
         $0.setTitle("이렇게 불러주세요", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
@@ -99,15 +99,15 @@ final class OnboardingChooseFamilyRoleView: UIView {
         
         chooseFamilyTextFeildUnderLineView.snp.makeConstraints {
             $0.top.equalTo(self.chooseFamilyTextField.snp.bottom).offset(5)
-            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(self.chooseFamilyLabel)
             $0.width.equalTo(314)
             $0.height.equalTo(1)
         }
         
         chooseFamilyButton.snp.makeConstraints {
             $0.top.equalTo(self.chooseFamilyTextFeildUnderLineView.snp.bottom).offset(387)
-            $0.leading.centerX.equalToSuperview()
-            $0.width.equalTo(314)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
             $0.height.equalTo(54)
         }
     }

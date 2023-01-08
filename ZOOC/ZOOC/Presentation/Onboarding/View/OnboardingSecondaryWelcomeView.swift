@@ -38,7 +38,7 @@ final class OnboardingSecondaryWelcomeView: UIView {
         $0.image = Image.graphics1
     }
     
-    private var nextButton = UIButton().then {
+    public var nextButton = UIButton().then {
         $0.setTitle("다음", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1

@@ -26,5 +26,21 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingSecondaryWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+    }
+    
+    //MARK: - Custom Method
+    
+    func pushToChooseFamilyRoleView() {
+        let onboardingChooseFamilyRoleViewController = OnboardingChooseFamilyRoleViewController()
+        self.navigationController?.pushViewController(onboardingChooseFamilyRoleViewController, animated: true)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    func nextButtonDidTap() {
+        pushToChooseFamilyRoleView()
     }
 }
