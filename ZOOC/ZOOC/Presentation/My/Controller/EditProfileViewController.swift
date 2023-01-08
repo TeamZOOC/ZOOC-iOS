@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class  EditProfileViewController: BaseViewController {
+final class EditProfileViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -20,13 +20,11 @@ final class  EditProfileViewController: BaseViewController {
     
     override func loadView() {
         self.view = editProfileView
-        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        editProfileView.editCompletedButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
-        editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         register()
     }
     
@@ -34,6 +32,10 @@ final class  EditProfileViewController: BaseViewController {
     //MARK: - Custom Method
     
     func register() {
+        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        editProfileView.editCompletedButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
 
@@ -84,34 +86,44 @@ final class  EditProfileViewController: BaseViewController {
         present(myAlertViewController, animated: false)
     }
     
-    @objc private func textDidChange(_ notification: Notification) {
+    @objc
+    private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
-                
-                if text.count > 10 {
-                    textField.resignFirstResponder()
-                }
-                
                 if text.count >= 10 {
+                    textField.resignFirstResponder()
                     let index = text.index(text.startIndex, offsetBy: 10)
                     let newString = text[text.startIndex..<index]
                     textField.text = String(newString)
-                    editProfileView.profileNameCountLabel.text = "10/10"
+                    textCountOver()
                 }
-                
-                else if text.count < 0 {
-                    editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
-                    editProfileView.editCompletedButton.backgroundColor = .zoocGray1
-                    editProfileView.editCompletedButton.isEnabled = false
-                    editProfileView.profileNameCountLabel.text = "\(text.count)/10"
+                else if text.count <= 0 {
+                    textCountUnder(textCount: text.count)
                 }
                 else {
-                    editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocMainGreen //zoocgragreen
-                    editProfileView.editCompletedButton.backgroundColor = .zoocMainGreen //zoocgragreen
-                    editProfileView.editCompletedButton.isEnabled = true
-                    editProfileView.profileNameCountLabel.text = "\(text.count)/10"
+                    textWriting(textCount: text.count)
                 }
             }
         }
+    }
+}
+
+extension EditProfileViewController {
+    func textCountOver() {
+        editProfileView.profileNameCountLabel.text = "10/10"
+    }
+    
+    func textWriting(textCount: Int) {
+        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGradientGreen
+        editProfileView.editCompletedButton.backgroundColor = .zoocGradientGreen
+        editProfileView.editCompletedButton.isEnabled = true
+        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
+    }
+    
+    func textCountUnder(textCount: Int) {
+        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
+        editProfileView.editCompletedButton.backgroundColor = .zoocGray1
+        editProfileView.editCompletedButton.isEnabled = false
+        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
     }
 }

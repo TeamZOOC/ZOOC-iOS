@@ -41,6 +41,8 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
         onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
         
         onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        
+        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
     }
     
     private func pushToCompleteProfileView() {
@@ -63,5 +65,27 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     @objc
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    func chooseProfileImage() {
+        let actionSheetController = UIAlertController()
+        
+        let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
+            print("ok")
+        })
+        
+        let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
+            print("delete")
+        })
+        
+        let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
+            print("cancel")
+        })
+        
+        actionSheetController.addAction(presentToGalleryButton)
+        actionSheetController.addAction(deleteProfileImageButton)
+        actionSheetController.addAction(cancleButton)
+        self.present(actionSheetController, animated: true)
     }
 }
