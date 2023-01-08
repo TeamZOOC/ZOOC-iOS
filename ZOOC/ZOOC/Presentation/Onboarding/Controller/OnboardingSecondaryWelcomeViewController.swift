@@ -16,8 +16,6 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
     
     private let onboardingSecondaryWelcomeView = OnboardingSecondaryWelcomeView()
     
-    //MARK: - UI Components
-    
     //MARK: - Life Cycle
     
     override func loadView() {
@@ -27,13 +25,17 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingSecondaryWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        onboardingSecondaryWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        register()
     }
     
     //MARK: - Custom Method
     
-    func pushToChooseFamilyRoleView() {
+    private func register() {
+        onboardingSecondaryWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        onboardingSecondaryWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func pushToChooseFamilyRoleView() {
         let onboardingChooseFamilyRoleViewController = OnboardingChooseFamilyRoleViewController()
         self.navigationController?.pushViewController(onboardingChooseFamilyRoleViewController, animated: true)
     }

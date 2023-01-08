@@ -16,8 +16,6 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     
     private let onboardingCompleteProfileView = OnboardingCompleteProfileView()
     
-    //MARK: - UI Components
-    
     //MARK: - Life Cycle
     
     override func loadView() {

@@ -26,16 +26,22 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
+        
         
         let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: (familyRoleLabel as NSString).range(of: profileName))
                 
         onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
-        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+     
     }
     
     //MARK: - Custom Method
+    
+    private func register() {
+        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
+        
+        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
     
     private func pushToCompleteProfileView() {
         let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()

@@ -29,8 +29,6 @@ final class OnboardingAgreementViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
-        onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
@@ -38,6 +36,9 @@ final class OnboardingAgreementViewController: BaseViewController {
     private func register() {
         onboardingAgreementView.agreeTableView.delegate = self
         onboardingAgreementView.agreeTableView.dataSource = self
+        
+        onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
         
         onboardingAgreementView.agreeTableView.register(OnboardingAgreementTableViewCell.self, forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
         onboardingAgreementView.agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
@@ -121,22 +122,21 @@ extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
 
 extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
     func allCellButtonTapped(isSelected: Bool) {
+        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
         if isSelected {
             allSelected = true
             onboardingAgreementView.signUpButton.isEnabled = true
             onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-            agreementData[0].isSelected = true
-            agreementData[1].isSelected = true
-            agreementData[2].isSelected = true
-            agreementData[3].isSelected = true
+            agreementDataIndexList.forEach {
+                agreementData[$0].isSelected = true
+            }
         } else {
             allSelected = false
             onboardingAgreementView.signUpButton.isEnabled = false
             onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-            agreementData[0].isSelected = false
-            agreementData[1].isSelected = false
-            agreementData[2].isSelected = false
-            agreementData[3].isSelected = false
+            agreementDataIndexList.forEach {
+                agreementData[$0].isSelected = false
+            }
         }
         onboardingAgreementView.agreeTableView.reloadData()
     }

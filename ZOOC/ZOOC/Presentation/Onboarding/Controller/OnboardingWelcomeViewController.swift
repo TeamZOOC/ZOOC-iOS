@@ -25,17 +25,22 @@ final class OnboardingWelcomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        register()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+        
         pushToSecondaryWelcomeView()
     }
     
     //MARK: - Custom Method
     
-    func pushToSecondaryWelcomeView() {
+    private func register() {
+        onboardingWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func pushToSecondaryWelcomeView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             let secondaryWelcomeViewController = OnboardingWelcomeSecondaryViewController()
             self.navigationController?.pushViewController(secondaryWelcomeViewController, animated: true)

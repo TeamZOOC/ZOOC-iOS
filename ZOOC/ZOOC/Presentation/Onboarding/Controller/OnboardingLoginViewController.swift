@@ -28,6 +28,8 @@ final class OnboardingLoginViewController: UIViewController{
         register()
     }
     
+    //MARK: - Custom Method
+    
     func register() {
         onboardingLoginView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonDidTap), for: .touchUpInside)
     }
@@ -36,6 +38,8 @@ final class OnboardingLoginViewController: UIViewController{
         let agreementViewController = OnboardingAgreementViewController()
         self.navigationController?.pushViewController(agreementViewController, animated: true)
     }
+    
+    //MARK: - Action Method
     
     @objc
     func kakaoLoginButtonDidTap() {

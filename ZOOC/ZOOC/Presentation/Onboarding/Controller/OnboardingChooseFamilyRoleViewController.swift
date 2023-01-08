@@ -16,8 +16,6 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
     private let onboardingChooseFamilyRoleView = OnboardingChooseFamilyRoleView()
     
-    //MARK: - UI Components
-    
     //MARK: - Life Cycle
     
     override func loadView() {
