@@ -19,7 +19,7 @@ final class OnboardingRegisterProfileImageView: UIView {
     }
     
     private var registerProfileImageLabel = UILabel().then {
-        $0.text = "엄마! \n 프로필 사진을 등록할까요?"
+        $0.text = "엄마! \n프로필 사진을 등록할까요?"
         $0.textColor = .zoocDarkGray1
         $0.textAlignment = .left
         $0.font = .zoocDisplay1

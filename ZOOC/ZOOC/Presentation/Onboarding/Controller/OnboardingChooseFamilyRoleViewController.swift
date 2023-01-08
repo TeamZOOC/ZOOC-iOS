@@ -34,6 +34,8 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
     func register() {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        
+        onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
     }
     
     
@@ -68,14 +70,18 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
                     onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
                     onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
                     onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = false
+                    onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
+                    onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
                 }
             }
         }
     }
     
-//    @objc
-//    private pushTo
+    @objc
+    private func pushToRegisterProfileImageView() {
+        let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
+        self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
+    }
 }
 
 
