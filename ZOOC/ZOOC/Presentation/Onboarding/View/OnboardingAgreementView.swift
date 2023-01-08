@@ -57,6 +57,7 @@ final class OnboardingAgreementView: UIView {
     }
     
     //MARK: - Custom Method
+    
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
     }

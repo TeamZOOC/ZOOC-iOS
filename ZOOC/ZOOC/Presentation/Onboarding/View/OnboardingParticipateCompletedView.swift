@@ -24,11 +24,7 @@ final class OnboardingParticipateCompletedView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
-        
-        let attributtedString = NSMutableAttributedString(string: $0.text!)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocMainGreen, range: ($0.text! as NSString).range(of:"합류 완료!"))
-                
-        $0.attributedText = attributtedString
+        $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
     }
     
     private var completeProfileSubLabel = UILabel().then {
@@ -67,6 +63,7 @@ final class OnboardingParticipateCompletedView: UIView {
     }
     
     //MARK: - Custom Method
+    
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
     }

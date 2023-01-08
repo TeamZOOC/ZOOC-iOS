@@ -43,29 +43,18 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
-                
                 if text.count >= 10 {
                     textField.resignFirstResponder()
                     let index = text.index(text.startIndex, offsetBy: 10)
                     let newString = text[text.startIndex..<index]
                     textField.text = String(newString)
-                    onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
+                    textCountOver()
                 }
                 else if text.count <= 0 {
-                    onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = false
+                    textCountUnder()
                 }
                 else {
-                    onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
-                    onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
-                    onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
+                    textWriting()
                 }
             }
         }
@@ -85,4 +74,26 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     }
 }
 
-
+extension OnboardingChooseFamilyRoleViewController {
+    func textCountOver() {
+        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
+        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
+        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
+        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
+    }
+    
+    func textCountUnder() {
+        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
+        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocGray1
+        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
+        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = false
+    }
+    
+    func textWriting() {
+        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
+        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
+        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
+        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
+        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
+    }
+}

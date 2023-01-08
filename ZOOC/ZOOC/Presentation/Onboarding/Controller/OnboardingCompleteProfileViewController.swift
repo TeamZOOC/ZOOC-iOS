@@ -25,15 +25,20 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        register()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
+        
         pushToSecondaryCompleteProfileView()
     }
     
     //MARK: - Custom Method
+    
+    func register() {
+        onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
     
     func pushToSecondaryCompleteProfileView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {

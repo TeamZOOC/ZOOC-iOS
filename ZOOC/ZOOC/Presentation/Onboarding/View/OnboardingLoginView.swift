@@ -58,7 +58,10 @@ final class OnboardingLoginView: UIView {
     }
     
     //MARK: - Custom Method
-    private func setUI() {}
+    
+    private func setUI() {
+        self.backgroundColor = .zoocBackgroundGreen
+    }
     
     private func setLayout() {
         addSubviews(loginTitleLabel, loginDescribeLabel, kakaoLoginButton)

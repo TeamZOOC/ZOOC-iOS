@@ -97,6 +97,8 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - ChekedButtonTappedDelegate
+
 extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
     func cellButtonTapped(isSelected: Bool, index: Int) {
         agreementData[index].isSelected = isSelected
@@ -119,6 +121,8 @@ extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
         onboardingAgreementView.agreeTableView.reloadData()
     }
 }
+
+//MARK: - AllChekedButtonTappedDelegate
 
 extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
     func allCellButtonTapped(isSelected: Bool) {

@@ -62,6 +62,7 @@ final class OnboardingSecondaryWelcomeView: UIView {
     }
     
     //MARK: - Custom Method
+    
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
     }
