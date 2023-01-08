@@ -10,16 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateCompletedViewController: UIViewController{
+final class OnboardingParticipateViewController: UIViewController{
     
     //MARK: - Properties
     
-    private let onboardingParticipateCompletedView = OnboardingParticipateCompletedView()
+    private let onboardingParticipateView = OnboardingParticipateView()
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingParticipateCompletedView
+        self.view = onboardingParticipateView
     }
     
     override func viewDidLoad() {
@@ -31,7 +31,14 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
     //MARK: - Custom Method
     
     func register() {
-        onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        
+        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+    }
+    
+    func pushToParticipateCompletedView() {
+        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
+        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
     }
     
     //MARK: - Action Method
@@ -39,6 +46,11 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
     @objc
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func nextButtonDidTap() {
+        pushToParticipateCompletedView()
     }
 }
 

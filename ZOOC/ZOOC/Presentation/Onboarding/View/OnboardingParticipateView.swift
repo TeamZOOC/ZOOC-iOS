@@ -11,7 +11,8 @@ import SnapKit
 import Then
 
 final class OnboardingParticipateView: UIView {
-
+    //TODO: 가족코드 입력 길이를 통해서 입력하기 버튼 활성화
+    
     //MARK: - UI Components
     
     public var backButton = UIButton().then {
@@ -47,7 +48,6 @@ final class OnboardingParticipateView: UIView {
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
         $0.backgroundColor = .zoocGray1
-        $0.isEnabled = false
     }
     
     //MARK: - Life Cycles

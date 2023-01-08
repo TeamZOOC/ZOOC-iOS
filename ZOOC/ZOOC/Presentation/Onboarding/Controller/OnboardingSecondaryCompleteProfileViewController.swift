@@ -37,8 +37,8 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     }
     
     func pushToParticipateCompletedView() {
-        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
-        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
+        let onboardingParticipateViewController = OnboardingParticipateViewController()
+        self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
     }
     
     //MARK: - Action Method

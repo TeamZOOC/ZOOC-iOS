@@ -13,7 +13,6 @@ import Then
 final class OnboardingRegisterProfileImageViewController: UIViewController{
     
     //MARK: - Properties
-    
     private var profileName: String = ""
     private var familyRoleLabel: String = ""
     private let onboardingRegisterProfileImageView = OnboardingRegisterProfileImageView()
@@ -28,6 +27,12 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
         super.viewDidLoad()
         
         register()
+        
+        let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: (familyRoleLabel as NSString).range(of: profileName))
+                
+        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
+     
     }
     
     //MARK: - Custom Method
@@ -36,8 +41,6 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
         onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
         
         onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
-        onboardingRegisterProfileImageView.registerProfileImageLabel.asColor(targetString: profileName, color: .zoocGradientGreen)
     }
     
     private func pushToCompleteProfileView() {
