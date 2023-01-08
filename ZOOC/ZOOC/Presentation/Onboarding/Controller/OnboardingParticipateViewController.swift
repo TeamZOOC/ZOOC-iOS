@@ -29,11 +29,11 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
     }
     
     func register() {
-        onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(popToSecondaryCompleteProfileView), for: .touchUpInside)
+        onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     @objc
-    private func popToSecondaryCompleteProfileView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -32,7 +32,7 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: (familyRoleLabel as NSString).range(of: profileName))
                 
         onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
-        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(popToChooseFamilyRoleView), for: .touchUpInside)
+        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
@@ -55,7 +55,7 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     }
     
     @objc
-    private func popToChooseFamilyRoleView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

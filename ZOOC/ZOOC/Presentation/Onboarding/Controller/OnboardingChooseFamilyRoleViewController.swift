@@ -36,7 +36,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
-        onboardingChooseFamilyRoleView.backButton.addTarget(self, action: #selector(popToMySecondaryWelcome), for: .touchUpInside)
+        onboardingChooseFamilyRoleView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -82,7 +82,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     }
     
     @objc
-    private func popToMySecondaryWelcome() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

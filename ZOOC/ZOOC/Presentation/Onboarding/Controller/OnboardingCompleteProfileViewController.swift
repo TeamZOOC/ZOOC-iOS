@@ -27,7 +27,7 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(popToRegisterProfileImageView), for: .touchUpInside)
+        onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +47,7 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     //MARK: - Action Method
     
     @objc
-    private func popToRegisterProfileImageView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

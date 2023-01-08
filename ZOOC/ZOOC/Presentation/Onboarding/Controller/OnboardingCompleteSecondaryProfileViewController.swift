@@ -31,7 +31,7 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     //MARK: - Custom Method
     
     func register () {
-        onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(popToCompleteProfileView), for: .touchUpInside)
+        onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
         onboardingSecondaryCompleteProfileView.notGetCodeButton.addTarget(self, action: #selector(notGetCodeButtonDidTap), for: .touchUpInside)
     }
@@ -44,7 +44,7 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     //MARK: - Action Method
     
     @objc
-    private func popToCompleteProfileView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     

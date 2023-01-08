@@ -28,7 +28,7 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
         super.viewDidLoad()
         
         onboardingSecondaryWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        onboardingSecondaryWelcomeView.backButton.addTarget(self, action: #selector(popToWelcomeView), for: .touchUpInside)
+        onboardingSecondaryWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
@@ -46,7 +46,7 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
     }
     
     @objc
-    private func popToWelcomeView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

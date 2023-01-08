@@ -29,7 +29,7 @@ final class OnboardingAgreementViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
-        onboardingAgreementView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
@@ -51,7 +51,7 @@ final class OnboardingAgreementViewController: BaseViewController {
     //MARK: - Action Method
     
     @objc
-    private func popToMyProfileView() {
+    private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
