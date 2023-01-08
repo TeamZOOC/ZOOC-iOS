@@ -32,14 +32,14 @@ final class OnboardingAgreementView: UIView {
         $0.isScrollEnabled = false
     }
     
-    private var signUpButton = UIButton().then {
+    public var signUpButton = UIButton().then {
         $0.setTitle("회원가입", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
-        $0.backgroundColor = .zoocGradientGreen
+        $0.backgroundColor = .zoocGray1
     }
     
     //MARK: - Life Cycles
@@ -88,6 +88,5 @@ final class OnboardingAgreementView: UIView {
             $0.height.equalTo(54)
         }
     }
-    
 }
 

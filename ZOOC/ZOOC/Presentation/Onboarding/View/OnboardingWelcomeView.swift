@@ -19,7 +19,7 @@ final class OnboardingWelcomeView: UIView {
     }
     
     private var welcomeLabel = UILabel().then {
-        $0.text = "안녕하세요! \nZOOC에 온 걸 환영행"
+        $0.text = "안녕하세요! \nZOOC에 온 걸 환영해요"
         $0.textColor = .zoocDarkGray2
         $0.textAlignment = .left
         $0.font = .zoocDisplay1

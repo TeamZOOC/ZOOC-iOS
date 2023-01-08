@@ -84,5 +84,4 @@ final class OnboardingLoginView: UIView {
             $0.height.equalTo(54)
         }
     }
-    
 }

@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol AllChekedButtonTappedDelegate {
+    func allCellButtonTapped(isSelected: Bool)
+}
+
 final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
+    
+    private var isSelected: Bool = false
+    var delegate: AllChekedButtonTappedDelegate?
     
     //MARK: - UI Components
     
@@ -25,8 +32,9 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
         $0.textAlignment = .left
     }
     
-    private var checkedButton = UIButton().then {
+    private lazy var checkedButton = UIButton().then {
         $0.setImage(Image.checkBox, for: .normal)
+        $0.addTarget(self, action: #selector(allAgreementIsSelected), for: .touchUpInside)
     }
     
     override init(reuseIdentifier: String?) {
@@ -63,6 +71,26 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
             $0.size.equalTo(20)
+        }
+    }
+    
+    func dataBind(all: Bool){
+        if all {
+            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+        } else {
+            checkedButton.setImage(Image.checkBox, for: .normal)
+        }
+    }
+    
+    @objc func allAgreementIsSelected() {
+        if isSelected {
+            isSelected = false
+            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+            delegate?.allCellButtonTapped(isSelected: false)
+        } else {
+            isSelected = true
+            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+            delegate?.allCellButtonTapped(isSelected: true)
         }
     }
 }

@@ -13,8 +13,10 @@ import Then
 final class OnboardingAgreementViewController: BaseViewController {
     
     //MARK: - Properties
+    private var allSelected : Bool = false
     
     private lazy var onboardingAgreementView = OnboardingAgreementView()
+    private var agreementData: [AgreementModel] = AgreementModel.agreementData
     
     //MARK: - Life Cycle
     
@@ -62,25 +64,67 @@ extension OnboardingAgreementViewController: UITableViewDelegate {
 
 extension OnboardingAgreementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AgreementModel.agreementData.count
+        return agreementData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingAgreementTableViewCell.cellIdentifier, for: indexPath) as?
                 OnboardingAgreementTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: AgreementModel.agreementData[indexPath.row])
+        cell.dataBind(model: agreementData[indexPath.row], index: indexPath.row)
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
+        cell.dataBind(all: allSelected)
+        cell.delegate = self
         return cell
     }
 }
 
 extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
-    func cellButtonTapped() {
-        print("Button Tapped")
+    func cellButtonTapped(isSelected: Bool, index: Int) {
+        agreementData[index].isSelected = isSelected
+        
+        if (agreementData[0].isSelected == true &&
+            agreementData[1].isSelected == true &&
+            agreementData[3].isSelected == true) {
+            onboardingAgreementView.signUpButton.isEnabled = true
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+            if agreementData[2].isSelected {
+                allSelected = true
+            }else {
+                allSelected = false
+            }
+        } else {
+            onboardingAgreementView.signUpButton.isEnabled = false
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+            allSelected = false
+        }
+        onboardingAgreementView.agreeTableView.reloadData()
+    }
+}
+
+extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
+    func allCellButtonTapped(isSelected: Bool) {
+        if isSelected {
+            allSelected = true
+            onboardingAgreementView.signUpButton.isEnabled = true
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+            agreementData[0].isSelected = true
+            agreementData[1].isSelected = true
+            agreementData[2].isSelected = true
+            agreementData[3].isSelected = true
+        } else {
+            allSelected = false
+            onboardingAgreementView.signUpButton.isEnabled = false
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+            agreementData[0].isSelected = false
+            agreementData[1].isSelected = false
+            agreementData[2].isSelected = false
+            agreementData[3].isSelected = false
+        }
+        onboardingAgreementView.agreeTableView.reloadData()
     }
 }
