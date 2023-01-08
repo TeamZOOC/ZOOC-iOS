@@ -106,6 +106,7 @@
 		D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */; };
 		D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */; };
 		D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */; };
+		D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C860D296B6E8600AEAF9B /* UILabel+.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -213,6 +214,7 @@
 		D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateView.swift; sourceTree = "<group>"; };
 		D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateViewController.swift; sourceTree = "<group>"; };
 		D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateCompletedView.swift; sourceTree = "<group>"; };
+		D26C860D296B6E8600AEAF9B /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */,
 				D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */,
 				D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */,
+				D26C860D296B6E8600AEAF9B /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
+				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
