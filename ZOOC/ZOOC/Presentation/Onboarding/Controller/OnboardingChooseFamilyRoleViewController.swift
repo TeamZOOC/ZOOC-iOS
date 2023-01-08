@@ -36,6 +36,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
+        onboardingChooseFamilyRoleView.backButton.addTarget(self, action: #selector(popToMySecondaryWelcome), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -72,14 +73,17 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         }
     }
     
-    //MARK: - Action Method
-    
     @objc
     private func pushToRegisterProfileImageView() {
         let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
         let profileName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
         onboardingRegisterProfileImageViewController.dataSend(profileName: profileName)
         self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
+    }
+    
+    @objc
+    private func popToMySecondaryWelcome() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

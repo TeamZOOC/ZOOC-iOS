@@ -28,6 +28,7 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
         super.viewDidLoad()
         
         onboardingSecondaryWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        onboardingSecondaryWelcomeView.backButton.addTarget(self, action: #selector(popToWelcomeView), for: .touchUpInside)
     }
     
     //MARK: - Custom Method
@@ -42,5 +43,10 @@ final class OnboardingWelcomeSecondaryViewController: UIViewController{
     @objc
     func nextButtonDidTap() {
         pushToChooseFamilyRoleView()
+    }
+    
+    @objc
+    private func popToWelcomeView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

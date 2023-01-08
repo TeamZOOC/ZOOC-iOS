@@ -26,6 +26,13 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(popToCompleteProfileView), for: .touchUpInside)
+    }
+    
+    @objc
+    private func popToCompleteProfileView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

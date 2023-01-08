@@ -16,8 +16,6 @@ final class OnboardingLoginViewController: UIViewController{
     
     private let onboardingLoginView = OnboardingLoginView()
     
-    //MARK: - UI Components
-    
     //MARK: - Life Cycle
     
     override func loadView() {

@@ -26,6 +26,8 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(popToRegisterProfileImageView), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,6 +42,11 @@ final class OnboardingCompleteProfileViewController: UIViewController{
             let secondaryCompleteProfileViewController = OnboardingSecondaryCompleteProfileViewController()
             self.navigationController?.pushViewController(secondaryCompleteProfileViewController, animated: true)
         }
+    }
+    
+    @objc
+    private func popToRegisterProfileImageView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -24,6 +24,8 @@ final class OnboardingWelcomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onboardingWelcomeView.backButton.addTarget(self, action: #selector(popToLoginView), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +40,13 @@ final class OnboardingWelcomeViewController: UIViewController{
             let secondaryWelcomeViewController = OnboardingWelcomeSecondaryViewController()
             self.navigationController?.pushViewController(secondaryWelcomeViewController, animated: true)
         }
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    private func popToLoginView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
