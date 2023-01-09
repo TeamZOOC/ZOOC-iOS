@@ -25,17 +25,21 @@
 		8764833B29523C0100F74882 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8764833A29523C0100F74882 /* Kingfisher */; };
 		8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */; };
 		876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A2295848D5006BBDA9 /* BaseViewController.swift */; };
-		876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* HomeGuideController.swift */; };
+		876554A529584912006BBDA9 /* HomeGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A429584912006BBDA9 /* HomeGuideViewController.swift */; };
 		876554A72958494B006BBDA9 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876554A62958494B006BBDA9 /* MyViewController.swift */; };
 		877BAFC2295EEA6900C2AA1C /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */; };
 		877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */; };
-		877E57EE2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */; };
-		877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeRecordModel.swift */; };
+		877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */; };
+		877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeArchiveModel.swift */; };
 		877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */; };
 		8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7D9296857A600C9324B /* KakaoSDKShare */; };
 		8782C7DD29685D7F00C9324B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7DC29685D7F00C9324B /* FirebaseAuth */; };
 		8782C7DF29685D7F00C9324B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7DE29685D7F00C9324B /* FirebaseFirestore */; };
 		8782C7E129685D7F00C9324B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7E029685D7F00C9324B /* FirebaseMessaging */; };
+		8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */; };
+		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
+		8782C7EB296AC58B00C9324B /* HomeArchiveProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */; };
+		8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */; };
 		87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A89295F6D0A0096F669 /* PracticeViewController.swift */; };
 		87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A91295F6DA50096F669 /* RecordViewController.swift */; };
 		87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A9E295F6EA30096F669 /* OnboardingService.swift */; };
@@ -141,14 +145,18 @@
 		8764832A295238EB00F74882 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocTabBarController.swift; sourceTree = "<group>"; };
 		876554A2295848D5006BBDA9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		876554A429584912006BBDA9 /* HomeGuideController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGuideController.swift; sourceTree = "<group>"; };
+		876554A429584912006BBDA9 /* HomeGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGuideViewController.swift; sourceTree = "<group>"; };
 		876554A62958494B006BBDA9 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		877BAFC1295EEA6900C2AA1C /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		877BAFC3295EEA7700C2AA1C /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		877E57EA2966332F006D82FC /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
-		877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordCollectionViewCell.swift; sourceTree = "<group>"; };
-		877E57EF2966C046006D82FC /* HomeRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeRecordModel.swift; path = ZOOC/Data/Home/Model/HomeRecordModel.swift; sourceTree = SOURCE_ROOT; };
+		877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveListCollectionViewCell.swift; sourceTree = "<group>"; };
+		877E57EF2966C046006D82FC /* HomeArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeArchiveModel.swift; path = ZOOC/Data/Home/Model/HomeArchiveModel.swift; sourceTree = SOURCE_ROOT; };
 		877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveViewController.swift; sourceTree = "<group>"; };
+		8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetCollectionViewCell.swift; sourceTree = "<group>"; };
+		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
+		8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveProgressView.swift; sourceTree = "<group>"; };
+		8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		878EE32E2965B2EF0071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		878EE32F2965B2F20071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				877E57EC2966AAD3006D82FC /* Cell */,
-				87A76A8E295F6D890096F669 /* View */,
+				8782C7E82969502600C9324B /* View */,
 				87A76A8D295F6D840096F669 /* Controller */,
 			);
 			path = Home;
@@ -371,7 +379,11 @@
 		877E57EC2966AAD3006D82FC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				877E57ED2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift */,
+				87D5AF612960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift */,
+				87D5AF5F2960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift */,
+				8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */,
+				877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */,
+				8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -387,7 +399,8 @@
 		8782C7D72967998D00C9324B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				877E57EF2966C046006D82FC /* HomeRecordModel.swift */,
+				8782C7E52968C0F000C9324B /* HomePetModel.swift */,
+				877E57EF2966C046006D82FC /* HomeArchiveModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +410,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8782C7E82969502600C9324B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		87A76A88295F6CEC0096F669 /* Practice */ = {
@@ -454,20 +475,11 @@
 		87A76A8D295F6D840096F669 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				876554A429584912006BBDA9 /* HomeGuideController.swift */,
+				876554A429584912006BBDA9 /* HomeGuideViewController.swift */,
 				87D5AF6329649DC100CA7F12 /* HomeViewController.swift */,
 				877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		87A76A8E295F6D890096F669 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				87D5AF612960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift */,
-				87D5AF5F2960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		87A76A8F295F6D8F0096F669 /* View */ = {
@@ -883,10 +895,10 @@
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
+				877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */,
 				D26C85F4296946C300AEAF9B /* OnboardingSecondaryWelcomeView.swift in Sources */,
 				D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */,
 				D26C85CF2968681900AEAF9B /* PetCollectionFooterView.swift in Sources */,
-				877E57F02966C046006D82FC /* HomeRecordModel.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */,
 				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
@@ -898,6 +910,7 @@
 				87A76AAB295F6EDE0096F669 /* RecordService.swift in Sources */,
 				D26C85E52968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift in Sources */,
 				D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */,
+				8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */,
 				D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */,
 				D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */,
 				D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */,
@@ -930,20 +943,22 @@
 				877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
+				8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */,
 				D235030B2964991700F01101 /* EditProfileViewController.swift in Sources */,
 				87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */,
 				D26C85E32968C88800AEAF9B /* OnboardingAgreementView.swift in Sources */,
 				D26C85EC2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift in Sources */,
 				D26C85D7296888D000AEAF9B /* DeleteAccountView.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
-				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
+				876554A529584912006BBDA9 /* HomeGuideViewController.swift in Sources */,
+				8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */,
 				D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */,
-				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
 				D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */,
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
+				876554A529584912006BBDA9 /* HomeGuideViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
 				D26C8614296B7F3E00AEAF9B /* OnboardingRegisterPetTableViewCell.swift in Sources */,
@@ -962,7 +977,9 @@
 				D26C8612296B7CA500AEAF9B /* OnboardingRegisterPetView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,
-				877E57EE2966AAE6006D82FC /* HomeRecordCollectionViewCell.swift in Sources */,
+				877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */,
+				8782C7EB296AC58B00C9324B /* HomeArchiveProgressView.swift in Sources */,
+				877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */,
 				D26C8610296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);

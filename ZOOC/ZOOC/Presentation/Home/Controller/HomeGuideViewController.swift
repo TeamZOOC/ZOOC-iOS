@@ -232,10 +232,7 @@ extension HomeGuideViewController{
         let index = round(scrolledOffsetX / cellWidth)
         
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
-        print(scrolledOffsetX)
-        print(cellWidth)
-        print(index)
-        
+      
         switch index{
         case 0:
             animateTintView(.right)
