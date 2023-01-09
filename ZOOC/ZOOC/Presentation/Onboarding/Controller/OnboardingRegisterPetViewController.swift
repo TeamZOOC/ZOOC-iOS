@@ -15,9 +15,9 @@ final class OnboardingRegisterPetViewController: UIViewController{
     //MARK: - Properties
     
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
-    private var petProfile = OnboardingPetRegisterModel(petProfileName: "", petProfileImage:Image.graphics1)
+    private var petProfile = OnboardingPetRegisterModel(petProfileImage:Image.defaultProfile)
     
-    private lazy var petRegisterData: [OnboardingPetRegisterModel] = [petProfile, petProfile, petProfile, petProfile]
+    private lazy var petRegisterData: [OnboardingPetRegisterModel] = [petProfile]
     
     private var isFull: Bool = false
     
@@ -45,14 +45,6 @@ final class OnboardingRegisterPetViewController: UIViewController{
         onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
-    private func checkIsFull() {
-        if(petRegisterData.count == 4){
-            isFull = true
-        } else {
-            isFull = false
-        }
-    }
-    
     //MARK: - Action Method
 
     @objc
@@ -60,6 +52,8 @@ final class OnboardingRegisterPetViewController: UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+//MARK: - UITableViewDelegate
 
 extension OnboardingRegisterPetViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,6 +65,8 @@ extension OnboardingRegisterPetViewController: UITableViewDelegate {
     }
 }
 
+//MARK: - UITableViewDataSource
+
 extension OnboardingRegisterPetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petRegisterData.count
@@ -80,7 +76,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier, for: indexPath)
                 as? OnboardingRegisterPetTableViewCell else { return UITableViewCell() }
         cell.delegate = self
-        cell.dataBind(model: petRegisterData[indexPath.row], index: indexPath.row)
+        cell.dataBind(model: petRegisterData[indexPath.row], index: indexPath.row, petCount: petRegisterData.count)
         return cell
     }
     
@@ -93,7 +89,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - ChekedButtonTappedDelegate
+//MARK: - DeleteButtonTappedDelegate
 
 extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
     func deleteButtonTapped(isSelected: Bool, index: Int) {
@@ -103,15 +99,24 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
                 isFull = false
                 if(petRegisterData.count == 4) {
                     isFull = true
-                    print("isFull")
                 }
-            } else {
-                print("한마리")
             }
         }
         onboardingRegisterPetView.registerPetTableView.reloadData()
     }
+    
+    func canRegister(canRegister: Bool) {
+        if canRegister {
+            onboardingRegisterPetView.registerPetButton.backgroundColor = .zoocGradientGreen
+            onboardingRegisterPetView.registerPetButton.isEnabled = true
+        } else {
+            onboardingRegisterPetView.registerPetButton.backgroundColor = .zoocGray1
+            onboardingRegisterPetView.registerPetButton.isEnabled = false
+        }
+    }
 }
+
+//MARK: - AddButtonTappedDelegate
 
 extension OnboardingRegisterPetViewController: AddButtonTappedDelegate {
     func addPetButtonTapped(isSelected: Bool) {
@@ -119,5 +124,15 @@ extension OnboardingRegisterPetViewController: AddButtonTappedDelegate {
             petRegisterData.append(petProfile)
         }
         onboardingRegisterPetView.registerPetTableView.reloadData()
+    }
+}
+
+extension OnboardingRegisterPetViewController {
+    private func checkIsFull() {
+        if(petRegisterData.count == 4){
+            isFull = true
+        } else {
+            isFull = false
+        }
     }
 }

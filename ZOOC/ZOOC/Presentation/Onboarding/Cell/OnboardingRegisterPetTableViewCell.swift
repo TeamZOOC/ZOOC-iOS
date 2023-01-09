@@ -9,6 +9,8 @@ import UIKit
 
 protocol DeleteButtonTappedDelegate {
     func deleteButtonTapped(isSelected: Bool, index: Int)
+    
+    func canRegister(canRegister: Bool)
 }
 
 final class OnboardingRegisterPetTableViewCell: UITableViewCell {
@@ -17,13 +19,14 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     var delegate: DeleteButtonTappedDelegate?
     var index: Int = 0
+    var canRegister: Bool = false
     
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton().then {
         $0.layer.borderWidth = 5
         $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 30
+        $0.layer.cornerRadius = 35
         $0.clipsToBounds = true
     }
     
@@ -50,6 +53,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         
         setUI()
         setLayout()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -85,12 +90,40 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(model: OnboardingPetRegisterModel, index: Int) {
+    func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
         petProfileImageButton.setImage(model.petProfileImage, for: .normal)
         self.index = index
+        
+        if(petCount == 1){
+            deletePetProfileButton.isHidden = true
+        } else {
+            deletePetProfileButton.isHidden = false
+        }
     }
     
-    @objc func deletePetProfileButtonDidTap() {
+    @objc
+    private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
+    }
+    
+    @objc
+    private func textDidChange(_ notification: Notification) {
+        print("true")
+        if let textField = notification.object as? UITextField {
+            if let text = textField.text {
+                if text.count >= 4 {
+                    textField.resignFirstResponder()
+                    delegate?.canRegister(canRegister: true)
+                }
+                else if text.count <= 0 {
+                    petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
+                    delegate?.canRegister(canRegister: false)
+                }
+                else {
+                    petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
+                    delegate?.canRegister(canRegister: true)
+                }
+            }
+        }
     }
 }

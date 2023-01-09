@@ -37,6 +37,7 @@ final class OnboardingRegisterPetView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .none
         $0.isScrollEnabled = false
+        $0.backgroundColor = .zoocBackgroundGreen
     }
     
     public var registerPetButton =  UIButton().then {
@@ -46,7 +47,8 @@ final class OnboardingRegisterPetView: UIView {
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
-        $0.backgroundColor = .zoocGradientGreen
+        $0.backgroundColor = .zoocGray1
+        $0.isEnabled = false
     }
     
     //MARK: - Life Cycles
