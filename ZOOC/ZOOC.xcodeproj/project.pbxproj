@@ -10,6 +10,7 @@
 		4C6B1862296B69070059840D /* RecordRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B1861296B69070059840D /* RecordRegisterViewController.swift */; };
 		4C6B1864296B6C600059840D /* RecordRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B1863296B6C600059840D /* RecordRegisterModel.swift */; };
 		4C6B1868296B930B0059840D /* RecordRegisterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B1867296B930B0059840D /* RecordRegisterCollectionViewCell.swift */; };
+		4C6B186A296C82850059840D /* RecordRegisterFourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B1869296C82850059840D /* RecordRegisterFourCollectionViewCell.swift */; };
 		4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */; };
 		4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
@@ -96,6 +97,7 @@
 		4C6B1861296B69070059840D /* RecordRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRegisterViewController.swift; sourceTree = "<group>"; };
 		4C6B1863296B6C600059840D /* RecordRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRegisterModel.swift; sourceTree = "<group>"; };
 		4C6B1867296B930B0059840D /* RecordRegisterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRegisterCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C6B1869296C82850059840D /* RecordRegisterFourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRegisterFourCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyInviteViewController.swift; sourceTree = "<group>"; };
 		4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInviteCompleteViewController.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				4C6B1867296B930B0059840D /* RecordRegisterCollectionViewCell.swift */,
+				4C6B1869296C82850059840D /* RecordRegisterFourCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,
+				4C6B186A296C82850059840D /* RecordRegisterFourCollectionViewCell.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,

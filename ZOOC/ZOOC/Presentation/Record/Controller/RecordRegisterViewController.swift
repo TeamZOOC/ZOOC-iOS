@@ -20,7 +20,7 @@ final class RecordRegisterViewController : BaseViewController{
         RecordRegisterModel(profilePetImage: Image.mockPet1, petName: "토리", selectButton: false)
     ]
     
-    //MARK: - UI Components
+    // MARK: - UI Components
     
     private let topBarView: UIView = {
         let view = UIView()
@@ -70,6 +70,7 @@ final class RecordRegisterViewController : BaseViewController{
         view.layer.shadowColor = UIColor.zoocSubGreen.cgColor
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 14
+        view.clipsToBounds = true
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.backgroundColor = .white
         return view
@@ -108,7 +109,6 @@ final class RecordRegisterViewController : BaseViewController{
     private lazy var recordRegisterCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +124,7 @@ final class RecordRegisterViewController : BaseViewController{
         let button = UIButton()
         button.setTitle("기록하기", for: .normal)
         button.setTitleColor(.zoocWhite1, for: .normal)
-        button.backgroundColor = .zoocMainGreen
+        button.backgroundColor = .zoocGray1
         button.layer.cornerRadius = 27
         button.addTarget(self,
                          action: #selector(registerButtonDidTap),
@@ -235,7 +235,11 @@ final class RecordRegisterViewController : BaseViewController{
     //MARK: - Action Method
 
     private func register() {
-        recordRegisterCollectionView.register(RecordRegisterCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
+        if(petList.count <= 3) {
+            recordRegisterCollectionView.register(RecordRegisterCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
+        } else {
+            recordRegisterCollectionView.register(RecordRegisterFourCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier)
+        }
     }
     
     @objc
@@ -262,6 +266,16 @@ final class RecordRegisterViewController : BaseViewController{
     private func registerButtonDidTap(){
         dismiss(animated: true)
     }
+    
+    private func activateButton(indexPathArray: [IndexPath]?) {
+        if (indexPathArray?.count == 0) {
+            registerButton.backgroundColor = .zoocGray1
+            registerButton.isEnabled = false
+        } else {
+            registerButton.backgroundColor = .zoocGradientGreen
+            registerButton.isEnabled = true
+        }
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -272,11 +286,19 @@ extension RecordRegisterViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier, for: indexPath)
-                as? RecordRegisterCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: petList[indexPath.item])
-        return cell
+        if(petList.count <= 3) {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? RecordRegisterCollectionViewCell else { return UICollectionViewCell() }
+            cell.dataBind(model: petList[indexPath.item])
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? RecordRegisterFourCollectionViewCell else { return UICollectionViewCell() }
+            cell.dataBind(model: petList[indexPath.item])
+            return cell
+        }
     }
 }
 
@@ -284,29 +306,49 @@ extension RecordRegisterViewController: UICollectionViewDataSource {
 
 extension RecordRegisterViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
-        cell.updateUI(isSelected: true) //TODO: 클래스와 프로퍼티, 메소드에 접근 | private public | 타입캐스팅 
+        if(petList.count <= 3) {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
+            cell.updateUI(isSelected: true) //TODO: 클래스와 프로퍼티, 메소드에 접근 | private public | 타입캐스팅
+        } else {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterFourCollectionViewCell else { return }
+            cell.updateUI(isSelected: true) //TODO: 클래스와 프로퍼티, 메소드에 접근 | private public | 타입캐스팅
+        }
+        let indexPathArray = collectionView.indexPathsForSelectedItems
+        activateButton(indexPathArray: indexPathArray)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
-        cell.updateUI(isSelected: false)
+        if(petList.count <= 3) {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
+            cell.updateUI(isSelected: false)
+        } else {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterFourCollectionViewCell else { return }
+            cell.updateUI(isSelected: false)
+        }
+        registerButton.backgroundColor = .zoocGray2
+        let indexPathArray = collectionView.indexPathsForSelectedItems
+        activateButton(indexPathArray: indexPathArray)
     }
-    
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
 extension RecordRegisterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeight: Int = 352 / petList.count
-        return CGSize(width: 315, height: cellHeight)
+        if(petList.count <= 3) {
+            let cellHeight = collectionView.frame.height / CGFloat(petList.count)
+            return CGSize(width: collectionView.frame.width, height: cellHeight)
+        } else {
+            return CGSize(width: collectionView.frame.width / 2, height: 177)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
