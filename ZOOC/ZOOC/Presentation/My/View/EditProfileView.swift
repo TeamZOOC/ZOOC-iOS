@@ -36,7 +36,7 @@ final class EditProfileView: UIView {
     
     public var editProfileNameTextField = UITextField().then {
         $0.font = .zoocHeadLine
-        $0.tintColor = .zoocMainGreen //zoocgragreen
+        $0.tintColor = .zoocGradientGreen
     }
     
     public var profileNameTextFieldUnderLineView = UIView().then {
@@ -46,7 +46,7 @@ final class EditProfileView: UIView {
     public var profileNameCountLabel = UILabel().then {
         $0.font = .zoocCaption
         $0.text = "/10"
-        $0.textColor = .zoocGray2 //zoocGray3
+        $0.textColor = .zoocGray3
     }
     
     public var editCompletedButton = UIButton().then {
