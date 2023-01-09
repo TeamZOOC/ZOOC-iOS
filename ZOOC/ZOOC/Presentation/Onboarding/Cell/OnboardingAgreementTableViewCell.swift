@@ -64,7 +64,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
-    public func dataBind(model: AgreementModel, index: Int) {
+    public func dataBind(model: OnboardingAgreementModel, index: Int) {
         self.index = index
         menuLabel.text = model.agreementMenu
         if model.isSelected {

@@ -88,7 +88,7 @@
 		D26C85E32968C88800AEAF9B /* OnboardingAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */; };
 		D26C85E52968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */; };
 		D26C85E82968CD8E00AEAF9B /* OnboardingAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */; };
-		D26C85EA2968CF7E00AEAF9B /* AgreementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */; };
+		D26C85EA2968CF7E00AEAF9B /* OnboardingAgreementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */; };
 		D26C85EC2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */; };
 		D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */; };
 		D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */; };
@@ -110,6 +110,9 @@
 		D26C8610296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C860F296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift */; };
 		D26C8612296B7CA500AEAF9B /* OnboardingRegisterPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8611296B7CA500AEAF9B /* OnboardingRegisterPetView.swift */; };
 		D26C8614296B7F3E00AEAF9B /* OnboardingRegisterPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8613296B7F3E00AEAF9B /* OnboardingRegisterPetTableViewCell.swift */; };
+		D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */; };
+		D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */; };
+		D26C861C296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -199,7 +202,7 @@
 		D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementView.swift; sourceTree = "<group>"; };
 		D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementTableViewCell.swift; sourceTree = "<group>"; };
 		D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementViewController.swift; sourceTree = "<group>"; };
-		D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementModel.swift; sourceTree = "<group>"; };
+		D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementModel.swift; sourceTree = "<group>"; };
 		D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementTableHeaderView.swift; sourceTree = "<group>"; };
 		D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+.swift"; sourceTree = "<group>"; };
 		D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
@@ -221,6 +224,9 @@
 		D26C860F296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateCompletedViewController.swift; sourceTree = "<group>"; };
 		D26C8611296B7CA500AEAF9B /* OnboardingRegisterPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetView.swift; sourceTree = "<group>"; };
 		D26C8613296B7F3E00AEAF9B /* OnboardingRegisterPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetTableViewCell.swift; sourceTree = "<group>"; };
+		D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetViewController.swift; sourceTree = "<group>"; };
+		D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterModel.swift; sourceTree = "<group>"; };
+		D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetTableFooterView.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -400,6 +406,7 @@
 				D26C8605296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift */,
 				D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */,
 				D26C860F296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift */,
+				D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -494,6 +501,7 @@
 			children = (
 				87A76ABD295F775C0096F669 /* Model */,
 				87A76ABC295F77530096F669 /* APIModel */,
+				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -616,7 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				87D368842964CB8F009728FC /* Empty.md */,
-				D26C85E92968CF7E00AEAF9B /* AgreementModel.swift */,
+				D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -735,6 +743,7 @@
 				D26C85E42968CB2F00AEAF9B /* OnboardingAgreementTableViewCell.swift */,
 				D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */,
 				D26C8613296B7F3E00AEAF9B /* OnboardingRegisterPetTableViewCell.swift */,
+				D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -858,6 +867,7 @@
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */,
 				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
+				D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				D23502F92961F34100F01101 /* SettingMenuTableView.swift in Sources */,
 				876483212952369500F74882 /* UICollectionViewCell+.swift in Sources */,
@@ -871,6 +881,7 @@
 				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
 				D2350309296490A700F01101 /* EditProfileView.swift in Sources */,
 				87B6624129521E7500B6FFA9 /* AppDelegate.swift in Sources */,
+				D26C861C296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift in Sources */,
 				87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */,
 				D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */,
 				D23502EA2961969100F01101 /* FamilyCollectionView.swift in Sources */,
@@ -883,7 +894,7 @@
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */,
-				D26C85EA2968CF7E00AEAF9B /* AgreementModel.swift in Sources */,
+				D26C85EA2968CF7E00AEAF9B /* OnboardingAgreementModel.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
@@ -905,6 +916,7 @@
 				D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
+				D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,

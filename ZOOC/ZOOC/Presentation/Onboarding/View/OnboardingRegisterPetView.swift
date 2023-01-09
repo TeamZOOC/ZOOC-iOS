@@ -33,13 +33,21 @@ final class OnboardingRegisterPetView: UIView {
         $0.font = .zoocBody3
     }
     
-    public var registerPetTableView = UITableView(frame: .zero, style: .grouped).then {
+    public var registerPetTableView = UITableView(frame: .zero, style: .plain).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.separatorStyle = .none
         $0.isScrollEnabled = false
     }
     
-    //public var registerPetButton = UIButton()
+    public var registerPetButton =  UIButton().then {
+        $0.setTitle("등록하기", for: .normal)
+        $0.setTitleColor(.zoocWhite1, for: .normal)
+        $0.titleLabel?.font = .zoocSubhead1
+        $0.titleLabel?.textAlignment = .center
+        $0.layer.cornerRadius = 27
+        $0.clipsToBounds = true
+        $0.backgroundColor = .zoocGradientGreen
+    }
     
     //MARK: - Life Cycles
     
@@ -61,7 +69,7 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView)
+        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
@@ -82,11 +90,15 @@ final class OnboardingRegisterPetView: UIView {
         registerPetTableView.snp.makeConstraints {
             $0.top.equalTo(self.registerPetSubTitleLabel.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(424)
         }
         
-//        registerPetButton.snp.makeConstraints {
-//            $0.
-//        }
+        registerPetButton.snp.makeConstraints {
+            $0.top.equalTo(self.registerPetTableView.snp.bottom)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(54)
+        }
     }
 }
 
