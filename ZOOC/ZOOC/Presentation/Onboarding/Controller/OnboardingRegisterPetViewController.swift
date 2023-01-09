@@ -43,6 +43,13 @@ final class OnboardingRegisterPetViewController: UIViewController{
         onboardingRegisterPetView.registerPetTableView.register(OnboardingRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
         
         onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        
+        onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
+    }
+    
+    func pushToInviteFamilyViewController() {
+        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
+        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }
     
     //MARK: - Action Method
@@ -50,6 +57,11 @@ final class OnboardingRegisterPetViewController: UIViewController{
     @objc
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func registerPetButtonDidTap() {
+        pushToInviteFamilyViewController()
     }
 }
 

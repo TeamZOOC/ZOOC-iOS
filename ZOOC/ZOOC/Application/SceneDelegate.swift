@@ -4,7 +4,6 @@
 //
 //  Created by 장석우 on 2022/12/21.
 //
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(rootViewController: OnboardingRegisterPetViewController())
+        window?.rootViewController = ZoocTabBarController()
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
@@ -51,4 +50,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-

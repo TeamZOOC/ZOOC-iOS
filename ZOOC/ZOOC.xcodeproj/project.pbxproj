@@ -113,6 +113,13 @@
 		D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */; };
 		D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */; };
 		D26C861C296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */; };
+		D27D9560296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */; };
+		D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */; };
+		D27D9564296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */; };
+		D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9565296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift */; };
+		D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9567296CB5930097CD03 /* OnboardingReInviteFamilyView.swift */; };
+		D27D956A296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9569296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift */; };
+		D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D956B296CBA2D0097CD03 /* UIButton+.swift */; };
 		D2F98F9D2967154D00CC82DE /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -227,6 +234,13 @@
 		D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetViewController.swift; sourceTree = "<group>"; };
 		D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterModel.swift; sourceTree = "<group>"; };
 		D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetTableFooterView.swift; sourceTree = "<group>"; };
+		D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyView.swift; sourceTree = "<group>"; };
+		D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyViewController.swift; sourceTree = "<group>"; };
+		D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteCompletedFamilyView.swift; sourceTree = "<group>"; };
+		D27D9565296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyCompletedViewController.swift; sourceTree = "<group>"; };
+		D27D9567296CB5930097CD03 /* OnboardingReInviteFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReInviteFamilyView.swift; sourceTree = "<group>"; };
+		D27D9569296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingReInviteFamilyViewController.swift; sourceTree = "<group>"; };
+		D27D956B296CBA2D0097CD03 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -271,6 +285,7 @@
 				D26C85D0296869DD00AEAF9B /* UICollectionReusableView+.swift */,
 				D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */,
 				D26C860D296B6E8600AEAF9B /* UILabel+.swift */,
+				D27D956B296CBA2D0097CD03 /* UIButton+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -407,6 +422,9 @@
 				D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */,
 				D26C860F296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift */,
 				D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */,
+				D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */,
+				D27D9569296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift */,
+				D27D9565296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -426,6 +444,9 @@
 				D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */,
 				D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */,
 				D26C8611296B7CA500AEAF9B /* OnboardingRegisterPetView.swift */,
+				D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */,
+				D27D9567296CB5930097CD03 /* OnboardingReInviteFamilyView.swift */,
+				D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -849,6 +870,7 @@
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
+				D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
@@ -857,6 +879,7 @@
 				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,
+				D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */,
 				87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */,
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
@@ -903,6 +926,7 @@
 				D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */,
 				D26C85F8296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift in Sources */,
 				87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */,
+				D27D9564296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift in Sources */,
 				877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */,
 				87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */,
 				87A76ABF2960423C0096F669 /* GenericResponse.swift in Sources */,
@@ -917,6 +941,8 @@
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
 				D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */,
+				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
+				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
@@ -928,9 +954,11 @@
 				D26C85F229693CFA00AEAF9B /* OnboardingWelcomeViewController.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
+				D27D9560296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift in Sources */,
 				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
+				D27D956A296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift in Sources */,
 				D26C8612296B7CA500AEAF9B /* OnboardingRegisterPetView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,

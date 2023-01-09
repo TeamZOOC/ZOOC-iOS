@@ -33,11 +33,18 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     func register () {
         onboardingSecondaryCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
+        onboardingSecondaryCompleteProfileView.getCodeButton.addTarget(self, action: #selector(getCodeButtonDidTap), for: .touchUpInside)
+        
         onboardingSecondaryCompleteProfileView.notGetCodeButton.addTarget(self, action: #selector(notGetCodeButtonDidTap), for: .touchUpInside)
     }
     
     func pushToParticipateCompletedView() {
         let onboardingParticipateViewController = OnboardingParticipateViewController()
+        self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
+    }
+    
+    func pushToRegisterPetView() {
+        let onboardingParticipateViewController = OnboardingRegisterPetViewController()
         self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
     }
     
@@ -51,6 +58,11 @@ final class OnboardingSecondaryCompleteProfileViewController: UIViewController{
     @objc
     private func notGetCodeButtonDidTap() {
         pushToParticipateCompletedView()
+    }
+    
+    @objc
+    private func getCodeButtonDidTap() {
+        pushToRegisterPetView()
     }
 }
 
