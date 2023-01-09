@@ -110,12 +110,11 @@ final class HomeViewController : BaseViewController{
         register()
         gesture()
         
+        autoSelectPetCollectionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        autoSelectPetCollectionView()
-        petCollectionView.performBatchUpdates(nil) //이거이거
         let allWidth = self.archiveListCollectionView.contentSize.width +                                                     self.archiveListCollectionView.contentInset.left +                                                     self.archiveListCollectionView.contentInset.right
         let showingWidth = self.archiveListCollectionView.bounds.width
         self.archiveProgressView.widthRatio = showingWidth / allWidth
@@ -294,10 +293,11 @@ final class HomeViewController : BaseViewController{
         foldArchiveCollectionView()
     }
     
-    func autoSelectPetCollectionView(){
+    private func autoSelectPetCollectionView(){
         petCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                      animated: false,
                                      scrollPosition: .centeredHorizontally)
+        petCollectionView.performBatchUpdates(nil)
     }
     
     
