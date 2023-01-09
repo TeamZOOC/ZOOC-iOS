@@ -17,11 +17,9 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     //MARK: - Properties
 
     public var viewType: ViewType = .folded
-    var indexPath: Int = -1
     
     override var isSelected: Bool{
         didSet{
-            print("---\(indexPath)셀--- \nisSeledted: \(isSelected)\nviewType: \(viewType)\n\n")
             if isSelected{
                 switch viewType{
                 case .folded:
@@ -35,7 +33,6 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
                 switch viewType{
                 case .folded: break
                 case .expanded:
-                    print(isSelected)
                     viewType = .folded
                     updateUI()
                 }
@@ -123,7 +120,6 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     }
     
     private func expandedLayout(){
-        print(#function)
         petNameLabel.isHidden = false
         
         petImageView.snp.remakeConstraints {
@@ -141,7 +137,6 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     }
     
     func sizeFittingWith(cellHeight: CGFloat) -> CGSize {
-        print(#function)
         let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: cellHeight)
         return self.contentView.systemLayoutSizeFitting(targetSize,
                                                         withHorizontalFittingPriority: .fittingSizeLevel,

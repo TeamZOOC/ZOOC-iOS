@@ -102,7 +102,6 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
 extension HomeMissionCollectionViewCell: UITextViewDelegate{
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print(#function)
         guard textView.textColor == .zoocGray1 else { return }
         textView.text = nil
         textView.textColor = .zoocDarkGray2

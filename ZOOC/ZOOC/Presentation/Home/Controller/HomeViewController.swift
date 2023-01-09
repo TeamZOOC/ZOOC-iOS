@@ -329,7 +329,6 @@ extension HomeViewController: UICollectionViewDataSource{
         if collectionView == petCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier, for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
             cell.dataBind(data: petData[indexPath.item])
-            cell.indexPath = indexPath.item
             return cell
         }
         
@@ -414,11 +413,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             switch collectionView.indexPathsForSelectedItems?.first {
                case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
-                print("\(indexPath.row) 의 커스텀 Layout ")
                 cell.dataBind(data: petData[indexPath.item])
                 return cell.sizeFittingWith(cellHeight: 40)
                default:
-                print("\(indexPath.row) 의 Layout")
                    return CGSize(width: 40, height: 40)
             }
         }
