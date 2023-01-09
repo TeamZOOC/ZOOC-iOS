@@ -29,8 +29,10 @@ public enum Image{
     static let delete = UIImage(named: "delete")!
     static let etc = UIImage(named: "etc")!
     static let gallery = UIImage(named: "gallery")!
+    static let gridFill = UIImage(named: "grid.fill")!
     static let grid = UIImage(named: "grid")!
     static let home = UIImage(named: "home")!
+    static let listFill = UIImage(named: "list.fill")!
     static let list = UIImage(named: "list")!
     static let next = UIImage(named: "next")!
     static let person = UIImage(named: "person")!

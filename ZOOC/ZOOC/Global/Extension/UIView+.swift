@@ -24,5 +24,11 @@ extension UIView{
         layer.shadowOpacity = opacity
         layer.masksToBounds = false
     }
+    
+    func makeCornerRadius(ratio: CGFloat){
+        layer.cornerRadius = frame.height / ratio
+        layer.masksToBounds = false
+        clipsToBounds = true
+    }
 }
 
