@@ -14,7 +14,7 @@ protocol ButtonTappedDelegate {
     func cellButtonTapped()
 }
 
-final class ProfileView: UICollectionViewCell  {
+final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         
     var delegate: ButtonTappedDelegate?
     

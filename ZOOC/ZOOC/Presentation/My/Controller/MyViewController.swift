@@ -52,11 +52,11 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
         
-        myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.cellIdentifier)
-        myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
-        myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
-        myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
-        myView.myCollectionView.register(DeleteAccountView.self, forCellWithReuseIdentifier: DeleteAccountView.cellIdentifier)
+        myView.myCollectionView.register(MyProfileSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier)
+        myView.myCollectionView.register(MyFamilySectionCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier)
+        myView.myCollectionView.register(MyPetSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier)
+        myView.myCollectionView.register(MySettingSectionCollectionViewCell.self, forCellWithReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier)
+        myView.myCollectionView.register(MyDeleteAccountSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier)
     }
     
     private func pushToEditProfileView() {
@@ -133,7 +133,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 1:
             return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         case 2:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 6, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 22, right: 30)
         case 3:
             return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
         case 4:
@@ -159,33 +159,33 @@ extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
-                    as? ProfileView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyProfileSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.dataBind(data: myProfileData)
             cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
             return cell
             
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
-                    as? FamilyCollectionView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
             return cell
             
         case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
-                    as? PetCollectionView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
             return cell
             
         case 3:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier, for: indexPath) as? MySettingSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
             cell.delegate = self
             return cell
             
         case 4:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteAccountView.cellIdentifier, for: indexPath)
-                    as? DeleteAccountView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyDeleteAccountSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
             return cell
         default:

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingMenuTableViewCell: UITableViewCell {
+final class MySettingTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     

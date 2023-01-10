@@ -81,7 +81,7 @@ final class EditProfileViewController: BaseViewController {
     
     @objc
     func backButtonDidTap() {
-        let myAlertViewController = MyAlertViewController()
+        let myAlertViewController = ZoocAlertViewController()
         myAlertViewController.modalPresentationStyle = .overFullScreen
         present(myAlertViewController, animated: false)
     }

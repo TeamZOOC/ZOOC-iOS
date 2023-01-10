@@ -1,8 +1,8 @@
 //
-//  MemberCollectionView.swift
+//  MyFamilySectionCollectionViewCell.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/01.
+//  Created by 류희재 on 2023/01/11.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class FamilyCollectionView: UICollectionViewCell {
+final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
@@ -111,16 +111,14 @@ final class FamilyCollectionView: UICollectionViewCell {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-
-extension FamilyCollectionView: UICollectionViewDelegateFlowLayout {
+extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
 
 //MARK: - UICollectionViewDataSource
-
-extension FamilyCollectionView: UICollectionViewDataSource {
+extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MemberModel.familyDummyData.count
     }

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class PetCollectionView: UICollectionViewCell {
+final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
@@ -81,14 +81,14 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     public func register() {
-        petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
+        petCollectionView.register(MyPetCollectionViewCell.self, forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
         
-        petCollectionView.register(PetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier)
+        petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
 }
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension PetCollectionView: UICollectionViewDelegateFlowLayout {
+extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 86, height: 40)
     }
@@ -101,14 +101,14 @@ extension PetCollectionView: UICollectionViewDelegateFlowLayout {
 
 //MARK: - UICollectionViewDataSource
 
-extension PetCollectionView: UICollectionViewDataSource {
+extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return MemberModel.petDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.cellIdentifier, for: indexPath)
-                as? PetCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
+                as? MyPetCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
         return cell
     }
@@ -116,7 +116,7 @@ extension PetCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         print(#function)
         guard kind == UICollectionView.elementKindSectionFooter,
-              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? PetCollectionFooterView else { return UICollectionReusableView() }
+              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? MyPetCollectionFooterView else { return UICollectionReusableView() }
         return footer
     }
 }

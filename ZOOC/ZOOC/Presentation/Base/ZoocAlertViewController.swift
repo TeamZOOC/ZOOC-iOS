@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class MyAlertViewController: UIViewController {
+final class ZoocAlertViewController: UIViewController {
     
     //MARK: - Properties
     

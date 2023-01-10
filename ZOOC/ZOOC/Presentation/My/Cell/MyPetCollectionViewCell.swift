@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PetCollectionViewCell: UICollectionViewCell {
+final class MyPetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     

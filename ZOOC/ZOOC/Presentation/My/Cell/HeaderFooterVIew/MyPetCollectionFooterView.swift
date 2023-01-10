@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class PetCollectionFooterView: UICollectionReusableView {
+final class MyPetCollectionFooterView: UICollectionReusableView {
     
     //MARK: - UI Components
     
