@@ -101,6 +101,7 @@ final class RecordViewController : BaseViewController{
         button.setTitle("다음", for: .normal)
         button.setTitleColor(.zoocWhite1, for: .normal)
         button.backgroundColor = .zoocGray1
+        button.isEnabled = false
         button.layer.cornerRadius = 27
         return button
     }()
@@ -216,6 +217,14 @@ extension RecordViewController: UITextViewDelegate {
             textView.textColor = .lightGray
         }
     }
-
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text == "" {
+            nextButton.backgroundColor = .zoocGray1
+            nextButton.isEnabled = false
+        } else {
+            nextButton.backgroundColor = .zoocGradientGreen
+            nextButton.isEnabled = true
+        }
+    }
 }
-
