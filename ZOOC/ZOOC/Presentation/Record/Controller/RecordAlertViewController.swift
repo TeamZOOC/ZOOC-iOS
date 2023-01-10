@@ -133,6 +133,6 @@ final class RecordAlertViewController: UIViewController {
     
     @objc
     func keepRecordButtonDidTap() {
-        self.dismiss(animated: false)
+        self.dismiss(animated: false, completion: nil)
     }
 }

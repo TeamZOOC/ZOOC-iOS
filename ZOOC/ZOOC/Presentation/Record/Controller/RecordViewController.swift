@@ -28,7 +28,7 @@ final class RecordViewController : BaseViewController{
         button.setImage(Image.xmark,
                         for: .normal)
         button.addTarget(self,
-                         action: #selector(backButtonDidTap),
+                         action: #selector(xButtonDidTap),
                          for: .touchUpInside)
         return button
     }()
@@ -103,6 +103,9 @@ final class RecordViewController : BaseViewController{
         button.backgroundColor = .zoocGray1
         button.isEnabled = false
         button.layer.cornerRadius = 27
+        button.addTarget(self,
+                         action: #selector(nextButtonDidTap),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -183,10 +186,21 @@ final class RecordViewController : BaseViewController{
         }
     }
     
+    func pushToRecordAlertViewController() {
+        let recordAlertViewController = RecordAlertViewController()
+        recordAlertViewController.modalPresentationStyle = .overFullScreen
+        self.present(recordAlertViewController, animated: false, completion: nil)
+    }
+    
+    func pushToRecordRegisterViewController() {
+        // let recordRegisterViewController = RecordRegisterViewController()
+        print(#function)
+    }
+    
     //MARK: - Action Method
     
-    @objc private func backButtonDidTap(){
-        dismiss(animated: true)
+    @objc private func xButtonDidTap(){
+        pushToRecordAlertViewController()
     }
     
     @objc private func dailyButtonDidTap(){
@@ -200,6 +214,11 @@ final class RecordViewController : BaseViewController{
     @objc
     private func textViewDidTap(_ sender: Any) {
         view.endEditing(true)
+    }
+    
+    @objc
+    private func nextButtonDidTap(_ sender: Any) {
+        pushToRecordRegisterViewController()
     }
 }
 
