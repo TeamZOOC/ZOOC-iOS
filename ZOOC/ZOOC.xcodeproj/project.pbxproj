@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C6B1860296B40C00059840D /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B185F296B40C00059840D /* RecordModel.swift */; };
+		4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */; };
 		4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */; };
 		4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		4C6B185F296B40C00059840D /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAlertViewController.swift; sourceTree = "<group>"; };
 		4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyInviteViewController.swift; sourceTree = "<group>"; };
 		4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInviteCompleteViewController.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				87A76A91295F6DA50096F669 /* RecordViewController.swift */,
+				4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				D23502EF29619D3200F01101 /* FamilyCollectionViewCell.swift in Sources */,
+				4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,
 				87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */,
