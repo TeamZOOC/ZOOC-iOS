@@ -26,25 +26,35 @@ final class OnboardingCompleteProfileViewController: UIViewController{
         super.viewDidLoad()
         
         register()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
-        
-        pushToSecondaryCompleteProfileView()
+        updateCompleteProfileView()
     }
     
     //MARK: - Custom Method
     
     func register() {
         onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingCompleteProfileView.getCodeButton.addTarget(self, action: #selector(getCodeButtonDidTap), for: .touchUpInside)
+        onboardingCompleteProfileView.notGetCodeButton.addTarget(self, action: #selector(notGetCodeButtonDidTap), for: .touchUpInside)
     }
     
-    func pushToSecondaryCompleteProfileView() {
+    func updateCompleteProfileView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            let secondaryCompleteProfileViewController = OnboardingSecondaryCompleteProfileViewController()
-            self.navigationController?.pushViewController(secondaryCompleteProfileViewController, animated: true)
+            self.onboardingCompleteProfileView.completeProfileLabel.textColor = .zoocGray1
+            self.onboardingCompleteProfileView.completeProfileSubLabel.isHidden = false
+            self.onboardingCompleteProfileView.completeImage.isHidden = false
+            self.onboardingCompleteProfileView.getCodeButton.isHidden = false
+            self.onboardingCompleteProfileView.notGetCodeButton.isHidden = false
         }
+    }
+    
+    func pushToParticipateCompletedView() {
+        let onboardingParticipateViewController = OnboardingParticipateViewController()
+        self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
+    }
+    
+    func pushToRegisterPetView() {
+        let onboardingParticipateViewController = OnboardingRegisterPetViewController()
+        self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
     }
     
     //MARK: - Action Method
@@ -52,6 +62,16 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     @objc
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func notGetCodeButtonDidTap() {
+        pushToParticipateCompletedView()
+    }
+    
+    @objc
+    private func getCodeButtonDidTap() {
+        pushToRegisterPetView()
     }
 }
 

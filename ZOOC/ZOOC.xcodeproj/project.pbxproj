@@ -97,16 +97,12 @@
 		D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */; };
 		D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */; };
 		D26C85F229693CFA00AEAF9B /* OnboardingWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85F129693CFA00AEAF9B /* OnboardingWelcomeViewController.swift */; };
-		D26C85F4296946C300AEAF9B /* OnboardingSecondaryWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85F3296946C200AEAF9B /* OnboardingSecondaryWelcomeView.swift */; };
-		D26C85F6296AFD8F00AEAF9B /* OnboardingSecondaryWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85F5296AFD8F00AEAF9B /* OnboardingSecondaryWelcomeViewController.swift */; };
 		D26C85F8296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85F7296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift */; };
 		D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85F9296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift */; };
 		D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85FB296B21A500AEAF9B /* OnboardingRegisterProfileImageView.swift */; };
 		D26C85FE296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */; };
 		D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */; };
 		D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */; };
-		D26C8604296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */; };
-		D26C8606296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8605296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift */; };
 		D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */; };
 		D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */; };
 		D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */; };
@@ -222,16 +218,12 @@
 		D26C85ED2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+.swift"; sourceTree = "<group>"; };
 		D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
 		D26C85F129693CFA00AEAF9B /* OnboardingWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeViewController.swift; sourceTree = "<group>"; };
-		D26C85F3296946C200AEAF9B /* OnboardingSecondaryWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryWelcomeView.swift; sourceTree = "<group>"; };
-		D26C85F5296AFD8F00AEAF9B /* OnboardingSecondaryWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryWelcomeViewController.swift; sourceTree = "<group>"; };
 		D26C85F7296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChooseFamilyRoleView.swift; sourceTree = "<group>"; };
 		D26C85F9296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChooseFamilyRoleViewController.swift; sourceTree = "<group>"; };
 		D26C85FB296B21A500AEAF9B /* OnboardingRegisterProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterProfileImageView.swift; sourceTree = "<group>"; };
 		D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterProfileImageViewController.swift; sourceTree = "<group>"; };
 		D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteProfileView.swift; sourceTree = "<group>"; };
 		D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCompleteProfileViewController.swift; sourceTree = "<group>"; };
-		D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryCompleteProfileView.swift; sourceTree = "<group>"; };
-		D26C8605296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondaryCompleteProfileViewController.swift; sourceTree = "<group>"; };
 		D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateView.swift; sourceTree = "<group>"; };
 		D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateViewController.swift; sourceTree = "<group>"; };
 		D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingParticipateCompletedView.swift; sourceTree = "<group>"; };
@@ -435,11 +427,9 @@
 				D26C85E02968C63F00AEAF9B /* OnboardingLoginViewController.swift */,
 				D26C85E72968CD8E00AEAF9B /* OnboardingAgreementViewController.swift */,
 				D26C85F129693CFA00AEAF9B /* OnboardingWelcomeViewController.swift */,
-				D26C85F5296AFD8F00AEAF9B /* OnboardingSecondaryWelcomeViewController.swift */,
 				D26C85F9296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift */,
 				D26C85FD296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift */,
 				D26C8601296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift */,
-				D26C8605296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift */,
 				D26C8609296B5C7400AEAF9B /* OnboardingParticipateViewController.swift */,
 				D26C860F296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift */,
 				D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */,
@@ -457,11 +447,9 @@
 				D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */,
 				D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */,
 				D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */,
-				D26C85F3296946C200AEAF9B /* OnboardingSecondaryWelcomeView.swift */,
 				D26C85F7296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift */,
 				D26C85FB296B21A500AEAF9B /* OnboardingRegisterProfileImageView.swift */,
 				D26C85FF296B27B100AEAF9B /* OnboardingCompleteProfileView.swift */,
-				D26C8603296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift */,
 				D26C8607296B585600AEAF9B /* OnboardingParticipateView.swift */,
 				D26C860B296B650900AEAF9B /* OnboardingParticipateCompletedView.swift */,
 				D26C8611296B7CA500AEAF9B /* OnboardingRegisterPetView.swift */,
@@ -877,7 +865,6 @@
 				D23503012964702400F01101 /* AppInformationView.swift in Sources */,
 				D235030729647B4200F01101 /* AppInformationViewController.swift in Sources */,
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
-				D26C8604296B2F1B00AEAF9B /* OnboardingSecondaryCompleteProfileView.swift in Sources */,
 				4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
@@ -887,7 +874,6 @@
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
-				D26C8606296B2F4B00AEAF9B /* OnboardingSecondaryCompleteProfileViewController.swift in Sources */,
 				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,
@@ -896,7 +882,6 @@
 				87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */,
 				87A76AC32960427C0096F669 /* APIConstants.swift in Sources */,
 				877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */,
-				D26C85F4296946C300AEAF9B /* OnboardingSecondaryWelcomeView.swift in Sources */,
 				D26C860A296B5C7400AEAF9B /* OnboardingParticipateViewController.swift in Sources */,
 				D26C85CF2968681900AEAF9B /* PetCollectionFooterView.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
@@ -926,7 +911,6 @@
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
 				D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */,
-				D26C85F6296AFD8F00AEAF9B /* OnboardingSecondaryWelcomeViewController.swift in Sources */,
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */,
