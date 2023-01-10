@@ -320,7 +320,6 @@ extension HomeViewController: UICollectionViewDataSource{
             return archiveData.count
         }
         
-        
         return 0
     }
 
@@ -343,8 +342,6 @@ extension HomeViewController: UICollectionViewDataSource{
             cell.dataBind(data: archiveData[indexPath.item])
             return cell
         }
-        
-        
         
         return UICollectionViewCell()
     }
@@ -377,10 +374,15 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
+            
         }
         
         if collectionView == archiveListCollectionView{
             collectionView.performBatchUpdates(nil)
+            let contentSize = collectionView.contentSize.width + 11
+            let newContentSize = contentSize * CGFloat(indexPath.row + 1)
+            let newContentOffset = newContentSize + contentSize
+            collectionView.contentOffset = CGPoint(x: newContentOffset, y: 0)
         }
         
         if collectionView == archiveGridCollectionView{

@@ -38,7 +38,7 @@ public enum Image{
     static let person = UIImage(named: "person")!
     static let plus = UIImage(named: "plus")!
     static let plusTabCircle = UIImage(named: "plus.tab.circle")!
-    static let pervious = UIImage(named: "previous")!
+    static let previous = UIImage(named: "previous")!
     static let ring = UIImage(named: "ring")!
     static let smile = UIImage(named: "smile")!
     static let upload = UIImage(named: "upload")!
@@ -74,5 +74,7 @@ public enum Image{
     
     static let mockPet1 = UIImage(named: "mock_pet1")!
     static let mockPet2 = UIImage(named: "mock_pet2")!
-    
+    static let mockSeokWoo = UIImage(named: "mock_seokwoo")!
+    static let mockYunSun = UIImage(named: "mock_yunsun")!
+    static let mockHidi = UIImage(named: "mock_hidi")!
 }

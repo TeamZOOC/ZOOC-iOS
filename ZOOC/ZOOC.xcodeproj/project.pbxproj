@@ -40,6 +40,8 @@
 		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
 		8782C7EB296AC58B00C9324B /* HomeArchiveProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */; };
 		8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */; };
+		8782C7F1296CADE300C9324B /* HomeDetailArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */; };
+		8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */; };
 		87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A89295F6D0A0096F669 /* PracticeViewController.swift */; };
 		87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A91295F6DA50096F669 /* RecordViewController.swift */; };
 		87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A9E295F6EA30096F669 /* OnboardingService.swift */; };
@@ -120,6 +122,8 @@
 		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
 		8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveProgressView.swift; sourceTree = "<group>"; };
 		8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveModel.swift; sourceTree = "<group>"; };
+		8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		878EE32E2965B2EF0071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		878EE32F2965B2F20071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */,
 				877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */,
 				8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */,
+				8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 			children = (
 				8782C7E52968C0F000C9324B /* HomePetModel.swift */,
 				877E57EF2966C046006D82FC /* HomeArchiveModel.swift */,
+				8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -780,6 +786,7 @@
 				87A76AAB295F6EDE0096F669 /* RecordService.swift in Sources */,
 				D23503032964728700F01101 /* AppInformationTableViewCell.swift in Sources */,
 				8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */,
+				8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */,
 				D23502FB2961F44700F01101 /* SettingMenuTableViewCell.swift in Sources */,
 				D26C85D929689D0800AEAF9B /* DeleteAccountAlertViewController.swift in Sources */,
 				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
@@ -793,6 +800,7 @@
 				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				87648329295237B500F74882 /* Adjusted+.swift in Sources */,
+				8782C7F1296CADE300C9324B /* HomeDetailArchiveModel.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
