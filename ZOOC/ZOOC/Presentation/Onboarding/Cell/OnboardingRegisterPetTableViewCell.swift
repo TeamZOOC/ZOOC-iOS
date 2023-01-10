@@ -91,7 +91,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
     
     func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        petProfileImageButton.setImage(model.petProfileImage, for: .normal)
+        petProfileImageButton.setImage(model.profileImage, for: .normal)
         self.index = index
         
         if(petCount == 1){

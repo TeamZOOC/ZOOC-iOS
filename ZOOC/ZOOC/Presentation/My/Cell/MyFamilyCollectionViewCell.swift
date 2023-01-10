@@ -50,9 +50,9 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(model: MemberModel) {
-        familyImageView.image = model.memberProfileImage
-        familyNameLabel.text = model.memberProfileName
+    public func dataBind(model: MyMemberModel) {
+        familyImageView.image = model.profileImage
+        familyNameLabel.text = model.profileName
     }
 }
 

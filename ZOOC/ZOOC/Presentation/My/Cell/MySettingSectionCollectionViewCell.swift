@@ -78,13 +78,13 @@ extension MySettingSectionCollectionViewCell: UITableViewDelegate {
 
 extension MySettingSectionCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingMenuModel.settingMenuData.count
+        return MySettingModel.settingMenuData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MySettingTableViewCell.cellIdentifier, for: indexPath)
                 as? MySettingTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: SettingMenuModel.settingMenuData[indexPath.row])
+        cell.dataBind(model: MySettingModel.settingMenuData[indexPath.row])
         return cell
     }
 }

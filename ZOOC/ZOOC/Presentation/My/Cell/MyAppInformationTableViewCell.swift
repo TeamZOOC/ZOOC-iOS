@@ -65,8 +65,8 @@ final class AppInformationTableViewCell: UITableViewCell {
         }
     }
     
-    public func dataBind(model: AppInformationModel) {
-        appInformationLabel.text = model.appInformationName
+    public func dataBind(model: MyAppInformationModel) {
+        appInformationLabel.text = model.title
     }
 }
 

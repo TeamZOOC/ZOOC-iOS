@@ -61,9 +61,9 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(model: MemberModel) {
-        petImageView.image = model.memberProfileImage
-        petNameLabel.text = model.memberProfileName
+    public func dataBind(model: MyMemberModel) {
+        petImageView.image = model.profileImage
+        petNameLabel.text = model.profileName
     }
 }
 

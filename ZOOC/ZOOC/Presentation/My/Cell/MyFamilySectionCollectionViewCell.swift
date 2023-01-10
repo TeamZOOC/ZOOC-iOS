@@ -21,7 +21,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     private var familyCountLabel = UILabel().then {
-        $0.text = "\(MemberModel.petDummyData.count)/8"
+        $0.text = "\(MyMemberModel.petDummyData.count)/8"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -120,13 +120,13 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout 
 //MARK: - UICollectionViewDataSource
 extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemberModel.familyDummyData.count
+        return MyMemberModel.familyDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MemberModel.familyDummyData[indexPath.item])
+        cell.dataBind(model: MyMemberModel.familyDummyData[indexPath.item])
         return cell
     }
 }

@@ -21,7 +21,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     }
     
     private var petCountLabel = UILabel().then {
-        $0.text = "\(MemberModel.petDummyData.count)/4"
+        $0.text = "\(MyMemberModel.petDummyData.count)/4"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -103,13 +103,13 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemberModel.petDummyData.count
+        return MyMemberModel.petDummyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? MyPetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
+        cell.dataBind(model: MyMemberModel.petDummyData[indexPath.item])
         return cell
     }
     

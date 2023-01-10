@@ -56,8 +56,8 @@ final class MySettingTableViewCell: UITableViewCell {
         }
     }
     
-    public func dataBind(model: SettingMenuModel) {
-        menuLabel.text = model.settingMenuName
+    public func dataBind(model: MySettingModel) {
+        menuLabel.text = model.title
         if model.isLogout {
             menuLabel.textColor = UIColor(r: 235, g: 91, b: 78)
             separatorLine.isHidden = true

@@ -72,10 +72,10 @@
 		D23502F52961A69E00F01101 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F42961A69E00F01101 /* MyView.swift */; };
 		D23502F92961F34100F01101 /* MySettingSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F82961F34100F01101 /* MySettingSectionCollectionViewCell.swift */; };
 		D23502FB2961F44700F01101 /* MySettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FA2961F44700F01101 /* MySettingTableViewCell.swift */; };
-		D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* SettingMenuModel.swift */; };
+		D23502FD2961F85100F01101 /* MySettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502FC2961F85100F01101 /* MySettingModel.swift */; };
 		D23503012964702400F01101 /* MyAppInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503002964702400F01101 /* MyAppInformationView.swift */; };
 		D23503032964728700F01101 /* MyAppInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503022964728700F01101 /* MyAppInformationTableViewCell.swift */; };
-		D23503052964743100F01101 /* AppInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503042964743100F01101 /* AppInformationModel.swift */; };
+		D23503052964743100F01101 /* MyAppInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23503042964743100F01101 /* MyAppInformationModel.swift */; };
 		D235030729647B4200F01101 /* MyAppInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030629647B4200F01101 /* MyAppInformationViewController.swift */; };
 		D2350309296490A700F01101 /* MyEditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2350308296490A700F01101 /* MyEditProfileView.swift */; };
 		D235030B2964991700F01101 /* MyEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030A2964991700F01101 /* MyEditProfileViewController.swift */; };
@@ -123,7 +123,7 @@
 		D2F98F9D2967154D00CC82DE /* ZoocAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
-		D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA62967939100CC82DE /* MemberModel.swift */; };
+		D2F98FA72967939100CC82DE /* MyMemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA62967939100CC82DE /* MyMemberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +153,6 @@
 		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
 		8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveProgressView.swift; sourceTree = "<group>"; };
 		8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveGridCollectionViewCell.swift; sourceTree = "<group>"; };
-		878EE32E2965B2EF0071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		878EE32F2965B2F20071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		87A76A91295F6DA50096F669 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +179,6 @@
 		87D3687C2964C97E009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D3687D2964C981009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D368822964CAE3009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
-		87D368842964CB8F009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -193,10 +191,10 @@
 		D23502F42961A69E00F01101 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		D23502F82961F34100F01101 /* MySettingSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502FA2961F44700F01101 /* MySettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingTableViewCell.swift; sourceTree = "<group>"; };
-		D23502FC2961F85100F01101 /* SettingMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingMenuModel.swift; path = ZOOC/Presentation/My/Cell/SettingMenuModel.swift; sourceTree = SOURCE_ROOT; };
+		D23502FC2961F85100F01101 /* MySettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MySettingModel.swift; path = ZOOC/Presentation/My/Cell/MySettingModel.swift; sourceTree = SOURCE_ROOT; };
 		D23503002964702400F01101 /* MyAppInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppInformationView.swift; sourceTree = "<group>"; };
 		D23503022964728700F01101 /* MyAppInformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppInformationTableViewCell.swift; sourceTree = "<group>"; };
-		D23503042964743100F01101 /* AppInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppInformationModel.swift; path = ZOOC/Presentation/My/Cell/AppInformationModel.swift; sourceTree = SOURCE_ROOT; };
+		D23503042964743100F01101 /* MyAppInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyAppInformationModel.swift; path = ZOOC/Presentation/My/Cell/MyAppInformationModel.swift; sourceTree = SOURCE_ROOT; };
 		D235030629647B4200F01101 /* MyAppInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppInformationViewController.swift; sourceTree = "<group>"; };
 		D2350308296490A700F01101 /* MyEditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* MyEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +242,7 @@
 		D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
-		D2F98FA62967939100CC82DE /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		D2F98FA62967939100CC82DE /* MyMemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMemberModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,7 +442,6 @@
 		87A76A8C295F6D7E0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				878EE32E2965B2EF0071DCAC /* Empty.md */,
 				D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */,
 				D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */,
 				D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */,
@@ -517,7 +514,6 @@
 			children = (
 				87A76ABD295F775C0096F669 /* Model */,
 				87A76ABC295F77530096F669 /* APIModel */,
-				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -612,9 +608,9 @@
 		87A76AB2295F6F140096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D23502FC2961F85100F01101 /* SettingMenuModel.swift */,
-				D23503042964743100F01101 /* AppInformationModel.swift */,
-				D2F98FA62967939100CC82DE /* MemberModel.swift */,
+				D23502FC2961F85100F01101 /* MySettingModel.swift */,
+				D23503042964743100F01101 /* MyAppInformationModel.swift */,
+				D2F98FA62967939100CC82DE /* MyMemberModel.swift */,
 				D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */,
 			);
 			path = Model;
@@ -639,8 +635,8 @@
 		87A76ABD295F775C0096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87D368842964CB8F009728FC /* Empty.md */,
 				D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */,
+				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -883,7 +879,7 @@
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
-				D2F98FA72967939100CC82DE /* MemberModel.swift in Sources */,
+				D2F98FA72967939100CC82DE /* MyMemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,
 				D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */,
@@ -919,7 +915,7 @@
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
 				D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */,
-				D23503052964743100F01101 /* AppInformationModel.swift in Sources */,
+				D23503052964743100F01101 /* MyAppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */,
 				D26C85EA2968CF7E00AEAF9B /* OnboardingAgreementModel.swift in Sources */,
@@ -957,7 +953,7 @@
 				D26C85FE296B253600AEAF9B /* OnboardingRegisterProfileImageViewController.swift in Sources */,
 				8764831F2952368800F74882 /* UITableViewCell+.swift in Sources */,
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
-				D23502FD2961F85100F01101 /* SettingMenuModel.swift in Sources */,
+				D23502FD2961F85100F01101 /* MySettingModel.swift in Sources */,
 				D26C85F229693CFA00AEAF9B /* OnboardingWelcomeViewController.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
