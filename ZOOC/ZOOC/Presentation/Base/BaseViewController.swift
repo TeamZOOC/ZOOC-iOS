@@ -23,6 +23,15 @@ class BaseViewController : UIViewController{
         
         setUI()
         setLayout()
+        dismissKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     //MARK: - Custom Method
@@ -34,6 +43,9 @@ class BaseViewController : UIViewController{
     private func setLayout(){
         
     }
+    
+    //MARK: - Keyboard 관련 처리
+   
     
     //MARK: - Action Method
     

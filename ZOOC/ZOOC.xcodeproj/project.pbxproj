@@ -38,7 +38,7 @@
 		8782C7E129685D7F00C9324B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7E029685D7F00C9324B /* FirebaseMessaging */; };
 		8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */; };
 		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
-		8782C7EB296AC58B00C9324B /* HomeArchiveProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */; };
+		8782C7EB296AC58B00C9324B /* HomeArchiveIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */; };
 		8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */; };
 		8782C7F1296CADE300C9324B /* HomeDetailArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */; };
 		8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */; };
@@ -120,7 +120,7 @@
 		877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveViewController.swift; sourceTree = "<group>"; };
 		8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
-		8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveProgressView.swift; sourceTree = "<group>"; };
+		8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveIndicatorView.swift; sourceTree = "<group>"; };
 		8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveModel.swift; sourceTree = "<group>"; };
 		8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 		8782C7E82969502600C9324B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8782C7EA296AC58B00C9324B /* HomeArchiveProgressView.swift */,
+				8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -830,7 +830,7 @@
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* PetCollectionView.swift in Sources */,
-				8782C7EB296AC58B00C9324B /* HomeArchiveProgressView.swift in Sources */,
+				8782C7EB296AC58B00C9324B /* HomeArchiveIndicatorView.swift in Sources */,
 				877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
 			);
@@ -972,7 +972,7 @@
 				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F65Z32A8X9;
+				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -988,7 +988,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunsun.ZOOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meltsplit.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1007,7 +1007,7 @@
 				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = F65Z32A8X9;
+				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1023,7 +1023,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunsun.ZOOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meltsplit.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

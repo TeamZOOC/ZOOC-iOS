@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeArchiveProgressView : UIView{
+final class HomeArchiveIndicatorView : UIView{
     
     //MARK: - Properties
     
@@ -26,7 +26,7 @@ final class HomeArchiveProgressView : UIView{
     var widthRatio: Double? {
       didSet {
         guard let widthRatio = self.widthRatio else { return }
-        self.progressTintView.snp.remakeConstraints {
+        self.indicatorTintView.snp.remakeConstraints {
           $0.top.bottom.equalToSuperview()
           $0.width.equalToSuperview().multipliedBy(widthRatio)
           $0.left.greaterThanOrEqualToSuperview()
@@ -39,12 +39,12 @@ final class HomeArchiveProgressView : UIView{
     
     //MARK: - UI Components
     
-    private let progressView = UIView().then {
+    private let indicatorView = UIView().then {
         $0.clipsToBounds = true
         $0.backgroundColor = .zoocLightGreen
     }
     
-    private let progressTintView = UIView().then {
+    private let indicatorTintView = UIView().then {
         $0.backgroundColor = .zoocDarkGreen
     }
     
@@ -68,14 +68,14 @@ final class HomeArchiveProgressView : UIView{
     }
     
     private func setLayout(){
-        self.addSubview(progressView)
-        progressView.addSubview(progressTintView)
+        self.addSubview(indicatorView)
+        indicatorView.addSubview(indicatorTintView)
         
-        progressView.snp.makeConstraints {
+        indicatorView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        progressTintView.snp.remakeConstraints {
+        indicatorTintView.snp.remakeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(1/6)
             $0.left.greaterThanOrEqualToSuperview()

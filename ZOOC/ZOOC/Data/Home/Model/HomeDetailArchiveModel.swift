@@ -37,9 +37,16 @@ extension HomeDetailArchiveModel{
         ArchiveCommentModel(writerImage: Image.mockSeokWoo,
                             writerName: "장석우",
                             comment: "우와아아아 너무 귀엽따",
+                            date: "1월 11일"),
+        ArchiveCommentModel(writerImage: Image.mockSeokWoo,
+                            writerName: "장석우",
+                            comment: "우와아아아 너무 귀엽따",
+                            date: "1월 11일"),
+        ArchiveCommentModel(writerImage: Image.mockSeokWoo,
+                            writerName: "장석우",
+                            comment: "우와아아아 너무 귀엽따",
                             date: "1월 11일")
-        
-    ]
+                            ]
     
     static let mockData : HomeDetailArchiveModel =
     HomeDetailArchiveModel(petImage: Image.mockPet1,
