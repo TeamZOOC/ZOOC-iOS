@@ -1,0 +1,254 @@
+//
+//  HomeMainCollectionViewCell.swift
+//  ZOOC
+//
+//  Created by 장석우 on 2023/01/05.
+//
+
+import UIKit
+
+import SnapKit
+
+final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
+    
+    enum ViewType{
+        case folded
+        case expanded
+    }
+    
+    //MARK: - Properties
+    
+    public var viewType : ViewType = .folded
+    
+    override var isSelected: Bool{
+        didSet{
+            if isSelected{
+                switch viewType{
+                case .folded:
+                    viewType = .expanded
+                    updateUI()
+                case .expanded:
+                 break
+                }
+            } else{
+                switch viewType{
+                case .folded:
+                    break
+                case .expanded:
+                    viewType = .folded
+                    updateUI()
+                }
+            }
+            
+            
+        }
+    }
+    
+    //MARK: - UI Components
+    
+    private let petImageView : UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
+    private let contentLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .zoocDarkGray1
+        label.font = .zoocBody1
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let profileImageView : UIImageView = {
+        let view = UIImageView()
+        view.image = Image.defaultProfile
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    private let writerLabel: UILabel = {
+        let label = UILabel()
+        label.font = .zoocBody1
+        label.textColor = .zoocGray2
+        label.backgroundColor = .zoocWhite3
+        label.layer.cornerRadius = 4
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .zoocCaption
+        label.textColor = .zoocGray2
+        return label
+    }()
+    
+        //MARK: - Life Cycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUI()
+        setLayout()
+        foldedLayout()
+        foldedAlpha()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        viewType = .folded
+        foldedAlpha()
+        foldedLayout()
+        foldedAnimatedLayout()
+    }
+    
+    //MARK: - Custom Method
+    
+    private func setUI(){
+        contentView.backgroundColor = .zoocWhite1
+        contentView.layer.cornerRadius = 12
+        contentView.clipsToBounds = true
+    }
+    
+    private func setLayout(){
+        contentView.addSubviews(petImageView,
+                                profileImageView,
+                                contentLabel,
+                                writerLabel,
+                                dateLabel)
+       
+        petImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(280)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.top.equalTo(self.petImageView.snp.bottom).offset(19)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        writerLabel.snp.makeConstraints {
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(7)
+            $0.centerY.equalTo(profileImageView)
+            $0.height.equalTo(24)
+        }
+        
+        profileImageView.snp.makeConstraints {
+            $0.bottom.equalTo(dateLabel.snp.top).offset(-9)
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(24)
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.centerX.equalToSuperview()
+        }
+        
+    
+    }
+    
+    private func foldedLayout(){
+        contentLabel.isHidden = true
+        writerLabel.isHidden = true
+    }
+    
+    private func foldedAlpha(){
+        contentLabel.alpha = 0
+        writerLabel.alpha = 0
+    }
+
+    
+    private func expandedLayout(){
+        contentLabel.isHidden = false
+        writerLabel.isHidden = false
+    }
+    
+    private func expandedAlpha(){
+        contentLabel.alpha = 1
+        writerLabel.alpha = 1
+    }
+    
+    private func foldedAnimatedLayout(){
+        self.profileImageView.snp.remakeConstraints {
+            $0.top.equalTo(self.petImageView.snp.bottom).offset(84)
+            $0.centerX.equalToSuperview()
+            $0.height.width.equalTo(24)
+        }
+        
+        self.dateLabel.snp.remakeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.centerX.equalToSuperview()
+        }
+    }
+    
+    private func expandedFirstAnimatedLayout(){
+        self.profileImageView.snp.remakeConstraints {
+            $0.leading.equalToSuperview().offset(18)
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.height.width.equalTo(24)
+        }
+        
+        self.dateLabel.snp.remakeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.trailing.equalToSuperview().offset(-18)
+        }
+    }
+    
+    private func expandedSecondAnimatedLayout(){
+        
+        self.expandedLayout()
+        UIView.animate(withDuration: 0.2) {
+            self.expandedAlpha()
+        }
+        
+        self.contentLabel.snp.remakeConstraints {
+            $0.top.equalTo(self.petImageView.snp.bottom).offset(19)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        self.writerLabel.snp.remakeConstraints {
+            $0.leading.equalTo(self.profileImageView.snp.trailing).offset(7)
+            $0.centerY.equalTo(self.profileImageView)
+            $0.height.equalTo(24)
+            $0.width.equalTo(writerLabel.intrinsicContentSize.width + 14)
+        }
+    }
+    private func updateUI(){
+        
+        switch viewType{
+            
+        case .folded:
+            foldedLayout()
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.foldedAnimatedLayout()
+                self.layoutIfNeeded()
+            })
+            
+        case .expanded:
+            UIView.animate(withDuration: 0.3, animations: {
+                self.expandedFirstAnimatedLayout()
+                self.layoutIfNeeded()
+            },completion:  { _ in
+                self.expandedSecondAnimatedLayout()
+            })
+        }
+    }
+    
+    func dataBind(data: HomeArchiveModel){
+        
+        petImageView.image = data.petImage
+        contentLabel.text = data.content
+        profileImageView.image = data.profileImage
+        writerLabel.text = data.writerName
+        dateLabel.text = data.date
+    }
+    
+}
