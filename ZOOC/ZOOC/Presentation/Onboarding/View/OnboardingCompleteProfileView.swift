@@ -18,6 +18,18 @@ final class OnboardingCompleteProfileView: UIView {
         $0.setImage(Image.back, for: .normal)
     }
     
+    public var progressBarView = UIView().then {
+        $0.backgroundColor = .zoocLightGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
+    public var completedProgressBarView = UIView().then {
+        $0.backgroundColor = .zoocMainGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
     public var completeProfileLabel = UILabel().then {
         $0.text = "멋진 프로필이네요! \n이제 가족과 함께해보세요"
         $0.textColor = .zoocDarkGray1
@@ -82,12 +94,27 @@ final class OnboardingCompleteProfileView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, completeProfileLabel, completeProfileSubLabel, completeImage, getCodeButton, notGetCodeButton)
+        addSubviews(backButton, progressBarView, completeProfileLabel,  completeProfileSubLabel, completeImage, getCodeButton, notGetCodeButton)
+        
+        progressBarView.addSubview(completedProgressBarView)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
+        }
+        
+        progressBarView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(4)
+        }
+        
+        completedProgressBarView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(159)
+            $0.bottom.equalToSuperview()
         }
         
         completeProfileLabel.snp.makeConstraints {

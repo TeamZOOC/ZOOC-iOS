@@ -18,6 +18,18 @@ final class OnboardingRegisterPetView: UIView {
         $0.setImage(Image.back, for: .normal)
     }
     
+    public var progressBarView = UIView().then {
+        $0.backgroundColor = .zoocLightGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
+    public var completedProgressBarView = UIView().then {
+        $0.backgroundColor = .zoocMainGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
     private var registerPetTitleLabel = UILabel().then {
         $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
         $0.textColor = .zoocDarkGray2
@@ -71,12 +83,27 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
+        addSubviews(backButton, progressBarView, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
+        
+        progressBarView.addSubview(completedProgressBarView)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
             $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
+        }
+        
+        progressBarView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(4)
+        }
+        
+        completedProgressBarView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(107)
+            $0.bottom.equalToSuperview()
         }
         
         registerPetTitleLabel.snp.makeConstraints {

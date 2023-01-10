@@ -19,6 +19,18 @@ final class OnboardingParticipateView: UIView {
         $0.setImage(Image.back, for: .normal)
     }
     
+    public var progressBarView = UIView().then {
+        $0.backgroundColor = .zoocLightGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
+    public var completedProgressBarView = UIView().then {
+        $0.backgroundColor = .zoocMainGreen
+        $0.layer.cornerRadius = 2
+        $0.clipsToBounds = true
+    }
+    
     private var participateTitleLabel = UILabel().then {
         $0.text = "전달받은 가족코드를 \n입력해주세요"
         $0.textColor = .zoocDarkGray1
@@ -70,12 +82,27 @@ final class OnboardingParticipateView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, participateTitleLabel, familyCodeTextField, participateImage, nextButton)
+        addSubviews(backButton, progressBarView, participateTitleLabel,  familyCodeTextField, participateImage, nextButton)
+        
+        progressBarView.addSubview(completedProgressBarView)
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(17)
-            $0.leading.equalToSuperview().offset(15)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
+            $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
+        }
+        
+        progressBarView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.height.equalTo(4)
+        }
+        
+        completedProgressBarView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(81)
+            $0.bottom.equalToSuperview()
         }
         
         participateTitleLabel.snp.makeConstraints {
