@@ -42,7 +42,7 @@ final class RecordRegisterFourCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .zoocMainGreen
         view.alpha = 0.1
-        view.isHidden = false
+        view.isHidden = true
         return view
     }()
     

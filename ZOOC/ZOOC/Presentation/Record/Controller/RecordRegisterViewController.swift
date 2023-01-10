@@ -264,7 +264,7 @@ final class RecordRegisterViewController : BaseViewController{
     
     @objc
     private func registerButtonDidTap(){
-        dismiss(animated: true)
+        pushToRecordCompleteViewController()
     }
     
     private func activateButton(indexPathArray: [IndexPath]?) {
@@ -275,6 +275,12 @@ final class RecordRegisterViewController : BaseViewController{
             registerButton.backgroundColor = .zoocGradientGreen
             registerButton.isEnabled = true
         }
+    }
+    
+    private func pushToRecordCompleteViewController() {
+        let recordCompleteViewController = RecordCompleteViewController()
+        self.navigationController?.pushViewController(recordCompleteViewController, animated: true)
+        print("헹")
     }
 }
 
