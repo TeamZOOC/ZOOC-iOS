@@ -52,15 +52,19 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     
     public func dataBind(data: MyMemberModel, index: Int, myProfileData: MyProfileModel) {
         if (index == 0){
-            familyImageView.image = myProfileData.profileImage
-            familyImageView.layer.borderWidth = 2
-            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
             familyNameLabel.text = myProfileData.name
-            familyNameLabel.textColor = .zoocMainGreen
+            familyImageView.image = myProfileData.profileImage
         } else {
             familyImageView.image = data.profileImage
             familyNameLabel.text = data.profileName
         }
+        
+//        if(familyNameLabel.text == myProfileData.name) {
+
+//            familyImageView.layer.borderWidth = 2
+//            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
+//            familyNameLabel.textColor = .zoocMainGreen
+//        }
     }
 }
 

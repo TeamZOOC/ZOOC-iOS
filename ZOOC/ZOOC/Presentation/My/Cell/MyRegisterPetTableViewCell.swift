@@ -7,20 +7,22 @@
 
 import UIKit
 
-protocol MyDeleteButtonTappedDelegate {
+protocol MyDeleteButtonTappedDelegate: AnyObject {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
     func canRegister(canRegister: Bool)
+    
+    func giveRegisterData(myPetRegisterData: [MyPetRegisterModel])
 }
 
 final class MyRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var delegate: MyDeleteButtonTappedDelegate?
+    weak var delegate: MyDeleteButtonTappedDelegate?
     var index: Int = 0
     var canRegister: Bool = false
-    var myPetRegisterdata: [MyPetRegisterModel] = []
+    var myPetRegisterData: [MyPetRegisterModel] = []
     
     
     //MARK: - UI Components
@@ -58,6 +60,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         setLayout()
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        petProfileNameTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -95,11 +98,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     
     func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
         self.index = index
-        self.myPetRegisterdata = petData
-//        print(#function)
-//        for i in 0...myPetRegisterdata.count {
-//            print(i)
-//        }
+        self.myPetRegisterData = petData
         
         if(petData.count == 1) {
             deletePetProfileButton.isHidden = true
@@ -108,6 +107,12 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
+    func registerPet() {
+        if (petProfileNameTextField.text!.count != 0){
+            myPetRegisterData[index].profileName = petProfileNameTextField.text!
+            myPetRegisterData[index].profileImage = petProfileImageButton.currentImage!
+        }
+    }
     @objc
     private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
@@ -120,6 +125,8 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
                 if text.count >= 4 {
                     textField.resignFirstResponder()
                     delegate?.canRegister(canRegister: true)
+                    //                    print("이름은요 \(myPetRegisterData[index].profileName)")
+                    //                    print("순서는요 \(index)")
                 }
                 else if text.count <= 0 {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
@@ -128,8 +135,17 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
                 else {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
                     delegate?.canRegister(canRegister: true)
+                    //                    print("이름은요 \(myPetRegisterData[index].profileName) ")
+                    //                    print("순서는요 \(index)")
                 }
             }
         }
+    }
+}
+
+extension MyRegisterPetTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        registerPet()
+        delegate?.giveRegisterData(myPetRegisterData: myPetRegisterData)
     }
 }

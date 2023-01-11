@@ -134,11 +134,9 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(#function)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(data: myFamilyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
-        print("여기서 돌아가요222\(myProfileData.name)")
         return cell
     }
 }

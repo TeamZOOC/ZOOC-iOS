@@ -22,9 +22,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     private let myRegisterPetView = MyRegisterPetView()
     
-    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile) //서버에서 받아오겠죠?
-    
-    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
+    private lazy var myPetRegisteredData: [MyPetRegisterModel] = []
     
     //MARK: - UI Components
     
@@ -99,6 +97,11 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         
         petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
+    
+    public func dataBind(myPetRegisteredData : [MyPetRegisterModel]) {
+        self.myPetRegisteredData = myPetRegisteredData
+        self.petCollectionView.reloadData()
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -122,13 +125,13 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myPetRegisterData.count
+        return myPetRegisteredData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? MyPetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: myPetRegisterData[indexPath.item])
+        cell.dataBind(data: myPetRegisteredData[indexPath.item])
         return cell
     }
     

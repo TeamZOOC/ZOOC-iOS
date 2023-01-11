@@ -12,12 +12,12 @@ import Then
 final class MyViewController: BaseViewController {
     
     //MARK: - Properties
-    
     private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
     
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
     private lazy var myPetRegisteredData: [MyPetRegisterModel] = [petProfile]
+    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
     
@@ -84,6 +84,16 @@ final class MyViewController: BaseViewController {
         myProfileData.name = profileName
         myProfileData.profileImage = profileImage
         myView.myCollectionView.reloadData()
+    }
+    
+    func updateRegisterPetData(myPetRegisterData: [MyPetRegisterModel]) {
+//        self.myPetRegisterData = myPetRegisterData
+//        print("마이뷰컨 \(myPetRegisterData.count)")
+//        for i in 0...myPetRegisterData.count-1 {
+//            myPetRegisteredData.append(myPetRegisterData[i])
+//            print("마이뷰컨 \(i)번째 반려동물은 \(myPetRegisterData[i].profileName)")
+//        }
+//        myView.myCollectionView.reloadData()
     }
     
     //MARK: - Action Method
@@ -167,7 +177,6 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            print("여기서 돌아가요\(myProfileData.name)")
             cell.dataBind(myProfileData: myProfileData)
             return cell
             
@@ -175,6 +184,7 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            cell.dataBind(myPetRegisteredData: myPetRegisteredData)
             cell.delegate = self
             return cell
             

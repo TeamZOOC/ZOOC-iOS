@@ -19,6 +19,7 @@ final class MyRegisterPetViewController: UIViewController{
     
     private lazy var myPetRegisteredData: [MyPetRegisterModel] = []
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
+    private lazy var myUpdateRegisterData: [MyPetRegisterModel] = []
     
     private var isFull: Bool = false
     
@@ -52,9 +53,13 @@ final class MyRegisterPetViewController: UIViewController{
     }
     
     func registerPet() {
-        for i in 0...myPetRegisterData.count-1 {
-            print(myPetRegisterData[i].profileName)
-        }
+        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
+        print("업데이트 \(self.myUpdateRegisterData.count)")
+        print("업데이트z \(myUpdateRegisterData.count)")
+//        for i in 0...myUpdateRegisterData.count-1 {
+//            print("뷰컨가기전\(myUpdateRegisterData[i].profileName)")
+//        }
+        beforeVC.updateRegisterPetData(myPetRegisterData: self.myUpdateRegisterData)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -139,7 +144,6 @@ extension MyRegisterPetViewController: UITableViewDataSource {
             return UIView()
         }
     }
-    
 }
 
 
@@ -147,6 +151,19 @@ extension MyRegisterPetViewController: UITableViewDataSource {
 //MARK: - DeleteButtonTappedDelegate
 
 extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
+    func giveRegisterData(myPetRegisterData: [MyPetRegisterModel]) {
+        self.myUpdateRegisterData = myPetRegisterData
+        print("업데이트 반려동물 셀 개수\(myUpdateRegisterData.count)")
+        
+        for i in 0...myPetRegisterData.count-1 {
+            print("가져온 반려동물\(myPetRegisterData[i].profileName)")
+        }
+        
+        for j in 0...self.myUpdateRegisterData.count-1 {
+            print("넣어줄 반려동물\(myUpdateRegisterData[j].profileName)")
+        }
+    }
+    
     func deleteButtonTapped(isSelected: Bool, index: Int) {
         if isSelected {
             if myPetRegisterData.count > 1 {
