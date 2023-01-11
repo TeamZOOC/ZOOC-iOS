@@ -15,7 +15,10 @@ final class RecordViewController : BaseViewController{
     //MARK: - Properties
     
     private var recordData: RecordModel? = RecordModel(image: Image.mockPet1, content: nil)
-    
+    private let placeHoldText: String = """
+                                        ex) 2023년 2월 30일
+                                        가족에게 어떤 순간이었는지 남겨주세요
+                                        """
     //MARK: - UI Components
     
     private let topBarView: UIView = {
@@ -80,25 +83,28 @@ final class RecordViewController : BaseViewController{
         return imageView
     }()
     
-    private let contentTextView: UITextView = {
+    private lazy var contentTextView: UITextView = {
         let textView = UITextView()
         textView.textContainerInset = UIEdgeInsets(top: 16.0, left: 18.0, bottom: 16.0, right: 18.0)
         textView.font = .zoocBody2
+        textView.text = placeHoldText
         textView.textColor = .zoocGray1
         textView.backgroundColor = .zoocWhite2
         textView.clipsToBounds = true
         textView.layer.cornerRadius = 12
         
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = 10
-        let attributes = [NSAttributedString.Key.paragraphStyle : style]
-        textView.attributedText = NSAttributedString(string: "ex) 2023년 2월 30일\n어떤 순간이었는지 가족에게 남겨주세요", attributes: attributes)
+//        let style = NSMutableParagraphStyle()
+//        style.lineSpacing = 10
+//        let attributes = [NSAttributedString.Key.paragraphStyle : style]
+//        textView.attributedText = NSAttributedString(string: placeHoldText,
+//                                                     attributes: attributes)
         return textView
     }()
     
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
+        button.titleLabel?.font = .zoocSubhead1
         button.setTitleColor(.zoocWhite1, for: .normal)
         button.backgroundColor = .zoocGray1
         button.isEnabled = false
@@ -193,7 +199,8 @@ final class RecordViewController : BaseViewController{
     }
     
     func pushToRecordRegisterViewController() {
-        // let recordRegisterViewController = RecordRegisterViewController()
+        let recordRegisterViewController = RecordRegisterViewController()
+        navigationController?.pushViewController(recordRegisterViewController, animated: true)
         print(#function)
     }
     
@@ -204,11 +211,11 @@ final class RecordViewController : BaseViewController{
     }
     
     @objc private func dailyButtonDidTap(){
-        dismiss(animated: true)
+        print(#function)
     }
     
     @objc private func missionButtonDidTap(){
-        dismiss(animated: true)
+        print(#function)
     }
     
     @objc
@@ -224,16 +231,18 @@ final class RecordViewController : BaseViewController{
 
 extension RecordViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "ex) 2023년 2월 30일\n어떤 순간이었는지 가족에게 남겨주세요" {
+        if textView.text == placeHoldText {
             textView.text = nil
             textView.textColor = .black
+        } else{
+            
         }
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = "ex) 2023년 2월 30일\n어떤 순간이었는지 가족에게 남겨주세요"
-            textView.textColor = .lightGray
+            textView.text = placeHoldText
+            textView.textColor = .zoocGray1
         }
     }
     

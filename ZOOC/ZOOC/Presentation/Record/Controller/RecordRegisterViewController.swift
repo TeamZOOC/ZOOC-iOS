@@ -125,6 +125,7 @@ final class RecordRegisterViewController : BaseViewController{
         button.setTitle("기록하기", for: .normal)
         button.setTitleColor(.zoocWhite1, for: .normal)
         button.backgroundColor = .zoocGray1
+        button.titleLabel?.font = .zoocSubhead1
         button.layer.cornerRadius = 27
         button.addTarget(self,
                          action: #selector(registerButtonDidTap),
@@ -259,7 +260,7 @@ final class RecordRegisterViewController : BaseViewController{
     
     @objc
     private func backButtonDidTap(){
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
