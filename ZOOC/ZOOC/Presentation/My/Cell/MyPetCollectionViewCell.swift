@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class PetCollectionViewCell: UICollectionViewCell {
+final class MyPetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
     public var petImageView = UIImageView().then {
         $0.image = Image.mockPet2
-        $0.layer.cornerRadius = 24
+        $0.layer.cornerRadius = 17
         $0.clipsToBounds = true
     }
     
@@ -38,7 +38,7 @@ final class PetCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.backgroundColor = . zoocWhite2
+        contentView.backgroundColor = .zoocWhite2
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
         contentView.layer.cornerRadius = 21
@@ -50,20 +50,20 @@ final class PetCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(petImageView, petNameLabel)
         
         petImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(3)
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(3)
             $0.size.equalTo(34)
         }
         
         petNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.centerY.equalToSuperview()
             $0.leading.equalTo(self.petImageView.snp.trailing).offset(8)
         }
     }
     
-    public func dataBind(model: MemberModel) {
-        petImageView.image = model.memberProfileImage
-        petNameLabel.text = model.memberProfileName
+    public func dataBind(data: MyPetRegisterModel) {
+        petImageView.image = data.profileImage
+        petNameLabel.text = data.profileName
     }
 }
 

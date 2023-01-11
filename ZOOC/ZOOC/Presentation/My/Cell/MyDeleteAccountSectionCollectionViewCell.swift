@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DeleteAccountView: UICollectionViewCell  {
+final class MyDeleteAccountSectionCollectionViewCell: UICollectionViewCell  {
     
     //MARK: - UI Components
     

@@ -10,7 +10,19 @@ import UIKit
 import SnapKit
 import Then
 
-final class PetCollectionView: UICollectionViewCell {
+protocol MyRegisterPetButtonTappedDelegate {
+    func myRegisterPetButtonTapped(isSelected: Bool)
+}
+
+final class MyPetSectionCollectionViewCell: UICollectionViewCell {
+    
+    //MARK: - Properties
+    
+    var delegate: MyRegisterPetButtonTappedDelegate?
+    
+    private let myRegisterPetView = MyRegisterPetView()
+    
+    private lazy var myPetRegisteredData: [MyPetRegisterModel] = []
     
     //MARK: - UI Components
     
@@ -21,7 +33,7 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     private var petCountLabel = UILabel().then {
-        $0.text = "\(MemberModel.petDummyData.count)/4"
+        $0.text = "\(MyMemberModel.petDummyData.count)/4"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -81,43 +93,61 @@ final class PetCollectionView: UICollectionViewCell {
     }
     
     public func register() {
-        petCollectionView.register(PetCollectionViewCell.self, forCellWithReuseIdentifier: PetCollectionViewCell.cellIdentifier)
+        petCollectionView.register(MyPetCollectionViewCell.self, forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
         
-        petCollectionView.register(PetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier)
+        petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
+    }
+    
+    public func dataBind(myPetRegisteredData : [MyPetRegisterModel]) {
+        self.myPetRegisteredData = myPetRegisteredData
+        self.petCollectionView.reloadData()
     }
 }
+
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension PetCollectionView: UICollectionViewDelegateFlowLayout {
+extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 86, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         print(#function)
-        return CGSize(width: 11, height: 11)
+        return CGSize(width: 40, height: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
     }
 }
 
 //MARK: - UICollectionViewDataSource
 
-extension PetCollectionView: UICollectionViewDataSource {
+extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemberModel.petDummyData.count
+        return myPetRegisteredData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionViewCell.cellIdentifier, for: indexPath)
-                as? PetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MemberModel.petDummyData[indexPath.item])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
+                as? MyPetCollectionViewCell else { return UICollectionViewCell() }
+        cell.dataBind(data: myPetRegisteredData[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print(#function)
         guard kind == UICollectionView.elementKindSectionFooter,
-              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? PetCollectionFooterView else { return UICollectionReusableView() }
+              let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier, for: indexPath) as? MyPetCollectionFooterView else { return UICollectionReusableView() }
+        footer.delegate = self
         return footer
+    }
+}
+
+extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
+    func registerPetButtonTapped(isSelected: Bool) {
+        if isSelected {
+            delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
+        }
     }
 }
 

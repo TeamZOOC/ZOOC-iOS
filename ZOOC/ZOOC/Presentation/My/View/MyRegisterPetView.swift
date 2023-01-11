@@ -1,8 +1,8 @@
 //
-//  OnboardingRegisterPetView.swift
+//  MyRegisterPetCollectionView.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/09.
+//  Created by 류희재 on 2023/01/11.
 //
 
 import UIKit
@@ -10,18 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingRegisterPetView: UIView {
+final class MyRegisterPetView: UIView {
 
     //MARK: - UI Components
     
     public var backButton = UIButton().then {
         $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
     }
     
     public var completedProgressBarView = UIView().then {
@@ -31,15 +25,14 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private var registerPetTitleLabel = UILabel().then {
-        $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
+        $0.text = "반려동물 등록"
         $0.textColor = .zoocDarkGray2
         $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
+        $0.font = .zoocHeadLine
     }
     
     private var registerPetSubTitleLabel = UILabel().then {
-        $0.text = "반려동물은 최대 4마리까지 등록 가능해요"
+        $0.text = "최대 4마리까지 등록 가능해요"
         $0.textColor = .zoocGray1
         $0.textAlignment = .left
         $0.font = .zoocBody3
@@ -83,9 +76,7 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, progressBarView, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
-        
-        progressBarView.addSubview(completedProgressBarView)
+        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
@@ -93,27 +84,14 @@ final class OnboardingRegisterPetView: UIView {
             $0.size.equalTo(42)
         }
         
-        progressBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(4)
-        }
-        
-        completedProgressBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(107)
-            $0.bottom.equalToSuperview()
-        }
-        
         registerPetTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            $0.centerX.equalToSuperview()
         }
         
         registerPetSubTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.registerPetTitleLabel.snp.bottom).offset(16)
-            $0.leading.equalTo(self.registerPetTitleLabel)
+            $0.top.equalTo(self.registerPetTitleLabel.snp.bottom).offset(50)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
         }
         
         registerPetTableView.snp.makeConstraints {
@@ -123,11 +101,12 @@ final class OnboardingRegisterPetView: UIView {
         }
         
         registerPetButton.snp.makeConstraints {
-            $0.top.equalTo(self.registerPetTableView.snp.bottom)
+            $0.top.equalTo(self.registerPetSubTitleLabel.snp.bottom).offset(549)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)
         }
     }
 }
+
 

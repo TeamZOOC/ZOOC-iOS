@@ -10,20 +10,31 @@ import UIKit
 import SnapKit
 import Then
 
-final class PetCollectionFooterView: UICollectionReusableView {
+protocol RegisterPetButtonTappedDelegate: AnyObject {
+    func registerPetButtonTapped(isSelected: Bool)
+}
+
+final class MyPetCollectionFooterView: UICollectionReusableView {
+    
+    //MARK: - Properties
+    
+    weak var delegate: RegisterPetButtonTappedDelegate?
     
     //MARK: - UI Components
     
-    private var registerPetButton = UIButton().then {
-        $0.backgroundColor = .zoocLightGray //색상 이미지? 고려해야 될 부분
+    private lazy var registerPetButton = UIButton().then {
+        $0.backgroundColor = .zoocLightGray
         $0.setImage(Image.plus, for: .normal)
         $0.layer.cornerRadius = 20
         $0.clipsToBounds = true
+        $0.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setLayout()
     }
     
@@ -37,10 +48,17 @@ final class PetCollectionFooterView: UICollectionReusableView {
         addSubview(registerPetButton)
         
         registerPetButton.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().offset(11)
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    func registerButtonDidTap() {
+        delegate?.registerPetButtonTapped(isSelected: true)
     }
 }
 

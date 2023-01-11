@@ -14,11 +14,13 @@ protocol SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath)
 }
 
-final class SettingMenuTableView: UICollectionViewCell {
+final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
     var delegate: SettingMenuTableViewCellDelegate?
+    
+    private var mySettingData: [MySettingModel] = MySettingModel.settingData
     
     //MARK: - UI Components
     
@@ -58,13 +60,13 @@ final class SettingMenuTableView: UICollectionViewCell {
     }
     
     public func register() {
-        settingMenuTableView.register(SettingMenuTableViewCell.self, forCellReuseIdentifier: SettingMenuTableViewCell.cellIdentifier)
+        settingMenuTableView.register(MySettingTableViewCell.self, forCellReuseIdentifier: MySettingTableViewCell.cellIdentifier)
     }
 }
 
 //MARK: - UITableViewDelegate
 
-extension SettingMenuTableView: UITableViewDelegate {
+extension MySettingSectionCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 62
     }
@@ -76,15 +78,15 @@ extension SettingMenuTableView: UITableViewDelegate {
 
 //MARK: - UITableViewDataSource
 
-extension SettingMenuTableView: UITableViewDataSource {
+extension MySettingSectionCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingMenuModel.settingMenuData.count
+        return mySettingData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingMenuTableViewCell.cellIdentifier, for: indexPath)
-                as? SettingMenuTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: SettingMenuModel.settingMenuData[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MySettingTableViewCell.cellIdentifier, for: indexPath)
+                as? MySettingTableViewCell else { return UITableViewCell() }
+        cell.dataBind(data: mySettingData[indexPath.row])
         return cell
     }
 }

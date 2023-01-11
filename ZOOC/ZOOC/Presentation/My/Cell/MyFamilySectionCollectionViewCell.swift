@@ -1,8 +1,8 @@
 //
-//  MemberCollectionView.swift
+//  MyFamilySectionCollectionViewCell.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/01.
+//  Created by 류희재 on 2023/01/11.
 //
 
 import UIKit
@@ -10,7 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class FamilyCollectionView: UICollectionViewCell {
+final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
+    
+    //MARK: - Properties
+    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
+    
+    private var myFamilyData: [MyMemberModel] = MyMemberModel.familyDummyData
     
     //MARK: - UI Components
     
@@ -21,7 +26,7 @@ final class FamilyCollectionView: UICollectionViewCell {
     }
     
     private var familyCountLabel = UILabel().then {
-        $0.text = "\(MemberModel.petDummyData.count)/8"
+        $0.text = "\(MyMemberModel.petDummyData.count)/8"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -108,27 +113,30 @@ final class FamilyCollectionView: UICollectionViewCell {
     public func register() {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
+    
+    public func dataBind(myProfileData: MyProfileModel) {
+        self.myProfileData = myProfileData
+        self.familyCollectionView.reloadData()
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-
-extension FamilyCollectionView: UICollectionViewDelegateFlowLayout {
+extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
     }
 }
 
 //MARK: - UICollectionViewDataSource
-
-extension FamilyCollectionView: UICollectionViewDataSource {
+extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MemberModel.familyDummyData.count
+        return myFamilyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MemberModel.familyDummyData[indexPath.item])
+        cell.dataBind(data: myFamilyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
         return cell
     }
 }

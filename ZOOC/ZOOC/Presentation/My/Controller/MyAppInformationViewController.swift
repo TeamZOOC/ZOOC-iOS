@@ -58,13 +58,13 @@ extension AppInformationViewController: UITableViewDelegate {
 
 extension AppInformationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AppInformationModel.appInformationData.count
+        return MyAppInformationModel.appInformationData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppInformationTableViewCell.cellIdentifier, for: indexPath) as?
                 AppInformationTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: AppInformationModel.appInformationData[indexPath.row])
+        cell.dataBind(model: MyAppInformationModel.appInformationData[indexPath.row])
         return cell
     }
 }

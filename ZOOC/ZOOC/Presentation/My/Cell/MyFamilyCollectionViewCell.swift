@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  MyFamilyCollectionViewCell.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/01.
+//  Created by 류희재 on 2023/01/11.
 //
 
 import UIKit
@@ -50,8 +50,21 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(model: MemberModel) {
-        familyImageView.image = model.memberProfileImage
-        familyNameLabel.text = model.memberProfileName
+    public func dataBind(data: MyMemberModel, index: Int, myProfileData: MyProfileModel) {
+        if (index == 0){
+            familyNameLabel.text = myProfileData.name
+            familyImageView.image = myProfileData.profileImage
+        } else {
+            familyImageView.image = data.profileImage
+            familyNameLabel.text = data.profileName
+        }
+        
+//        if(familyNameLabel.text == myProfileData.name) {
+
+//            familyImageView.layer.borderWidth = 2
+//            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
+//            familyNameLabel.textColor = .zoocMainGreen
+//        }
     }
 }
+

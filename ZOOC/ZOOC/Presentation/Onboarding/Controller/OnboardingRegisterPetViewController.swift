@@ -15,7 +15,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     //MARK: - Properties
     
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
-    private var petProfile = OnboardingPetRegisterModel(petProfileImage:Image.defaultProfile)
+    private var petProfile = OnboardingPetRegisterModel(profileImage:Image.defaultProfile)
     
     private lazy var petRegisterData: [OnboardingPetRegisterModel] = [petProfile]
     

@@ -20,6 +20,12 @@ final class MyView: UIView  {
             $0.isScrollEnabled = true
             $0.showsVerticalScrollIndicator = false
             $0.alwaysBounceVertical = true
+            $0.register(MyProfileSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier)
+            $0.register(MyFamilySectionCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier)
+            $0.register(MyPetSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier)
+            $0.register(MySettingSectionCollectionViewCell.self, forCellWithReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier)
+            $0.register(MyDeleteAccountSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier)
+            
         }
     
     //MARK: - Life Cycles

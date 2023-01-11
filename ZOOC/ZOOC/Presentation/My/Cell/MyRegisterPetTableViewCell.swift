@@ -1,29 +1,34 @@
 //
-//  OnboardingRegisterPetTableViewCell.swift
+//  MyRegisterPetTableViewCell.swift
 //  ZOOC
 //
-//  Created by 류희재 on 2023/01/09.
+//  Created by 류희재 on 2023/01/11.
 //
 
 import UIKit
 
-protocol DeleteButtonTappedDelegate {
+protocol MyDeleteButtonTappedDelegate: AnyObject {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
     func canRegister(canRegister: Bool)
+    
+    func giveRegisterData(myPetRegisterData: [MyPetRegisterModel])
 }
 
-final class OnboardingRegisterPetTableViewCell: UITableViewCell {
+final class MyRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var delegate: DeleteButtonTappedDelegate?
+    weak var delegate: MyDeleteButtonTappedDelegate?
     var index: Int = 0
     var canRegister: Bool = false
+    var myPetRegisterData: [MyPetRegisterModel] = []
+    
     
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton().then {
+        $0.setImage(Image.defaultProfile, for: .normal)
         $0.layer.borderWidth = 5
         $0.layer.borderColor = UIColor.zoocWhite1.cgColor
         $0.layer.cornerRadius = 35
@@ -55,6 +60,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         setLayout()
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        petProfileNameTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -90,17 +96,23 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        petProfileImageButton.setImage(model.profileImage, for: .normal)
+    func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
         self.index = index
+        self.myPetRegisterData = petData
         
-        if(petCount == 1){
+        if(petData.count == 1) {
             deletePetProfileButton.isHidden = true
         } else {
             deletePetProfileButton.isHidden = false
         }
     }
     
+    func registerPet() {
+        if (petProfileNameTextField.text!.count != 0){
+            myPetRegisterData[index].profileName = petProfileNameTextField.text!
+            myPetRegisterData[index].profileImage = petProfileImageButton.currentImage!
+        }
+    }
     @objc
     private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
@@ -108,12 +120,13 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     @objc
     private func textDidChange(_ notification: Notification) {
-        print("true")
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 4 {
                     textField.resignFirstResponder()
                     delegate?.canRegister(canRegister: true)
+                    //                    print("이름은요 \(myPetRegisterData[index].profileName)")
+                    //                    print("순서는요 \(index)")
                 }
                 else if text.count <= 0 {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
@@ -122,8 +135,17 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
                 else {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
                     delegate?.canRegister(canRegister: true)
+                    //                    print("이름은요 \(myPetRegisterData[index].profileName) ")
+                    //                    print("순서는요 \(index)")
                 }
             }
         }
+    }
+}
+
+extension MyRegisterPetTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        registerPet()
+        delegate?.giveRegisterData(myPetRegisterData: myPetRegisterData)
     }
 }

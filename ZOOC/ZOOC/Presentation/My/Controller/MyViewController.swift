@@ -4,7 +4,6 @@
 //
 //  Created by 장석우 on 2022/12/25.
 //
-
 import UIKit
 
 import SnapKit
@@ -13,11 +12,12 @@ import Then
 final class MyViewController: BaseViewController {
     
     //MARK: - Properties
+    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
     
-    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
-                                                               email: "fbgmlwo123@naver.com",
-                                                               profileImage: Image.defaultProfile)
+    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
+    private lazy var myPetRegisteredData: [MyPetRegisterModel] = [petProfile]
+    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
     
@@ -31,19 +31,19 @@ final class MyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         register()
-        print(self)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tabBarController?.tabBar.isHidden = false
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        tabBarController?.tabBar.isHidden = true
-//    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        tabBarController?.tabBar.isHidden = false
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        super.viewWillDisappear(animated)
+    //        tabBarController?.tabBar.isHidden = true
+    //    }
     
     
     //MARK: - Custom Method
@@ -51,19 +51,12 @@ final class MyViewController: BaseViewController {
     private func register() {
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
-        
-        myView.myCollectionView.register(ProfileView.self, forCellWithReuseIdentifier: ProfileView.cellIdentifier)
-        myView.myCollectionView.register(FamilyCollectionView.self, forCellWithReuseIdentifier: FamilyCollectionView.cellIdentifier)
-        myView.myCollectionView.register(PetCollectionView.self, forCellWithReuseIdentifier: PetCollectionView.cellIdentifier)
-        myView.myCollectionView.register(SettingMenuTableView.self, forCellWithReuseIdentifier: SettingMenuTableView.cellIdentifier)
-        myView.myCollectionView.register(DeleteAccountView.self, forCellWithReuseIdentifier: DeleteAccountView.cellIdentifier)
     }
     
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(profileName: myProfileData.name,
-                                           profileImage: myProfileData.profileImage)
+        editProfileViewController.dataSend(data: myProfileData)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
@@ -80,10 +73,27 @@ final class MyViewController: BaseViewController {
         self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
     }
     
+    private func pushToRegisterPetView() {
+        let registerPetViewController = MyRegisterPetViewController()
+        registerPetViewController.hidesBottomBarWhenPushed = true
+        registerPetViewController.dataSend(myPetRegisteredData: myPetRegisteredData)
+        self.navigationController?.pushViewController(registerPetViewController, animated: true)
+    }
+    
     func dataSend(profileName: String, profileImage: UIImage) {
         myProfileData.name = profileName
         myProfileData.profileImage = profileImage
         myView.myCollectionView.reloadData()
+    }
+    
+    func updateRegisterPetData(myPetRegisterData: [MyPetRegisterModel]) {
+//        self.myPetRegisterData = myPetRegisterData
+//        print("마이뷰컨 \(myPetRegisterData.count)")
+//        for i in 0...myPetRegisterData.count-1 {
+//            myPetRegisteredData.append(myPetRegisterData[i])
+//            print("마이뷰컨 \(i)번째 반려동물은 \(myPetRegisterData[i].profileName)")
+//        }
+//        myView.myCollectionView.reloadData()
     }
     
     //MARK: - Action Method
@@ -107,7 +117,6 @@ final class MyViewController: BaseViewController {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-
 extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
@@ -133,7 +142,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 1:
             return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         case 2:
-            return UIEdgeInsets(top: 0, left: 30, bottom: 6, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 22, right: 30)
         case 3:
             return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
         case 4:
@@ -146,7 +155,6 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UICollectionViewDataSource
-
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
@@ -159,35 +167,39 @@ extension MyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileView.cellIdentifier, for: indexPath)
-                    as? ProfileView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyProfileSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.dataBind(data: myProfileData)
             cell.editProfileButton.addTarget(self, action: #selector(editProfileButtonDidTap), for: .touchUpInside)
             return cell
             
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionView.cellIdentifier, for: indexPath)
-                    as? FamilyCollectionView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            cell.dataBind(myProfileData: myProfileData)
             return cell
             
         case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PetCollectionView.cellIdentifier, for: indexPath)
-                    as? PetCollectionView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            cell.dataBind(myPetRegisteredData: myPetRegisteredData)
+            cell.delegate = self
             return cell
             
         case 3:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingMenuTableView.cellIdentifier, for: indexPath) as? SettingMenuTableView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier, for: indexPath) as? MySettingSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
             cell.delegate = self
             return cell
             
         case 4:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeleteAccountView.cellIdentifier, for: indexPath)
-                    as? DeleteAccountView else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier, for: indexPath)
+                    as? MyDeleteAccountSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
             return cell
+            
         default:
             return UICollectionViewCell()
         }
@@ -204,5 +216,11 @@ extension MyViewController: SettingMenuTableViewCellDelegate {
         default:
             break
         }
+    }
+}
+
+extension MyViewController: MyRegisterPetButtonTappedDelegate {
+    func myRegisterPetButtonTapped(isSelected: Bool) {
+        pushToRegisterPetView()
     }
 }

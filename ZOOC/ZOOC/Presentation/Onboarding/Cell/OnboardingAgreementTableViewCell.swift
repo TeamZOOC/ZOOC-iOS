@@ -66,7 +66,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     public func dataBind(model: OnboardingAgreementModel, index: Int) {
         self.index = index
-        menuLabel.text = model.agreementMenu
+        menuLabel.text = model.title
         if model.isSelected {
             checkedButton.setImage(Image.checkBoxFill, for: .normal)
         } else {

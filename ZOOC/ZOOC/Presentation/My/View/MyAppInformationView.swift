@@ -68,14 +68,14 @@ final class AppInformationView: UIView {
                     currentVersionLabel, appInformationTableView)
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            $0.leading.equalToSuperview().offset(19)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalToSuperview().offset(31)
             $0.size.equalTo(42)
         }
         
         appInformationLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
-            $0.leading.equalTo(self.backButton.snp.trailing).offset(98)
+            $0.centerX.equalToSuperview()
         }
         
         currentVersionTitleLabel.snp.makeConstraints {

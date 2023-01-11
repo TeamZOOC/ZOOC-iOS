@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingMenuTableViewCell: UITableViewCell {
+final class MySettingTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
@@ -56,9 +56,9 @@ final class SettingMenuTableViewCell: UITableViewCell {
         }
     }
     
-    public func dataBind(model: SettingMenuModel) {
-        menuLabel.text = model.settingMenuName
-        if model.isLogout {
+    public func dataBind(data: MySettingModel) {
+        menuLabel.text = data.title
+        if data.isLogout {
             menuLabel.textColor = UIColor(r: 235, g: 91, b: 78)
             separatorLine.isHidden = true
         }
