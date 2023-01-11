@@ -53,10 +53,3 @@ final class OnboardingReInviteFamilyViewController: UIViewController{
         pushToInviteCompletedFamilyView()
     }
 }
-
-
-
-
-
-
-

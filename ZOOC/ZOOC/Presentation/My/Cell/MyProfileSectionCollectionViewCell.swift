@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-protocol ButtonTappedDelegate {
-    func cellButtonTapped()
+protocol EditButtonTappedDelegate {
+    func editButtonTapped()
 }
 
 final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         
-    var delegate: ButtonTappedDelegate?
+    var delegate: EditButtonTappedDelegate?
     
     //MARK: - UI Components
     

@@ -12,6 +12,9 @@ import Then
 
 final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Properties
+    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", email: "", profileImage: Image.defaultProfile)
+    
     //MARK: - UI Components
     
     private var familyLabel = UILabel().then {
@@ -108,6 +111,10 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     public func register() {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
+    
+    public func dataBind(myProfileData: MyProfileModel) {
+        self.myProfileData = myProfileData
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -126,7 +133,7 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MyMemberModel.familyDummyData[indexPath.item])
+        cell.dataBind(model: MyMemberModel.familyDummyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
         return cell
     }
 }

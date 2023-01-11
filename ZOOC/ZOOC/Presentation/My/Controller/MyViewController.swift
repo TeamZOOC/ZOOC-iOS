@@ -17,7 +17,9 @@ final class MyViewController: BaseViewController {
     private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
                                                                email: "fbgmlwo123@naver.com",
                                                                profileImage: Image.defaultProfile)
+    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
+    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
     
@@ -31,8 +33,8 @@ final class MyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         register()
-        print(self)
     }
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -51,12 +53,6 @@ final class MyViewController: BaseViewController {
     private func register() {
         myView.myCollectionView.delegate = self
         myView.myCollectionView.dataSource = self
-        
-        myView.myCollectionView.register(MyProfileSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier)
-        myView.myCollectionView.register(MyFamilySectionCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier)
-        myView.myCollectionView.register(MyPetSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier)
-        myView.myCollectionView.register(MySettingSectionCollectionViewCell.self, forCellWithReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier)
-        myView.myCollectionView.register(MyDeleteAccountSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier)
     }
     
     private func pushToEditProfileView() {
@@ -78,6 +74,13 @@ final class MyViewController: BaseViewController {
         let noticeSettingViewController = MyNoticeSettingViewController()
         noticeSettingViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
+    }
+    
+    private func pushToRegisterPetView() {
+        let registerPetViewController = MyRegisterPetViewController()
+        registerPetViewController.hidesBottomBarWhenPushed = true
+        registerPetViewController.dataSend(myPetRegisterData: myPetRegisterData)
+        self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
     
     func dataSend(profileName: String, profileImage: UIImage) {
@@ -169,12 +172,14 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            cell.dataBind(myProfileData: myProfileData)
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            cell.delegate = self
             return cell
             
         case 3:
@@ -188,6 +193,7 @@ extension MyViewController: UICollectionViewDataSource {
                     as? MyDeleteAccountSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
             return cell
+        
         default:
             return UICollectionViewCell()
         }
@@ -204,5 +210,11 @@ extension MyViewController: SettingMenuTableViewCellDelegate {
         default:
             break
         }
+    }
+}
+
+extension MyViewController: MyRegisterPetButtonTappedDelegate {
+    func myRegisterPetButtonTapped(isSelected: Bool) {
+        pushToRegisterPetView()
     }
 }
