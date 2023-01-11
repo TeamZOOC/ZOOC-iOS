@@ -128,7 +128,7 @@ final class RecordAlertViewController: UIViewController {
     
     @objc
     func popToHomeViewButtonDidTap() {
-        self.dismiss(animated: false)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: false)
     }
     
     @objc

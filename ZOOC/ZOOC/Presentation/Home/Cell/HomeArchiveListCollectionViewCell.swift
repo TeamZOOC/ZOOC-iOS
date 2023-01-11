@@ -73,6 +73,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         label.textColor = .zoocGray2
         label.backgroundColor = .zoocWhite3
         label.layer.cornerRadius = 4
+        label.layer.masksToBounds = true
         label.textAlignment = .center
         return label
     }()

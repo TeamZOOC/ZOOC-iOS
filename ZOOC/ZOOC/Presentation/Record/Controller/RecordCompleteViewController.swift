@@ -47,14 +47,14 @@ final class RecordCompleteViewController : BaseViewController {
         return imageView
     }()
     
-    private lazy var goArchieveButton: UIButton = {
+    private lazy var goArchiveButton: UIButton = {
         let button = UIButton()
         button.setTitle("아카이브 보러 가기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .zoocSubhead1
         button.backgroundColor = .zoocMainGreen
         button.layer.cornerRadius = 13
-        button.addTarget(self, action: #selector(goArchieveButtonDidTap), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goArchiveButtonDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -74,7 +74,7 @@ final class RecordCompleteViewController : BaseViewController {
         cardView.addSubviews(titleLabel,
                              subtitleLabel,
                              notifyImageView,
-                             goArchieveButton)
+                             goArchiveButton)
             
         //MARK: - MakeConstraints
         
@@ -101,7 +101,7 @@ final class RecordCompleteViewController : BaseViewController {
             $0.height.equalTo(227)
         }
         
-        goArchieveButton.snp.makeConstraints {
+        goArchiveButton.snp.makeConstraints {
             $0.top.equalTo(self.notifyImageView.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(22)
@@ -111,15 +111,11 @@ final class RecordCompleteViewController : BaseViewController {
 
     //MARK: - Custom Method
 
-    private func pushToMyInviteCompleteViewController() {
-        let myInviteCompleteViewController = MyInviteCompleteViewController()
-        self.navigationController?.pushViewController(myInviteCompleteViewController, animated: true)
-    }
     
     //MARK: - Action Method
     
     @objc
-    private func goArchieveButtonDidTap() {
-        pushToMyInviteCompleteViewController()
+    private func goArchiveButtonDidTap() {
+        self.navigationController?.previousViewController?.navigationController?.previousViewController?.dismiss(animated: true)
     }
 }

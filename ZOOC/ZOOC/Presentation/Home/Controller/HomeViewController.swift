@@ -98,7 +98,7 @@ final class HomeViewController : BaseViewController{
     }()
     
     private let archiveBottomView = UIView()
-    private lazy var archiveProgressView = HomeArchiveProgressView()
+    private lazy var archiveIndicatorView = HomeArchiveIndicatorView()
     
     //MARK: - Life Cycle
     
@@ -109,7 +109,6 @@ final class HomeViewController : BaseViewController{
         setLayout()
         register()
         gesture()
-        
         autoSelectPetCollectionView()
     }
     
@@ -117,8 +116,8 @@ final class HomeViewController : BaseViewController{
         super.viewDidAppear(animated)
         let allWidth = self.archiveListCollectionView.contentSize.width +                                                     self.archiveListCollectionView.contentInset.left +                                                     self.archiveListCollectionView.contentInset.right
         let showingWidth = self.archiveListCollectionView.bounds.width
-        self.archiveProgressView.widthRatio = showingWidth / allWidth
-        self.archiveProgressView.layoutIfNeeded()
+        self.archiveIndicatorView.widthRatio = showingWidth / allWidth
+        self.archiveIndicatorView.layoutIfNeeded()
         self.archiveListCollectionView.performBatchUpdates(nil)
     }
     
@@ -166,7 +165,7 @@ final class HomeViewController : BaseViewController{
                                 noticeButton
                                 )
         
-        archiveBottomView.addSubview(archiveProgressView)
+        archiveBottomView.addSubview(archiveIndicatorView)
         
         //MARK: rootView
         
@@ -230,7 +229,7 @@ final class HomeViewController : BaseViewController{
         }
         
         //MARK: archiveBottomView
-        archiveProgressView.snp.makeConstraints {
+        archiveIndicatorView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(72)
             $0.height.equalTo(4)
@@ -320,7 +319,6 @@ extension HomeViewController: UICollectionViewDataSource{
             return archiveData.count
         }
         
-        
         return 0
     }
 
@@ -343,8 +341,6 @@ extension HomeViewController: UICollectionViewDataSource{
             cell.dataBind(data: archiveData[indexPath.item])
             return cell
         }
-        
-        
         
         return UICollectionViewCell()
     }
@@ -377,6 +373,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
+            
         }
         
         if collectionView == archiveListCollectionView{
@@ -468,7 +465,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
         }
         
         if collectionView == archiveGridCollectionView{
-            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         }
         
         return .zero
@@ -485,7 +482,7 @@ extension HomeViewController{
             let width = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let scrollRatio = scroll / width
             
-            self.archiveProgressView.leftOffsetRatio = scrollRatio
+            self.archiveIndicatorView.leftOffsetRatio = scrollRatio
         }
     }
 }
