@@ -4,7 +4,6 @@
 //
 //  Created by 장석우 on 2022/12/25.
 //
-
 import UIKit
 
 import SnapKit
@@ -14,12 +13,11 @@ final class MyViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘",
-                                                               email: "fbgmlwo123@naver.com",
-                                                               profileImage: Image.defaultProfile)
+    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
+    
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
-    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
+    private lazy var myPetRegisteredData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
     
@@ -37,15 +35,15 @@ final class MyViewController: BaseViewController {
         register()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tabBarController?.tabBar.isHidden = false
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        tabBarController?.tabBar.isHidden = true
-//    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        tabBarController?.tabBar.isHidden = false
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        super.viewWillDisappear(animated)
+    //        tabBarController?.tabBar.isHidden = true
+    //    }
     
     
     //MARK: - Custom Method
@@ -58,8 +56,7 @@ final class MyViewController: BaseViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(profileName: myProfileData.name,
-                                           profileImage: myProfileData.profileImage)
+        editProfileViewController.dataSend(data: myProfileData)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
@@ -79,7 +76,7 @@ final class MyViewController: BaseViewController {
     private func pushToRegisterPetView() {
         let registerPetViewController = MyRegisterPetViewController()
         registerPetViewController.hidesBottomBarWhenPushed = true
-        registerPetViewController.dataSend(myPetRegisterData: myPetRegisterData)
+        registerPetViewController.dataSend(myPetRegisteredData: myPetRegisteredData)
         self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
     
@@ -110,7 +107,6 @@ final class MyViewController: BaseViewController {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-
 extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
@@ -149,7 +145,6 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UICollectionViewDataSource
-
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
@@ -172,6 +167,7 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
+            print("여기서 돌아가요\(myProfileData.name)")
             cell.dataBind(myProfileData: myProfileData)
             return cell
             
@@ -193,7 +189,7 @@ extension MyViewController: UICollectionViewDataSource {
                     as? MyDeleteAccountSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.deleteAccountButton.addTarget(self, action: #selector(deleteAccountButtonDidTap), for: .touchUpInside)
             return cell
-        
+            
         default:
             return UICollectionViewCell()
         }

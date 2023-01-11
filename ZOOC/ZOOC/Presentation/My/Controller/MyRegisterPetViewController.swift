@@ -58,8 +58,8 @@ final class MyRegisterPetViewController: UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
     
-    func dataSend(myPetRegisterData: [MyPetRegisterModel]) {
-        self.myPetRegisteredData = myPetRegisterData
+    func dataSend(myPetRegisteredData: [MyPetRegisterModel]) {
+        self.myPetRegisteredData = myPetRegisteredData
     }
     
     //MARK: - Action Method

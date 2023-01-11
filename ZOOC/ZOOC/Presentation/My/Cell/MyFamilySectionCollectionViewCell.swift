@@ -13,7 +13,7 @@ import Then
 final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
-    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", email: "", profileImage: Image.defaultProfile)
+    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
     
     private var myFamilyData: [MyMemberModel] = MyMemberModel.familyDummyData
     
@@ -116,6 +116,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     public func dataBind(myProfileData: MyProfileModel) {
         self.myProfileData = myProfileData
+        self.familyCollectionView.reloadData()
     }
 }
 
@@ -133,9 +134,11 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(#function)
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(data: myFamilyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
+        print("여기서 돌아가요222\(myProfileData.name)")
         return cell
     }
 }

@@ -9,7 +9,6 @@ import UIKit
 
 struct MyProfileModel {
     var name: String
-    var email: String
     var profileImage: UIImage
 }
 
