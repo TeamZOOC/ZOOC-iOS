@@ -292,6 +292,8 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
+    
+    
     //MARK: - Action Method
     
     @objc

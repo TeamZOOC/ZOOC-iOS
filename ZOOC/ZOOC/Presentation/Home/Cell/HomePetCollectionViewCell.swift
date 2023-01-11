@@ -101,6 +101,11 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         self.petNameLabel.text = data.name
     }
     
+    public func dataBind(data: PetResult) {
+        self.petImageView.kfSetImage(url: data.photo)
+        self.petNameLabel.text = data.name
+    }
+    
     private func updateUI(){
         
         switch viewType{
