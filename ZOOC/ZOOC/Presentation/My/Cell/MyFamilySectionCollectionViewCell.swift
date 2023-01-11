@@ -15,6 +15,8 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", email: "", profileImage: Image.defaultProfile)
     
+    private var myFamilyData: [MyMemberModel] = MyMemberModel.familyDummyData
+    
     //MARK: - UI Components
     
     private var familyLabel = UILabel().then {
@@ -127,13 +129,13 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout 
 //MARK: - UICollectionViewDataSource
 extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MyMemberModel.familyDummyData.count
+        return myFamilyData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: MyMemberModel.familyDummyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
+        cell.dataBind(data: myFamilyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
         return cell
     }
 }

@@ -13,7 +13,7 @@ struct MySettingModel {
 }
 
 extension MySettingModel {
-    static var settingMenuData: [MySettingModel] = [
+    static var settingData: [MySettingModel] = [
         MySettingModel(title: "알림설정", isLogout: false),
         MySettingModel(title: "공지사항", isLogout: false),
         MySettingModel(title: "문의하기", isLogout: false),

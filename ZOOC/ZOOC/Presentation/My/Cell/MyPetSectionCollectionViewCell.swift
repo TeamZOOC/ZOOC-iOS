@@ -21,7 +21,8 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     var delegate: MyRegisterPetButtonTappedDelegate?
     
     private let myRegisterPetView = MyRegisterPetView()
-    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
+    
+    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile) //서버에서 받아오겠죠?
     
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
@@ -127,7 +128,7 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? MyPetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(model: myPetRegisterData[indexPath.item])
+        cell.dataBind(data: myPetRegisterData[indexPath.item])
         return cell
     }
     
@@ -141,7 +142,6 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
 
 extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
     func registerPetButtonTapped(isSelected: Bool) {
-        print(#function)
         if isSelected {
             delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
         }

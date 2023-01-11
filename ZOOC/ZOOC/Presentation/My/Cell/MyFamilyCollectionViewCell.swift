@@ -50,7 +50,7 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(model: MyMemberModel, index: Int, myProfileData: MyProfileModel) {
+    public func dataBind(data: MyMemberModel, index: Int, myProfileData: MyProfileModel) {
         if (index == 0){
             familyImageView.image = myProfileData.profileImage
             familyImageView.layer.borderWidth = 2
@@ -58,8 +58,8 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
             familyNameLabel.text = myProfileData.name
             familyNameLabel.textColor = .zoocMainGreen
         } else {
-            familyImageView.image = model.profileImage
-            familyNameLabel.text = model.profileName
+            familyImageView.image = data.profileImage
+            familyNameLabel.text = data.profileName
         }
     }
 }

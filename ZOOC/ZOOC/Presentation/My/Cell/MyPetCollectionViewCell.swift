@@ -38,7 +38,7 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
-        contentView.backgroundColor = .red //.zoocWhite2
+        contentView.backgroundColor = .zoocWhite2
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
         contentView.layer.cornerRadius = 21
@@ -61,9 +61,9 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(model: MyPetRegisterModel) {
-        petImageView.image = model.profileImage
-        petNameLabel.text = model.profileName
+    public func dataBind(data: MyPetRegisterModel) {
+        petImageView.image = data.profileImage
+        petNameLabel.text = data.profileName
     }
 }
 

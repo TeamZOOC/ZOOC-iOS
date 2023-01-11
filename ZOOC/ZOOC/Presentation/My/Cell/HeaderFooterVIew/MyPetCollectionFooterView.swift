@@ -23,7 +23,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     //MARK: - UI Components
     
     private lazy var registerPetButton = UIButton().then {
-        $0.backgroundColor = .green //색상 이미지? 고려해야 될 부분
+        $0.backgroundColor = .zoocLightGray
         $0.setImage(Image.plus, for: .normal)
         $0.layer.cornerRadius = 20
         $0.clipsToBounds = true
@@ -48,7 +48,9 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
         addSubview(registerPetButton)
         
         registerPetButton.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
         }
     }
     

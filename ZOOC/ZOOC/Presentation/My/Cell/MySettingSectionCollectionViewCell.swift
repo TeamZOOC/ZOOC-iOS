@@ -20,6 +20,8 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     
     var delegate: SettingMenuTableViewCellDelegate?
     
+    private var mySettingData: [MySettingModel] = MySettingModel.settingData
+    
     //MARK: - UI Components
     
     public lazy var settingMenuTableView = UITableView(frame: .zero, style: .plain).then {
@@ -78,13 +80,13 @@ extension MySettingSectionCollectionViewCell: UITableViewDelegate {
 
 extension MySettingSectionCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MySettingModel.settingMenuData.count
+        return mySettingData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MySettingTableViewCell.cellIdentifier, for: indexPath)
                 as? MySettingTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: MySettingModel.settingMenuData[indexPath.row])
+        cell.dataBind(data: mySettingData[indexPath.row])
         return cell
     }
 }
