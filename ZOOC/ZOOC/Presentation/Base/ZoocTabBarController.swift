@@ -18,8 +18,11 @@ class ZoocTabBarController: UITabBarController {
     let homeViewController = HomeViewController()
     let myViewController = MyViewController()
     
+    
     lazy var homeNavigationContrller = UINavigationController(rootViewController: homeViewController)
     lazy var myNavigationController = UINavigationController(rootViewController: myViewController)
+    
+        
     
     //MARK: - UI Components
     
@@ -83,6 +86,7 @@ class ZoocTabBarController: UITabBarController {
     private func setNavigationController() {
         homeNavigationContrller.setNavigationBarHidden(true, animated: true)
         myNavigationController.setNavigationBarHidden(true, animated: true)
+        
     }
     
     private func setViewController(){
@@ -102,8 +106,10 @@ class ZoocTabBarController: UITabBarController {
     
     @objc func plusButtonDidTap(){
         let recordViewController = RecordViewController()
-        recordViewController.modalPresentationStyle = .fullScreen
-        present(recordViewController, animated: true)
+        let recordNavigationController = UINavigationController(rootViewController: recordViewController)
+        recordNavigationController.modalPresentationStyle = .fullScreen
+        recordNavigationController.setNavigationBarHidden(true, animated: true)
+        present(recordNavigationController, animated: true)
     }
 
 }

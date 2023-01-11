@@ -14,7 +14,8 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Properties
     
-    private var petData: [HomePetModel] = HomePetModel.mockData
+    private var petMockData: [HomePetModel] = HomePetModel.mockData
+    private var petData: [PetResult] = []
     private var archiveData: [HomeArchiveModel] = HomeArchiveModel.mockData
     
     //MARK: - UI Components
@@ -98,7 +99,7 @@ final class HomeViewController : BaseViewController{
     }()
     
     private let archiveBottomView = UIView()
-    private lazy var archiveProgressView = HomeArchiveProgressView()
+    private lazy var archiveIndicatorView = HomeArchiveIndicatorView()
     
     //MARK: - Life Cycle
     
@@ -109,16 +110,26 @@ final class HomeViewController : BaseViewController{
         setLayout()
         register()
         gesture()
-        
         autoSelectPetCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        HomeAPI.shared.getTotalPet(familyID: "1") { result in
+            guard let result = self.validateResult(result) as? [PetResult] else { return }
+            self.petData = result
+            self.petCollectionView.reloadData()
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let allWidth = self.archiveListCollectionView.contentSize.width +                                                     self.archiveListCollectionView.contentInset.left +                                                     self.archiveListCollectionView.contentInset.right
         let showingWidth = self.archiveListCollectionView.bounds.width
-        self.archiveProgressView.widthRatio = showingWidth / allWidth
-        self.archiveProgressView.layoutIfNeeded()
+        self.archiveIndicatorView.widthRatio = showingWidth / allWidth
+        self.archiveIndicatorView.layoutIfNeeded()
         self.archiveListCollectionView.performBatchUpdates(nil)
     }
     
@@ -166,7 +177,7 @@ final class HomeViewController : BaseViewController{
                                 noticeButton
                                 )
         
-        archiveBottomView.addSubview(archiveProgressView)
+        archiveBottomView.addSubview(archiveIndicatorView)
         
         //MARK: rootView
         
@@ -230,7 +241,7 @@ final class HomeViewController : BaseViewController{
         }
         
         //MARK: archiveBottomView
-        archiveProgressView.snp.makeConstraints {
+        archiveIndicatorView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(72)
             $0.height.equalTo(4)
@@ -320,7 +331,6 @@ extension HomeViewController: UICollectionViewDataSource{
             return archiveData.count
         }
         
-        
         return 0
     }
 
@@ -328,6 +338,7 @@ extension HomeViewController: UICollectionViewDataSource{
         
         if collectionView == petCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier, for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
+            //cell.dataBind(data: petMockData[indexPath.item])
             cell.dataBind(data: petData[indexPath.item])
             return cell
         }
@@ -343,8 +354,6 @@ extension HomeViewController: UICollectionViewDataSource{
             cell.dataBind(data: archiveData[indexPath.item])
             return cell
         }
-        
-        
         
         return UICollectionViewCell()
     }
@@ -377,6 +386,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
+            
         }
         
         if collectionView == archiveListCollectionView{
@@ -413,6 +423,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             switch collectionView.indexPathsForSelectedItems?.first {
                case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
+                //cell.dataBind(data: petMockData[indexPath.item])
                 cell.dataBind(data: petData[indexPath.item])
                 return cell.sizeFittingWith(cellHeight: 40)
                default:
@@ -468,7 +479,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
         }
         
         if collectionView == archiveGridCollectionView{
-            return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+            return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         }
         
         return .zero
@@ -485,7 +496,7 @@ extension HomeViewController{
             let width = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let scrollRatio = scroll / width
             
-            self.archiveProgressView.leftOffsetRatio = scrollRatio
+            self.archiveIndicatorView.leftOffsetRatio = scrollRatio
         }
     }
 }

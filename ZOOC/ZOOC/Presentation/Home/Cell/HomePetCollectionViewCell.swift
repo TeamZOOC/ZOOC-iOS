@@ -85,7 +85,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     private func setUI(){
         contentView.backgroundColor = .zoocWhite2
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true
     }
@@ -98,6 +98,11 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     public func dataBind(data: HomePetModel) {
         
         self.petImageView.image = data.image
+        self.petNameLabel.text = data.name
+    }
+    
+    public func dataBind(data: PetResult) {
+        self.petImageView.kfSetImage(url: data.photo)
         self.petNameLabel.text = data.name
     }
     
