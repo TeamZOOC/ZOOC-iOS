@@ -85,7 +85,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     private func setUI(){
         contentView.backgroundColor = .zoocWhite2
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true
     }

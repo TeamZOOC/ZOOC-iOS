@@ -13,8 +13,6 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
     
     //MARK: - Properties
     
-    
-    
     //MARK: - UI Components
     
     private let writerImageView: UIImageView = {
@@ -103,7 +101,8 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         
         etcButton.snp.makeConstraints {
             $0.centerY.equalTo(writerLabel)
-            $0.trailing.equalToSuperview().offset(-18)
+            $0.trailing.equalToSuperview()
+            $0.height.width.equalTo(42)
         }
     }
     

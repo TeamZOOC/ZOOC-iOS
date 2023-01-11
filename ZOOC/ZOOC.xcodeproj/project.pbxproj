@@ -42,6 +42,7 @@
 		8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */; };
 		8782C7F1296CADE300C9324B /* HomeDetailArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */; };
 		8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */; };
+		8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */; };
 		87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A89295F6D0A0096F669 /* PracticeViewController.swift */; };
 		87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A91295F6DA50096F669 /* RecordViewController.swift */; };
 		87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A9E295F6EA30096F669 /* OnboardingService.swift */; };
@@ -124,6 +125,7 @@
 		8782C7EE296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveModel.swift; sourceTree = "<group>"; };
 		8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveCommentTextField.swift; sourceTree = "<group>"; };
 		878EE32E2965B2EF0071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		878EE32F2965B2F20071DCAC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */,
+				8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
 				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
+				8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,
 				D23502E22961898C00F01101 /* ProfileView.swift in Sources */,
 				D23502F129619D4700F01101 /* PetCollectionViewCell.swift in Sources */,
