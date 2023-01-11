@@ -35,15 +35,15 @@ final class MyViewController: BaseViewController {
         print(self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = true
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        tabBarController?.tabBar.isHidden = false
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        tabBarController?.tabBar.isHidden = true
+//    }
     
     
     //MARK: - Custom Method
@@ -61,20 +61,22 @@ final class MyViewController: BaseViewController {
     
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
-        let profileName = myProfileData.name
-        let profileImage = myProfileData.profileImage
-        editProfileViewController.dataSend(profileName: profileName, profileImage: profileImage)
+        editProfileViewController.hidesBottomBarWhenPushed = true
+        editProfileViewController.dataSend(profileName: myProfileData.name,
+                                           profileImage: myProfileData.profileImage)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
     
     private func pushToAppInformationView() {
         let appInformationViewController = AppInformationViewController()
+        appInformationViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
     }
     
     private func pushToNoticeSettingView() {
         let noticeSettingViewController = MyNoticeSettingViewController()
+        noticeSettingViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
     }
     

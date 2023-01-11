@@ -37,6 +37,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
     
     private func setUI(){
         view.backgroundColor = .systemPink
+        hidesBottomBarWhenPushed = true
     }
     
     private func setLayout(){

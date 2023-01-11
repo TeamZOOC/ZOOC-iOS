@@ -69,7 +69,7 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 24
         
         contentView.makeShadow(color: .zoocShadowGreenColor,
-                               offset: CGSize(width: 0, height: 0),
+                               offset: .zero,
                                radius: 16,
                                opacity: 0.2)
     }
