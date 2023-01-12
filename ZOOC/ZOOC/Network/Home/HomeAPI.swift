@@ -40,6 +40,12 @@ extension HomeAPI{
         }
     }
     
+    func getDetailArchive(recordID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getDetailArchive(familyID: User.id, recordID: recordID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: HomeDetailArchiveResult.self,
+                                completion: completion)
+            
     func getNotice(completion: @escaping (NetworkResult<Any>) -> Void) {
         homeProvider.request(.getNotice) { (result) in
             self.disposeNetwork(result, dataModel: [HomeNoticeResult].self, completion: completion)

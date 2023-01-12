@@ -8,8 +8,9 @@
 import UIKit
 
 struct RecordRegisterModel {
-    var profilePetImage: UIImage
+    var petID: Int
+    var petImageURL: String?
     var petName: String
-    var selectButton: Bool
+    var isSelected: Bool
 }
 

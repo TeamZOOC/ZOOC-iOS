@@ -23,6 +23,13 @@
 		871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA343296F768100D0E8CC /* HomeArchiveResult.swift */; };
 		871EA3462970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */; };
 		871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3472970360000D0E8CC /* HomeMissionResult.swift */; };
+		871EA35629706F4300D0E8CC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 871EA35529706F4300D0E8CC /* Lottie */; };
+		871EA34A2970403300D0E8CC /* HomeDetailArchiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3492970403300D0E8CC /* HomeDetailArchiveResult.swift */; };
+		871EA351297042D800D0E8CC /* RecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA350297042D800D0E8CC /* RecordResult.swift */; };
+		871EA35329704CD200D0E8CC /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35229704CD200D0E8CC /* UIImage+.swift */; };
+		871EA359297078C900D0E8CC /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 871EA358297078C900D0E8CC /* loading.json */; };
+		871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */; };
+		871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -63,7 +70,7 @@
 		87A76AA7295F6ECD0096F669 /* MyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AA6295F6ECD0096F669 /* MyService.swift */; };
 		87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AA8295F6ED70096F669 /* MyAPI.swift */; };
 		87A76AAB295F6EDE0096F669 /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AAA295F6EDE0096F669 /* RecordService.swift */; };
-		87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AAC295F6EE70096F669 /* RescordAPI.swift */; };
+		87A76AAD295F6EE70096F669 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AAC295F6EE70096F669 /* RecordAPI.swift */; };
 		87A76AB6295F760C0096F669 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB5295F760C0096F669 /* KakaoSDKAuth */; };
 		87A76AB8295F760C0096F669 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB7295F760C0096F669 /* KakaoSDKCommon */; };
 		87A76ABA295F760C0096F669 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 87A76AB9295F760C0096F669 /* KakaoSDKUser */; };
@@ -169,6 +176,12 @@
 		871EA343296F768100D0E8CC /* HomeArchiveResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveResult.swift; sourceTree = "<group>"; };
 		871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveListWriterCollectionViewCell.swift; sourceTree = "<group>"; };
 		871EA3472970360000D0E8CC /* HomeMissionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionResult.swift; sourceTree = "<group>"; };
+		871EA3492970403300D0E8CC /* HomeDetailArchiveResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveResult.swift; sourceTree = "<group>"; };
+		871EA350297042D800D0E8CC /* RecordResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordResult.swift; sourceTree = "<group>"; };
+		871EA35229704CD200D0E8CC /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		871EA358297078C900D0E8CC /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPetResult.swift; sourceTree = "<group>"; };
+		871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -205,7 +218,7 @@
 		87A76AA6295F6ECD0096F669 /* MyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyService.swift; sourceTree = "<group>"; };
 		87A76AA8295F6ED70096F669 /* MyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAPI.swift; sourceTree = "<group>"; };
 		87A76AAA295F6EDE0096F669 /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
-		87A76AAC295F6EE70096F669 /* RescordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescordAPI.swift; sourceTree = "<group>"; };
+		87A76AAC295F6EE70096F669 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		87A76ABE2960423C0096F669 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		87A76AC22960427C0096F669 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		87A76AC7296043090096F669 /* MoyaLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggerPlugin.swift; sourceTree = "<group>"; };
@@ -217,7 +230,6 @@
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D368772964C961009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D3687B2964C979009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
-		87D3687D2964C981009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -303,6 +315,7 @@
 			files = (
 				8764833B29523C0100F74882 /* Kingfisher in Frameworks */,
 				8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */,
+				871EA35629706F4300D0E8CC /* Lottie in Frameworks */,
 				8764833229523BBD00F74882 /* SnapKit in Frameworks */,
 				8764833529523BCA00F74882 /* Then in Frameworks */,
 				87A76ABA295F760C0096F669 /* KakaoSDKUser in Frameworks */,
@@ -315,6 +328,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		871EA34B2970413700D0E8CC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				871EA34C2970413D00D0E8CC /* Model */,
+				871EA34D2970414100D0E8CC /* APIModel */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		871EA34C2970413D00D0E8CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				871EA341296F73DE00D0E8CC /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		871EA34D2970414100D0E8CC /* APIModel */ = {
+			isa = PBXGroup;
+			children = (
+				871EA350297042D800D0E8CC /* RecordResult.swift */,
+			);
+			path = APIModel;
+			sourceTree = "<group>";
+		};
+		871EA357297078B500D0E8CC /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				871EA358297078C900D0E8CC /* loading.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		87648315295234C100F74882 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +379,7 @@
 				D26C860D296B6E8600AEAF9B /* UILabel+.swift */,
 				D27D956B296CBA2D0097CD03 /* UIButton+.swift */,
 				871EA33D296F529C00D0E8CC /* UIImageView+.swift */,
+				871EA35229704CD200D0E8CC /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -413,6 +460,7 @@
 				87D5AF5929606AC900CA7F12 /* NetworkResult.swift */,
 				87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */,
 				871EA33F296F6E5000D0E8CC /* BaseAPI.swift */,
+				871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -630,7 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				87A76AAA295F6EDE0096F669 /* RecordService.swift */,
-				87A76AAC295F6EE70096F669 /* RescordAPI.swift */,
+				87A76AAC295F6EE70096F669 /* RecordAPI.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -650,6 +698,7 @@
 				871EA33B296F3E6200D0E8CC /* HomePetResult.swift */,
 				871EA343296F768100D0E8CC /* HomeArchiveResult.swift */,
 				871EA3472970360000D0E8CC /* HomeMissionResult.swift */,
+				871EA3492970403300D0E8CC /* HomeDetailArchiveResult.swift */,
 				D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */,
 			);
 			path = APIModel;
@@ -667,7 +716,7 @@
 		87A76AB0295F6F090096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
-				87D3687D2964C981009728FC /* Empty.md */,
+				871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -770,6 +819,7 @@
 				87B6624929521E7600B6FFA9 /* Assets.xcassets */,
 				87B6624B29521E7600B6FFA9 /* LaunchScreen.storyboard */,
 				87B6625929521EFF00B6FFA9 /* Font */,
+				871EA357297078B500D0E8CC /* Lottie */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -777,7 +827,7 @@
 		87B6625729521EC200B6FFA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				871EA341296F73DE00D0E8CC /* User.swift */,
+				871EA34B2970413700D0E8CC /* Common */,
 				87A76A96295F6DE50096F669 /* Onboarding */,
 				87A76A99295F6E0A0096F669 /* Home */,
 				87A76A97295F6DFF0096F669 /* Record */,
@@ -879,6 +929,7 @@
 				87A76AB7295F760C0096F669 /* KakaoSDKCommon */,
 				87A76AB9295F760C0096F669 /* KakaoSDKUser */,
 				8782C7D9296857A600C9324B /* KakaoSDKShare */,
+				871EA35529706F4300D0E8CC /* Lottie */,
 			);
 			productName = ZOOC;
 			productReference = 87B6623D29521E7500B6FFA9 /* ZOOC.app */;
@@ -914,6 +965,7 @@
 				8764833629523BEE00F74882 /* XCRemoteSwiftPackageReference "Moya" */,
 				8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				87A76AB4295F760C0096F669 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				871EA35429706F4300D0E8CC /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 87B6623E29521E7500B6FFA9 /* Products */;
 			projectDirPath = "";
@@ -933,6 +985,7 @@
 				87B6624D29521E7600B6FFA9 /* LaunchScreen.storyboard in Resources */,
 				87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */,
 				877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */,
+				871EA359297078C900D0E8CC /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +1011,7 @@
 				D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
+				871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
 				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
 				D2F98FA72967939100CC82DE /* MyMemberModel.swift in Sources */,
@@ -991,6 +1045,7 @@
 				8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */,
 				D23502FB2961F44700F01101 /* MySettingTableViewCell.swift in Sources */,
 				D26C85D929689D0800AEAF9B /* MyDeleteAccountAlertViewController.swift in Sources */,
+				871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */,
 				D26C860C296B650900AEAF9B /* OnboardingParticipateCompletedView.swift in Sources */,
 				876554A72958494B006BBDA9 /* MyViewController.swift in Sources */,
 				D2350309296490A700F01101 /* MyEditProfileView.swift in Sources */,
@@ -1006,6 +1061,7 @@
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
 				D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */,
+				871EA351297042D800D0E8CC /* RecordResult.swift in Sources */,
 				D23503052964743100F01101 /* MyAppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
 				D26C85E12968C63F00AEAF9B /* OnboardingLoginViewController.swift in Sources */,
@@ -1051,6 +1107,7 @@
 				876483272952370F00F74882 /* UIStackView+.swift in Sources */,
 				D23502FD2961F85100F01101 /* MySettingModel.swift in Sources */,
 				D26C85F229693CFA00AEAF9B /* OnboardingWelcomeViewController.swift in Sources */,
+				871EA35329704CD200D0E8CC /* UIImage+.swift in Sources */,
 				876483192952366A00F74882 /* Image.swift in Sources */,
 				4C6B1868296B930B0059840D /* RecordRegisterCollectionViewCell.swift in Sources */,
 				87648323295236B700F74882 /* UIColor+.swift in Sources */,
@@ -1067,6 +1124,7 @@
 				D27D956A296CB6030097CD03 /* OnboardingReInviteFamilyViewController.swift in Sources */,
 				D26C8612296B7CA500AEAF9B /* OnboardingRegisterPetView.swift in Sources */,
 				D23502F129619D4700F01101 /* MyPetCollectionViewCell.swift in Sources */,
+				871EA34A2970403300D0E8CC /* HomeDetailArchiveResult.swift in Sources */,
 				D23502EC296197C700F01101 /* MyPetSectionCollectionViewCell.swift in Sources */,
 				8782C7EB296AC58B00C9324B /* HomeArchiveIndicatorView.swift in Sources */,
 				871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */,
@@ -1217,6 +1275,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "반려동물을 기록하기 위해선 카메라 접근 권한이 필요합니다. 계속하시겠습니까?";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "반려동물을 기록하기 위해선 갤러리 접근 권한이 필요합니다. 계속하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1252,6 +1314,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "반려동물을 기록하기 위해선 카메라 접근 권한이 필요합니다. 계속하시겠습니까?";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "반려동물을 기록하기 위해선 갤러리 접근 권한이 필요합니다. 계속하시겠습니까?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1299,6 +1365,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		871EA35429706F4300D0E8CC /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		8764833029523BBD00F74882 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1342,6 +1416,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		871EA35529706F4300D0E8CC /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 871EA35429706F4300D0E8CC /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		8764833129523BBD00F74882 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8764833029523BBD00F74882 /* XCRemoteSwiftPackageReference "SnapKit" */;

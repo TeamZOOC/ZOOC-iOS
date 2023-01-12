@@ -94,7 +94,13 @@ final class OnboardingCompleteProfileView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, progressBarView, completeProfileLabel,  completeProfileSubLabel, completeImage, getCodeButton, notGetCodeButton)
+        addSubviews(backButton,
+                    progressBarView,
+                    completeProfileLabel,
+                    completeProfileSubLabel,
+                    completeImage,
+                    getCodeButton,
+                    notGetCodeButton)
         
         progressBarView.addSubview(completedProgressBarView)
         

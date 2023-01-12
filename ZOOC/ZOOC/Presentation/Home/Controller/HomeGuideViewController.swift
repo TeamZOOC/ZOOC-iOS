@@ -60,26 +60,6 @@ final class HomeGuideViewController : BaseViewController{
         return view
     }()
     
-    private lazy var backButton : UIButton = {
-        let button = UIButton()
-        button.setImage(Image.back, for: .normal)
-        button.addTarget(self,
-                         action: #selector(backButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var nextButton : UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .zoocMainGreen
-        button.setTitle("다음", for: .normal)
-        button.titleLabel?.font = .zoocSubhead1
-        button.addTarget(self,
-                         action: #selector(nextButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
-    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -94,7 +74,6 @@ final class HomeGuideViewController : BaseViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setCornerRadius()
     }
     
     //MARK: - Custom Method
@@ -112,6 +91,7 @@ final class HomeGuideViewController : BaseViewController{
         cardCollectionView.register(
             HomeMissionCollectionViewCell.self,
             forCellWithReuseIdentifier: HomeMissionCollectionViewCell.cellIdentifier)
+        
     }
     
     private func setUI(){
@@ -119,22 +99,17 @@ final class HomeGuideViewController : BaseViewController{
     }
     
     private func setLayout(){
-        view.addSubviews(backButton, cardCollectionView,progressView,nextButton)
+        view.addSubviews(cardCollectionView,progressView)
         progressView.addSubview(progressTintView)
         
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.leading.equalToSuperview().offset(25)
-            $0.height.width.equalTo(25)
-        }
-            
         cardCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(150)
+            $0.top.equalToSuperview().offset(110)
             $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-50)
         }
         
         progressView.snp.makeConstraints {
-            $0.top.equalTo(cardCollectionView.snp.bottom).offset(33)
+            $0.top.equalTo(cardCollectionView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(75)
             $0.height.equalTo(4)
         }
@@ -144,12 +119,6 @@ final class HomeGuideViewController : BaseViewController{
             $0.width.equalTo(progressView.snp.width).dividedBy(2)
         }
         
-        nextButton.snp.makeConstraints {
-            $0.top.equalTo(progressView.snp.bottom).offset(40)
-            $0.leading.trailing.equalToSuperview().inset(60)
-            $0.bottom.equalToSuperview().offset(-40)
-            $0.height.equalTo(54)
-        }
     }
     
     private func animateTintView(_ direction: Const.ScrollDirection){
@@ -168,19 +137,11 @@ final class HomeGuideViewController : BaseViewController{
         }
     }
     
-    private func setCornerRadius(){
-        nextButton.layer.cornerRadius = nextButton.frame.height / 2
-    }
-    
     //MARK: - Action Method
     
     @objc private func backButtonDidTap(){
         print("backButtonDidTap")
         navigationController?.popViewController(animated: true)
-    }
-    @objc private func nextButtonDidTap(){
-        print("nextButtonDidTap")
-        navigationController?.pushViewController(UIViewController(), animated: true)
     }
 }
 
@@ -197,9 +158,11 @@ extension HomeGuideViewController: UICollectionViewDataSource{
         switch indexPath.item{
         case 0 :
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeGuideCollectionViewCell.cellIdentifier, for: indexPath) as? HomeGuideCollectionViewCell else { return UICollectionViewCell() }
+
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMissionCollectionViewCell.cellIdentifier, for: indexPath) as? HomeMissionCollectionViewCell else { return UICollectionViewCell() }
+            cell.delegate = self
             return cell
         default: return UICollectionViewCell()
         }
@@ -242,4 +205,16 @@ extension HomeGuideViewController{
         }
         
       }
+}
+
+extension HomeGuideViewController: HomeMissionCardDelegate{
+    func nextButtonDidTap(_ text: String) {
+        print("\(text) 받았어요")
+        let recordRegisterViewController = RecordRegisterViewController()
+        recordRegisterViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(recordRegisterViewController, animated: true)
+    }
+    
+    
+    
 }
