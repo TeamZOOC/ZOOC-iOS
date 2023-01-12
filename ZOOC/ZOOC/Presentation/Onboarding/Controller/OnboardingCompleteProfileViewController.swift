@@ -66,12 +66,12 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     
     @objc
     private func notGetCodeButtonDidTap() {
-        pushToParticipateCompletedView()
+        pushToRegisterPetView()
     }
     
     @objc
     private func getCodeButtonDidTap() {
-        pushToRegisterPetView()
+        pushToParticipateCompletedView()
     }
 }
 
