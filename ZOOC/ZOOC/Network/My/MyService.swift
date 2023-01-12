@@ -17,7 +17,7 @@ extension MyService: BaseTargetType {
     var path: String {
         switch self {
         case .getMyPageData:
-            return "/family/mypagep"
+            return "/family/mypage"
         }
     }
     

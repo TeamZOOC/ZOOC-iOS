@@ -8,10 +8,20 @@ import UIKit
 
 import SnapKit
 import Then
+import Moya
 
 final class MyViewController: BaseViewController {
     
     //MARK: - Properties
+    
+    private var myFamilyData: [MyUser] = []
+    
+    
+    
+    
+    
+    
+    
     private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
     
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
@@ -33,6 +43,32 @@ final class MyViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        MyAPI.shared.getMyPageData() { result in
+            
+            guard let result = self.validateResult(result) as? MyResult else { return }
+            print("🙆‍♂️나는요 \(result.user)")
+            
+            for i in 0...result.familyMember.count-1{
+                print("👨‍👩‍👧‍👦 우리 가족은요 \(result.familyMember[i])")
+            }
+            self.myFamilyData = result.familyMember
+            
+            for i in 0...self.myFamilyData.count-1{
+                print("👨‍👩‍👧‍👦 우리 가족이 되었어요 \(self.myFamilyData[i])")
+            }
+            
+            
+            for i in 0...result.pet.count-1 {
+                print("🐶 반려동물은요 \(result.pet[i])")
+            }
+            
+            self.myView.myCollectionView.reloadData()
+        }
     }
     
     //    override func viewDidAppear(_ animated: Bool) {
@@ -177,7 +213,7 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myProfileData: myProfileData)
+            cell.dataBind(myFamilyData: myFamilyData)
             return cell
             
         case 2:

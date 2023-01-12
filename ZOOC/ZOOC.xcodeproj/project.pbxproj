@@ -606,8 +606,8 @@
 		87A76A9B295F6E640096F669 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				87A76AA2295F6EB80096F669 /* HomeService.swift */,
 				87A76AA4295F6EC40096F669 /* HomeAPI.swift */,
+				87A76AA2295F6EB80096F669 /* HomeService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

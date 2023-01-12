@@ -15,7 +15,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
     
-    private var myFamilyData: [MyMemberModel] = MyMemberModel.familyDummyData
+    private var myFamilyData: [MyUser] = []
     
     //MARK: - UI Components
     
@@ -114,8 +114,12 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
     
-    public func dataBind(myProfileData: MyProfileModel) {
+    public func dataBind(myFamilyData: [MyUser]) {
         self.myProfileData = myProfileData
+        self.myFamilyData = myFamilyData
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어왔어요 \(myFamilyData)")
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어온 명수는? \(myFamilyData.count)")
+
         self.familyCollectionView.reloadData()
     }
 }

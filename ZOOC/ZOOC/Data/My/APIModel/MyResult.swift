@@ -9,23 +9,16 @@ import Foundation
 
 // MARK: - MyResult
 struct MyResult: Codable {
-    let status: Int
-    let success: Bool
-    let message: String
-    let data: DataClass
-}
-
-// MARK: - DataClass
-struct DataClass: Codable {
-    let user: User
-    let familyMember: [User]
-    let pet: [Pet]
+    let user: MyUser
+    let familyMember: [MyUser]
+    let pet: [MyPet]
 }
 
 // MARK: - User
-struct User: Codable {
+struct MyUser: Codable {
     let id: Int
-    let nickName, photo: String
+    let nickName: String
+    let photo: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -35,8 +28,9 @@ struct User: Codable {
 }
 
 // MARK: - Pet
-struct Pet: Codable {
+struct MyPet: Codable {
     let id: Int
-    let name, photo: String
+    let name: String
+    let photo: String?
 }
 

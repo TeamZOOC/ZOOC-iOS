@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+import Moya
+
+final class MyAPI: BaseAPI {
+    static let shared = MyAPI()
+    private var myProvider = MoyaProvider<MyService>(plugins: [MoyaLoggingPlugin()])
+}
+
+extension MyAPI{
+    func getMyPageData(completion: @escaping (NetworkResult<Any>) -> Void) {
+        myProvider.request(.getMyPageData) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: MyResult.self,
+                                completion: completion)
+        }
+    }
+}

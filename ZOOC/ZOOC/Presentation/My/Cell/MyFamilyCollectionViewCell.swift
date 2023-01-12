@@ -50,14 +50,22 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(data: MyMemberModel, index: Int, myProfileData: MyProfileModel) {
-        if (index == 0){
-            familyNameLabel.text = myProfileData.name
-            familyImageView.image = myProfileData.profileImage
+    public func dataBind(data: MyUser, index: Int, myProfileData: MyProfileModel) {
+        
+        if data.photo == nil {
+            familyImageView.image = Image.defaultProfile
         } else {
-            familyImageView.image = data.profileImage
-            familyNameLabel.text = data.profileName
+            familyImageView.kfSetImage(url: data.photo!)
         }
+        familyNameLabel.text = data.nickName
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이름 \(data.nickName)")
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이미지\(data.photo)")
+//        if (index == 0){
+//            familyNameLabel.text = myProfileData.name
+//            familyImageView.image = myProfileData.profileImage
+//        } else {
+//
+//        }
         
 //        if(familyNameLabel.text == myProfileData.name) {
 
