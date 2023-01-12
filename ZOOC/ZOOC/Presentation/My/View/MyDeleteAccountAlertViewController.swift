@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DeleteAccountAlertViewController: UIViewController {
+final class DeleteAccountAlertViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -119,8 +119,10 @@ final class DeleteAccountAlertViewController: UIViewController {
     
     @objc
     func popToMyViewButtonDidTap() {
+        MyAPI.shared.deleteAccount()
         self.dismiss(animated: false)
     }
+    
     
     @objc
     func keepButtonDidTap() {

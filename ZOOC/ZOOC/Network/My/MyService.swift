@@ -11,6 +11,8 @@ import Moya
 
 enum MyService {
     case getMyPageData
+    //case patchUserProfile(nickName: String, photo: //file)
+    case deleteAccount
 }
 
 extension MyService: BaseTargetType {
@@ -18,6 +20,10 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return "/family/mypage"
+//        case .patchUserProfile:
+//            return "user/profile?photo={true/false}"
+        case .deleteAccount:
+            return "user"
         }
     }
     
@@ -25,12 +31,20 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return .get
+//        case .patchUserProfile:
+//            return .patch
+        case .deleteAccount:
+            return .delete
         }
     }
     
     var task: Moya.Task {
         switch self {
         case .getMyPageData:
+            return .requestPlain
+//        case .patchUserProfile:
+//            return .requestJSONEncodable()
+        case .deleteAccount:
             return .requestPlain
         }
     }

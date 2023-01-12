@@ -22,4 +22,12 @@ extension MyAPI{
                                 completion: completion)
         }
     }
+    
+    func deleteAccount(completion: @escaping (NetworkResult<Any>) -> Void) {
+        myProvider.request(.deleteAccount) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: MyResult.self,
+                                completion: completion)
+        }
+    }
 }
