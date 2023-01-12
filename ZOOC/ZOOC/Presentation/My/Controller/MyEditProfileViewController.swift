@@ -15,7 +15,7 @@ final class EditProfileViewController: BaseViewController {
     //MARK: - Properties
     
     private lazy var editProfileView = EditProfileView()
-    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
+    private var myProfileData: MyUser?
     
     //MARK: - Life Cycle
     
@@ -40,9 +40,9 @@ final class EditProfileViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
 
-    func dataSend(data: MyProfileModel) {
-        editProfileView.editProfileImageButton.setImage(data.profileImage, for: .normal)
-        editProfileView.editProfileNameTextField.placeholder = data.name
+    func dataSend(data: MyUser) {
+        editProfileView.editProfileImageButton.kf.setImage(with: URL(string: data.photo!), for: .normal)
+        editProfileView.editProfileNameTextField.placeholder = data.nickName
     }
     
     //MARK: - Action Method
@@ -54,7 +54,7 @@ final class EditProfileViewController: BaseViewController {
         let profileImage = editProfileView.editProfileImageButton.image(for: .normal)
         
         guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
-        beforeVC.dataSend(profileName: profileName!, profileImage: profileImage!)
+        beforeVC.dataSend(myprofileData: myProfileData)
         self.navigationController?.popViewController(animated: true)
     }
     

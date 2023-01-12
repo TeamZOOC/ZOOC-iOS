@@ -17,8 +17,8 @@ struct MyResult: Codable {
 // MARK: - User
 struct MyUser: Codable {
     let id: Int
-    let nickName: String
-    let photo: String?
+    var nickName: String
+    var photo: String?
 
     enum CodingKeys: String, CodingKey {
         case id

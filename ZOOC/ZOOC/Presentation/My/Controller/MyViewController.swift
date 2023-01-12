@@ -16,19 +16,14 @@ final class MyViewController: BaseViewController {
     
     private var myFamilyMemberData: [MyUser] = []
     private var myPetMemberData: [MyPet] = []
-    private var myProfileData: MyUser = MyUser(id: 0, nickName: "이름없을때 나오는거임", photo: "이름없을때 나오는거임")
+    private var myProfileData: MyUser?
     
     
     
-    
-    
-    
-    
-    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
+
     
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
-    private lazy var myPetRegisteredData: [MyPetRegisterModel] = [petProfile]
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
@@ -53,8 +48,8 @@ final class MyViewController: BaseViewController {
         MyAPI.shared.getMyPageData() { result in
             
             guard let result = self.validateResult(result) as? MyResult else { return }
-            print("🙆‍♂️나는요 \(result.user)")
-        
+            
+            self.myProfileData = result.user
             self.myFamilyMemberData = result.familyMember
             self.myPetMemberData = result.pet
             
@@ -83,7 +78,7 @@ final class MyViewController: BaseViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData)
+        editProfileViewController.dataSend(data: myProfileData!)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
@@ -107,9 +102,9 @@ final class MyViewController: BaseViewController {
         self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
     
-    func dataSend(profileName: String, profileImage: UIImage) {
-        myProfileData.name = profileName
-        myProfileData.profileImage = profileImage
+    func dataSend(myprofileData: MyUser?) {
+        myProfileData?.nickName = myprofileData!.nickName
+        myProfileData?.photo = myprofileData?.photo
         myView.myCollectionView.reloadData()
     }
     
