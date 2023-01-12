@@ -14,7 +14,8 @@ final class MyViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private var myFamilyData: [MyUser] = []
+    private var myFamilyMemberData: [MyUser] = []
+    private var myPetMemberData: [MyPet] = []
     
     
     
@@ -52,20 +53,13 @@ final class MyViewController: BaseViewController {
             
             guard let result = self.validateResult(result) as? MyResult else { return }
             print("🙆‍♂️나는요 \(result.user)")
+        
+            self.myFamilyMemberData = result.familyMember
+            self.myPetMemberData = result.pet
             
-            for i in 0...result.familyMember.count-1{
-                print("👨‍👩‍👧‍👦 우리 가족은요 \(result.familyMember[i])")
-            }
-            self.myFamilyData = result.familyMember
-            
-            for i in 0...self.myFamilyData.count-1{
-                print("👨‍👩‍👧‍👦 우리 가족이 되었어요 \(self.myFamilyData[i])")
-            }
-            
-            
-            for i in 0...result.pet.count-1 {
-                print("🐶 반려동물은요 \(result.pet[i])")
-            }
+//            for i in 0...self.myPetMemberData.count-1 {
+//                print("🐶 반려동물은요 \(self.myPetMemberData[i])")
+//            }
             
             self.myView.myCollectionView.reloadData()
         }
@@ -213,14 +207,14 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myFamilyData: myFamilyData)
+            cell.dataBind(myFamilyData: myFamilyMemberData)
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myPetRegisteredData: myPetRegisteredData)
+            cell.dataBind(myPetMemberData: myPetMemberData)
             cell.delegate = self
             return cell
             

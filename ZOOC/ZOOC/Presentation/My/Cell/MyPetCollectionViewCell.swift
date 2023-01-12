@@ -61,9 +61,13 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(data: MyPetRegisterModel) {
-        petImageView.image = data.profileImage
-        petNameLabel.text = data.profileName
+    public func dataBind(data: MyPet) {
+        if data.photo == nil {
+            petImageView.image = Image.defaultProfilePet
+        } else {
+            petImageView.kfSetImage(url: data.photo!)
+        }
+        petNameLabel.text = data.name
     }
 }
 
