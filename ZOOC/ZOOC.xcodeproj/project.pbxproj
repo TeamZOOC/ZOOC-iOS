@@ -22,6 +22,7 @@
 		871EA342296F73DE00D0E8CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA341296F73DE00D0E8CC /* User.swift */; };
 		871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA343296F768100D0E8CC /* HomeArchiveResult.swift */; };
 		871EA3462970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */; };
+		871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3472970360000D0E8CC /* HomeMissionResult.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -161,6 +162,7 @@
 		871EA341296F73DE00D0E8CC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		871EA343296F768100D0E8CC /* HomeArchiveResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveResult.swift; sourceTree = "<group>"; };
 		871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveListWriterCollectionViewCell.swift; sourceTree = "<group>"; };
+		871EA3472970360000D0E8CC /* HomeMissionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionResult.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			children = (
 				871EA33B296F3E6200D0E8CC /* HomePetResult.swift */,
 				871EA343296F768100D0E8CC /* HomeArchiveResult.swift */,
+				871EA3472970360000D0E8CC /* HomeMissionResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -759,8 +762,8 @@
 				871EA341296F73DE00D0E8CC /* User.swift */,
 				87A76A96295F6DE50096F669 /* Onboarding */,
 				87A76A99295F6E0A0096F669 /* Home */,
-				87A76A98295F6E050096F669 /* My */,
 				87A76A97295F6DFF0096F669 /* Record */,
+				87A76A98295F6E050096F669 /* My */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1043,6 +1046,7 @@
 				D23502F129619D4700F01101 /* MyPetCollectionViewCell.swift in Sources */,
 				D23502EC296197C700F01101 /* MyPetSectionCollectionViewCell.swift in Sources */,
 				8782C7EB296AC58B00C9324B /* HomeArchiveIndicatorView.swift in Sources */,
+				871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */,
 				877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */,
 				D26C8610296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift in Sources */,
 				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,

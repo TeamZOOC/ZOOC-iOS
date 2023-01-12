@@ -16,15 +16,27 @@ class HomeAPI: BaseAPI {
 
 extension HomeAPI{
     
+    public func getMission(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getMission(familyID: familyID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: [HomeMissionResult].self,
+                                completion: completion)
+        }
+    }
+    
     public func getTotalPet(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
         homeProvider.request(.getTotalPet(familyID: familyID)) { (result) in
-            self.disposeNetwork(result, dataModel: [PetResult].self, completion: completion)
+            self.disposeNetwork(result,
+                                dataModel: [HomePetResult].self,
+                                completion: completion)
         }
     }
     
     func getTotalArchive(completion: @escaping (NetworkResult<Any>) -> Void) {
         homeProvider.request(.getTotalArchive(familyID: User.familyID)) { (result) in
-            self.disposeNetwork(result, dataModel: [HomeArchiveResult].self, completion: completion)
+            self.disposeNetwork(result,
+                                dataModel: [HomeArchiveResult].self,
+                                completion: completion)
         }
     }
 }

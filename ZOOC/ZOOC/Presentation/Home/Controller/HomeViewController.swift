@@ -17,7 +17,7 @@ final class HomeViewController : BaseViewController{
     private var petMockData: [HomePetModel] = HomePetModel.mockData
     private var archiveMockData: [HomeArchiveModel] = HomeArchiveModel.mockData
     
-    private var petData: [PetResult] = []
+    private var petData: [HomePetResult] = []
     private var archiveData: [HomeArchiveResult] = []
     
     //MARK: - UI Components
@@ -118,9 +118,14 @@ final class HomeViewController : BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        HomeAPI.shared.getMission(familyID: User.familyID) { result in
+            guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
+            self.missionLabel.text = result[0].missionContent
+        }
+        
         HomeAPI.shared.getTotalPet(familyID: User.id) { result in
             
-            guard let result = self.validateResult(result) as? [PetResult] else { return }
+            guard let result = self.validateResult(result) as? [HomePetResult] else { return }
             self.petData = result
             self.petCollectionView.reloadData()
             self.autoSelectPetCollectionView()

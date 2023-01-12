@@ -308,7 +308,6 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
 //MARK: - UICollectionViewDataSource
 extension HomeArchiveListCollectionViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("🧘🏻‍♀️\(commentWriterData.count)")
         return commentWriterData.count
     }
     

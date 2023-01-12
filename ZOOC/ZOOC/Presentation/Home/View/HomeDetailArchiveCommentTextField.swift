@@ -92,7 +92,6 @@ final class HomeDetailArchiveCommentTextField: UITextField{
     
     @objc
     private func uploadButtonDidTap(){
-        print("asd")
         validateText(self.text)
         
     }

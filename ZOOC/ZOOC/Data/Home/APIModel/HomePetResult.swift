@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PetResult: Codable{
+struct HomePetResult: Codable{
     let id: Int
     let name: String
     let photo: String?
