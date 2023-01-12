@@ -123,7 +123,7 @@ final class HomeViewController : BaseViewController{
             self.missionLabel.text = result[0].missionContent
         }
         
-        HomeAPI.shared.getTotalPet(familyID: User.id) { result in
+        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomePetResult] else { return }
             self.petData = result
@@ -140,6 +140,12 @@ final class HomeViewController : BaseViewController{
                 self.updateIndicatorView(self.archiveListCollectionView)
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        petData = []
+//        archiveData = []
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -262,10 +268,11 @@ final class HomeViewController : BaseViewController{
         }
     }
     
-    private func pushToDetailViewController(){
+    private func pushToDetailViewController(recordID: String){
         let viewController = HomeDetailArchiveViewController()
+        viewController.getAPI(recordID: recordID)
         viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        present(viewController, animated: false)
     }
     
     private func foldArchiveCollectionView(){
@@ -398,7 +405,8 @@ extension HomeViewController{
             case .folded:
                 return true
             case .expanded:
-                pushToDetailViewController()
+                let id = String(archiveData[indexPath.item].record.id)
+                pushToDetailViewController(recordID: id)
                 return false
             }
         }
@@ -416,10 +424,6 @@ extension HomeViewController{
         
         if collectionView == archiveListCollectionView{
             collectionView.performBatchUpdates(nil)
-        }
-        
-        if collectionView == archiveGridCollectionView{
-            pushToDetailViewController()
         }
         
     }
