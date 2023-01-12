@@ -44,6 +44,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     
     private let petImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 17
         imageView.clipsToBounds = true
         return imageView
@@ -101,8 +102,12 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         self.petNameLabel.text = data.name
     }
     
-    public func dataBind(data: PetResult) {
-        self.petImageView.kfSetImage(url: data.photo)
+    public func dataBind(data: HomePetResult) {
+        if data.photo == nil {
+            self.petImageView.image = Image.defaultProfile
+        } else {
+            self.petImageView.kfSetImage(url: data.photo ?? "")
+        }
         self.petNameLabel.text = data.name
     }
     

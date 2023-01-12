@@ -8,49 +8,35 @@
 import UIKit
 import Moya
 
-struct HomeAPI {
+class HomeAPI: BaseAPI {
     static let shared = HomeAPI()
     var homeProvider = MoyaProvider<HomeService>(plugins: [MoyaLoggingPlugin()])
     
-    private init() { }
 }
 
 extension HomeAPI{
     
-    public func getTotalPet(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getTotalPet(familyID: familyID)) { (result) in
-            
-            switch result {
-            case.success(let response):
-                
-                let statusCode = response.statusCode
-                let data = response.data
-                
-                let networkResult = self.judgeStatus(by: statusCode, data, [PetResult].self)
-                completion(networkResult)
-                
-            case .failure(let err):
-                print(err)
-            }
+    public func getMission(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getMission(familyID: familyID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: [HomeMissionResult].self,
+                                completion: completion)
         }
     }
     
-        private func judgeStatus<T: Codable>(by statusCode: Int, _ data: Data, _ object: T.Type) -> NetworkResult<Any> {
-        let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<T>.self, from: data)
-        else {
-            return .pathErr
+    public func getTotalPet(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getTotalPet(familyID: familyID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: [HomePetResult].self,
+                                completion: completion)
         }
-        
-        switch statusCode {
-        case 200:
-            return .success(decodedData.data as Any)
-        case 400..<500:
-            return .requestErr((decodedData.message ?? "") as String)
-        case 500:
-            return .serverErr
-        default:
-            return .networkFail
+    }
+    
+    func getTotalArchive(completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getTotalArchive(familyID: User.familyID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: [HomeArchiveResult].self,
+                                completion: completion)
         }
     }
 }
