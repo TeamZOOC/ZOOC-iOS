@@ -16,6 +16,7 @@ final class MyViewController: BaseViewController {
     
     private var myFamilyMemberData: [MyUser] = []
     private var myPetMemberData: [MyPet] = []
+    private var myProfileData: MyUser = MyUser(id: 0, nickName: "이름없을때 나오는거임", photo: "이름없을때 나오는거임")
     
     
     
@@ -56,10 +57,6 @@ final class MyViewController: BaseViewController {
         
             self.myFamilyMemberData = result.familyMember
             self.myPetMemberData = result.pet
-            
-//            for i in 0...self.myPetMemberData.count-1 {
-//                print("🐶 반려동물은요 \(self.myPetMemberData[i])")
-//            }
             
             self.myView.myCollectionView.reloadData()
         }
@@ -106,7 +103,7 @@ final class MyViewController: BaseViewController {
     private func pushToRegisterPetView() {
         let registerPetViewController = MyRegisterPetViewController()
         registerPetViewController.hidesBottomBarWhenPushed = true
-        registerPetViewController.dataSend(myPetRegisteredData: myPetRegisteredData)
+        registerPetViewController.dataSend(myPetMemberData: myPetMemberData)
         self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
     

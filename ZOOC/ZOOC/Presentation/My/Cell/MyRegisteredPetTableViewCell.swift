@@ -59,9 +59,14 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
-        self.petProfileImageView.image = model.profileImage
-        self.petProfileNameLabel.text = model.profileName
+    func dataBind(data: MyPet, index: Int, petData: [MyPet]) {
+        
+        if data.photo == nil {
+            petProfileImageView.image = Image.defaultProfilePet
+        } else {
+            petProfileImageView.kfSetImage(url: data.photo!)
+        }
+        self.petProfileNameLabel.text = data.name
     }
 }
 

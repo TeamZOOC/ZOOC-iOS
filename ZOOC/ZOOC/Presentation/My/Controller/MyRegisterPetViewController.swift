@@ -17,7 +17,7 @@ final class MyRegisterPetViewController: UIViewController{
     private let myRegisterPetView = MyRegisterPetView()
     private var petProfile = MyPetRegisterModel(profileName: "", profileImage:Image.defaultProfile)
     
-    private lazy var myPetRegisteredData: [MyPetRegisterModel] = []
+    private lazy var myPetMemberData: [MyPet] = []
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     private lazy var myUpdateRegisterData: [MyPetRegisterModel] = []
     
@@ -63,8 +63,8 @@ final class MyRegisterPetViewController: UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
     
-    func dataSend(myPetRegisteredData: [MyPetRegisterModel]) {
-        self.myPetRegisteredData = myPetRegisteredData
+    func dataSend(myPetMemberData: [MyPet]) {
+        self.myPetMemberData = myPetMemberData
     }
     
     //MARK: - Action Method
@@ -106,7 +106,7 @@ extension MyRegisterPetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return myPetRegisteredData.count
+            return myPetMemberData.count
         case 1:
             return myPetRegisterData.count
         default:
@@ -119,7 +119,7 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisteredPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisteredPetTableViewCell else { return UITableViewCell() }
-            cell.dataBind(model: myPetRegisteredData[indexPath.row], index: indexPath.row, petData: myPetRegisteredData)
+            cell.dataBind(data: myPetMemberData[indexPath.row], index: indexPath.row, petData: myPetMemberData)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisterPetTableViewCell.cellIdentifier, for: indexPath)
@@ -169,7 +169,7 @@ extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
             if myPetRegisterData.count > 1 {
                 myPetRegisterData.remove(at: index)
                 isFull = false
-                if(myPetRegisterData.count + myPetRegisteredData.count == 4) {
+                if(myPetRegisterData.count + myPetMemberData.count == 4) {
                     isFull = true
                 }
             }
@@ -201,7 +201,7 @@ extension MyRegisterPetViewController: MyAddButtonTappedDelegate {
 
 extension MyRegisterPetViewController {
     private func checkIsFull() {
-        if(myPetRegisterData.count + myPetRegisteredData.count >= 4){
+        if(myPetRegisterData.count + myPetMemberData.count >= 4){
             isFull = true
         } else {
             isFull = false
