@@ -103,10 +103,16 @@ final class RecordRegisterCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Action Method
     
-    func dataBind(model: RecordRegisterModel) {
-        profilePetImageView.image = model.profilePetImage
-        petNameLabel.text = model.petName
-        if model.selectButton {
+    func dataBind(data: RecordRegisterModel) {
+        if let imageURL = data.petImageURL {
+            profilePetImageView.kfSetImage(url: imageURL)
+        } else {
+            profilePetImageView.image = Image.defaultProfilePet
+        }
+        
+        petNameLabel.text = data.petName
+        
+        if data.isSelected {
             selectImageView.isHidden = false
         } else {
             selectImageView.isHidden = true
