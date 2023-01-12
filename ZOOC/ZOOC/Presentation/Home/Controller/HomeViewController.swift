@@ -15,8 +15,10 @@ final class HomeViewController : BaseViewController{
     //MARK: - Properties
     
     private var petMockData: [HomePetModel] = HomePetModel.mockData
+    private var archiveMockData: [HomeArchiveModel] = HomeArchiveModel.mockData
+    
     private var petData: [PetResult] = []
-    private var archiveData: [HomeArchiveModel] = HomeArchiveModel.mockData
+    private var archiveData: [HomeArchiveResult] = []
     
     //MARK: - UI Components
     
@@ -116,23 +118,29 @@ final class HomeViewController : BaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        HomeAPI.shared.getTotalPet(familyID: "1") { result in
+        HomeAPI.shared.getTotalPet(familyID: User.id) { result in
+            
             guard let result = self.validateResult(result) as? [PetResult] else { return }
             self.petData = result
             self.petCollectionView.reloadData()
-            
+            self.autoSelectPetCollectionView()
+        }
+        
+        HomeAPI.shared.getTotalArchive { result in
+            guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
+            self.archiveData = result
+            self.archiveListCollectionView.reloadData()
+            self.archiveGridCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.updateIndicatorView(self.archiveListCollectionView)
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let allWidth = self.archiveListCollectionView.contentSize.width +                                                     self.archiveListCollectionView.contentInset.left +                                                     self.archiveListCollectionView.contentInset.right
-        let showingWidth = self.archiveListCollectionView.bounds.width
-        self.archiveIndicatorView.widthRatio = showingWidth / allWidth
-        self.archiveIndicatorView.layoutIfNeeded()
-        self.archiveListCollectionView.performBatchUpdates(nil)
+        updateIndicatorView(archiveListCollectionView)
     }
-    
     //MARK: - Custom Method
     
     private func register(){
@@ -144,7 +152,8 @@ final class HomeViewController : BaseViewController{
         archiveGridCollectionView.delegate = self
         archiveGridCollectionView.dataSource = self
         
-        petCollectionView.register(HomePetCollectionViewCell.self, forCellWithReuseIdentifier: HomePetCollectionViewCell.cellIdentifier)
+        petCollectionView.register(HomePetCollectionViewCell.self,
+            forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
         archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
         archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
@@ -261,6 +270,23 @@ final class HomeViewController : BaseViewController{
         archiveListCollectionView.layoutIfNeeded()
     }
     
+    private func autoSelectPetCollectionView(){
+        if petData.count != 0 {
+            petCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+                                         animated: false,
+                                         scrollPosition: .centeredHorizontally)
+            petCollectionView.performBatchUpdates(nil)
+        }
+    }
+    
+    private func updateIndicatorView(_ scrollView: UIScrollView){
+        let allWidth = scrollView.contentSize.width +                                                          scrollView.contentInset.left +                                                          scrollView.contentInset.right
+        let showingWidth = scrollView.bounds.width
+        
+        self.archiveIndicatorView.widthRatio = showingWidth / allWidth
+        self.archiveIndicatorView.layoutIfNeeded()
+    }
+    
     //MARK: - Action Method
     
     @objc
@@ -304,13 +330,6 @@ final class HomeViewController : BaseViewController{
         foldArchiveCollectionView()
     }
     
-    private func autoSelectPetCollectionView(){
-        petCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
-                                     animated: false,
-                                     scrollPosition: .centeredHorizontally)
-        petCollectionView.performBatchUpdates(nil)
-    }
-    
     
 }
 
@@ -346,6 +365,7 @@ extension HomeViewController: UICollectionViewDataSource{
         if collectionView == archiveListCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier, for: indexPath) as?  HomeArchiveListCollectionViewCell else { return UICollectionViewCell() }
             cell.dataBind(data: archiveData[indexPath.item])
+            cell.updateWriterCollectionViewCell()
             return cell
         }
         
@@ -490,13 +510,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 //MARK: - ScrollViewDelegate
 
 extension HomeViewController{
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == archiveListCollectionView{
+            
             let scroll = scrollView.contentOffset.x + scrollView.contentInset.left
             let width = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let scrollRatio = scroll / width
             
             self.archiveIndicatorView.leftOffsetRatio = scrollRatio
+            //updateIndicatorView(scrollView)
         }
     }
 }

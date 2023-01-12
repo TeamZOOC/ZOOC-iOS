@@ -11,6 +11,7 @@ import Moya
 
 enum HomeService {
     case getTotalPet(familyID: String)
+    case getTotalArchive(familyID: String)
 }
 
 extension HomeService: BaseTargetType {
@@ -19,6 +20,8 @@ extension HomeService: BaseTargetType {
         switch self {
         case .getTotalPet(let familyID):
             return URLs.totalPet.replacingOccurrences(of: "{familyId}", with: "\(familyID)")
+        case .getTotalArchive(familyID: let familyID):
+            return URLs.totalRecord.replacingOccurrences(of: "{familyId}", with: "\(familyID)")
         }
     }
         
@@ -26,12 +29,16 @@ extension HomeService: BaseTargetType {
         switch self {
         case .getTotalPet:
             return .get
+        case .getTotalArchive:
+            return .get
         }
     }
     
     var task: Task {
         switch self {
         case .getTotalPet:
+            return .requestPlain
+        case .getTotalArchive:
             return .requestPlain
         }
     }

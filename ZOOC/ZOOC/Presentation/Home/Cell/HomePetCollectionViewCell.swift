@@ -102,7 +102,11 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     }
     
     public func dataBind(data: PetResult) {
-        self.petImageView.kfSetImage(url: data.photo)
+        if data.photo == nil {
+            self.petImageView.image = Image.defaultProfile
+        } else {
+            self.petImageView.kfSetImage(url: data.photo ?? "")
+        }
         self.petNameLabel.text = data.name
     }
     
