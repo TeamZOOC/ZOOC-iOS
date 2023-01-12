@@ -14,11 +14,10 @@ final class RecordRegisterViewController : BaseViewController{
     
     // MARK: - Properties
     
-    var petList: [RecordRegisterModel] = [
-        RecordRegisterModel(profilePetImage: Image.mockPet1, petName: "토리", selectButton: false),
-        RecordRegisterModel(profilePetImage: Image.mockPet1, petName: "토리", selectButton: false),
-        RecordRegisterModel(profilePetImage: Image.mockPet1, petName: "토리", selectButton: false)
-    ]
+    var recordData: RecordModel = RecordModel()
+
+    var petList: [RecordRegisterModel] = []
+    
     
     // MARK: - UI Components
     
@@ -106,7 +105,7 @@ final class RecordRegisterViewController : BaseViewController{
         return label
     }()
     
-    private lazy var recordRegisterCollectionView: UICollectionView = {
+    private lazy var petCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -114,7 +113,6 @@ final class RecordRegisterViewController : BaseViewController{
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isScrollEnabled = false
         collectionView.allowsMultipleSelection = true // TODO: 공부
-        // collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -137,9 +135,22 @@ final class RecordRegisterViewController : BaseViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         register()
         setUI()
         setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        RecordAPI.shared.getTotalPet { result in
+            guard let result = self.validateResult(result) as? [RecordPetResult] else { return }
+            self.petList = []
+            result.forEach { self.petList.append($0.transform()) }
+            self.petCollectionView.reloadData()
+        }
+        
     }
     
     //MARK: - Custom Method
@@ -155,7 +166,7 @@ final class RecordRegisterViewController : BaseViewController{
 
         buttonsContainerView.addSubviews(dailyButton, missionButton)
 
-        cardView.addSubviews(headerView, recordRegisterCollectionView)
+        cardView.addSubviews(headerView, petCollectionView)
         
         headerView.addSubviews(backButton, titleLabel, subtitleLabel)
 
@@ -220,7 +231,7 @@ final class RecordRegisterViewController : BaseViewController{
             $0.centerX.equalToSuperview()
         }
         
-        recordRegisterCollectionView.snp.makeConstraints {
+        petCollectionView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(352)
@@ -233,13 +244,17 @@ final class RecordRegisterViewController : BaseViewController{
         }
     }
     
+    
+    func dataBind(data: RecordModel){
+        self.recordData = data
+    }
     //MARK: - Action Method
 
     private func register() {
         if(petList.count <= 3) {
-            recordRegisterCollectionView.register(RecordRegisterCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
+            petCollectionView.register(RecordRegisterCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
         } else {
-            recordRegisterCollectionView.register(RecordRegisterFourCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier)
+            petCollectionView.register(RecordRegisterFourCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier)
         }
     }
     
@@ -265,7 +280,24 @@ final class RecordRegisterViewController : BaseViewController{
     
     @objc
     private func registerButtonDidTap(){
-        pushToRecordCompleteViewController()
+        var selectedPetID: [Int] = []
+        petList.forEach {
+            if $0.isSelected {
+                selectedPetID.append($0.petID)
+            }
+        }
+        
+        print(recordData)
+        print(selectedPetID)
+        RecordAPI.shared.postRecord(
+                                    photo: recordData.image ?? UIImage(),
+                                    content: recordData.content ?? "",
+                                    pets: selectedPetID)
+        { result in
+                self.pushToRecordCompleteViewController()
+        }
+        
+        
     }
     
     private func activateButton(indexPathArray: [IndexPath]?) {
@@ -281,7 +313,6 @@ final class RecordRegisterViewController : BaseViewController{
     private func pushToRecordCompleteViewController() {
         let recordCompleteViewController = RecordCompleteViewController()
         self.navigationController?.pushViewController(recordCompleteViewController, animated: true)
-        print("헹")
     }
 }
 
@@ -297,13 +328,13 @@ extension RecordRegisterViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier, for: indexPath)
                     as? RecordRegisterCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: petList[indexPath.item])
+            cell.dataBind(data: petList[indexPath.item])
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier, for: indexPath)
                     as? RecordRegisterFourCollectionViewCell else { return UICollectionViewCell() }
-            cell.dataBind(model: petList[indexPath.item])
+            cell.dataBind(data: petList[indexPath.item])
             return cell
         }
     }

@@ -14,7 +14,8 @@ final class RecordViewController : BaseViewController{
     
     //MARK: - Properties
     
-    private var recordData: RecordModel? = RecordModel(image: Image.mockPet1, content: nil)
+    var petImage: UIImage?
+    private var recordData = RecordModel()
     private let placeHoldText: String = """
                                         ex) 2023년 2월 30일
                                         가족에게 어떤 순간이었는지 남겨주세요
@@ -74,12 +75,13 @@ final class RecordViewController : BaseViewController{
         return view
     }()
     
-    private let addImageView: UIImageView = {
+    private let galleryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Image.gallery
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 12
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -92,12 +94,6 @@ final class RecordViewController : BaseViewController{
         textView.backgroundColor = .zoocWhite2
         textView.clipsToBounds = true
         textView.layer.cornerRadius = 12
-        
-//        let style = NSMutableParagraphStyle()
-//        style.lineSpacing = 10
-//        let attributes = [NSAttributedString.Key.paragraphStyle : style]
-//        textView.attributedText = NSAttributedString(string: placeHoldText,
-//                                                     attributes: attributes)
         return textView
     }()
     
@@ -120,11 +116,27 @@ final class RecordViewController : BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gesture()
         setLayout()
         contentTextView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardNotifications()
+    }
     //MARK: - Custom Method
+    private func gesture(){
+        galleryImageView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                 action: #selector(galleryImageViewDidTap)))
+    }
     
     private func setLayout() {
         view.addSubviews(topBarView, cardView, nextButton)
@@ -133,7 +145,7 @@ final class RecordViewController : BaseViewController{
         
         buttonsContainerView.addSubviews(dailyButton, missionButton)
         
-        cardView.addSubviews(addImageView, contentTextView)
+        cardView.addSubviews(galleryImageView, contentTextView)
         
         topBarView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(11)
@@ -175,7 +187,7 @@ final class RecordViewController : BaseViewController{
             $0.height.equalTo(477)
         }
         
-        addImageView.snp.makeConstraints {
+        galleryImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(22)
             $0.height.equalTo(210)
         }
@@ -200,8 +212,20 @@ final class RecordViewController : BaseViewController{
     
     func pushToRecordRegisterViewController() {
         let recordRegisterViewController = RecordRegisterViewController()
+        
+        recordRegisterViewController.dataBind(data: recordData)
         navigationController?.pushViewController(recordRegisterViewController, animated: true)
         print(#function)
+    }
+    
+    private func updateUI(){
+        if contentTextView.text.isEmpty || recordData.image == nil {
+            nextButton.backgroundColor = .zoocGray1
+            nextButton.isEnabled = false
+        } else {
+            nextButton.backgroundColor = .zoocGradientGreen
+            nextButton.isEnabled = true
+        }
     }
     
     //MARK: - Action Method
@@ -216,6 +240,16 @@ final class RecordViewController : BaseViewController{
     
     @objc private func missionButtonDidTap(){
         print(#function)
+    }
+    
+    @objc
+    private func galleryImageViewDidTap(){
+        print("갤러리 선택")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true)
+        
     }
     
     @objc
@@ -247,12 +281,17 @@ extension RecordViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if textView.text == "" {
-            nextButton.backgroundColor = .zoocGray1
-            nextButton.isEnabled = false
-        } else {
-            nextButton.backgroundColor = .zoocGradientGreen
-            nextButton.isEnabled = true
+        updateUI()
+    }
+}
+
+extension RecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.recordData.image = image
+            self.galleryImageView.image = image
+            updateUI()
         }
     }
 }

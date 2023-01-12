@@ -27,7 +27,8 @@ public enum URLs{
     //MARK: - Record
     static let getMission = "/record/mission/{familyId}"
     static let totalPet = "/record/pet/{familyId}"
-    static let postRecord = "/record/{familyId}?missionId={missionId}"
+    static let postRecord = "/record/{familyId}"
+    static let postMission = "/record/{familyId}?missionId={missionId}"
     static let detailRecord = "/record/{familyId}/{recordId}"
     static let totalRecord = "/record/{familyId}"
     static let deleteRecord = "/record/{recordId}"
