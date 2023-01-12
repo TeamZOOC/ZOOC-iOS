@@ -39,6 +39,14 @@ extension HomeAPI{
                                 completion: completion)
         }
     }
+    
+    func getDetailArchive(recordID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getDetailArchive(familyID: User.id, recordID: recordID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: HomeDetailArchiveResult.self,
+                                completion: completion)
+        }
+    }
 }
 
 
