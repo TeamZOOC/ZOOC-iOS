@@ -15,9 +15,9 @@ class ZoocTabBarController: UITabBarController {
     
     //MARK: - Properties
 
+    let homeGuideViewController = HomeGuideViewController()
     let homeViewController = HomeViewController()
     let myViewController = MyViewController()
-    
     
     lazy var homeNavigationContrller = UINavigationController(rootViewController: homeViewController)
     lazy var myNavigationController = UINavigationController(rootViewController: myViewController)
@@ -86,7 +86,6 @@ class ZoocTabBarController: UITabBarController {
     private func setNavigationController() {
         homeNavigationContrller.setNavigationBarHidden(true, animated: true)
         myNavigationController.setNavigationBarHidden(true, animated: true)
-        
     }
     
     private func setViewController(){

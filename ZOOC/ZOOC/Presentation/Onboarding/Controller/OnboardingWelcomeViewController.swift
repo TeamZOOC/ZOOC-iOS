@@ -37,7 +37,7 @@ final class OnboardingWelcomeViewController: UIViewController{
     }
     
     private func updateWelcomeView() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.onboardingWelcomeView.welcomeLabel.textColor = .zoocGray1
             self.onboardingWelcomeView.welcomeSubLabel.isHidden = false
             self.onboardingWelcomeView.welcomeImage.isHidden = false
