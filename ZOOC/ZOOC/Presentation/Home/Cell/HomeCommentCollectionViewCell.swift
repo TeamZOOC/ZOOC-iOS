@@ -67,7 +67,7 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
     //MARK: - Custom Method
     
     private func setUI(){
-        print("123")
+        
     }
     
     private func setLayout(){
