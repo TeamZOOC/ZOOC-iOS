@@ -61,7 +61,6 @@ final class HomeArchiveListWriterCollectionViewCell: UICollectionViewCell{
             writerImageView.image = Image.defaultProfile
             return
         }
-        print("나 댓글썼어유")
         writerImageView.kfSetImage(url: imageURL)
         
     }

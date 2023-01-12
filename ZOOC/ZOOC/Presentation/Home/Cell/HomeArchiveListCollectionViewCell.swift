@@ -314,8 +314,6 @@ extension HomeArchiveListCollectionViewCell: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListWriterCollectionViewCell.cellIdentifier, for: indexPath) as? HomeArchiveListWriterCollectionViewCell else { return UICollectionViewCell() }
-        print("🏄🏻‍♀️🏄🏻‍♀️🏄🏻‍♀️🏄🏻‍♀️🏄🏻‍♀️🏄🏻‍♀️")
-        print(#function)
         cell.dataBind(data: commentWriterData[indexPath.item])
         return cell
     }
