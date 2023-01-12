@@ -11,7 +11,7 @@ import Moya
 
 enum MyService {
     case getMyPageData
-    //case patchUserProfile(nickName: String, photo: //file)
+    //case patchUserProfile(nickName: String, photo: Data?)
     case deleteAccount
 }
 
@@ -20,8 +20,8 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return "/family/mypage"
-//        case .patchUserProfile:
-//            return "user/profile?photo={true/false}"
+//        case .patchUserProfile(photo: Bool):
+//            return "user/profile?photo=\(photo)"
         case .deleteAccount:
             return "user"
         }
@@ -31,7 +31,7 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return .get
-//        case .patchUserProfile:
+//        case .patchUserProfile(nickName: _, photo: _):
 //            return .patch
         case .deleteAccount:
             return .delete
@@ -42,8 +42,30 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return .requestPlain
-//        case .patchUserProfile:
-//            return .requestJSONEncodable()
+            
+//        case .patchUserProfile(nickName: String, photo: Data):
+//            var multipartFormData: [MultipartFormData] = []
+//
+//            let imageData = MultipartFormData(provider: .data(photo.image),
+//                                              name: "profileImage",
+//                                              fileName: "profileImage.jpeg",
+//                                              mimeType: "image/jpeg")
+//            multipartFormData.append(imageData)
+//
+//            let jsonParam = ["nickName": nickName]
+//
+//            let data = try! JSONSerialization.data(withJSONObject: jsonParam.asParameter(),
+//                                                   options: .prettyPrinted)
+//
+//            let jsonString = String(data: data, encoding: .utf8)!
+//
+//            let stringData = MultipartFormData(provider: .data(jsonString.data(using: String.Encoding.utf8)!),
+//                                               name: "profileNickName",
+//                                               mimeType: "application/json"
+//            )
+//            multipartFormData.append(stringData)
+//            return .uploadMultipart(multipartFormData)
+//
         case .deleteAccount:
             return .requestPlain
         }

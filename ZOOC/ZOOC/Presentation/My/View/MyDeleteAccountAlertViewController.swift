@@ -119,10 +119,11 @@ final class DeleteAccountAlertViewController: BaseViewController {
     
     @objc
     func popToMyViewButtonDidTap() {
-        MyAPI.shared.deleteAccount()
+        MyAPI.shared.deleteAccount() {result in
+            print(result)
+        }
         self.dismiss(animated: false)
     }
-    
     
     @objc
     func keepButtonDidTap() {

@@ -13,6 +13,7 @@ enum HomeService {
     case getMission(familyID: String)
     case getTotalPet(familyID: String)
     case getTotalArchive(familyID: String)
+    case getNotice
 }
 
 extension HomeService: BaseTargetType {
@@ -25,6 +26,8 @@ extension HomeService: BaseTargetType {
             return URLs.totalPet.replacingOccurrences(of: "{familyId}", with: "\(familyID)")
         case .getTotalArchive(let familyID):
             return URLs.totalRecord.replacingOccurrences(of: "{familyId}", with: "\(familyID)")
+        case .getNotice:
+            return URLs.getNotice
         }
     }
         
@@ -35,6 +38,8 @@ extension HomeService: BaseTargetType {
         case .getTotalPet:
             return .get
         case .getTotalArchive:
+            return .get
+        case .getNotice:
             return .get
         }
     }
@@ -47,8 +52,9 @@ extension HomeService: BaseTargetType {
             return .requestPlain
         case .getTotalArchive:
             return .requestPlain
+        case .getNotice:
+            return .requestPlain
         }
     }
-    
 }
 
