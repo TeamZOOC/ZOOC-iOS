@@ -1,6 +1,7 @@
 # ZOOC - iOS
 ![combination_logo](https://user-images.githubusercontent.com/57269348/210508501-ffd1cbd3-a32a-44a0-b69d-4d0642ff6bf2.png)
 <br/><br/>
+![zooc_wrokflow](https://user-images.githubusercontent.com/57269348/212365313-814cda3a-b49f-477e-a8df-8bf04481a08f.jpg)
 
 ## 📌 프로젝트 소개
 
