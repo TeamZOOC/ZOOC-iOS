@@ -49,9 +49,7 @@ final class EditProfileViewController: BaseViewController {
             editProfileView.editProfileImageButton.kf.setImage(with: URL(string: imageURL), for: .normal)
         }else{
             editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
-        } else {
-            editProfileView.editProfileImageButton.kf.setImage(with: URL(string: (data?.photo)!), for: .normal)
-        }
+        } 
         if let name = data?.nickName{
             myProfileNickName = name
         } 

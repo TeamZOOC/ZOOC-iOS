@@ -271,8 +271,7 @@ final class HomeViewController : BaseViewController{
     
     private func pushToHomeAlarmViewController(){
         let viewController = HomeNoticeViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func foldArchiveCollectionView(){

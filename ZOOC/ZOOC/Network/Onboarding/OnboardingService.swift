@@ -54,7 +54,7 @@ extension OnboardingService: BaseTargetType {
         switch self {
             
         case .getInviteCode(familyId: _):
-            return APIConstants.noTokenHeader
+            return APIConstants.hasTokenHeader
         case .postRegisterUser(param: _):
             return APIConstants.hasTokenHeader
         case .postKakaoSocialLogin(accessToken: let accessToken):

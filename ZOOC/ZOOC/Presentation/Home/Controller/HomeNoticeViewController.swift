@@ -65,7 +65,7 @@ final class HomeNoticeViewController: BaseViewController {
     
     @objc
     private func backButtonDidTap() {
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
