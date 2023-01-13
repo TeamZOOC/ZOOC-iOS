@@ -5,7 +5,7 @@
 //  Created by 장석우 on 2022/12/31.
 //
 
-import Foundation
+import UIKit
 
 import Moya
 
@@ -19,6 +19,19 @@ extension MyAPI{
         myProvider.request(.getMyPageData) { (result) in
             self.disposeNetwork(result,
                                 dataModel: MyResult.self,
+                                completion: completion)
+        }
+    }
+    
+    func patchMyProfile(isPhoto: Bool,
+                        nickName: String,
+                        photo: UIImage?,
+                        completion: @escaping (NetworkResult<Any>) -> Void){
+        myProvider.request(.patchUserProfile(isPhoto: isPhoto,
+                                             nickName: nickName,
+                                             photo: photo)) { result in
+            self.disposeNetwork(result,
+                                dataModel: MyUser.self,
                                 completion: completion)
         }
     }

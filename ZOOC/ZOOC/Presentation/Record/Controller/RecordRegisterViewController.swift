@@ -251,11 +251,12 @@ final class RecordRegisterViewController : BaseViewController{
     //MARK: - Action Method
 
     private func register() {
-        if(petList.count <= 3) {
-            petCollectionView.register(RecordRegisterCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
-        } else {
-            petCollectionView.register(RecordRegisterFourCollectionViewCell.self, forCellWithReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier)
-        }
+            petCollectionView.register(RecordRegisterCollectionViewCell.self,
+                                       forCellWithReuseIdentifier: RecordRegisterCollectionViewCell.cellIdentifier)
+        
+            petCollectionView.register(RecordRegisterFourCollectionViewCell.self,
+                                       forCellWithReuseIdentifier: RecordRegisterFourCollectionViewCell.cellIdentifier)
+        
     }
     
     @objc
@@ -287,8 +288,6 @@ final class RecordRegisterViewController : BaseViewController{
             }
         }
         
-        print(recordData)
-        print(selectedPetID)
         RecordAPI.shared.postRecord(
                                     photo: recordData.image ?? UIImage(),
                                     content: recordData.content ?? "",
@@ -346,9 +345,11 @@ extension RecordRegisterViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(petList.count <= 3) {
             guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
+            petList[indexPath.row].isSelected = true
             cell.updateUI(isSelected: true) //TODO: 클래스와 프로퍼티, 메소드에 접근 | private public | 타입캐스팅
         } else {
             guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterFourCollectionViewCell else { return }
+            petList[indexPath.row].isSelected = true
             cell.updateUI(isSelected: true) //TODO: 클래스와 프로퍼티, 메소드에 접근 | private public | 타입캐스팅
         }
         let indexPathArray = collectionView.indexPathsForSelectedItems
@@ -358,9 +359,11 @@ extension RecordRegisterViewController{
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if(petList.count <= 3) {
             guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterCollectionViewCell else { return }
+            petList[indexPath.row].isSelected = false
             cell.updateUI(isSelected: false)
         } else {
             guard let cell = collectionView.cellForItem(at: indexPath) as? RecordRegisterFourCollectionViewCell else { return }
+            petList[indexPath.row].isSelected = false
             cell.updateUI(isSelected: false)
         }
         registerButton.backgroundColor = .zoocGray2

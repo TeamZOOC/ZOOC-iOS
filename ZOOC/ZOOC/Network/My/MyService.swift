@@ -5,13 +5,13 @@
 //  Created by 장석우 on 2022/12/31.
 //
 
-import Foundation
+import UIKit
 
 import Moya
 
 enum MyService {
     case getMyPageData
-    //case patchUserProfile(nickName: String, photo: Data?)
+    case patchUserProfile(isPhoto: Bool, nickName: String, photo: UIImage?)
     case deleteAccount
 }
 
@@ -20,19 +20,20 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return "/family/mypage"
-//        case .patchUserProfile(photo: Bool):
-//            return "user/profile?photo=\(photo)"
+        case .patchUserProfile(isPhoto: let isPhoto, nickName: let nickName, photo: let photo):
+            return "/user/profile"
         case .deleteAccount:
-            return "user"
+            return "/user"
         }
+     
     }
     
     var method: Moya.Method {
         switch self {
         case .getMyPageData:
             return .get
-//        case .patchUserProfile(nickName: _, photo: _):
-//            return .patch
+        case .patchUserProfile:
+            return .patch
         case .deleteAccount:
             return .delete
         }
@@ -42,30 +43,28 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return .requestPlain
+        case .patchUserProfile(isPhoto: let isPhoto, nickName: let nickName, photo: let photo):
             
-//        case .patchUserProfile(nickName: String, photo: Data):
-//            var multipartFormData: [MultipartFormData] = []
-//
-//            let imageData = MultipartFormData(provider: .data(photo.image),
-//                                              name: "profileImage",
-//                                              fileName: "profileImage.jpeg",
-//                                              mimeType: "image/jpeg")
-//            multipartFormData.append(imageData)
-//
-//            let jsonParam = ["nickName": nickName]
-//
-//            let data = try! JSONSerialization.data(withJSONObject: jsonParam.asParameter(),
-//                                                   options: .prettyPrinted)
-//
-//            let jsonString = String(data: data, encoding: .utf8)!
-//
-//            let stringData = MultipartFormData(provider: .data(jsonString.data(using: String.Encoding.utf8)!),
-//                                               name: "profileNickName",
-//                                               mimeType: "application/json"
-//            )
-//            multipartFormData.append(stringData)
-//            return .uploadMultipart(multipartFormData)
-//
+            var multipartFormData: [MultipartFormData] = []
+            
+            let nickNameData = MultipartFormData(provider: .data(nickName.data(using: String.Encoding.utf8)!),
+                                                           name: "nickName",
+                                                           mimeType: "application/json")
+            if let photo = photo{
+                print("포토있음")
+                let photo = photo.jpegData(compressionQuality: 1.0) ?? Data()
+                let imageData = MultipartFormData(provider: .data(photo),
+                                                              name: "file",
+                                                              fileName: "image.jpeg",
+                                                              mimeType: "image/jpeg")
+                multipartFormData.append(imageData)
+            }
+          
+            
+            multipartFormData.append(nickNameData)
+            return .uploadCompositeMultipart(multipartFormData, urlParameters: ["photo": isPhoto ? "true" : "false"])
+
+
         case .deleteAccount:
             return .requestPlain
         }

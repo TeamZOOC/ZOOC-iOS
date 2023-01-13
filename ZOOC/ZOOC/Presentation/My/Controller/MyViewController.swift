@@ -18,6 +18,8 @@ final class MyViewController: BaseViewController {
     private var myFamilyMemberData: [MyUser] = []
     private var myPetMemberData: [MyPet] = []
     private var myProfileData: MyUser?
+    
+    
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
@@ -39,18 +41,10 @@ final class MyViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        MyAPI.shared.getMyPageData() { result in
-            
-            guard let result = self.validateResult(result) as? MyResult else { return }
-            
-            self.myProfileData = result.user
-            self.myFamilyMemberData = result.familyMember
-            self.myPetMemberData = result.pet
-            
-            self.myView.myCollectionView.reloadData()
-        }
+        getMyPageAPI()
+        
     }
+    
     
     //    override func viewDidAppear(_ animated: Bool) {
     //        super.viewWillAppear(animated)
@@ -97,9 +91,30 @@ final class MyViewController: BaseViewController {
     }
     
     func dataSend(myprofileData: MyUser?) {
-        myProfileData?.nickName = myprofileData!.nickName
-        myProfileData?.photo = myprofileData?.photo
+        if let data = myProfileData?.nickName{
+            myProfileData?.nickName = data
+        }
+        
+        if let data = myProfileData?.photo{
+            myProfileData?.photo = data
+        }
+        
+        
         myView.myCollectionView.reloadData()
+    }
+    
+    
+    func getMyPageAPI(){
+        MyAPI.shared.getMyPageData() { result in
+            
+            guard let result = self.validateResult(result) as? MyResult else { return }
+            
+            self.myProfileData = result.user
+            self.myFamilyMemberData = result.familyMember
+            self.myPetMemberData = result.pet
+            
+            self.myView.myCollectionView.reloadData()
+        }
     }
     
     func updateRegisterPetData(myPetRegisterData: [MyPetRegisterModel]) {

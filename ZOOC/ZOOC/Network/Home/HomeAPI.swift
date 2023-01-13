@@ -32,8 +32,8 @@ extension HomeAPI{
         }
     }
     
-    func getTotalArchive(completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getTotalArchive(familyID: User.familyID)) { (result) in
+    func getTotalArchive(petID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getTotalArchive(familyID: User.familyID, petID: petID)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: [HomeArchiveResult].self,
                                 completion: completion)
@@ -41,7 +41,7 @@ extension HomeAPI{
     }
     
     func getDetailArchive(recordID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getDetailArchive(familyID: User.id, recordID: recordID)) { (result) in
+        homeProvider.request(.getDetailArchive(familyID: User.familyID, recordID: recordID)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: HomeDetailArchiveResult.self,
                                 completion: completion)

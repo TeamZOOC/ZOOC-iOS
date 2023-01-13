@@ -131,16 +131,10 @@ final class HomeViewController : BaseViewController{
             self.autoSelectPetCollectionView()
         }
         
-        HomeAPI.shared.getTotalArchive { result in
-            guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
-            self.archiveData = result
-            self.archiveListCollectionView.reloadData()
-            self.archiveGridCollectionView.reloadData()
-            DispatchQueue.main.async {
-                self.updateIndicatorView(self.archiveListCollectionView)
-            }
-        }
+        
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -277,8 +271,7 @@ final class HomeViewController : BaseViewController{
     
     private func pushToHomeAlarmViewController(){
         let viewController = HomeNoticeViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func foldArchiveCollectionView(){
@@ -294,6 +287,7 @@ final class HomeViewController : BaseViewController{
                                          animated: false,
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
+            getTotalArchive(petID: petData[0].id)
         }
     }
     
@@ -303,6 +297,18 @@ final class HomeViewController : BaseViewController{
         
         self.archiveIndicatorView.widthRatio = showingWidth / allWidth
         self.archiveIndicatorView.layoutIfNeeded()
+    }
+    
+    private func getTotalArchive(petID: Int){
+        HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
+            guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
+            self.archiveData = result
+            self.archiveListCollectionView.reloadData()
+            self.archiveGridCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.updateIndicatorView(self.archiveListCollectionView)
+            }
+        }
     }
     
     //MARK: - Action Method
@@ -425,6 +431,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
+            getTotalArchive(petID: petData[indexPath.row].id )
             
         }
         

@@ -31,6 +31,7 @@
 		871EA359297078C900D0E8CC /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 871EA358297078C900D0E8CC /* loading.json */; };
 		871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */; };
 		871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */; };
+		871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35E2971628D00D0E8CC /* Encodable+.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -186,6 +187,7 @@
 		871EA358297078C900D0E8CC /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPetResult.swift; sourceTree = "<group>"; };
 		871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
+		871EA35E2971628D00D0E8CC /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -232,7 +234,7 @@
 		87B6624929521E7600B6FFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		87D3687B2964C979009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
+		87D368772964C961009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				D27D956B296CBA2D0097CD03 /* UIButton+.swift */,
 				871EA33D296F529C00D0E8CC /* UIImageView+.swift */,
 				871EA35229704CD200D0E8CC /* UIImage+.swift */,
+				871EA35E2971628D00D0E8CC /* Encodable+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -673,8 +676,8 @@
 		87A76A9B295F6E640096F669 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				87A76AA4295F6EC40096F669 /* HomeAPI.swift */,
 				87A76AA2295F6EB80096F669 /* HomeService.swift */,
+				87A76AA4295F6EC40096F669 /* HomeAPI.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -712,7 +715,6 @@
 		87A76AAF295F6F040096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
-				87D3687B2964C979009728FC /* Empty.md */,
 				D26C68EF296F693E0088DC9A /* MyResult.swift */,
 			);
 			path = APIModel;
@@ -1017,6 +1019,7 @@
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
 				D26C68E3296DE4F80088DC9A /* MyRegisterPetView.swift in Sources */,
 				D26C68F0296F693E0088DC9A /* MyResult.swift in Sources */,
+				871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */,
 				D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */,
 				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,

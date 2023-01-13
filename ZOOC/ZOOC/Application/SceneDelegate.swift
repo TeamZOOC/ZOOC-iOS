@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         onboardingNVC.setNavigationBarHidden(true, animated: true)
         let zoocTabBarController = ZoocTabBarController()
         
-        window?.rootViewController = zoocTabBarController
+        window?.rootViewController = onboardingNVC
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }

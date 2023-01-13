@@ -213,6 +213,10 @@ final class RecordViewController : BaseViewController{
     func pushToRecordRegisterViewController() {
         let recordRegisterViewController = RecordRegisterViewController()
         
+        if let text = contentTextView.text{
+            recordData.content = text
+        } else { return }
+        
         recordRegisterViewController.dataBind(data: recordData)
         navigationController?.pushViewController(recordRegisterViewController, animated: true)
         print(#function)

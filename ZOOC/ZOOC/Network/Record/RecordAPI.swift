@@ -30,7 +30,7 @@ extension RecordAPI{
                                            pets: pets))
         { result in
             self.disposeNetwork(result,
-                                dataModel: SimpleResponse.self,
+                                dataModel: MyResult.self,
                                 completion: completion)
         }
     }

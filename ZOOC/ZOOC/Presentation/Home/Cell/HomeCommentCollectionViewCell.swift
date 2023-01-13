@@ -119,8 +119,8 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
             UIImage.zoocEmoji(data.emoji ?? 0)
             
         } else {
+            print(data.content)
             commentLabel.text = data.content
-            
         }
         
         if let imageURL = data.photo{
