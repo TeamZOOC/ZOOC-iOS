@@ -74,6 +74,8 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Action Method
+    
     @objc func agreementIsSelected() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)

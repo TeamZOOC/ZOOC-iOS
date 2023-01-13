@@ -82,6 +82,8 @@ extension OnboardingParticipateViewController {
     }
 }
 
+//MARK: - UITextFieldDelegate
+
 extension OnboardingParticipateViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.onboardingParticipateView.nextButton.backgroundColor = .zoocGradientGreen
