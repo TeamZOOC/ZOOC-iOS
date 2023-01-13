@@ -59,6 +59,7 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         petNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(self.petImageView.snp.trailing).offset(8)
+            $0.trailing.equalToSuperview()
         }
     }
     
