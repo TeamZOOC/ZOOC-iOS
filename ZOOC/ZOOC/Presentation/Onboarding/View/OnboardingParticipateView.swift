@@ -43,13 +43,14 @@ final class OnboardingParticipateView: UIView {
         $0.backgroundColor = .zoocWhite2
         $0.font = .zoocBody2
         $0.textColor = .zoocDarkGreen
-        $0.placeholder = "ex) SEF33210"
+        $0.placeholder = "  ex) SEF33210"
         $0.layer.cornerRadius = 8
         $0.clipsToBounds = true
     }
     
     private var participateImage = UIImageView().then {
         $0.image = Image.graphics5
+        $0.contentMode = .scaleAspectFit
     }
     
     public var nextButton = UIButton().then {
@@ -118,13 +119,13 @@ final class OnboardingParticipateView: UIView {
         }
         
         participateImage.snp.makeConstraints {
-            $0.top.equalTo(self.familyCodeTextField.snp.bottom).offset(82)
+            $0.top.equalTo(self.familyCodeTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(301)
+            $0.bottom.equalTo(self.nextButton.snp.top).offset(-20)
         }
         
         nextButton.snp.makeConstraints {
-            $0.top.equalTo(self.participateImage.snp.bottom).offset(30)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)
