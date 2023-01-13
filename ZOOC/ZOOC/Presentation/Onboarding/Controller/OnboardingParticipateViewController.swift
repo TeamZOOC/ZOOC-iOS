@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateViewController: UIViewController{
+final class OnboardingParticipateViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -34,6 +34,8 @@ final class OnboardingParticipateViewController: UIViewController{
         onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
         onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        
+        onboardingParticipateView.familyCodeTextField.delegate = self
     }
     
     func pushToParticipateCompletedView() {
@@ -50,7 +52,40 @@ final class OnboardingParticipateViewController: UIViewController{
     
     @objc
     private func nextButtonDidTap() {
-        pushToParticipateCompletedView()
+        registerUser()
+    }
+}
+
+extension OnboardingParticipateViewController {
+    func registerUser() {
+        guard let code = onboardingParticipateView.familyCodeTextField.text else { return }
+        let param = OnboardingRegisterUserRequestDto(code: code)
+        OnboardingAPI.shared.registerUser(param: param) { result in
+            switch result {
+            case .success(_):
+                self.pushToParticipateCompletedView()
+            case .requestErr(let message):
+                self.onboardingParticipateView.nextButton.isEnabled = false
+                self.onboardingParticipateView.nextButton.backgroundColor = .zoocGray1
+                self.presentBottomAlert(message)
+            case .decodedErr:
+                break
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+
+        }
+    }
+}
+
+extension OnboardingParticipateViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.onboardingParticipateView.nextButton.backgroundColor = .zoocGradientGreen
+        self.onboardingParticipateView.nextButton.isEnabled = true
     }
 }
 
