@@ -42,6 +42,7 @@ extension OnboardingService: BaseTargetType {
     var task: Task {
         switch self {
         case .getInviteCode:
+            return .requestPlain
         case .postRegisterUser(param: let param):
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
