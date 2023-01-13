@@ -17,6 +17,10 @@ final class OnboardingLoginView: UIView {
     
     //MARK: - UI Components
     
+    var goHomeButton = UIButton().then {
+        $0.backgroundColor = .clear
+    }
+    
     private var loginTitleLabel = UILabel().then {
         $0.text = "가족의 추억을 쭉 \n기록하는 손쉬운 방법"
         $0.textColor = .zoocDarkGray2
@@ -64,7 +68,13 @@ final class OnboardingLoginView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(loginTitleLabel, loginDescribeLabel, kakaoLoginButton)
+        addSubviews(goHomeButton,loginTitleLabel, loginDescribeLabel, kakaoLoginButton)
+        
+        goHomeButton.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(80)
+        }
         
         loginTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(108)

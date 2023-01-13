@@ -34,6 +34,9 @@ final class OnboardingLoginViewController: BaseViewController{
     
     func register() {
         onboardingLoginView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonDidTap), for: .touchUpInside)
+        onboardingLoginView.goHomeButton.addTarget(self,
+                                                   action: #selector(goHomeButtonDidTap),
+                                                   for: .touchUpInside)
     }
     
     func pushToAgreementView() {
@@ -62,5 +65,10 @@ final class OnboardingLoginViewController: BaseViewController{
             }
         }
         
+    }
+    
+    @objc
+    func goHomeButtonDidTap(){
+        changeRootViewController(ZoocTabBarController())
     }
 }
