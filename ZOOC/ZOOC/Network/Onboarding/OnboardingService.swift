@@ -10,29 +10,35 @@ import Foundation
 import Moya
 
 enum OnboardingService {
-    case registerUser(param: OnboardingRegisterUserRequestDto)
-
+    case postRegisterUser(param: OnboardingRegisterUserRequestDto)
+    case postKakaoSocialLogin
 }
 
 extension OnboardingService: BaseTargetType {
     var path: String {
         switch self {
-        case .registerUser:
+        case .postRegisterUser:
             return URLs.registerUser
+        case .postKakaoSocialLogin:
+            return URLs.socialLogin
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .registerUser(param: _):
+        case .postRegisterUser(param: _):
+            return .post
+        case .postKakaoSocialLogin:
             return .post
         }
     }
     
     var task: Task {
         switch self {
-        case .registerUser(param: let param):
+        case .postRegisterUser(param: let param):
             return .requestJSONEncodable(param)
+        case .postKakaoSocialLogin:
+            return .requestPlain
         }
     }
 }

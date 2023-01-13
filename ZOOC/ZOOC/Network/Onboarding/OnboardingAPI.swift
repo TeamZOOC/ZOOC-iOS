@@ -13,9 +13,16 @@ class OnboardingAPI: BaseAPI {
     var onboardingProvider = MoyaProvider<OnboardingService>(plugins: [MoyaLoggingPlugin()])
 }
 
-extension OnboardingAPI{
+extension OnboardingAPI {
     func registerUser(param: OnboardingRegisterUserRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.registerUser(param: param)) { (result) in
+        onboardingProvider.request(.postRegisterUser(param: param)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: SimpleResponse.self,
+                                completion: completion)
+        }
+    }
+    func postKakaoSocialLogin(completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postKakaoSocialLogin) { (result) in
             self.disposeNetwork(result,
                                 dataModel: OnboardingResult.self,
                                 completion: completion)

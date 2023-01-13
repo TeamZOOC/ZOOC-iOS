@@ -5,11 +5,17 @@
 //  Created by 류희재 on 2023/01/13.
 //
 
-import UIKit
+import Foundation
+
+// MARK: - MyResult
 
 struct OnboardingResult: Codable {
-    var status: Int
-    var success: Bool
-    var message: String?
+    let data: DataClass
+}
+
+// MARK: - DataClass
+
+struct DataClass: Codable {
+    let jwtToken: String
 }
 
