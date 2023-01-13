@@ -144,8 +144,9 @@ final class HomeViewController : BaseViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateIndicatorView(archiveListCollectionView)
+        //updateIndicatorView(archiveListCollectionView)
     }
+    
     //MARK: - Custom Method
     
     private func register(){
@@ -288,6 +289,7 @@ final class HomeViewController : BaseViewController{
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
             getTotalArchive(petID: petData[0].id)
+            updateIndicatorView(self.archiveListCollectionView)
         }
     }
     

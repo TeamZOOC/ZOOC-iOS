@@ -53,6 +53,7 @@ final class OnboardingRegisterProfileImageView: UIView {
         $0.layer.borderColor = UIColor.zoocWhite1.cgColor
         $0.layer.cornerRadius = 73.5
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var createProfileButton = UIButton().then {

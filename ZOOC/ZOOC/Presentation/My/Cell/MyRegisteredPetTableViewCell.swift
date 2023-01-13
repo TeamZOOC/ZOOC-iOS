@@ -16,6 +16,7 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     public lazy var petProfileImageView = UIImageView().then {
         $0.layer.cornerRadius = 30
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var petProfileNameLabel = UILabel().then {

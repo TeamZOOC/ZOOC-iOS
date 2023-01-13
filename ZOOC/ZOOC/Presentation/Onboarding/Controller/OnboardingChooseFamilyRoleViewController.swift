@@ -28,6 +28,18 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         register()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dismissKeyboardWhenTappedAround()
+       // addKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //removeKeyboardNotifications()
+    }
+    
     //MARK: - Custom Method
     
     func register() {

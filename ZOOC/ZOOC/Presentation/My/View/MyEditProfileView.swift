@@ -28,10 +28,12 @@ final class EditProfileView: UIView {
         $0.setImage(Image.logoSymbol, for: .normal)
         $0.layer.cornerRadius = 54.5
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     private var editProfileCameraIconImageView = UIImageView().then {
         $0.image = Image.cameraCircleGreen
+        $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 17.5
     }
     

@@ -14,6 +14,7 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     public var familyImageView = UIImageView().then {
         $0.layer.cornerRadius = 24
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var familyNameLabel = UILabel().then {

@@ -32,6 +32,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         $0.layer.borderWidth = 5
         $0.layer.borderColor = UIColor.zoocWhite1.cgColor
         $0.layer.cornerRadius = 35
+        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     

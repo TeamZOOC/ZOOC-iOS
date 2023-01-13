@@ -10,9 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingRegisterProfileImageViewController: UIViewController{
+final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Properties
+    var isPhoto: Bool = false
+    var image: UIImage?
     
     private var profileName: String = ""
     private var familyRoleLabel: String = ""
@@ -24,6 +26,7 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
         self.view = onboardingRegisterProfileImageView
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,18 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
                 
         onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
      
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardNotifications()
     }
     
     //MARK: - Custom Method
@@ -60,7 +75,16 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     
     @objc
     func createProfileButtonDidTap() {
-        pushToCompleteProfileView()
+        MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
+                                    nickName: profileName,
+                                    photo: image)
+        { result in
+            
+            print(result)
+            guard let result = self.validateResult(result) as? MyUser else { return }
+            self.pushToCompleteProfileView()
+        }
+        
     }
     
     @objc
@@ -70,23 +94,20 @@ final class OnboardingRegisterProfileImageViewController: UIViewController{
     
     @objc
     func chooseProfileImage() {
-        let actionSheetController = UIAlertController()
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true)
         
-        let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
-            print("ok")
-        })
+    }
+}
+extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
-            print("delete")
-        })
-        
-        let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
-            print("cancel")
-        })
-        
-        actionSheetController.addAction(presentToGalleryButton)
-        actionSheetController.addAction(deleteProfileImageButton)
-        actionSheetController.addAction(cancleButton)
-        self.present(actionSheetController, animated: true)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            isPhoto = true
+            self.image = image
+            onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)            
+        }
     }
 }
