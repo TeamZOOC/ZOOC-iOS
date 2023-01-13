@@ -10,6 +10,10 @@
 > 👨‍👨‍👧‍가족과 함께 쭉 아카이빙하는 반려동물 다이어리 서비스🐶
 <br/>
 
+## 📌 최종과제 노션 링크
+<a href="https://www.notion.so/ZOOC-89e2e8962c1346ff8c3d26e8e5fb4b88">🍎최종 과제🍎</a>
+<br>
+
 ## 📌 팀원 소개
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -51,5 +55,4 @@
 - [Coding-Convention](https://www.notion.so/iOS-6dcaf36be1844bb287c2a7455928c1da)
 - [Git Flow 전략](https://www.notion.so/Git-Flow-3c9439b61b364e19b747ff2c199835f0)
 - [폴더링 Convention](https://www.notion.so/a54303f22d1547f68acd6d78a6d888ac)
-
 
