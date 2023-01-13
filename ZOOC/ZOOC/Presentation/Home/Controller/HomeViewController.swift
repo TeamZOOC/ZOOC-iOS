@@ -113,24 +113,11 @@ final class HomeViewController : BaseViewController{
         register()
         gesture()
         autoSelectPetCollectionView()
+        updateAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        HomeAPI.shared.getMission(familyID: User.familyID) { result in
-            guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
-            self.missionLabel.text = result[0].missionContent
-        }
-        
-        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
-            
-            guard let result = self.validateResult(result) as? [HomePetResult] else { return }
-            self.petData = result
-            self.petCollectionView.reloadData()
-            self.autoSelectPetCollectionView()
-        }
-        
         
     }
     
@@ -144,8 +131,9 @@ final class HomeViewController : BaseViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateIndicatorView(archiveListCollectionView)
+        //updateIndicatorView(archiveListCollectionView)
     }
+    
     //MARK: - Custom Method
     
     private func register(){
@@ -288,6 +276,7 @@ final class HomeViewController : BaseViewController{
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
             getTotalArchive(petID: petData[0].id)
+            updateIndicatorView(self.archiveListCollectionView)
         }
     }
     
@@ -297,6 +286,24 @@ final class HomeViewController : BaseViewController{
         
         self.archiveIndicatorView.widthRatio = showingWidth / allWidth
         self.archiveIndicatorView.layoutIfNeeded()
+    }
+    
+    func updateAPI(){
+        HomeAPI.shared.getMission(familyID: User.familyID) { result in
+            guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
+            self.missionLabel.text = result[0].missionContent
+        }
+        
+        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
+            
+            guard let result = self.validateResult(result) as? [HomePetResult] else { return }
+            self.petData = result
+            self.petCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.autoSelectPetCollectionView()
+            }
+            
+        }
     }
     
     private func getTotalArchive(petID: Int){
@@ -310,6 +317,8 @@ final class HomeViewController : BaseViewController{
             }
         }
     }
+    
+    
     
     //MARK: - Action Method
     

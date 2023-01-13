@@ -310,6 +310,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
             self.contentLabel.text = result.record.content
             self.commentData = result.comments
             self.commentCollectionView.reloadData()
+            
             DispatchQueue.main.async {
                 self.commentCollectionView.snp.remakeConstraints {
                     $0.top.equalTo(self.lineView.snp.bottom)

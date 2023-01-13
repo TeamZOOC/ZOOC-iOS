@@ -31,6 +31,7 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.zoocLightGray.cgColor
         $0.layer.cornerRadius = 23.5
+        $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
         $0.backgroundColor = .zoocWhite1
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)

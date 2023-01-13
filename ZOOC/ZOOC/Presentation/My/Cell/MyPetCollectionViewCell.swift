@@ -15,6 +15,7 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         $0.image = Image.mockPet2
         $0.layer.cornerRadius = 17
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var petNameLabel = UILabel().then {
@@ -58,6 +59,7 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
         petNameLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(self.petImageView.snp.trailing).offset(8)
+            $0.trailing.equalToSuperview()
         }
     }
     

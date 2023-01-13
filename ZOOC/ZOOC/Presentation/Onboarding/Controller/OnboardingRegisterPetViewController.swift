@@ -33,6 +33,11 @@ final class OnboardingRegisterPetViewController: UIViewController{
         register()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dismissKeyboardWhenTappedAround()
+    }
+    
     //MARK: - Custom Method
     
     func register() {

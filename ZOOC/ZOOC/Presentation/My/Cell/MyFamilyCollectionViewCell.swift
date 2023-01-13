@@ -14,9 +14,11 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     public var familyImageView = UIImageView().then {
         $0.layer.cornerRadius = 24
         $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var familyNameLabel = UILabel().then {
+        $0.textAlignment = .center
         $0.font = .zoocCaption
         $0.textColor = .zoocDarkGray1
     }
@@ -46,7 +48,7 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         
         familyNameLabel.snp.makeConstraints {
             $0.top.equalTo(self.familyImageView.snp.bottom).offset(6)
-            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
     }
     

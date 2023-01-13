@@ -26,6 +26,7 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         $0.layer.borderWidth = 2
         $0.clipsToBounds = true
         $0.layer.masksToBounds = true
+        $0.contentMode = .scaleAspectFill
     }
     
     public var profileNameLabel = UILabel().then {

@@ -116,6 +116,11 @@ final class RecordCompleteViewController : BaseViewController {
     
     @objc
     private func goArchiveButtonDidTap() {
+        
+//
+        guard let tabVC = navigationController?.previousViewController?.presentingViewController as? ZoocTabBarController else { return }
+        tabVC.homeViewController.updateAPI()
+        
         self.navigationController?.previousViewController?.navigationController?.previousViewController?.dismiss(animated: true)
     }
 }

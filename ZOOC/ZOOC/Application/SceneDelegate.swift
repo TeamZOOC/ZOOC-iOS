@@ -24,11 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
+        //온보딩 Flow 부터
         let onboardingNVC = UINavigationController(rootViewController: OnboardingLoginViewController())
         onboardingNVC.setNavigationBarHidden(true, animated: true)
+        
+        //홈 Flow 부터
         let zoocTabBarController = ZoocTabBarController()
         
-        window?.rootViewController = onboardingNVC
+        window?.rootViewController = zoocTabBarController //
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
