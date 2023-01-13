@@ -126,7 +126,7 @@ final class OnboardingRegisterProfileImageView: UIView {
         }
         
         createProfileButton.snp.makeConstraints {
-            $0.top.equalTo(self.registerProfileImageButton.snp.bottom).offset(207)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(314)
             $0.height.equalTo(54)
