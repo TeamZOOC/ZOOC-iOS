@@ -64,6 +64,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func setUI() {
+        self.selectionStyle = .none
         self.backgroundColor = .zoocBackgroundGreen
     }
     

@@ -32,6 +32,7 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
     
     func register() {
         onboardingInviteCompletedFamilyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingInviteCompletedFamilyView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -39,6 +40,11 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
     @objc
     private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func startButtonDidTap(){
+        self.changeRootViewController(ZoocTabBarController())
     }
 }
 

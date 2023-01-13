@@ -62,7 +62,7 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     
     private func pushToMyReInviteCompletdView() {
         let onboardingReInviteFamilyViewController = OnboardingReInviteFamilyViewController()
-        self.navigationController?.pushViewController(onboardingReInviteFamilyViewController, animated: true)
+        self.navigationController?.pushViewController(onboardingReInviteFamilyViewController, animated: false)
     }
     
     private func pushToMyInviteFamilyCompletdView() {
@@ -83,6 +83,7 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
         
         activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
             if success {
+                
                 self.pushToMyReInviteCompletdView()
             }  else  {
                 print("링크 공유에 실패했습니다.")

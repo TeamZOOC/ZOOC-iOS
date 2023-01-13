@@ -15,7 +15,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
     
-    private var myFamilyData: [MyMemberModel] = MyMemberModel.familyDummyData
+    private var myFamilyData: [MyUser] = []
     
     //MARK: - UI Components
     
@@ -26,7 +26,6 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     private var familyCountLabel = UILabel().then {
-        $0.text = "\(MyMemberModel.petDummyData.count)/8"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -114,8 +113,13 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
     
-    public func dataBind(myProfileData: MyProfileModel) {
+    public func dataBind(myFamilyData: [MyUser]) {
         self.myProfileData = myProfileData
+        self.myFamilyData = myFamilyData
+        familyCountLabel.text = "\(myFamilyData.count)/8"
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어왔어요 \(myFamilyData)")
+        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어온 명수는? \(myFamilyData.count)")
+
         self.familyCollectionView.reloadData()
     }
 }

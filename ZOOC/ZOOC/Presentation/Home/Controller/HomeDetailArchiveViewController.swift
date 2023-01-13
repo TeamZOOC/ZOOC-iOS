@@ -14,7 +14,10 @@ final class HomeDetailArchiveViewController : BaseViewController{
     
     //MARK: - Properties
     
-    var detailArchiveData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
+    private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
+    
+    private var detailArchiveData: HomeDetailArchiveResult?
+    private var commentData: [CommentResult] = []
     
     //MARK: - UI Components
     
@@ -49,6 +52,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
     private let petImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -168,12 +172,13 @@ final class HomeDetailArchiveViewController : BaseViewController{
     }
     
     private func setUI(){
-        petImageView.image = detailArchiveData.petImage
-        dateLabel.text = detailArchiveData.date
-        writerImageView.image = detailArchiveData.writerImage
-        writerNameLabel.text = detailArchiveData.writerName
-        contentLabel.text = detailArchiveData.content
+//        petImageView.image = detailArchiveMockData.petImage
+//        dateLabel.text = detailArchiveMockData.date
+//        writerImageView.image = detailArchiveMockData.writerImage
+//        writerNameLabel.text = detailArchiveMockData.writerName
+//        contentLabel.text = detailArchiveMockData.content
     }
+    
     
     private func setLayout(){
         view.addSubviews(scrollView,
@@ -292,7 +297,26 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
-    
+    func getAPI(recordID: String){
+        HomeAPI.shared.getDetailArchive(recordID: recordID) { result in
+            guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
+            
+            if let imageURL = result.record.writerPhoto{
+                self.writerImageView.kfSetImage(url: imageURL)
+                
+            }
+            else {
+                self.writerImageView.image = Image.defaultProfile
+            }
+            
+            self.petImageView.kfSetImage(url: result.record.photo)
+            self.dateLabel.text = result.record.date
+            self.writerNameLabel.text = result.record.writerName
+            self.contentLabel.text = result.record.content
+            
+        }
+        
+    }
     
     //MARK: - Action Method
     
@@ -326,14 +350,16 @@ extension HomeDetailArchiveViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int
     {
-        return detailArchiveData.comments.count
+        //return detailArchiveMockData.comments.count
+        return commentData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: detailArchiveData.comments[indexPath.row])
+        //cell.dataBind(data: detailArchiveMockData.comments[indexPath.row])
+        cell.dataBind(data: commentData[indexPath.row])
         return cell
     }
 }

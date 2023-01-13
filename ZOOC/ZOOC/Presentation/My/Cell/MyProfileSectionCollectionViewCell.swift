@@ -25,6 +25,7 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         $0.layer.borderColor = UIColor.zoocGray1.cgColor
         $0.layer.borderWidth = 2
         $0.clipsToBounds = true
+        $0.layer.masksToBounds = true
     }
     
     public var profileNameLabel = UILabel().then {
@@ -79,9 +80,16 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         }
     }
     
-    func dataBind(data: MyProfileModel) {
-        profileNameLabel.text = data.name
-        profileImageView.image = data.profileImage
+    func dataBind(data: MyUser?) {
+        
+        if let imageURL = data?.photo{
+            profileImageView.kfSetImage(url: imageURL)
+        }
+        else {
+            profileImageView.image = Image.defaultProfile
+        }
+    
+        profileNameLabel.text = data?.nickName
     }
 }
 

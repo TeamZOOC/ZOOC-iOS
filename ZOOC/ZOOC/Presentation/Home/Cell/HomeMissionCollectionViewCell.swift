@@ -10,9 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
+protocol HomeMissionCardDelegate: AnyObject{
+    func nextButtonDidTap(_ text: String)
+    
+}
+
 final class HomeMissionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
+    
+    weak var delegate: HomeMissionCardDelegate?
     
     //MARK: - UI Components
     
@@ -22,7 +29,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
                         최근 나를 웃게 했던
                         반려동물 사진이 뭐야?
                      """
-        label.font = .zoocSubhead2
+        label.font = .zoocSubhead1
         label.textColor = .zoocDarkGray1
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -44,6 +51,18 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
         view.textColor = .zoocGray1
         view.font = .zoocBody1
         return view
+    }()
+    
+    private lazy var nextButton : UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .zoocMainGreen
+        button.setTitle("다음", for: .normal)
+        button.titleLabel?.font = .zoocSubhead1
+        button.addTarget(self,
+                         action: #selector(nextButtonDidTap),
+                         for: .touchUpInside)
+        button.layer.cornerRadius = 12
+        return button
     }()
     
     //MARK: - Life Cycle
@@ -77,15 +96,15 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     }
     
     private func setLayout(){
-        contentView.addSubviews(titleLabel,galleryImageView,textView)
+        contentView.addSubviews(titleLabel,galleryImageView,textView, nextButton)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(46)
+            $0.top.equalToSuperview().offset(24)
             $0.centerX.equalToSuperview()
         }
         
         galleryImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(18)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(210)
         }
@@ -93,8 +112,22 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
         textView.snp.makeConstraints {
             $0.top.equalTo(galleryImageView.snp.bottom).offset(12)
             $0.leading.trailing.equalTo(galleryImageView)
-            $0.bottom.equalToSuperview().inset(20)
         }
+        //asdfasdf
+        nextButton.snp.makeConstraints {
+            $0.top.equalTo(textView.snp.bottom).offset(12)
+            $0.leading.trailing.equalTo(textView)
+            $0.bottom.equalToSuperview().offset(-22)
+            $0.height.equalTo(52)
+        }
+    }
+    
+    //MARK: - Action Method
+    
+    @objc
+    private func nextButtonDidTap(){
+        print("delegate로 보내자")
+        delegate?.nextButtonDidTap(textView.text)
     }
     
 }

@@ -15,7 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ZoocTabBarController()
+        
+        let onboardingNVC = UINavigationController(rootViewController: OnboardingLoginViewController())
+        onboardingNVC.setNavigationBarHidden(true, animated: true)
+        let zoocTabBarController = ZoocTabBarController()
+        
+        window?.rootViewController = zoocTabBarController
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }

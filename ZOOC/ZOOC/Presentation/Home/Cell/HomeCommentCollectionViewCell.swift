@@ -112,4 +112,24 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         commentLabel.text = data.comment
         dateLabel.text = data.date
     }
+    
+    func dataBind(data: CommentResult){
+        if data.isEmoji{
+            print("이모지 댓글입니다.")
+            UIImage.zoocEmoji(data.emoji ?? 0)
+            
+        } else {
+            commentLabel.text = data.content
+            
+        }
+        
+        if let imageURL = data.photo{
+            writerImageView.kfSetImage(url: imageURL)
+        } else {
+            writerImageView.image = Image.defaultProfile
+        }
+        
+        writerLabel.text = data.nickName
+        dateLabel.text = data.date
+    }
 }

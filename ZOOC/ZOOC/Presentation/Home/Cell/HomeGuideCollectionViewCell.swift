@@ -25,7 +25,6 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
         label.font = .zoocHeadLine
         label.textColor = .zoocDarkGray2
         label.numberOfLines = 2
-        label.textAlignment = .center
         return label
     }()
     
@@ -44,10 +43,11 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
     
     private let cardImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Image.graphics1
-        imageView.contentMode = .scaleAspectFit
+        imageView.image = Image.graphics6
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
     
     //MARK: - Life Cycle
 
@@ -78,19 +78,19 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews(titleLabel,descriptionLabel,cardImageView)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(46)
-            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(50)
+            $0.leading.trailing.equalToSuperview().inset(42)
         }
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(16)
-            $0.centerX.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(42)
         }
         
         cardImageView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(50)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(40)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     

@@ -10,7 +10,7 @@ import Foundation
 public enum URLs{
     
     //MARK: - Family
-    static let getNotice = "/alarm/list/{familyId}"
+    static let getNotice = "/alarm/list"
     static let myPage = "/family/mypage"
     static let getFamily = "family/"
     static let getInviteCode = "family/code/{familyId}"
@@ -27,7 +27,8 @@ public enum URLs{
     //MARK: - Record
     static let getMission = "/record/mission/{familyId}"
     static let totalPet = "/record/pet/{familyId}"
-    static let postRecord = "/record/{familyId}?missionId={missionId}"
+    static let postRecord = "/record/{familyId}"
+    static let postMission = "/record/{familyId}?missionId={missionId}"
     static let detailRecord = "/record/{familyId}/{recordId}"
     static let totalRecord = "/record/{familyId}"
     static let deleteRecord = "/record/{recordId}"
