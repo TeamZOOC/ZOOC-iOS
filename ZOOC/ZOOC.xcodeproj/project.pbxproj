@@ -24,10 +24,10 @@
 		871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA343296F768100D0E8CC /* HomeArchiveResult.swift */; };
 		871EA3462970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */; };
 		871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3472970360000D0E8CC /* HomeMissionResult.swift */; };
-		871EA35629706F4300D0E8CC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 871EA35529706F4300D0E8CC /* Lottie */; };
 		871EA34A2970403300D0E8CC /* HomeDetailArchiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA3492970403300D0E8CC /* HomeDetailArchiveResult.swift */; };
 		871EA351297042D800D0E8CC /* RecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA350297042D800D0E8CC /* RecordResult.swift */; };
 		871EA35329704CD200D0E8CC /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35229704CD200D0E8CC /* UIImage+.swift */; };
+		871EA35629706F4300D0E8CC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 871EA35529706F4300D0E8CC /* Lottie */; };
 		871EA359297078C900D0E8CC /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 871EA358297078C900D0E8CC /* loading.json */; };
 		871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */; };
 		871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */; };
@@ -154,6 +154,8 @@
 		D27D95D7296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */; };
 		D2F193612970B3FB00AD87D3 /* HomeNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */; };
 		D2F193632970B95E00AD87D3 /* HomeNoticeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */; };
+		D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */; };
+		D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */; };
 		D2F98F9D2967154D00CC82DE /* ZoocAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -303,6 +305,8 @@
 		D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilySectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeModel.swift; sourceTree = "<group>"; };
 		D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeResult.swift; sourceTree = "<group>"; };
+		D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterUserRequestDto.swift; sourceTree = "<group>"; };
+		D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingResult.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -660,8 +664,8 @@
 		87A76A9A295F6E540096F669 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				87A76A9E295F6EA30096F669 /* OnboardingService.swift */,
 				87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */,
+				87A76A9E295F6EA30096F669 /* OnboardingService.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -747,6 +751,9 @@
 			isa = PBXGroup;
 			children = (
 				4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */,
+				87D368772964C961009728FC /* Empty.md */,
+				D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */,
+				D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1004,6 +1011,7 @@
 				4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */,
+				D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
 				D27D95D5296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
@@ -1117,6 +1125,7 @@
 				D26C68EC296DE7B60088DC9A /* MyPetRegisterModel.swift in Sources */,
 				871EA342296F73DE00D0E8CC /* User.swift in Sources */,
 				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
+				D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */,
 				8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */,
 				871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,
@@ -1132,7 +1141,7 @@
 				871EA3482970360000D0E8CC /* HomeMissionResult.swift in Sources */,
 				877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */,
 				D26C8610296B761900AEAF9B /* OnboardingParticipateCompletedViewController.swift in Sources */,
-				87A76AAD295F6EE70096F669 /* RescordAPI.swift in Sources */,
+				87A76AAD295F6EE70096F669 /* RecordAPI.swift in Sources */,
 				D26C68F42970AD930088DC9A /* HomeNoticeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

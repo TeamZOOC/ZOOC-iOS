@@ -19,4 +19,20 @@ extension OnboardingAPI {
             (result) in self.disposeNetwork(result, dataModel: OnboardingInviteResult.self, completion: completion)
         }
     }
+    func registerUser(param: OnboardingRegisterUserRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterUser(param: param)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: SimpleResponse.self,
+                                completion: completion)
+        }
+    }
+    func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postKakaoSocialLogin(accessToken: accessToken)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: OnboardingResult.self,
+                                completion: completion)
+        }
+    }
 }
+
+
