@@ -12,8 +12,8 @@ struct APIConstants{
     
     static let contentType = "Content-Type"
     static let applicationJSON = "application/json"
-    static let auth = "x-auth-token"
-    static let accessToken = ""
+    static let auth = "Authorization"
+    static let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY3MzQ2MzMxMiwiZXhwIjoxNjc0MDY4MTEyfQ.AKlzlfMwUIBtiVORDzX7NpPcgCKwjtji9VJOuoqq7lc"
     
 }
 
