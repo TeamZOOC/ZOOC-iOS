@@ -374,9 +374,13 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        let width = collectionView.frame.width - 36
-        let height: CGFloat = 70
-        return CGSize(width: width, height: height)
+        let width = collectionView.frame.width - 36        
+        if commentData[indexPath.row].isEmoji{
+            return CGSize(width: width, height: 126)
+        } else {
+            return CGSize(width: width, height: 70)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView,

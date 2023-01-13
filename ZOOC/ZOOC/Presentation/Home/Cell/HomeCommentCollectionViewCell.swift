@@ -37,6 +37,13 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         return label
     }()
     
+    private let commentEmojiImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+        
+    }()
+    
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = .zoocSmallCaption
@@ -64,16 +71,22 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
     //MARK: - Custom Method
     
     private func setUI(){
-        
+        commentLabel.isHidden = false
+        commentEmojiImageView.isHidden = true
     }
     
     private func setLayout(){
         contentView.addSubviews(writerImageView,
                                 writerLabel,
                                 commentLabel,
+                                commentEmojiImageView,
                                 dateLabel,
                                 etcButton
                                 )
@@ -92,6 +105,12 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         commentLabel.snp.makeConstraints {
             $0.bottom.equalTo(writerImageView)
             $0.leading.equalTo(writerLabel)
+        }
+        
+        commentEmojiImageView.snp.makeConstraints {
+            $0.top.equalTo(writerLabel.snp.bottom)
+            $0.leading.equalTo(writerLabel)
+            $0.size.equalTo(84)
         }
         
         dateLabel.snp.makeConstraints {
@@ -115,11 +134,15 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
     
     func dataBind(data: CommentResult){
         if data.isEmoji{
-            print("이모지 댓글입니다.")
-            UIImage.zoocEmoji(data.emoji ?? 0)
             
+            commentLabel.isHidden = true
+            commentEmojiImageView.isHidden = false
+            
+            commentEmojiImageView.image = UIImage.zoocEmoji(data.emoji ?? 1)
         } else {
-            print(data.content)
+            commentLabel.isHidden = false
+            commentEmojiImageView.isHidden = true
+            
             commentLabel.text = data.content
         }
         
