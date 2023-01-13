@@ -49,6 +49,7 @@ final class OnboardingParticipateCompletedView: UIView {
     
     private var completeImage = UIImageView().then {
         $0.image = Image.graphics4
+        $0.contentMode = .scaleAspectFit
     }
     
     public var startButton = UIButton().then {
@@ -115,14 +116,13 @@ final class OnboardingParticipateCompletedView: UIView {
         }
         
         completeImage.snp.makeConstraints {
-            $0.top.equalTo(self.completeProfileSubLabel.snp.bottom).offset(52)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(375)
-            $0.height.equalTo(364)
+            $0.top.equalTo(self.completeProfileSubLabel.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.startButton.snp.top).offset(-20)
         }
         
         startButton.snp.makeConstraints {
-            $0.top.equalTo(self.completeImage.snp.bottom).offset(30)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(50)
