@@ -84,7 +84,7 @@ final class OnboardingAgreementView: UIView {
         }
         
         signUpButton.snp.makeConstraints {
-            $0.top.equalTo(self.agreeTableView.snp.bottom).offset(264)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)

@@ -50,6 +50,7 @@ final class OnboardingCompleteProfileView: UIView {
     public var completeImage = UIImageView().then {
         $0.image = Image.graphics2
         $0.isHidden = true
+        $0.contentMode = .scaleAspectFit
     }
     
     public var getCodeButton = UIButton().then {
@@ -134,21 +135,21 @@ final class OnboardingCompleteProfileView: UIView {
         }
         
         completeImage.snp.makeConstraints {
-            $0.top.equalTo(self.completeProfileSubLabel.snp.bottom).offset(52)
+            $0.top.equalTo(self.completeProfileSubLabel.snp.bottom).offset(30)
+            $0.bottom.equalTo(self.getCodeButton.snp.top).offset(-20)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(335)
-            $0.height.equalTo(264)
         }
         
         getCodeButton.snp.makeConstraints {
-            $0.top.equalTo(self.completeImage.snp.bottom).offset(68)
+            $0.bottom.equalTo(self.notGetCodeButton.snp.top).offset(-10)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(50)
         }
         
         notGetCodeButton.snp.makeConstraints {
-            $0.top.equalTo(self.getCodeButton.snp.bottom).offset(10)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(50)

@@ -36,6 +36,7 @@ final class OnboardingWelcomeView: UIView {
     }
     
     public var welcomeImage = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
         $0.image = Image.graphics1
         $0.isHidden = true
     }
@@ -90,14 +91,14 @@ final class OnboardingWelcomeView: UIView {
         }
         
         welcomeImage.snp.makeConstraints {
-            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(51)
+            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(375)
-            $0.height.equalTo(333)
+            $0.bottom.equalTo(self.nextButton.snp.top).offset(-30)
         }
         
         nextButton.snp.makeConstraints {
-            $0.top.equalTo(self.welcomeImage.snp.bottom).offset(48)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)
