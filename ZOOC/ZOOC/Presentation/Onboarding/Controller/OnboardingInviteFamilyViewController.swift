@@ -13,24 +13,27 @@ import Then
 final class OnboardingInviteFamilyViewController: BaseViewController {
     
     //MARK: - Properties
-    private let invitedMessage: String = """
-    [ZOOC]
     
-    보미님이 ‘ZOOC’에 우리 가족을 초대하고 있어요!
-    지금 바로 아래 초대 코드를 입력하고 가족과 추억을 공유하세요!
-
-    초대코드 : SEF33210123
-
-
-
-    ▶ 아직 ZOOC을 설치하지 않으셨나요?
-
-    안드로이드 플레이스토어
-    https://play.google.com/store/apps/details?id=org.sopt.zooczoocbbangbbang
-
-    iOS 앱스토어
-    https://play.google.com/store/apps/details?id=org.sopt.zooczoocbbangbbang"
-    """
+    private var invitedCode: String = "우르르롺끼"
+    
+//    private let invitedMessage: String = """
+//    [ZOOC]
+//
+//    보미님이 ‘ZOOC’에 우리 가족을 초대하고 있어요!
+//    지금 바로 아래 초대 코드를 입력하고 가족과 추억을 공유하세요!
+//
+//    초대코드 : SEF33210123
+//
+//
+//
+//    ▶ 아직 ZOOC을 설치하지 않으셨나요?
+//
+//    안드로이드 플레이스토어
+//    https://play.google.com/store/apps/details?id=org.sopt.zooczoocbbangbbang
+//
+//    iOS 앱스토어
+//    https://play.google.com/store/apps/details?id=org.sopt.zooczoocbbangbbang"
+//    """
     
     private let onboardingInviteFamilyView = OnboardingInviteFamilyView()
     
@@ -42,7 +45,6 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         register()
     }
     
@@ -69,12 +71,13 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     }
     
     private func shareInviteCode() {
+        print("gogo")
         var objectToShare = [String]()
         
-        objectToShare.append(invitedMessage)
+        objectToShare.append(invitedCode)
         
         let activityViewController = UIActivityViewController(activityItems : objectToShare, applicationActivities: nil)
-        
+
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
         
@@ -85,6 +88,15 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
             }  else  {
                 print("링크 공유에 실패했습니다.")
             }
+        }
+    }
+    
+    private func getInviteCode() {
+        OnboardingAPI.shared.getInviteCode(familyID: User.familyID) { result in
+            guard let result = self.validateResult(result) as? OnboardingInviteResult else { return }
+            let code = result.code
+            self.invitedCode = code
+            self.shareInviteCode()
         }
     }
     
@@ -102,6 +114,7 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     
     @objc
     private func inviteButtonDidTap() {
-        shareInviteCode()
+        getInviteCode()
+      
     }
 }

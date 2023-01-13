@@ -10,13 +10,17 @@ import Foundation
 import Moya
 
 enum OnboardingService {
+    case getInviteCode(familyId: String)
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
     case postKakaoSocialLogin
 }
 
 extension OnboardingService: BaseTargetType {
+    
     var path: String {
         switch self {
+        case .getInviteCode(let familyId):
+            return URLs.getInviteCode.replacingOccurrences(of: "{familyId}", with: familyId)
         case .postRegisterUser:
             return URLs.registerUser
         case .postKakaoSocialLogin:
@@ -26,6 +30,8 @@ extension OnboardingService: BaseTargetType {
     
     var method: Moya.Method {
         switch self {
+        case .getInviteCode:
+            return .get
         case .postRegisterUser(param: _):
             return .post
         case .postKakaoSocialLogin:
@@ -35,11 +41,16 @@ extension OnboardingService: BaseTargetType {
     
     var task: Task {
         switch self {
+        case .getInviteCode:
         case .postRegisterUser(param: let param):
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
         }
+    }
+    
+    var headers: [String : String]?{
+        return APIConstants.hasTokenHeader
     }
 }
 
