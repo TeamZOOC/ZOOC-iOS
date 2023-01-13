@@ -36,6 +36,7 @@ final class EditProfileView: UIView {
     }
     
     public var editProfileNameTextField = UITextField().then {
+        $0.textAlignment = .center
         $0.font = .zoocHeadLine
         $0.tintColor = .zoocGradientGreen
     }
@@ -78,7 +79,14 @@ final class EditProfileView: UIView {
     
     
     private func setLayout() {
-        addSubviews(backButton, appInformationLabel, editProfileImageButton, editProfileCameraIconImageView, editProfileNameTextField, profileNameTextFieldUnderLineView, profileNameCountLabel, editCompletedButton)
+        addSubviews(backButton,
+                    appInformationLabel,
+                    editProfileImageButton,
+                    editProfileCameraIconImageView,
+                    editProfileNameTextField,
+                    profileNameTextFieldUnderLineView,
+                    profileNameCountLabel,
+                    editCompletedButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)

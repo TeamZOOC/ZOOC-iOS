@@ -17,6 +17,10 @@ final class EditProfileViewController: BaseViewController {
     private lazy var editProfileView = EditProfileView()
     private var myProfileData: MyUser?
     
+    private var isPhoto: Bool = true
+    private var myProfileImage: UIImage?
+    private var myProfileNickName: String = "기본 닉네임"
+    
     //MARK: - Life Cycle
     
     override func loadView() {
@@ -34,29 +38,34 @@ final class EditProfileViewController: BaseViewController {
     
     func register() {
         editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        editProfileView.editCompletedButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
+        editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        
     }
 
-    func dataSend(data: MyUser) {
-        editProfileView.editProfileImageButton.kf.setImage(with: URL(string: data.photo!), for: .normal)
-        editProfileView.editProfileNameTextField.placeholder = data.nickName
+    func dataSend(data: MyUser?) {
+        if let imageURL = data?.photo{
+            editProfileView.editProfileImageButton.kf.setImage(with: URL(string: imageURL), for: .normal)
+        }else{
+            editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+        }
+        if let name = data?.nickName{
+            myProfileNickName = name
+        } 
+        
+        editProfileView.editProfileNameTextField.placeholder = data?.nickName
+        
+    }
+    
+    private func popToMyProfileView() {
+        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
+        beforeVC.getMyPageAPI()
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Action Method
     
-    @objc
-    private func popToMyProfileView() {
-        
-        let profileName = editProfileView.editProfileNameTextField.text
-        let profileImage = editProfileView.editProfileImageButton.image(for: .normal)
-        
-        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
-        beforeVC.dataSend(myprofileData: myProfileData)
-        self.navigationController?.popViewController(animated: true)
-    }
     
     @objc
     func chooseProfileImage() {
@@ -64,10 +73,15 @@ final class EditProfileViewController: BaseViewController {
         
         let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
             print("ok")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true)
         })
         
         let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
-            print("delete")
+            self.editProfileView.editProfileImageButton.setImage(Image.defaultProfilePet, for: .normal)
+            self.isPhoto = false
         })
         
         let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
@@ -107,6 +121,24 @@ final class EditProfileViewController: BaseViewController {
             }
         }
     }
+    
+    @objc
+    func editCompleteButtonDidTap(){
+        
+        if let text = editProfileView.editProfileNameTextField.text{
+            myProfileNickName = text
+        }
+        MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
+                                    nickName: myProfileNickName,
+                                    photo: myProfileImage)
+        { result in
+            
+            print(result)
+            guard let result = self.validateResult(result) as? MyUser else { return }
+            
+            self.popToMyProfileView()
+        }
+    }
 }
 
 extension EditProfileViewController {
@@ -128,3 +160,17 @@ extension EditProfileViewController {
         editProfileView.profileNameCountLabel.text = "\(textCount)/10"
     }
 }
+
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            editProfileView.editProfileImageButton.setImage(image, for: .normal)
+            self.myProfileImage = image
+            
+        }
+    }
+}
+
+    
+

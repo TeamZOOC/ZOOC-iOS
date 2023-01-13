@@ -12,15 +12,15 @@ public enum URLs{
     //MARK: - Family
     static let getNotice = "/alarm/list"
     static let myPage = "/family/mypage"
-    static let getFamily = "family/"
-    static let getInviteCode = "family/code/{familyId}"
+    static let getFamily = "/family/"
+    static let getInviteCode = "/family/code/{familyId}"
     static let registerPet = "family/pet/{familyId}"
     static let registerUser = "/familiy/user"
     
     //MARK: - User
     
-    static let socialLogin = "user/kako/signin"
-    static let editProfile = "/user/profile"
+    static let socialLogin = "/user/kako/signin"
+    static let editProfile = "/user/profile?photo={true/false}"
     static let signUp = "/user/create?code={code}"
     static let deleteUser = "/user"
     
@@ -30,7 +30,7 @@ public enum URLs{
     static let postRecord = "/record/{familyId}"
     static let postMission = "/record/{familyId}?missionId={missionId}"
     static let detailRecord = "/record/{familyId}/{recordId}"
-    static let totalRecord = "/record/{familyId}"
+    static let totalRecord = "/record/{familyId}/{petId}"
     static let deleteRecord = "/record/{recordId}"
     
     //MARK: - Comment

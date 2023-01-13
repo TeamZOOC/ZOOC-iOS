@@ -18,7 +18,7 @@ extension RecordService: BaseTargetType{
         switch self{
         case .getTotalPet(let familyID):
             return URLs.totalPet.replacingOccurrences(of: "{familyId}", with: familyID)
-        case .postRecord(familyID: let familyID, photo: let photo, content: let content, pets: let pets):
+        case .postRecord(familyID: let familyID, photo: _, content: _, pets: _):
             return URLs.postRecord.replacingOccurrences(of: "{familyId}", with: familyID)
         }
     }
@@ -36,10 +36,29 @@ extension RecordService: BaseTargetType{
         switch self{
         case .getTotalPet:
             return .requestPlain
-        case .postRecord(familyID: let familyID, photo: let photo, content: let content, pets: let pets):
-            print("희재야 부탁해~~~~❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️")
-            return .requestPlain
-            //희재야 부탁해~~~~~~~!!!!
+        case .postRecord(familyID: _, photo: let photo, content: let content, pets: let pets):
+            
+            var multipartFormData: [MultipartFormData] = []
+            
+            let photo = photo.jpegData(compressionQuality: 1.0) ?? Data()
+            for pet in 0...pets.count - 1{
+               
+            }
+
+
+            let contentData = MultipartFormData(provider: .data(content.data(using: String.Encoding.utf8)!),
+                                                           name: "content",
+                                                           mimeType: "application/json")
+            let imageData = MultipartFormData(provider: .data(photo),
+                                                          name: "file",
+                                                          fileName: "image.jpeg",
+                                                          mimeType: "image/jpeg")
+        
+            
+            multipartFormData.append(contentData)
+            multipartFormData.append(imageData)
+            
+            return .uploadMultipart(multipartFormData)
             
         }
     }
