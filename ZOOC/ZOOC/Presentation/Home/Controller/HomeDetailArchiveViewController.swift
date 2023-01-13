@@ -149,12 +149,6 @@ final class HomeDetailArchiveViewController : BaseViewController{
         removeKeyboardNotifications()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-        
-    }
 
     //MARK: - Custom Method
     

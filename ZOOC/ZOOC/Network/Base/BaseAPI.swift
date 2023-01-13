@@ -18,7 +18,7 @@ class BaseAPI{
         }
         
         switch statusCode {
-        case 200:
+        case 200..<205:
             guard decodedData.data != nil else {
                 print("⛔️ \(self)애서 디코딩 오류가 발생했습니다 ⛔️")
                 return .decodedErr
