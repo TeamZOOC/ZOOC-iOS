@@ -33,7 +33,9 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         register()
         
         let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.zoocGradientGreen, range: (familyRoleLabel as NSString).range(of: profileName))
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                       value: UIColor.zoocGradientGreen,
+                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
                 
         onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
      
@@ -56,9 +58,13 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     private func register() {
         onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
         
-        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingRegisterProfileImageView.backButton.addTarget(self,
+                                                                action: #selector(backButtonDidTap),
+                                                                for: .touchUpInside)
         
-        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
+        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self,
+                                                                                action: #selector(chooseProfileImage),
+                                                                                for: .touchUpInside)
     }
     
     private func pushToCompleteProfileView() {
@@ -68,13 +74,15 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     func dataSend(profileName: String) {
         self.familyRoleLabel = "\(profileName)! \n프로필 사진을 등록할까요?"
-        self.profileName = "\(profileName)!"
+        self.profileName = "\(profileName)"
     }
     
     //MARK: - Action Method
     
     @objc
     func createProfileButtonDidTap() {
+        onboardingRegisterProfileImageView.createProfileButton.isEnabled = false
+        onboardingRegisterProfileImageView.createProfileButton.backgroundColor = .zoocGray1
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
                                     nickName: profileName,
                                     photo: image)
@@ -107,7 +115,7 @@ extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerD
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             isPhoto = true
             self.image = image
-            onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)            
+            onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
         }
     }
 }
