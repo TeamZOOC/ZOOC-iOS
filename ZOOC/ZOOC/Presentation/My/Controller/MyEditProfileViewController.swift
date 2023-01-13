@@ -40,9 +40,14 @@ final class EditProfileViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
 
-    func dataSend(data: MyUser) {
-        editProfileView.editProfileImageButton.kf.setImage(with: URL(string: data.photo!), for: .normal)
-        editProfileView.editProfileNameTextField.placeholder = data.nickName
+    func dataSend(data: MyUser?) {
+        if data?.photo == nil {
+            editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+        } else {
+            editProfileView.editProfileImageButton.kf.setImage(with: URL(string: (data?.photo)!), for: .normal)
+        }
+        
+        editProfileView.editProfileNameTextField.placeholder = data?.nickName
     }
     
     //MARK: - Action Method

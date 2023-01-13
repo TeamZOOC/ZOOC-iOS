@@ -80,7 +80,7 @@ final class DeleteAccountAlertViewController: BaseViewController {
         alertView.addSubviews(alertTitleLabel, alertSubTitleLabel, keepEditButton, popToMyViewButton)
         
         alertView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(299)
+            $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.width.equalTo(299)
             $0.height.equalTo(180)

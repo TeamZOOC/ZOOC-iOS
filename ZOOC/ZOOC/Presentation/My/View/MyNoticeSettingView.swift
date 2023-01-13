@@ -69,8 +69,8 @@ final class MyNoticeSettingView: UIView {
         noticeSettingSubView.addSubviews(postingTitleLabel, postingdescribeLabel, permitNoticeSwitchButton)
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(11)
-            $0.leading.equalToSuperview().offset(31)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
         }
         

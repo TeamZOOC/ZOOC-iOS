@@ -25,7 +25,7 @@ final class AppInformationView: UIView {
     }
     
     private var currentVersionTitleLabel = UILabel().then {
-        $0.font = .zoocBody2
+        $0.font = .zoocBody3
         $0.text = "현재 버전"
         $0.textColor = .zoocDarkGray2
     }
@@ -68,8 +68,8 @@ final class AppInformationView: UIView {
                     currentVersionLabel, appInformationTableView)
         
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(24)
-            $0.leading.equalToSuperview().offset(31)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(11)
+            $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
         }
         
