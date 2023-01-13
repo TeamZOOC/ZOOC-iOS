@@ -53,6 +53,12 @@ extension HomeAPI{
             self.disposeNetwork(result, dataModel: [HomeNoticeResult].self, completion: completion)
         }
     }
+    
+    func postComment(recordID: String, comment: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.postComment(recordID: recordID, comment: comment)) { (result) in
+            self.disposeNetwork(result, dataModel: [CommentResult].self, completion: completion)
+        }
+    }
 }
 
 

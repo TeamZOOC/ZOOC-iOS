@@ -296,6 +296,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         HomeAPI.shared.getDetailArchive(recordID: recordID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
+            self.detailArchiveData = result
             if let imageURL = result.record.writerPhoto{
                 self.writerImageView.kfSetImage(url: imageURL)
                 
@@ -396,6 +397,20 @@ extension HomeDetailArchiveViewController: CommentTextFieldDelegate{
     func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField,
                                    text: String) {
         print("VC에서 '\(text)'를 전달 받았습니다")
+        HomeAPI.shared.postComment(recordID: "\(detailArchiveData?.record.id ?? 1)",
+                                   comment: text) { result in
+            guard let result = self.validateResult(result) as? [CommentResult] else { return }
+            self.commentData = result
+            self.commentCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.commentCollectionView.snp.remakeConstraints {
+                    $0.top.equalTo(self.lineView.snp.bottom)
+                    $0.leading.trailing.equalToSuperview()
+                    $0.bottom.equalToSuperview()
+                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
+                }
+            }
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
