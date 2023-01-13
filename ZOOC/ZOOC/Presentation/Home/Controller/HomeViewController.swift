@@ -288,7 +288,7 @@ final class HomeViewController : BaseViewController{
                                          animated: false,
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
-            getTotalArchive(petID: 0)
+            getTotalArchive(petID: petData[0].id)
         }
     }
     
