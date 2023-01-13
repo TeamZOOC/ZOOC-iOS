@@ -113,24 +113,11 @@ final class HomeViewController : BaseViewController{
         register()
         gesture()
         autoSelectPetCollectionView()
+        updateAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        HomeAPI.shared.getMission(familyID: User.familyID) { result in
-            guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
-            self.missionLabel.text = result[0].missionContent
-        }
-        
-        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
-            
-            guard let result = self.validateResult(result) as? [HomePetResult] else { return }
-            self.petData = result
-            self.petCollectionView.reloadData()
-            self.autoSelectPetCollectionView()
-        }
-        
         
     }
     
@@ -301,6 +288,24 @@ final class HomeViewController : BaseViewController{
         self.archiveIndicatorView.layoutIfNeeded()
     }
     
+    func updateAPI(){
+        HomeAPI.shared.getMission(familyID: User.familyID) { result in
+            guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
+            self.missionLabel.text = result[0].missionContent
+        }
+        
+        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
+            
+            guard let result = self.validateResult(result) as? [HomePetResult] else { return }
+            self.petData = result
+            self.petCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.autoSelectPetCollectionView()
+            }
+            
+        }
+    }
+    
     private func getTotalArchive(petID: Int){
         HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
             guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
@@ -312,6 +317,8 @@ final class HomeViewController : BaseViewController{
             }
         }
     }
+    
+    
     
     //MARK: - Action Method
     
