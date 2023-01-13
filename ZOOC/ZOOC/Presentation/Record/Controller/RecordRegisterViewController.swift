@@ -288,8 +288,6 @@ final class RecordRegisterViewController : BaseViewController{
             }
         }
         
-        print(recordData)
-        print(selectedPetID)
         RecordAPI.shared.postRecord(
                                     photo: recordData.image ?? UIImage(),
                                     content: recordData.content ?? "",

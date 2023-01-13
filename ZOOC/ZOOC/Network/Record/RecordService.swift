@@ -41,8 +41,14 @@ extension RecordService: BaseTargetType{
             var multipartFormData: [MultipartFormData] = []
             
             let photo = photo.jpegData(compressionQuality: 1.0) ?? Data()
-            for pet in 0...pets.count - 1{
-               
+            
+            for i in 0...pets.count - 1{
+                let pet = pets[i].description.data(using: .utf8) ?? Data()
+                let petData = MultipartFormData(provider: .data(pet),
+                                                name: "pet[\(i)]",
+                                                mimeType: "application/json")
+                
+                multipartFormData.append(petData)
             }
 
 

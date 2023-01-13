@@ -113,8 +113,8 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -152,12 +152,8 @@ final class HomeDetailArchiveViewController : BaseViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        commentCollectionView.snp.remakeConstraints {
-            $0.top.equalTo(lineView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.height.equalTo(commentCollectionView.contentSize.height)
-        }
+        
+        
     }
 
     //MARK: - Custom Method
@@ -220,7 +216,6 @@ final class HomeDetailArchiveViewController : BaseViewController{
             $0.trailing.equalToSuperview().offset(-30)
             $0.height.width.equalTo(30)
         }
-        
         
         //MARK: ScrollView Layout
         contentView.snp.makeConstraints {
@@ -313,7 +308,16 @@ final class HomeDetailArchiveViewController : BaseViewController{
             self.dateLabel.text = result.record.date
             self.writerNameLabel.text = result.record.writerName
             self.contentLabel.text = result.record.content
-            
+            self.commentData = result.comments
+            self.commentCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self.commentCollectionView.snp.remakeConstraints {
+                    $0.top.equalTo(self.lineView.snp.bottom)
+                    $0.leading.trailing.equalToSuperview()
+                    $0.bottom.equalToSuperview()
+                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
+                }
+            }
         }
         
     }
@@ -350,7 +354,6 @@ extension HomeDetailArchiveViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int
     {
-        //return detailArchiveMockData.comments.count
         return commentData.count
     }
     
@@ -358,7 +361,6 @@ extension HomeDetailArchiveViewController: UICollectionViewDataSource{
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
-        //cell.dataBind(data: detailArchiveMockData.comments[indexPath.row])
         cell.dataBind(data: commentData[indexPath.row])
         return cell
     }

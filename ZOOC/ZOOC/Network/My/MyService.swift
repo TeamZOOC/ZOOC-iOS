@@ -47,19 +47,6 @@ extension MyService: BaseTargetType {
             
             var multipartFormData: [MultipartFormData] = []
             
-            if isPhoto {
-                // photo:  nil or file -> 사진유지 or 사진 변경
-                // nickname: String
-                
-            }
-            else{
-                // photo:  nil  -> 삭제
-                // nickname: String
-                
-            }
-            
-            
-            
             let nickNameData = MultipartFormData(provider: .data(nickName.data(using: String.Encoding.utf8)!),
                                                            name: "nickName",
                                                            mimeType: "application/json")
