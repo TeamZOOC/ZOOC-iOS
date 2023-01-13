@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //홈 Flow 부터
         let zoocTabBarController = ZoocTabBarController()
         
-        window?.rootViewController = zoocTabBarController //
+        window?.rootViewController = onboardingNVC //
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
