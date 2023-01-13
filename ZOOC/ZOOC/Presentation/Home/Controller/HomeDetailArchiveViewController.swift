@@ -313,6 +313,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
                     $0.bottom.equalToSuperview()
                     $0.height.equalTo(self.commentCollectionView.contentSize.height)
                 }
+                self.view.layoutIfNeeded()
             }
         }
         

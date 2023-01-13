@@ -448,6 +448,11 @@ extension HomeViewController{
             collectionView.performBatchUpdates(nil)
         }
         
+        if collectionView == archiveGridCollectionView{
+            let id = String(archiveData[indexPath.item].record.id)
+            pushToDetailViewController(recordID: id)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView,
