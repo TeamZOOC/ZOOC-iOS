@@ -14,6 +14,7 @@
 		4C6B186A296C82850059840D /* RecordRegisterFourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B1869296C82850059840D /* RecordRegisterFourCollectionViewCell.swift */; };
 		4C6B186C296CB8730059840D /* RecordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B186B296CB8730059840D /* RecordCompleteViewController.swift */; };
 		4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */; };
+		4C8A7C33297063F400783979 /* OnboardingInviteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */; };
 		4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */; };
 		4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */; };
 		871EA33C296F3E6200D0E8CC /* HomePetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33B296F3E6200D0E8CC /* HomePetResult.swift */; };
@@ -154,6 +155,8 @@
 		D27D95D7296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */; };
 		D2F193612970B3FB00AD87D3 /* HomeNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */; };
 		D2F193632970B95E00AD87D3 /* HomeNoticeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */; };
+		D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */; };
+		D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */; };
 		D2F98F9D2967154D00CC82DE /* ZoocAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -168,6 +171,7 @@
 		4C6B1869296C82850059840D /* RecordRegisterFourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRegisterFourCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C6B186B296CB8730059840D /* RecordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteViewController.swift; sourceTree = "<group>"; };
 		4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAlertViewController.swift; sourceTree = "<group>"; };
+		4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteResult.swift; sourceTree = "<group>"; };
 		4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyInviteViewController.swift; sourceTree = "<group>"; };
 		4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInviteCompleteViewController.swift; sourceTree = "<group>"; };
 		871EA33B296F3E6200D0E8CC /* HomePetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetResult.swift; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 		D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilySectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeModel.swift; sourceTree = "<group>"; };
 		D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeResult.swift; sourceTree = "<group>"; };
+		D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterUserRequestDto.swift; sourceTree = "<group>"; };
+		D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingResult.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -661,8 +667,8 @@
 		87A76A9A295F6E540096F669 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				87A76A9E295F6EA30096F669 /* OnboardingService.swift */,
 				87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */,
+				87A76A9E295F6EA30096F669 /* OnboardingService.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -746,7 +752,10 @@
 		87A76ABC295F77530096F669 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */,
 				87D368772964C961009728FC /* Empty.md */,
+				D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */,
+				D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1004,6 +1013,7 @@
 				4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */,
+				D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
 				D27D95D5296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
@@ -1093,6 +1103,7 @@
 				D26C85EC2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift in Sources */,
 				D26C85D7296888D000AEAF9B /* MyDeleteAccountSectionCollectionViewCell.swift in Sources */,
 				87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */,
+				4C8A7C33297063F400783979 /* OnboardingInviteResult.swift in Sources */,
 				876554A529584912006BBDA9 /* HomeGuideViewController.swift in Sources */,
 				8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */,
 				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
@@ -1117,6 +1128,7 @@
 				D26C68EC296DE7B60088DC9A /* MyPetRegisterModel.swift in Sources */,
 				871EA342296F73DE00D0E8CC /* User.swift in Sources */,
 				4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */,
+				D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */,
 				8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */,
 				871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,

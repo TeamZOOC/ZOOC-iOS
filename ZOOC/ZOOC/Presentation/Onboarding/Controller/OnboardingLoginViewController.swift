@@ -7,10 +7,12 @@
 
 import UIKit
 
+import KakaoSDKAuth
+import KakaoSDKUser
 import SnapKit
 import Then
 
-final class OnboardingLoginViewController: UIViewController{
+final class OnboardingLoginViewController: BaseViewController{
     
     //MARK: - Properties
     
@@ -43,6 +45,27 @@ final class OnboardingLoginViewController: UIViewController{
     
     @objc
     func kakaoLoginButtonDidTap() {
-        pushToAgreementView()
+        print("yes")
+        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("loginWithKakaoAccount() success.")
+                
+                //do something
+                _ = oauthToken
+                if let oauthToken = oauthToken {
+                    OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+                        print("❤️\(result)")
+                        guard let result = self.validateResult(result) as? OnboardingResult else { return }
+                        print("💚\(result)")
+                        
+                    }
+//                    self.pushToAgreementView()
+                }
+            }
+        }
+        
     }
 }
