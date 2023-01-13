@@ -10,13 +10,13 @@ import UIKit
 import SnapKit
 import Then
 
-protocol EditButtonTappedDelegate {
+protocol EditButtonTappedDelegate: AnyObject {
     func editButtonTapped()
 }
 
 final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         
-    var delegate: EditButtonTappedDelegate?
+    weak var delegate: EditButtonTappedDelegate?
     
     //MARK: - UI Components
     
@@ -88,7 +88,6 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         else {
             profileImageView.image = Image.defaultProfile
         }
-    
         profileNameLabel.text = data?.nickName
     }
 }

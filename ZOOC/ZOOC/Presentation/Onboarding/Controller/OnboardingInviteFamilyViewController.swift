@@ -58,8 +58,6 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
         onboardingInviteFamilyView.inviteLatelyButton.addTarget(self, action: #selector(inviteLatelyButtonDidTap), for: .touchUpInside)
     }
     
-    //MARK: - Custom Method
-    
     private func pushToMyReInviteCompletdView() {
         let onboardingReInviteFamilyViewController = OnboardingReInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingReInviteFamilyViewController, animated: false)

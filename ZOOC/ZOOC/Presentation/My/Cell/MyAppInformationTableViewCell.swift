@@ -19,7 +19,7 @@ final class AppInformationTableViewCell: UITableViewCell {
     
     public var appInformationLabel = UILabel().then {
         $0.textColor = .zoocDarkGray2
-        $0.font = .zoocBody2 //zoocBody3
+        $0.font = .zoocBody3
     }
     
     //MARK: - Life Cycles
@@ -54,7 +54,7 @@ final class AppInformationTableViewCell: UITableViewCell {
         
         appInformationButton.snp.makeConstraints {
             $0.top.equalTo(self.separatorLine.snp.bottom).offset(12)
-            $0.leading.equalToSuperview().offset(10)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(40)
         }

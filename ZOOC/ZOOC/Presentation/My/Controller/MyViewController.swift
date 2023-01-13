@@ -4,6 +4,7 @@
 //
 //  Created by 장석우 on 2022/12/25.
 //
+
 import UIKit
 
 import SnapKit
@@ -17,13 +18,7 @@ final class MyViewController: BaseViewController {
     private var myFamilyMemberData: [MyUser] = []
     private var myPetMemberData: [MyPet] = []
     private var myProfileData: MyUser?
-    
-    
-    
-
-    
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
-    
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
@@ -67,7 +62,6 @@ final class MyViewController: BaseViewController {
     //        tabBarController?.tabBar.isHidden = true
     //    }
     
-    
     //MARK: - Custom Method
     
     private func register() {
@@ -78,7 +72,7 @@ final class MyViewController: BaseViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData!)
+        editProfileViewController.dataSend(data: myProfileData)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
@@ -139,6 +133,7 @@ final class MyViewController: BaseViewController {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension MyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
@@ -168,7 +163,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
         case 3:
             return UIEdgeInsets(top: 0, left: 30, bottom: 40, right: 30)
         case 4:
-            return UIEdgeInsets(top: 0, left: 50, bottom: 103, right: 0)
+            return UIEdgeInsets(top: 0, left: 40, bottom: 103, right: 0)
             
         default:
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -177,6 +172,7 @@ extension MyViewController: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension MyViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
@@ -199,7 +195,7 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myFamilyData: myFamilyMemberData)
+            cell.dataBind(myFamilyData: myFamilyMemberData, myProfileData: myProfileData)
             return cell
             
         case 2:
@@ -228,6 +224,8 @@ extension MyViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - SettingMenuTableViewCellDelegate
+
 extension MyViewController: SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath) {
         switch indexPath.row {
@@ -240,6 +238,8 @@ extension MyViewController: SettingMenuTableViewCellDelegate {
         }
     }
 }
+
+//MARK: - MyRegisterPetButtonTappedDelegate
 
 extension MyViewController: MyRegisterPetButtonTappedDelegate {
     func myRegisterPetButtonTapped(isSelected: Bool) {

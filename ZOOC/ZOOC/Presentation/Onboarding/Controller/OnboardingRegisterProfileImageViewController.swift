@@ -13,6 +13,7 @@ import Then
 final class OnboardingRegisterProfileImageViewController: UIViewController{
     
     //MARK: - Properties
+    
     private var profileName: String = ""
     private var familyRoleLabel: String = ""
     private let onboardingRegisterProfileImageView = OnboardingRegisterProfileImageView()

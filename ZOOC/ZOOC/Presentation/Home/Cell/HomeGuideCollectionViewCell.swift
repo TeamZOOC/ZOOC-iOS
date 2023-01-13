@@ -50,7 +50,7 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
     
     
     //MARK: - Life Cycle
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -95,9 +95,3 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
     }
     
 }
-
-    
-    
-    
-    
-    

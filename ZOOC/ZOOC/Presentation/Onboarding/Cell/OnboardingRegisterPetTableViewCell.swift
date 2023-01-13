@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - DeleteButtonTappedDelegate
+
 protocol DeleteButtonTappedDelegate {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
@@ -101,6 +103,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
             deletePetProfileButton.isHidden = false
         }
     }
+    
+    //MARK: - Action Method
     
     @objc
     private func deletePetProfileButtonDidTap() {
