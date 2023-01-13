@@ -45,15 +45,12 @@ final class OnboardingLoginViewController: BaseViewController{
     
     @objc
     func kakaoLoginButtonDidTap() {
-        print("yes")
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
             }
             else {
                 print("loginWithKakaoAccount() success.")
-                
-                //do something
                 _ = oauthToken
                 if let oauthToken = oauthToken {
                     OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in

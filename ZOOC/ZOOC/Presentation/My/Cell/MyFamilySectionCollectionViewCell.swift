@@ -13,7 +13,8 @@ import Then
 final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
-    private lazy var myProfileData: MyProfileModel = MyProfileModel(name: "", profileImage: Image.defaultProfile)
+    
+    private var myProfileData: MyUser?
     
     private var myFamilyData: [MyUser] = []
     
@@ -73,7 +74,6 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         self.clipsToBounds = true
     }
     
-    
     private func setLayout() {
         addSubviews(familyLabel, familyCountLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
         
@@ -113,18 +113,16 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
     }
     
-    public func dataBind(myFamilyData: [MyUser]) {
+    public func dataBind(myFamilyData: [MyUser], myProfileData: MyUser?) {
         self.myProfileData = myProfileData
         self.myFamilyData = myFamilyData
         familyCountLabel.text = "\(myFamilyData.count)/8"
-        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어왔어요 \(myFamilyData)")
-        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 섹션셀에 들어온 명수는? \(myFamilyData.count)")
-
         self.familyCollectionView.reloadData()
     }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
+
 extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
@@ -132,6 +130,7 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout 
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myFamilyData.count
@@ -140,7 +139,7 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
                 as? FamilyCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: myFamilyData[indexPath.item], index: indexPath.item, myProfileData: myProfileData)
+        cell.dataBind(data: myFamilyData[indexPath.item], myProfileData: myProfileData)
         return cell
     }
 }

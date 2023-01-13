@@ -195,7 +195,7 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myFamilyData: myFamilyMemberData)
+            cell.dataBind(myFamilyData: myFamilyMemberData, myProfileData: myProfileData)
             return cell
             
         case 2:

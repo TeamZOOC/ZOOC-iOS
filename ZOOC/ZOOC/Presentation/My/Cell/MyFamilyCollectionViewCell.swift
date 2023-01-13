@@ -50,7 +50,7 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(data: MyUser, index: Int, myProfileData: MyProfileModel) {
+    public func dataBind(data: MyUser, myProfileData: MyUser?) {
         
         if data.photo == nil {
             familyImageView.image = Image.defaultProfile
@@ -60,19 +60,11 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         familyNameLabel.text = data.nickName
         print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이름 \(data.nickName)")
         print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이미지\(data.photo)")
-//        if (index == 0){
-//            familyNameLabel.text = myProfileData.name
-//            familyImageView.image = myProfileData.profileImage
-//        } else {
-//
-//        }
-        
-//        if(familyNameLabel.text == myProfileData.name) {
-
-//            familyImageView.layer.borderWidth = 2
-//            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
-//            familyNameLabel.textColor = .zoocMainGreen
-//        }
+        if (data.nickName == myProfileData?.nickName) {
+            familyImageView.layer.borderWidth = 2
+            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
+            familyNameLabel.textColor = .zoocMainGreen
+        }
     }
 }
 

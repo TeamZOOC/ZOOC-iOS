@@ -33,7 +33,6 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     }
     
     public var petCountLabel = UILabel().then {
-//        $0.text = "\(myPetMemberData.count)/4"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -143,6 +142,8 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
         return footer
     }
 }
+
+//MARK: - RegisterPetButtonTappedDelegate
 
 extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
     func registerPetButtonTapped(isSelected: Bool) {
