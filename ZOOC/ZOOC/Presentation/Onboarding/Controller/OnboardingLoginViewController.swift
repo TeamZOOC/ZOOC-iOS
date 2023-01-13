@@ -57,12 +57,10 @@ final class OnboardingLoginViewController: BaseViewController{
                 _ = oauthToken
                 if let oauthToken = oauthToken {
                     OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                        print("❤️\(result)")
-                        guard let result = self.validateResult(result) as? OnboardingResult else { return }
-                        print("💚\(result)")
-                        
+                        guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+                        User.jwtToken =  result.jwtToken
                     }
-//                    self.pushToAgreementView()
+                    self.pushToAgreementView()
                 }
             }
         }

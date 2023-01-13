@@ -29,7 +29,7 @@ extension OnboardingAPI {
     func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postKakaoSocialLogin(accessToken: accessToken)) { (result) in
             self.disposeNetwork(result,
-                                dataModel: OnboardingResult.self,
+                                dataModel: OnboardingTokenData.self,
                                 completion: completion)
         }
     }
