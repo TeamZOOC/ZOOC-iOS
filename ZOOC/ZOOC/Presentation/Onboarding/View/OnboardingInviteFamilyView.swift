@@ -47,7 +47,7 @@ final class OnboardingInviteFamilyView: UIView {
 
     private let inviteImageView = UIImageView().then {
         $0.image = Image.graphics3
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
     }
 
     public lazy var inviteLatelyButton = UIButton().then {
@@ -119,18 +119,18 @@ final class OnboardingInviteFamilyView: UIView {
         }
         
         inviteImageView.snp.makeConstraints {
-            $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(86)
+            $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(60)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(307)
+            $0.bottom.equalTo(self.inviteLatelyButton.snp.top).offset(-10)
         }
         
         inviteLatelyButton.snp.makeConstraints {
-            $0.top.equalTo(self.inviteImageView.snp.bottom).offset(36)
+            $0.bottom.equalTo(self.inviteButton.snp.top).offset(-15)
             $0.centerX.equalToSuperview()
         }
         
         inviteButton.snp.makeConstraints {
-            $0.top.equalTo(self.inviteLatelyButton.snp.bottom).offset(14)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
             $0.height.equalTo(54)
