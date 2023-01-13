@@ -63,7 +63,6 @@
 		8782C7F1296CADE300C9324B /* HomeDetailArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */; };
 		8782C7F3296CC13A00C9324B /* HomeCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */; };
 		8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */; };
-		87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A89295F6D0A0096F669 /* PracticeViewController.swift */; };
 		87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A91295F6DA50096F669 /* RecordViewController.swift */; };
 		87A76A9F295F6EA30096F669 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76A9E295F6EA30096F669 /* OnboardingService.swift */; };
 		87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */; };
@@ -215,7 +214,6 @@
 		8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveModel.swift; sourceTree = "<group>"; };
 		8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveCommentTextField.swift; sourceTree = "<group>"; };
-		87A76A89295F6D0A0096F669 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		87A76A91295F6DA50096F669 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		87A76A9E295F6EA30096F669 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
@@ -524,14 +522,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		87A76A88295F6CEC0096F669 /* Practice */ = {
-			isa = PBXGroup;
-			children = (
-				87A76A89295F6D0A0096F669 /* PracticeViewController.swift */,
-			);
-			path = Practice;
-			sourceTree = "<group>";
-		};
 		87A76A8B295F6D780096F669 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,7 +808,6 @@
 				876554A02958489F006BBDA9 /* Home */,
 				876554A1295848A9006BBDA9 /* My */,
 				877BAFBD295EA09C00C2AA1C /* Record */,
-				87A76A88295F6CEC0096F669 /* Practice */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1021,7 +1010,6 @@
 				D26C68F0296F693E0088DC9A /* MyResult.swift in Sources */,
 				871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */,
 				D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */,
-				87A76A8A295F6D0A0096F669 /* PracticeViewController.swift in Sources */,
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
