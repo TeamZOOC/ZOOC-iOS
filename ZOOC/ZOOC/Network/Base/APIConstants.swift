@@ -21,6 +21,6 @@ extension APIConstants{
     
     static let noTokenHeader = [contentType: applicationJSON]
     static let hasTokenHeader = [contentType: applicationJSON,
-                                 auth: accessToken]
+                                       auth : accessToken]
     
 }

@@ -8,15 +8,22 @@ import UIKit
 
 import SnapKit
 import Then
+import Moya
 
 final class MyViewController: BaseViewController {
     
     //MARK: - Properties
-    private var myProfileData: MyProfileModel = MyProfileModel(name: "복실맘" ,profileImage: Image.defaultProfile)
+    
+    private var myFamilyMemberData: [MyUser] = []
+    private var myPetMemberData: [MyPet] = []
+    private var myProfileData: MyUser?
+    
+    
+    
+
     
     private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
     
-    private lazy var myPetRegisteredData: [MyPetRegisterModel] = [petProfile]
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     
     //MARK: - UI Components
@@ -33,6 +40,21 @@ final class MyViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        MyAPI.shared.getMyPageData() { result in
+            
+            guard let result = self.validateResult(result) as? MyResult else { return }
+            
+            self.myProfileData = result.user
+            self.myFamilyMemberData = result.familyMember
+            self.myPetMemberData = result.pet
+            
+            self.myView.myCollectionView.reloadData()
+        }
     }
     
     //    override func viewDidAppear(_ animated: Bool) {
@@ -56,7 +78,7 @@ final class MyViewController: BaseViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = EditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData)
+        editProfileViewController.dataSend(data: myProfileData!)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
@@ -76,13 +98,13 @@ final class MyViewController: BaseViewController {
     private func pushToRegisterPetView() {
         let registerPetViewController = MyRegisterPetViewController()
         registerPetViewController.hidesBottomBarWhenPushed = true
-        registerPetViewController.dataSend(myPetRegisteredData: myPetRegisteredData)
+        registerPetViewController.dataSend(myPetMemberData: myPetMemberData)
         self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
     
-    func dataSend(profileName: String, profileImage: UIImage) {
-        myProfileData.name = profileName
-        myProfileData.profileImage = profileImage
+    func dataSend(myprofileData: MyUser?) {
+        myProfileData?.nickName = myprofileData!.nickName
+        myProfileData?.photo = myprofileData?.photo
         myView.myCollectionView.reloadData()
     }
     
@@ -177,14 +199,14 @@ extension MyViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myProfileData: myProfileData)
+            cell.dataBind(myFamilyData: myFamilyMemberData)
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
             cell.register()
-            cell.dataBind(myPetRegisteredData: myPetRegisteredData)
+            cell.dataBind(myPetMemberData: myPetMemberData)
             cell.delegate = self
             return cell
             

@@ -94,7 +94,7 @@ final class HomeViewController : BaseViewController{
     private let archiveGridCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-       
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         return collectionView
@@ -164,7 +164,7 @@ final class HomeViewController : BaseViewController{
         archiveGridCollectionView.dataSource = self
         
         petCollectionView.register(HomePetCollectionViewCell.self,
-            forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
+                                   forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
         archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
         archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
@@ -182,20 +182,20 @@ final class HomeViewController : BaseViewController{
     private func setLayout(){
         
         view.addSubviews(
-                        missionView,
-                        petCollectionView,
-                        listButton,
-                        gridButton,
-                        archiveBottomView,
-                        archiveListCollectionView,
-                        archiveGridCollectionView
+            missionView,
+            petCollectionView,
+            listButton,
+            gridButton,
+            archiveBottomView,
+            archiveListCollectionView,
+            archiveGridCollectionView
         )
         
         missionView.addSubviews(
-                                missionWordLabel,
-                                missionLabel,
-                                noticeButton
-                                )
+            missionWordLabel,
+            missionLabel,
+            noticeButton
+        )
         
         archiveBottomView.addSubview(archiveIndicatorView)
         
@@ -275,6 +275,12 @@ final class HomeViewController : BaseViewController{
         present(viewController, animated: false)
     }
     
+    private func pushToHomeAlarmViewController(){
+        let viewController = HomeNoticeViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
+    }
+    
     private func foldArchiveCollectionView(){
         archiveListCollectionView.indexPathsForSelectedItems?
             .forEach { archiveListCollectionView.deselectItem(at: $0, animated: false) }
@@ -303,7 +309,7 @@ final class HomeViewController : BaseViewController{
     
     @objc
     private func noticeButtonDidTap(){
-        print(#function)
+        pushToHomeAlarmViewController()
     }
     
     @objc
@@ -364,7 +370,7 @@ extension HomeViewController: UICollectionViewDataSource{
         
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == petCollectionView{
@@ -389,7 +395,7 @@ extension HomeViewController: UICollectionViewDataSource{
         
         return UICollectionViewCell()
     }
-
+    
 }
 
 //MARK: - UICollectionViewDelegate
@@ -450,22 +456,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     {
         if collectionView == petCollectionView{
             switch collectionView.indexPathsForSelectedItems?.first {
-               case .some(indexPath):
+            case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
                 //cell.dataBind(data: petMockData[indexPath.item])
                 cell.dataBind(data: petData[indexPath.item])
                 return cell.sizeFittingWith(cellHeight: 40)
-               default:
-                   return CGSize(width: 40, height: 40)
+            default:
+                return CGSize(width: 40, height: 40)
             }
         }
         
         if collectionView == archiveListCollectionView{
             switch collectionView.indexPathsForSelectedItems?.first {
-               case .some(indexPath):
-                   return CGSize(width: 195, height: 436)
-               default:
-                   return CGSize(width: 60, height: 436)
+            case .some(indexPath):
+                return CGSize(width: 195, height: 436)
+            default:
+                return CGSize(width: 60, height: 436)
             }
         }
         

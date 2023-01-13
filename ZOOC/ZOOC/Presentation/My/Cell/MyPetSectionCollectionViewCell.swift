@@ -22,7 +22,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     private let myRegisterPetView = MyRegisterPetView()
     
-    private lazy var myPetRegisteredData: [MyPetRegisterModel] = []
+    private lazy var myPetMemberData: [MyPet] = []
     
     //MARK: - UI Components
     
@@ -32,8 +32,8 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         $0.font = .zoocSubhead1
     }
     
-    private var petCountLabel = UILabel().then {
-        $0.text = "\(MyMemberModel.petDummyData.count)/4"
+    public var petCountLabel = UILabel().then {
+//        $0.text = "\(myPetMemberData.count)/4"
         $0.textColor = .zoocGray2
         $0.font = .zoocCaption
         $0.textAlignment = .center
@@ -98,8 +98,9 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
     
-    public func dataBind(myPetRegisteredData : [MyPetRegisterModel]) {
-        self.myPetRegisteredData = myPetRegisteredData
+    public func dataBind(myPetMemberData : [MyPet]) {
+        self.myPetMemberData = myPetMemberData
+        petCountLabel.text = "\(myPetMemberData.count)/4"
         self.petCollectionView.reloadData()
     }
 }
@@ -125,13 +126,13 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myPetRegisteredData.count
+        return myPetMemberData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetCollectionViewCell.cellIdentifier, for: indexPath)
                 as? MyPetCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: myPetRegisteredData[indexPath.item])
+        cell.dataBind(data: myPetMemberData[indexPath.item])
         return cell
     }
     
