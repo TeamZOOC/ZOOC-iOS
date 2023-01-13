@@ -287,6 +287,8 @@ final class RecordRegisterViewController : BaseViewController{
                 selectedPetID.append($0.petID)
             }
         }
+        registerButton.isEnabled = false
+        registerButton.backgroundColor = .zoocGray1
         
         RecordAPI.shared.postRecord(
                                     photo: recordData.image ?? UIImage(),
