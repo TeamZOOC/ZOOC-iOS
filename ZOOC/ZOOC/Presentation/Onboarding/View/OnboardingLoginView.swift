@@ -38,7 +38,13 @@ final class OnboardingLoginView: UIView {
         $0.numberOfLines = 2
     }
     
+    private let graphicsImageView = UIImageView().then {
+        $0.image = UIImage(named: "graphics_0")
+        $0.contentMode = .scaleAspectFill
+    }
+    
     public var kakaoLoginButton = UIButton().then {
+        
         $0.setTitle("카카오톡으로 로그인", for: .normal)
         $0.setTitleColor(.zoocDarkGray1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
@@ -46,6 +52,8 @@ final class OnboardingLoginView: UIView {
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor(r: 255, g: 231, b: 0)
+//        $0.contentMode = .scaleAspectFit
+//        $0.setImage(UIImage(named: "kakaoLoginButton"), for: .normal)
     }
     
     //MARK: - Life Cycles
@@ -68,7 +76,7 @@ final class OnboardingLoginView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(goHomeButton,loginTitleLabel, loginDescribeLabel, kakaoLoginButton)
+        addSubviews(goHomeButton,loginTitleLabel, loginDescribeLabel, graphicsImageView,kakaoLoginButton)
         
         goHomeButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
@@ -84,6 +92,13 @@ final class OnboardingLoginView: UIView {
         loginDescribeLabel.snp.makeConstraints {
             $0.top.equalTo(self.loginTitleLabel.snp.bottom).offset(12)
             $0.leading.equalTo(self.loginTitleLabel)
+        }
+        
+        graphicsImageView.snp.makeConstraints {
+            $0.top.equalTo(loginDescribeLabel.snp.bottom).offset(60)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(kakaoLoginButton.snp.top).offset(-60)
+            
         }
         
         kakaoLoginButton.snp.makeConstraints {
