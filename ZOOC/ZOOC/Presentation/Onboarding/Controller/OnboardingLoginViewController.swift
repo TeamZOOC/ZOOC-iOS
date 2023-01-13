@@ -55,15 +55,15 @@ final class OnboardingLoginViewController: BaseViewController{
                 
                 //do something
                 _ = oauthToken
-                print("❤️ 사랑의 토큰 \(oauthToken)")
-                
-                OnboardingAPI.shared.postKakaoSocialLogin() { result in
-                    
-                    guard let result = self.validateResult(result) as? OnboardingResult else { return }
-                    print(result)
+                if let oauthToken = oauthToken {
+                    OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+                        print("❤️\(result)")
+                        guard let result = self.validateResult(result) as? OnboardingResult else { return }
+                        print("💚\(result)")
+                        
+                    }
+//                    self.pushToAgreementView()
                 }
-                self.pushToAgreementView()
-                
             }
         }
         

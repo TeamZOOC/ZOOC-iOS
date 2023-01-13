@@ -12,7 +12,7 @@ import Moya
 enum OnboardingService {
     case getInviteCode(familyId: String)
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
-    case postKakaoSocialLogin
+    case postKakaoSocialLogin(accessToken: String)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -51,7 +51,16 @@ extension OnboardingService: BaseTargetType {
     }
     
     var headers: [String : String]?{
-        return APIConstants.hasTokenHeader
+        switch self {
+            
+        case .getInviteCode(familyId: _):
+            return APIConstants.noTokenHeader
+        case .postRegisterUser(param: _):
+            return APIConstants.hasTokenHeader
+        case .postKakaoSocialLogin(accessToken: let accessToken):
+            return [APIConstants.contentType: APIConstants.applicationJSON,
+                    APIConstants.auth : accessToken]
+        }
     }
 }
 
