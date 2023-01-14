@@ -319,6 +319,13 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
+    private func pushToDetailViewController(recordID: String){
+        let viewController = HomeDetailArchiveViewController()
+        viewController.getAPI(recordID: recordID)
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: false)
+    }
+    
     //MARK: - Action Method
     
     @objc
@@ -334,15 +341,25 @@ final class HomeDetailArchiveViewController : BaseViewController{
     @objc
     func directionButtonDidTap(_ sender: UIButton){
         switch sender.tag{
-        case 0: print("previous 버튼이 눌렸습니다.")
-        case 1: print("next 버튼이 눌렸습니다.")
+        case 0:
+            if let id = detailArchiveData?.leftID {
+                pushToDetailViewController(recordID: String(id))
+            } else {
+                presentBottomAlert("마지막 페이지 입니다.")
+            }
+        case 1:
+            if let id = detailArchiveData?.rightID{
+                pushToDetailViewController(recordID: String(id))
+            }else {
+                presentBottomAlert("마지막 페이지 입니다.")
+            }
         default: print("directionButtonDidTap 디폴트에 진입했씁니다.")
         }
     }
     
     @objc
     func emojiButtonDidTap(){
-        print("이모지 버튼을 눌렸습니다.")
+        presentBottomAlert("이모지 기능은 곧 만나요~")
     }
 }
 

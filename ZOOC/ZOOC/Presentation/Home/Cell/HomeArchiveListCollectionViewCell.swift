@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 import SnapKit
 
 final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
@@ -292,11 +292,28 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
             self.writerProfileImageView.kfSetImage(url: data.record.writerPhoto ?? "")
         }
         
+        
         petImageView.kfSetImage(url: data.record.photo)
+        
+        
+        
+        
         contentLabel.text = data.record.content
         writerLabel.text = data.record.writerName
         dateLabel.text = data.record.date
         commentWriterData = data.commentWriters
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
     }
     
     func updateWriterCollectionViewCell(){
