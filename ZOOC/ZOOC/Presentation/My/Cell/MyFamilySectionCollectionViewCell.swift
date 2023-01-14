@@ -83,7 +83,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         }
         
         familyCountLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(27)
+            $0.top.equalToSuperview().offset(23)
             $0.leading.equalTo(self.familyLabel.snp.trailing).offset(4)
         }
         

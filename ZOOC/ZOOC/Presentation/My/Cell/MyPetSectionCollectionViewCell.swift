@@ -79,7 +79,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         }
         
         petCountLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(27)
+            $0.top.equalToSuperview().offset(23)
             $0.leading.equalTo(self.petLabel.snp.trailing).offset(4)
         }
         
