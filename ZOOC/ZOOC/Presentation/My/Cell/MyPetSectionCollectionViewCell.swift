@@ -79,7 +79,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         }
         
         petCountLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(27)
+            $0.top.equalToSuperview().offset(23)
             $0.leading.equalTo(self.petLabel.snp.trailing).offset(4)
         }
         
@@ -113,11 +113,11 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         print(#function)
-        return CGSize(width: 40, height: 40)
+        return CGSize(width: 70, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
     }
 }
 

@@ -83,6 +83,7 @@ extension HomeNoticeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeNoticeTableViewCell.cellIdentifier, for: indexPath)
                 as? HomeNoticeTableViewCell else { return UITableViewCell()}
+        cell.selectionStyle = .none
         cell.dataBind(data: homeNoticeData[indexPath.row])
         return cell
     }

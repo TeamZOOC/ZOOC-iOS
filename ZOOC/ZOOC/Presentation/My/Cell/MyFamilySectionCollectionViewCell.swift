@@ -83,7 +83,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         }
         
         familyCountLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(27)
+            $0.top.equalToSuperview().offset(23)
             $0.leading.equalTo(self.familyLabel.snp.trailing).offset(4)
         }
         
@@ -126,6 +126,10 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
 extension MyFamilySectionCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 68)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
     }
 }
 
