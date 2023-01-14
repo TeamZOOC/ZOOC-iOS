@@ -48,7 +48,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
         addSubview(registerPetButton)
         
         registerPetButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
