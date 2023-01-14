@@ -17,7 +17,7 @@ final class ZoocAlertViewController: UIViewController {
     //MARK: - UI Components
     
     private var alertView = UIView().then {
-        $0.backgroundColor = .zoocBackgroundGreen
+        $0.backgroundColor = .white
         $0.layer.cornerRadius = 14
         $0.clipsToBounds = true
         $0.alpha = 1
@@ -29,7 +29,7 @@ final class ZoocAlertViewController: UIViewController {
     }
     
     private var alertTitleLabel = UILabel().then {
-        $0.backgroundColor = .zoocWhite2
+        $0.backgroundColor = .white
         $0.font = .zoocSubhead2
         $0.text = "페이지를 나가시겠어요?"
         $0.textColor = .zoocDarkGray1
@@ -91,7 +91,7 @@ final class ZoocAlertViewController: UIViewController {
         }
         
         alertTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32)
+            $0.top.equalToSuperview().offset(44)
             $0.centerX.equalToSuperview()
         }
         
