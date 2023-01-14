@@ -35,6 +35,12 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        configFamilyProfile()
+    }
+    
     //MARK: - Custom Method
     
     private func setLayout() {
@@ -60,8 +66,6 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
             familyImageView.kfSetImage(url: data.photo!)
         }
         familyNameLabel.text = data.nickName
-        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이름 \(data.nickName)")
-        print("👨‍👩‍👧‍👦👨‍👩‍👧‍👦👨‍👩‍👧‍👦 우리 가족이 셀에 들어왔어요 이미지\(data.photo)")
         if (data.nickName == myProfileData?.nickName) {
             familyImageView.layer.borderWidth = 2
             familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
@@ -70,3 +74,16 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     }
 }
 
+extension FamilyCollectionViewCell {
+    func configFamilyProfile() {
+        familyImageView.layer.borderWidth = 0
+        familyImageView.layer.borderColor = UIColor.clear.cgColor
+        familyNameLabel.textColor = .zoocDarkGray1
+    }
+    
+    func configMyProfile() {
+        familyImageView.layer.borderWidth = 2
+        familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
+        familyNameLabel.textColor = .zoocMainGreen
+    }
+}
