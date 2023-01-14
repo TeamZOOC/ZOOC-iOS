@@ -17,7 +17,7 @@ final class DeleteAccountAlertViewController: BaseViewController {
     //MARK: - UI Components
     
     private var alertView = UIView().then {
-        $0.backgroundColor = .zoocBackgroundGreen
+        $0.backgroundColor = .white
         $0.layer.cornerRadius = 14
         $0.clipsToBounds = true
         $0.alpha = 1
@@ -29,7 +29,7 @@ final class DeleteAccountAlertViewController: BaseViewController {
     }
     
     private var alertTitleLabel = UILabel().then {
-        $0.backgroundColor = .zoocWhite2
+        $0.backgroundColor = .white
         $0.font = .zoocSubhead2
         $0.text = "회원 탈퇴 하시겠습니까?"
         $0.textColor = .zoocDarkGray1
@@ -37,8 +37,15 @@ final class DeleteAccountAlertViewController: BaseViewController {
     
     private var alertSubTitleLabel = UILabel().then {
         $0.font = .zoocBody1
-        $0.text = "회원 탈퇴 시 자동으로 가족에서 탈퇴되고 \n 작성한 글과 댓글이 모두 삭제됩니다"
+        $0.text = "회원 탈퇴 시 자동으로 가족에서 탈퇴되고 \n  작성한 글과 댓글이 모두 삭제됩니다"
         $0.textColor = .zoocGray1
+        $0.textAlignment = .center
+        $0.numberOfLines = 2
+        let attrString = NSMutableAttributedString(string: $0.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        $0.attributedText = attrString
         $0.textAlignment = .center
     }
     
@@ -91,7 +98,7 @@ final class DeleteAccountAlertViewController: BaseViewController {
         }
         
         alertTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(32)
+            $0.top.equalToSuperview().offset(35)
             $0.centerX.equalToSuperview()
         }
         
