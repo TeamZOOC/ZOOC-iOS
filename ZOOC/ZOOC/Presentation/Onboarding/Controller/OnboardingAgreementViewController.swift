@@ -39,9 +39,6 @@ final class OnboardingAgreementViewController: BaseViewController {
         
         onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
-        
-        onboardingAgreementView.agreeTableView.register(OnboardingAgreementTableViewCell.self, forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
-        onboardingAgreementView.agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
     
     private func pushToWelcomeView() {

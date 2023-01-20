@@ -45,17 +45,6 @@ final class MyViewController: BaseViewController {
         
     }
     
-    
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        tabBarController?.tabBar.isHidden = false
-    //    }
-    //
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        super.viewWillDisappear(animated)
-    //        tabBarController?.tabBar.isHidden = true
-    //    }
-    
     //MARK: - Custom Method
     
     private func register() {
@@ -98,7 +87,6 @@ final class MyViewController: BaseViewController {
         if let data = myProfileData?.photo{
             myProfileData?.photo = data
         }
-        
         
         myView.myCollectionView.reloadData()
     }
@@ -209,21 +197,18 @@ extension MyViewController: UICollectionViewDataSource {
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.dataBind(myFamilyData: myFamilyMemberData, myProfileData: myProfileData)
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.dataBind(myPetMemberData: myPetMemberData)
             cell.delegate = self
             return cell
             
         case 3:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier, for: indexPath) as? MySettingSectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.delegate = self
             return cell
             

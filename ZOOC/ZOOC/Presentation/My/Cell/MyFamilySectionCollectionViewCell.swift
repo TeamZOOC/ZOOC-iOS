@@ -60,6 +60,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {

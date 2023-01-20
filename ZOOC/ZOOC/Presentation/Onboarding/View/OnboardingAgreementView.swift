@@ -50,6 +50,7 @@ final class OnboardingAgreementView: UIView {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -89,6 +90,11 @@ final class OnboardingAgreementView: UIView {
             $0.width.equalTo(315)
             $0.height.equalTo(54)
         }
+    }
+    
+    private func register() {
+        agreeTableView.register(OnboardingAgreementTableViewCell.self, forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
+        agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
 }
 

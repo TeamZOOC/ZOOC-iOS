@@ -44,9 +44,6 @@ final class OnboardingRegisterPetViewController: UIViewController{
         onboardingRegisterPetView.registerPetTableView.delegate = self
         onboardingRegisterPetView.registerPetTableView.dataSource = self
         
-        onboardingRegisterPetView.registerPetTableView.register(OnboardingRegisterPetTableViewCell.self, forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
-        onboardingRegisterPetView.registerPetTableView.register(OnboardingRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
-        
         onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
         onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)

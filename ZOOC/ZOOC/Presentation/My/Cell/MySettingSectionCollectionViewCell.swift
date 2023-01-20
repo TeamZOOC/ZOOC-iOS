@@ -39,6 +39,7 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {

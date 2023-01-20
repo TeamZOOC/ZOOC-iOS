@@ -56,6 +56,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {

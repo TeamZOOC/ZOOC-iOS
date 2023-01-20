@@ -70,6 +70,7 @@ final class OnboardingRegisterPetView: UIView {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -128,6 +129,11 @@ final class OnboardingRegisterPetView: UIView {
             $0.width.equalTo(315)
             $0.height.equalTo(54)
         }
+    }
+    
+    private func register() {
+        registerPetTableView.register(OnboardingRegisterPetTableViewCell.self, forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
+        registerPetTableView.register(OnboardingRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
     }
 }
 
