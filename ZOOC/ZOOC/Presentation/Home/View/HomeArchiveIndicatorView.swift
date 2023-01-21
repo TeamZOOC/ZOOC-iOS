@@ -63,11 +63,11 @@ final class HomeArchiveIndicatorView : UIView{
     
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         
     }
     
-    private func setLayout(){
+    private func setLayout() {
         self.addSubview(indicatorView)
         indicatorView.addSubview(indicatorTintView)
         

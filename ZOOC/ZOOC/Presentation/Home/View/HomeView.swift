@@ -48,7 +48,7 @@ final class HomeView : UIView{
     //MARK: - Custom Method
     
     
-    private func style(){
+    private func style() {
         
         missionWordLabel.do {
             $0.text = "미션"
@@ -108,7 +108,7 @@ final class HomeView : UIView{
     }
    
     
-    private func hierarchy(){
+    private func hierarchy() {
         
         self.addSubviews(missionView,
                          petCollectionView,
@@ -127,9 +127,10 @@ final class HomeView : UIView{
         archiveBottomView.addSubview(archiveIndicatorView)
     }
     
-    private func layout(){
+    private func layout() {
         
         //MARK: rootView
+        
         missionView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -172,6 +173,7 @@ final class HomeView : UIView{
         }
         
         //MARK: missionView
+        
         missionWordLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
             $0.centerY.equalToSuperview()
@@ -189,6 +191,7 @@ final class HomeView : UIView{
         }
         
         //MARK: archiveBottomView
+        
         archiveIndicatorView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(72)

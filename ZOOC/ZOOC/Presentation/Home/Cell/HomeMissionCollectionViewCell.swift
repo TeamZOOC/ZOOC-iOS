@@ -81,11 +81,11 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setDelegate(){
+    private func setDelegate() {
         textView.delegate = self
     }
     
-    private func setUI(){
+    private func setUI() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 24
         
@@ -95,7 +95,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
                                opacity: 0.2)
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(titleLabel,galleryImageView,textView, nextButton)
         
         titleLabel.snp.makeConstraints {
@@ -125,7 +125,7 @@ final class HomeMissionCollectionViewCell: UICollectionViewCell {
     //MARK: - Action Method
     
     @objc
-    private func nextButtonDidTap(){
+    private func nextButtonDidTap() {
         print("delegate로 보내자")
         delegate?.nextButtonDidTap(textView.text)
     }

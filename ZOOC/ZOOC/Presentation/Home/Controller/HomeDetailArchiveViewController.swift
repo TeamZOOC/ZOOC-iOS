@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeDetailArchiveViewController : BaseViewController{
+final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - Properties
     var petID: String = "1"
@@ -152,7 +152,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
 
     //MARK: - Custom Method
     
-    private func register(){
+    private func register() {
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
         
@@ -162,7 +162,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         commentTextField.commentDelegate = self
     }
     
-    private func setUI(){
+    private func setUI() {
 //        petImageView.image = detailArchiveMockData.petImage
 //        dateLabel.text = detailArchiveMockData.date
 //        writerImageView.image = detailArchiveMockData.writerImage
@@ -171,7 +171,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
     }
     
     
-    private func setLayout(){
+    private func setLayout() {
         view.addSubviews(scrollView,
                          commentTextField,
                          commentEmojiButton)
@@ -179,8 +179,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         scrollView.addSubview(contentView)
         
         
-        contentView.addSubviews(
-                                 petImageView,
+        contentView.addSubviews(petImageView,
                                  backButton,
                                  etcButton,
                                  previousButton,
@@ -190,10 +189,10 @@ final class HomeDetailArchiveViewController : BaseViewController{
                                  writerNameLabel,
                                  contentLabel,
                                  lineView,
-                                 commentCollectionView
-                                )
+                                 commentCollectionView)
         
-        //MARK: View Layout
+        //MARK: view Layout
+        
         scrollView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
@@ -212,14 +211,16 @@ final class HomeDetailArchiveViewController : BaseViewController{
             $0.height.width.equalTo(30)
         }
         
-        //MARK: ScrollView Layout
+        //MARK: scrollView Layout
+        
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
             $0.height.greaterThanOrEqualTo(scrollView.contentSize.height).priority(.low)
             $0.width.equalTo(scrollView.snp.width)
         }
         
-        //MARK: ContentView Layout
+        //MARK: contentView Layout
+        
         backButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(53)
             $0.leading.equalToSuperview().offset(16)
@@ -287,7 +288,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
-    func getAPI(recordID: String, petID: String){
+    func getAPI(recordID: String, petID: String) {
         HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
@@ -322,17 +323,17 @@ final class HomeDetailArchiveViewController : BaseViewController{
     //MARK: - Action Method
     
     @objc
-    func backButtonDidTap(){
+    func backButtonDidTap() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc
-    func etcButtonDidTap(){
+    func etcButtonDidTap() {
         print("더보기 버튼 눌렸습니다.")
     }
     
     @objc
-    func directionButtonDidTap(_ sender: UIButton){
+    func directionButtonDidTap(_ sender: UIButton) {
         switch sender.tag{
         case 0:
             if let id = detailArchiveData?.leftID {
@@ -351,22 +352,20 @@ final class HomeDetailArchiveViewController : BaseViewController{
     }
     
     @objc
-    func emojiButtonDidTap(){
+    func emojiButtonDidTap() {
         presentBottomAlert("이모지 기능은 곧 만나요~")
     }
 }
 
 //MARK: - UICollectionViewDataSource
-extension HomeDetailArchiveViewController: UICollectionViewDataSource{
+extension HomeDetailArchiveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int
-    {
+                        numberOfItemsInSection section: Int) -> Int {
         return commentData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(data: commentData[indexPath.row])
         return cell
@@ -375,11 +374,10 @@ extension HomeDetailArchiveViewController: UICollectionViewDataSource{
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout{
+extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - 36        
         if commentData[indexPath.row].isEmoji{
             return CGSize(width: width, height: 126)
@@ -391,13 +389,12 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets
-    {
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 18, bottom: 10, right: 18)
     }
 }
 
-extension HomeDetailArchiveViewController: CommentTextFieldDelegate{
+extension HomeDetailArchiveViewController: CommentTextFieldDelegate {
     
     func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField,
                                    text: String) {

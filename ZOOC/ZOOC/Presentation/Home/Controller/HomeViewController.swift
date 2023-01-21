@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeViewController : BaseViewController{
+final class HomeViewController : BaseViewController {
     
     //MARK: - Properties
     
@@ -47,7 +47,7 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Custom Method
     
-    private func register(){
+    private func register() {
         rootView.petCollectionView.delegate = self
         rootView.petCollectionView.dataSource = self
         
@@ -66,7 +66,7 @@ final class HomeViewController : BaseViewController{
                                            forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
     
-    private func gesture(){
+    private func gesture() {
         rootView.noticeButton.addTarget(self,
                                action: #selector(noticeButtonDidTap),
                                for: .touchUpInside)
@@ -83,7 +83,7 @@ final class HomeViewController : BaseViewController{
     }
     
     
-    private func pushToDetailViewController(recordID: String){
+    private func pushToDetailViewController(recordID: String) {
         guard let index = rootView.petCollectionView.indexPathsForSelectedItems?[0].item else {
             presentBottomAlert("선택된 펫이 없습니다.")
             return
@@ -98,19 +98,19 @@ final class HomeViewController : BaseViewController{
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    private func pushToHomeAlarmViewController(){
+    private func pushToHomeAlarmViewController() {
         let noticeVC = HomeNoticeViewController()
         noticeVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(noticeVC, animated: true)
     }
     
-    private func deselectAllOfListArchiveCollectionViewCell(){
+    private func deselectAllOfListArchiveCollectionViewCell() {
         rootView.archiveListCollectionView.indexPathsForSelectedItems?
             .forEach { rootView.archiveListCollectionView.deselectItem(at: $0, animated: false) }
         rootView.archiveListCollectionView.performBatchUpdates(nil, completion: nil)
     }
     
-    func selectPetCollectionView(petID: Int){
+    func selectPetCollectionView(petID: Int) {
         var index = 0
         for pet in petData{
             if pet.id == petID{ break }
@@ -126,7 +126,7 @@ final class HomeViewController : BaseViewController{
         requestTotalArchiveAPI(petID: petData[index].id)
     }
     
-    private func configIndicatorBarWidth(_ scrollView: UIScrollView){
+    private func configIndicatorBarWidth(_ scrollView: UIScrollView) {
         UIView.animate(withDuration: 0.5) {
             let allWidth = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let showingWidth = scrollView.bounds.width
@@ -137,7 +137,7 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Network
     
-    private func requestMissionAPI(){
+    private func requestMissionAPI() {
         HomeAPI.shared.getMission(familyID: User.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
@@ -146,7 +146,7 @@ final class HomeViewController : BaseViewController{
         }
     }
 
-    private func requestTotalPetAPI(){
+    private func requestTotalPetAPI() {
         HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomePetResult] else { return }
@@ -161,7 +161,7 @@ final class HomeViewController : BaseViewController{
         }
     }
     
-    public func requestTotalArchiveAPI(petID: Int){
+    public func requestTotalArchiveAPI(petID: Int) {
         HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
             
             guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
@@ -178,12 +178,12 @@ final class HomeViewController : BaseViewController{
     //MARK: - Action Method
     
     @objc
-    private func noticeButtonDidTap(){
+    private func noticeButtonDidTap() {
         pushToHomeAlarmViewController()
     }
     
     @objc
-    private func listButtonDidTap(){
+    private func listButtonDidTap() {
         rootView.archiveListCollectionView.isHidden = false
         rootView.archiveGridCollectionView.isHidden = true
         rootView.archiveBottomView.isHidden = false
@@ -198,7 +198,7 @@ final class HomeViewController : BaseViewController{
     }
     
     @objc
-    private func galleryButtonDidTap(){
+    private func galleryButtonDidTap() {
         rootView.archiveListCollectionView.isHidden = true
         rootView.archiveGridCollectionView.isHidden = false
         rootView.archiveBottomView.isHidden = true
@@ -214,7 +214,7 @@ final class HomeViewController : BaseViewController{
     }
     
     @objc
-    private func bottomViewDidTap(){
+    private func bottomViewDidTap() {
         deselectAllOfListArchiveCollectionViewCell()
     }
     
@@ -223,18 +223,18 @@ final class HomeViewController : BaseViewController{
 
 //MARK: - UICollectionViewDataSource
 
-extension HomeViewController: UICollectionViewDataSource{
+extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             return petData.count
         }
         
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             return archiveData.count
         }
         
-        if collectionView == rootView.archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView {
             return archiveData.count
         }
         
@@ -243,7 +243,7 @@ extension HomeViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
             
@@ -251,7 +251,7 @@ extension HomeViewController: UICollectionViewDataSource{
             return cell
         }
         
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomeArchiveListCollectionViewCell else { return UICollectionViewCell() }
             
@@ -260,7 +260,7 @@ extension HomeViewController: UICollectionViewDataSource{
             return cell
         }
         
-        if collectionView == rootView.archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomeArchiveGridCollectionViewCell else { return UICollectionViewCell() }
             
@@ -275,15 +275,15 @@ extension HomeViewController: UICollectionViewDataSource{
 
 //MARK: - UICollectionViewDelegate
 
-extension HomeViewController{
+extension HomeViewController {
     
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool
     {
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             guard let cell = collectionView.cellForItem(at: indexPath) as? HomeArchiveListCollectionViewCell else { return false }
             
-            switch cell.viewType{
+            switch cell.viewType {
             case .folded:
                 return true
             case .expanded:
@@ -299,17 +299,17 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath)
     {
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             collectionView.performBatchUpdates(nil)
             requestTotalArchiveAPI(petID: petData[indexPath.item].id )
             
         }
         
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             collectionView.performBatchUpdates(nil)
         }
         
-        if collectionView == rootView.archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView {
             let id = String(archiveData[indexPath.item].record.id)
             pushToDetailViewController(recordID: id)
         }
@@ -319,24 +319,25 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView,
                         didDeselectItemAt indexPath: IndexPath)
     {
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
+            collectionView.performBatchUpdates(nil)
+        }
+         
+        if collectionView == rootView.archiveListCollectionView {
             collectionView.performBatchUpdates(nil)
         }
         
-        if collectionView == rootView.archiveListCollectionView{
-            collectionView.performBatchUpdates(nil)
-        }
     }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout{
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             switch collectionView.indexPathsForSelectedItems?.first {
             case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
@@ -347,7 +348,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             }
         }
         
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             switch collectionView.indexPathsForSelectedItems?.first {
             case .some(indexPath):
                 return CGSize(width: 195, height: 436)
@@ -356,7 +357,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             }
         }
         
-        if collectionView == rootView.archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView {
             return CGSize(width: 100, height: 100)
         }
         
@@ -367,14 +368,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             return 4
         }
         
-        if collectionView == rootView.archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView {
             return 11
         }
-        if collectionView == rootView.archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView {
             return 10
         }
         
@@ -386,7 +387,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets
     {
-        if collectionView == rootView.petCollectionView{
+        if collectionView == rootView.petCollectionView {
             return .zero
         }
         
@@ -405,7 +406,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 
 //MARK: - ScrollViewDelegate
 
-extension HomeViewController{
+extension HomeViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == rootView.archiveListCollectionView{

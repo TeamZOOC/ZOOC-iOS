@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeGuideViewController : BaseViewController{
+final class HomeGuideViewController : BaseViewController {
     
     //MARK: - Properties
     
@@ -78,12 +78,12 @@ final class HomeGuideViewController : BaseViewController{
     
     //MARK: - Custom Method
     
-    private func setDelegate(){
+    private func setDelegate() {
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
     }
     
-    private func registerCell(){
+    private func registerCell() {
         cardCollectionView.register(
             HomeGuideCollectionViewCell.self,
             forCellWithReuseIdentifier: HomeGuideCollectionViewCell.cellIdentifier)
@@ -94,11 +94,11 @@ final class HomeGuideViewController : BaseViewController{
         
     }
     
-    private func setUI(){
+    private func setUI() {
         
     }
     
-    private func setLayout(){
+    private func setLayout() {
         view.addSubviews(cardCollectionView,progressView)
         progressView.addSubview(progressTintView)
         
@@ -121,7 +121,7 @@ final class HomeGuideViewController : BaseViewController{
         
     }
     
-    private func animateTintView(_ direction: Const.ScrollDirection){
+    private func animateTintView(_ direction: Const.ScrollDirection) {
       
         var insetX: CGFloat = 0
         
@@ -139,7 +139,7 @@ final class HomeGuideViewController : BaseViewController{
     
     //MARK: - Action Method
     
-    @objc private func backButtonDidTap(){
+    @objc private func backButtonDidTap() {
         print("backButtonDidTap")
         navigationController?.popViewController(animated: true)
     }
@@ -147,7 +147,7 @@ final class HomeGuideViewController : BaseViewController{
 
 //MARK: - UICollectionView DataSource
 
-extension HomeGuideViewController: UICollectionViewDataSource{
+extension HomeGuideViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         2
@@ -155,7 +155,7 @@ extension HomeGuideViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.item{
+        switch indexPath.item {
         case 0 :
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeGuideCollectionViewCell.cellIdentifier, for: indexPath) as? HomeGuideCollectionViewCell else { return UICollectionViewCell() }
 
@@ -171,7 +171,7 @@ extension HomeGuideViewController: UICollectionViewDataSource{
 
 //MARK: - UICollectionViewDelegateFlowLayout
 
-extension HomeGuideViewController: UICollectionViewDelegateFlowLayout{
+extension HomeGuideViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -186,7 +186,7 @@ extension HomeGuideViewController: UICollectionViewDelegateFlowLayout{
 
 //MARK: - UIScrollViewDelegate
 
-extension HomeGuideViewController{
+extension HomeGuideViewController {
     
     func scrollViewWillEndDragging( _ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             
@@ -196,7 +196,7 @@ extension HomeGuideViewController{
         
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
       
-        switch index{
+        switch index {
         case 0:
             animateTintView(.right)
         case 1:
@@ -207,7 +207,7 @@ extension HomeGuideViewController{
       }
 }
 
-extension HomeGuideViewController: HomeMissionCardDelegate{
+extension HomeGuideViewController: HomeMissionCardDelegate {
     func nextButtonDidTap(_ text: String) {
         print("\(text) 받았어요")
         let recordRegisterViewController = RecordRegisterViewController()

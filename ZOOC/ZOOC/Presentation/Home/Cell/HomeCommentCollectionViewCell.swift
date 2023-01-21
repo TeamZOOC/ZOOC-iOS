@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class HomeCommentCollectionViewCell: UICollectionViewCell{
+final class HomeCommentCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -77,12 +77,12 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
     }
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         commentLabel.isHidden = false
         commentEmojiImageView.isHidden = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(writerImageView,
                                 writerLabel,
                                 commentLabel,
@@ -125,16 +125,16 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    func dataBind(data: ArchiveCommentModel){
+    func dataBind(data: ArchiveCommentModel) {
         writerImageView.image = data.writerImage
         writerLabel.text = data.writerName
         commentLabel.text = data.comment
         dateLabel.text = data.date
     }
     
-    func dataBind(data: CommentResult){
-        if data.isEmoji{
-            
+    func dataBind(data: CommentResult) {
+        if data.isEmoji {
+             
             commentLabel.isHidden = true
             commentEmojiImageView.isHidden = false
             
@@ -146,7 +146,7 @@ final class HomeCommentCollectionViewCell: UICollectionViewCell{
             commentLabel.text = data.content
         }
         
-        if let imageURL = data.photo{
+        if let imageURL = data.photo {
             writerImageView.kfSetImage(url: imageURL)
         } else {
             writerImageView.image = Image.defaultProfile

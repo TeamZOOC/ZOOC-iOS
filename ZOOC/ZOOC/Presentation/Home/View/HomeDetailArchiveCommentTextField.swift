@@ -55,7 +55,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
     
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         self.placeholder = "댓글을 입력해보세요"
         self.backgroundColor = .zoocWhite2
         self.layer.borderColor = UIColor.lightGray.cgColor
@@ -64,7 +64,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
         self.isUserInteractionEnabled = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         self.addSubview(uploadButton)
         
         uploadButton.snp.makeConstraints {
@@ -74,7 +74,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
         } 
     }
     
-    private func validateText(_ text: String?) -> String{
+    private func validateText(_ text: String?) -> String {
         print("1 ----- \(text) -----")
         guard let text = text else { return "nil값 입니다."}
         print("2 ----- \(text) -----")
@@ -91,7 +91,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
     //MARK: - Action Method
     
     @objc
-    private func uploadButtonDidTap(){
+    private func uploadButtonDidTap() {
         validateText(self.text)
         
     }
