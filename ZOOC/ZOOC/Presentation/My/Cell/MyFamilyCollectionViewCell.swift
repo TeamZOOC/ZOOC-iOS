@@ -59,18 +59,9 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     }
     
     public func dataBind(data: MyUser, myProfileData: MyUser?) {
-        
-        if data.photo == nil {
-            familyImageView.image = Image.defaultProfile
-        } else {
-            familyImageView.kfSetImage(url: data.photo!)
-        }
         familyNameLabel.text = data.nickName
-        if (data.nickName == myProfileData?.nickName) {
-            familyImageView.layer.borderWidth = 2
-            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
-            familyNameLabel.textColor = .zoocMainGreen
-        }
+        data.photo == nil ? setDefaultProfileImage() : setMemberProfileImage(photo: data.photo!)
+        data.nickName == myProfileData?.nickName ? configMyProfile() : configFamilyProfile()
     }
 }
 
@@ -85,5 +76,13 @@ extension FamilyCollectionViewCell {
         familyImageView.layer.borderWidth = 2
         familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
         familyNameLabel.textColor = .zoocMainGreen
+    }
+    
+    func setDefaultProfileImage() {
+        familyImageView.image = Image.defaultProfile
+    }
+    
+    func setMemberProfileImage(photo: String) {
+        familyImageView.kfSetImage(url: photo)
     }
 }

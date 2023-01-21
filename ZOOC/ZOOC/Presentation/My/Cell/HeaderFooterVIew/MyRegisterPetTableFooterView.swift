@@ -50,6 +50,8 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Custom Method
+    
     private func setUI() {
         contentView.backgroundColor = .zoocBackgroundGreen
     }

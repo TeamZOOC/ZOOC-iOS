@@ -15,7 +15,9 @@ protocol EditButtonTappedDelegate: AnyObject {
 }
 
 final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
-        
+    
+    //MARK: - Properties
+    
     weak var delegate: EditButtonTappedDelegate?
     
     //MARK: - UI Components
