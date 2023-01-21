@@ -22,10 +22,10 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
     
     public var viewType : ViewType = .folded
     
-    override var isSelected: Bool{
-        didSet{
-            if isSelected{
-                switch viewType{
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                switch viewType {
                 case .folded:
                     viewType = .expanded
                     updateUI()
@@ -33,7 +33,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
                  break
                 }
             } else{
-                switch viewType{
+                switch viewType {
                 case .folded:
                     break
                 case .expanded:
@@ -126,20 +126,20 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
     
     //MARK: - Custom Method
     
-    private func register(){
+    private func register() {
         writerCollectionView.delegate = self
         writerCollectionView.dataSource = self
         
         writerCollectionView.register(HomeArchiveListWriterCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveListWriterCollectionViewCell.cellIdentifier)
     }
     
-    private func setUI(){
+    private func setUI() {
         contentView.backgroundColor = .zoocWhite1
         contentView.layer.cornerRadius = 12
         contentView.clipsToBounds = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(petImageView,
                                 writerCollectionView,
                                 writerProfileImageView,
@@ -184,32 +184,32 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
     
     }
     
-    private func foldedLayout(){
+    private func foldedLayout() {
         writerCollectionView.isHidden = true
         contentLabel.isHidden = true
         writerLabel.isHidden = true
     }
     
-    private func foldedAlpha(){
+    private func foldedAlpha() {
         writerCollectionView.alpha = 0
         contentLabel.alpha = 0
         writerLabel.alpha = 0
     }
 
     
-    private func expandedLayout(){
+    private func expandedLayout() {
         writerCollectionView.isHidden = false
         contentLabel.isHidden = false
         writerLabel.isHidden = false
     }
     
-    private func expandedAlpha(){
+    private func expandedAlpha() {
         writerCollectionView.alpha = 1
         contentLabel.alpha = 1
         writerLabel.alpha = 1
     }
     
-    private func foldedAnimatedLayout(){
+    private func foldedAnimatedLayout() {
         self.writerProfileImageView.snp.remakeConstraints {
             $0.top.equalTo(self.petImageView.snp.bottom).offset(84)
             $0.centerX.equalToSuperview()
@@ -222,7 +222,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         }
     }
     
-    private func expandedFirstAnimatedLayout(){
+    private func expandedFirstAnimatedLayout() {
         self.writerProfileImageView.snp.remakeConstraints {
             $0.leading.equalToSuperview().offset(18)
             $0.bottom.equalToSuperview().offset(-20)
@@ -235,7 +235,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         }
     }
     
-    private func expandedSecondAnimatedLayout(){
+    private func expandedSecondAnimatedLayout() {
         
         self.expandedLayout()
         UIView.animate(withDuration: 0.2) {
@@ -254,7 +254,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
             $0.width.equalTo(writerLabel.intrinsicContentSize.width + 14)
         }
     }
-    private func updateUI(){
+    private func updateUI() {
         
         switch viewType{
             
@@ -276,7 +276,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         }
     }
     
-    func dataBind(data: HomeArchiveModel){
+    func dataBind(data: HomeArchiveModel) {
         petImageView.image = data.petImage
         contentLabel.text = data.content
         writerProfileImageView.image = data.profileImage
@@ -284,7 +284,7 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         dateLabel.text = data.date
     }
     
-    func dataBind(data: HomeArchiveResult){
+    func dataBind(data: HomeArchiveResult) {
         
         if data.record.writerPhoto == nil {
             self.writerProfileImageView.image = Image.defaultProfile
@@ -304,26 +304,14 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
         commentWriterData = data.commentWriters
     }
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return newImage!
-    }
-    
-    func updateWriterCollectionViewCell(){
+    func updateWriterCollectionViewCell() {
         writerCollectionView.reloadData()
     }
     
 }
 
 //MARK: - UICollectionViewDataSource
-extension HomeArchiveListCollectionViewCell: UICollectionViewDataSource{
+extension HomeArchiveListCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return commentWriterData.count
     }
@@ -336,7 +324,7 @@ extension HomeArchiveListCollectionViewCell: UICollectionViewDataSource{
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension HomeArchiveListCollectionViewCell: UICollectionViewDelegateFlowLayout{
+extension HomeArchiveListCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 20, height: 20)
     }

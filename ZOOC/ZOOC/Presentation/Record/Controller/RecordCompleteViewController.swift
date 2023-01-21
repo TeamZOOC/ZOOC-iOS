@@ -11,6 +11,10 @@ import SnapKit
 
 final class RecordCompleteViewController : BaseViewController {
     
+    //MARK: - Properties
+    
+    var firstPetID: Int?
+    
     //MARK: - UI Components
     
     private let cardView: UIView = {
@@ -108,18 +112,20 @@ final class RecordCompleteViewController : BaseViewController {
             $0.bottom.equalToSuperview().inset(22)
         }
     }
-
-    //MARK: - Custom Method
-
+    
+    func dataBind(data: [Int]){
+        firstPetID = data.first
+    }
     
     //MARK: - Action Method
     
     @objc
     private func goArchiveButtonDidTap() {
         
-//
         guard let tabVC = navigationController?.previousViewController?.presentingViewController as? ZoocTabBarController else { return }
-        tabVC.homeViewController.updateAPI()
+        
+        guard let petID = firstPetID else { return }
+        tabVC.homeViewController.selectPetCollectionView(petID: petID)
         
         self.navigationController?.previousViewController?.navigationController?.previousViewController?.dismiss(animated: true)
     }

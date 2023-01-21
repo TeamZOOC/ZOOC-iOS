@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class HomePetCollectionViewCell: UICollectionViewCell{
+final class HomePetCollectionViewCell: UICollectionViewCell {
     
-    enum ViewType{
+    enum ViewType {
         case folded
         case expanded
     }
@@ -83,7 +83,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
     
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         contentView.backgroundColor = .zoocWhite2
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
@@ -91,7 +91,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         contentView.clipsToBounds = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(petImageView,petNameLabel)
         updateUI()
     }
@@ -111,9 +111,9 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         self.petNameLabel.text = data.name
     }
     
-    private func updateUI(){
+    private func updateUI() {
         
-        switch viewType{
+        switch viewType {
         case .folded:
             foldedLayout()
         case .expanded:
@@ -121,7 +121,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    private func foldedLayout(){
+    private func foldedLayout() {
         petImageView.snp.remakeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -129,7 +129,7 @@ final class HomePetCollectionViewCell: UICollectionViewCell{
         
     }
     
-    private func expandedLayout(){
+    private func expandedLayout() {
         petNameLabel.isHidden = false
         
         petImageView.snp.remakeConstraints {

@@ -64,7 +64,7 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 24
         
@@ -74,7 +74,7 @@ final class HomeGuideCollectionViewCell: UICollectionViewCell {
                                opacity: 0.2)
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(titleLabel,descriptionLabel,cardImageView)
         
         titleLabel.snp.makeConstraints {

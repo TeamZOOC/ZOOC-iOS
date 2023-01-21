@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class HomeArchiveListWriterCollectionViewCell: UICollectionViewCell{
+final class HomeArchiveListWriterCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -42,12 +42,12 @@ final class HomeArchiveListWriterCollectionViewCell: UICollectionViewCell{
     
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubview(writerImageView)
         
         writerImageView.snp.makeConstraints {
@@ -55,7 +55,7 @@ final class HomeArchiveListWriterCollectionViewCell: UICollectionViewCell{
         }
     }
     
-    func dataBind(data: CommentWriterResult){
+    func dataBind(data: CommentWriterResult) {
         print(data)
         guard let imageURL = data.writerPhoto else {
             writerImageView.image = Image.defaultProfile

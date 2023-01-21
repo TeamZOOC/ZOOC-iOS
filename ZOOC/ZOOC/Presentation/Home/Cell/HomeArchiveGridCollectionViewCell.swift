@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class HomeArchiveGridCollectionViewCell : UICollectionViewCell{
+final class HomeArchiveGridCollectionViewCell : UICollectionViewCell {
     
     //MARK: - Properties
     
@@ -36,13 +36,13 @@ final class HomeArchiveGridCollectionViewCell : UICollectionViewCell{
     }
     //MARK: - Custom Method
     
-    private func setUI(){
+    private func setUI() {
         contentView.backgroundColor = .zoocWhite1
         contentView.layer.cornerRadius = 12
         contentView.clipsToBounds = true
     }
     
-    private func setLayout(){
+    private func setLayout() {
         contentView.addSubviews(petImageView)
        
         petImageView.snp.makeConstraints {
@@ -51,11 +51,11 @@ final class HomeArchiveGridCollectionViewCell : UICollectionViewCell{
     
     }
     
-    func dataBind(data: HomeArchiveModel){
+    func dataBind(data: HomeArchiveModel) {
         petImageView.image = data.petImage
     }
     
-    func dataBind(data: HomeArchiveResult){
+    func dataBind(data: HomeArchiveResult) {
         petImageView.kfSetImage(url: data.record.photo)
     }
     
