@@ -59,7 +59,7 @@ final class MyRegisterPetViewController: UIViewController{
 //        for i in 0...myUpdateRegisterData.count-1 {
 //            print("뷰컨가기전\(myUpdateRegisterData[i].profileName)")
 //        }
-        beforeVC.updateRegisterPetData(myPetRegisterData: self.myUpdateRegisterData)
+        //beforeVC.updateRegisterPetData(myPetRegisterData: self.myUpdateRegisterData)
         self.navigationController?.popViewController(animated: true)
     }
     
