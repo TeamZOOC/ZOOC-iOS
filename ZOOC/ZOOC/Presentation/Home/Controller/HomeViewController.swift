@@ -238,18 +238,19 @@ final class HomeViewController : BaseViewController{
             return
         }
         
-        let viewController = HomeDetailArchiveViewController()
+        let detailVC = HomeDetailArchiveViewController()
         let petID = String(petData[index].id)
-        viewController.petID = petID
-        viewController.getAPI(recordID: recordID, petID: petID)
+        detailVC.petID = petID
+        detailVC.getAPI(recordID: recordID, petID: petID)
         
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: false)
+        detailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     private func pushToHomeAlarmViewController(){
-        let viewController = HomeNoticeViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+        let noticeVC = HomeNoticeViewController()
+        noticeVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(noticeVC, animated: true)
     }
     
     private func foldArchiveCollectionView(){

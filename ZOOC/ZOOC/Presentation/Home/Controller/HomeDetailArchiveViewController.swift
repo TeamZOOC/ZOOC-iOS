@@ -31,11 +31,11 @@ final class HomeDetailArchiveViewController : BaseViewController{
     }()
     private let contentView = UIView()
     
-    private lazy var dismissButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(Image.xmark, for: .normal)
+        button.setImage(Image.back, for: .normal)
         button.addTarget(self,
-                         action: #selector(dismissButtonDidTap),
+                         action: #selector(backButtonDidTap),
                          for: .touchUpInside)
         return button
     }()
@@ -181,7 +181,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
         contentView.addSubviews(
                                  petImageView,
-                                 dismissButton,
+                                 backButton,
                                  etcButton,
                                  previousButton,
                                  nextButton,
@@ -220,7 +220,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         }
         
         //MARK: ContentView Layout
-        dismissButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(53)
             $0.leading.equalToSuperview().offset(16)
             $0.height.width.equalTo(42)
@@ -322,8 +322,8 @@ final class HomeDetailArchiveViewController : BaseViewController{
     //MARK: - Action Method
     
     @objc
-    func dismissButtonDidTap(){
-        dismiss(animated: true)
+    func backButtonDidTap(){
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -417,8 +417,4 @@ extension HomeDetailArchiveViewController: CommentTextFieldDelegate{
             }
         }
     }
-    
-    
-    
 }
-
