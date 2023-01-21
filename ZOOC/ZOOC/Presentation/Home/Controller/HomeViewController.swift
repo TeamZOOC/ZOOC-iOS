@@ -17,8 +17,17 @@ final class HomeViewController : BaseViewController{
     private var petMockData: [HomePetModel] = HomePetModel.mockData
     private var archiveMockData: [HomeArchiveModel] = HomeArchiveModel.mockData
     
-    private var petData: [HomePetResult] = []
-    private var archiveData: [HomeArchiveResult] = []
+    private var petData: [HomePetResult] = [] {
+        didSet{
+            petCollectionView.reloadData()
+        }
+    }
+    private var archiveData: [HomeArchiveResult] = []{
+        didSet{
+            archiveListCollectionView.reloadData()
+            archiveGridCollectionView.reloadData()
+        }
+    }
     
     //MARK: - UI Components
     
@@ -51,7 +60,8 @@ final class HomeViewController : BaseViewController{
         layout()
         
         autoSelectPetCollectionView()
-        updateAPI()
+        requestMissionAPI()
+        requestTotalPetAPI()
     }
     
     //MARK: - Custom Method
@@ -67,8 +77,12 @@ final class HomeViewController : BaseViewController{
         
         petCollectionView.register(HomePetCollectionViewCell.self,
                                    forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
-        archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
-        archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
+        
+        archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
+        
+        archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self,
+                                           forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
     
     private func gesture(){
@@ -149,21 +163,19 @@ final class HomeViewController : BaseViewController{
     
     private func hierarchy(){
         
-        view.addSubviews(
-            missionView,
-            petCollectionView,
-            listButton,
-            gridButton,
-            archiveBottomView,
-            archiveListCollectionView,
-            archiveGridCollectionView
-        )
+        view.addSubviews(missionView,
+                         petCollectionView,
+                         listButton,
+                         gridButton,
+                         archiveBottomView,
+                         archiveListCollectionView,
+                         archiveGridCollectionView)
+                          
         
-        missionView.addSubviews(
-            missionWordLabel,
-            missionLabel,
-            noticeButton
-        )
+        missionView.addSubviews(missionWordLabel,
+                                missionLabel,
+                                noticeButton)
+                                
         
         archiveBottomView.addSubview(archiveIndicatorView)
     }
@@ -258,11 +270,10 @@ final class HomeViewController : BaseViewController{
         navigationController?.pushViewController(noticeVC, animated: true)
     }
     
-    private func foldArchiveCollectionView(){
+    private func deselectAllOfListArchiveCollectionViewCell(){
         archiveListCollectionView.indexPathsForSelectedItems?
             .forEach { archiveListCollectionView.deselectItem(at: $0, animated: false) }
         archiveListCollectionView.performBatchUpdates(nil, completion: nil)
-        archiveListCollectionView.layoutIfNeeded()
     }
     
     private func autoSelectPetCollectionView(){
@@ -271,31 +282,36 @@ final class HomeViewController : BaseViewController{
                                          animated: false,
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
-            getTotalArchiveAPI(petID: petData[0].id)
-            
-            updateIndicatorView(self.archiveListCollectionView)
+            requestTotalArchiveAPI(petID: petData[0].id)
         }
     }
     
-    private func updateIndicatorView(_ scrollView: UIScrollView){
-        let allWidth = scrollView.contentSize.width +                                                          scrollView.contentInset.left +                                                          scrollView.contentInset.right
+    private func configIndicatorViewBarWidth(_ scrollView: UIScrollView){
+        let allWidth = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
         let showingWidth = scrollView.bounds.width
         
         self.archiveIndicatorView.widthRatio = showingWidth / allWidth
         self.archiveIndicatorView.layoutIfNeeded()
     }
     
-    func updateAPI(){
+    //MARK: - Network
+    
+    private func requestMissionAPI(){
         HomeAPI.shared.getMission(familyID: User.familyID) { result in
+            
             guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
-            self.missionLabel.text = result[0].missionContent
+            
+            self.missionLabel.text = result[0].missionContent //TODO: 미션용 API 필요
         }
-        
+    }
+
+    func requestTotalPetAPI(){
         HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomePetResult] else { return }
+            
             self.petData = result
-            self.petCollectionView.reloadData()
+            
             DispatchQueue.main.async {
                 self.autoSelectPetCollectionView()
             }
@@ -303,18 +319,18 @@ final class HomeViewController : BaseViewController{
         }
     }
     
-    private func getTotalArchiveAPI(petID: Int){
+    private func requestTotalArchiveAPI(petID: Int){
         HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
+            
             guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
+            
             self.archiveData = result
-            self.archiveListCollectionView.reloadData()
-            self.archiveGridCollectionView.reloadData()
+            
             DispatchQueue.main.async {
-                self.updateIndicatorView(self.archiveListCollectionView)
+                self.configIndicatorViewBarWidth(self.archiveListCollectionView)
             }
         }
     }
-    
     
     
     //MARK: - Action Method
@@ -357,7 +373,7 @@ final class HomeViewController : BaseViewController{
     
     @objc
     private func bottomViewDidTap(){
-        foldArchiveCollectionView()
+        deselectAllOfListArchiveCollectionViewCell()
     }
     
     
@@ -386,20 +402,26 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == petCollectionView{
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier, for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier,
+                                                                for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
+            
             cell.dataBind(data: petData[indexPath.item])
             return cell
         }
         
         if collectionView == archiveListCollectionView{
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier, for: indexPath) as?  HomeArchiveListCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier,
+                                                                for: indexPath) as?  HomeArchiveListCollectionViewCell else { return UICollectionViewCell() }
+            
             cell.dataBind(data: archiveData[indexPath.item])
             cell.updateWriterCollectionViewCell()
             return cell
         }
         
         if collectionView == archiveGridCollectionView{
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier, for: indexPath) as?  HomeArchiveGridCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier,
+                                                                for: indexPath) as?  HomeArchiveGridCollectionViewCell else { return UICollectionViewCell() }
+            
             cell.dataBind(data: archiveData[indexPath.item])
             return cell
         }
@@ -418,6 +440,7 @@ extension HomeViewController{
     {
         if collectionView == archiveListCollectionView{
             guard let cell = collectionView.cellForItem(at: indexPath) as? HomeArchiveListCollectionViewCell else { return false }
+            
             switch cell.viewType{
             case .folded:
                 return true
@@ -436,7 +459,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
-            getTotalArchiveAPI(petID: petData[indexPath.row].id )
+            requestTotalArchiveAPI(petID: petData[indexPath.row].id )
             
         }
         
@@ -475,7 +498,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             switch collectionView.indexPathsForSelectedItems?.first {
             case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
-                //cell.dataBind(data: petMockData[indexPath.item])
                 cell.dataBind(data: petData[indexPath.item])
                 return cell.sizeFittingWith(cellHeight: 40)
             default:
@@ -551,7 +573,6 @@ extension HomeViewController{
             let scrollRatio = scroll / width
             
             self.archiveIndicatorView.leftOffsetRatio = scrollRatio
-            //updateIndicatorView(scrollView)
         }
     }
 }
