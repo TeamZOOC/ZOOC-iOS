@@ -111,7 +111,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     public func register() {
-        familyCollectionView.register(FamilyCollectionViewCell.self, forCellWithReuseIdentifier: FamilyCollectionViewCell.cellIdentifier)
+        familyCollectionView.register(MyFamilyCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
     }
     
     public func dataBind(myFamilyData: [MyUser], myProfileData: MyUser?) {
@@ -142,8 +142,8 @@ extension MyFamilySectionCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyCollectionViewCell.cellIdentifier, for: indexPath)
-                as? FamilyCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier, for: indexPath)
+                as? MyFamilyCollectionViewCell else { return UICollectionViewCell() }
         cell.dataBind(data: myFamilyData[indexPath.item], myProfileData: myProfileData)
         return cell
     }

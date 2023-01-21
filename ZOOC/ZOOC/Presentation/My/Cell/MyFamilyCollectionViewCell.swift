@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FamilyCollectionViewCell: UICollectionViewCell {
+final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
@@ -60,12 +60,12 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     
     public func dataBind(data: MyUser, myProfileData: MyUser?) {
         familyNameLabel.text = data.nickName
-        data.photo == nil ? setDefaultProfileImage() : setMemberProfileImage(photo: data.photo!)
+        data.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: data.photo!)
         data.nickName == myProfileData?.nickName ? configMyProfile() : configFamilyProfile()
     }
 }
 
-extension FamilyCollectionViewCell {
+extension MyFamilyCollectionViewCell {
     func configFamilyProfile() {
         familyImageView.layer.borderWidth = 0
         familyImageView.layer.borderColor = UIColor.clear.cgColor
@@ -82,7 +82,7 @@ extension FamilyCollectionViewCell {
         familyImageView.image = Image.defaultProfile
     }
     
-    func setMemberProfileImage(photo: String) {
+    func setFamilyMemberProfileImage(photo: String) {
         familyImageView.kfSetImage(url: photo)
     }
 }
