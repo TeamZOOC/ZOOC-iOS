@@ -42,7 +42,6 @@ final class MyViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getMyPageAPI()
-        
     }
     
     //MARK: - Custom Method
@@ -103,16 +102,6 @@ final class MyViewController: BaseViewController {
             
             self.myView.myCollectionView.reloadData()
         }
-    }
-    
-    func updateRegisterPetData(myPetRegisterData: [MyPetRegisterModel]) {
-//        self.myPetRegisterData = myPetRegisterData
-//        print("마이뷰컨 \(myPetRegisterData.count)")
-//        for i in 0...myPetRegisterData.count-1 {
-//            myPetRegisteredData.append(myPetRegisterData[i])
-//            print("마이뷰컨 \(i)번째 반려동물은 \(myPetRegisterData[i].profileName)")
-//        }
-//        myView.myCollectionView.reloadData()
     }
     
     //MARK: - Action Method

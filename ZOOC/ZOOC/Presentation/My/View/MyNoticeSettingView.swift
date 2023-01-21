@@ -63,7 +63,6 @@ final class MyNoticeSettingView: UIView {
         self.backgroundColor = .zoocBackgroundGreen
     }
     
-    
     private func setLayout() {
         addSubviews(backButton, noticeSettingLabel, noticeSettingSubView)
         noticeSettingSubView.addSubviews(postingTitleLabel, postingdescribeLabel, permitNoticeSwitchButton)
