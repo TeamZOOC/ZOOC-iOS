@@ -13,7 +13,7 @@ import Then
 final class HomeDetailArchiveViewController : BaseViewController{
     
     //MARK: - Properties
-    
+    var petID: String = "1"
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
     private var detailArchiveData: HomeDetailArchiveResult?
@@ -31,11 +31,11 @@ final class HomeDetailArchiveViewController : BaseViewController{
     }()
     private let contentView = UIView()
     
-    private lazy var dismissButton: UIButton = {
+    private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(Image.xmark, for: .normal)
+        button.setImage(Image.back, for: .normal)
         button.addTarget(self,
-                         action: #selector(dismissButtonDidTap),
+                         action: #selector(backButtonDidTap),
                          for: .touchUpInside)
         return button
     }()
@@ -155,6 +155,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
     private func register(){
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
+        
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
         
@@ -180,7 +181,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
         contentView.addSubviews(
                                  petImageView,
-                                 dismissButton,
+                                 backButton,
                                  etcButton,
                                  previousButton,
                                  nextButton,
@@ -219,7 +220,7 @@ final class HomeDetailArchiveViewController : BaseViewController{
         }
         
         //MARK: ContentView Layout
-        dismissButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(53)
             $0.leading.equalToSuperview().offset(16)
             $0.height.width.equalTo(42)
@@ -286,14 +287,13 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
-    func getAPI(recordID: String){
-        HomeAPI.shared.getDetailArchive(recordID: recordID) { result in
+    func getAPI(recordID: String, petID: String){
+        HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
             self.detailArchiveData = result
             if let imageURL = result.record.writerPhoto{
                 self.writerImageView.kfSetImage(url: imageURL)
-                
             }
             else {
                 self.writerImageView.image = Image.defaultProfile
@@ -319,18 +319,11 @@ final class HomeDetailArchiveViewController : BaseViewController{
         
     }
     
-    private func pushToDetailViewController(recordID: String){
-        let viewController = HomeDetailArchiveViewController()
-        viewController.getAPI(recordID: recordID)
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: false)
-    }
-    
     //MARK: - Action Method
     
     @objc
-    func dismissButtonDidTap(){
-        dismiss(animated: true)
+    func backButtonDidTap(){
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
@@ -343,17 +336,17 @@ final class HomeDetailArchiveViewController : BaseViewController{
         switch sender.tag{
         case 0:
             if let id = detailArchiveData?.leftID {
-                pushToDetailViewController(recordID: String(id))
+                getAPI(recordID: String(id), petID: petID)
             } else {
                 presentBottomAlert("마지막 페이지 입니다.")
             }
         case 1:
             if let id = detailArchiveData?.rightID{
-                pushToDetailViewController(recordID: String(id))
+                getAPI(recordID: String(id), petID: petID)
             }else {
                 presentBottomAlert("마지막 페이지 입니다.")
             }
-        default: print("directionButtonDidTap 디폴트에 진입했씁니다.")
+        default: print("directionButtonDidTap 디폴트에 진입했씁니다. 오류임!")
         }
     }
     
@@ -424,11 +417,4 @@ extension HomeDetailArchiveViewController: CommentTextFieldDelegate{
             }
         }
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.isUserInteractionEnabled = true
-    }
-    
-    
 }
-

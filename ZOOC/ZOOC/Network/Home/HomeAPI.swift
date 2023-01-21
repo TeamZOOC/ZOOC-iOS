@@ -59,6 +59,14 @@ extension HomeAPI{
             self.disposeNetwork(result, dataModel: [CommentResult].self, completion: completion)
         }
     }
+    
+    func getDetailPetArchive(recordID: String, petID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getDetailPetArchive(familyID: User.familyID, recordID: recordID, petID: petID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: HomeDetailArchiveResult.self,
+                                completion: completion)
+        }
+    }
 }
 
 
