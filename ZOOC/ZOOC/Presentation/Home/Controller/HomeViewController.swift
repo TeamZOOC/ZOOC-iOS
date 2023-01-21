@@ -59,7 +59,6 @@ final class HomeViewController : BaseViewController{
         hierarchy()
         layout()
         
-        autoSelectPetCollectionView()
         requestMissionAPI()
         requestTotalPetAPI()
     }
@@ -276,14 +275,15 @@ final class HomeViewController : BaseViewController{
         archiveListCollectionView.performBatchUpdates(nil, completion: nil)
     }
     
-    private func autoSelectPetCollectionView(){
-        if petData.count != 0 {
-            petCollectionView.selectItem(at:IndexPath(item: 0, section: 0),
-                                         animated: false,
-                                         scrollPosition: .centeredHorizontally)
-            petCollectionView.performBatchUpdates(nil)
-            requestTotalArchiveAPI(petID: petData[0].id)
-        }
+    func selectPetCollectionView(petID: Int){
+        let selectPetArray = petData.filter { $0.id == petID }
+        guard let index = selectPetArray.first?.id else { return }
+    
+        petCollectionView.selectItem(at:IndexPath(item: index, section: 0),
+                                     animated: false,
+                                     scrollPosition: .centeredHorizontally)
+        petCollectionView.performBatchUpdates(nil)
+        requestTotalArchiveAPI(petID: petData[index].id)
     }
     
     private func configIndicatorViewBarWidth(_ scrollView: UIScrollView){
@@ -305,21 +305,22 @@ final class HomeViewController : BaseViewController{
         }
     }
 
-    func requestTotalPetAPI(){
+    private func requestTotalPetAPI(){
         HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomePetResult] else { return }
             
             self.petData = result
+            guard let id = self.petData.first?.id else { return }
             
             DispatchQueue.main.async {
-                self.autoSelectPetCollectionView()
+                self.selectPetCollectionView(petID: id)
             }
             
         }
     }
     
-    private func requestTotalArchiveAPI(petID: Int){
+    public func requestTotalArchiveAPI(petID: Int){
         HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
             
             guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }

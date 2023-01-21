@@ -15,7 +15,6 @@ final class RecordRegisterViewController : BaseViewController{
     // MARK: - Properties
     
     var recordData: RecordModel = RecordModel()
-
     var petList: [RecordRegisterModel] = []
     
     
@@ -312,8 +311,9 @@ final class RecordRegisterViewController : BaseViewController{
     }
     
     private func pushToRecordCompleteViewController() {
-        let recordCompleteViewController = RecordCompleteViewController()
-        self.navigationController?.pushViewController(recordCompleteViewController, animated: true)
+        let recordCompleteVC = RecordCompleteViewController()
+        recordCompleteVC.dataBind(data: petList)
+        self.navigationController?.pushViewController(recordCompleteVC, animated: true)
     }
 }
 
