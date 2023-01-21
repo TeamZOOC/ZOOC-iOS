@@ -16,7 +16,7 @@ final class RecordRegisterViewController : BaseViewController{
     
     var recordData: RecordModel = RecordModel()
     var petList: [RecordRegisterModel] = []
-    
+    var selectedPetIDList: [Int] = []
     
     // MARK: - UI Components
     
@@ -280,24 +280,20 @@ final class RecordRegisterViewController : BaseViewController{
     
     @objc
     private func registerButtonDidTap(){
-        var selectedPetID: [Int] = []
+        
         petList.forEach {
             if $0.isSelected {
-                selectedPetID.append($0.petID)
+                selectedPetIDList.append($0.petID)
             }
         }
         registerButton.isEnabled = false
         registerButton.backgroundColor = .zoocGray1
         
-        RecordAPI.shared.postRecord(
-                                    photo: recordData.image ?? UIImage(),
+        RecordAPI.shared.postRecord(photo: recordData.image ?? UIImage(),
                                     content: recordData.content ?? "",
-                                    pets: selectedPetID)
-        { result in
-                self.pushToRecordCompleteViewController()
+                                    pets: selectedPetIDList) { result in
+            self.pushToRecordCompleteViewController()
         }
-        
-        
     }
     
     private func activateButton(indexPathArray: [IndexPath]?) {
@@ -312,7 +308,7 @@ final class RecordRegisterViewController : BaseViewController{
     
     private func pushToRecordCompleteViewController() {
         let recordCompleteVC = RecordCompleteViewController()
-        recordCompleteVC.dataBind(data: petList)
+        recordCompleteVC.dataBind(data: selectedPetIDList)
         self.navigationController?.pushViewController(recordCompleteVC, animated: true)
     }
 }

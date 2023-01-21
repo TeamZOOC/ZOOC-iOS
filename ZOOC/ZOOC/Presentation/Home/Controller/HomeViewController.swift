@@ -37,7 +37,6 @@ final class HomeViewController : BaseViewController{
     private let noticeButton = UIButton()
     
     private let petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-                                                    
     private let listButton = UIButton()
     private let gridButton = UIButton()
     
@@ -276,8 +275,13 @@ final class HomeViewController : BaseViewController{
     }
     
     func selectPetCollectionView(petID: Int){
-        let selectPetArray = petData.filter { $0.id == petID }
-        guard let index = selectPetArray.first?.id else { return }
+        var index = 0
+        for pet in petData{
+            if pet.id == petID{ break }
+            index += 1
+        }
+        
+        guard index < petData.count else { return }
     
         petCollectionView.selectItem(at:IndexPath(item: index, section: 0),
                                      animated: false,
@@ -286,12 +290,13 @@ final class HomeViewController : BaseViewController{
         requestTotalArchiveAPI(petID: petData[index].id)
     }
     
-    private func configIndicatorViewBarWidth(_ scrollView: UIScrollView){
-        let allWidth = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
-        let showingWidth = scrollView.bounds.width
-        
-        self.archiveIndicatorView.widthRatio = showingWidth / allWidth
-        self.archiveIndicatorView.layoutIfNeeded()
+    private func configIndicatorBarWidth(_ scrollView: UIScrollView){
+        UIView.animate(withDuration: 0.5) {
+            let allWidth = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
+            let showingWidth = scrollView.bounds.width
+            self.archiveIndicatorView.widthRatio = showingWidth / allWidth
+            self.archiveIndicatorView.layoutIfNeeded()
+        }
     }
     
     //MARK: - Network
@@ -328,7 +333,7 @@ final class HomeViewController : BaseViewController{
             self.archiveData = result
             
             DispatchQueue.main.async {
-                self.configIndicatorViewBarWidth(self.archiveListCollectionView)
+                self.configIndicatorBarWidth(self.archiveListCollectionView)
             }
         }
     }

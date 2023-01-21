@@ -113,8 +113,8 @@ final class RecordCompleteViewController : BaseViewController {
         }
     }
     
-    func dataBind(data: [RecordRegisterModel]){
-        firstPetID = data[0].petID
+    func dataBind(data: [Int]){
+        firstPetID = data.first
     }
     
     //MARK: - Action Method
@@ -123,6 +123,7 @@ final class RecordCompleteViewController : BaseViewController {
     private func goArchiveButtonDidTap() {
         
         guard let tabVC = navigationController?.previousViewController?.presentingViewController as? ZoocTabBarController else { return }
+        
         guard let petID = firstPetID else { return }
         tabVC.homeViewController.selectPetCollectionView(petID: petID)
         
