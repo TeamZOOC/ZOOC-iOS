@@ -14,49 +14,32 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - Properties
     
-    private var petMockData: [HomePetModel] = HomePetModel.mockData
-    private var archiveMockData: [HomeArchiveModel] = HomeArchiveModel.mockData
-    
     private var petData: [HomePetResult] = [] {
         didSet{
-            petCollectionView.reloadData()
+            rootView.petCollectionView.reloadData()
         }
     }
     private var archiveData: [HomeArchiveResult] = []{
         didSet{
-            archiveListCollectionView.reloadData()
-            archiveGridCollectionView.reloadData()
+            rootView.archiveListCollectionView.reloadData()
+            rootView.archiveGridCollectionView.reloadData()
         }
     }
-    
     //MARK: - UI Components
     
-    private let missionView = UIView()
-    private let missionWordLabel = UILabel()
-    private let missionLabel = UILabel()
-    private let noticeButton = UIButton()
-    
-    private let petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let listButton = UIButton()
-    private let gridButton = UIButton()
-    
-    private let archiveListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let archiveGridCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    
-    private let archiveBottomView = UIView()
-    private let archiveIndicatorView = HomeArchiveIndicatorView()
+    private let rootView = HomeView()
     
     //MARK: - Life Cycle
+    
+    override func loadView() {
+        self.view = rootView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         register()
         gesture()
-        
-        style()
-        hierarchy()
-        layout()
         
         requestMissionAPI()
         requestTotalPetAPI()
@@ -65,190 +48,43 @@ final class HomeViewController : BaseViewController{
     //MARK: - Custom Method
     
     private func register(){
-        petCollectionView.delegate = self
-        petCollectionView.dataSource = self
+        rootView.petCollectionView.delegate = self
+        rootView.petCollectionView.dataSource = self
         
-        archiveListCollectionView.delegate = self
-        archiveListCollectionView.dataSource = self
-        archiveGridCollectionView.delegate = self
-        archiveGridCollectionView.dataSource = self
+        rootView.archiveListCollectionView.delegate = self
+        rootView.archiveListCollectionView.dataSource = self
+        rootView.archiveGridCollectionView.delegate = self
+        rootView.archiveGridCollectionView.dataSource = self
         
-        petCollectionView.register(HomePetCollectionViewCell.self,
-                                   forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
+        rootView.petCollectionView.register(HomePetCollectionViewCell.self,
+                                            forCellWithReuseIdentifier:HomePetCollectionViewCell.cellIdentifier)
         
-        archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self,
-                                           forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
+        rootView.archiveListCollectionView.register(HomeArchiveListCollectionViewCell.self,
+                                                    forCellWithReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier)
         
-        archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self,
+        rootView.archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self,
                                            forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
     
     private func gesture(){
-        noticeButton.addTarget(self,
+        rootView.noticeButton.addTarget(self,
                                action: #selector(noticeButtonDidTap),
                                for: .touchUpInside)
-        listButton.addTarget(self,
+        rootView.listButton.addTarget(self,
                              action: #selector(listButtonDidTap),
                              for: .touchUpInside)
         
-        gridButton.addTarget(self,
+        rootView.gridButton.addTarget(self,
                              action: #selector(galleryButtonDidTap),
                              for: .touchUpInside)
         
-        archiveBottomView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+        rootView.archiveBottomView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                       action: #selector(bottomViewDidTap)))
     }
     
-    private func style(){
-        
-        missionWordLabel.do {
-            $0.text = "미션"
-            $0.font = .zoocSubhead1
-            $0.textColor = .zoocMainGreen
-        }
-        
-        missionLabel.do {
-            $0.font = .zoocBody3
-            $0.textColor = .zoocGray3
-        }
-        
-        noticeButton.do {
-            $0.setImage(Image.ring, for: .normal)
-            $0.contentMode = .scaleAspectFit
-        }
-        
-        petCollectionView.do {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            $0.collectionViewLayout = layout
-            
-            $0.backgroundColor = .clear
-            $0.showsHorizontalScrollIndicator = false
-        }
-        
-        listButton.do {
-            $0.isSelected = true
-            $0.tintColor = .systemPink
-            $0.setImage(Image.list, for: .normal)
-            $0.setImage(Image.listFill, for: .selected)
-        }
-        
-        gridButton.do {
-            $0.setImage(Image.grid, for: .normal)
-            $0.setImage(Image.gridFill, for: .selected)
-        }
-        
-        archiveListCollectionView.do {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            $0.collectionViewLayout = layout
-            
-            $0.backgroundColor = .clear
-            $0.showsHorizontalScrollIndicator = false
-        }
-        
-        archiveGridCollectionView.do {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .vertical
-            $0.collectionViewLayout = layout
-            
-            $0.isHidden = true
-            $0.backgroundColor = .clear
-            $0.showsHorizontalScrollIndicator = false
-        }
-    }
-   
-    
-    private func hierarchy(){
-        
-        view.addSubviews(missionView,
-                         petCollectionView,
-                         listButton,
-                         gridButton,
-                         archiveBottomView,
-                         archiveListCollectionView,
-                         archiveGridCollectionView)
-                          
-        
-        missionView.addSubviews(missionWordLabel,
-                                missionLabel,
-                                noticeButton)
-                                
-        
-        archiveBottomView.addSubview(archiveIndicatorView)
-    }
-    
-    private func layout(){
-        
-        //MARK: rootView
-        missionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(50)
-        }
-        
-        listButton.snp.makeConstraints {
-            $0.centerY.equalTo(petCollectionView)
-            $0.trailing.equalTo(gridButton.snp.leading)
-            $0.height.width.equalTo(36)
-        }
-        
-        gridButton.snp.makeConstraints {
-            $0.centerY.equalTo(petCollectionView)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.height.width.equalTo(36)
-        }
-        
-        petCollectionView.snp.makeConstraints {
-            $0.top.equalTo(missionView.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalTo(listButton.snp.leading)
-            $0.height.equalTo(40)
-        }
-        
-        archiveListCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(petCollectionView.snp.bottom).offset(29)
-            $0.height.equalTo(438)
-        }
-        
-        archiveGridCollectionView.snp.makeConstraints {
-            $0.edges.equalTo(archiveListCollectionView)
-        }
-        
-        archiveBottomView.snp.makeConstraints {
-            $0.top.equalTo(archiveListCollectionView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        //MARK: missionView
-        missionWordLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(30)
-            $0.centerY.equalToSuperview()
-        }
-        
-        missionLabel.snp.makeConstraints {
-            $0.leading.equalTo(missionWordLabel.snp.trailing).offset(10)
-            $0.centerY.equalToSuperview()
-        }
-        
-        noticeButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(20)
-            $0.centerY.equalToSuperview()
-            $0.height.width.equalTo(42)
-        }
-        
-        //MARK: archiveBottomView
-        archiveIndicatorView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(72)
-            $0.height.equalTo(4)
-        }
-    }
     
     private func pushToDetailViewController(recordID: String){
-        guard let index = petCollectionView.indexPathsForSelectedItems?[0].item else {
+        guard let index = rootView.petCollectionView.indexPathsForSelectedItems?[0].item else {
             presentBottomAlert("선택된 펫이 없습니다.")
             return
         }
@@ -269,9 +105,9 @@ final class HomeViewController : BaseViewController{
     }
     
     private func deselectAllOfListArchiveCollectionViewCell(){
-        archiveListCollectionView.indexPathsForSelectedItems?
-            .forEach { archiveListCollectionView.deselectItem(at: $0, animated: false) }
-        archiveListCollectionView.performBatchUpdates(nil, completion: nil)
+        rootView.archiveListCollectionView.indexPathsForSelectedItems?
+            .forEach { rootView.archiveListCollectionView.deselectItem(at: $0, animated: false) }
+        rootView.archiveListCollectionView.performBatchUpdates(nil, completion: nil)
     }
     
     func selectPetCollectionView(petID: Int){
@@ -283,10 +119,10 @@ final class HomeViewController : BaseViewController{
         
         guard index < petData.count else { return }
     
-        petCollectionView.selectItem(at:IndexPath(item: index, section: 0),
+        rootView.petCollectionView.selectItem(at:IndexPath(item: index, section: 0),
                                      animated: false,
                                      scrollPosition: .centeredHorizontally)
-        petCollectionView.performBatchUpdates(nil)
+        rootView.petCollectionView.performBatchUpdates(nil)
         requestTotalArchiveAPI(petID: petData[index].id)
     }
     
@@ -294,8 +130,8 @@ final class HomeViewController : BaseViewController{
         UIView.animate(withDuration: 0.5) {
             let allWidth = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let showingWidth = scrollView.bounds.width
-            self.archiveIndicatorView.widthRatio = showingWidth / allWidth
-            self.archiveIndicatorView.layoutIfNeeded()
+            self.rootView.archiveIndicatorView.widthRatio = showingWidth / allWidth
+            self.rootView.archiveIndicatorView.layoutIfNeeded()
         }
     }
     
@@ -306,7 +142,7 @@ final class HomeViewController : BaseViewController{
             
             guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
             
-            self.missionLabel.text = result[0].missionContent //TODO: 미션용 API 필요
+            self.rootView.missionLabel.text = result[0].missionContent //TODO: 미션용 API 필요
         }
     }
 
@@ -333,7 +169,7 @@ final class HomeViewController : BaseViewController{
             self.archiveData = result
             
             DispatchQueue.main.async {
-                self.configIndicatorBarWidth(self.archiveListCollectionView)
+                self.configIndicatorBarWidth(self.rootView.archiveListCollectionView)
             }
         }
     }
@@ -348,14 +184,14 @@ final class HomeViewController : BaseViewController{
     
     @objc
     private func listButtonDidTap(){
-        archiveListCollectionView.isHidden = false
-        archiveGridCollectionView.isHidden = true
-        archiveBottomView.isHidden = false
-        listButton.isSelected = true
-        gridButton.isSelected = false
+        rootView.archiveListCollectionView.isHidden = false
+        rootView.archiveGridCollectionView.isHidden = true
+        rootView.archiveBottomView.isHidden = false
+        rootView.listButton.isSelected = true
+        rootView.gridButton.isSelected = false
         
-        archiveListCollectionView.snp.remakeConstraints {
-            $0.top.equalTo(petCollectionView.snp.bottom).offset(29)
+        rootView.archiveListCollectionView.snp.remakeConstraints {
+            $0.top.equalTo(rootView.petCollectionView.snp.bottom).offset(29)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(438)
         }
@@ -363,15 +199,15 @@ final class HomeViewController : BaseViewController{
     
     @objc
     private func galleryButtonDidTap(){
-        archiveListCollectionView.isHidden = true
-        archiveGridCollectionView.isHidden = false
-        archiveBottomView.isHidden = true
+        rootView.archiveListCollectionView.isHidden = true
+        rootView.archiveGridCollectionView.isHidden = false
+        rootView.archiveBottomView.isHidden = true
         
-        listButton.isSelected = false
-        gridButton.isSelected = true
+        rootView.listButton.isSelected = false
+        rootView.gridButton.isSelected = true
         
-        archiveListCollectionView.snp.remakeConstraints {
-            $0.top.equalTo(petCollectionView.snp.bottom).offset(29)
+        rootView.archiveListCollectionView.snp.remakeConstraints {
+            $0.top.equalTo(rootView.petCollectionView.snp.bottom).offset(29)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -390,15 +226,15 @@ final class HomeViewController : BaseViewController{
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             return petData.count
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             return archiveData.count
         }
         
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             return archiveData.count
         }
         
@@ -407,7 +243,7 @@ extension HomeViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
             
@@ -415,7 +251,7 @@ extension HomeViewController: UICollectionViewDataSource{
             return cell
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveListCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomeArchiveListCollectionViewCell else { return UICollectionViewCell() }
             
@@ -424,7 +260,7 @@ extension HomeViewController: UICollectionViewDataSource{
             return cell
         }
         
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier,
                                                                 for: indexPath) as?  HomeArchiveGridCollectionViewCell else { return UICollectionViewCell() }
             
@@ -444,7 +280,7 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool
     {
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             guard let cell = collectionView.cellForItem(at: indexPath) as? HomeArchiveListCollectionViewCell else { return false }
             
             switch cell.viewType{
@@ -463,17 +299,17 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath)
     {
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             collectionView.performBatchUpdates(nil)
             requestTotalArchiveAPI(petID: petData[indexPath.item].id )
             
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             collectionView.performBatchUpdates(nil)
         }
         
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             let id = String(archiveData[indexPath.item].record.id)
             pushToDetailViewController(recordID: id)
         }
@@ -483,11 +319,11 @@ extension HomeViewController{
     func collectionView(_ collectionView: UICollectionView,
                         didDeselectItemAt indexPath: IndexPath)
     {
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             collectionView.performBatchUpdates(nil)
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             collectionView.performBatchUpdates(nil)
         }
     }
@@ -500,7 +336,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             switch collectionView.indexPathsForSelectedItems?.first {
             case .some(indexPath):
                 guard let cell = collectionView.cellForItem(at: indexPath) as? HomePetCollectionViewCell else { return .zero}
@@ -511,7 +347,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             }
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             switch collectionView.indexPathsForSelectedItems?.first {
             case .some(indexPath):
                 return CGSize(width: 195, height: 436)
@@ -520,7 +356,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
             }
         }
         
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             return CGSize(width: 100, height: 100)
         }
         
@@ -531,14 +367,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat
     {
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             return 4
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             return 11
         }
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             return 10
         }
         
@@ -550,15 +386,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets
     {
-        if collectionView == petCollectionView{
+        if collectionView == rootView.petCollectionView{
             return .zero
         }
         
-        if collectionView == archiveListCollectionView{
+        if collectionView == rootView.archiveListCollectionView{
             return UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         }
         
-        if collectionView == archiveGridCollectionView{
+        if collectionView == rootView.archiveGridCollectionView{
             return UIEdgeInsets(top: 0, left: 30, bottom: 30, right: 30)
         }
         
@@ -572,13 +408,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 extension HomeViewController{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == archiveListCollectionView{
+        if scrollView == rootView.archiveListCollectionView{
             
             let scroll = scrollView.contentOffset.x + scrollView.contentInset.left
             let width = scrollView.contentSize.width + scrollView.contentInset.left + scrollView.contentInset.right
             let scrollRatio = scroll / width
             
-            self.archiveIndicatorView.leftOffsetRatio = scrollRatio
+            self.rootView.archiveIndicatorView.leftOffsetRatio = scrollRatio
         }
     }
 }
