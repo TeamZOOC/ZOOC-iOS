@@ -41,11 +41,7 @@ final class MyRegisterPetViewController: UIViewController{
         myRegisterPetView.registerPetTableView.delegate = self
         myRegisterPetView.registerPetTableView.dataSource = self
         
-        myRegisterPetView.registerPetTableView.register(MyRegisterPetTableViewCell.self, forCellReuseIdentifier: MyRegisterPetTableViewCell.cellIdentifier)
-        
-        myRegisterPetView.registerPetTableView.register(MyRegisteredPetTableViewCell.self, forCellReuseIdentifier: MyRegisteredPetTableViewCell.cellIdentifier)
-        
-        myRegisterPetView.registerPetTableView.register(MyRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: MyRegisterPetTableFooterView.cellIdentifier)
+
         
         myRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
