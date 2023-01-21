@@ -241,9 +241,7 @@ final class HomeViewController : BaseViewController{
         let viewController = HomeDetailArchiveViewController()
         let petID = String(petData[index].id)
         viewController.petID = petID
-        //viewController.getAPI(recordID: recordID)
         viewController.getAPI(recordID: recordID, petID: petID)
-        
         
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false)
