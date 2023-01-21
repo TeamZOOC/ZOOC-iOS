@@ -22,96 +22,34 @@ final class HomeViewController : BaseViewController{
     
     //MARK: - UI Components
     
-    private let missionView : UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let missionView = UIView()
+    private let missionWordLabel = UILabel()
+    private let missionLabel = UILabel()
+    private let noticeButton = UIButton()
     
-    private let missionWordLabel : UILabel = {
-        let label = UILabel()
-        label.text = "미션"
-        label.font = .zoocSubhead1
-        label.textColor = .zoocMainGreen
-        return label
-    }()
+    private let petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+                                                    
+    private let listButton = UIButton()
+    private let gridButton = UIButton()
     
-    private let missionLabel : UILabel = {
-        let label = UILabel()
-        label.text = "포미와 사진을 찍어보세요"
-        label.font = .zoocBody3
-        label.textColor = .zoocGray3
-        return label
-    }()
-    
-    private lazy var noticeButton : UIButton = {
-        let button = UIButton()
-        button.setImage(Image.ring, for: .normal)
-        button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(noticeButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private let petCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.allowsMultipleSelection = false
-        
-        return collectionView
-    }()
-    
-    private lazy var listButton : UIButton = {
-        let button = UIButton()
-        button.isSelected = true
-        button.tintColor = .systemPink
-        button.setImage(Image.list, for: .normal)
-        button.setImage(Image.listFill, for: .selected)
-        button.addTarget(self, action: #selector(listButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var gridButton : UIButton = {
-        let button = UIButton()
-        button.setImage(Image.grid, for: .normal)
-        button.setImage(Image.gridFill, for: .selected)
-        button.addTarget(self, action: #selector(galleryButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private let archiveListCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
-    
-    private let archiveGridCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        return collectionView
-    }()
+    private let archiveListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+    private let archiveGridCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     
     private let archiveBottomView = UIView()
-    private lazy var archiveIndicatorView = HomeArchiveIndicatorView()
+    private let archiveIndicatorView = HomeArchiveIndicatorView()
     
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setLayout()
         register()
         gesture()
+        
+        style()
+        hierarchy()
+        layout()
+        
         autoSelectPetCollectionView()
         updateAPI()
     }
@@ -133,17 +71,83 @@ final class HomeViewController : BaseViewController{
         archiveGridCollectionView.register(HomeArchiveGridCollectionViewCell.self, forCellWithReuseIdentifier: HomeArchiveGridCollectionViewCell.cellIdentifier)
     }
     
-    private func setUI(){
-        archiveListCollectionView.isHidden = false
-        archiveGridCollectionView.isHidden = true
-    }
-    
     private func gesture(){
+        noticeButton.addTarget(self,
+                               action: #selector(noticeButtonDidTap),
+                               for: .touchUpInside)
+        listButton.addTarget(self,
+                             action: #selector(listButtonDidTap),
+                             for: .touchUpInside)
+        
+        gridButton.addTarget(self,
+                             action: #selector(galleryButtonDidTap),
+                             for: .touchUpInside)
+        
         archiveBottomView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                       action: #selector(bottomViewDidTap)))
     }
     
-    private func setLayout(){
+    private func style(){
+        
+        missionWordLabel.do {
+            $0.text = "미션"
+            $0.font = .zoocSubhead1
+            $0.textColor = .zoocMainGreen
+        }
+        
+        missionLabel.do {
+            $0.font = .zoocBody3
+            $0.textColor = .zoocGray3
+        }
+        
+        noticeButton.do {
+            $0.setImage(Image.ring, for: .normal)
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        petCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            $0.collectionViewLayout = layout
+            
+            $0.backgroundColor = .clear
+            $0.showsHorizontalScrollIndicator = false
+        }
+        
+        listButton.do {
+            $0.isSelected = true
+            $0.tintColor = .systemPink
+            $0.setImage(Image.list, for: .normal)
+            $0.setImage(Image.listFill, for: .selected)
+        }
+        
+        gridButton.do {
+            $0.setImage(Image.grid, for: .normal)
+            $0.setImage(Image.gridFill, for: .selected)
+        }
+        
+        archiveListCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            $0.collectionViewLayout = layout
+            
+            $0.backgroundColor = .clear
+            $0.showsHorizontalScrollIndicator = false
+        }
+        
+        archiveGridCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            $0.collectionViewLayout = layout
+            
+            $0.isHidden = true
+            $0.backgroundColor = .clear
+            $0.showsHorizontalScrollIndicator = false
+        }
+    }
+   
+    
+    private func hierarchy(){
         
         view.addSubviews(
             missionView,
@@ -162,9 +166,11 @@ final class HomeViewController : BaseViewController{
         )
         
         archiveBottomView.addSubview(archiveIndicatorView)
+    }
+    
+    private func layout(){
         
         //MARK: rootView
-        
         missionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
@@ -207,7 +213,6 @@ final class HomeViewController : BaseViewController{
         }
         
         //MARK: missionView
-        
         missionWordLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(30)
             $0.centerY.equalToSuperview()
@@ -266,7 +271,7 @@ final class HomeViewController : BaseViewController{
                                          animated: false,
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
-            getTotalArchive(petID: petData[0].id)
+            getTotalArchiveAPI(petID: petData[0].id)
             
             updateIndicatorView(self.archiveListCollectionView)
         }
@@ -298,7 +303,7 @@ final class HomeViewController : BaseViewController{
         }
     }
     
-    private func getTotalArchive(petID: Int){
+    private func getTotalArchiveAPI(petID: Int){
         HomeAPI.shared.getTotalArchive(petID: String(petID)) { result in
             guard let result = self.validateResult(result) as? [HomeArchiveResult] else { return }
             self.archiveData = result
@@ -431,7 +436,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
-            getTotalArchive(petID: petData[indexPath.row].id )
+            getTotalArchiveAPI(petID: petData[indexPath.row].id )
             
         }
         
