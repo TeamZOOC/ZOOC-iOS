@@ -116,24 +116,6 @@ final class HomeViewController : BaseViewController{
         updateAPI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        petData = []
-//        archiveData = []
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //updateIndicatorView(archiveListCollectionView)
-    }
-    
     //MARK: - Custom Method
     
     private func register(){
@@ -251,8 +233,18 @@ final class HomeViewController : BaseViewController{
     }
     
     private func pushToDetailViewController(recordID: String){
+        guard let index = petCollectionView.indexPathsForSelectedItems?[0].row else {
+            presentBottomAlert("선택된 펫이 없습니다.")
+            return
+        }
+        
         let viewController = HomeDetailArchiveViewController()
-        viewController.getAPI(recordID: recordID)
+        let petID = String(petData[index].id)
+        viewController.petID = petID
+        //viewController.getAPI(recordID: recordID)
+        viewController.getAPI(recordID: recordID, petID: petID)
+        
+        
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false)
     }
@@ -276,6 +268,7 @@ final class HomeViewController : BaseViewController{
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
             getTotalArchive(petID: petData[0].id)
+            
             updateIndicatorView(self.archiveListCollectionView)
         }
     }
@@ -390,7 +383,6 @@ extension HomeViewController: UICollectionViewDataSource{
         
         if collectionView == petCollectionView{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePetCollectionViewCell.cellIdentifier, for: indexPath) as?  HomePetCollectionViewCell else { return UICollectionViewCell() }
-            //cell.dataBind(data: petMockData[indexPath.item])
             cell.dataBind(data: petData[indexPath.item])
             return cell
         }

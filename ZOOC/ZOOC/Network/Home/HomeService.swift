@@ -14,6 +14,7 @@ enum HomeService {
     case getTotalPet(familyID: String)
     case getTotalArchive(familyID: String,petID: String)
     case getDetailArchive(familyID: String, recordID: String)
+    case getNewDetailArchive(familyID: String, recordID: String, petID: String)
     case getNotice
     case postComment(recordID: String, comment: String)
 }
@@ -34,6 +35,8 @@ extension HomeService: BaseTargetType {
             return URLs.getNotice
         case .postComment(recordID: let recordID, comment: let comment):
             return URLs.postComment.replacingOccurrences(of: "{recordId}", with: recordID)
+        case .getNewDetailArchive(familyID: let familyID, recordID: let recordID, petID: let petID):
+            return "/record/detail/{familyId}/{petId}/{recordId}".replacingOccurrences(of: "{familyId}", with: familyID).replacingOccurrences(of: "{petId}", with: petID).replacingOccurrences(of: "{recordId}", with: recordID)
         }
     }
         
@@ -51,6 +54,8 @@ extension HomeService: BaseTargetType {
             return .get
         case .postComment:
             return .post
+        case .getNewDetailArchive:
+            return .get
         }
     }
     
@@ -69,6 +74,8 @@ extension HomeService: BaseTargetType {
         case .postComment(recordID: let recordID, comment: let comment):
             let body = HomeCommentReqeust(content: comment)
             return .requestJSONEncodable(body)
+        case .getNewDetailArchive(familyID: let familyID, recordID: let recordID, petID: let petID):
+            return .requestPlain
         }
     }
 }
