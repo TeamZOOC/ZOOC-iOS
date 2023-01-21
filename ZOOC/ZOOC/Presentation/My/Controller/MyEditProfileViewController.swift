@@ -41,21 +41,14 @@ final class EditProfileViewController: BaseViewController {
         editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
-        
     }
 
     func dataSend(data: MyUser?) {
-        if let imageURL = data?.photo{
-            editProfileView.editProfileImageButton.kf.setImage(with: URL(string: imageURL), for: .normal)
-        }else{
-            editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
-        } 
+        editProfileView.editProfileNameTextField.placeholder = data?.nickName
+        data?.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: (data?.photo!)!)
         if let name = data?.nickName{
             myProfileNickName = name
-        } 
-        
-        editProfileView.editProfileNameTextField.placeholder = data?.nickName
-        
+        }
     }
     
     private func popToMyProfileView() {
@@ -66,9 +59,7 @@ final class EditProfileViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    
-    @objc
-    func chooseProfileImage() {
+    @objc func chooseProfileImage() {
         let actionSheetController = UIAlertController()
         
         let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
@@ -94,15 +85,13 @@ final class EditProfileViewController: BaseViewController {
         self.present(actionSheetController, animated: true)
     }
     
-    @objc
-    func backButtonDidTap() {
+    @objc func backButtonDidTap() {
         let myAlertViewController = ZoocAlertViewController()
         myAlertViewController.modalPresentationStyle = .overFullScreen
         present(myAlertViewController, animated: false)
     }
     
-    @objc
-    private func textDidChange(_ notification: Notification) {
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 10 {
@@ -122,9 +111,7 @@ final class EditProfileViewController: BaseViewController {
         }
     }
     
-    @objc
-    func editCompleteButtonDidTap(){
-        
+    @objc func editCompleteButtonDidTap(){
         if let text = editProfileView.editProfileNameTextField.text{
             myProfileNickName = text
         }
@@ -132,9 +119,8 @@ final class EditProfileViewController: BaseViewController {
                                     nickName: myProfileNickName,
                                     photo: myProfileImage)
         { result in
-            
-            print(result)
             guard let result = self.validateResult(result) as? MyUser else { return }
+            print(result)
             
             self.popToMyProfileView()
         }
@@ -159,6 +145,14 @@ extension EditProfileViewController {
         editProfileView.editCompletedButton.isEnabled = false
         editProfileView.profileNameCountLabel.text = "\(textCount)/10"
     }
+    
+    func setDefaultProfileImage() {
+        editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+    }
+    
+    func setFamilyMemberProfileImage(photo: String) {
+        editProfileView.editProfileImageButton.kfSetButtonImage(url: photo)
+    }
 }
 
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -167,10 +161,6 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             editProfileView.editProfileImageButton.setImage(image, for: .normal)
             self.myProfileImage = image
-            
         }
     }
 }
-
-    
-
