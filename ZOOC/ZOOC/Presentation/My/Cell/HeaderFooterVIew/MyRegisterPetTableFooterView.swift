@@ -37,6 +37,8 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     
+    //MARK: - Life Cycle
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -70,13 +72,7 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
     
     public func dataBind(isFull: Bool) {
-        if isFull {
-            petRegisterButtonSeparatorLineView.isHidden = true
-            addPetProfileButton.isHidden = true
-        } else {
-            petRegisterButtonSeparatorLineView.isHidden = false
-            addPetProfileButton.isHidden = false
-        }
+        isFull ? NumberOfPetsRegisterdIsFull() : NumberOfPetsRegisterdIsNotFull()
     }
     
     //MARK: - Action Method
@@ -87,3 +83,14 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
 }
 
+extension MyRegisterPetTableFooterView {
+    func NumberOfPetsRegisterdIsFull() {
+        petRegisterButtonSeparatorLineView.isHidden = true
+        addPetProfileButton.isHidden = true
+    }
+    
+    func NumberOfPetsRegisterdIsNotFull() {
+        petRegisterButtonSeparatorLineView.isHidden = false
+        addPetProfileButton.isHidden = false
+    }
+}
