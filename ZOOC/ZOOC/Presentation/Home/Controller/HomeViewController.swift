@@ -250,7 +250,7 @@ final class HomeViewController : BaseViewController{
     }
     
     private func pushToDetailViewController(recordID: String){
-        guard let index = petCollectionView.indexPathsForSelectedItems?[0].row else {
+        guard let index = petCollectionView.indexPathsForSelectedItems?[0].item else {
             presentBottomAlert("선택된 펫이 없습니다.")
             return
         }
@@ -278,7 +278,7 @@ final class HomeViewController : BaseViewController{
     
     private func autoSelectPetCollectionView(){
         if petData.count != 0 {
-            petCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+            petCollectionView.selectItem(at:IndexPath(item: 0, section: 0),
                                          animated: false,
                                          scrollPosition: .centeredHorizontally)
             petCollectionView.performBatchUpdates(nil)
@@ -459,7 +459,7 @@ extension HomeViewController{
     {
         if collectionView == petCollectionView{
             collectionView.performBatchUpdates(nil)
-            requestTotalArchiveAPI(petID: petData[indexPath.row].id )
+            requestTotalArchiveAPI(petID: petData[indexPath.item].id )
             
         }
         
