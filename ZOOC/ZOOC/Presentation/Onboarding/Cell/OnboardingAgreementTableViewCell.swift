@@ -27,7 +27,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         $0.textAlignment = .left
     }
     
-    private lazy var checkedButton = UIButton().then {
+    private lazy var checkedButton = BaseButton().then {
         $0.addTarget(self, action: #selector(agreementIsSelected), for: .touchUpInside)
     }
     
