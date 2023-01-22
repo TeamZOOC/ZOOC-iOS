@@ -33,33 +33,22 @@ final class MyRegisterPetViewController: UIViewController{
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    private func register() {
         myRegisterPetView.registerPetTableView.delegate = self
         myRegisterPetView.registerPetTableView.dataSource = self
-        
-        myRegisterPetView.registerPetTableView.register(MyRegisterPetTableViewCell.self, forCellReuseIdentifier: MyRegisterPetTableViewCell.cellIdentifier)
-        
-        myRegisterPetView.registerPetTableView.register(MyRegisteredPetTableViewCell.self, forCellReuseIdentifier: MyRegisteredPetTableViewCell.cellIdentifier)
-        
-        myRegisterPetView.registerPetTableView.register(MyRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: MyRegisterPetTableFooterView.cellIdentifier)
-        
+    }
+    
+    private func target() {
         myRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
         myRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
     func registerPet() {
-        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
-        print("업데이트 \(self.myUpdateRegisterData.count)")
-        print("업데이트z \(myUpdateRegisterData.count)")
-//        for i in 0...myUpdateRegisterData.count-1 {
-//            print("뷰컨가기전\(myUpdateRegisterData[i].profileName)")
-//        }
-        beforeVC.updateRegisterPetData(myPetRegisterData: self.myUpdateRegisterData)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -69,13 +58,11 @@ final class MyRegisterPetViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func registerPetButtonDidTap() {
+    @objc private func registerPetButtonDidTap() {
         registerPet()
     }
 }
@@ -88,11 +75,8 @@ extension MyRegisterPetViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 64
-        } else {
-            return 0
-        }
+        let height: CGFloat = (section == 1) ? 64 : 0
+        return height
     }
 }
 

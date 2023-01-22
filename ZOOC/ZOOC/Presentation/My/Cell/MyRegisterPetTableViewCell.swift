@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - MyDeleteButtonTappedDelegate
+
 protocol MyDeleteButtonTappedDelegate: AnyObject {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
@@ -100,7 +102,6 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
         self.index = index
         self.myPetRegisterData = petData
-        
         if(petData.count == 1) {
             deletePetProfileButton.isHidden = true
         } else {
@@ -114,20 +115,19 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
             myPetRegisterData[index].profileImage = petProfileImageButton.currentImage!
         }
     }
-    @objc
-    private func deletePetProfileButtonDidTap() {
+    
+    //MARK: - Action Method
+    
+    @objc private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
     }
     
-    @objc
-    private func textDidChange(_ notification: Notification) {
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 4 {
                     textField.resignFirstResponder()
                     delegate?.canRegister(canRegister: true)
-                    //                    print("이름은요 \(myPetRegisterData[index].profileName)")
-                    //                    print("순서는요 \(index)")
                 }
                 else if text.count <= 0 {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
@@ -136,8 +136,6 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
                 else {
                     petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
                     delegate?.canRegister(canRegister: true)
-                    //                    print("이름은요 \(myPetRegisterData[index].profileName) ")
-                    //                    print("순서는요 \(index)")
                 }
             }
         }

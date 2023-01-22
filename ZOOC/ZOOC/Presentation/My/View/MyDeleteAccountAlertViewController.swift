@@ -41,12 +41,12 @@ final class DeleteAccountAlertViewController: BaseViewController {
         $0.textColor = .zoocGray1
         $0.textAlignment = .center
         $0.numberOfLines = 2
+        $0.textAlignment = .center
         let attrString = NSMutableAttributedString(string: $0.text!)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         $0.attributedText = attrString
-        $0.textAlignment = .center
     }
     
     private lazy var keepEditButton = UIButton().then {
@@ -124,16 +124,14 @@ final class DeleteAccountAlertViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc
-    func popToMyViewButtonDidTap() {
+    @objc func popToMyViewButtonDidTap() {
         MyAPI.shared.deleteAccount() {result in
             print(result)
         }
         self.dismiss(animated: false)
     }
     
-    @objc
-    func keepButtonDidTap() {
+    @objc func keepButtonDidTap() {
         self.dismiss(animated: false)
     }
 }

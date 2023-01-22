@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FamilyCollectionViewCell: UICollectionViewCell {
+final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
@@ -59,22 +59,13 @@ final class FamilyCollectionViewCell: UICollectionViewCell {
     }
     
     public func dataBind(data: MyUser, myProfileData: MyUser?) {
-        
-        if data.photo == nil {
-            familyImageView.image = Image.defaultProfile
-        } else {
-            familyImageView.kfSetImage(url: data.photo!)
-        }
         familyNameLabel.text = data.nickName
-        if (data.nickName == myProfileData?.nickName) {
-            familyImageView.layer.borderWidth = 2
-            familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
-            familyNameLabel.textColor = .zoocMainGreen
-        }
+        data.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: data.photo!)
+        data.nickName == myProfileData?.nickName ? configMyProfile() : configFamilyProfile()
     }
 }
 
-extension FamilyCollectionViewCell {
+extension MyFamilyCollectionViewCell {
     func configFamilyProfile() {
         familyImageView.layer.borderWidth = 0
         familyImageView.layer.borderColor = UIColor.clear.cgColor
@@ -85,5 +76,13 @@ extension FamilyCollectionViewCell {
         familyImageView.layer.borderWidth = 2
         familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
         familyNameLabel.textColor = .zoocMainGreen
+    }
+    
+    func setDefaultProfileImage() {
+        familyImageView.image = Image.defaultProfile
+    }
+    
+    func setFamilyMemberProfileImage(photo: String) {
+        familyImageView.kfSetImage(url: photo)
     }
 }

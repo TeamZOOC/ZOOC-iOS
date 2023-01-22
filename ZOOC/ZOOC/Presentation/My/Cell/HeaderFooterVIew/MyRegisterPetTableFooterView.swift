@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - MyAddButtonTappedDelegate
+
 protocol MyAddButtonTappedDelegate: AnyObject {
     func addPetButtonTapped(isSelected: Bool)
 }
@@ -37,6 +39,8 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     
+    //MARK: - Life Cycle
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -47,6 +51,8 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Custom Method
     
     private func setUI() {
         contentView.backgroundColor = .zoocBackgroundGreen
@@ -70,20 +76,24 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
     
     public func dataBind(isFull: Bool) {
-        if isFull {
-            petRegisterButtonSeparatorLineView.isHidden = true
-            addPetProfileButton.isHidden = true
+        updateUI(isFull: isFull)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc func addPetProfileButtonDidTap() {
+        delegate?.addPetButtonTapped(isSelected: true)
+    }
+}
+
+extension MyRegisterPetTableFooterView {
+    func updateUI(isFull: Bool) {
+       if isFull{
+           petRegisterButtonSeparatorLineView.isHidden = true
+           addPetProfileButton.isHidden = true
         } else {
             petRegisterButtonSeparatorLineView.isHidden = false
             addPetProfileButton.isHidden = false
         }
     }
-    
-    //MARK: - Action Method
-    
-    @objc
-    func addPetProfileButtonDidTap() {
-        delegate?.addPetButtonTapped(isSelected: true)
-    }
 }
-

@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - MyRegisterPetButtonTappedDelegate
+
 protocol MyRegisterPetButtonTappedDelegate {
     func myRegisterPetButtonTapped(isSelected: Bool)
 }
@@ -19,9 +21,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
     var delegate: MyRegisterPetButtonTappedDelegate?
-    
     private let myRegisterPetView = MyRegisterPetView()
-    
     private lazy var myPetMemberData: [MyPet] = []
     
     //MARK: - UI Components
@@ -56,6 +56,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -92,9 +93,14 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     }
     
     public func register() {
-        petCollectionView.register(MyPetCollectionViewCell.self, forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
+        petCollectionView.register(
+            MyPetCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
         
-        petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
+        petCollectionView.register(
+            MyPetCollectionFooterView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
     
     public func dataBind(myPetMemberData : [MyPet]) {

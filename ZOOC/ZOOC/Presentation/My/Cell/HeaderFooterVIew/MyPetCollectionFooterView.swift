@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - RegisterPetButtonTappedDelegate
+
 protocol RegisterPetButtonTappedDelegate: AnyObject {
     func registerPetButtonTapped(isSelected: Bool)
 }
@@ -56,8 +58,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     
     //MARK: - Action Method
     
-    @objc
-    func registerButtonDidTap() {
+    @objc func registerButtonDidTap() {
         delegate?.registerPetButtonTapped(isSelected: true)
     }
 }

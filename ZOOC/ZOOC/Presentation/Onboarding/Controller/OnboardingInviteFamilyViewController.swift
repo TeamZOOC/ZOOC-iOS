@@ -69,7 +69,6 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     }
     
     private func shareInviteCode() {
-        print("gogo")
         var objectToShare = [String]()
         
         objectToShare.append(invitedCode)

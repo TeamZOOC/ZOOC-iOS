@@ -61,14 +61,20 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     }
     
     func dataBind(data: MyPet, index: Int, petData: [MyPet]) {
-        
-        if data.photo == nil {
-            petProfileImageView.image = Image.defaultProfilePet
-        } else {
-            petProfileImageView.kfSetImage(url: data.photo!)
-        }
-        self.petProfileNameLabel.text = data.name
+        petProfileNameLabel.text = data.name
+        data.photo == nil ? setDefaultPetProfileImage() : setPetMemberProfileImage(photo: data.photo!)
     }
 }
+
+extension MyRegisteredPetTableViewCell {
+    func setDefaultPetProfileImage() {
+        petProfileImageView.image = Image.defaultProfilePet
+    }
+    
+    func setPetMemberProfileImage(photo: String) {
+        petProfileImageView.kfSetImage(url: photo)
+    }
+}
+
 
 
