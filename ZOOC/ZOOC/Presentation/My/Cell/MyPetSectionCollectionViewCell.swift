@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - MyRegisterPetButtonTappedDelegate
+
 protocol MyRegisterPetButtonTappedDelegate {
     func myRegisterPetButtonTapped(isSelected: Bool)
 }
@@ -19,9 +21,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
     var delegate: MyRegisterPetButtonTappedDelegate?
-    
     private let myRegisterPetView = MyRegisterPetView()
-    
     private lazy var myPetMemberData: [MyPet] = []
     
     //MARK: - UI Components

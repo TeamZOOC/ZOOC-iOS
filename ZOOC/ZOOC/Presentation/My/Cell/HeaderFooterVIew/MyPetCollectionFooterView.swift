@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - RegisterPetButtonTappedDelegate
+
 protocol RegisterPetButtonTappedDelegate: AnyObject {
     func registerPetButtonTapped(isSelected: Bool)
 }

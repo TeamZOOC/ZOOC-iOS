@@ -97,6 +97,8 @@ final class AppInformationView: UIView {
     }
     
     private func register() {
-        appInformationTableView.register(AppInformationTableViewCell.self, forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
+        appInformationTableView.register(
+            AppInformationTableViewCell.self,
+            forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
     }
 }

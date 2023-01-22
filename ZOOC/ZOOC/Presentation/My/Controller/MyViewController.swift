@@ -106,18 +106,15 @@ final class MyViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc
-    private func editProfileButtonDidTap() {
+    @objc private func editProfileButtonDidTap() {
         pushToEditProfileView()
     }
     
-    @objc
-    private func appInformationButtonDidTap() {
+    @objc private func appInformationButtonDidTap() {
         pushToAppInformationView()
     }
     
-    @objc
-    func deleteAccountButtonDidTap() {
+    @objc func deleteAccountButtonDidTap() {
         let deleteAccountAlertViewController = DeleteAccountAlertViewController()
         deleteAccountAlertViewController.modalPresentationStyle = .overFullScreen
         present(deleteAccountAlertViewController, animated: false)

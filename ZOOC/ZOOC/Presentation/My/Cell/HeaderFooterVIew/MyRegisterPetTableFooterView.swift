@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - MyAddButtonTappedDelegate
+
 protocol MyAddButtonTappedDelegate: AnyObject {
     func addPetButtonTapped(isSelected: Bool)
 }
@@ -74,25 +76,24 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
     
     public func dataBind(isFull: Bool) {
-        isFull ? NumberOfPetsRegisterdIsFull() : NumberOfPetsRegisterdIsNotFull()
+        updateUI(isFull: isFull)
     }
     
     //MARK: - Action Method
     
-    @objc
-    func addPetProfileButtonDidTap() {
+    @objc func addPetProfileButtonDidTap() {
         delegate?.addPetButtonTapped(isSelected: true)
     }
 }
 
 extension MyRegisterPetTableFooterView {
-    func NumberOfPetsRegisterdIsFull() {
-        petRegisterButtonSeparatorLineView.isHidden = true
-        addPetProfileButton.isHidden = true
-    }
-    
-    func NumberOfPetsRegisterdIsNotFull() {
-        petRegisterButtonSeparatorLineView.isHidden = false
-        addPetProfileButton.isHidden = false
+    func updateUI(isFull: Bool) {
+       if isFull{
+           petRegisterButtonSeparatorLineView.isHidden = true
+           addPetProfileButton.isHidden = true
+        } else {
+            petRegisterButtonSeparatorLineView.isHidden = false
+            addPetProfileButton.isHidden = false
+        }
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - EditButtonTappedDelegate
+
 protocol EditButtonTappedDelegate: AnyObject {
     func editButtonTapped()
 }
@@ -84,14 +86,17 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     }
     
     func dataBind(data: MyUser?) {
-        
-        if let imageURL = data?.photo{
-            profileImageView.kfSetImage(url: imageURL)
-        }
-        else {
-            profileImageView.image = Image.defaultProfile
-        }
         profileNameLabel.text = data?.nickName
+        data?.photo == nil ? setDefaultProfileImage() : setProfileImage(photo: (data?.photo)!)
     }
 }
 
+extension MyProfileSectionCollectionViewCell {
+    func setDefaultProfileImage() {
+        profileImageView.image = Image.defaultProfile
+    }
+    
+    func setProfileImage(photo: String) {
+        profileImageView.kfSetImage(url: photo)
+    }
+}

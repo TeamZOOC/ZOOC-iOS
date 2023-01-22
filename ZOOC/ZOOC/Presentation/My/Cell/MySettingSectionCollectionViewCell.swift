@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - SettingMenuTableViewCellDelegate
+
 protocol SettingMenuTableViewCellDelegate {
     func selectedSettingMenuTableViewCell(indexPath: IndexPath)
 }
@@ -19,7 +21,6 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
     var delegate: SettingMenuTableViewCellDelegate?
-    
     private var mySettingData: [MySettingModel] = MySettingModel.settingData
     
     //MARK: - UI Components

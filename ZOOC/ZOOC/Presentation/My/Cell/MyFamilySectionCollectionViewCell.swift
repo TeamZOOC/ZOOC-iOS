@@ -15,7 +15,6 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Properties
     
     private var myProfileData: MyUser?
-    
     private var myFamilyData: [MyUser] = []
     
     //MARK: - UI Components
