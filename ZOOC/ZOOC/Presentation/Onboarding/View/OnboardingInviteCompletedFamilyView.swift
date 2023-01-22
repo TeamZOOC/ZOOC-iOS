@@ -57,8 +57,7 @@ final class OnboardingInviteCompletedFamilyView: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeButtonCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
     }
     
