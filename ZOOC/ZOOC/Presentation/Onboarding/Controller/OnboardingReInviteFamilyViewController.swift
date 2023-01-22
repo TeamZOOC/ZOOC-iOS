@@ -43,13 +43,11 @@ final class OnboardingReInviteFamilyViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func inviteButtonDidTap() {
+    @objc private func inviteButtonDidTap() {
         pushToInviteCompletedFamilyView()
     }
 }

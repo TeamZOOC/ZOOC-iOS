@@ -7,14 +7,16 @@
 
 import UIKit
 
-protocol ChekedButtonTappedDelegate {
+//MARK: - ChekedButtonTappedDelegate
+
+protocol ChekedButtonTappedDelegate : AnyObject {
     func cellButtonTapped(isSelected: Bool, index: Int)
 }
 
 
 final class OnboardingAgreementTableViewCell: UITableViewCell {
     
-    var delegate: ChekedButtonTappedDelegate?
+    weak var delegate: ChekedButtonTappedDelegate?
     var index: Int = 0
     
     //MARK: - UI Components

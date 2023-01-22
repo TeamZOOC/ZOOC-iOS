@@ -48,13 +48,11 @@ final class OnboardingAgreementViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func signUpButtonDidTap() {
+    @objc private func signUpButtonDidTap() {
         pushToWelcomeView()
     }
 }

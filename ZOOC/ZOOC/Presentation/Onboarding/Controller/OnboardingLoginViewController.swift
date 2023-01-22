@@ -67,8 +67,7 @@ final class OnboardingLoginViewController: BaseViewController{
         
     }
     
-    @objc
-    func goHomeButtonDidTap(){
+    @objc func goHomeButtonDidTap(){
         changeRootViewController(ZoocTabBarController())
     }
 }

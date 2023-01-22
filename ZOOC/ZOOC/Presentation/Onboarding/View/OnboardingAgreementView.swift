@@ -93,8 +93,12 @@ final class OnboardingAgreementView: UIView {
     }
     
     private func register() {
-        agreeTableView.register(OnboardingAgreementTableViewCell.self, forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
-        agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
+        agreeTableView.register(
+            OnboardingAgreementTableViewCell.self,
+            forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
+        agreeTableView.register(
+            OnboardingAgreementTableHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
 }
 

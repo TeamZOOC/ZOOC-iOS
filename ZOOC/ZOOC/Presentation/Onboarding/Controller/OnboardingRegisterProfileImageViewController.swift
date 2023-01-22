@@ -79,8 +79,7 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Action Method
     
-    @objc
-    func createProfileButtonDidTap() {
+    @objc func createProfileButtonDidTap() {
         onboardingRegisterProfileImageView.createProfileButton.isEnabled = false
         onboardingRegisterProfileImageView.createProfileButton.backgroundColor = .zoocGray1
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
@@ -95,13 +94,11 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         
     }
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    func chooseProfileImage() {
+    @objc func chooseProfileImage() {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary

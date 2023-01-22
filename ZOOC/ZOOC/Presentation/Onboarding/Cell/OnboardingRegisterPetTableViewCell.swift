@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - DeleteButtonTappedDelegate
 
-protocol DeleteButtonTappedDelegate {
+protocol DeleteButtonTappedDelegate : AnyObject {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
     func canRegister(canRegister: Bool)
@@ -19,7 +19,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var delegate: DeleteButtonTappedDelegate?
+    weak var delegate: DeleteButtonTappedDelegate?
     var index: Int = 0
     var canRegister: Bool = false
     

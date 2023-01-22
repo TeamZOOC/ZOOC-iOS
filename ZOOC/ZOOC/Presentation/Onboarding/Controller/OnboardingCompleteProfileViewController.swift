@@ -59,18 +59,15 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func notGetCodeButtonDidTap() {
+    @objc private func notGetCodeButtonDidTap() {
         pushToRegisterPetView()
     }
     
-    @objc
-    private func getCodeButtonDidTap() {
+    @objc private func getCodeButtonDidTap() {
         pushToParticipateCompletedView()
     }
 }

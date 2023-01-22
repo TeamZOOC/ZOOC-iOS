@@ -132,8 +132,12 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private func register() {
-        registerPetTableView.register(OnboardingRegisterPetTableViewCell.self, forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
-        registerPetTableView.register(OnboardingRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
+        registerPetTableView.register(
+            OnboardingRegisterPetTableViewCell.self,
+            forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
+        registerPetTableView.register(
+            OnboardingRegisterPetTableFooterView.self,
+            forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
     }
 }
 

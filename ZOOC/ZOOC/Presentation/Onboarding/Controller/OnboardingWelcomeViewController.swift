@@ -52,13 +52,11 @@ final class OnboardingWelcomeViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    func nextButtonDidTap() {
+    @objc private func nextButtonDidTap() {
         pushToChooseFamilyRoleView()
     }
 }

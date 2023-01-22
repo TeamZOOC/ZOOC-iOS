@@ -11,9 +11,6 @@ import SnapKit
 import Then
 
 final class OnboardingLoginView: UIView {
-    //TODO:
-    //2. 카카오톡 로그인 아이콘 집어넣기
-    //3. 로티에 사용될 이미지 박기
     
     //MARK: - UI Components
     
@@ -52,8 +49,6 @@ final class OnboardingLoginView: UIView {
         $0.layer.cornerRadius = 27
         $0.clipsToBounds = true
         $0.backgroundColor = UIColor(r: 255, g: 231, b: 0)
-//        $0.contentMode = .scaleAspectFit
-//        $0.setImage(UIImage(named: "kakaoLoginButton"), for: .normal)
     }
     
     //MARK: - Life Cycles

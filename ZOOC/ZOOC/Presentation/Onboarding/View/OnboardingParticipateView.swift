@@ -11,7 +11,6 @@ import SnapKit
 import Then
 
 final class OnboardingParticipateView: UIView {
-    //TODO: 가족코드 입력 길이를 통해서 입력하기 버튼 활성화
     
     //MARK: - UI Components
     

@@ -99,18 +99,15 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func inviteLatelyButtonDidTap() {
+    @objc private func inviteLatelyButtonDidTap() {
         pushToMyInviteFamilyCompletdView()
     }
     
-    @objc
-    private func inviteButtonDidTap() {
+    @objc private func inviteButtonDidTap() {
         getInviteCode()
       
     }
