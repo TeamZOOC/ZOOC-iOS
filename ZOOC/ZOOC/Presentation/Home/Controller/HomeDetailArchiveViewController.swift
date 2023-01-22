@@ -294,6 +294,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
+            $0.height.greaterThanOrEqualTo(200)
         }
     }
     
@@ -312,13 +313,9 @@ final class HomeDetailArchiveViewController : BaseViewController {
         self.commentCollectionView.reloadData()
         
         DispatchQueue.main.async {
-            self.commentCollectionView.snp.remakeConstraints {
-                $0.top.equalTo(self.lineView.snp.bottom)
-                $0.leading.trailing.equalToSuperview()
-                $0.bottom.equalToSuperview()
-                $0.height.equalTo(self.commentCollectionView.contentSize.height)
+            self.commentCollectionView.snp.updateConstraints {
+                $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
             }
-            self.view.layoutIfNeeded()
         }
     }
     
@@ -328,7 +325,6 @@ final class HomeDetailArchiveViewController : BaseViewController {
             
             self.detailArchiveData = result
         }
-        
     }
     
     //MARK: - Action Method
