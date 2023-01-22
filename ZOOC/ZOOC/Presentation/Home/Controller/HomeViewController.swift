@@ -92,7 +92,7 @@ final class HomeViewController : BaseViewController {
         let detailVC = HomeDetailArchiveViewController()
         let petID = String(petData[index].id)
         detailVC.petID = petID
-        detailVC.getAPI(recordID: recordID, petID: petID)
+        detailVC.requestDetailArchiveAPI(recordID: recordID, petID: petID)
         
         detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)

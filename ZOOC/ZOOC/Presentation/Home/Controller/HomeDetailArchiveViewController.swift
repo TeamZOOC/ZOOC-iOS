@@ -17,8 +17,17 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
     var petID: String = "1"
-    private var detailArchiveData: HomeDetailArchiveResult?
+    private var detailArchiveData: HomeDetailArchiveResult? {
+        didSet{
+            updateUI()
+        }
+    }
     private var commentData: [CommentResult] = []
+    
+    enum PageDirection: Int{
+        case left
+        case right
+    }
     
     //MARK: - UI Components
     
@@ -29,8 +38,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private let etcButton = UIButton()
     
     private let petImageView = UIImageView()
-    private let previousButton = UIButton()
-    private let nextButton = UIButton ()
+    private let leftButton = UIButton()
+    private let rightButton = UIButton ()
     
     private let dateLabel = UILabel()
     private let writerImageView = UIImageView()
@@ -75,7 +84,6 @@ final class HomeDetailArchiveViewController : BaseViewController {
         
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
-        
     }
     
     private func gesture() {
@@ -87,11 +95,11 @@ final class HomeDetailArchiveViewController : BaseViewController {
                             action: #selector(etcButtonDidTap),
                             for: .touchUpInside)
          
-        previousButton.addTarget(self,
+        leftButton.addTarget(self,
                                  action: #selector(directionButtonDidTap),
                                  for: .touchUpInside)
         
-        nextButton.addTarget(self,
+        rightButton.addTarget(self,
                              action: #selector(directionButtonDidTap),
                              for: .touchUpInside)
         
@@ -109,7 +117,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         }
         
         backButton.do {
-            $0.setImage(Image.back, for: .normal)
+            $0.setImage(Image.xmark, for: .normal)
         }
         
         etcButton.do {
@@ -121,12 +129,12 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.clipsToBounds = true
         }
         
-        previousButton.do {
+        leftButton.do {
             $0.setImage(Image.previous, for: .normal)
             $0.tag = 0
-            }
+        }
         
-        nextButton.do {
+        rightButton.do {
             $0.setImage(Image.next, for: .normal)
             $0.tag = 1
         }
@@ -167,6 +175,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         
         commentEmojiButton.do {
             $0.setImage(Image.smile, for: .normal)
+            $0.contentMode = .scaleAspectFit
         }
     }
     
@@ -181,8 +190,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
         contentView.addSubviews(petImageView,
                                  backButton,
                                  etcButton,
-                                 previousButton,
-                                 nextButton,
+                                 leftButton,
+                                 rightButton,
                                  dateLabel,
                                  writerImageView,
                                  writerNameLabel,
@@ -242,13 +251,13 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.height.equalTo(petImageView.snp.width)
         }
         
-        previousButton.snp.makeConstraints {
+        leftButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(185)
             $0.leading.equalToSuperview().offset(13)
             $0.width.height.equalTo(46)
         }
         
-        nextButton.snp.makeConstraints {
+        rightButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(185)
             $0.trailing.equalToSuperview().offset(-13)
             $0.width.height.equalTo(46)
@@ -286,38 +295,38 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        
-        
     }
     
-    func getAPI(recordID: String, petID: String) {
+    private func updateUI() {
+        if let imageURL = detailArchiveData?.record.writerPhoto{
+            self.writerImageView.kfSetImage(url: imageURL)
+        } else {
+            self.writerImageView.image = Image.defaultProfile
+        }
+        
+        self.petImageView.kfSetImage(url: detailArchiveData?.record.photo)
+        self.dateLabel.text = detailArchiveData?.record.date
+        self.writerNameLabel.text = detailArchiveData?.record.writerName
+        self.contentLabel.text = detailArchiveData?.record.content
+        self.commentData = detailArchiveData?.comments ?? []
+        self.commentCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.commentCollectionView.snp.remakeConstraints {
+                $0.top.equalTo(self.lineView.snp.bottom)
+                $0.leading.trailing.equalToSuperview()
+                $0.bottom.equalToSuperview()
+                $0.height.equalTo(self.commentCollectionView.contentSize.height)
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func requestDetailArchiveAPI(recordID: String, petID: String) {
         HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
             self.detailArchiveData = result
-            if let imageURL = result.record.writerPhoto{
-                self.writerImageView.kfSetImage(url: imageURL)
-            }
-            else {
-                self.writerImageView.image = Image.defaultProfile
-            }
-            
-            self.petImageView.kfSetImage(url: result.record.photo)
-            self.dateLabel.text = result.record.date
-            self.writerNameLabel.text = result.record.writerName
-            self.contentLabel.text = result.record.content
-            self.commentData = result.comments
-            self.commentCollectionView.reloadData()
-            
-            DispatchQueue.main.async {
-                self.commentCollectionView.snp.remakeConstraints {
-                    $0.top.equalTo(self.lineView.snp.bottom)
-                    $0.leading.trailing.equalToSuperview()
-                    $0.bottom.equalToSuperview()
-                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
-                }
-                self.view.layoutIfNeeded()
-            }
         }
         
     }
@@ -331,26 +340,30 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     @objc
     func etcButtonDidTap() {
-        print("더보기 버튼 눌렸습니다.")
+        presentBottomAlert("더보기 기능은 곧 만나요~")
     }
     
     @objc
     func directionButtonDidTap(_ sender: UIButton) {
-        switch sender.tag{
-        case 0:
-            if let id = detailArchiveData?.leftID {
-                getAPI(recordID: String(id), petID: petID)
-            } else {
-                presentBottomAlert("마지막 페이지 입니다.")
-            }
-        case 1:
-            if let id = detailArchiveData?.rightID{
-                getAPI(recordID: String(id), petID: petID)
-            }else {
-                presentBottomAlert("마지막 페이지 입니다.")
-            }
-        default: print("directionButtonDidTap 디폴트에 진입했씁니다. 오류임!")
+        guard let direction = PageDirection.init(rawValue: sender.tag) else { return }
+        var message: String
+        var id: Int?
+        
+        switch direction {
+        case .left:
+            message = "가장 최근 페이지입니다."
+            id = detailArchiveData?.leftID
+        case .right:
+            message = "마지막 페이지 입니다."
+            id = detailArchiveData?.rightID
         }
+        
+        guard let id = id else {
+            presentBottomAlert(message)
+            return
+        }
+        
+        requestDetailArchiveAPI(recordID: String(id), petID: petID)
     }
     
     @objc
