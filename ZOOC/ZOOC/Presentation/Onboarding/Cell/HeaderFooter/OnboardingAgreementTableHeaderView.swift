@@ -32,7 +32,7 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
         $0.textAlignment = .left
     }
     
-    private lazy var checkedButton = UIButton().then {
+    private lazy var checkedButton = BaseButton().then {
         $0.setImage(Image.checkBox, for: .normal)
         $0.addTarget(self, action: #selector(allAgreementIsSelected), for: .touchUpInside)
     }

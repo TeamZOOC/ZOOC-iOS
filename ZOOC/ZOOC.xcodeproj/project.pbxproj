@@ -881,8 +881,8 @@
 		D26C68E4296DE5200088DC9A /* HeaderFooter */ = {
 			isa = PBXGroup;
 			children = (
-				D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */,
 				D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */,
+				D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */,
 			);
 			path = HeaderFooter;
 			sourceTree = "<group>";
