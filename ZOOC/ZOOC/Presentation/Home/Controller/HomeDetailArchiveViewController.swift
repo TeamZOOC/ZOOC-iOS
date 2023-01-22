@@ -73,11 +73,13 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         addKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         removeKeyboardNotifications()
     }
     
@@ -233,8 +235,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
         
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.height.greaterThanOrEqualTo(scrollView.contentSize.height).priority(.low)
-            $0.width.equalTo(scrollView.snp.width)
+            $0.height.equalTo(scrollView.frameLayoutGuide).priority(.low)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         //MARK: contentView Layout
@@ -301,7 +303,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.height.greaterThanOrEqualTo(200)
+            $0.height.greaterThanOrEqualTo(250)
         }
     }
     
@@ -319,38 +321,11 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     private func updateCommentsUI() {
-        print("1️⃣ reloadData 이전 ContentSize:  \(commentCollectionView.contentSize)")
         commentCollectionView.reloadData()
-        print("2️⃣ reloadData 이후 ContentSize:  \(commentCollectionView.contentSize)")
-        
-        //방법1: main.async
-//        DispatchQueue.main.async {
-//            print("3️⃣ main.async 에서의 ContentSize:  \(self.commentCollectionView.contentSize)")
-//            self.commentCollectionView.snp.updateConstraints {
-//                $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
-//            }
-//        }
-        
-        //방법2: layoutIfNeeded()
         commentCollectionView.layoutIfNeeded()
-        print("3️⃣ layoutIfNeeded 이후 ContentSize:  \(commentCollectionView.contentSize)")
         commentCollectionView.snp.updateConstraints {
             $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
         }
-        
-        //방법3: global.async 속 main.sync
-//        DispatchQueue.global().async {
-//            DispatchQueue.main.sync {
-//                print("3️⃣ global().async 속 main.sync에서의 ContentSize:  \(self.commentCollectionView.contentSize)")
-//                self.commentCollectionView.snp.updateConstraints {
-//                    $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
-//                }
-//            }
-//        }
-        
-        
-        
-        
     }
     
     func requestDetailArchiveAPI(recordID: String, petID: String) {
@@ -365,9 +340,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private func requestCommentsAPI(recordID: String, text: String) {
         HomeAPI.shared.postComment(recordID: recordID, comment: text) { result in
             guard let result = self.validateResult(result) as? [CommentResult] else { return }
-            self.commentsData = result
             
-            self.updateCommentsUI()
+            self.commentsData = result
         }
     }
     
@@ -424,7 +398,6 @@ extension HomeDetailArchiveViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
         
         cell.dataBind(data: commentsData[indexPath.item])
-        print("👀 cellForItemAt \(indexPath.item)")
         return cell
     }
 }
@@ -447,7 +420,7 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 18, bottom: 25, right: 18)
+        return UIEdgeInsets(top: 10, left: 18, bottom: 30, right: 18)
     }
 }
 
