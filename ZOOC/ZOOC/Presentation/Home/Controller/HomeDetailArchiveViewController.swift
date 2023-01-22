@@ -13,121 +13,34 @@ import Then
 final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - Properties
-    var petID: String = "1"
+    
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
+    var petID: String = "1"
     private var detailArchiveData: HomeDetailArchiveResult?
     private var commentData: [CommentResult] = []
     
     //MARK: - UI Components
     
-    private let scrollView : UIScrollView = {
-        let view = UIScrollView()
-        view.bounces = false
-        view.showsVerticalScrollIndicator = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentInsetAdjustmentBehavior = .never
-        return view
-    }()
+    private let scrollView = UIScrollView()
     private let contentView = UIView()
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.back, for: .normal)
-        button.addTarget(self,
-                         action: #selector(backButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let backButton = UIButton()
+    private let etcButton = UIButton()
     
-    private lazy var etcButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.etc, for: .normal)
-        button.addTarget(self,
-                         action: #selector(etcButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let petImageView = UIImageView()
+    private let previousButton = UIButton()
+    private let nextButton = UIButton ()
     
-    private let petImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    private let dateLabel = UILabel()
+    private let writerImageView = UIImageView()
+    private let writerNameLabel = UILabel()
+    private let contentLabel = UILabel()
+    private let lineView = UIView()
     
-    private lazy var previousButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.previous, for: .normal)
-        button.tag = 0
-        button.addTarget(self, action: #selector(directionButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.next, for: .normal)
-        button.tag = 1
-        button.addTarget(self, action: #selector(directionButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody1
-        label.textColor = .zoocGray2
-        return label
-    }()
-    
-    private let writerImageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 12
-        return view
-    }()
-    
-    private let writerNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody1
-        label.textColor = .zoocGray2
-        return label
-    }()
-    
-    private let contentLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody3
-        label.textColor = .zoocDarkGray2
-        return label
-    }()
-    
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .zoocLightGray
-        return view
-    }()
-    
-    private let commentCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
-        collectionView.isScrollEnabled = false
-        collectionView.backgroundColor = .clear
-        return collectionView
-    }()
-    
+    private let commentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let commentTextField = HomeDetailArchiveCommentTextField()
-    
-    private lazy var commentEmojiButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.smile, for: .normal)
-        button.addTarget(self,
-                         action: #selector(emojiButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let commentEmojiButton = UIButton()
     
     //MARK: - Life Cycle
     
@@ -135,8 +48,11 @@ final class HomeDetailArchiveViewController : BaseViewController {
         super.viewDidLoad()
         
         register()
-        setUI()
-        setLayout()
+        gesture()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,25 +69,108 @@ final class HomeDetailArchiveViewController : BaseViewController {
     //MARK: - Custom Method
     
     private func register() {
+        commentCollectionView.delegate = self
+        commentCollectionView.dataSource = self
+        commentTextField.commentDelegate = self
+        
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
         
-        commentCollectionView.delegate = self
-        commentCollectionView.dataSource = self
+    }
+    
+    private func gesture() {
+        backButton.addTarget(self,
+                             action: #selector(backButtonDidTap),
+                             for: .touchUpInside)
+
+        etcButton.addTarget(self,
+                            action: #selector(etcButtonDidTap),
+                            for: .touchUpInside)
+         
+        previousButton.addTarget(self,
+                                 action: #selector(directionButtonDidTap),
+                                 for: .touchUpInside)
         
-        commentTextField.commentDelegate = self
+        nextButton.addTarget(self,
+                             action: #selector(directionButtonDidTap),
+                             for: .touchUpInside)
+        
+        commentEmojiButton.addTarget(self,
+                                     action: #selector(emojiButtonDidTap),
+                                     for: .touchUpInside)
     }
     
-    private func setUI() {
-//        petImageView.image = detailArchiveMockData.petImage
-//        dateLabel.text = detailArchiveMockData.date
-//        writerImageView.image = detailArchiveMockData.writerImage
-//        writerNameLabel.text = detailArchiveMockData.writerName
-//        contentLabel.text = detailArchiveMockData.content
+    private func style() {
+        scrollView.do {
+            $0.bounces = false
+            $0.showsVerticalScrollIndicator = false
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.contentInsetAdjustmentBehavior = .never
+        }
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        etcButton.do {
+            $0.setImage(Image.etc, for: .normal)
+        }
+        
+        petImageView.do {
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+        }
+        
+        previousButton.do {
+            $0.setImage(Image.previous, for: .normal)
+            $0.tag = 0
+            }
+        
+        nextButton.do {
+            $0.setImage(Image.next, for: .normal)
+            $0.tag = 1
+        }
+        
+        dateLabel.do {
+            $0.font = .zoocBody1
+            $0.textColor = .zoocGray2
+        }
+        
+        writerImageView.do {
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 12
+        }
+        
+        writerNameLabel.do {
+            $0.font = .zoocBody1
+            $0.textColor = .zoocGray2
+        }
+        
+        contentLabel.do {
+            $0.font = .zoocBody3
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        lineView.do {
+            $0.backgroundColor = .zoocLightGray
+        }
+        
+        commentCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            
+            $0.collectionViewLayout = layout
+            $0.isScrollEnabled = false
+            $0.backgroundColor = .clear
+        }
+        
+        commentEmojiButton.do {
+            $0.setImage(Image.smile, for: .normal)
+        }
     }
     
-    
-    private func setLayout() {
+    private func hierarchy() {
         view.addSubviews(scrollView,
                          commentTextField,
                          commentEmojiButton)
@@ -190,7 +189,10 @@ final class HomeDetailArchiveViewController : BaseViewController {
                                  contentLabel,
                                  lineView,
                                  commentCollectionView)
-        
+    }
+    
+    private func layout() {
+  
         //MARK: view Layout
         
         scrollView.snp.makeConstraints {

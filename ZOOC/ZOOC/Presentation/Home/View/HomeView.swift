@@ -69,8 +69,8 @@ final class HomeView : UIView{
         petCollectionView.do {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
-            $0.collectionViewLayout = layout
             
+            $0.collectionViewLayout = layout
             $0.backgroundColor = .clear
             $0.showsHorizontalScrollIndicator = false
         }
@@ -90,8 +90,8 @@ final class HomeView : UIView{
         archiveListCollectionView.do {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
-            $0.collectionViewLayout = layout
             
+            $0.collectionViewLayout = layout
             $0.backgroundColor = .clear
             $0.showsHorizontalScrollIndicator = false
         }
@@ -99,8 +99,8 @@ final class HomeView : UIView{
         archiveGridCollectionView.do {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .vertical
-            $0.collectionViewLayout = layout
             
+            $0.collectionViewLayout = layout
             $0.isHidden = true
             $0.backgroundColor = .clear
             $0.showsHorizontalScrollIndicator = false
