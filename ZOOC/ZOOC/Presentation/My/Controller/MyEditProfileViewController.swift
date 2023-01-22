@@ -31,13 +31,17 @@ final class EditProfileViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     
     //MARK: - Custom Method
     
-    func register() {
+    private func register() {
         editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func target() {
         editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)

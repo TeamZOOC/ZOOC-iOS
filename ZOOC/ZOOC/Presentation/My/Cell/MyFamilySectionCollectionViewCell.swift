@@ -110,7 +110,9 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     public func register() {
-        familyCollectionView.register(MyFamilyCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
+        familyCollectionView.register(
+            MyFamilyCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
     }
     
     public func dataBind(myFamilyData: [MyUser], myProfileData: MyUser?) {

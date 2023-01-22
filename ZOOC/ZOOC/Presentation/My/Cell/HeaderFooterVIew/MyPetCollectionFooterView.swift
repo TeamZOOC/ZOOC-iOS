@@ -58,8 +58,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     
     //MARK: - Action Method
     
-    @objc
-    func registerButtonDidTap() {
+    @objc func registerButtonDidTap() {
         delegate?.registerPetButtonTapped(isSelected: true)
     }
 }

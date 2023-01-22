@@ -26,12 +26,16 @@ final class AppInformationViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
     
     private func register() {
         appInformationView.appInformationTableView.delegate = self
+    }
+    
+    private func target() {
         appInformationView.appInformationTableView.dataSource = self
         appInformationView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
     }

@@ -93,9 +93,14 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     }
     
     public func register() {
-        petCollectionView.register(MyPetCollectionViewCell.self, forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
+        petCollectionView.register(
+            MyPetCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
         
-        petCollectionView.register(MyPetCollectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
+        petCollectionView.register(
+            MyPetCollectionFooterView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
     
     public func dataBind(myPetMemberData : [MyPet]) {

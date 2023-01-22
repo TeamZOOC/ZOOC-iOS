@@ -33,13 +33,17 @@ final class MyRegisterPetViewController: UIViewController{
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    private func register() {
         myRegisterPetView.registerPetTableView.delegate = self
         myRegisterPetView.registerPetTableView.dataSource = self
+    }
+    
+    private func target() {
         myRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         myRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
@@ -54,13 +58,11 @@ final class MyRegisterPetViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func registerPetButtonDidTap() {
+    @objc private func registerPetButtonDidTap() {
         registerPet()
     }
 }
