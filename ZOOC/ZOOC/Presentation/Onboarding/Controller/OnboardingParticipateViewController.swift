@@ -26,21 +26,18 @@ final class OnboardingParticipateViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
     
     func register() {
-        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
-        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        
         onboardingParticipateView.familyCodeTextField.delegate = self
     }
     
-    func pushToParticipateCompletedView() {
-        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
-        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
+    func target() {
+        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -77,6 +74,11 @@ extension OnboardingParticipateViewController {
             }
 
         }
+    }
+    
+    func pushToParticipateCompletedView() {
+        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
+        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
     }
 }
 

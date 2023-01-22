@@ -25,18 +25,38 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
-        updateCompleteProfileView()
+        target()
+        style()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         onboardingCompleteProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingCompleteProfileView.getCodeButton.addTarget(self, action: #selector(getCodeButtonDidTap), for: .touchUpInside)
         onboardingCompleteProfileView.notGetCodeButton.addTarget(self, action: #selector(notGetCodeButtonDidTap), for: .touchUpInside)
     }
     
+    func style() {
+        updateCompleteProfileView()
+    }
+    
+    //MARK: - Action Method
+    
+    @objc private func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func notGetCodeButtonDidTap() {
+        pushToRegisterPetView()
+    }
+    
+    @objc private func getCodeButtonDidTap() {
+        pushToParticipateCompletedView()
+    }
+}
+
+extension OnboardingCompleteProfileViewController {
     func updateCompleteProfileView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.onboardingCompleteProfileView.completeProfileLabel.textColor = .zoocGray1
@@ -56,19 +76,4 @@ final class OnboardingCompleteProfileViewController: UIViewController{
         let onboardingParticipateViewController = OnboardingRegisterPetViewController()
         self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
     }
-    
-    //MARK: - Action Method
-    
-    @objc private func backButtonDidTap() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func notGetCodeButtonDidTap() {
-        pushToRegisterPetView()
-    }
-    
-    @objc private func getCodeButtonDidTap() {
-        pushToParticipateCompletedView()
-    }
 }
-

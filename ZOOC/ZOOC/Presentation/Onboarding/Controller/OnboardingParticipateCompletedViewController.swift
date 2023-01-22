@@ -25,12 +25,12 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingParticipateCompletedView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }

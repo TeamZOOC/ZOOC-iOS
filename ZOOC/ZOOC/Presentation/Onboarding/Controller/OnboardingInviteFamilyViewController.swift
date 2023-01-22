@@ -45,19 +45,35 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        register()
+        
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    private func target() {
         onboardingInviteFamilyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
         onboardingInviteFamilyView.inviteButton.addTarget(self, action: #selector(inviteButtonDidTap), for: .touchUpInside)
-        
         onboardingInviteFamilyView.inviteLatelyButton.addTarget(self, action: #selector(inviteLatelyButtonDidTap), for: .touchUpInside)
     }
     
+    //MARK: - Action Method
+    
+    @objc private func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func inviteLatelyButtonDidTap() {
+        pushToMyInviteFamilyCompletdView()
+    }
+    
+    @objc private func inviteButtonDidTap() {
+        getInviteCode()
+      
+    }
+}
+
+extension OnboardingInviteFamilyViewController {
     private func pushToMyReInviteCompletdView() {
         let onboardingReInviteFamilyViewController = OnboardingReInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingReInviteFamilyViewController, animated: false)
@@ -79,12 +95,7 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
         self.present(activityViewController, animated: true, completion: nil)
         
         activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
-            if success {
-                
-                self.pushToMyReInviteCompletdView()
-            }  else  {
-                print("링크 공유에 실패했습니다.")
-            }
+            success ? self.pushToMyReInviteCompletdView() : print("링크 공유에 실패했습니다.")
         }
     }
     
@@ -95,20 +106,5 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
             self.invitedCode = code
             self.shareInviteCode()
         }
-    }
-    
-    //MARK: - Action Method
-    
-    @objc private func backButtonDidTap() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func inviteLatelyButtonDidTap() {
-        pushToMyInviteFamilyCompletdView()
-    }
-    
-    @objc private func inviteButtonDidTap() {
-        getInviteCode()
-      
     }
 }

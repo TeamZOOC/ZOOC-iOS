@@ -31,6 +31,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,15 +44,11 @@ final class OnboardingRegisterPetViewController: UIViewController{
     func register() {
         onboardingRegisterPetView.registerPetTableView.delegate = self
         onboardingRegisterPetView.registerPetTableView.dataSource = self
-        
-        onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
-        onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
-    func pushToInviteFamilyViewController() {
-        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
-        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
+    func target() {
+        onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -141,10 +138,11 @@ extension OnboardingRegisterPetViewController: AddButtonTappedDelegate {
 
 extension OnboardingRegisterPetViewController {
     private func checkIsFull() {
-        if(petRegisterData.count == 4){
-            isFull = true
-        } else {
-            isFull = false
-        }
+        isFull = petRegisterData.count == 4 ? true : false
+    }
+    
+    private func pushToInviteFamilyViewController() {
+        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
+        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }
 }

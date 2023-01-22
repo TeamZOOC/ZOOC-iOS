@@ -13,6 +13,7 @@ import Then
 final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Properties
+    
     var isPhoto: Bool = false
     var image: UIImage?
     
@@ -30,15 +31,8 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
-        
-        let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                       value: UIColor.zoocGradientGreen,
-                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
-                
-        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
-     
+        style()
+        target()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,21 +49,19 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Custom Method
     
-    private func register() {
-        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
-        
-        onboardingRegisterProfileImageView.backButton.addTarget(self,
-                                                                action: #selector(backButtonDidTap),
-                                                                for: .touchUpInside)
-        
-        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self,
-                                                                                action: #selector(chooseProfileImage),
-                                                                                for: .touchUpInside)
+    private func style() {
+        let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                       value: UIColor.zoocGradientGreen,
+                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
+                
+        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
     }
     
-    private func pushToCompleteProfileView() {
-        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
-        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
+    private func target() {
+        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
+        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
     }
     
     func dataSend(profileName: String) {
@@ -114,5 +106,12 @@ extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerD
             self.image = image
             onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
         }
+    }
+}
+
+extension OnboardingRegisterProfileImageViewController {
+    private func pushToCompleteProfileView() {
+        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
+        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
     }
 }

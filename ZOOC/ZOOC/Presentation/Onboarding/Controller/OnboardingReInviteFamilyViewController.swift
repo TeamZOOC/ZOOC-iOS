@@ -25,20 +25,14 @@ final class OnboardingReInviteFamilyViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    private func target() {
         onboardingReInviteFamilyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
         onboardingReInviteFamilyView.inviteButton.addTarget(self, action: #selector(inviteButtonDidTap), for: .touchUpInside)
-    }
-    
-    private func pushToInviteCompletedFamilyView() {
-        let onboardingInviteCompletedFamilyViewController = OnboardingInviteFamilyCompletedViewController()
-        self.navigationController?.pushViewController(onboardingInviteCompletedFamilyViewController, animated: true)
     }
     
     //MARK: - Action Method
@@ -49,5 +43,12 @@ final class OnboardingReInviteFamilyViewController: UIViewController{
     
     @objc private func inviteButtonDidTap() {
         pushToInviteCompletedFamilyView()
+    }
+}
+
+extension OnboardingReInviteFamilyViewController {
+    private func pushToInviteCompletedFamilyView() {
+        let onboardingInviteCompletedFamilyViewController = OnboardingInviteFamilyCompletedViewController()
+        self.navigationController?.pushViewController(onboardingInviteCompletedFamilyViewController, animated: true)
     }
 }

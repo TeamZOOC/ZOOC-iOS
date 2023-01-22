@@ -25,12 +25,12 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         onboardingInviteCompletedFamilyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingInviteCompletedFamilyView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }

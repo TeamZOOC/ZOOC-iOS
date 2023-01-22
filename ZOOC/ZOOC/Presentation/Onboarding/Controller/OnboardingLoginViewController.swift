@@ -27,27 +27,29 @@ final class OnboardingLoginViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    private func target() {
         onboardingLoginView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonDidTap), for: .touchUpInside)
-        onboardingLoginView.goHomeButton.addTarget(self,
-                                                   action: #selector(goHomeButtonDidTap),
-                                                   for: .touchUpInside)
-    }
-    
-    func pushToAgreementView() {
-        let agreementViewController = OnboardingAgreementViewController()
-        self.navigationController?.pushViewController(agreementViewController, animated: true)
+        onboardingLoginView.goHomeButton.addTarget(self, action: #selector(goHomeButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
     
-    @objc
-    func kakaoLoginButtonDidTap() {
+    @objc func kakaoLoginButtonDidTap() {
+        kakaoSocialLogin()
+    }
+    
+    @objc func goHomeButtonDidTap(){
+        changeRootViewController(ZoocTabBarController())
+    }
+}
+
+extension OnboardingLoginViewController {
+    private func kakaoSocialLogin() {
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -64,10 +66,9 @@ final class OnboardingLoginViewController: BaseViewController{
                 }
             }
         }
-        
     }
-    
-    @objc func goHomeButtonDidTap(){
-        changeRootViewController(ZoocTabBarController())
+    private func pushToAgreementView() {
+        let agreementViewController = OnboardingAgreementViewController()
+        self.navigationController?.pushViewController(agreementViewController, animated: true)
     }
 }

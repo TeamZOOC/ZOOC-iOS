@@ -29,6 +29,7 @@ final class OnboardingAgreementViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
@@ -36,14 +37,11 @@ final class OnboardingAgreementViewController: BaseViewController {
     private func register() {
         onboardingAgreementView.agreeTableView.delegate = self
         onboardingAgreementView.agreeTableView.dataSource = self
-        
-        onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
-    private func pushToWelcomeView() {
-        let welcomeViewController = OnboardingWelcomeViewController()
-        self.navigationController?.pushViewController(welcomeViewController, animated: true)
+    private func target() {
+        onboardingAgreementView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingAgreementView.signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -96,23 +94,7 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
 
 extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
     func cellButtonTapped(isSelected: Bool, index: Int) {
-        agreementData[index].isSelected = isSelected
-        
-        if (agreementData[0].isSelected == true &&
-            agreementData[1].isSelected == true &&
-            agreementData[3].isSelected == true) {
-            onboardingAgreementView.signUpButton.isEnabled = true
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-            if agreementData[2].isSelected {
-                allSelected = true
-            }else {
-                allSelected = false
-            }
-        } else {
-            onboardingAgreementView.signUpButton.isEnabled = false
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-            allSelected = false
-        }
+        updateUICellButtonTapped(isSelected: isSelected, index: index)
         onboardingAgreementView.agreeTableView.reloadData()
     }
 }
@@ -121,6 +103,28 @@ extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
 
 extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
     func allCellButtonTapped(isSelected: Bool) {
+        updateUICellAllButtonTapped(isSelected: isSelected)
+        onboardingAgreementView.agreeTableView.reloadData()
+    }
+}
+
+extension OnboardingAgreementViewController {
+    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
+        agreementData[index].isSelected = isSelected
+        if (agreementData[0].isSelected == true &&
+            agreementData[1].isSelected == true &&
+            agreementData[3].isSelected == true) {
+            onboardingAgreementView.signUpButton.isEnabled = true
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+            allSelected = agreementData[2].isSelected ? true : false
+        } else {
+            onboardingAgreementView.signUpButton.isEnabled = false
+            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+            allSelected = false
+        }
+    }
+    
+    private func updateUICellAllButtonTapped(isSelected: Bool) {
         let agreementDataIndexList: [Int] = [0, 1, 2, 3]
         if isSelected {
             allSelected = true
@@ -137,6 +141,12 @@ extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
                 agreementData[$0].isSelected = false
             }
         }
-        onboardingAgreementView.agreeTableView.reloadData()
+    }
+    
+    private func pushToWelcomeView() {
+        let welcomeViewController = OnboardingWelcomeViewController()
+        self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
 }
+
+

@@ -25,29 +25,20 @@ final class OnboardingWelcomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
-        updateWelcomeView()
+        target()
+        style()
+        
     }
     
     //MARK: - Custom Method
     
-    private func register() {
+    private func target() {
         onboardingWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
-    private func updateWelcomeView() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.onboardingWelcomeView.welcomeLabel.textColor = .zoocGray1
-            self.onboardingWelcomeView.welcomeSubLabel.isHidden = false
-            self.onboardingWelcomeView.welcomeImage.isHidden = false
-            self.onboardingWelcomeView.nextButton.isHidden = false
-        }
-    }
-    
-    private func pushToChooseFamilyRoleView() {
-        let onboardingChooseFamilyRoleViewController = OnboardingChooseFamilyRoleViewController()
-        self.navigationController?.pushViewController(onboardingChooseFamilyRoleViewController, animated: true)
+    private func style() {
+        updateWelcomeView()
     }
     
     //MARK: - Action Method
@@ -61,3 +52,18 @@ final class OnboardingWelcomeViewController: UIViewController{
     }
 }
 
+extension OnboardingWelcomeViewController {
+    private func updateWelcomeView() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.onboardingWelcomeView.welcomeLabel.textColor = .zoocGray1
+            self.onboardingWelcomeView.welcomeSubLabel.isHidden = false
+            self.onboardingWelcomeView.welcomeImage.isHidden = false
+            self.onboardingWelcomeView.nextButton.isHidden = false
+        }
+    }
+    
+    private func pushToChooseFamilyRoleView() {
+        let onboardingChooseFamilyRoleViewController = OnboardingChooseFamilyRoleViewController()
+        self.navigationController?.pushViewController(onboardingChooseFamilyRoleViewController, animated: true)
+    }
+}

@@ -25,7 +25,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +39,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
