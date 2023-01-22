@@ -14,20 +14,27 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - Properties
     
-    private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
-    
-    var petID: String = "1"
-    private var detailArchiveData: HomeDetailArchiveResult? {
-        didSet{
-            updateUI()
-        }
-    }
-    private var commentData: [CommentResult] = []
-    
     enum PageDirection: Int{
         case left
         case right
     }
+    
+    private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
+    
+    var petID: String = "1"
+    
+    private var detailArchiveData: HomeDetailArchiveResult? {
+        didSet{
+            updateArchiveUI()
+        }
+    }
+    
+    private var commentsData: [CommentResult] = [] {
+        didSet{
+            updateCommentsUI()
+        }
+    }
+    
     
     //MARK: - UI Components
     
@@ -298,7 +305,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         }
     }
     
-    private func updateUI() {
+    private func updateArchiveUI() {
         if let imageURL = detailArchiveData?.record.writerPhoto{
             self.writerImageView.kfSetImage(url: imageURL)
         } else {
@@ -309,14 +316,41 @@ final class HomeDetailArchiveViewController : BaseViewController {
         self.dateLabel.text = detailArchiveData?.record.date
         self.writerNameLabel.text = detailArchiveData?.record.writerName
         self.contentLabel.text = detailArchiveData?.record.content
-        self.commentData = detailArchiveData?.comments ?? []
-        self.commentCollectionView.reloadData()
+    }
+    
+    private func updateCommentsUI() {
+        print("1️⃣ reloadData 이전 ContentSize:  \(commentCollectionView.contentSize)")
+        commentCollectionView.reloadData()
+        print("2️⃣ reloadData 이후 ContentSize:  \(commentCollectionView.contentSize)")
         
-        DispatchQueue.main.async {
-            self.commentCollectionView.snp.updateConstraints {
-                $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
-            }
+        //방법1: main.async
+//        DispatchQueue.main.async {
+//            print("3️⃣ main.async 에서의 ContentSize:  \(self.commentCollectionView.contentSize)")
+//            self.commentCollectionView.snp.updateConstraints {
+//                $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
+//            }
+//        }
+        
+        //방법2: layoutIfNeeded()
+        commentCollectionView.layoutIfNeeded()
+        print("3️⃣ layoutIfNeeded 이후 ContentSize:  \(commentCollectionView.contentSize)")
+        commentCollectionView.snp.updateConstraints {
+            $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
         }
+        
+        //방법3: global.async 속 main.sync
+//        DispatchQueue.global().async {
+//            DispatchQueue.main.sync {
+//                print("3️⃣ global().async 속 main.sync에서의 ContentSize:  \(self.commentCollectionView.contentSize)")
+//                self.commentCollectionView.snp.updateConstraints {
+//                    $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
+//                }
+//            }
+//        }
+        
+        
+        
+        
     }
     
     func requestDetailArchiveAPI(recordID: String, petID: String) {
@@ -324,6 +358,16 @@ final class HomeDetailArchiveViewController : BaseViewController {
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
             self.detailArchiveData = result
+            self.commentsData = result.comments
+        }
+    }
+    
+    private func requestCommentsAPI(recordID: String, text: String) {
+        HomeAPI.shared.postComment(recordID: recordID, comment: text) { result in
+            guard let result = self.validateResult(result) as? [CommentResult] else { return }
+            self.commentsData = result
+            
+            self.updateCommentsUI()
         }
     }
     
@@ -372,13 +416,15 @@ final class HomeDetailArchiveViewController : BaseViewController {
 extension HomeDetailArchiveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return commentData.count
+        return commentsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: commentData[indexPath.row])
+        
+        cell.dataBind(data: commentsData[indexPath.item])
+        print("👀 cellForItemAt \(indexPath.item)")
         return cell
     }
 }
@@ -390,7 +436,7 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - 36        
-        if commentData[indexPath.row].isEmoji{
+        if commentsData[indexPath.item].isEmoji{
             return CGSize(width: width, height: 126)
         } else {
             return CGSize(width: width, height: 70)
@@ -401,28 +447,17 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 18, bottom: 10, right: 18)
+        return UIEdgeInsets(top: 10, left: 18, bottom: 25, right: 18)
     }
 }
 
+//MARK: - CommentTextFieldDelegate
+
 extension HomeDetailArchiveViewController: CommentTextFieldDelegate {
     
-    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField,
-                                   text: String) {
-        print("VC에서 '\(text)'를 전달 받았습니다")
-        HomeAPI.shared.postComment(recordID: "\(detailArchiveData?.record.id ?? 1)",
-                                   comment: text) { result in
-            guard let result = self.validateResult(result) as? [CommentResult] else { return }
-            self.commentData = result
-            self.commentCollectionView.reloadData()
-            DispatchQueue.main.async {
-                self.commentCollectionView.snp.remakeConstraints {
-                    $0.top.equalTo(self.lineView.snp.bottom)
-                    $0.leading.trailing.equalToSuperview()
-                    $0.bottom.equalToSuperview()
-                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
-                }
-            }
-        }
+    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField, text: String) {
+        guard let id = detailArchiveData?.record.id else { return }
+        textfield.text = nil
+        requestCommentsAPI(recordID: String(id), text: text)
     }
 }
