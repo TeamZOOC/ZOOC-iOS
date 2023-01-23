@@ -55,12 +55,6 @@ final class EditProfileViewController: BaseViewController {
         }
     }
     
-    private func popToMyProfileView() {
-        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
-        beforeVC.getMyPageAPI()
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     //MARK: - Action Method
     
     @objc func chooseProfileImage() {
@@ -156,6 +150,12 @@ extension EditProfileViewController {
     
     func setFamilyMemberProfileImage(photo: String) {
         editProfileView.editProfileImageButton.kfSetButtonImage(url: photo)
+    }
+    
+    private func popToMyProfileView() {
+        guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
+        beforeVC.getMyPageAPI()
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

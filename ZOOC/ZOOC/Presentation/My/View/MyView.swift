@@ -53,11 +53,21 @@ final class MyView: UIView  {
     }
     
     private func register() {
-        myCollectionView.register(MyProfileSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier)
-        myCollectionView.register(MyFamilySectionCollectionViewCell.self, forCellWithReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier)
-        myCollectionView.register(MyPetSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier)
-        myCollectionView.register(MySettingSectionCollectionViewCell.self, forCellWithReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier)
-        myCollectionView.register(MyDeleteAccountSectionCollectionViewCell.self, forCellWithReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier)
+        myCollectionView.register(
+            MyProfileSectionCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyProfileSectionCollectionViewCell.cellIdentifier)
+        myCollectionView.register(
+            MyFamilySectionCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier)
+        myCollectionView.register(
+            MyPetSectionCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier)
+        myCollectionView.register(
+            MySettingSectionCollectionViewCell.self,
+            forCellWithReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier)
+        myCollectionView.register(
+            MyDeleteAccountSectionCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyDeleteAccountSectionCollectionViewCell.cellIdentifier)
     }
 }
 

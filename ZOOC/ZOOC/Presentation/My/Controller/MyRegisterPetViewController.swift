@@ -48,10 +48,6 @@ final class MyRegisterPetViewController: UIViewController{
         myRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
-    func registerPet() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func dataSend(myPetMemberData: [MyPet]) {
         self.myPetMemberData = myPetMemberData
     }
@@ -190,6 +186,10 @@ extension MyRegisterPetViewController {
         } else {
             isFull = false
         }
+    }
+    
+    func registerPet() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -40,11 +40,8 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .zoocWhite2
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
-        contentView.layer.cornerRadius = 21
-        contentView.clipsToBounds = true
-        
+        contentView.makeCornerRadius(ratio: 21)
+        contentView.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGray)
     }
     
     private func setLayout() {

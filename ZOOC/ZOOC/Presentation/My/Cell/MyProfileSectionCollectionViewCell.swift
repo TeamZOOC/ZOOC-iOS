@@ -25,11 +25,8 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     //MARK: - UI Components
     
     public var profileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 36
-        $0.layer.borderColor = UIColor.zoocGray1.cgColor
-        $0.layer.borderWidth = 2
-        $0.clipsToBounds = true
-        $0.layer.masksToBounds = true
+        $0.makeCornerRadius(ratio: 36)
+        $0.makeCornerBorder(borderWidth: 2, borderColor: .zoocGray1)
         $0.contentMode = .scaleAspectFill
     }
     
@@ -43,10 +40,8 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         $0.titleLabel!.font = .zoocCaption
         $0.setTitleColor(.zoocGray2, for: .normal)
         $0.backgroundColor = .zoocWhite1
-        $0.layer.cornerRadius = 12
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGreen.cgColor
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 12)
+        $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGreen)
     }
     
     //MARK: - Life Cycles

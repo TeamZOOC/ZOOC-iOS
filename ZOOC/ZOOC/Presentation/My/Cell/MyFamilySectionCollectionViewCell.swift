@@ -41,7 +41,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         $0.backgroundColor = .zoocGray2
     }
     
-    public lazy var familyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    public lazy var familyCollectionView = UICollectionView(frame: .zero).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         

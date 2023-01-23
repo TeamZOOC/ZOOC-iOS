@@ -62,7 +62,9 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     }
     
     public func register() {
-        settingMenuTableView.register(MySettingTableViewCell.self, forCellReuseIdentifier: MySettingTableViewCell.cellIdentifier)
+        settingMenuTableView.register(
+            MySettingTableViewCell.self,
+            forCellReuseIdentifier: MySettingTableViewCell.cellIdentifier)
     }
 }
 

@@ -20,11 +20,18 @@ final class MyNoticeSettingViewController: BaseViewController {
     
     override func loadView() {
         self.view = myNoticeSettingView
-        myNoticeSettingView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        target()
+    }
+    
+    //MARK: - Custom Method
+    
+    private func target() {
+        myNoticeSettingView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
     }
     
     //MARK: - Action Method

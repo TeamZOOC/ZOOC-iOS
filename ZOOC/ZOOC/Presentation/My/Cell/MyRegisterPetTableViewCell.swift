@@ -31,11 +31,9 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     
     public lazy var petProfileImageButton = UIButton().then {
         $0.setImage(Image.defaultProfile, for: .normal)
-        $0.layer.borderWidth = 5
-        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 35
+        $0.makeCornerBorder(borderWidth: 5, borderColor: .zoocWhite1)
+        $0.makeCornerRadius(ratio: 35)
         $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
     }
     
     public var petProfileNameTextField = UITextField().then {
@@ -43,10 +41,8 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         $0.addLeftPadding(leftInset: 10)
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
-        $0.layer.cornerRadius = 20
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGray.cgColor
-        $0.clipsToBounds = true
+        $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGray)
+        $0.makeCornerRadius(ratio: 20)
     }
     
     public lazy var deletePetProfileButton = UIButton().then {
@@ -61,9 +57,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         
         setUI()
         setLayout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
-        petProfileNameTextField.delegate = self
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -99,14 +93,15 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
+    private func register() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        petProfileNameTextField.delegate = self
+    }
+    
     func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
         self.index = index
         self.myPetRegisterData = petData
-        if(petData.count == 1) {
-            deletePetProfileButton.isHidden = true
-        } else {
-            deletePetProfileButton.isHidden = false
-        }
+        updateUI(petCnt: petData.count)
     }
     
     func registerPet() {
@@ -146,5 +141,12 @@ extension MyRegisterPetTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         registerPet()
         delegate?.giveRegisterData(myPetRegisterData: myPetRegisterData)
+    }
+}
+
+
+extension MyRegisterPetTableViewCell {
+    private func updateUI(petCnt: Int) {
+        deletePetProfileButton.isHidden = petCnt == 1 ? true : false
     }
 }
