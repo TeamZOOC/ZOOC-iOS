@@ -13,121 +13,50 @@ import Then
 final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - Properties
-    var petID: String = "1"
+    
+    enum PageDirection: Int{
+        case left
+        case right
+    }
+    
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
-    private var detailArchiveData: HomeDetailArchiveResult?
-    private var commentData: [CommentResult] = []
+    var petID: String = "1"
+    
+    private var detailArchiveData: HomeDetailArchiveResult? {
+        didSet{
+            updateArchiveUI()
+        }
+    }
+    
+    private var commentsData: [CommentResult] = [] {
+        didSet{
+            updateCommentsUI()
+        }
+    }
+    
     
     //MARK: - UI Components
     
-    private let scrollView : UIScrollView = {
-        let view = UIScrollView()
-        view.bounces = false
-        view.showsVerticalScrollIndicator = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentInsetAdjustmentBehavior = .never
-        return view
-    }()
+    private let scrollView = UIScrollView()
     private let contentView = UIView()
     
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.back, for: .normal)
-        button.addTarget(self,
-                         action: #selector(backButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let backButton = UIButton()
+    private let etcButton = UIButton()
     
-    private lazy var etcButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.etc, for: .normal)
-        button.addTarget(self,
-                         action: #selector(etcButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let petImageView = UIImageView()
+    private let leftButton = UIButton()
+    private let rightButton = UIButton ()
     
-    private let petImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    private let dateLabel = UILabel()
+    private let writerImageView = UIImageView()
+    private let writerNameLabel = UILabel()
+    private let contentLabel = UILabel()
+    private let lineView = UIView()
     
-    private lazy var previousButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.previous, for: .normal)
-        button.tag = 0
-        button.addTarget(self, action: #selector(directionButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.next, for: .normal)
-        button.tag = 1
-        button.addTarget(self, action: #selector(directionButtonDidTap), for: .touchUpInside)
-        return button
-    }()
-    
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody1
-        label.textColor = .zoocGray2
-        return label
-    }()
-    
-    private let writerImageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 12
-        return view
-    }()
-    
-    private let writerNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody1
-        label.textColor = .zoocGray2
-        return label
-    }()
-    
-    private let contentLabel: UILabel = {
-        let label = UILabel()
-        label.font = .zoocBody3
-        label.textColor = .zoocDarkGray2
-        return label
-    }()
-    
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .zoocLightGray
-        return view
-    }()
-    
-    private let commentCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
-        collectionView.isScrollEnabled = false
-        collectionView.backgroundColor = .clear
-        return collectionView
-    }()
-    
+    private let commentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let commentTextField = HomeDetailArchiveCommentTextField()
-    
-    private lazy var commentEmojiButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Image.smile, for: .normal)
-        button.addTarget(self,
-                         action: #selector(emojiButtonDidTap),
-                         for: .touchUpInside)
-        return button
-    }()
+    private let commentEmojiButton = UIButton()
     
     //MARK: - Life Cycle
     
@@ -135,17 +64,22 @@ final class HomeDetailArchiveViewController : BaseViewController {
         super.viewDidLoad()
         
         register()
-        setUI()
-        setLayout()
+        gesture()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         addKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         removeKeyboardNotifications()
     }
     
@@ -153,25 +87,108 @@ final class HomeDetailArchiveViewController : BaseViewController {
     //MARK: - Custom Method
     
     private func register() {
-        commentCollectionView.register(HomeCommentCollectionViewCell.self,
-                                       forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
-        
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
-        
         commentTextField.commentDelegate = self
+        
+        commentCollectionView.register(HomeCommentCollectionViewCell.self,
+                                       forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
     }
     
-    private func setUI() {
-//        petImageView.image = detailArchiveMockData.petImage
-//        dateLabel.text = detailArchiveMockData.date
-//        writerImageView.image = detailArchiveMockData.writerImage
-//        writerNameLabel.text = detailArchiveMockData.writerName
-//        contentLabel.text = detailArchiveMockData.content
+    private func gesture() {
+        backButton.addTarget(self,
+                             action: #selector(backButtonDidTap),
+                             for: .touchUpInside)
+
+        etcButton.addTarget(self,
+                            action: #selector(etcButtonDidTap),
+                            for: .touchUpInside)
+         
+        leftButton.addTarget(self,
+                                 action: #selector(directionButtonDidTap),
+                                 for: .touchUpInside)
+        
+        rightButton.addTarget(self,
+                             action: #selector(directionButtonDidTap),
+                             for: .touchUpInside)
+        
+        commentEmojiButton.addTarget(self,
+                                     action: #selector(emojiButtonDidTap),
+                                     for: .touchUpInside)
     }
     
+    private func style() {
+        scrollView.do {
+            $0.bounces = false
+            $0.showsVerticalScrollIndicator = false
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.contentInsetAdjustmentBehavior = .never
+        }
+        
+        backButton.do {
+            $0.setImage(Image.xmark, for: .normal)
+        }
+        
+        etcButton.do {
+            $0.setImage(Image.etc, for: .normal)
+        }
+        
+        petImageView.do {
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+        }
+        
+        leftButton.do {
+            $0.setImage(Image.previous, for: .normal)
+            $0.tag = 0
+        }
+        
+        rightButton.do {
+            $0.setImage(Image.next, for: .normal)
+            $0.tag = 1
+        }
+        
+        dateLabel.do {
+            $0.font = .zoocBody1
+            $0.textColor = .zoocGray2
+        }
+        
+        writerImageView.do {
+            $0.contentMode = .scaleAspectFill
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 12
+        }
+        
+        writerNameLabel.do {
+            $0.font = .zoocBody1
+            $0.textColor = .zoocGray2
+        }
+        
+        contentLabel.do {
+            $0.font = .zoocBody3
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        lineView.do {
+            $0.backgroundColor = .zoocLightGray
+        }
+        
+        commentCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            
+            $0.collectionViewLayout = layout
+            $0.isScrollEnabled = false
+            $0.backgroundColor = .clear
+        }
+        
+        commentEmojiButton.do {
+            $0.setImage(Image.smile, for: .normal)
+            $0.contentMode = .scaleAspectFit
+        }
+    }
     
-    private func setLayout() {
+    private func hierarchy() {
         view.addSubviews(scrollView,
                          commentTextField,
                          commentEmojiButton)
@@ -182,15 +199,18 @@ final class HomeDetailArchiveViewController : BaseViewController {
         contentView.addSubviews(petImageView,
                                  backButton,
                                  etcButton,
-                                 previousButton,
-                                 nextButton,
+                                 leftButton,
+                                 rightButton,
                                  dateLabel,
                                  writerImageView,
                                  writerNameLabel,
                                  contentLabel,
                                  lineView,
                                  commentCollectionView)
-        
+    }
+    
+    private func layout() {
+  
         //MARK: view Layout
         
         scrollView.snp.makeConstraints {
@@ -215,8 +235,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
         
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.height.greaterThanOrEqualTo(scrollView.contentSize.height).priority(.low)
-            $0.width.equalTo(scrollView.snp.width)
+            $0.height.equalTo(scrollView.frameLayoutGuide).priority(.low)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
         
         //MARK: contentView Layout
@@ -240,13 +260,13 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.height.equalTo(petImageView.snp.width)
         }
         
-        previousButton.snp.makeConstraints {
+        leftButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(185)
             $0.leading.equalToSuperview().offset(13)
             $0.width.height.equalTo(46)
         }
         
-        nextButton.snp.makeConstraints {
+        rightButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(185)
             $0.trailing.equalToSuperview().offset(-13)
             $0.width.height.equalTo(46)
@@ -283,41 +303,46 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
+            $0.height.greaterThanOrEqualTo(250)
         }
-        
-        
     }
     
-    func getAPI(recordID: String, petID: String) {
+    private func updateArchiveUI() {
+        if let imageURL = detailArchiveData?.record.writerPhoto{
+            self.writerImageView.kfSetImage(url: imageURL)
+        } else {
+            self.writerImageView.image = Image.defaultProfile
+        }
+        
+        self.petImageView.kfSetImage(url: detailArchiveData?.record.photo)
+        self.dateLabel.text = detailArchiveData?.record.date
+        self.writerNameLabel.text = detailArchiveData?.record.writerName
+        self.contentLabel.text = detailArchiveData?.record.content
+    }
+    
+    private func updateCommentsUI() {
+        commentCollectionView.reloadData()
+        commentCollectionView.layoutIfNeeded()
+        commentCollectionView.snp.updateConstraints {
+            $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
+        }
+    }
+    
+    func requestDetailArchiveAPI(recordID: String, petID: String) {
         HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
             self.detailArchiveData = result
-            if let imageURL = result.record.writerPhoto{
-                self.writerImageView.kfSetImage(url: imageURL)
-            }
-            else {
-                self.writerImageView.image = Image.defaultProfile
-            }
-            
-            self.petImageView.kfSetImage(url: result.record.photo)
-            self.dateLabel.text = result.record.date
-            self.writerNameLabel.text = result.record.writerName
-            self.contentLabel.text = result.record.content
-            self.commentData = result.comments
-            self.commentCollectionView.reloadData()
-            
-            DispatchQueue.main.async {
-                self.commentCollectionView.snp.remakeConstraints {
-                    $0.top.equalTo(self.lineView.snp.bottom)
-                    $0.leading.trailing.equalToSuperview()
-                    $0.bottom.equalToSuperview()
-                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
-                }
-                self.view.layoutIfNeeded()
-            }
+            self.commentsData = result.comments
         }
-        
+    }
+    
+    private func requestCommentsAPI(recordID: String, text: String) {
+        HomeAPI.shared.postComment(recordID: recordID, comment: text) { result in
+            guard let result = self.validateResult(result) as? [CommentResult] else { return }
+            
+            self.commentsData = result
+        }
     }
     
     //MARK: - Action Method
@@ -329,26 +354,30 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     @objc
     func etcButtonDidTap() {
-        print("더보기 버튼 눌렸습니다.")
+        presentBottomAlert("더보기 기능은 곧 만나요~")
     }
     
     @objc
     func directionButtonDidTap(_ sender: UIButton) {
-        switch sender.tag{
-        case 0:
-            if let id = detailArchiveData?.leftID {
-                getAPI(recordID: String(id), petID: petID)
-            } else {
-                presentBottomAlert("마지막 페이지 입니다.")
-            }
-        case 1:
-            if let id = detailArchiveData?.rightID{
-                getAPI(recordID: String(id), petID: petID)
-            }else {
-                presentBottomAlert("마지막 페이지 입니다.")
-            }
-        default: print("directionButtonDidTap 디폴트에 진입했씁니다. 오류임!")
+        guard let direction = PageDirection.init(rawValue: sender.tag) else { return }
+        var message: String
+        var id: Int?
+        
+        switch direction {
+        case .left:
+            message = "가장 최근 페이지입니다."
+            id = detailArchiveData?.leftID
+        case .right:
+            message = "마지막 페이지 입니다."
+            id = detailArchiveData?.rightID
         }
+        
+        guard let id = id else {
+            presentBottomAlert(message)
+            return
+        }
+        
+        requestDetailArchiveAPI(recordID: String(id), petID: petID)
     }
     
     @objc
@@ -361,13 +390,14 @@ final class HomeDetailArchiveViewController : BaseViewController {
 extension HomeDetailArchiveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return commentData.count
+        return commentsData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier, for: indexPath) as? HomeCommentCollectionViewCell else { return UICollectionViewCell() }
-        cell.dataBind(data: commentData[indexPath.row])
+        
+        cell.dataBind(data: commentsData[indexPath.item])
         return cell
     }
 }
@@ -379,7 +409,7 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - 36        
-        if commentData[indexPath.row].isEmoji{
+        if commentsData[indexPath.item].isEmoji{
             return CGSize(width: width, height: 126)
         } else {
             return CGSize(width: width, height: 70)
@@ -390,28 +420,17 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 18, bottom: 10, right: 18)
+        return UIEdgeInsets(top: 10, left: 18, bottom: 30, right: 18)
     }
 }
 
+//MARK: - CommentTextFieldDelegate
+
 extension HomeDetailArchiveViewController: CommentTextFieldDelegate {
     
-    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField,
-                                   text: String) {
-        print("VC에서 '\(text)'를 전달 받았습니다")
-        HomeAPI.shared.postComment(recordID: "\(detailArchiveData?.record.id ?? 1)",
-                                   comment: text) { result in
-            guard let result = self.validateResult(result) as? [CommentResult] else { return }
-            self.commentData = result
-            self.commentCollectionView.reloadData()
-            DispatchQueue.main.async {
-                self.commentCollectionView.snp.remakeConstraints {
-                    $0.top.equalTo(self.lineView.snp.bottom)
-                    $0.leading.trailing.equalToSuperview()
-                    $0.bottom.equalToSuperview()
-                    $0.height.equalTo(self.commentCollectionView.contentSize.height)
-                }
-            }
-        }
+    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField, text: String) {
+        guard let id = detailArchiveData?.record.id else { return }
+        textfield.text = nil
+        requestCommentsAPI(recordID: String(id), text: text)
     }
 }
