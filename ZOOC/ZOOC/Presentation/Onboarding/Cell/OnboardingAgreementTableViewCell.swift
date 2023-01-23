@@ -74,7 +74,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     //MARK: - Action Method
     
     @objc func checkButtonDidTap() {
-        checkButtonIsSelected()
+        updatecheckButtonUI()
     }
 }
 
@@ -89,7 +89,7 @@ extension OnboardingAgreementTableViewCell {
         }
     }
     
-    private func checkButtonIsSelected() {
+    private func updatecheckButtonUI() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)
             checkedButton.setImage(Image.checkBoxFill, for: .normal)

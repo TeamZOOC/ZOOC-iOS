@@ -26,8 +26,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton().then {
-        $0.makeButtonBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
-        $0.makeButtonCornerRadius(ratio: 35)
+        $0.makeCornerBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
+        $0.makeCornerRadius(ratio: 35)
     }
     
     public var petProfileNameTextField = UITextField().then {
@@ -35,9 +35,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         $0.addLeftPadding(leftInset: 10)
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
-        $0.layer.cornerRadius = 20
-        $0.clipsToBounds = true
-        $0.makeBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
+        $0.makeCornerRadius(ratio: 20)
+        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
     }
     
     public lazy var deletePetProfileButton = UIButton().then {

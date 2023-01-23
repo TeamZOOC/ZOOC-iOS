@@ -20,14 +20,12 @@ final class OnboardingReInviteFamilyView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private let titleLabel = UILabel().then {
@@ -63,7 +61,7 @@ final class OnboardingReInviteFamilyView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.backgroundColor = .zoocGradientGreen
-        $0.makeButtonCornerRadius(ratio: 27)
+        $0.makeCornerRadius(ratio: 27)
     }
     
     //MARK: - Life Cycle

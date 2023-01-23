@@ -26,16 +26,6 @@ extension UIButton {
                         options: [.transition(.fade(1.0))], progressBlock: nil)
         }
     }
-    
-    func makeButtonCornerRadius(ratio: CGFloat) {
-        layer.cornerRadius = ratio
-        clipsToBounds = true
-    }
-    
-    func makeButtonBorder(borderWidth: CGFloat, borderColor: UIColor) {
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor
-    }
 }
 
 

@@ -31,8 +31,8 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
         $0.setTitleColor(.zoocDarkGreen, for: .normal)
         $0.titleLabel?.font = .zoocBody2
         $0.titleLabel?.textAlignment = .center
-        $0.makeButtonCornerRadius(ratio: 23.5)
-        $0.makeButtonBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
+        $0.makeCornerRadius(ratio: 23.5)
+        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     

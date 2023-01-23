@@ -20,14 +20,12 @@ final class OnboardingInviteCompletedFamilyView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private var completeProfileLabel = UILabel().then {
@@ -36,7 +34,7 @@ final class OnboardingInviteCompletedFamilyView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
-        $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
+        $0.asFontColor(targetString: "합류 완료!", color: .zoocMainGreen)
     }
     
     private var completeProfileSubLabel = UILabel().then {
@@ -57,7 +55,7 @@ final class OnboardingInviteCompletedFamilyView: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.makeButtonCornerRadius(ratio: 27)
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
     }
     

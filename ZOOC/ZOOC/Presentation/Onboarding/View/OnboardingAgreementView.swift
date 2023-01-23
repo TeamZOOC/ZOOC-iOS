@@ -37,7 +37,7 @@ final class OnboardingAgreementView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.makeButtonCornerRadius(ratio: 27)
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGray1
         $0.isEnabled = false
     }

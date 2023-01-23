@@ -21,9 +21,8 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     //MARK: - UI Components
     
     private var allAgreementView = UIView().then {
-        $0.layer.cornerRadius = 12
-        $0.clipsToBounds = true
-        $0.makeBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
+        $0.makeCornerRadius(ratio: 12)
+        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
     }
     
     private var allAgreementLabel = UILabel().then {
@@ -33,15 +32,14 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
         $0.textAlignment = .left
     }
     
-    private lazy var checkedButton = BaseButton().then {
+    private lazy var allCheckedButton = BaseButton().then {
         $0.setImage(Image.checkBox, for: .normal)
-        $0.addTarget(self, action: #selector(allAgreementIsSelected), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(checkedButtonDidTap), for: .touchUpInside)
     }
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        setUI()
         setLayout()
     }
     
@@ -49,12 +47,11 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUI() {
-    }
+    //MARK: - Custom Method
     
     private func setLayout() {
         contentView.addSubview(allAgreementView)
-        allAgreementView.addSubviews(allAgreementLabel, checkedButton)
+        allAgreementView.addSubviews(allAgreementLabel, allCheckedButton)
         
         allAgreementView.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -68,7 +65,7 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
             $0.leading.equalToSuperview().offset(18)
         }
         
-        checkedButton.snp.makeConstraints {
+        allCheckedButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
             $0.size.equalTo(20)
@@ -76,21 +73,28 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     }
     
     func dataBind(all: Bool){
-        if all {
-            checkedButton.setImage(Image.checkBoxFill, for: .normal)
-        } else {
-            checkedButton.setImage(Image.checkBox, for: .normal)
-        }
+        updateUI(all: all)
     }
     
-    @objc func allAgreementIsSelected() {
+    @objc func checkedButtonDidTap() {
+        updateAllCheckedButtonUI()
+    }
+}
+
+extension OnboardingAgreementTableHeaderView {
+    private func updateUI(all: Bool) {
+        let checkButtonImage = all ? Image.checkBoxFill : Image.checkBox
+        allCheckedButton.setImage(checkButtonImage, for: .normal)
+    }
+    
+    private func updateAllCheckedButtonUI() {
         if isSelected {
             isSelected = false
-            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+            allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
             delegate?.allCellButtonTapped(isSelected: false)
         } else {
             isSelected = true
-            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+            allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
             delegate?.allCellButtonTapped(isSelected: true)
         }
     }
