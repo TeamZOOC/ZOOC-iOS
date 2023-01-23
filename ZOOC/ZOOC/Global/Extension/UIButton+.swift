@@ -19,7 +19,7 @@ extension UIButton {
         setAttributedTitle(attributedString, for: .normal)
     }
     
-    func kfSetButtonImage(url : String){
+    func kfSetButtonImage(url : String) {
         if let url = URL(string: url) {
             kf.setImage(with: url,
                         for: .normal, placeholder: nil,
@@ -27,3 +27,8 @@ extension UIButton {
         }
     }
 }
+
+
+
+
+

@@ -7,14 +7,17 @@
 
 import UIKit
 
-protocol ChekedButtonTappedDelegate {
+//MARK: - ChekedButtonTappedDelegate
+
+protocol ChekedButtonTappedDelegate : AnyObject {
     func cellButtonTapped(isSelected: Bool, index: Int)
 }
 
-
 final class OnboardingAgreementTableViewCell: UITableViewCell {
     
-    var delegate: ChekedButtonTappedDelegate?
+    //MARK: - Properties
+    
+    weak var delegate: ChekedButtonTappedDelegate?
     var index: Int = 0
     
     //MARK: - UI Components
@@ -25,8 +28,8 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         $0.textAlignment = .left
     }
     
-    private lazy var checkedButton = UIButton().then {
-        $0.addTarget(self, action: #selector(agreementIsSelected), for: .touchUpInside)
+    private lazy var checkedButton = BaseButton().then {
+        $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Life Cycles
@@ -65,6 +68,18 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     }
     
     public func dataBind(model: OnboardingAgreementModel, index: Int) {
+        updateUI(model: model, index: index)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc func checkButtonDidTap() {
+        updatecheckButtonUI()
+    }
+}
+
+extension OnboardingAgreementTableViewCell {
+    private func updateUI(model: OnboardingAgreementModel, index: Int) {
         self.index = index
         menuLabel.text = model.title
         if model.isSelected {
@@ -74,9 +89,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
-    //MARK: - Action Method
-    
-    @objc func agreementIsSelected() {
+    private func updatecheckButtonUI() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)
             checkedButton.setImage(Image.checkBoxFill, for: .normal)

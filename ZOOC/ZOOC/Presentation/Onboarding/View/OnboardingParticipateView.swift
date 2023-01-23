@@ -11,7 +11,6 @@ import SnapKit
 import Then
 
 final class OnboardingParticipateView: UIView {
-    //TODO: 가족코드 입력 길이를 통해서 입력하기 버튼 활성화
     
     //MARK: - UI Components
     
@@ -21,14 +20,12 @@ final class OnboardingParticipateView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private var participateTitleLabel = UILabel().then {
@@ -44,8 +41,7 @@ final class OnboardingParticipateView: UIView {
         $0.font = .zoocBody2
         $0.textColor = .zoocDarkGreen
         $0.placeholder = "  ex) SEF33210"
-        $0.layer.cornerRadius = 8
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 8)
     }
     
     private var participateImage = UIImageView().then {
@@ -58,8 +54,7 @@ final class OnboardingParticipateView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGray1
     }
     

@@ -20,14 +20,12 @@ final class OnboardingCompleteProfileView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completeProfileLabel = UILabel().then {
@@ -58,8 +56,7 @@ final class OnboardingCompleteProfileView: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
         $0.isHidden = true
     }
@@ -69,8 +66,7 @@ final class OnboardingCompleteProfileView: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
         $0.isHidden = true
     }

@@ -20,6 +20,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     private lazy var petRegisterData: [OnboardingPetRegisterModel] = [petProfile]
     
     private var isFull: Bool = false
+    private var addButtonClicked: Bool = false
     
     //MARK: - Life Cycle
     
@@ -31,6 +32,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,26 +45,20 @@ final class OnboardingRegisterPetViewController: UIViewController{
     func register() {
         onboardingRegisterPetView.registerPetTableView.delegate = self
         onboardingRegisterPetView.registerPetTableView.dataSource = self
-        
-        onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
-        onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
-    func pushToInviteFamilyViewController() {
-        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
-        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
+    func target() {
+        onboardingRegisterPetView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
 
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func registerPetButtonDidTap() {
+    @objc private func registerPetButtonDidTap() {
         pushToInviteFamilyViewController()
     }
 }
@@ -137,16 +133,18 @@ extension OnboardingRegisterPetViewController: AddButtonTappedDelegate {
         if isSelected {
             petRegisterData.append(petProfile)
         }
+        addButtonClicked = true
         onboardingRegisterPetView.registerPetTableView.reloadData()
     }
 }
 
 extension OnboardingRegisterPetViewController {
     private func checkIsFull() {
-        if(petRegisterData.count == 4){
-            isFull = true
-        } else {
-            isFull = false
-        }
+        isFull = petRegisterData.count == 4 ? true : false
+    }
+    
+    private func pushToInviteFamilyViewController() {
+        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
+        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }
 }

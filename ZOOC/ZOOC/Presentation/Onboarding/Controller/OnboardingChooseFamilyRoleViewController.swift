@@ -25,24 +25,21 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         dismissKeyboardWhenTappedAround()
-       // addKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        //removeKeyboardNotifications()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
@@ -51,8 +48,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
     //MARK: - Action Method
     
-    @objc
-    private func textDidChange(_ notification: Notification) {
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 10 {
@@ -72,16 +68,14 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         }
     }
     
-    @objc
-    private func pushToRegisterProfileImageView() {
+    @objc private func pushToRegisterProfileImageView() {
         let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
         let profileName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
         onboardingRegisterProfileImageViewController.dataSend(profileName: profileName)
         self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
     }
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
 }

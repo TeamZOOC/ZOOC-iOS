@@ -46,8 +46,7 @@ final class OnboardingWelcomeView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
         $0.isHidden = true
     }

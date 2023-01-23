@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - DeleteButtonTappedDelegate
 
-protocol DeleteButtonTappedDelegate {
+protocol DeleteButtonTappedDelegate : AnyObject {
     func deleteButtonTapped(isSelected: Bool, index: Int)
     
     func canRegister(canRegister: Bool)
@@ -19,17 +19,15 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var delegate: DeleteButtonTappedDelegate?
+    weak var delegate: DeleteButtonTappedDelegate?
     var index: Int = 0
     var canRegister: Bool = false
     
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton().then {
-        $0.layer.borderWidth = 5
-        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 35
-        $0.clipsToBounds = true
+        $0.makeCornerBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
+        $0.makeCornerRadius(ratio: 35)
     }
     
     public var petProfileNameTextField = UITextField().then {
@@ -37,10 +35,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         $0.addLeftPadding(leftInset: 10)
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
-        $0.layer.cornerRadius = 20
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGray.cgColor
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 20)
+        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
     }
     
     public lazy var deletePetProfileButton = UIButton().then {
@@ -55,8 +51,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         
         setUI()
         setLayout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -93,27 +88,21 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
+    private func register() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
     func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        petProfileImageButton.setImage(model.profileImage, for: .normal)
-        self.index = index
-        
-        if(petCount == 1){
-            deletePetProfileButton.isHidden = true
-        } else {
-            deletePetProfileButton.isHidden = false
-        }
+        updateUI(model: model, index: index, petCount: petCount)
     }
     
     //MARK: - Action Method
     
-    @objc
-    private func deletePetProfileButtonDidTap() {
+    @objc private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
     }
     
-    @objc
-    private func textDidChange(_ notification: Notification) {
-        print("true")
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 4 {
@@ -130,5 +119,13 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
+}
+
+extension OnboardingRegisterPetTableViewCell {
+    private func updateUI(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
+        self.index = index
+        petProfileImageButton.setImage(model.profileImage, for: .normal)
+        deletePetProfileButton.isHidden = petCount == 1 ? true : false
     }
 }

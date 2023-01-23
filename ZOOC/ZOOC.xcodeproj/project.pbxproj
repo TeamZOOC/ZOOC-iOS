@@ -15,8 +15,6 @@
 		4C6B186C296CB8730059840D /* RecordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B186B296CB8730059840D /* RecordCompleteViewController.swift */; };
 		4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */; };
 		4C8A7C33297063F400783979 /* OnboardingInviteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */; };
-		4C94035E2962F5470003A9BF /* MyFamilyInviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */; };
-		4C9403602964695A0003A9BF /* MyInviteCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */; };
 		870D062A297BEB7900ADAD04 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D0629297BEB7900ADAD04 /* HomeView.swift */; };
 		871EA33C296F3E6200D0E8CC /* HomePetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33B296F3E6200D0E8CC /* HomePetResult.swift */; };
 		871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33D296F529C00D0E8CC /* UIImageView+.swift */; };
@@ -154,6 +152,7 @@
 		D27D956C296CBA2D0097CD03 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D956B296CBA2D0097CD03 /* UIButton+.swift */; };
 		D27D95D5296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D95D4296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift */; };
 		D27D95D7296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */; };
+		D2DD45C7297D9612001722A1 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD45C6297D9612001722A1 /* BaseButton.swift */; };
 		D2F193612970B3FB00AD87D3 /* HomeNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */; };
 		D2F193632970B95E00AD87D3 /* HomeNoticeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */; };
 		D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */; };
@@ -173,8 +172,6 @@
 		4C6B186B296CB8730059840D /* RecordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCompleteViewController.swift; sourceTree = "<group>"; };
 		4C6B186D296DBFE40059840D /* RecordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAlertViewController.swift; sourceTree = "<group>"; };
 		4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteResult.swift; sourceTree = "<group>"; };
-		4C94035D2962F5470003A9BF /* MyFamilyInviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyInviteViewController.swift; sourceTree = "<group>"; };
-		4C94035F2964695A0003A9BF /* MyInviteCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInviteCompleteViewController.swift; sourceTree = "<group>"; };
 		870D0629297BEB7900ADAD04 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		871EA33B296F3E6200D0E8CC /* HomePetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetResult.swift; sourceTree = "<group>"; };
 		871EA33D296F529C00D0E8CC /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -307,6 +304,7 @@
 		D27D956B296CBA2D0097CD03 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		D27D95D4296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilySectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2DD45C6297D9612001722A1 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeModel.swift; sourceTree = "<group>"; };
 		D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeResult.swift; sourceTree = "<group>"; };
 		D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterUserRequestDto.swift; sourceTree = "<group>"; };
@@ -418,6 +416,7 @@
 				D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */,
 				8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */,
 				876554A2295848D5006BBDA9 /* BaseViewController.swift */,
+				D2DD45C6297D9612001722A1 /* BaseButton.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -882,8 +881,8 @@
 		D26C68E4296DE5200088DC9A /* HeaderFooter */ = {
 			isa = PBXGroup;
 			children = (
-				D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */,
 				D26C85EB2968D2E100AEAF9B /* OnboardingAgreementTableHeaderView.swift */,
+				D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */,
 			);
 			path = HeaderFooter;
 			sourceTree = "<group>";
@@ -1065,6 +1064,7 @@
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
 				D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */,
+				D2DD45C7297D9612001722A1 /* BaseButton.swift in Sources */,
 				871EA351297042D800D0E8CC /* RecordResult.swift in Sources */,
 				D23503052964743100F01101 /* MyAppInformationModel.swift in Sources */,
 				D26C85DD2968B0A500AEAF9B /* MyNoticeSettingViewController.swift in Sources */,
@@ -1277,7 +1277,7 @@
 				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6DNHAHXG9;
+				DEVELOPMENT_TEAM = 27VUFHH5W2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1297,7 +1297,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meltsplit.ZOOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hellohidi.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1316,7 +1316,7 @@
 				BASE_URL = "http://3.36.236.44:3000";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T6DNHAHXG9;
+				DEVELOPMENT_TEAM = 27VUFHH5W2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
@@ -1336,7 +1336,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.meltsplit.ZOOC;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hellohidi.ZOOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

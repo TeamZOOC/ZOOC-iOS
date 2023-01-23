@@ -10,6 +10,7 @@ import Foundation
 import Foundation
 
 // MARK: - MyResult
+
 struct OnboardingResult: Codable {
     let status: Int
     let success: Bool
@@ -18,6 +19,7 @@ struct OnboardingResult: Codable {
 }
 
 // MARK: - DataClass
+
 struct OnboardingTokenData: Codable {
     let jwtToken: String
     

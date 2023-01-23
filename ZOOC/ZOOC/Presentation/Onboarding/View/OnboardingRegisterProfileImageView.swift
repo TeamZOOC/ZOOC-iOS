@@ -22,14 +22,12 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var registerProfileImageLabel = UILabel().then {
@@ -49,10 +47,8 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     public var registerProfileImageButton = UIButton().then {
         $0.setImage(Image.cameraCircleBig, for: .normal)
-        $0.layer.borderWidth = 7
-        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 73.5
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 73.5)
+        $0.makeCornerBorder(borderWidth: 7, borderColor: .zoocWhite1)
         $0.contentMode = .scaleAspectFill
     }
     
@@ -61,8 +57,7 @@ final class OnboardingRegisterProfileImageView: UIView {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGradientGreen
     }
     

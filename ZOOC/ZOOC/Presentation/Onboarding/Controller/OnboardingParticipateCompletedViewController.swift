@@ -25,25 +25,23 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
     }
     
     //MARK: - Custom Method
     
-    func register() {
+    func target() {
         onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingParticipateCompletedView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func startButtonDidTap(){
+    @objc private func startButtonDidTap(){
         changeRootViewController(ZoocTabBarController())
     }
 }
