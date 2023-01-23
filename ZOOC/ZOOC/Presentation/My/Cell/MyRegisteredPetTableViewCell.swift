@@ -14,8 +14,7 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     //MARK: - UI Components
     
     public lazy var petProfileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 30
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 30)
         $0.contentMode = .scaleAspectFill
     }
     

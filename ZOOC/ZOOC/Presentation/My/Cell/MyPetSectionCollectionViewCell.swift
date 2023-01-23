@@ -38,7 +38,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         $0.textAlignment = .center
     }
     
-    public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    public lazy var petCollectionView = UICollectionView(frame: .zero).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -67,8 +67,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     private func setUI() {
         self.backgroundColor = .white
-        self.layer.cornerRadius = 12
-        self.clipsToBounds = true
+        self.makeCornerRadius(ratio: 12)
     }
     
     private func setLayout() {
@@ -153,9 +152,7 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
 
 extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
     func registerPetButtonTapped(isSelected: Bool) {
-        if isSelected {
-            delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
-        }
+        delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
     }
 }
 

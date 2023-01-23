@@ -20,8 +20,7 @@ final class MyRegisterPetView: UIView {
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private var registerPetTitleLabel = UILabel().then {
@@ -50,8 +49,7 @@ final class MyRegisterPetView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGray1
         $0.isEnabled = false
     }

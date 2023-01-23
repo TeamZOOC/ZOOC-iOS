@@ -27,8 +27,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     private lazy var registerPetButton = UIButton().then {
         $0.backgroundColor = .zoocLightGray
         $0.setImage(Image.plus, for: .normal)
-        $0.layer.cornerRadius = 20
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 20)
         $0.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
     }
     

@@ -26,15 +26,14 @@ final class EditProfileView: UIView {
     
     public var editProfileImageButton = UIButton().then {
         $0.setImage(Image.logoSymbol, for: .normal)
-        $0.layer.cornerRadius = 54.5
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 54.5)
         $0.contentMode = .scaleAspectFill
     }
     
     private var editProfileCameraIconImageView = UIImageView().then {
         $0.image = Image.cameraCircleGreen
         $0.contentMode = .scaleAspectFill
-        $0.layer.cornerRadius = 17.5
+        $0.makeCornerRadius(ratio: 17.5)
     }
     
     public var editProfileNameTextField = UITextField().then {
@@ -56,8 +55,7 @@ final class EditProfileView: UIView {
     public var editCompletedButton = UIButton().then {
         $0.backgroundColor = .zoocGray1
         $0.setTitle("완료", for: .normal)
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
     }
     
     //MARK: - Life Cycles

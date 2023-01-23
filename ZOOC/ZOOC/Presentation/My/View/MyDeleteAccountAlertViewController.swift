@@ -18,8 +18,7 @@ final class DeleteAccountAlertViewController: BaseViewController {
     
     private var alertView = UIView().then {
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 14
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 14)
         $0.alpha = 1
     }
     
@@ -125,10 +124,9 @@ final class DeleteAccountAlertViewController: BaseViewController {
     //MARK: - Action Method
     
     @objc func popToMyViewButtonDidTap() {
-        MyAPI.shared.deleteAccount() {result in
-            print(result)
+        MyAPI.shared.deleteAccount() { result in
+            self.dismiss(animated: false)
         }
-        self.dismiss(animated: false)
     }
     
     @objc func keepButtonDidTap() {
