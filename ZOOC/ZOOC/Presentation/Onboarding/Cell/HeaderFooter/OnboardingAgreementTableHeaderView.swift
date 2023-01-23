@@ -7,14 +7,16 @@
 
 import UIKit
 
-protocol AllChekedButtonTappedDelegate {
+//MARK: - AllChekedButtonTappedDelegate
+
+protocol AllChekedButtonTappedDelegate : AnyObject {
     func allCellButtonTapped(isSelected: Bool)
 }
 
 final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     private var isSelected: Bool = false
-    var delegate: AllChekedButtonTappedDelegate?
+    weak var delegate: AllChekedButtonTappedDelegate?
     
     //MARK: - UI Components
     

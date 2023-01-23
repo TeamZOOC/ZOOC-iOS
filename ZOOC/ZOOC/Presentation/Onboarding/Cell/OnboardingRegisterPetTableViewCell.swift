@@ -55,8 +55,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         
         setUI()
         setLayout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +92,10 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
+    private func register() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
     func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
         petProfileImageButton.setImage(model.profileImage, for: .normal)
         self.index = index
@@ -106,14 +109,11 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Action Method
     
-    @objc
-    private func deletePetProfileButtonDidTap() {
+    @objc private func deletePetProfileButtonDidTap() {
         delegate?.deleteButtonTapped(isSelected: true, index: index)
     }
     
-    @objc
-    private func textDidChange(_ notification: Notification) {
-        print("true")
+    @objc private func textDidChange(_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if let text = textField.text {
                 if text.count >= 4 {

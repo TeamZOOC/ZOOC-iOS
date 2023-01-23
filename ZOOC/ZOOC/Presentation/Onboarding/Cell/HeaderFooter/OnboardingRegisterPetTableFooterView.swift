@@ -7,14 +7,17 @@
 
 import UIKit
 
-protocol AddButtonTappedDelegate {
+//MARK: - AddButtonTappedDelegate
+
+protocol AddButtonTappedDelegate : AnyObject {
     func addPetButtonTapped(isSelected: Bool)
 }
 
 final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
-    var delegate: AddButtonTappedDelegate?
+    
+    weak var delegate: AddButtonTappedDelegate?
     
     //MARK: - UI Components
     
@@ -35,6 +38,8 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     
+    //MARK: - Life Cycle
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -45,6 +50,8 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Custom Method
     
     private func setUI() {
         contentView.backgroundColor = .zoocBackgroundGreen
@@ -79,9 +86,7 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Action Method
     
-    @objc
-    func addPetProfileButtonDidTap() {
-        print(#function)
+    @objc func addPetProfileButtonDidTap() {
         delegate?.addPetButtonTapped(isSelected: true)
     }
 }
