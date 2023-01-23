@@ -20,6 +20,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     private lazy var petRegisterData: [OnboardingPetRegisterModel] = [petProfile]
     
     private var isFull: Bool = false
+    private var addButtonClicked: Bool = false
     
     //MARK: - Life Cycle
     
@@ -132,6 +133,7 @@ extension OnboardingRegisterPetViewController: AddButtonTappedDelegate {
         if isSelected {
             petRegisterData.append(petProfile)
         }
+        addButtonClicked = true
         onboardingRegisterPetView.registerPetTableView.reloadData()
     }
 }

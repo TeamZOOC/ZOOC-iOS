@@ -24,7 +24,7 @@ final class OnboardingLoginView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
-        $0.asFontColor(targetString: "쭉", color: .zoocGradientGreen)
+        $0.asColor(targetString: "쭉", color: .zoocGradientGreen)
     }
     
     private var loginDescribeLabel = UILabel().then {

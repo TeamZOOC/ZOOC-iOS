@@ -41,7 +41,7 @@ final class OnboardingCompleteProfileView: UIView {
         $0.textColor = .zoocDarkGray1
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
-        $0.asFontColor(targetString: "가족 코드", color: .zoocGradientGreen)
+        $0.asColor(targetString: "가족 코드", color: .zoocGradientGreen)
         $0.isHidden = true
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-        func asFontColor(targetString: String, font: UIFont? = nil, color: UIColor? = nil) {
+        func asColor(targetString: String, color: UIColor?) {
             let fullText = text ?? ""
             let attributedString = NSMutableAttributedString(string: fullText)
             let range = (fullText as NSString).range(of: targetString)

@@ -34,7 +34,7 @@ final class OnboardingParticipateCompletedView: UIView {
         $0.textAlignment = .left
         $0.font = .zoocDisplay1
         $0.numberOfLines = 2
-        $0.asFontColor(targetString: "합류 완료!", color: .zoocMainGreen)
+        $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
     }
     
     private var completeProfileSubLabel = UILabel().then {
