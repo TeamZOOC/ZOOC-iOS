@@ -26,10 +26,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton().then {
-        $0.layer.borderWidth = 5
-        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 35
-        $0.clipsToBounds = true
+        $0.makeButtonBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
+        $0.makeButtonCornerRadius(ratio: 35)
     }
     
     public var petProfileNameTextField = UITextField().then {
@@ -38,9 +36,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         $0.textColor = .zoocDarkGreen
         $0.font = .zoocBody1
         $0.layer.cornerRadius = 20
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGray.cgColor
         $0.clipsToBounds = true
+        $0.makeBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
     }
     
     public lazy var deletePetProfileButton = UIButton().then {
@@ -97,14 +94,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
     
     func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        petProfileImageButton.setImage(model.profileImage, for: .normal)
-        self.index = index
-        
-        if(petCount == 1){
-            deletePetProfileButton.isHidden = true
-        } else {
-            deletePetProfileButton.isHidden = false
-        }
+        updateUI(model: model, index: index, petCount: petCount)
     }
     
     //MARK: - Action Method
@@ -130,5 +120,13 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
+}
+
+extension OnboardingRegisterPetTableViewCell {
+    private func updateUI(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
+        self.index = index
+        petProfileImageButton.setImage(model.profileImage, for: .normal)
+        deletePetProfileButton.isHidden = petCount == 1 ? true : false
     }
 }

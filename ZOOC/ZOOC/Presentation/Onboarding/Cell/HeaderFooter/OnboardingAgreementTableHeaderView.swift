@@ -22,9 +22,8 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     private var allAgreementView = UIView().then {
         $0.layer.cornerRadius = 12
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocMainGreen.cgColor
         $0.clipsToBounds = true
+        $0.makeBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
     }
     
     private var allAgreementLabel = UILabel().then {

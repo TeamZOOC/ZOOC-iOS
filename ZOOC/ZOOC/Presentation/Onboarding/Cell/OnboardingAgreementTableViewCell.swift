@@ -13,8 +13,9 @@ protocol ChekedButtonTappedDelegate : AnyObject {
     func cellButtonTapped(isSelected: Bool, index: Int)
 }
 
-
 final class OnboardingAgreementTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties
     
     weak var delegate: ChekedButtonTappedDelegate?
     var index: Int = 0
@@ -28,7 +29,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     }
     
     private lazy var checkedButton = BaseButton().then {
-        $0.addTarget(self, action: #selector(agreementIsSelected), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Life Cycles
@@ -67,6 +68,18 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     }
     
     public func dataBind(model: OnboardingAgreementModel, index: Int) {
+        updateUI(model: model, index: index)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc func checkButtonDidTap() {
+        checkButtonIsSelected()
+    }
+}
+
+extension OnboardingAgreementTableViewCell {
+    private func updateUI(model: OnboardingAgreementModel, index: Int) {
         self.index = index
         menuLabel.text = model.title
         if model.isSelected {
@@ -76,9 +89,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
-    //MARK: - Action Method
-    
-    @objc func agreementIsSelected() {
+    private func checkButtonIsSelected() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)
             checkedButton.setImage(Image.checkBoxFill, for: .normal)

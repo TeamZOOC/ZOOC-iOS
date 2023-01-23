@@ -26,15 +26,13 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
     
     private lazy var addPetProfileButton = UIButton().then {
+        $0.backgroundColor = .zoocWhite1
         $0.setTitle("추가", for: .normal)
         $0.setTitleColor(.zoocDarkGreen, for: .normal)
         $0.titleLabel?.font = .zoocBody2
         $0.titleLabel?.textAlignment = .center
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGray.cgColor
-        $0.layer.cornerRadius = 23.5
-        $0.clipsToBounds = true
-        $0.backgroundColor = .zoocWhite1
+        $0.makeButtonCornerRadius(ratio: 23.5)
+        $0.makeButtonBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
         $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     
@@ -75,13 +73,16 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     }
     
     public func dataBind(isFull: Bool) {
-        if isFull {
-            petRegisterButtonSeparatorLineView.isHidden = true
-            addPetProfileButton.isHidden = true
-        } else {
-            petRegisterButtonSeparatorLineView.isHidden = false
-            addPetProfileButton.isHidden = false
-        }
+        petRegisterButtonSeparatorLineView.isHidden = isFull
+        addPetProfileButton.isHidden = isFull
+//        가독성 측면에서 이게 맞을까?
+//        if isFull {
+//            petRegisterButtonSeparatorLineView.isHidden = true
+//            addPetProfileButton.isHidden = true
+//        } else {
+//            petRegisterButtonSeparatorLineView.isHidden = false
+//            addPetProfileButton.isHidden = false
+//        }
     }
     
     //MARK: - Action Method
