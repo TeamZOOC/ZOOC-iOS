@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIButton {
     func setUnderline() {
@@ -16,5 +17,13 @@ extension UIButton {
                                       range: NSRange(location: 0, length: title.count)
         )
         setAttributedTitle(attributedString, for: .normal)
+    }
+    
+    func kfSetButtonImage(url : String){
+        if let url = URL(string: url) {
+            kf.setImage(with: url,
+                        for: .normal, placeholder: nil,
+                        options: [.transition(.fade(1.0))], progressBlock: nil)
+        }
     }
 }

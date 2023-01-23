@@ -63,6 +63,7 @@ final class MyRegisterPetView: UIView {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -76,7 +77,8 @@ final class MyRegisterPetView: UIView {
     }
     
     private func setLayout() {
-        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
+        addSubviews(backButton, registerPetTitleLabel, registerPetSubTitleLabel,
+                    registerPetTableView, registerPetButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
@@ -107,6 +109,18 @@ final class MyRegisterPetView: UIView {
             $0.height.equalTo(54)
         }
     }
+    
+    private func register() {
+        registerPetTableView.register(
+            MyRegisterPetTableViewCell.self,
+            forCellReuseIdentifier: MyRegisterPetTableViewCell.cellIdentifier)
+        
+        registerPetTableView.register(
+            MyRegisteredPetTableViewCell.self,
+            forCellReuseIdentifier: MyRegisteredPetTableViewCell.cellIdentifier)
+        
+        registerPetTableView.register(
+            MyRegisterPetTableFooterView.self,
+            forHeaderFooterViewReuseIdentifier: MyRegisterPetTableFooterView.cellIdentifier)
+    }
 }
-
-

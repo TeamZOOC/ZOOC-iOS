@@ -64,12 +64,18 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
     }
     
     public func dataBind(data: MyPet) {
-        if data.photo == nil {
-            petImageView.image = Image.defaultProfilePet
-        } else {
-            petImageView.kfSetImage(url: data.photo!)
-        }
         petNameLabel.text = data.name
+        data.photo == nil ? setDefaultPetProfileImage() : setPetMemberProfileImage(photo: data.photo!)
+    }
+}
+
+extension MyPetCollectionViewCell {
+    func setDefaultPetProfileImage() {
+        petImageView.image = Image.defaultProfilePet
+    }
+    
+    func setPetMemberProfileImage(photo: String) {
+        petImageView.kfSetImage(url: photo)
     }
 }
 

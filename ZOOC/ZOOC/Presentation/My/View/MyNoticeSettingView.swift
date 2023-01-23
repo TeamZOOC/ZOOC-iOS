@@ -29,7 +29,7 @@ final class MyNoticeSettingView: UIView {
     }
     
     private var postingTitleLabel = UILabel().then {
-        $0.font = .zoocBody2 //zoocBody3
+        $0.font = .zoocBody3
         $0.text = "게시물 작성"
         $0.textColor = .black
         $0.textAlignment = .left
@@ -62,7 +62,6 @@ final class MyNoticeSettingView: UIView {
     private func setUI() {
         self.backgroundColor = .zoocBackgroundGreen
     }
-    
     
     private func setLayout() {
         addSubviews(backButton, noticeSettingLabel, noticeSettingSubView)

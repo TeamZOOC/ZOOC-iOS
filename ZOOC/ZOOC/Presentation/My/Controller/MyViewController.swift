@@ -42,19 +42,7 @@ final class MyViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getMyPageAPI()
-        
     }
-    
-    
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        tabBarController?.tabBar.isHidden = false
-    //    }
-    //
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        super.viewWillDisappear(animated)
-    //        tabBarController?.tabBar.isHidden = true
-    //    }
     
     //MARK: - Custom Method
     
@@ -99,7 +87,6 @@ final class MyViewController: BaseViewController {
             myProfileData?.photo = data
         }
         
-        
         myView.myCollectionView.reloadData()
     }
     
@@ -117,30 +104,17 @@ final class MyViewController: BaseViewController {
         }
     }
     
-    func updateRegisterPetData(myPetRegisterData: [MyPetRegisterModel]) {
-//        self.myPetRegisterData = myPetRegisterData
-//        print("마이뷰컨 \(myPetRegisterData.count)")
-//        for i in 0...myPetRegisterData.count-1 {
-//            myPetRegisteredData.append(myPetRegisterData[i])
-//            print("마이뷰컨 \(i)번째 반려동물은 \(myPetRegisterData[i].profileName)")
-//        }
-//        myView.myCollectionView.reloadData()
-    }
-    
     //MARK: - Action Method
     
-    @objc
-    private func editProfileButtonDidTap() {
+    @objc private func editProfileButtonDidTap() {
         pushToEditProfileView()
     }
     
-    @objc
-    private func appInformationButtonDidTap() {
+    @objc private func appInformationButtonDidTap() {
         pushToAppInformationView()
     }
     
-    @objc
-    func deleteAccountButtonDidTap() {
+    @objc func deleteAccountButtonDidTap() {
         let deleteAccountAlertViewController = DeleteAccountAlertViewController()
         deleteAccountAlertViewController.modalPresentationStyle = .overFullScreen
         present(deleteAccountAlertViewController, animated: false)
@@ -209,21 +183,18 @@ extension MyViewController: UICollectionViewDataSource {
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFamilySectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyFamilySectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.dataBind(myFamilyData: myFamilyMemberData, myProfileData: myProfileData)
             return cell
             
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPetSectionCollectionViewCell.cellIdentifier, for: indexPath)
                     as? MyPetSectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.dataBind(myPetMemberData: myPetMemberData)
             cell.delegate = self
             return cell
             
         case 3:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MySettingSectionCollectionViewCell.cellIdentifier, for: indexPath) as? MySettingSectionCollectionViewCell else { return UICollectionViewCell() }
-            cell.register()
             cell.delegate = self
             return cell
             

@@ -29,8 +29,7 @@ final class MyNoticeSettingViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc
-    private func popToMyProfileView() {
+    @objc private func popToMyProfileView() {
         self.navigationController?.popViewController(animated: true)
     }
 }

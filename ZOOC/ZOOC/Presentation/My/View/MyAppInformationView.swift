@@ -50,6 +50,7 @@ final class AppInformationView: UIView {
         
         setUI()
         setLayout()
+        register()
     }
     
     required init?(coder: NSCoder) {
@@ -93,5 +94,11 @@ final class AppInformationView: UIView {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    private func register() {
+        appInformationTableView.register(
+            AppInformationTableViewCell.self,
+            forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
     }
 }
