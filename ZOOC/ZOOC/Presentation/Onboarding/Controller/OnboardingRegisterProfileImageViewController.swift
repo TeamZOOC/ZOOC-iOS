@@ -27,7 +27,6 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         self.view = onboardingRegisterProfileImageView
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         

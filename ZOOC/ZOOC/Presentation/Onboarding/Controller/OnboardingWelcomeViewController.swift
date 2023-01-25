@@ -26,8 +26,8 @@ final class OnboardingWelcomeViewController: UIViewController{
         super.viewDidLoad()
         
         target()
-        style()
         
+        style()
     }
     
     //MARK: - Custom Method

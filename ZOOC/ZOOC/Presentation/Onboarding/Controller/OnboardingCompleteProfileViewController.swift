@@ -26,6 +26,7 @@ final class OnboardingCompleteProfileViewController: UIViewController{
         super.viewDidLoad()
         
         target()
+        
         style()
     }
     
