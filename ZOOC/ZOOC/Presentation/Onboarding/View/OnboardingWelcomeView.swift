@@ -14,50 +14,20 @@ final class OnboardingWelcomeView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var welcomeLabel = UILabel().then {
-        $0.text = "안녕하세요! \nZOOC에 온 걸 환영해요"
-        $0.textColor = .zoocDarkGray2
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    public var welcomeSubLabel = UILabel().then {
-        $0.text = "먼저 프로필을 만들고\n가족과 함께 해요!"
-        $0.textColor = .zoocDarkGray2
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-        $0.isHidden = true
-    }
-    
-    public var welcomeImage = UIImageView().then {
-        $0.contentMode = .scaleAspectFit
-        $0.image = Image.graphics1
-        $0.isHidden = true
-    }
-    
-    public var nextButton = UIButton().then {
-        $0.setTitle("다음", for: .normal)
-        $0.setTitleColor(.zoocWhite1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGradientGreen
-        $0.isHidden = true
-    }
+    public var backButton = UIButton()
+    public var welcomeLabel = UILabel()
+    public var welcomeSubLabel = UILabel()
+    public var welcomeImage = UIImageView()
+    public var nextButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -66,13 +36,52 @@ final class OnboardingWelcomeView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        welcomeLabel.do {
+            $0.text = "안녕하세요! \nZOOC에 온 걸 환영해요"
+            $0.textColor = .zoocDarkGray2
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        welcomeSubLabel.do {
+            $0.text = "먼저 프로필을 만들고\n가족과 함께 해요!"
+            $0.textColor = .zoocDarkGray2
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+            $0.isHidden = true
+        }
+        
+        welcomeImage.do {
+            $0.contentMode = .scaleAspectFit
+            $0.image = Image.graphics1
+            $0.isHidden = true
+        }
+        
+        nextButton.do {
+            $0.setTitle("다음", for: .normal)
+            $0.setTitleColor(.zoocWhite1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGradientGreen
+            $0.isHidden = true
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         addSubviews(backButton, welcomeLabel, welcomeSubLabel, welcomeImage, nextButton)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
@@ -92,7 +101,7 @@ final class OnboardingWelcomeView: UIView {
         welcomeImage.snp.makeConstraints {
             $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.leading.trailing.equalToSuperview() 
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.nextButton.snp.top).offset(-30)
         }
         

@@ -63,8 +63,9 @@ final class OnboardingParticipateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -73,15 +74,66 @@ final class OnboardingParticipateView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        participateTitleLabel.do {
+            $0.text = "전달받은 가족코드를 \n입력해주세요"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        familyCodeTextField.do {
+            $0.backgroundColor = .zoocWhite2
+            $0.font = .zoocBody2
+            $0.textColor = .zoocDarkGreen
+            $0.placeholder = "  ex) SEF33210"
+            $0.makeCornerRadius(ratio: 8)
+        }
+        
+        participateImage.do {
+            $0.image = Image.graphics5
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        nextButton.do {
+            $0.setTitle("입력하기", for: .normal)
+            $0.setTitleColor(.zoocWhite1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGray1
+        }
     }
     
-    private func setLayout() {
-        addSubviews(backButton, progressBarView, participateTitleLabel,  familyCodeTextField, participateImage, nextButton)
+    private func hierarchy() {
+        addSubviews(backButton,
+                    progressBarView,
+                    participateTitleLabel,
+                    familyCodeTextField,
+                    participateImage,
+                    nextButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
