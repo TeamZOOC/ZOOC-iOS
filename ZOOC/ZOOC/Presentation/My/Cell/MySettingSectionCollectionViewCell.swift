@@ -46,6 +46,9 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func register() {
+        settingMenuTableView.delegate = self
+        settingMenuTableView.dataSource = self
+        
         settingMenuTableView.register(
             MySettingTableViewCell.self,
             forCellReuseIdentifier: MySettingTableViewCell.cellIdentifier)
@@ -58,8 +61,6 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.separatorStyle = .none
             $0.isScrollEnabled = false
-            $0.delegate = self
-            $0.dataSource = self
         }
     }
     

@@ -43,6 +43,9 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     private func register() {
+        familyCollectionView.delegate = self
+        familyCollectionView.dataSource = self
+        
         familyCollectionView.register(
             MyFamilyCollectionViewCell.self,
             forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
@@ -83,8 +86,6 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.showsHorizontalScrollIndicator = false
             $0.collectionViewLayout = layout
-            $0.delegate = self
-            $0.dataSource = self
         }
     }
     

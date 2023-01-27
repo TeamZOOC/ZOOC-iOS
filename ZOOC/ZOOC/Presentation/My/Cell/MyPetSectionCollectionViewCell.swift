@@ -48,6 +48,9 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     //MARK: - Custom Method
     
     private func register() {
+        petCollectionView.delegate = self
+        petCollectionView.dataSource = self
+
         petCollectionView.register(
             MyPetCollectionViewCell.self,
             forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
@@ -83,8 +86,6 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.showsHorizontalScrollIndicator = false
             $0.collectionViewLayout = layout
-            $0.delegate = self
-            $0.dataSource = self
         }
     }
     

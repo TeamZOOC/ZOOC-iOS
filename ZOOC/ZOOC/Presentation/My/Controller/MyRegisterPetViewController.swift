@@ -112,6 +112,7 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         }
         
     }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch section {
         case 1:

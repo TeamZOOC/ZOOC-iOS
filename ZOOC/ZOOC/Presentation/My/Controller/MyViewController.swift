@@ -37,6 +37,7 @@ final class MyViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         getMyPageAPI()
     }
     
@@ -48,13 +49,8 @@ final class MyViewController: BaseViewController {
     }
     
     func dataSend(myprofileData: MyUser?) {
-        if let data = myProfileData?.nickName{
-            myProfileData?.nickName = data
-        }
-        
-        if let data = myProfileData?.photo{
-            myProfileData?.photo = data
-        }
+        guard let nickNameData = myProfileData?.nickName else { return }
+        guard let photoData = myProfileData?.photo else { return }
         myView.myCollectionView.reloadData()
     }
     

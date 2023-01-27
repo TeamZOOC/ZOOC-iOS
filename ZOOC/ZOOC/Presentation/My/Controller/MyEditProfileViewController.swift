@@ -30,29 +30,26 @@ final class EditProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
         target()
     }
     
-    
     //MARK: - Custom Method
     
-    private func register() {
-        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-    }
-    
     private func target() {
+        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        
         editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
+        
         editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
-
+    
     func dataSend(data: MyUser?) {
         editProfileView.editProfileNameTextField.placeholder = data?.nickName
         data?.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: (data?.photo!)!)
-        if let name = data?.nickName{
-            myProfileNickName = name
-        }
+        guard let name = data?.nickName else { return }
+        myProfileNickName = name
     }
     
     //MARK: - Action Method
@@ -90,29 +87,25 @@ final class EditProfileViewController: BaseViewController {
     }
     
     @objc private func textDidChange(_ notification: Notification) {
-        if let textField = notification.object as? UITextField {
-            if let text = textField.text {
-                if text.count >= 10 {
-                    textField.resignFirstResponder()
-                    let index = text.index(text.startIndex, offsetBy: 10)
-                    let newString = text[text.startIndex..<index]
-                    textField.text = String(newString)
-                    textCountOver()
-                }
-                else if text.count <= 0 {
-                    textCountUnder(textCount: text.count)
-                }
-                else {
-                    textWriting(textCount: text.count)
-                }
-            }
+        guard let textField = notification.object as? UITextField else { return }
+        guard let text = textField.text else { return }
+        switch text.count {
+        case 1...9:
+            textFieldIsWritten(textCount: text.count)
+        case 10...:
+            textField.resignFirstResponder()
+            let index = text.index(text.startIndex, offsetBy: 10)
+            let newString = text[text.startIndex..<index]
+            textField.text = String(newString)
+            textFieldIsFull()
+        default:
+            textFieldIsEmpty(textCount: text.count)
         }
     }
     
     @objc func editCompleteButtonDidTap(){
-        if let text = editProfileView.editProfileNameTextField.text{
-            myProfileNickName = text
-        }
+        guard let text = editProfileView.editProfileNameTextField.text else { return }
+        myProfileNickName = text
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
                                     nickName: myProfileNickName,
                                     photo: myProfileImage)
@@ -126,18 +119,18 @@ final class EditProfileViewController: BaseViewController {
 }
 
 extension EditProfileViewController {
-    func textCountOver() {
+    func textFieldIsFull() {
         editProfileView.profileNameCountLabel.text = "10/10"
     }
     
-    func textWriting(textCount: Int) {
+    func textFieldIsWritten(textCount: Int) {
         editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGradientGreen
         editProfileView.editCompletedButton.backgroundColor = .zoocGradientGreen
         editProfileView.editCompletedButton.isEnabled = true
         editProfileView.profileNameCountLabel.text = "\(textCount)/10"
     }
     
-    func textCountUnder(textCount: Int) {
+    func textFieldIsEmpty(textCount: Int) {
         editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
         editProfileView.editCompletedButton.backgroundColor = .zoocGray1
         editProfileView.editCompletedButton.isEnabled = false
@@ -162,9 +155,8 @@ extension EditProfileViewController {
 extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            editProfileView.editProfileImageButton.setImage(image, for: .normal)
-            self.myProfileImage = image
-        }
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        editProfileView.editProfileImageButton.setImage(image, for: .normal)
+        self.myProfileImage = image
     }
 }
