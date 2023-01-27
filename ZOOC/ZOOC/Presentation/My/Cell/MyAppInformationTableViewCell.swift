@@ -11,24 +11,18 @@ final class AppInformationTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    private var separatorLine = UIView().then {
-        $0.backgroundColor = .zoocLightGray
-    }
-    
+    private var separatorLine = UIView()
     public var appInformationButton = UIButton()
-    
-    public var appInformationLabel = UILabel().then {
-        $0.textColor = .zoocDarkGray2
-        $0.font = .zoocBody3
-    }
+    public var appInformationLabel = UILabel()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        cellStyle()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -37,14 +31,25 @@ final class AppInformationTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func cellStyle() {
         contentView.backgroundColor = .zoocBackgroundGreen
+        
+        separatorLine.do {
+            $0.backgroundColor = .zoocLightGray
+        }
+        
+        appInformationLabel.do {
+            $0.textColor = .zoocDarkGray2
+            $0.font = .zoocBody3
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         contentView.addSubviews(separatorLine, appInformationButton)
         appInformationButton.addSubview(appInformationLabel)
-        
+    }
+    
+    private func layout() {
         separatorLine.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()

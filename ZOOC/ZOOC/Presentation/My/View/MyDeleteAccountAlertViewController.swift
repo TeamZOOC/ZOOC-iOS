@@ -71,8 +71,9 @@ final class DeleteAccountAlertViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     //MARK: - Custom Method

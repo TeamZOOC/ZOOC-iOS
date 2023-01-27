@@ -24,19 +24,18 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     
     //MARK: - UI Components
     
-    private lazy var registerPetButton = UIButton().then {
-        $0.backgroundColor = .zoocLightGray
-        $0.setImage(Image.plus, for: .normal)
-        $0.makeCornerRadius(ratio: 20)
-        $0.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
-    }
+    private lazy var registerPetButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setLayout()
+        target()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -45,9 +44,23 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     
     //MARK: - Custom Method
     
-    private func setLayout() {
+    private func target() {
+        registerPetButton.addTarget(self, action: #selector(registerButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func style() {
+        registerPetButton.do {
+            $0.backgroundColor = .zoocLightGray
+            $0.setImage(Image.plus, for: .normal)
+            $0.makeCornerRadius(ratio: 20)
+        }
+    }
+    
+    private func hierarchy() {
         addSubview(registerPetButton)
-        
+    }
+    
+    private func layout() {
         registerPetButton.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()

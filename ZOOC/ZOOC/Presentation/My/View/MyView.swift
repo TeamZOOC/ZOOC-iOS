@@ -27,8 +27,9 @@ final class MyView: UIView  {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
         register()
     }
     

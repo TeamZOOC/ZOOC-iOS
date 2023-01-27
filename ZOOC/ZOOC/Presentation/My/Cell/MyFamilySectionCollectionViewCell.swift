@@ -19,47 +19,22 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    private var familyLabel = UILabel().then {
-        $0.text = "멤버"
-        $0.textColor = .zoocDarkGray1
-        $0.font = .zoocSubhead1
-    }
-    
-    private var familyCountLabel = UILabel().then {
-        $0.textColor = .zoocGray2
-        $0.font = .zoocCaption
-        $0.textAlignment = .center
-    }
-
-    private var inviteButton = UIButton().then {
-        $0.setTitle("초대하기", for: .normal)
-        $0.setTitleColor(.zoocGray2, for: .normal)
-        $0.titleLabel!.font = .zoocCaption
-    }
-    
-    private var inviteButtonUnderLine = UIView().then {
-        $0.backgroundColor = .zoocGray2
-    }
-    
-    public lazy var familyCollectionView = UICollectionView(frame: .zero).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-        $0.delegate = self
-        $0.dataSource = self
-    }
+    private var familyLabel = UILabel()
+    private var familyCountLabel = UILabel()
+    private var inviteButton = UIButton()
+    private var inviteButtonUnderLine = UIView()
+    public lazy var familyCollectionView = UICollectionView(frame: .zero)
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
         register()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -67,16 +42,61 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Custom Method
-    
-    private func setUI() {
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 12
-        self.clipsToBounds = true
+    private func register() {
+        familyCollectionView.register(
+            MyFamilyCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
     }
     
-    private func setLayout() {
-        addSubviews(familyLabel, familyCountLabel, inviteButton, familyCollectionView, inviteButtonUnderLine)
+    private func style() {
+        self.do {
+            $0.backgroundColor = .white
+            $0.makeCornerRadius(ratio: 12)
+        }
         
+        familyLabel.do {
+            $0.text = "멤버"
+            $0.textColor = .zoocDarkGray1
+            $0.font = .zoocSubhead1
+        }
+        
+        familyCountLabel.do {
+            $0.textColor = .zoocGray2
+            $0.font = .zoocCaption
+            $0.textAlignment = .center
+        }
+
+        inviteButton.do {
+            $0.setTitle("초대하기", for: .normal)
+            $0.setTitleColor(.zoocGray2, for: .normal)
+            $0.titleLabel!.font = .zoocCaption
+        }
+        
+        inviteButtonUnderLine.do {
+            $0.backgroundColor = .zoocGray2
+        }
+        
+        familyCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.collectionViewLayout = layout
+            $0.delegate = self
+            $0.dataSource = self
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(familyLabel,
+                    familyCountLabel,
+                    inviteButton,
+                    familyCollectionView,
+                    inviteButtonUnderLine)
+    }
+    
+    private func layout() {
         familyLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
@@ -107,12 +127,6 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(20)
         }
-    }
-    
-    public func register() {
-        familyCollectionView.register(
-            MyFamilyCollectionViewCell.self,
-            forCellWithReuseIdentifier: MyFamilyCollectionViewCell.cellIdentifier)
     }
     
     public func dataBind(myFamilyData: [MyUser], myProfileData: MyUser?) {

@@ -49,8 +49,9 @@ final class MyNoticeSettingView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {

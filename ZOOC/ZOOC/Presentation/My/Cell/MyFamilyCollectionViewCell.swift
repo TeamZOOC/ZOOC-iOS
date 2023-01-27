@@ -11,24 +11,17 @@ final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public var familyImageView = UIImageView().then {
-        $0.layer.cornerRadius = 24
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-    }
+    public var familyImageView = UIImageView()
+    public var familyNameLabel = UILabel()
     
-    public var familyNameLabel = UILabel().then {
-        $0.textAlignment = .center
-        $0.font = .zoocCaption
-        $0.textColor = .zoocDarkGray1
-    }
-
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -43,9 +36,24 @@ final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setLayout() {
-        contentView.addSubviews(familyImageView, familyNameLabel)
+    private func style() {
+        familyImageView.do {
+            $0.makeCornerRadius(ratio: 24)
+            $0.contentMode = .scaleAspectFill
+        }
         
+        familyNameLabel.do {
+            $0.textAlignment = .center
+            $0.font = .zoocCaption
+            $0.textColor = .zoocDarkGray1
+        }
+    }
+    
+    private func hierarchy() {
+        contentView.addSubviews(familyImageView, familyNameLabel)
+    }
+    
+    private func layout() {
         familyImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

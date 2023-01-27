@@ -25,21 +25,17 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public lazy var settingMenuTableView = UITableView(frame: .zero, style: .plain).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .none
-        $0.isScrollEnabled = false
-        $0.delegate = self
-        $0.dataSource = self
-    }
+    public lazy var settingMenuTableView = UITableView(frame: .zero, style: .plain)
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
+        
         register()
     }
     
@@ -49,22 +45,32 @@ final class MySettingSectionCollectionViewCell: UICollectionViewCell {
 
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
-    }
-    
-    private func setLayout() {
-        addSubview(settingMenuTableView)
-        
-        settingMenuTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-    
-    public func register() {
+    private func register() {
         settingMenuTableView.register(
             MySettingTableViewCell.self,
             forCellReuseIdentifier: MySettingTableViewCell.cellIdentifier)
+    }
+    
+    private func style() {
+        self.backgroundColor = .zoocBackgroundGreen
+        
+        settingMenuTableView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.separatorStyle = .none
+            $0.isScrollEnabled = false
+            $0.delegate = self
+            $0.dataSource = self
+        }
+    }
+    
+    private func hierarchy() {
+        addSubview(settingMenuTableView)
+    }
+    
+    private func layout() {
+        settingMenuTableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
