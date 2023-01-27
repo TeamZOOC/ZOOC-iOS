@@ -143,5 +143,3 @@ final class OnboardingRegisterProfileImageView: UIView {
         }
     }
 }
-
-

@@ -45,9 +45,3 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
         self.changeRootViewController(ZoocTabBarController())
     }
 }
-
-
-
-
-
-

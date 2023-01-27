@@ -164,7 +164,3 @@ final class OnboardingCompleteProfileView: UIView {
         }
     }
 }
-
-
-
-

@@ -154,4 +154,3 @@ final class OnboardingChooseFamilyRoleView: UIView {
         }
     }
 }
-

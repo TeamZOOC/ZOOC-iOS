@@ -107,4 +107,3 @@ final class OnboardingAgreementView: UIView {
         }
     }
 }
-

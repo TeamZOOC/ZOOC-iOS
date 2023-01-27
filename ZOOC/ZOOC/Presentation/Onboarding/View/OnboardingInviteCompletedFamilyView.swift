@@ -180,9 +180,3 @@ final class OnboardingInviteCompletedFamilyView: UIView {
         }
     }
 }
-
-
-
-
-
-

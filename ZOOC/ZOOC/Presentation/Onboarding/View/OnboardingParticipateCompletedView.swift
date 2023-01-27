@@ -142,8 +142,3 @@ final class OnboardingParticipateCompletedView: UIView {
         }
     }
 }
-
-
-
-
-

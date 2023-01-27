@@ -51,22 +51,19 @@ final class OnboardingLoginViewController: BaseViewController{
 extension OnboardingLoginViewController {
     private func kakaoSocialLogin() {
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-            if let error = error {
+            guard let oauthToken = oauthToken else {
+                guard let error = error else { return }
                 print(error)
+                return
             }
-            else {
-                print("loginWithKakaoAccount() success.")
-                _ = oauthToken
-                if let oauthToken = oauthToken {
-                    OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                        guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                        User.jwtToken =  result.jwtToken
-                    }
-                    self.pushToAgreementView()
-                }
+            OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+                guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+                User.jwtToken = result.jwtToken
             }
+            self.pushToAgreementView()
         }
     }
+    
     private func pushToAgreementView() {
         let agreementViewController = OnboardingAgreementViewController()
         self.navigationController?.pushViewController(agreementViewController, animated: true)

@@ -30,8 +30,9 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        style()
         target()
+        
+        style()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,12 +78,10 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
                                     nickName: profileName,
                                     photo: image)
         { result in
-            
             print(result)
             guard let result = self.validateResult(result) as? MyUser else { return }
             self.pushToCompleteProfileView()
         }
-        
     }
     
     @objc private func backButtonDidTap() {
@@ -94,17 +93,15 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true)
-        
     }
 }
+
 extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            isPhoto = true
-            self.image = image
-            onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
-        }
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        isPhoto = true
+        self.image = image
+        onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
     }
 }
 
