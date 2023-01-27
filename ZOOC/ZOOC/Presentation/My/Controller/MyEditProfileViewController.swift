@@ -19,7 +19,7 @@ final class EditProfileViewController: BaseViewController {
     
     private var isPhoto: Bool = true
     private var myProfileImage: UIImage?
-    private var myProfileNickName: String = "기본 닉네임"
+    private var myProfileNickName: String?
     
     //MARK: - Life Cycle
     
@@ -107,7 +107,7 @@ final class EditProfileViewController: BaseViewController {
         guard let text = editProfileView.editProfileNameTextField.text else { return }
         myProfileNickName = text
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
-                                    nickName: myProfileNickName,
+                                    nickName: myProfileNickName ?? "닉네임이 없습니다.",
                                     photo: myProfileImage)
         { result in
             guard let result = self.validateResult(result) as? MyUser else { return }
