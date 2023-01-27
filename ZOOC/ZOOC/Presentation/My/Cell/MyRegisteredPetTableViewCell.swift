@@ -13,15 +13,8 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public lazy var petProfileImageView = UIImageView().then {
-        $0.makeCornerRadius(ratio: 30)
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    public var petProfileNameLabel = UILabel().then {
-        $0.textColor = .zoocDarkGreen
-        $0.font = .zoocSubhead1
-    }
+    public lazy var petProfileImageView = UIImageView()
+    public var petProfileNameLabel = UILabel()
     
     //MARK: - Life Cycles
     

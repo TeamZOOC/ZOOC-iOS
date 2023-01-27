@@ -60,14 +60,49 @@ final class MyNoticeSettingView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        noticeSettingLabel.do {
+            $0.font = .zoocHeadLine
+            $0.text = "알림 설정"
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        noticeSettingSubView.do {
+            $0.backgroundColor = .zoocWhite1
+        }
+        
+        postingTitleLabel.do {
+            $0.font = .zoocBody3
+            $0.text = "게시물 작성"
+            $0.textColor = .black
+            $0.textAlignment = .left
+        }
+        
+        postingdescribeLabel.do {
+            $0.font = .zoocCaption
+            $0.text = "우리 가족이 게시물을 쓰면 바로 알 수 있어요"
+            $0.textColor = .zoocGray2
+            $0.textAlignment = .left
+        }
     }
     
-    private func setLayout() {
-        addSubviews(backButton, noticeSettingLabel, noticeSettingSubView)
-        noticeSettingSubView.addSubviews(postingTitleLabel, postingdescribeLabel, permitNoticeSwitchButton)
+    private func hierarchy() {
+        addSubviews(backButton,
+                    noticeSettingLabel,
+                    noticeSettingSubView)
         
+        noticeSettingSubView.addSubviews(postingTitleLabel,
+                                         postingdescribeLabel,
+                                         permitNoticeSwitchButton)
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(17)

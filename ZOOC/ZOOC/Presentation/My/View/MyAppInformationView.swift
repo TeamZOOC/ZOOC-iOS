@@ -14,35 +14,12 @@ final class AppInformationView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
+    public var backButton = UIButton()
+    private var appInformationLabel = UILabel()
+    private var currentVersionTitleLabel = UILabel()
+    private var currentVersionLabel = UILabel()
+    public var appInformationTableView = UITableView(frame: .zero, style: .plain)
     
-    private var appInformationLabel = UILabel().then {
-        $0.font = .zoocHeadLine
-        $0.text = "앱 정보"
-        $0.textColor = .zoocDarkGray2
-    }
-    
-    private var currentVersionTitleLabel = UILabel().then {
-        $0.font = .zoocBody3
-        $0.text = "현재 버전"
-        $0.textColor = .zoocDarkGray2
-    }
-    
-    private var currentVersionLabel = UILabel().then {
-        $0.font = .zoocCaption
-        $0.text = "v1.0.0"
-        $0.textColor = .zoocDarkGreen
-    }
-    
-    public var appInformationTableView = UITableView(frame: .zero, style: .plain).then {
-        $0.backgroundColor = .clear
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .none
-        $0.isScrollEnabled = false
-    }
-
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -60,15 +37,54 @@ final class AppInformationView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
+    private func register() {
+        appInformationTableView.register(
+            AppInformationTableViewCell.self,
+            forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
     }
     
-    
-    private func setLayout() {
-        addSubviews(backButton, appInformationLabel, currentVersionTitleLabel,
-                    currentVersionLabel, appInformationTableView)
+    private func style() {
+        self.backgroundColor = .zoocBackgroundGreen
         
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        appInformationLabel.do {
+            $0.font = .zoocHeadLine
+            $0.text = "앱 정보"
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        currentVersionTitleLabel.do {
+            $0.font = .zoocBody3
+            $0.text = "현재 버전"
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        currentVersionLabel.do {
+            $0.font = .zoocCaption
+            $0.text = "v1.0.0"
+            $0.textColor = .zoocDarkGreen
+        }
+        
+        appInformationTableView.do {
+            $0.backgroundColor = .clear
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.separatorStyle = .none
+            $0.isScrollEnabled = false
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(backButton,
+                    appInformationLabel,
+                    currentVersionTitleLabel,
+                    currentVersionLabel,
+                    appInformationTableView)
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(11)
             $0.leading.equalToSuperview().offset(17)
@@ -95,11 +111,5 @@ final class AppInformationView: UIView {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
         }
-    }
-    
-    private func register() {
-        appInformationTableView.register(
-            AppInformationTableViewCell.self,
-            forCellReuseIdentifier: AppInformationTableViewCell.cellIdentifier)
     }
 }
