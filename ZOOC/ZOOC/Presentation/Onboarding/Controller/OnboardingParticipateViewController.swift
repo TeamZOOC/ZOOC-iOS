@@ -72,7 +72,6 @@ extension OnboardingParticipateViewController {
             case .networkFail:
                 break
             }
-
         }
     }
     

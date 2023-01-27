@@ -11,73 +11,26 @@ import SnapKit
 import Then
 
 final class OnboardingCompleteProfileView: UIView {
-
+    
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completeProfileLabel = UILabel().then {
-        $0.text = "멋진 프로필이네요! \n이제 가족과 함께해보세요"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    public var completeProfileSubLabel = UILabel().then {
-        $0.text = "가족 코드를 받았나요?"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.asColor(targetString: "가족 코드", color: .zoocGradientGreen)
-        $0.isHidden = true
-    }
-    
-    public var completeImage = UIImageView().then {
-        $0.image = Image.graphics2
-        $0.isHidden = true
-        $0.contentMode = .scaleAspectFit
-    }
-    
-    public var getCodeButton = UIButton().then {
-        $0.setTitle("코드를 받았어요", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGradientGreen
-        $0.isHidden = true
-    }
-    
-    public var notGetCodeButton = UIButton().then {
-        $0.setTitle("아니요", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGradientGreen
-        $0.isHidden = true
-    }
+    public var backButton = UIButton()
+    public var progressBarView = UIView()
+    public var completedProgressBarView = UIView()
+    public var completeProfileLabel = UILabel()
+    public var completeProfileSubLabel = UILabel()
+    public var completeImage = UIImageView()
+    public var getCodeButton = UIButton()
+    public var notGetCodeButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -86,11 +39,68 @@ final class OnboardingCompleteProfileView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completeProfileLabel.do {
+            $0.text = "멋진 프로필이네요! \n이제 가족과 함께해보세요"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        completeProfileSubLabel.do {
+            $0.text = "가족 코드를 받았나요?"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.asColor(targetString: "가족 코드", color: .zoocGradientGreen)
+            $0.isHidden = true
+        }
+        
+        completeImage.do {
+            $0.image = Image.graphics2
+            $0.isHidden = true
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        getCodeButton.do {
+            $0.setTitle("코드를 받았어요", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGradientGreen
+            $0.isHidden = true
+        }
+        
+        notGetCodeButton.do {
+            $0.setTitle("아니요", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGradientGreen
+            $0.isHidden = true
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         addSubviews(backButton,
                     progressBarView,
                     completeProfileLabel,
@@ -100,7 +110,9 @@ final class OnboardingCompleteProfileView: UIView {
                     notGetCodeButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
@@ -152,7 +164,3 @@ final class OnboardingCompleteProfileView: UIView {
         }
     }
 }
-
-
-
-

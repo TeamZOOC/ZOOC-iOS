@@ -14,7 +14,7 @@ final class OnboardingAgreementViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private var allSelected : Bool = false
+    private var allSelected: Bool = false
     
     private lazy var onboardingAgreementView = OnboardingAgreementView()
     private var agreementData: [OnboardingAgreementModel] = OnboardingAgreementModel.agreementData

@@ -15,32 +15,27 @@ protocol AllChekedButtonTappedDelegate : AnyObject {
 
 final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
+    //MARK: - Properties
+    
     private var isSelected: Bool = false
     weak var delegate: AllChekedButtonTappedDelegate?
     
     //MARK: - UI Components
     
-    private var allAgreementView = UIView().then {
-        $0.makeCornerRadius(ratio: 12)
-        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
-    }
+    private var allAgreementView = UIView()
+    private var allAgreementLabel = UILabel()
+    private lazy var allCheckedButton = BaseButton()
     
-    private var allAgreementLabel = UILabel().then {
-        $0.text = "전체 동의"
-        $0.textColor = .zoocMainGreen
-        $0.font = .zoocSubhead1
-        $0.textAlignment = .left
-    }
-    
-    private lazy var allCheckedButton = BaseButton().then {
-        $0.setImage(Image.checkBox, for: .normal)
-        $0.addTarget(self, action: #selector(checkedButtonDidTap), for: .touchUpInside)
-    }
+    //MARK: - Life Cycle
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        setLayout()
+        target()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -49,10 +44,34 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - Custom Method
     
-    private func setLayout() {
+    private func target() {
+        allCheckedButton.addTarget(self, action: #selector(checkedButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func style() {
+        allAgreementView.do {
+            $0.makeCornerRadius(ratio: 12)
+            $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
+        }
+        
+        allAgreementLabel.do {
+            $0.text = "전체 동의"
+            $0.textColor = .zoocMainGreen
+            $0.font = .zoocSubhead1
+            $0.textAlignment = .left
+        }
+        
+        allCheckedButton.do {
+            $0.setImage(Image.checkBox, for: .normal)
+        }
+    }
+    
+    private func hierarchy() {
         contentView.addSubview(allAgreementView)
         allAgreementView.addSubviews(allAgreementLabel, allCheckedButton)
-        
+    }
+    
+    private func layout() {
         allAgreementView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
@@ -75,6 +94,8 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     func dataBind(all: Bool){
         updateUI(all: all)
     }
+    
+    //MARK: - Action Method
     
     @objc func checkedButtonDidTap() {
         updateAllCheckedButtonUI()

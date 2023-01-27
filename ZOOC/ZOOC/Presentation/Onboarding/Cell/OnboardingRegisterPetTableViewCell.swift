@@ -25,33 +25,21 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public lazy var petProfileImageButton = UIButton().then {
-        $0.makeCornerBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
-        $0.makeCornerRadius(ratio: 35)
-    }
-    
-    public var petProfileNameTextField = UITextField().then {
-        $0.attributedPlaceholder = NSAttributedString(string: "ex) 사랑,토리 (4자 이내)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.zoocGray1, NSAttributedString.Key.font: UIFont.zoocBody1])
-        $0.addLeftPadding(leftInset: 10)
-        $0.textColor = .zoocDarkGreen
-        $0.font = .zoocBody1
-        $0.makeCornerRadius(ratio: 20)
-        $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
-    }
-    
-    public lazy var deletePetProfileButton = UIButton().then {
-        $0.setImage(Image.delete, for: .normal)
-        $0.addTarget(self, action: #selector(deletePetProfileButtonDidTap), for: .touchUpInside)
-    }
+    public lazy var petProfileImageButton = UIButton()
+    public lazy var petProfileNameTextField = UITextField()
+    public lazy var deletePetProfileButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
         register()
+        target()
+        
+        cellStyle()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -60,14 +48,42 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.selectionStyle = .none
-        self.backgroundColor = .zoocBackgroundGreen
+    private func register() {
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
-    private func setLayout() {
-        contentView.addSubviews(petProfileImageButton, petProfileNameTextField, deletePetProfileButton)
+    private func target() {
+        deletePetProfileButton.addTarget(self, action: #selector(deletePetProfileButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func cellStyle() {
+        self.selectionStyle = .none
+        self.backgroundColor = .zoocBackgroundGreen
         
+        petProfileImageButton.do {
+            $0.makeCornerBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
+            $0.makeCornerRadius(ratio: 35)
+        }
+        
+        petProfileNameTextField.do {
+            $0.attributedPlaceholder = NSAttributedString(string: "ex) 사랑,토리 (4자 이내)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.zoocGray1, NSAttributedString.Key.font: UIFont.zoocBody1])
+            $0.addLeftPadding(leftInset: 10)
+            $0.textColor = .zoocDarkGreen
+            $0.font = .zoocBody1
+            $0.makeCornerRadius(ratio: 20)
+            $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
+        }
+        
+        deletePetProfileButton.do {
+            $0.setImage(Image.delete, for: .normal)
+        }
+    }
+    
+    private func hierarchy() {
+        contentView.addSubviews(petProfileImageButton, petProfileNameTextField, deletePetProfileButton)
+    }
+    
+    private func layout() {
         petProfileImageButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
@@ -86,10 +102,6 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
             $0.leading.equalTo(self.petProfileNameTextField.snp.trailing).offset(10)
             $0.size.equalTo(30)
         }
-    }
-    
-    private func register() {
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {

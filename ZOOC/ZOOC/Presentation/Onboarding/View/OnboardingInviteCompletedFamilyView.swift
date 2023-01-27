@@ -64,8 +64,9 @@ final class OnboardingInviteCompletedFamilyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -74,14 +75,67 @@ final class OnboardingInviteCompletedFamilyView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completeProfileLabel.do {
+            $0.text = "이제 추억을 쌓을 시간이에요!"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+            $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
+        }
+        
+        completeProfileSubLabel.do {
+            $0.text = "가족과 기록한 순간들이 \nZOOC 소중한 추억으로 남을게예요"
+            $0.textColor = .zoocGray1
+            $0.textAlignment = .left
+            $0.font = .zoocBody2
+            $0.numberOfLines = 2
+        }
+        
+        completeImage.do {
+            $0.image = Image.graphics4
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        startButton.do {
+            $0.setTitle("시작하기", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGradientGreen
+        }
     }
     
-    private func setLayout() {
-        addSubviews(backButton, progressBarView, completeProfileLabel, completeProfileSubLabel, completeImage, startButton)
+    private func hierarchy() {
+        addSubviews(backButton,
+                    progressBarView,
+                    completeProfileLabel,
+                    completeProfileSubLabel,
+                    completeImage,
+                    startButton)
         
         progressBarView.addSubview(completedProgressBarView)
+    }
+    
+    private func layout() {
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
@@ -126,9 +180,3 @@ final class OnboardingInviteCompletedFamilyView: UIView {
         }
     }
 }
-
-
-
-
-
-

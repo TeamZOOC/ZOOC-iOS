@@ -22,23 +22,20 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public var menuLabel = UILabel().then {
-        $0.textColor = .zoocGray3
-        $0.font = .zoocBody1
-        $0.textAlignment = .left
-    }
-    
-    private lazy var checkedButton = BaseButton().then {
-        $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
-    }
+    public var menuLabel = UILabel()
+    private lazy var checkedButton = BaseButton()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        target()
+        
+        cellStyle()
+        hierarchy()
+        layout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -47,14 +44,26 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
-        self.selectionStyle = .none
+    private func target() {
+        checkedButton.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
     }
     
-    private func setLayout() {
-        contentView.addSubviews(menuLabel, checkedButton)
+    private func cellStyle() {
+        self.backgroundColor = .zoocBackgroundGreen
+        self.selectionStyle = .none
         
+        menuLabel.do {
+            $0.textColor = .zoocGray3
+            $0.font = .zoocBody1
+            $0.textAlignment = .left
+        }
+    }
+    
+    private func hierarchy() {
+        contentView.addSubviews(menuLabel, checkedButton)
+    }
+    
+    private func layout() {
         menuLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
