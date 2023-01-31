@@ -10,17 +10,20 @@ import UIKit
 //MARK: - DeleteButtonTappedDelegate
 
 protocol DeleteButtonTappedDelegate : AnyObject {
-    func deleteButtonTapped(isSelected: Bool, index: Int)
+    func deleteButtonTapped(tag: Int)
     
     func canRegister(canRegister: Bool)
+    
+    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int)
 }
 
 final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
+    let onboardingPetRegisterViewModel = OnboardingpetRegiserViewModel()
+    
     weak var delegate: DeleteButtonTappedDelegate?
-    var index: Int = 0
     var canRegister: Bool = false
     
     //MARK: - UI Components
@@ -50,6 +53,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     private func register() {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        petProfileNameTextField.delegate = self
     }
     
     private func target() {
@@ -104,14 +108,11 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        updateUI(model: model, index: index, petCount: petCount)
-    }
-    
     //MARK: - Action Method
     
-    @objc private func deletePetProfileButtonDidTap() {
-        delegate?.deleteButtonTapped(isSelected: true, index: index)
+    @objc private func deletePetProfileButtonDidTap(sender: UIButton) {
+        delegate?.deleteButtonTapped(tag: sender.tag)
+        onboardingPetRegisterViewModel.deleteCellClosure?()
     }
     
     @objc private func textDidChange(_ notification: Notification) {
@@ -134,10 +135,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
 }
 
-extension OnboardingRegisterPetTableViewCell {
-    private func updateUI(model: OnboardingPetRegisterModel, index: Int, petCount: Int) {
-        self.index = index
-        petProfileImageButton.setImage(model.profileImage, for: .normal)
-        deletePetProfileButton.isHidden = petCount == 1 ? true : false
+extension OnboardingRegisterPetTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag)
     }
 }

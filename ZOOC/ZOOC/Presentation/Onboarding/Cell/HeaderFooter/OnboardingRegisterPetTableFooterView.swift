@@ -9,15 +9,12 @@ import UIKit
 
 //MARK: - AddButtonTappedDelegate
 
-protocol AddButtonTappedDelegate : AnyObject {
-    func addPetButtonTapped(isSelected: Bool)
-}
-
 final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
     
-    weak var delegate: AddButtonTappedDelegate?
+//    weak var delegate: AddButtonTappedDelegate?
+    let onboardingPetRegisterViewModel = OnboardingpetRegiserViewModel()
     
     //MARK: - UI Components
     
@@ -90,7 +87,7 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     //MARK: - Action Method
     
     @objc func addPetProfileButtonDidTap() {
-        delegate?.addPetButtonTapped(isSelected: true)
+        onboardingPetRegisterViewModel.addCellClosure?()
     }
 }
 
