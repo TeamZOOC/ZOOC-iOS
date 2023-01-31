@@ -116,21 +116,18 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
     
     @objc private func textDidChange(_ notification: Notification) {
-        if let textField = notification.object as? UITextField {
-            if let text = textField.text {
-                if text.count >= 4 {
-                    textField.resignFirstResponder()
-                    delegate?.canRegister(canRegister: true)
-                }
-                else if text.count <= 0 {
-                    petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
-                    delegate?.canRegister(canRegister: false)
-                }
-                else {
-                    petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
-                    delegate?.canRegister(canRegister: true)
-                }
-            }
+        guard let textField = notification.object as? UITextField else { return }
+        guard let text = textField.text else { return }
+        switch text.count {
+        case 1...3:
+            petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
+            delegate?.canRegister(canRegister: true)
+        case 4...:
+            textField.resignFirstResponder()
+            delegate?.canRegister(canRegister: true)
+        default:
+            petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
+            delegate?.canRegister(canRegister: false)
         }
     }
 }

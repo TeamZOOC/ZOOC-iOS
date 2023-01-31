@@ -27,12 +27,16 @@ final class OnboardingpetRegiserViewModel {
         let cell: OnboardingPetRegisterModel = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "헬로")
         petList.value.append(cell)
         addButtonState.value = false
-        petCount.value -= 1
+        petCount.value += 1
     }
     
     func deleteCell(index: Int) {
         petList.value.remove(at: index)
-        petCount.value += 1
+        petCount.value -= 1
+    }
+    
+    func hideFooterView(button: inout Bool) {
+        button = petList.value.count == 4 ? true : false
     }
 }
 

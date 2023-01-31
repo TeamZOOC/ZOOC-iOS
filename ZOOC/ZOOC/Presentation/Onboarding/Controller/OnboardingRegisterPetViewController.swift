@@ -32,6 +32,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     init(onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel) {
         self.onboardingPetRegisterViewModel = onboardingPetRegisterViewModel
         onboardingPetRegisterViewModel.petList.value = [petProfile1,petProfile2,petProfile3]
+        onboardingPetRegisterViewModel.petCount.value = onboardingPetRegisterViewModel.petList.value.count
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -122,16 +123,11 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
                 print("❌삭제되었을 때 \(i)번째 펫은 \(self.onboardingPetRegisterViewModel.petList.value[i].profileName)")
             }
         }
-        
-        
-        
-
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier) as? OnboardingRegisterPetTableFooterView else { return UITableViewHeaderFooterView() }
-//        cell.delegate = self
         
         cell.onboardingPetRegisterViewModel.addCellClosure = { [weak self] in
             guard let self = self else { return }
@@ -141,6 +137,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
                 print("➕추가되었을 때 \(i)번째 펫은 \(self.onboardingPetRegisterViewModel.petList.value[i].profileName)")
             }
         }
+        self.onboardingPetRegisterViewModel.hideFooterView(button: &cell.addPetProfileButton.isHidden)
         
         return cell
     }
@@ -169,4 +166,3 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
         }
     }
 }
-

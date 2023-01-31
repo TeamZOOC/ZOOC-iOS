@@ -7,19 +7,16 @@
 
 import UIKit
 
-//MARK: - AddButtonTappedDelegate
-
 final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
     
-//    weak var delegate: AddButtonTappedDelegate?
     let onboardingPetRegisterViewModel = OnboardingpetRegiserViewModel()
     
     //MARK: - UI Components
     
     private var petRegisterButtonSeparatorLineView = UIView()
-    private lazy var addPetProfileButton = UIButton()
+    public lazy var addPetProfileButton = UIButton()
     
     //MARK: - Life Cycle
     
@@ -80,25 +77,17 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
         }
     }
     
-    public func dataBind(isFull: Bool) {
-        updateUI(isFull: isFull)
+    private func checkIsHidden(isHidden: Bool) {
+        if isHidden {
+            petRegisterButtonSeparatorLineView.isHidden = true
+            addPetProfileButton.isHidden = true
+            addPetProfileButton.isEnabled = false
+        }
     }
     
     //MARK: - Action Method
     
     @objc func addPetProfileButtonDidTap() {
         onboardingPetRegisterViewModel.addCellClosure?()
-    }
-}
-
-extension OnboardingRegisterPetTableFooterView {
-    private func updateUI(isFull: Bool) {
-        if isFull {
-            petRegisterButtonSeparatorLineView.isHidden = true
-            addPetProfileButton.isHidden = true
-        } else {
-            petRegisterButtonSeparatorLineView.isHidden = false
-            addPetProfileButton.isHidden = false
-        }
     }
 }
