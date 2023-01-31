@@ -15,7 +15,7 @@ final class MyRegisterPetViewController: UIViewController{
     //MARK: - Properties
     
     private let myRegisterPetView = MyRegisterPetView()
-    private var petProfile = MyPetRegisterModel(profileName: "", profileImage:Image.defaultProfile)
+    private var petProfile = MyPetRegisterModel(profileName: nil, profileImage:Image.defaultProfile)
     
     private lazy var myPetMemberData: [MyPet] = []
     private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
@@ -112,6 +112,7 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         }
         
     }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch section {
         case 1:

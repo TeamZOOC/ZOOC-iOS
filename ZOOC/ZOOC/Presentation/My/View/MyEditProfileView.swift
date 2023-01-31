@@ -14,57 +14,23 @@ final class EditProfileView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-
-    private var appInformationLabel = UILabel().then {
-        $0.font = .zoocHeadLine
-        $0.text = "프로필 수정"
-        $0.textColor = .zoocDarkGray2
-    }
-    
-    public var editProfileImageButton = UIButton().then {
-        $0.setImage(Image.logoSymbol, for: .normal)
-        $0.makeCornerRadius(ratio: 54.5)
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    private var editProfileCameraIconImageView = UIImageView().then {
-        $0.image = Image.cameraCircleGreen
-        $0.contentMode = .scaleAspectFill
-        $0.makeCornerRadius(ratio: 17.5)
-    }
-    
-    public var editProfileNameTextField = UITextField().then {
-        $0.textAlignment = .center
-        $0.font = .zoocHeadLine
-        $0.tintColor = .zoocGradientGreen
-    }
-    
-    public var profileNameTextFieldUnderLineView = UIView().then {
-        $0.backgroundColor = .zoocGray1
-    }
-    
-    public var profileNameCountLabel = UILabel().then {
-        $0.font = .zoocCaption
-        $0.text = "/10"
-        $0.textColor = .zoocGray3
-    }
-    
-    public var editCompletedButton = UIButton().then {
-        $0.backgroundColor = .zoocGray1
-        $0.setTitle("완료", for: .normal)
-        $0.makeCornerRadius(ratio: 27)
-    }
+    public var backButton = UIButton()
+    private var appInformationLabel = UILabel()
+    public var editProfileImageButton = UIButton()
+    private var editProfileCameraIconImageView = UIImageView()
+    public var editProfileNameTextField = UITextField()
+    public var profileNameTextFieldUnderLineView = UIView()
+    public var profileNameCountLabel = UILabel()
+    public var editCompletedButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -73,12 +39,55 @@ final class EditProfileView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+
+        appInformationLabel.do {
+            $0.font = .zoocHeadLine
+            $0.text = "프로필 수정"
+            $0.textColor = .zoocDarkGray2
+        }
+        
+        editProfileImageButton.do {
+            $0.setImage(Image.logoSymbol, for: .normal)
+            $0.makeCornerRadius(ratio: 54.5)
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        editProfileCameraIconImageView.do {
+            $0.image = Image.cameraCircleGreen
+            $0.contentMode = .scaleAspectFill
+            $0.makeCornerRadius(ratio: 17.5)
+        }
+        
+        editProfileNameTextField.do {
+            $0.textAlignment = .center
+            $0.font = .zoocHeadLine
+            $0.tintColor = .zoocGradientGreen
+        }
+        
+        profileNameTextFieldUnderLineView.do {
+            $0.backgroundColor = .zoocGray1
+        }
+        
+        profileNameCountLabel.do {
+            $0.font = .zoocCaption
+            $0.text = "/10"
+            $0.textColor = .zoocGray3
+        }
+        
+        editCompletedButton.do {
+            $0.backgroundColor = .zoocGray1
+            $0.setTitle("완료", for: .normal)
+            $0.makeCornerRadius(ratio: 27)
+        }
     }
     
-    
-    private func setLayout() {
+    private func hierarchy() {
         addSubviews(backButton,
                     appInformationLabel,
                     editProfileImageButton,
@@ -87,7 +96,9 @@ final class EditProfileView: UIView {
                     profileNameTextFieldUnderLineView,
                     profileNameCountLabel,
                     editCompletedButton)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(17)
