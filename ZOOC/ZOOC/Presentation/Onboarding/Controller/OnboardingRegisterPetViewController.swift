@@ -13,26 +13,16 @@ import Then
 final class OnboardingRegisterPetViewController: UIViewController{
     
     //MARK: - Properties
-    
-    
-    private var petProfile1 = OnboardingPetRegisterModel(profileImage:Image.defaultProfile, profileName: "희재")
-    private var petProfile2 = OnboardingPetRegisterModel(profileImage:Image.defaultProfile, profileName: "은재")
-    private var petProfile3 = OnboardingPetRegisterModel(profileImage:Image.defaultProfile, profileName: "은실")
-    
-//    private var isFull: Bool = false
-//    private var addButtonClicked: Bool = false
-    
-    
-    //--------
+
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
     private let onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel
+    private let defaultpetProfile = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "")
     
     //MARK: - Life Cycle
     
     init(onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel) {
         self.onboardingPetRegisterViewModel = onboardingPetRegisterViewModel
-        onboardingPetRegisterViewModel.petList.value = [petProfile1,petProfile2,petProfile3]
-        onboardingPetRegisterViewModel.petCount.value = onboardingPetRegisterViewModel.petList.value.count
+        onboardingPetRegisterViewModel.petList = [defaultpetProfile]
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -76,7 +66,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     }
     
     @objc private func registerPetButtonDidTap() {
-        //pushToInviteFamilyViewController()
+//        /pushToInviteFamilyViewController()
     }
 }
 
@@ -96,7 +86,7 @@ extension OnboardingRegisterPetViewController: UITableViewDelegate {
 
 extension OnboardingRegisterPetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return onboardingPetRegisterViewModel.petList.value.count
+        return onboardingPetRegisterViewModel.petList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,21 +98,15 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
         [cell.deletePetProfileButton,
          cell.petProfileImageButton,
          cell.petProfileNameTextField].forEach { $0.tag = indexPath.row }
-        
-        cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList.value[indexPath.row].profileName
-        
-        cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList.value[indexPath.row].profileImage, for: .normal)
-        for i in 0..<self.onboardingPetRegisterViewModel.petList.value.count {
-            print("🐶배정되었을 때 \(i)번째 펫은 \(self.onboardingPetRegisterViewModel.petList.value[i].profileName)")
-        }
-        
+            cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
+            
+            cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+
         cell.onboardingPetRegisterViewModel.deleteCellClosure = { // 해당 인덱스의 셀을 지운다
-            self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index.value)
+            self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index)
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
-            for i in 0..<self.onboardingPetRegisterViewModel.petList.value.count {
-                print("❌삭제되었을 때 \(i)번째 펫은 \(self.onboardingPetRegisterViewModel.petList.value[i].profileName)")
-            }
         }
+        self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
         return cell
     }
     
@@ -133,12 +117,8 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
             guard let self = self else { return }
             self.onboardingPetRegisterViewModel.addCell()
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
-            for i in 0..<self.onboardingPetRegisterViewModel.petList.value.count {
-                print("➕추가되었을 때 \(i)번째 펫은 \(self.onboardingPetRegisterViewModel.petList.value[i].profileName)")
-            }
         }
         self.onboardingPetRegisterViewModel.hideFooterView(button: &cell.addPetProfileButton.isHidden)
-        
         return cell
     }
 }
@@ -147,7 +127,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
 
 extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
     func deleteButtonTapped(tag: Int) {
-        self.onboardingPetRegisterViewModel.index.value = tag
+        self.onboardingPetRegisterViewModel.index = tag
     }
     
     func canRegister(canRegister: Bool) {
@@ -162,7 +142,7 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
     
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int) {
         if let _ = onboardingRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
-            self.onboardingPetRegisterViewModel.petList.value[tag] = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: text)
+            self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: text)
         }
     }
 }
