@@ -165,4 +165,3 @@ extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
         delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
     }
 }
-

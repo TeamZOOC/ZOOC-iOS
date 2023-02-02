@@ -88,6 +88,7 @@
 		87D5AF602960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5F2960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift */; };
 		87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF612960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift */; };
 		87D5AF6429649DC100CA7F12 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF6329649DC100CA7F12 /* HomeViewController.swift */; };
+		D21DADC1298BFF2700CCC089 /* MyPetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21DADC0298BFF2700CCC089 /* MyPetRegisterViewModel.swift */; };
 		D23502E22961898C00F01101 /* MyProfileSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502E12961898C00F01101 /* MyProfileSectionCollectionViewCell.swift */; };
 		D23502EC296197C700F01101 /* MyPetSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502EB296197C700F01101 /* MyPetSectionCollectionViewCell.swift */; };
 		D23502F129619D4700F01101 /* MyPetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23502F029619D4700F01101 /* MyPetCollectionViewCell.swift */; };
@@ -241,6 +242,7 @@
 		87D5AF5F2960CD5900CA7F12 /* HomeMissionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMissionCollectionViewCell.swift; sourceTree = "<group>"; };
 		87D5AF612960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGuideCollectionViewCell.swift; sourceTree = "<group>"; };
 		87D5AF6329649DC100CA7F12 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D21DADC0298BFF2700CCC089 /* MyPetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetRegisterViewModel.swift; sourceTree = "<group>"; };
 		D23502E12961898C00F01101 /* MyProfileSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyProfileSectionCollectionViewCell.swift; path = ZOOC/Presentation/My/Cell/MyProfileSectionCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		D23502EB296197C700F01101 /* MyPetSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		D23502F029619D4700F01101 /* MyPetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				D2F98FA62967939100CC82DE /* MyMemberModel.swift */,
 				D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */,
 				D26C68EB296DE7B60088DC9A /* MyPetRegisterModel.swift */,
+				D21DADC0298BFF2700CCC089 /* MyPetRegisterViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				8782C7EF296C41B200C9324B /* HomeArchiveGridCollectionViewCell.swift in Sources */,
 				D26C860E296B6E8600AEAF9B /* UILabel+.swift in Sources */,
 				D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */,
+				D21DADC1298BFF2700CCC089 /* MyPetRegisterViewModel.swift in Sources */,
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,

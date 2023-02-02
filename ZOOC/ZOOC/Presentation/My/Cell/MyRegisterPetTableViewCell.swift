@@ -10,27 +10,24 @@ import UIKit
 //MARK: - MyDeleteButtonTappedDelegate
 
 protocol MyDeleteButtonTappedDelegate: AnyObject {
-    func deleteButtonTapped(isSelected: Bool, index: Int)
+    func deleteButtonTapped(tag: Int)
     
     func canRegister(canRegister: Bool)
     
-    func giveRegisterData(myPetRegisterData: [MyPetRegisterModel])
+    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage)
 }
 
 final class MyRegisterPetTableViewCell: UITableViewCell {
     
-    //MARK: - Properties
+    let myPetRegisterViewModel = MyPetRegisterViewModel()
     
-    weak var delegate: MyDeleteButtonTappedDelegate?
-    var index: Int = 0
+    weak var delegate: DeleteButtonTappedDelegate?
     var canRegister: Bool = false
-    var myPetRegisterData: [MyPetRegisterModel] = []
-    
     
     //MARK: - UI Components
     
     public lazy var petProfileImageButton = UIButton()
-    public var petProfileNameTextField = UITextField()
+    public lazy var petProfileNameTextField = UITextField()
     public lazy var deletePetProfileButton = UIButton()
     
     //MARK: - Life Cycles
@@ -44,7 +41,6 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         cellStyle()
         hierarchy()
         layout()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -54,10 +50,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func register() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(textDidChange),
-                                               name: UITextField.textDidChangeNotification,
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         petProfileNameTextField.delegate = self
     }
     
@@ -66,13 +59,12 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     }
     
     private func cellStyle() {
+        self.selectionStyle = .none
         self.backgroundColor = .zoocBackgroundGreen
         
         petProfileImageButton.do {
-            $0.setImage(Image.defaultProfile, for: .normal)
-            $0.makeCornerBorder(borderWidth: 5, borderColor: .zoocWhite1)
+            $0.makeCornerBorder(borderWidth: 5, borderColor: UIColor.zoocWhite1)
             $0.makeCornerRadius(ratio: 35)
-            $0.contentMode = .scaleAspectFill
         }
         
         petProfileNameTextField.do {
@@ -80,8 +72,8 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
             $0.addLeftPadding(leftInset: 10)
             $0.textColor = .zoocDarkGreen
             $0.font = .zoocBody1
-            $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGray)
             $0.makeCornerRadius(ratio: 20)
+            $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
         }
         
         deletePetProfileButton.do {
@@ -114,23 +106,11 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(model: MyPetRegisterModel, index: Int, petData: [MyPetRegisterModel]) {
-        self.index = index
-        self.myPetRegisterData = petData
-        updateUI(petCnt: petData.count)
-    }
-    
-    func registerPet() {
-        if (petProfileNameTextField.text!.count != 0){
-            myPetRegisterData[index].profileName = petProfileNameTextField.text!
-            myPetRegisterData[index].profileImage = petProfileImageButton.currentImage!
-        }
-    }
-    
     //MARK: - Action Method
     
-    @objc private func deletePetProfileButtonDidTap() {
-        delegate?.deleteButtonTapped(isSelected: true, index: index)
+    @objc private func deletePetProfileButtonDidTap(sender: UIButton) {
+        delegate?.deleteButtonTapped(tag: sender.tag)
+        myPetRegisterViewModel.deleteCellClosure?()
     }
     
     @objc private func textDidChange(_ notification: Notification) {
@@ -152,13 +132,6 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
 
 extension MyRegisterPetTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        registerPet()
-        delegate?.giveRegisterData(myPetRegisterData: myPetRegisterData)
-    }
-}
-
-extension MyRegisterPetTableViewCell {
-    private func updateUI(petCnt: Int) {
-        deletePetProfileButton.isHidden = petCnt == 1 ? true : false
+        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag, image: petProfileImageButton.currentImage!)
     }
 }
