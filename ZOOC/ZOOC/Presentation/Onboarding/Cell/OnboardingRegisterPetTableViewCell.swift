@@ -14,7 +14,7 @@ protocol DeleteButtonTappedDelegate : AnyObject {
     
     func canRegister(canRegister: Bool)
     
-    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int)
+    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage)
 }
 
 final class OnboardingRegisterPetTableViewCell: UITableViewCell {
@@ -134,6 +134,6 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
 
 extension OnboardingRegisterPetTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag)
+        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag, image: petProfileImageButton.currentImage!)
     }
 }

@@ -758,9 +758,9 @@
 		87A76ABD295F775C0096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D26996A32989AB7500025774 /* OnboardingpetRegiserViewModel.swift */,
 				D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */,
 				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
-				D26996A32989AB7500025774 /* OnboardingpetRegiserViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

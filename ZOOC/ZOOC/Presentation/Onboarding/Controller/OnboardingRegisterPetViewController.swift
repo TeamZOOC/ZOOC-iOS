@@ -92,21 +92,21 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier, for: indexPath)
                 as? OnboardingRegisterPetTableViewCell else { return UITableViewCell() }
-        
         cell.delegate = self
         
         [cell.deletePetProfileButton,
          cell.petProfileImageButton,
          cell.petProfileNameTextField].forEach { $0.tag = indexPath.row }
-            cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
-            
-            cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+        
+        cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
+        cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
 
-        cell.onboardingPetRegisterViewModel.deleteCellClosure = { // 해당 인덱스의 셀을 지운다
+        cell.onboardingPetRegisterViewModel.deleteCellClosure = {
             self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index)
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
         }
         self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
+        
         return cell
     }
     
@@ -140,9 +140,9 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
         }
     }
     
-    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int) {
+    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage) {
         if let _ = onboardingRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
-            self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: text)
+            self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: image, profileName: text)
         }
     }
 }
