@@ -74,13 +74,13 @@ final class HomeDetailArchiveViewController : BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        addKeyboardNotifications()
+        //addKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        removeKeyboardNotifications()
+        //removeKeyboardNotifications()
     }
     
 
@@ -180,6 +180,13 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.collectionViewLayout = layout
             $0.isScrollEnabled = false
             $0.backgroundColor = .clear
+        }
+        
+        commentTextField.do {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: Device.width, height: 72))
+            view.backgroundColor = .systemPink
+            
+            $0.inputAccessoryView = HomeDetailArchiveCommentView(frame: CGRect(x: 0, y: 0, width: Device.width, height: 67))
         }
         
         commentEmojiButton.do {
@@ -303,7 +310,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.height.greaterThanOrEqualTo(250)
+            $0.height.greaterThanOrEqualTo(450)
         }
     }
     
@@ -324,7 +331,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
         commentCollectionView.reloadData()
         commentCollectionView.layoutIfNeeded()
         commentCollectionView.snp.updateConstraints {
-            $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
+            let height = (self.commentCollectionView.contentSize.height > 450 ) ? self.commentCollectionView.contentSize.height : 450
+            $0.height.greaterThanOrEqualTo(height)
         }
     }
     

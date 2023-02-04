@@ -62,10 +62,16 @@ final class HomeDetailArchiveCommentTextField: UITextField{
         self.layer.borderWidth = 1
         self.addLeftPadding(leftInset: 24)
         self.isUserInteractionEnabled = true
+        
+        //self.inputAccessoryView = HomeDetailArchiveCommentView()
     }
     
     private func setLayout() {
         self.addSubview(uploadButton)
+        
+        self.snp.makeConstraints {
+            $0.height.equalTo(47)
+        }
         
         uploadButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -92,7 +98,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
     
     @objc
     private func uploadButtonDidTap() {
-        validateText(self.text)
+        print(#function)
         
     }
 }
