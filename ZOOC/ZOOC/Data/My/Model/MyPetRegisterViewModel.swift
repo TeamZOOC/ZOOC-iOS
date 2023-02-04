@@ -26,7 +26,8 @@ final class MyPetRegisterViewModel {
     }
     
     func hideFooterView(button: inout Bool) {
-        button = petList.count == petCount ? true : false
+        print("현재의 펫 마리수는 \(petCount)")
+        button = petCount == 0 ? true : false
     }
     
     func hideDeleteButton(button: inout Bool) {
