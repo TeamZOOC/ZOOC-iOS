@@ -21,7 +21,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     
     let myPetRegisterViewModel = MyPetRegisterViewModel()
     
-    weak var delegate: DeleteButtonTappedDelegate?
+    weak var delegate: MyDeleteButtonTappedDelegate?
     var canRegister: Bool = false
     
     //MARK: - UI Components

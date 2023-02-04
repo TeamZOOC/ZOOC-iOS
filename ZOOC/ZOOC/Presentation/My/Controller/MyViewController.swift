@@ -54,7 +54,6 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.reloadData()
     }
     
-    
     func getMyPageAPI(){
         MyAPI.shared.getMyPageData() { result in
             
@@ -219,7 +218,7 @@ extension MyViewController {
     }
     
     private func pushToRegisterPetView() {
-        let registerPetViewController = MyRegisterPetViewController()
+        let registerPetViewController = MyRegisterPetViewController(myPetRegisterViewModel: MyPetRegisterViewModel())
         registerPetViewController.hidesBottomBarWhenPushed = true
         registerPetViewController.dataSend(myPetMemberData: myPetMemberData)
         self.navigationController?.pushViewController(registerPetViewController, animated: true)

@@ -19,16 +19,14 @@ final class MyPetRegisterViewModel {
     func addCell() {
         let cell: MyPetRegisterModel = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
         petList.append(cell)
-        petCount += 1
     }
     
     func deleteCell(index: Int) {
         petList.remove(at: index)
-        petCount -= 1
     }
     
     func hideFooterView(button: inout Bool) {
-        button = petList.count == 4 ? true : false
+        button = petList.count == petCount ? true : false
     }
     
     func hideDeleteButton(button: inout Bool) {

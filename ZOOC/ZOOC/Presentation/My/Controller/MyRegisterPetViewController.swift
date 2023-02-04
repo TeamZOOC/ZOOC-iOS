@@ -10,20 +10,31 @@ import UIKit
 import SnapKit
 import Then
 
-final class MyRegisterPetViewController: UIViewController{
+final class MyRegisterPetViewController: UIViewController {
     
     //MARK: - Properties
     
     private let myRegisterPetView = MyRegisterPetView()
-    private var petProfile = MyPetRegisterModel(profileName: nil, profileImage:Image.defaultProfile)
+    private let myPetRegisterViewModel: MyPetRegisterViewModel
+    private let defaultpetProfile = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
     
     private lazy var myPetMemberData: [MyPet] = []
-    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
     private lazy var myUpdateRegisterData: [MyPetRegisterModel] = []
     
-    private var isFull: Bool = false
     
     //MARK: - Life Cycle
+    
+    //MARK: - Life Cycle
+    
+    init(myPetRegisterViewModel: MyPetRegisterViewModel) {
+        self.myPetRegisterViewModel = myPetRegisterViewModel
+        myPetRegisterViewModel.petList = [defaultpetProfile]
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = myRegisterPetView
@@ -41,6 +52,7 @@ final class MyRegisterPetViewController: UIViewController{
     private func register() {
         myRegisterPetView.registerPetTableView.delegate = self
         myRegisterPetView.registerPetTableView.dataSource = self
+        self.myPetRegisterViewModel.petCount = 4 - myPetMemberData.count
     }
     
     private func target() {
@@ -88,7 +100,7 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         case 0:
             return myPetMemberData.count
         case 1:
-            return myPetRegisterData.count
+            return myPetRegisterViewModel.petList.count
         default:
             return 0
         }
@@ -105,7 +117,19 @@ extension MyRegisterPetViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisterPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisterPetTableViewCell else { return UITableViewCell() }
             cell.delegate = self
-            cell.dataBind(model: myPetRegisterData[indexPath.row], index: indexPath.row, petData: myPetRegisterData)
+            
+            [cell.deletePetProfileButton,
+             cell.petProfileImageButton,
+             cell.petProfileNameTextField].forEach { $0.tag = indexPath.row }
+            
+            cell.petProfileNameTextField.text = self.myPetRegisterViewModel.petList[indexPath.row].profileName
+            cell.petProfileImageButton.setImage(self.myPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+
+            cell.myPetRegisterViewModel.deleteCellClosure = {
+                self.myPetRegisterViewModel.deleteCell(index: self.myPetRegisterViewModel.index)
+                self.myRegisterPetView.registerPetTableView.reloadData()
+            }
+            self.myPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
             return cell
         default:
             return UITableViewCell()
@@ -117,9 +141,13 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         switch section {
         case 1:
             guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyRegisterPetTableFooterView.cellIdentifier) as? MyRegisterPetTableFooterView else { return UITableViewHeaderFooterView() }
-            cell.delegate = self
-            checkIsFull()
-            cell.dataBind(isFull: isFull)
+            
+            cell.myPetRegisterViewModel.addCellClosure = { [weak self] in
+                guard let self = self else { return }
+                self.myPetRegisterViewModel.addCell()
+                self.myRegisterPetView.registerPetTableView.reloadData()
+            }
+            self.myPetRegisterViewModel.hideFooterView(button: &cell.addPetProfileButton.isHidden)
             return cell
         default:
             return UIView()
@@ -127,35 +155,11 @@ extension MyRegisterPetViewController: UITableViewDataSource {
     }
 }
 
-
-
-//MARK: - DeleteButtonTappedDelegate
+//MARK: - MyDeleteButtonTappedDelegate
 
 extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
-    func giveRegisterData(myPetRegisterData: [MyPetRegisterModel]) {
-        self.myUpdateRegisterData = myPetRegisterData
-        print("업데이트 반려동물 셀 개수\(myUpdateRegisterData.count)")
-        
-        for i in 0...myPetRegisterData.count-1 {
-            print("가져온 반려동물\(myPetRegisterData[i].profileName)")
-        }
-        
-        for j in 0...self.myUpdateRegisterData.count-1 {
-            print("넣어줄 반려동물\(myUpdateRegisterData[j].profileName)")
-        }
-    }
-    
-    func deleteButtonTapped(isSelected: Bool, index: Int) {
-        if isSelected {
-            if myPetRegisterData.count > 1 {
-                myPetRegisterData.remove(at: index)
-                isFull = false
-                if(myPetRegisterData.count + myPetMemberData.count == 4) {
-                    isFull = true
-                }
-            }
-        }
-        myRegisterPetView.registerPetTableView.reloadData()
+    func deleteButtonTapped(tag: Int) {
+        self.myPetRegisterViewModel.index = tag
     }
     
     func canRegister(canRegister: Bool) {
@@ -167,30 +171,16 @@ extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
             myRegisterPetView.registerPetButton.isEnabled = false
         }
     }
-}
-
-//MARK: - AddButtonTappedDelegate
-
-extension MyRegisterPetViewController: MyAddButtonTappedDelegate {
-    func addPetButtonTapped(isSelected: Bool) {
-        if isSelected {
-            myPetRegisterData.append(petProfile)
+    
+    func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage) {
+        if let _ = myRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
+            self.myPetRegisterViewModel.petList[tag] = MyPetRegisterModel(profileName: text, profileImage: image)
         }
-        myRegisterPetView.registerPetTableView.reloadData()
     }
 }
 
 extension MyRegisterPetViewController {
-    private func checkIsFull() {
-        if(myPetRegisterData.count + myPetMemberData.count >= 4){
-            isFull = true
-        } else {
-            isFull = false
-        }
-    }
-    
     func registerPet() {
         self.navigationController?.popViewController(animated: true)
     }
 }
-

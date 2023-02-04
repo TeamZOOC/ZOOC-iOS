@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         //온보딩 Flow 부터
-        let onboardingNVC = UINavigationController(rootViewController: OnboardingRegisterPetViewController(onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel()))
+        let onboardingNVC = UINavigationController(rootViewController: OnboardingLoginViewController())
         onboardingNVC.setNavigationBarHidden(true, animated: true)
         
         //홈 Flow 부터
