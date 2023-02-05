@@ -21,7 +21,7 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    let onboardingPetRegisterViewModel = OnboardingpetRegiserViewModel()
+    let onboardingPetRegisterViewModel = OnboardingPetRegisterViewModel()
     
     weak var delegate: DeleteButtonTappedDelegate?
     var canRegister: Bool = false

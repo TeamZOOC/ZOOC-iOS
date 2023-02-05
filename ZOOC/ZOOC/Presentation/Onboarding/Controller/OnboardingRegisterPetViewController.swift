@@ -15,12 +15,12 @@ final class OnboardingRegisterPetViewController: UIViewController{
     //MARK: - Properties
 
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
-    private let onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel
+    private let onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel
     private let defaultpetProfile = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "")
     
     //MARK: - Life Cycle
     
-    init(onboardingPetRegisterViewModel: OnboardingpetRegiserViewModel) {
+    init(onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel) {
         self.onboardingPetRegisterViewModel = onboardingPetRegisterViewModel
         onboardingPetRegisterViewModel.petList = [defaultpetProfile]
         super.init(nibName: nil, bundle: nil)
@@ -66,7 +66,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     }
     
     @objc private func registerPetButtonDidTap() {
-//        /pushToInviteFamilyViewController()
+//        pushToInviteFamilyViewController()
     }
 }
 

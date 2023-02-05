@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OnboardingpetRegiserViewModel {
+final class OnboardingPetRegisterViewModel {
     var addCellClosure: (() -> Void)?
     var deleteCellClosure: (() -> Void)?
     

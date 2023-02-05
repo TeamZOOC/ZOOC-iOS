@@ -11,7 +11,7 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
     
-    let onboardingPetRegisterViewModel = OnboardingpetRegiserViewModel()
+    let onboardingPetRegisterViewModel = OnboardingPetRegisterViewModel()
     
     //MARK: - UI Components
     

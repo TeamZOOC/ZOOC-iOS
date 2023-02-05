@@ -18,11 +18,7 @@ final class MyRegisterPetViewController: UIViewController {
     private let myPetRegisterViewModel: MyPetRegisterViewModel
     private let defaultpetProfile = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
     
-    private lazy var myPetMemberData: [MyPet] = []
-    private lazy var myUpdateRegisterData: [MyPetRegisterModel] = []
-    
-    
-    //MARK: - Life Cycle
+    private var myPetMemberData: [MyPet] = []
     
     //MARK: - Life Cycle
     
@@ -42,6 +38,7 @@ final class MyRegisterPetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dismissKeyboardWhenTappedAround()
         
         register()
         target()
@@ -52,7 +49,6 @@ final class MyRegisterPetViewController: UIViewController {
     private func register() {
         myRegisterPetView.registerPetTableView.delegate = self
         myRegisterPetView.registerPetTableView.dataSource = self
-        self.myPetRegisterViewModel.petCount = 4 - myPetMemberData.count
     }
     
     private func target() {
@@ -129,7 +125,9 @@ extension MyRegisterPetViewController: UITableViewDataSource {
                 self.myPetRegisterViewModel.deleteCell(index: self.myPetRegisterViewModel.index)
                 self.myRegisterPetView.registerPetTableView.reloadData()
             }
+            
             self.myPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
+            
             return cell
         default:
             return UITableViewCell()
