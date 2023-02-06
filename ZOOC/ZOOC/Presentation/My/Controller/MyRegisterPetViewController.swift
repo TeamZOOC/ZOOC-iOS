@@ -120,11 +120,16 @@ extension MyRegisterPetViewController: UITableViewDataSource {
             
             cell.petProfileNameTextField.text = self.myPetRegisterViewModel.petList[indexPath.row].profileName
             cell.petProfileImageButton.setImage(self.myPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
-
+            
             cell.myPetRegisterViewModel.deleteCellClosure = {
                 self.myPetRegisterViewModel.deleteCell(index: self.myPetRegisterViewModel.index)
                 self.myRegisterPetView.registerPetTableView.reloadData()
             }
+            
+            self.myPetRegisterViewModel.checkCanRegister(
+                button:&self.myRegisterPetView.registerPetButton.isEnabled,
+                color:&self.myRegisterPetView.registerPetButton.backgroundColor
+            )
             
             self.myPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
             
@@ -156,27 +161,29 @@ extension MyRegisterPetViewController: UITableViewDataSource {
 //MARK: - MyDeleteButtonTappedDelegate
 
 extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
+//    func canRegister(tag: Int, editing: Bool) {
+//        self.myPetRegisterViewModel.index = tag
+//        for index in 0..<self.myPetRegisterViewModel.petList.count {
+//            self.myPetRegisterViewModel.petList[index].editing = (index == tag) ? editing : false
+//            print("\(index)번째의 편집유무는 \(editing)")
+//        }
+//    }
+    
+    
     func deleteButtonTapped(tag: Int) {
         self.myPetRegisterViewModel.index = tag
-    }
-    
-    func canRegister(canRegister: Bool) {
-        if canRegister {
-            myRegisterPetView.registerPetButton.backgroundColor = .zoocGradientGreen
-            myRegisterPetView.registerPetButton.isEnabled = true
-        } else {
-            myRegisterPetView.registerPetButton.backgroundColor = .zoocGray1
-            myRegisterPetView.registerPetButton.isEnabled = false
-        }
     }
     
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage) {
         if let _ = myRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
             self.myPetRegisterViewModel.petList[tag] = MyPetRegisterModel(profileName: text, profileImage: image)
         }
+        self.myPetRegisterViewModel.checkCanRegister(
+            button: &self.myRegisterPetView.registerPetButton.isEnabled,
+            color: &self.myRegisterPetView.registerPetButton.backgroundColor)
     }
+    
 }
-
 extension MyRegisterPetViewController {
     func registerPet() {
         self.navigationController?.popViewController(animated: true)

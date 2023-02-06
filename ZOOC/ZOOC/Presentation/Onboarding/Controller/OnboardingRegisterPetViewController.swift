@@ -66,7 +66,7 @@ final class OnboardingRegisterPetViewController: UIViewController{
     }
     
     @objc private func registerPetButtonDidTap() {
-//        pushToInviteFamilyViewController()
+        pushToInviteFamilyViewController()
     }
 }
 
@@ -144,5 +144,12 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
         if let _ = onboardingRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
             self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: image, profileName: text)
         }
+    }
+}
+
+extension OnboardingRegisterPetViewController {
+    private func pushToInviteFamilyViewController() {
+        let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
+        self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }
 }

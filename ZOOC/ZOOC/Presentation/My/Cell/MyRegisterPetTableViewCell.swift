@@ -12,7 +12,7 @@ import UIKit
 protocol MyDeleteButtonTappedDelegate: AnyObject {
     func deleteButtonTapped(tag: Int)
     
-    func canRegister(canRegister: Bool)
+    //func canRegister(tag: Int, editing: Bool)
     
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage)
 }
@@ -50,7 +50,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     //MARK: - Custom Method
     
     private func register() {
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         petProfileNameTextField.delegate = self
     }
     
@@ -113,21 +113,20 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         myPetRegisterViewModel.deleteCellClosure?()
     }
     
-    @objc private func textDidChange(_ notification: Notification) {
-        guard let textField = notification.object as? UITextField else { return }
-        guard let text = textField.text else { return }
-        switch text.count {
-        case 1...3:
-            petProfileNameTextField.layer.borderColor = UIColor.zoocDarkGreen.cgColor
-            delegate?.canRegister(canRegister: true)
-        case 4...:
-            textField.resignFirstResponder()
-            delegate?.canRegister(canRegister: true)
-        default:
-            petProfileNameTextField.layer.borderColor = UIColor.zoocLightGreen.cgColor
-            delegate?.canRegister(canRegister: false)
-        }
-    }
+//    @objc private func textDidChange(_ notification: Notification) {
+//        guard let textField = notification.object as? UITextField else { return }
+//        guard let text = textField.text else { return }
+//        switch text.count {
+//        case 1...3:
+//            delegate?.canRegister(tag: textField.tag, editing: true)
+//        case 4...:
+//            delegate?.canRegister(tag: textField.tag, editing: false)
+//            textField.resignFirstResponder()
+//        default:
+//            delegate?.canRegister(tag: textField.tag, editing: false)
+//        }
+//        myPetRegisterViewModel.editCellClosure?()
+//    }
 }
 
 extension MyRegisterPetTableViewCell: UITextFieldDelegate {
