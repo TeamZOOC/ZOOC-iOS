@@ -15,7 +15,7 @@ class OnboardingAPI: BaseAPI {
 
 extension OnboardingAPI {
     public func getInviteCode(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(            .getInviteCode(familyId: familyID)) {
+        onboardingProvider.request(.getInviteCode(familyId: familyID)) {
             (result) in self.disposeNetwork(result, dataModel: OnboardingInviteResult.self, completion: completion)
         }
     }
@@ -42,5 +42,3 @@ extension OnboardingAPI {
         }
     }
 }
-
-

@@ -23,7 +23,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     private var familyCountLabel = UILabel()
     private var inviteButton = UIButton()
     private var inviteButtonUnderLine = UIView()
-    public lazy var familyCollectionView = UICollectionView(frame: .zero)
+    public lazy var familyCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     //MARK: - Life Cycles
     

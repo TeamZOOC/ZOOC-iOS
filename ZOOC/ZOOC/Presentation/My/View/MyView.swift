@@ -14,7 +14,14 @@ final class MyView: UIView  {
     
     //MARK: - UI Components
     
-    public lazy var myCollectionView = UICollectionView(frame: .zero)
+    public lazy var myCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = false
+        $0.alwaysBounceVertical = true
+        $0.backgroundColor = .zoocBackgroundGreen
+    }
     
     //MARK: - Life Cycles
     
