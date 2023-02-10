@@ -31,7 +31,6 @@ final class MyRegisterPetView: UIView {
         style()
         hierarchy()
         layout()
-        
     }
     
     required init?(coder: NSCoder) {

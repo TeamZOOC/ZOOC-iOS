@@ -28,7 +28,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     private var petLabel = UILabel()
     public var petCountLabel = UILabel()
-    public lazy var petCollectionView = UICollectionView(frame: .zero)
+    public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -165,4 +165,3 @@ extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
         delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
     }
 }
-
