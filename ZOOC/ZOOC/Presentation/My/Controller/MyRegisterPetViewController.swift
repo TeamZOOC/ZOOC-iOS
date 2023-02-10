@@ -161,6 +161,14 @@ extension MyRegisterPetViewController: UITableViewDataSource {
 //MARK: - MyDeleteButtonTappedDelegate
 
 extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
+    func petProfileImageButtonDidTap(tag: Int) {
+        self.myPetRegisterViewModel.index = tag
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true)
+    }
+    
 //    func canRegister(tag: Int, editing: Bool) {
 //        self.myPetRegisterViewModel.index = tag
 //        for index in 0..<self.myPetRegisterViewModel.petList.count {
@@ -187,5 +195,15 @@ extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
 extension MyRegisterPetViewController {
     func registerPet() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension MyRegisterPetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        self.myPetRegisterViewModel.petList[self.myPetRegisterViewModel.index].profileImage = image
+        self.myRegisterPetView.registerPetTableView.reloadData()
     }
 }
