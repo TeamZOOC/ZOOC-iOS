@@ -582,8 +582,8 @@
 		87A76A8F295F6D8F0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D23502F42961A69E00F01101 /* MyView.swift */,
 				D23503002964702400F01101 /* MyAppInformationView.swift */,
+				D23502F42961A69E00F01101 /* MyView.swift */,
 				D2350308296490A700F01101 /* MyEditProfileView.swift */,
 				D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */,
 				D26C85D829689D0800AEAF9B /* MyDeleteAccountAlertViewController.swift */,

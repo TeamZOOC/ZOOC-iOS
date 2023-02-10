@@ -14,6 +14,8 @@ protocol DeleteButtonTappedDelegate : AnyObject {
     
     func canRegister(canRegister: Bool)
     
+    func petProfileImageButtonDidTap(tag: Int)
+    
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage)
 }
 
@@ -58,6 +60,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     
     private func target() {
         deletePetProfileButton.addTarget(self, action: #selector(deletePetProfileButtonDidTap), for: .touchUpInside)
+        
+        petProfileImageButton.addTarget(self, action: #selector(petProfileImageButtonDidTap), for: .touchUpInside)
     }
     
     private func cellStyle() {
@@ -113,6 +117,10 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     @objc private func deletePetProfileButtonDidTap(sender: UIButton) {
         delegate?.deleteButtonTapped(tag: sender.tag)
         onboardingPetRegisterViewModel.deleteCellClosure?()
+    }
+    
+    @objc private func petProfileImageButtonDidTap(sender: UIButton) {
+        delegate?.petProfileImageButtonDidTap(tag: sender.tag)
     }
     
     @objc private func textDidChange(_ notification: Notification) {

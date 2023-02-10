@@ -105,6 +105,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
             self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index)
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
         }
+        
         self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
         
         return cell
@@ -118,6 +119,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
             self.onboardingPetRegisterViewModel.addCell()
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
         }
+        
         self.onboardingPetRegisterViewModel.hideFooterView(button: &cell.addPetProfileButton.isHidden)
         return cell
     }
@@ -126,6 +128,14 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
 //MARK: - DeleteButtonTappedDelegate
 
 extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
+    func petProfileImageButtonDidTap(tag: Int) {
+        self.onboardingPetRegisterViewModel.index = tag
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true)
+    }
+    
     func deleteButtonTapped(tag: Int) {
         self.onboardingPetRegisterViewModel.index = tag
     }
@@ -151,5 +161,13 @@ extension OnboardingRegisterPetViewController {
     private func pushToInviteFamilyViewController() {
         let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
+    }
+}
+
+extension OnboardingRegisterPetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        self.onboardingPetRegisterViewModel.petList[self.onboardingPetRegisterViewModel.index].profileImage = image
+        self.onboardingRegisterPetView.registerPetTableView.reloadData()
     }
 }

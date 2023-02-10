@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 // MARK: - MyResult
 
 struct OnboardingResult: Codable {

@@ -10,6 +10,7 @@ import UIKit
 final class OnboardingPetRegisterViewModel {
     var addCellClosure: (() -> Void)?
     var deleteCellClosure: (() -> Void)?
+    var uploadCellClosure: (() -> Void)?
     
     var petList: [OnboardingPetRegisterModel] = []
     var petCount: Int = 4
@@ -25,6 +26,10 @@ final class OnboardingPetRegisterViewModel {
     func deleteCell(index: Int) {
         petList.remove(at: index)
         petCount -= 1
+    }
+    
+    func uploadImage(index: Int, image: UIImage) {
+        petList[index].profileImage = image
     }
     
     func hideFooterView(button: inout Bool) {
