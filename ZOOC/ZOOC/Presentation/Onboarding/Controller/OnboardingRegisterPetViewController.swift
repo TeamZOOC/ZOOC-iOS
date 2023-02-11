@@ -10,10 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingRegisterPetViewController: UIViewController{
+final class OnboardingRegisterPetViewController: BaseViewController{
     
     //MARK: - Properties
-
+    
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
     private let onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel
     private let defaultpetProfile = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "")
@@ -60,15 +60,30 @@ final class OnboardingRegisterPetViewController: UIViewController{
     }
     
     //MARK: - Action Method
-
+    
     @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func registerPetButtonDidTap() {
-        pushToInviteFamilyViewController()
+        var names: [String] = []
+        var photos: [UIImage] = []
+        for pet in self.onboardingPetRegisterViewModel.petList {
+            names.append(pet.profileName)
+            photos.append(pet.profileImage)
+        }
+        
+        OnboardingAPI.shared.registerPet(
+            petNames: names,
+            files: photos
+        ) { result in
+            guard let result = self.validateResult(result) as? OnboardingRegisterPetResult else { return }
+            print("결과는 \(result)")
+            self.pushToInviteFamilyViewController()
+        }
     }
 }
+
 
 //MARK: - UITableViewDelegate
 
@@ -100,7 +115,7 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
         
         cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
         cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
-
+        
         cell.onboardingPetRegisterViewModel.deleteCellClosure = {
             self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index)
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
@@ -159,6 +174,7 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
 
 extension OnboardingRegisterPetViewController {
     private func pushToInviteFamilyViewController() {
+        print("넘어가자!")
         let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }

@@ -28,9 +28,12 @@ extension OnboardingAPI {
         }
     }
     
-    public func registerPet(param: OnboardingRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterPet(familyId: "0", param: param)) {
-            (result) in self.disposeNetwork(result, dataModel: OnboardingRegisterPetResult.self, completion: completion)
+    public func registerPet(petNames: [String], files: [UIImage], completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterPet(petNames: petNames, files: files)) {
+            (result) in self.disposeNetwork(
+                result,
+                dataModel: OnboardingRegisterPetResult.self,
+                completion: completion)
         }
     }
     

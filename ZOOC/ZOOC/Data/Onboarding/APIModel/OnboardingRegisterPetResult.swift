@@ -7,14 +7,14 @@
 
 import Foundation
 
-// MARK: - Empty
+// MARK: - OnboardingRegisterPetResult
 struct OnboardingRegisterPetResult: Codable {
-    let pet: [OnboardingPet]
+    let data: [OnboardingPetData]
 }
 
 // MARK: - Datum
-struct OnboardingPet: Codable {
+struct OnboardingPetData: Codable {
     let id: Int
     let name: String
-    let photo: String?
+    let photo: String
 }

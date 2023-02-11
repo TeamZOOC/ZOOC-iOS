@@ -13,7 +13,8 @@ import UIKit
 enum OnboardingService {
     case getInviteCode(familyId: String)
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
-    case postRegisterPet(familyId: String, param: OnboardingRegisterPetRequestDto)
+    case postRegisterPet(petNames: [String],
+                         files: [UIImage])
     case postKakaoSocialLogin(accessToken: String)
 }
 
@@ -24,8 +25,8 @@ extension OnboardingService: BaseTargetType {
             return URLs.getInviteCode.replacingOccurrences(of: "{familyId}", with: familyId)
         case .postRegisterUser:
             return URLs.registerUser
-        case .postRegisterPet(let familyId, param: _):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: familyId)
+        case .postRegisterPet(petNames: _, files: _):
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
         case .postKakaoSocialLogin:
             return URLs.socialLogin
         }
@@ -37,7 +38,7 @@ extension OnboardingService: BaseTargetType {
             return .get
         case .postRegisterUser(param: _):
             return .post
-        case .postRegisterPet(param: _):
+        case .postRegisterPet(petNames: _, files: _):
             return .post
         case .postKakaoSocialLogin:
             return .post
@@ -52,22 +53,28 @@ extension OnboardingService: BaseTargetType {
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
-        case .postRegisterPet(familyId: _, param: let param):
+        case .postRegisterPet(petNames: let names, files: let photos):
             var multipartFormDatas: [MultipartFormData] = []
-            
-            for i in 0..<param.names.count {
+//            multipartFormDatas.append(MultipartFormData(provider: .data("\(names)".data(using: .utf8)!), name: "petNames"))
+//
+//            multipartFormDatas.append(MultipartFormData(provider: .data("\(photos)".data(using: .utf8)!), name: "files"))
+            for name in names {
                 multipartFormDatas.append(MultipartFormData(
-                    provider: .data("\(param.names[i])".data(using: .utf8)!),
-                    name: "names[\(i)]"))
+                    provider: .data("\(name)".data(using: .utf8)!),
+                    name: "petNames"))
             }
-            
-            for j in 0..<param.photos.count {
-                multipartFormDatas.append(MultipartFormData(
-                    provider: .data("\(param.photos[j])".data(using: .utf8)!),
-                    name: "photos[\(j)]",
-                    fileName: "image.jpeg",
-                    mimeType: "image/jpeg"))
+
+            //photo! 나중에 바꿔주기
+            for photo in photos {
+                    let photo = photo.jpegData(compressionQuality: 1.0) ?? Data()
+
+                    multipartFormDatas.append(MultipartFormData(
+                        provider: .data("\(photo)".data(using: .utf8)!),
+                        name: "files",
+                        fileName: "image.jpeg",
+                        mimeType: "image/jpeg"))
             }
+
             return .uploadMultipart(multipartFormDatas)
         }
     }
@@ -78,8 +85,9 @@ extension OnboardingService: BaseTargetType {
             return APIConstants.hasTokenHeader
         case .postRegisterUser(param: _):
             return APIConstants.hasTokenHeader
-        case .postRegisterPet(param: _):
-            return APIConstants.multipart
+        case .postRegisterPet(petNames: _, files: _):
+            return [APIConstants.contentType: APIConstants.multipartFormData,
+                    APIConstants.auth : APIConstants.accessToken]
         case .postKakaoSocialLogin(accessToken: let accessToken):
             return [APIConstants.contentType: APIConstants.applicationJSON,
                     APIConstants.auth : accessToken]
