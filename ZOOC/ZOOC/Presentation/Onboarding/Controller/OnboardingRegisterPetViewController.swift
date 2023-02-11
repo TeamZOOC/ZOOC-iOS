@@ -78,7 +78,8 @@ final class OnboardingRegisterPetViewController: BaseViewController{
             files: photos
         ) { result in
             guard let result = self.validateResult(result) as? OnboardingRegisterPetResult else { return }
-            print("결과는 \(result)")
+            print(result)
+            
             self.pushToInviteFamilyViewController()
         }
     }

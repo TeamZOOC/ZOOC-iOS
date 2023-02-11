@@ -30,10 +30,10 @@ extension OnboardingAPI {
     
     public func registerPet(petNames: [String], files: [UIImage], completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postRegisterPet(petNames: petNames, files: files)) {
-            (result) in self.disposeNetwork(
-                result,
-                dataModel: OnboardingRegisterPetResult.self,
-                completion: completion)
+            (result) in
+            self.disposeNetwork(result,
+                                dataModel: [OnboardingRegisterPetResult].self,
+                                completion: completion)
         }
     }
     
