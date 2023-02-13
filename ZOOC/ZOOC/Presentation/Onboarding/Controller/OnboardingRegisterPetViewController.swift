@@ -67,19 +67,36 @@ final class OnboardingRegisterPetViewController: BaseViewController{
     
     @objc private func registerPetButtonDidTap() {
         var names: [String] = []
-        var photos: [UIImage] = []
+        var photos: [Data] = []
+        var photo: Data
+        var isPhotos: [Bool] = []
+        var isPhoto: Bool = true
+        
         for pet in self.onboardingPetRegisterViewModel.petList {
+            
+            guard let photo = pet.profileImage.jpegData(compressionQuality: 1.0) else {
+                photo = Data()
+                isPhoto = false
+                return
+            }
+//            if let _ = pet.profileImage.jpegData(compressionQuality: 1.0) {
+//                photo = pet.profileImage.jpegData(compressionQuality: 1.0)!
+//                isPhoto = true
+//            } else {
+//                photo = Data()
+//                isPhoto = false
+//            }
             names.append(pet.profileName)
-            photos.append(pet.profileImage)
+            photos.append(photo)
+            isPhotos.append(isPhoto)
         }
         
         OnboardingAPI.shared.registerPet(
-            petNames: names,
-            files: photos
+            param: OnboardingRegisterPetRequestDto(petNames: names, files: photos, isPetPhotos: isPhotos)
         ) { result in
             guard let result = self.validateResult(result) as? OnboardingRegisterPetResult else { return }
-            print(result)
             
+            print(result)
             self.pushToInviteFamilyViewController()
         }
     }
