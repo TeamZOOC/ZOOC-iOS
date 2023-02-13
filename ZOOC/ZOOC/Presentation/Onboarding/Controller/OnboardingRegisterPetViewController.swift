@@ -79,13 +79,13 @@ final class OnboardingRegisterPetViewController: BaseViewController{
                 isPhoto = false
                 return
             }
-//            if let _ = pet.profileImage.jpegData(compressionQuality: 1.0) {
-//                photo = pet.profileImage.jpegData(compressionQuality: 1.0)!
-//                isPhoto = true
-//            } else {
-//                photo = Data()
-//                isPhoto = false
-//            }
+            //            if let _ = pet.profileImage.jpegData(compressionQuality: 1.0) {
+            //                photo = pet.profileImage.jpegData(compressionQuality: 1.0)!
+            //                isPhoto = true
+            //            } else {
+            //                photo = Data()
+            //                isPhoto = false
+            //            }
             names.append(pet.profileName)
             photos.append(photo)
             isPhotos.append(isPhoto)
@@ -139,6 +139,11 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
             self.onboardingRegisterPetView.registerPetTableView.reloadData()
         }
         
+        self.onboardingPetRegisterViewModel.checkCanRegister(
+            button:&self.onboardingRegisterPetView.registerPetButton.isEnabled,
+            color:&self.onboardingRegisterPetView.registerPetButton.backgroundColor
+        )
+        
         self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
         
         return cell
@@ -187,6 +192,11 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
         if let _ = onboardingRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
             self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: image, profileName: text)
         }
+        
+        self.onboardingPetRegisterViewModel.checkCanRegister(
+            button:&self.onboardingRegisterPetView.registerPetButton.isEnabled,
+            color:&self.onboardingRegisterPetView.registerPetButton.backgroundColor
+        )
     }
 }
 
