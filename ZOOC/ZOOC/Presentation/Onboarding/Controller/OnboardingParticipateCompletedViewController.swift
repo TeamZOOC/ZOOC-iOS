@@ -45,8 +45,3 @@ final class OnboardingParticipateCompletedViewController: UIViewController{
         changeRootViewController(ZoocTabBarController())
     }
 }
-
-
-
-
-

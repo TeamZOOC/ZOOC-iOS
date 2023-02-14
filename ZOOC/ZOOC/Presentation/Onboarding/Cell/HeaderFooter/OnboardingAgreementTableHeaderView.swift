@@ -102,13 +102,13 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     }
 }
 
-extension OnboardingAgreementTableHeaderView {
-    private func updateUI(all: Bool) {
+private extension OnboardingAgreementTableHeaderView {
+    func updateUI(all: Bool) {
         let checkButtonImage = all ? Image.checkBoxFill : Image.checkBox
         allCheckedButton.setImage(checkButtonImage, for: .normal)
     }
     
-    private func updateAllCheckedButtonUI() {
+    func updateAllCheckedButtonUI() {
         if isSelected {
             isSelected = false
             allCheckedButton.setImage(Image.checkBoxFill, for: .normal)

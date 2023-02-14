@@ -78,7 +78,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     }
 }
 
-extension OnboardingChooseFamilyRoleViewController {
+private extension OnboardingChooseFamilyRoleViewController {
     func textFieldIsFull() {
         onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
         onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen

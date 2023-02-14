@@ -28,6 +28,15 @@ extension OnboardingAPI {
         }
     }
     
+    public func registerPet(param: OnboardingRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterPet(param: param)) {
+            (result) in
+            self.disposeNetwork(result,
+                                dataModel: [OnboardingRegisterPetResult].self,
+                                completion: completion)
+        }
+    }
+    
     public func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postKakaoSocialLogin(accessToken: accessToken)) { (result) in
             self.disposeNetwork(result,

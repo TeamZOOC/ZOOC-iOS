@@ -87,8 +87,8 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     }
 }
 
-extension OnboardingAgreementTableViewCell {
-    private func updateUI(model: OnboardingAgreementModel, index: Int) {
+private extension OnboardingAgreementTableViewCell {
+    func updateUI(model: OnboardingAgreementModel, index: Int) {
         self.index = index
         menuLabel.text = model.title
         if model.isSelected {
@@ -98,7 +98,7 @@ extension OnboardingAgreementTableViewCell {
         }
     }
     
-    private func updatecheckButtonUI() {
+    func updatecheckButtonUI() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)
             checkedButton.setImage(Image.checkBoxFill, for: .normal)

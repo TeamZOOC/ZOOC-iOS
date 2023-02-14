@@ -57,7 +57,7 @@ final class OnboardingCompleteProfileViewController: UIViewController{
     }
 }
 
-extension OnboardingCompleteProfileViewController {
+private extension OnboardingCompleteProfileViewController {
     func updateCompleteProfileView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.onboardingCompleteProfileView.completeProfileLabel.textColor = .zoocGray1
