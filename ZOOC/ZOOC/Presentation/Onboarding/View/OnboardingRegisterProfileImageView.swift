@@ -16,13 +16,13 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton()
-    public var progressBarView = UIView()
-    public var completedProgressBarView = UIView()
-    public var registerProfileImageLabel = UILabel()
-    private var registerProfileImageSubLabel = UILabel()
-    public var registerProfileImageButton = UIButton()
-    public var createProfileButton = UIButton()
+    public lazy var backButton = UIButton()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
+    public let registerProfileImageLabel = UILabel()
+    private let registerProfileImageSubLabel = UILabel()
+    public lazy var registerProfileImageButton = UIButton()
+    public lazy var createProfileButton = UIButton()
     
     //MARK: - Life Cycles
     

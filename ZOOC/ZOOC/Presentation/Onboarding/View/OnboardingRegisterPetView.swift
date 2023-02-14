@@ -14,51 +14,13 @@ final class OnboardingRegisterPetView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    private var registerPetTitleLabel = UILabel().then {
-        $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
-        $0.textColor = .zoocDarkGray2
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    private var registerPetSubTitleLabel = UILabel().then {
-        $0.text = "반려동물은 최대 4마리까지 등록 가능해요"
-        $0.textColor = .zoocGray1
-        $0.textAlignment = .left
-        $0.font = .zoocBody3
-    }
-    
-    public var registerPetTableView = UITableView(frame: .zero, style: .plain).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .none
-        $0.isScrollEnabled = false
-        $0.backgroundColor = .zoocBackgroundGreen
-    }
-    
-    public var registerPetButton =  UIButton().then {
-        $0.setTitle("등록하기", for: .normal)
-        $0.setTitleColor(.zoocWhite1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGray1
-        $0.isEnabled = false
-    }
+    public lazy var backButton = UIButton()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
+    private let registerPetTitleLabel = UILabel()
+    private let registerPetSubTitleLabel = UILabel()
+    public lazy var registerPetTableView = UITableView(frame: .zero, style: .plain)
+    public lazy var registerPetButton =  UIButton()
     
     //MARK: - Life Cycles
     

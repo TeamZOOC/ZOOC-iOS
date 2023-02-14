@@ -14,14 +14,14 @@ final class OnboardingCompleteProfileView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton()
-    public var progressBarView = UIView()
-    public var completedProgressBarView = UIView()
-    public var completeProfileLabel = UILabel()
-    public var completeProfileSubLabel = UILabel()
-    public var completeImage = UIImageView()
-    public var getCodeButton = UIButton()
-    public var notGetCodeButton = UIButton()
+    public lazy var backButton = UIButton()
+    private let progressBarView = UIView()
+    private let completedProgressBarView = UIView()
+    public let completeProfileLabel = UILabel()
+    public let completeProfileSubLabel = UILabel()
+    private let completeImage = UIImageView()
+    public lazy var getCodeButton = UIButton()
+    public lazy var notGetCodeButton = UIButton()
     
     //MARK: - Life Cycles
     

@@ -14,49 +14,13 @@ final class OnboardingParticipateView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    private var participateTitleLabel = UILabel().then {
-        $0.text = "전달받은 가족코드를 \n입력해주세요"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    public var familyCodeTextField = UITextField().then {
-        $0.backgroundColor = .zoocWhite2
-        $0.font = .zoocBody2
-        $0.textColor = .zoocDarkGreen
-        $0.placeholder = "  ex) SEF33210"
-        $0.makeCornerRadius(ratio: 8)
-    }
-    
-    private var participateImage = UIImageView().then {
-        $0.image = Image.graphics5
-        $0.contentMode = .scaleAspectFit
-    }
-    
-    public var nextButton = UIButton().then {
-        $0.setTitle("입력하기", for: .normal)
-        $0.setTitleColor(.zoocWhite1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGray1
-    }
+    public lazy var backButton = UIButton()
+    private let progressBarView = UIView()
+    private let completedProgressBarView = UIView()
+    private let participateTitleLabel = UILabel()
+    public lazy var familyCodeTextField = UITextField()
+    private let participateImage = UIImageView()
+    public lazy var nextButton = UIButton()
     
     //MARK: - Life Cycles
     

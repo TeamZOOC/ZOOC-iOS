@@ -14,11 +14,11 @@ final class OnboardingWelcomeView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton()
-    public var welcomeLabel = UILabel()
-    public var welcomeSubLabel = UILabel()
-    public var welcomeImage = UIImageView()
-    public var nextButton = UIButton()
+    public lazy var backButton = UIButton()
+    public let welcomeLabel = UILabel()
+    public let welcomeSubLabel = UILabel()
+    public let welcomeImage = UIImageView()
+    public lazy var nextButton = UIButton()
     
     //MARK: - Life Cycles
     

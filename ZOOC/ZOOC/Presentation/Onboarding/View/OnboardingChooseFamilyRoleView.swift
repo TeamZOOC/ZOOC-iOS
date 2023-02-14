@@ -14,14 +14,14 @@ final class OnboardingChooseFamilyRoleView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton()
-    public var progressBarView = UIView()
-    public var completedProgressBarView = UIView()
-    private var chooseFamilyLabel = UILabel()
-    private var chooseFamilySubLabel = UILabel()
-    public var chooseFamilyTextField = UITextField()
-    public var chooseFamilyTextFeildUnderLineView = UIView()
-    public var chooseFamilyButton = UIButton()
+    public lazy var backButton = UIButton()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
+    private let chooseFamilyLabel = UILabel()
+    private let chooseFamilySubLabel = UILabel()
+    public lazy var chooseFamilyTextField = UITextField()
+    public let chooseFamilyTextFeildUnderLineView = UIView()
+    public lazy var chooseFamilyButton = UIButton()
     
     //MARK: - Life Cycles
     

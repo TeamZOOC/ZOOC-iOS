@@ -14,10 +14,10 @@ final class OnboardingAgreementView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton()
-    private var agreeTitleLabel = UILabel()
-    public var agreeTableView = UITableView(frame: .zero, style: .grouped)
-    public var signUpButton = UIButton()
+    public lazy var backButton = UIButton()
+    private let agreeTitleLabel = UILabel()
+    public lazy var agreeTableView = UITableView(frame: .zero, style: .grouped)
+    public lazy var signUpButton = UIButton()
     
     //MARK: - Life Cycles
     
