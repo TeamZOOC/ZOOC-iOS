@@ -15,12 +15,12 @@ final class OnboardingLoginView: UIView {
     
     //MARK: - UI Components
     
-    var goHomeButton = UIButton()
-    private var loginTitleLabel = UILabel()
-    private var loginDescribeLabel = UILabel()
+    lazy var goHomeButton = UIButton()
+    private let loginTitleLabel = UILabel()
+    private let loginDescribeLabel = UILabel()
     private let graphicsImageView = UIImageView()
-    public var kakaoLoginButton = UIButton()
-    public var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn,
+    public lazy var kakaoLoginButton = UIButton()
+    public lazy var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn,
                style: .black)
     
     //MARK: - Life Cycles
