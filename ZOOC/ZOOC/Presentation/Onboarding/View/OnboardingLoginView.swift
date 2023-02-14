@@ -7,6 +7,7 @@
 
 import UIKit
 
+import AuthenticationServices
 import SnapKit
 import Then
 
@@ -19,6 +20,7 @@ final class OnboardingLoginView: UIView {
     private var loginDescribeLabel = UILabel()
     private let graphicsImageView = UIImageView()
     public var kakaoLoginButton = UIButton()
+    public var appleLoginButton = UIStackView()
     
     //MARK: - Life Cycles
     
@@ -66,6 +68,14 @@ final class OnboardingLoginView: UIView {
             $0.contentMode = .scaleAspectFill
         }
         
+        appleLoginButton.do {
+            let authorizationButton = ASAuthorizationAppleIDButton(
+                type: .signIn,
+                style: .black)
+            $0.makeCornerRadius(ratio: 27)
+            $0.addArrangedSubview(authorizationButton)
+        }
+        
         kakaoLoginButton.do {
             $0.setImage(Image.kakaoLogin, for: .normal)
             $0.makeCornerRadius(ratio: 27)
@@ -75,10 +85,11 @@ final class OnboardingLoginView: UIView {
     
     private func hierarchy() {
         self.addSubviews(goHomeButton,
-                    loginTitleLabel,
-                    loginDescribeLabel,
-                    graphicsImageView,
-                    kakaoLoginButton)
+                         loginTitleLabel,
+                         loginDescribeLabel,
+                         graphicsImageView,
+                         appleLoginButton,
+                         kakaoLoginButton)
     }
     
     private func layout() {
@@ -102,6 +113,13 @@ final class OnboardingLoginView: UIView {
             $0.top.equalTo(loginDescribeLabel.snp.bottom).offset(60)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(kakaoLoginButton.snp.top).offset(-60)
+        }
+        
+        appleLoginButton.snp.makeConstraints {
+            $0.top.equalTo(graphicsImageView.snp.bottom)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(54)
         }
         
         kakaoLoginButton.snp.makeConstraints {
