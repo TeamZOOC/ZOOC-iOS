@@ -65,8 +65,8 @@ final class OnboardingRegisterPetView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
         register()
+        
         style()
         hierarchy()
         layout()

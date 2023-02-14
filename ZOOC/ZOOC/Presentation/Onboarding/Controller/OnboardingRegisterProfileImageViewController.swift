@@ -105,8 +105,8 @@ extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerD
     }
 }
 
-extension OnboardingRegisterProfileImageViewController {
-    private func pushToCompleteProfileView() {
+private extension OnboardingRegisterProfileImageViewController {
+    func pushToCompleteProfileView() {
         let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
         self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
     }

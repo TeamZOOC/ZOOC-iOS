@@ -73,19 +73,11 @@ final class OnboardingRegisterPetViewController: BaseViewController{
         var isPhoto: Bool = true
         
         for pet in self.onboardingPetRegisterViewModel.petList {
-            
             guard let photo = pet.profileImage.jpegData(compressionQuality: 1.0) else {
                 photo = Data()
                 isPhoto = false
                 return
             }
-            //            if let _ = pet.profileImage.jpegData(compressionQuality: 1.0) {
-            //                photo = pet.profileImage.jpegData(compressionQuality: 1.0)!
-            //                isPhoto = true
-            //            } else {
-            //                photo = Data()
-            //                isPhoto = false
-            //            }
             names.append(pet.profileName)
             photos.append(photo)
             isPhotos.append(isPhoto)
@@ -94,11 +86,14 @@ final class OnboardingRegisterPetViewController: BaseViewController{
         OnboardingAPI.shared.registerPet(
             param: OnboardingRegisterPetRequestDto(petNames: names, files: photos, isPetPhotos: isPhotos)
         ) { result in
-            guard let result = self.validateResult(result) as? OnboardingRegisterPetResult else { return }
+            guard let result = self.validateResult(result) as? [OnboardingRegisterPetResult] else {
+                return
+            }
             
             print(result)
             self.pushToInviteFamilyViewController()
         }
+        
     }
 }
 
@@ -200,9 +195,8 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
     }
 }
 
-extension OnboardingRegisterPetViewController {
-    private func pushToInviteFamilyViewController() {
-        print("넘어가자!")
+private extension OnboardingRegisterPetViewController {
+     func pushToInviteFamilyViewController() {
         let onboardingInviteFamilyViewController = OnboardingInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingInviteFamilyViewController, animated: true)
     }

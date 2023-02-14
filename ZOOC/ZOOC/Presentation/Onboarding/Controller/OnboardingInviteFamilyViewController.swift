@@ -73,18 +73,18 @@ final class OnboardingInviteFamilyViewController: BaseViewController {
     }
 }
 
-extension OnboardingInviteFamilyViewController {
-    private func pushToMyReInviteCompletdView() {
+private extension OnboardingInviteFamilyViewController {
+    func pushToMyReInviteCompletdView() {
         let onboardingReInviteFamilyViewController = OnboardingReInviteFamilyViewController()
         self.navigationController?.pushViewController(onboardingReInviteFamilyViewController, animated: false)
     }
     
-    private func pushToMyInviteFamilyCompletdView() {
+    func pushToMyInviteFamilyCompletdView() {
         let onboardingInviteFamilyCompletedViewController = OnboardingInviteFamilyCompletedViewController()
         self.navigationController?.pushViewController(onboardingInviteFamilyCompletedViewController, animated: true)
     }
     
-    private func shareInviteCode() {
+    func shareInviteCode() {
         var objectToShare = [String]()
         
         objectToShare.append(invitedCode)
@@ -99,7 +99,7 @@ extension OnboardingInviteFamilyViewController {
         }
     }
     
-    private func getInviteCode() {
+    func getInviteCode() {
         OnboardingAPI.shared.getInviteCode(familyID: User.familyID) { result in
             guard let result = self.validateResult(result) as? OnboardingInviteResult else { return }
             let code = result.code

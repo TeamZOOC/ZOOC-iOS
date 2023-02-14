@@ -48,8 +48,8 @@ final class OnboardingLoginViewController: BaseViewController{
     }
 }
 
-extension OnboardingLoginViewController {
-    private func kakaoSocialLogin() {
+private extension OnboardingLoginViewController {
+     func kakaoSocialLogin() {
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             guard let oauthToken = oauthToken else {
                 guard let error = error else { return }
@@ -64,7 +64,7 @@ extension OnboardingLoginViewController {
         }
     }
     
-    private func pushToAgreementView() {
+    func pushToAgreementView() {
         let agreementViewController = OnboardingAgreementViewController()
         self.navigationController?.pushViewController(agreementViewController, animated: true)
     }

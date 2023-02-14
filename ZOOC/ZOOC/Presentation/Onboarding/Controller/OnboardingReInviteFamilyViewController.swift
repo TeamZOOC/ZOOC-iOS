@@ -46,8 +46,8 @@ final class OnboardingReInviteFamilyViewController: UIViewController{
     }
 }
 
-extension OnboardingReInviteFamilyViewController {
-    private func pushToInviteCompletedFamilyView() {
+private extension OnboardingReInviteFamilyViewController {
+    func pushToInviteCompletedFamilyView() {
         let onboardingInviteCompletedFamilyViewController = OnboardingInviteFamilyCompletedViewController()
         self.navigationController?.pushViewController(onboardingInviteCompletedFamilyViewController, animated: true)
     }

@@ -99,6 +99,7 @@ final class OnboardingRegisterProfileImageView: UIView {
         
         progressBarView.addSubview(completedProgressBarView)
     }
+    
     private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)

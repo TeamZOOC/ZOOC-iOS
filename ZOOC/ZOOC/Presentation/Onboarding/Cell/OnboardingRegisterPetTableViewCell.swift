@@ -140,6 +140,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
 }
 
+//MARK: - UITextFieldDelegate
+
 extension OnboardingRegisterPetTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag, image: petProfileImageButton.currentImage!)
