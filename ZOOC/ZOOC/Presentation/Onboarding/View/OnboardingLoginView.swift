@@ -20,7 +20,8 @@ final class OnboardingLoginView: UIView {
     private var loginDescribeLabel = UILabel()
     private let graphicsImageView = UIImageView()
     public var kakaoLoginButton = UIButton()
-    public var appleLoginButton = UIStackView()
+    public var appleLoginButton = ASAuthorizationAppleIDButton(type: .signIn,
+               style: .black)
     
     //MARK: - Life Cycles
     
@@ -69,11 +70,7 @@ final class OnboardingLoginView: UIView {
         }
         
         appleLoginButton.do {
-            let authorizationButton = ASAuthorizationAppleIDButton(
-                type: .signIn,
-                style: .black)
             $0.makeCornerRadius(ratio: 27)
-            $0.addArrangedSubview(authorizationButton)
         }
         
         kakaoLoginButton.do {
