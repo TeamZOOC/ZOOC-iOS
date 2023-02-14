@@ -67,10 +67,7 @@ final class OnboardingLoginView: UIView {
         }
         
         kakaoLoginButton.do {
-            $0.setTitle("카카오톡으로 로그인", for: .normal)
-            $0.setTitleColor(.zoocDarkGray1, for: .normal)
-            $0.titleLabel?.font = .zoocSubhead1
-            $0.titleLabel?.textAlignment = .center
+            $0.setImage(Image.kakaoLogin, for: .normal)
             $0.makeCornerRadius(ratio: 27)
             $0.backgroundColor = UIColor(r: 255, g: 231, b: 0)
         }
