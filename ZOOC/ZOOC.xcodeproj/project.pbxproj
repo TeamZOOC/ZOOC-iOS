@@ -237,7 +237,6 @@
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87C109242971A5B40086466F /* HomeCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentRequest.swift; sourceTree = "<group>"; };
-		87D368772964C961009728FC /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -755,7 +754,6 @@
 			isa = PBXGroup;
 			children = (
 				4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */,
-				87D368772964C961009728FC /* Empty.md */,
 				D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */,
 				D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */,
 				D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */,
