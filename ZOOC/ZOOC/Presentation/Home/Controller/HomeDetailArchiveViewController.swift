@@ -22,6 +22,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
     var petID: String = "1"
+    var isFirst = true
     
     private var detailArchiveData: HomeDetailArchiveResult? {
         didSet{
@@ -325,6 +326,14 @@ final class HomeDetailArchiveViewController : BaseViewController {
             let height = (contentHeight > 450 ) ? contentHeight : 450
             $0.height.greaterThanOrEqualTo(height)
         }
+        
+        if isFirst{
+            isFirst = false
+        } else{
+            scrollView.layoutSubviews()
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+        }
+        
     }
     
     func requestDetailArchiveAPI(recordID: String, petID: String) {
@@ -380,7 +389,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     @objc
-    private func emojiButtonDidTap() {
+    internal func emojiButtonDidTap() {
         presentBottomAlert("이모지 기능은 곧 만나요~")
     }
     
@@ -453,20 +462,14 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: - CommentTextFieldDelegate
-
-extension HomeDetailArchiveViewController: CommentTextFieldDelegate {
-    
-    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField, text: String) {
-        guard let id = detailArchiveData?.record.id else { return }
-        textfield.text = nil
-        requestCommentsAPI(recordID: String(id), text: text)
-    }
-}
+//MARK: - CommentViewDelegate
 
 extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
-    func uploadButtonDidTap() {
-        print(#function)
+    
+    func uploadButtonDidTap(_ textField: UITextField, text: String) {
+        guard let id = detailArchiveData?.record.id else { return }
+        textField.text = nil
+        requestCommentsAPI(recordID: String(id), text: text)
     }
     
     

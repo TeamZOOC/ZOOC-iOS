@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol HomeCommentViewDelegate: UITextFieldDelegate{
-    func uploadButtonDidTap()
+    func uploadButtonDidTap(_ textField: UITextField, text: String)
     func emojiButtonDidTap()
 }
 
@@ -29,7 +29,7 @@ final class HomeDetailArchiveCommentView : UIView {
     private let commentEmojiButton = UIButton()
     private let hStackView = UIStackView()
     private let uploadButton = UIButton()
-    
+    private let containerRightView = UIView()
     //MARK: - Life Cycle
     
     override init(frame: CGRect) {
@@ -51,7 +51,7 @@ final class HomeDetailArchiveCommentView : UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        commentTextField.makeCornerRadius(ratio: 2)
+        //commentTextField.makeCornerRadius(ratio: 2)
     }
     
     //MARK: - Custom Method
@@ -74,7 +74,7 @@ final class HomeDetailArchiveCommentView : UIView {
     
     private func style() {
         
-        self.backgroundColor = .blue
+        self.backgroundColor = .zoocBackgroundGreen
         
         lineView.do {
             $0.backgroundColor = .zoocLightGray
@@ -86,8 +86,10 @@ final class HomeDetailArchiveCommentView : UIView {
             $0.layer.borderWidth = 1
             $0.layer.masksToBounds = true
             $0.placeholder = "댓글을 입력해보세요"
-            //$0.layer.cornerRadius = 26
-            $0.addLeftPadding(leftInset: 24)
+            $0.layer.cornerRadius = 23
+            $0.addLeftPadding(inset: 24)
+            $0.rightView = containerRightView
+            $0.rightViewMode = .always
         }
         
         uploadButton.do {
@@ -101,18 +103,18 @@ final class HomeDetailArchiveCommentView : UIView {
         }
         
         hStackView.do {
-            $0.backgroundColor = .systemPink
             $0.axis = .horizontal
             $0.alignment = .fill
             $0.distribution = .fill
             $0.spacing = 7
-            
         }
     }
     
     private func hierarchy() {
         
         self.addSubviews(lineView,hStackView)
+        
+        containerRightView.addSubview(uploadButton)
         
         hStackView.addArrangedSubViews(commentTextField,
                                        commentEmojiButton)
@@ -133,7 +135,17 @@ final class HomeDetailArchiveCommentView : UIView {
         hStackView.snp.makeConstraints {
             $0.top.equalTo(lineView.snp.bottom).offset(5)
             $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(47)
+            $0.height.equalTo(46)
+        }
+        
+        uploadButton.snp.makeConstraints {
+            $0.size.equalTo(30)
+            $0.leading.centerY.equalToSuperview()
+        }
+        
+        containerRightView.snp.makeConstraints {
+            $0.height.equalTo(uploadButton)
+            $0.width.equalTo(uploadButton).offset(9)
         }
         
     }
@@ -142,7 +154,8 @@ final class HomeDetailArchiveCommentView : UIView {
     
     @objc
     private func uploadButtonDidTap() {
-        delegate?.uploadButtonDidTap()
+        guard let text = commentTextField.text else { return }
+        delegate?.uploadButtonDidTap(commentTextField, text: text)
         
     }
     

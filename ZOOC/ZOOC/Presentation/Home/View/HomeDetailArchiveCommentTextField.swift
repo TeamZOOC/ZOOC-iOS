@@ -60,10 +60,8 @@ final class HomeDetailArchiveCommentTextField: UITextField{
         self.backgroundColor = .zoocWhite2
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1
-        self.addLeftPadding(leftInset: 24)
+        self.addLeftPadding(inset: 24)
         self.isUserInteractionEnabled = true
-        
-        //self.inputAccessoryView = HomeDetailArchiveCommentView()
     }
     
     private func setLayout() {
