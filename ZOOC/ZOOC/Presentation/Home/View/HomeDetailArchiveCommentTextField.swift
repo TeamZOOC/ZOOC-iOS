@@ -60,12 +60,16 @@ final class HomeDetailArchiveCommentTextField: UITextField{
         self.backgroundColor = .zoocWhite2
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 1
-        self.addLeftPadding(leftInset: 24)
+        self.addLeftPadding(inset: 24)
         self.isUserInteractionEnabled = true
     }
     
     private func setLayout() {
         self.addSubview(uploadButton)
+        
+        self.snp.makeConstraints {
+            $0.height.equalTo(47)
+        }
         
         uploadButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
@@ -92,7 +96,7 @@ final class HomeDetailArchiveCommentTextField: UITextField{
     
     @objc
     private func uploadButtonDidTap() {
-        validateText(self.text)
+        print(#function)
         
     }
 }

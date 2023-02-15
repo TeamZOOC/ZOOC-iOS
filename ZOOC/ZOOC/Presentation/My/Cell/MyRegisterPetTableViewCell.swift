@@ -73,7 +73,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
         
         petProfileNameTextField.do {
             $0.attributedPlaceholder = NSAttributedString(string: "ex) 사랑,토리 (4자 이내)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.zoocGray1, NSAttributedString.Key.font: UIFont.zoocBody1])
-            $0.addLeftPadding(leftInset: 10)
+            $0.addLeftPadding(inset: 10)
             $0.textColor = .zoocDarkGreen
             $0.font = .zoocBody1
             $0.makeCornerRadius(ratio: 20)

@@ -126,6 +126,20 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
     
     //MARK: - Custom Method
     
+    
+    private func foldedLayout() {
+        writerCollectionView.isHidden = true
+        contentLabel.isHidden = true
+        writerLabel.isHidden = true
+    }
+    
+    private func foldedAlpha() {
+        writerCollectionView.alpha = 0
+        contentLabel.alpha = 0
+        writerLabel.alpha = 0
+    }
+
+    
     private func register() {
         writerCollectionView.delegate = self
         writerCollectionView.dataSource = self
@@ -184,18 +198,6 @@ final class HomeArchiveListCollectionViewCell : UICollectionViewCell{
     
     }
     
-    private func foldedLayout() {
-        writerCollectionView.isHidden = true
-        contentLabel.isHidden = true
-        writerLabel.isHidden = true
-    }
-    
-    private func foldedAlpha() {
-        writerCollectionView.alpha = 0
-        contentLabel.alpha = 0
-        writerLabel.alpha = 0
-    }
-
     
     private func expandedLayout() {
         writerCollectionView.isHidden = false

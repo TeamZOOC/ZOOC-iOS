@@ -22,6 +22,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
     var petID: String = "1"
+    var isNewPage = true
     
     private var detailArchiveData: HomeDetailArchiveResult? {
         didSet{
@@ -53,10 +54,10 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private let writerNameLabel = UILabel()
     private let contentLabel = UILabel()
     private let lineView = UIView()
-    
+
     private let commentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let commentTextField = HomeDetailArchiveCommentTextField()
-    private let commentEmojiButton = UIButton()
+    
+    private let commentView = HomeDetailArchiveCommentView()
     
     //MARK: - Life Cycle
     
@@ -74,7 +75,15 @@ final class HomeDetailArchiveViewController : BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        addKeyboardNotifications()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification ,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,12 +93,17 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        commentView.layoutIfNeeded()
+    }
+
     //MARK: - Custom Method
     
     private func register() {
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
-        commentTextField.commentDelegate = self
+        commentView.delegate = self
         
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
@@ -111,10 +125,6 @@ final class HomeDetailArchiveViewController : BaseViewController {
         rightButton.addTarget(self,
                              action: #selector(directionButtonDidTap),
                              for: .touchUpInside)
-        
-        commentEmojiButton.addTarget(self,
-                                     action: #selector(emojiButtonDidTap),
-                                     for: .touchUpInside)
     }
     
     private func style() {
@@ -182,16 +192,11 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.backgroundColor = .clear
         }
         
-        commentEmojiButton.do {
-            $0.setImage(Image.smile, for: .normal)
-            $0.contentMode = .scaleAspectFit
-        }
     }
     
     private func hierarchy() {
         view.addSubviews(scrollView,
-                         commentTextField,
-                         commentEmojiButton)
+                         commentView)
         
         scrollView.addSubview(contentView)
         
@@ -217,18 +222,11 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.leading.trailing.equalToSuperview()
         }
         
-        commentTextField.snp.makeConstraints {
+        commentView.snp.makeConstraints {
             $0.top.equalTo(scrollView.snp.bottom)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-17)
-            $0.leading.equalToSuperview().offset(30)
-            $0.height.equalTo(47)
-        }
-        
-        commentEmojiButton.snp.makeConstraints {
-            $0.centerY.equalTo(commentTextField)
-            $0.leading.equalTo(commentTextField.snp.trailing).offset(7)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.height.width.equalTo(30)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(19)
+            $0.height.equalTo(64)
         }
         
         //MARK: scrollView Layout
@@ -303,7 +301,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.top.equalTo(lineView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.height.greaterThanOrEqualTo(250)
+            $0.height.greaterThanOrEqualTo(450)
         }
     }
     
@@ -324,14 +322,25 @@ final class HomeDetailArchiveViewController : BaseViewController {
         commentCollectionView.reloadData()
         commentCollectionView.layoutIfNeeded()
         commentCollectionView.snp.updateConstraints {
-            $0.height.greaterThanOrEqualTo(self.commentCollectionView.contentSize.height)
+            let contentHeight = self.commentCollectionView.contentSize.height
+            let height = (contentHeight > 450 ) ? contentHeight : 450
+            $0.height.greaterThanOrEqualTo(height)
         }
+        
+        if isNewPage{
+            isNewPage = false
+        } else{
+            scrollView.layoutSubviews()
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
+        }
+        
     }
     
     func requestDetailArchiveAPI(recordID: String, petID: String) {
         HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
+            self.isNewPage = true
             self.detailArchiveData = result
             self.commentsData = result.comments
         }
@@ -353,12 +362,12 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     @objc
-    func etcButtonDidTap() {
+    private func etcButtonDidTap() {
         presentBottomAlert("더보기 기능은 곧 만나요~")
     }
     
     @objc
-    func directionButtonDidTap(_ sender: UIButton) {
+    private func directionButtonDidTap(_ sender: UIButton) {
         guard let direction = PageDirection.init(rawValue: sender.tag) else { return }
         var message: String
         var id: Int?
@@ -381,8 +390,38 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     @objc
-    func emojiButtonDidTap() {
+    internal func emojiButtonDidTap() {
         presentBottomAlert("이모지 기능은 곧 만나요~")
+    }
+    
+    @objc
+    private func keyboardWillShow(notification: NSNotification){
+        
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        
+        UIView.animate(withDuration: duration){
+            self.commentView.snp.updateConstraints {
+                $0.bottom.equalToSuperview().inset(keyboardHeight)
+            }
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    
+    @objc
+    private func keyboardWillHide(notification: NSNotification){
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
+        
+        UIView.animate(withDuration: duration){
+            self.commentView.snp.updateConstraints {
+                $0.bottom.equalToSuperview().inset(19)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -424,13 +463,15 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: - CommentTextFieldDelegate
+//MARK: - CommentViewDelegate
 
-extension HomeDetailArchiveViewController: CommentTextFieldDelegate {
+extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
     
-    func commentTextFieldDidUplaod(_ textfield: HomeDetailArchiveCommentTextField, text: String) {
+    func uploadButtonDidTap(_ textField: UITextField, text: String) {
         guard let id = detailArchiveData?.record.id else { return }
-        textfield.text = nil
+        textField.text = nil
         requestCommentsAPI(recordID: String(id), text: text)
     }
+    
+    
 }
