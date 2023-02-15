@@ -662,8 +662,8 @@
 		87A76A9A295F6E540096F669 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */,
 				87A76A9E295F6EA30096F669 /* OnboardingService.swift */,
+				87A76AA0295F6EA90096F669 /* OnboardingAPI.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
