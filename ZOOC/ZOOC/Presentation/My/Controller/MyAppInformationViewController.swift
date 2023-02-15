@@ -33,10 +33,10 @@ final class AppInformationViewController: BaseViewController {
     
     private func register() {
         appInformationView.appInformationTableView.delegate = self
+        appInformationView.appInformationTableView.dataSource = self
     }
     
     private func target() {
-        appInformationView.appInformationTableView.dataSource = self
         appInformationView.backButton.addTarget(self, action: #selector(popToMyProfileView), for: .touchUpInside)
     }
     

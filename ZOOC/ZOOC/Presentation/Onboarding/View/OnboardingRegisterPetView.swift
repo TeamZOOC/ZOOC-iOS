@@ -20,14 +20,12 @@ final class OnboardingRegisterPetView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private var registerPetTitleLabel = UILabel().then {
@@ -57,8 +55,7 @@ final class OnboardingRegisterPetView: UIView {
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 27)
         $0.backgroundColor = .zoocGray1
         $0.isEnabled = false
     }
@@ -68,9 +65,11 @@ final class OnboardingRegisterPetView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
         register()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -79,15 +78,77 @@ final class OnboardingRegisterPetView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
+    private func register() {
+        registerPetTableView.register(
+            OnboardingRegisterPetTableViewCell.self,
+            forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
+        registerPetTableView.register(
+            OnboardingRegisterPetTableFooterView.self,
+            forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
     }
     
-    private func setLayout() {
-        addSubviews(backButton, progressBarView, registerPetTitleLabel, registerPetSubTitleLabel, registerPetTableView, registerPetButton)
+    private func style() {
+        self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        registerPetTitleLabel.do {
+            $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
+            $0.textColor = .zoocDarkGray2
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        registerPetSubTitleLabel.do {
+            $0.text = "반려동물은 최대 4마리까지 등록 가능해요"
+            $0.textColor = .zoocGray1
+            $0.textAlignment = .left
+            $0.font = .zoocBody3
+        }
+        
+        registerPetTableView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.separatorStyle = .none
+            $0.isScrollEnabled = false
+            $0.backgroundColor = .zoocBackgroundGreen
+        }
+        
+        registerPetButton.do {
+            $0.setTitle("등록하기", for: .normal)
+            $0.setTitleColor(.zoocWhite1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGray1
+            $0.isEnabled = false
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(backButton,
+                    progressBarView,
+                    registerPetTitleLabel,
+                    registerPetSubTitleLabel,
+                    registerPetTableView,
+                    registerPetButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
             $0.leading.equalToSuperview().offset(17)
@@ -130,10 +191,4 @@ final class OnboardingRegisterPetView: UIView {
             $0.height.equalTo(54)
         }
     }
-    
-    private func register() {
-        registerPetTableView.register(OnboardingRegisterPetTableViewCell.self, forCellReuseIdentifier: OnboardingRegisterPetTableViewCell.cellIdentifier)
-        registerPetTableView.register(OnboardingRegisterPetTableFooterView.self, forHeaderFooterViewReuseIdentifier: OnboardingRegisterPetTableFooterView.cellIdentifier)
-    }
 }
-

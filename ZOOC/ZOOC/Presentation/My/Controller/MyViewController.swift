@@ -19,10 +19,6 @@ final class MyViewController: BaseViewController {
     private var myPetMemberData: [MyPet] = []
     private var myProfileData: MyUser?
     
-    
-    private var petProfile = MyPetRegisterModel(profileName: "류희재", profileImage:Image.defaultProfile)
-    private lazy var myPetRegisterData: [MyPetRegisterModel] = [petProfile]
-    
     //MARK: - UI Components
     
     private lazy var myView = MyView()
@@ -41,6 +37,7 @@ final class MyViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         getMyPageAPI()
     }
     
@@ -51,45 +48,11 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.dataSource = self
     }
     
-    private func pushToEditProfileView() {
-        let editProfileViewController = EditProfileViewController()
-        editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData)
-        
-        self.navigationController?.pushViewController(editProfileViewController, animated: true)
-    }
-    
-    private func pushToAppInformationView() {
-        let appInformationViewController = AppInformationViewController()
-        appInformationViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(appInformationViewController, animated: true)
-    }
-    
-    private func pushToNoticeSettingView() {
-        let noticeSettingViewController = MyNoticeSettingViewController()
-        noticeSettingViewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
-    }
-    
-    private func pushToRegisterPetView() {
-        let registerPetViewController = MyRegisterPetViewController()
-        registerPetViewController.hidesBottomBarWhenPushed = true
-        registerPetViewController.dataSend(myPetMemberData: myPetMemberData)
-        self.navigationController?.pushViewController(registerPetViewController, animated: true)
-    }
-    
     func dataSend(myprofileData: MyUser?) {
-        if let data = myProfileData?.nickName{
-            myProfileData?.nickName = data
-        }
-        
-        if let data = myProfileData?.photo{
-            myProfileData?.photo = data
-        }
-        
+        guard let nickNameData = myProfileData?.nickName else { return }
+        guard let photoData = myProfileData?.photo else { return }
         myView.myCollectionView.reloadData()
     }
-    
     
     func getMyPageAPI(){
         MyAPI.shared.getMyPageData() { result in
@@ -230,5 +193,34 @@ extension MyViewController: SettingMenuTableViewCellDelegate {
 extension MyViewController: MyRegisterPetButtonTappedDelegate {
     func myRegisterPetButtonTapped(isSelected: Bool) {
         pushToRegisterPetView()
+    }
+}
+
+extension MyViewController {
+    private func pushToEditProfileView() {
+        let editProfileViewController = EditProfileViewController()
+        editProfileViewController.hidesBottomBarWhenPushed = true
+        editProfileViewController.dataSend(data: myProfileData)
+        
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
+    private func pushToAppInformationView() {
+        let appInformationViewController = AppInformationViewController()
+        appInformationViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(appInformationViewController, animated: true)
+    }
+    
+    private func pushToNoticeSettingView() {
+        let noticeSettingViewController = MyNoticeSettingViewController()
+        noticeSettingViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(noticeSettingViewController, animated: true)
+    }
+    
+    private func pushToRegisterPetView() {
+        let registerPetViewController = MyRegisterPetViewController(myPetRegisterViewModel: MyPetRegisterViewModel())
+        registerPetViewController.hidesBottomBarWhenPushed = true
+        registerPetViewController.dataSend(myPetMemberData: myPetMemberData)
+        self.navigationController?.pushViewController(registerPetViewController, animated: true)
     }
 }

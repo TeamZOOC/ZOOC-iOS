@@ -9,43 +9,27 @@ import UIKit
 
 //MARK: - MyAddButtonTappedDelegate
 
-protocol MyAddButtonTappedDelegate: AnyObject {
-    func addPetButtonTapped(isSelected: Bool)
-}
-
 final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
     
-    weak var delegate: MyAddButtonTappedDelegate?
+    let myPetRegisterViewModel = MyPetRegisterViewModel()
     
     //MARK: - UI Components
     
-    private var petRegisterButtonSeparatorLineView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-    }
-    
-    private lazy var addPetProfileButton = UIButton().then {
-        $0.setTitle("추가", for: .normal)
-        $0.setTitleColor(.zoocDarkGreen, for: .normal)
-        $0.titleLabel?.font = .zoocBody2
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGray.cgColor
-        $0.layer.cornerRadius = 23.5
-        $0.contentMode = .scaleAspectFill
-        $0.clipsToBounds = true
-        $0.backgroundColor = .zoocWhite1
-        $0.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
-    }
+    private var petRegisterButtonSeparatorLineView = UIView()
+    public lazy var addPetProfileButton = UIButton()
     
     //MARK: - Life Cycle
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        target()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -54,13 +38,33 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        contentView.backgroundColor = .zoocBackgroundGreen
+    private func target() {
+        addPetProfileButton.addTarget(self, action: #selector(addPetProfileButtonDidTap), for: .touchUpInside)
     }
     
-    private func setLayout() {
-        addSubviews(petRegisterButtonSeparatorLineView, addPetProfileButton)
+    private func style() {
+        contentView.backgroundColor = .zoocBackgroundGreen
         
+        petRegisterButtonSeparatorLineView.do {
+            $0.backgroundColor = .zoocLightGreen
+        }
+        
+        addPetProfileButton.do {
+            $0.setTitle("추가", for: .normal)
+            $0.setTitleColor(.zoocDarkGreen, for: .normal)
+            $0.titleLabel?.font = .zoocBody2
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGray)
+            $0.makeCornerRadius(ratio: 23.5)
+            $0.contentMode = .scaleAspectFill
+            $0.backgroundColor = .zoocWhite1
+        }
+    }
+    private func hierarchy() {
+        addSubviews(petRegisterButtonSeparatorLineView, addPetProfileButton)
+    }
+    
+    private func layout() {
         petRegisterButtonSeparatorLineView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
@@ -82,7 +86,7 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
     //MARK: - Action Method
     
     @objc func addPetProfileButtonDidTap() {
-        delegate?.addPetButtonTapped(isSelected: true)
+        myPetRegisterViewModel.addCellClosure?()
     }
 }
 

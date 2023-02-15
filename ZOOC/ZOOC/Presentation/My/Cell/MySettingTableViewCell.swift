@@ -11,22 +11,17 @@ final class MySettingTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public var menuLabel = UILabel().then {
-        $0.textColor = .zoocDarkGray2
-        $0.font = .zoocBody2
-    }
-    
-    private var separatorLine = UIView().then {
-        $0.backgroundColor = .zoocLightGray
-    }
+    public var menuLabel = UILabel()
+    private var separatorLine = UIView()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        cellStyle()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -35,14 +30,27 @@ final class MySettingTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
-        self.selectionStyle = .none
+    private func cellStyle() {
+        self.do {
+            $0.backgroundColor = .zoocBackgroundGreen
+            $0.selectionStyle = .none
+        }
+        
+        menuLabel = UILabel().then {
+            $0.textColor = .zoocDarkGray2
+            $0.font = .zoocBody2
+        }
+        
+        separatorLine.do {
+            $0.backgroundColor = .zoocLightGray
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         contentView.addSubviews(menuLabel, separatorLine)
-        
+    }
+    
+    private func layout() {
         menuLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
             $0.leading.equalToSuperview().offset(10)

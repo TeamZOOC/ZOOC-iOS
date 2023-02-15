@@ -26,37 +26,19 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    private var petLabel = UILabel().then {
-        $0.text = "반려동물"
-        $0.textColor = .zoocDarkGray1
-        $0.font = .zoocSubhead1
-    }
-    
-    public var petCountLabel = UILabel().then {
-        $0.textColor = .zoocGray2
-        $0.font = .zoocCaption
-        $0.textAlignment = .center
-    }
-    
-    public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.showsHorizontalScrollIndicator = false
-        $0.collectionViewLayout = layout
-        $0.delegate = self
-        $0.dataSource = self
-    }
-    
+    private var petLabel = UILabel()
+    public var petCountLabel = UILabel()
+    public lazy var petCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
         register()
+        
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -65,15 +47,53 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 12
-        self.clipsToBounds = true
+    private func register() {
+        petCollectionView.delegate = self
+        petCollectionView.dataSource = self
+
+        petCollectionView.register(
+            MyPetCollectionViewCell.self,
+            forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
+        
+        petCollectionView.register(
+            MyPetCollectionFooterView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
     
-    private func setLayout() {
-        addSubviews(petLabel, petCountLabel, petCollectionView)
+    private func style() {
+        self.do {
+            $0.backgroundColor = .white
+            $0.makeCornerRadius(ratio: 12)
+        }
         
+        petLabel.do {
+            $0.text = "반려동물"
+            $0.textColor = .zoocDarkGray1
+            $0.font = .zoocSubhead1
+        }
+        
+        petCountLabel.do {
+            $0.textColor = .zoocGray2
+            $0.font = .zoocCaption
+            $0.textAlignment = .center
+        }
+        
+        petCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.collectionViewLayout = layout
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(petLabel, petCountLabel, petCollectionView)
+    }
+    
+    private func layout() {
         petLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.equalToSuperview().offset(26)
@@ -90,17 +110,6 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(26)
         }
-    }
-    
-    public func register() {
-        petCollectionView.register(
-            MyPetCollectionViewCell.self,
-            forCellWithReuseIdentifier: MyPetCollectionViewCell.cellIdentifier)
-        
-        petCollectionView.register(
-            MyPetCollectionFooterView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-            withReuseIdentifier: MyPetCollectionFooterView.reuseCellIdentifier)
     }
     
     public func dataBind(myPetMemberData : [MyPet]) {
@@ -153,9 +162,6 @@ extension MyPetSectionCollectionViewCell: UICollectionViewDataSource {
 
 extension MyPetSectionCollectionViewCell: RegisterPetButtonTappedDelegate {
     func registerPetButtonTapped(isSelected: Bool) {
-        if isSelected {
-            delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
-        }
+        delegate?.myRegisterPetButtonTapped(isSelected: isSelected)
     }
 }
-

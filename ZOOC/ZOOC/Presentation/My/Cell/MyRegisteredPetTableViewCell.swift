@@ -13,24 +13,17 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    public lazy var petProfileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 30
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    public var petProfileNameLabel = UILabel().then {
-        $0.textColor = .zoocDarkGreen
-        $0.font = .zoocSubhead1
-    }
+    public lazy var petProfileImageView = UIImageView()
+    public var petProfileNameLabel = UILabel()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        cellStyle()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -39,13 +32,25 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func cellStyle() {
         self.backgroundColor = .zoocWhite2
+        
+        petProfileImageView.do {
+            $0.makeCornerRadius(ratio: 30)
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        petProfileNameLabel.do {
+            $0.textColor = .zoocDarkGreen
+            $0.font = .zoocSubhead1
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         contentView.addSubviews(petProfileImageView, petProfileNameLabel)
-        
+    }
+    
+    private func layout() {
         petProfileImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)

@@ -11,69 +11,26 @@ import SnapKit
 import Then
 
 final class OnboardingChooseFamilyRoleView: UIView {
-
+    
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
-    }
-    
-    private var chooseFamilyLabel = UILabel().then {
-        $0.text = "가족에서 \n어떤 역할을 맡고 있나요?"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    private var chooseFamilySubLabel = UILabel().then {
-        $0.text = "우리 가족에서 저는"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocBody3
-    }
-    
-    public var chooseFamilyTextField = UITextField().then {
-        $0.font = .zoocBody3
-        $0.textColor = .zoocGray1
-        $0.textAlignment = .left
-        $0.placeholder = "ex) 엄마, 아빠, 첫째딸, 둘째딸 (10자 이내)"
-    }
-    
-    public var chooseFamilyTextFeildUnderLineView = UIView().then {
-        $0.backgroundColor = .zoocGray1
-    }
-    
-    public var chooseFamilyButton = UIButton().then {
-        $0.setTitle("이렇게 불러주세요", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
-        $0.backgroundColor = .zoocGray1
-        $0.isEnabled = false
-    }
+    public var backButton = UIButton()
+    public var progressBarView = UIView()
+    public var completedProgressBarView = UIView()
+    private var chooseFamilyLabel = UILabel()
+    private var chooseFamilySubLabel = UILabel()
+    public var chooseFamilyTextField = UITextField()
+    public var chooseFamilyTextFeildUnderLineView = UIView()
+    public var chooseFamilyButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -82,15 +39,72 @@ final class OnboardingChooseFamilyRoleView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        chooseFamilyLabel.do {
+            $0.text = "가족에서 \n어떤 역할을 맡고 있나요?"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        chooseFamilySubLabel.do {
+            $0.text = "우리 가족에서 저는"
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocBody3
+        }
+        
+        chooseFamilyTextField.do {
+            $0.font = .zoocBody3
+            $0.textColor = .zoocGray1
+            $0.textAlignment = .left
+            $0.placeholder = "ex) 엄마, 아빠, 첫째딸, 둘째딸 (10자 이내)"
+        }
+        
+        chooseFamilyTextFeildUnderLineView.do {
+            $0.backgroundColor = .zoocGray1
+        }
+        
+        chooseFamilyButton.do {
+            $0.setTitle("이렇게 불러주세요", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGray1
+            $0.isEnabled = false
+        }
     }
     
-    private func setLayout() {
-        addSubviews(backButton, progressBarView, chooseFamilyLabel, chooseFamilySubLabel, chooseFamilyTextField, chooseFamilyTextFeildUnderLineView, chooseFamilyButton)
+    private func hierarchy() {
+        self.addSubviews(backButton,
+                         progressBarView,
+                         chooseFamilyLabel,
+                         chooseFamilySubLabel,
+                         chooseFamilyTextField,
+                         chooseFamilyTextFeildUnderLineView,
+                         chooseFamilyButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
@@ -140,4 +154,3 @@ final class OnboardingChooseFamilyRoleView: UIView {
         }
     }
 }
-

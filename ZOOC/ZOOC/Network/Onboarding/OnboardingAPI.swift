@@ -15,18 +15,29 @@ class OnboardingAPI: BaseAPI {
 
 extension OnboardingAPI {
     public func getInviteCode(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(            .getInviteCode(familyId: familyID)) {
+        onboardingProvider.request(.getInviteCode(familyId: familyID)) {
             (result) in self.disposeNetwork(result, dataModel: OnboardingInviteResult.self, completion: completion)
         }
     }
-    func registerUser(param: OnboardingRegisterUserRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+    
+    public func registerUser(param: OnboardingRegisterUserRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postRegisterUser(param: param)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: SimpleResponse.self,
                                 completion: completion)
         }
     }
-    func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+    
+    public func registerPet(param: OnboardingRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterPet(param: param)) {
+            (result) in
+            self.disposeNetwork(result,
+                                dataModel: [OnboardingRegisterPetResult].self,
+                                completion: completion)
+        }
+    }
+    
+    public func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postKakaoSocialLogin(accessToken: accessToken)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: OnboardingTokenData.self,
@@ -34,5 +45,3 @@ extension OnboardingAPI {
         }
     }
 }
-
-

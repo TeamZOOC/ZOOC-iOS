@@ -25,17 +25,34 @@ final class OnboardingWelcomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
-        updateWelcomeView()
+        target()
+        
+        style()
     }
     
     //MARK: - Custom Method
     
-    private func register() {
+    private func target() {
         onboardingWelcomeView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         onboardingWelcomeView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
+    private func style() {
+        updateWelcomeView()
+    }
+    
+    //MARK: - Action Method
+    
+    @objc private func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func nextButtonDidTap() {
+        pushToChooseFamilyRoleView()
+    }
+}
+
+extension OnboardingWelcomeViewController {
     private func updateWelcomeView() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.onboardingWelcomeView.welcomeLabel.textColor = .zoocGray1
@@ -49,17 +66,4 @@ final class OnboardingWelcomeViewController: UIViewController{
         let onboardingChooseFamilyRoleViewController = OnboardingChooseFamilyRoleViewController()
         self.navigationController?.pushViewController(onboardingChooseFamilyRoleViewController, animated: true)
     }
-    
-    //MARK: - Action Method
-    
-    @objc
-    private func backButtonDidTap() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc
-    func nextButtonDidTap() {
-        pushToChooseFamilyRoleView()
-    }
 }
-

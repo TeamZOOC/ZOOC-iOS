@@ -16,63 +16,22 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
-    }
-    
-    public var registerProfileImageLabel = UILabel().then {
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    private var registerProfileImageSubLabel = UILabel().then {
-        $0.text = "지금 마음에 드는 사진이 없다면 \n나중에 등록할 수 있어요"
-        $0.textColor = .zoocGray1
-        $0.textAlignment = .left
-        $0.font = .zoocBody3
-        $0.numberOfLines = 2
-    }
-    
-    public var registerProfileImageButton = UIButton().then {
-        $0.setImage(Image.cameraCircleBig, for: .normal)
-        $0.layer.borderWidth = 7
-        $0.layer.borderColor = UIColor.zoocWhite1.cgColor
-        $0.layer.cornerRadius = 73.5
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    public var createProfileButton = UIButton().then {
-        $0.setTitle("프로필 생성", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
-        $0.backgroundColor = .zoocGradientGreen
-    }
+    public var backButton = UIButton()
+    public var progressBarView = UIView()
+    public var completedProgressBarView = UIView()
+    public var registerProfileImageLabel = UILabel()
+    private var registerProfileImageSubLabel = UILabel()
+    public var registerProfileImageButton = UIButton()
+    public var createProfileButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -81,15 +40,67 @@ final class OnboardingRegisterProfileImageView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        registerProfileImageLabel.do {
+            $0.textColor = .zoocDarkGray1
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        registerProfileImageSubLabel.do {
+            $0.text = "지금 마음에 드는 사진이 없다면 \n나중에 등록할 수 있어요"
+            $0.textColor = .zoocGray1
+            $0.textAlignment = .left
+            $0.font = .zoocBody3
+            $0.numberOfLines = 2
+        }
+        
+        registerProfileImageButton.do {
+            $0.setImage(Image.cameraCircleBig, for: .normal)
+            $0.makeCornerRadius(ratio: 73.5)
+            $0.makeCornerBorder(borderWidth: 7, borderColor: .zoocWhite1)
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        createProfileButton.do {
+            $0.setTitle("프로필 생성", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGradientGreen
+        }
     }
     
-    private func setLayout() {
-        addSubviews(backButton, progressBarView, registerProfileImageLabel, registerProfileImageSubLabel, registerProfileImageButton, createProfileButton)
+    private func hierarchy() {
+        addSubviews(backButton,
+                    progressBarView,
+                    registerProfileImageLabel,
+                    registerProfileImageSubLabel,
+                    registerProfileImageButton,
+                    createProfileButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalToSuperview().offset(17)
@@ -133,5 +144,3 @@ final class OnboardingRegisterProfileImageView: UIView {
         }
     }
 }
-
-

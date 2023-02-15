@@ -7,35 +7,35 @@
 
 import UIKit
 
-protocol ChekedButtonTappedDelegate {
+//MARK: - ChekedButtonTappedDelegate
+
+protocol ChekedButtonTappedDelegate : AnyObject {
     func cellButtonTapped(isSelected: Bool, index: Int)
 }
 
-
 final class OnboardingAgreementTableViewCell: UITableViewCell {
     
-    var delegate: ChekedButtonTappedDelegate?
+    //MARK: - Properties
+    
+    weak var delegate: ChekedButtonTappedDelegate?
     var index: Int = 0
     
     //MARK: - UI Components
     
-    public var menuLabel = UILabel().then {
-        $0.textColor = .zoocGray3
-        $0.font = .zoocBody1
-        $0.textAlignment = .left
-    }
-    
-    private lazy var checkedButton = UIButton().then {
-        $0.addTarget(self, action: #selector(agreementIsSelected), for: .touchUpInside)
-    }
+    public var menuLabel = UILabel()
+    private lazy var checkedButton = BaseButton()
     
     //MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        setUI()
-        setLayout()
+        target()
+        
+        cellStyle()
+        hierarchy()
+        layout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -44,14 +44,26 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
-        self.selectionStyle = .none
+    private func target() {
+        checkedButton.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
     }
     
-    private func setLayout() {
-        contentView.addSubviews(menuLabel, checkedButton)
+    private func cellStyle() {
+        self.backgroundColor = .zoocBackgroundGreen
+        self.selectionStyle = .none
         
+        menuLabel.do {
+            $0.textColor = .zoocGray3
+            $0.font = .zoocBody1
+            $0.textAlignment = .left
+        }
+    }
+    
+    private func hierarchy() {
+        contentView.addSubviews(menuLabel, checkedButton)
+    }
+    
+    private func layout() {
         menuLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
@@ -65,6 +77,18 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
     }
     
     public func dataBind(model: OnboardingAgreementModel, index: Int) {
+        updateUI(model: model, index: index)
+    }
+    
+    //MARK: - Action Method
+    
+    @objc func checkButtonDidTap() {
+        updatecheckButtonUI()
+    }
+}
+
+private extension OnboardingAgreementTableViewCell {
+    func updateUI(model: OnboardingAgreementModel, index: Int) {
         self.index = index
         menuLabel.text = model.title
         if model.isSelected {
@@ -74,9 +98,7 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
-    //MARK: - Action Method
-    
-    @objc func agreementIsSelected() {
+    func updatecheckButtonUI() {
         if checkedButton.currentImage == Image.checkBox {
             delegate?.cellButtonTapped(isSelected: true, index: index)
             checkedButton.setImage(Image.checkBoxFill, for: .normal)

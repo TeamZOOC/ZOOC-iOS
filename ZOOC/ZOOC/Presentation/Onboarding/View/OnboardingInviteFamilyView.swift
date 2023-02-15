@@ -1,5 +1,5 @@
 //
-//  OnboardingInviteFamilyView.swift
+//  OnboardingReInviteFamilyView.swift
 //  ZOOC
 //
 //  Created by 류희재 on 2023/01/10.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingInviteFamilyView: UIView {
+final class OnboardingReInviteFamilyView: UIView {
     
     //MARK: - UI Components
     
@@ -20,14 +20,12 @@ final class OnboardingInviteFamilyView: UIView {
     
     public var progressBarView = UIView().then {
         $0.backgroundColor = .zoocLightGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     public var completedProgressBarView = UIView().then {
         $0.backgroundColor = .zoocMainGreen
-        $0.layer.cornerRadius = 2
-        $0.clipsToBounds = true
+        $0.makeCornerRadius(ratio: 2)
     }
     
     private let titleLabel = UILabel().then {
@@ -36,33 +34,34 @@ final class OnboardingInviteFamilyView: UIView {
         $0.font = .zoocDisplay1
         $0.textAlignment = .left
     }
-
+    
     private let descriptionLabel = UILabel().then {
-        $0.text = "함께 추억을 공유하고 싶은 가족들에게 \n초대링크를 보내보세요"
+        $0.text = "다시 링크를 복사하고 싶으면 \n하단의 초대링크 복사를 눌러보세요"
         $0.textColor = .zoocGray1
         $0.textAlignment = .left
         $0.font = .zoocBody3
         $0.numberOfLines = 2
     }
-
+    
     private let inviteImageView = UIImageView().then {
         $0.image = Image.graphics3
         $0.contentMode = .scaleAspectFill
     }
-
+    
     public lazy var inviteLatelyButton = UIButton().then {
-        $0.setTitle("나중에 초대할게요", for: .normal)
+        $0.setTitle("초대링크 복사", for: .normal)
         $0.setTitleColor(.zoocGray1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.setUnderline()
+        
     }
     
     public lazy var inviteButton = UIButton().then {
-        $0.setTitle("초대하기", for: .normal)
+        $0.setTitle("다음", for: .normal)
         $0.setTitleColor(.zoocWhite1, for: .normal)
         $0.titleLabel?.font = .zoocSubhead1
         $0.backgroundColor = .zoocGradientGreen
-        $0.layer.cornerRadius = 27
+        $0.makeCornerRadius(ratio: 27)
     }
     
     //MARK: - Life Cycle
@@ -70,8 +69,9 @@ final class OnboardingInviteFamilyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -80,15 +80,73 @@ final class OnboardingInviteFamilyView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
+    private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        progressBarView.do {
+            $0.backgroundColor = .zoocLightGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        completedProgressBarView.do {
+            $0.backgroundColor = .zoocMainGreen
+            $0.makeCornerRadius(ratio: 2)
+        }
+        
+        titleLabel.do {
+            $0.text = "가족을 초대해보세요"
+            $0.textColor = .zoocDarkGray1
+            $0.font = .zoocDisplay1
+            $0.textAlignment = .left
+        }
+        
+        descriptionLabel.do {
+            $0.text = "다시 링크를 복사하고 싶으면 \n하단의 초대링크 복사를 눌러보세요"
+            $0.textColor = .zoocGray1
+            $0.textAlignment = .left
+            $0.font = .zoocBody3
+            $0.numberOfLines = 2
+        }
+        
+        inviteImageView.do {
+            $0.image = Image.graphics3
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        inviteLatelyButton.do {
+            $0.setTitle("초대링크 복사", for: .normal)
+            $0.setTitleColor(.zoocGray1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.setUnderline()
+            
+        }
+        
+        inviteButton.do {
+            $0.setTitle("다음", for: .normal)
+            $0.setTitleColor(.zoocWhite1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.backgroundColor = .zoocGradientGreen
+            $0.makeCornerRadius(ratio: 27)
+        }
     }
     
-    private func setLayout(){
-        addSubviews(backButton, progressBarView, titleLabel, descriptionLabel, inviteImageView, inviteLatelyButton, inviteButton)
+    private func hierarchy() {
+        addSubviews(backButton,
+                    progressBarView,
+                    titleLabel,
+                    descriptionLabel,
+                    inviteImageView,
+                    inviteLatelyButton,
+                    inviteButton)
         
         progressBarView.addSubview(completedProgressBarView)
-        
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
             $0.leading.equalTo(self.safeAreaLayoutGuide).offset(17)
@@ -119,9 +177,9 @@ final class OnboardingInviteFamilyView: UIView {
         }
         
         inviteImageView.snp.makeConstraints {
-            $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(60)
+            $0.top.equalTo(self.descriptionLabel.snp.bottom).offset(86)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(self.inviteLatelyButton.snp.top).offset(-10)
+            $0.bottom.equalTo(self.inviteLatelyButton.snp.top).offset(-30)
         }
         
         inviteLatelyButton.snp.makeConstraints {

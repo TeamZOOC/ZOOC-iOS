@@ -14,22 +14,17 @@ final class MyDeleteAccountSectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public var deleteAccountButton = UIButton().then {
-        $0.setTitle("회원탈퇴", for: .normal)
-        $0.titleLabel?.font = .zoocCaption
-        $0.setTitleColor(.zoocDarkGreen, for: .normal)
-    }
-    
-    public var deleteAccountButtonUnderLineView = UIView().then {
-        $0.backgroundColor = .zoocDarkGreen
-    }
+    public var deleteAccountButton = UIButton()
+    public var deleteAccountButtonUnderLineView = UIView()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -37,10 +32,24 @@ final class MyDeleteAccountSectionCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Custom Method
-
-    private func setLayout() {
-        addSubviews(deleteAccountButton, deleteAccountButtonUnderLineView)
+    
+    private func style() {
+        deleteAccountButton.do {
+            $0.setTitle("회원탈퇴", for: .normal)
+            $0.titleLabel?.font = .zoocCaption
+            $0.setTitleColor(.zoocDarkGreen, for: .normal)
+        }
         
+        deleteAccountButtonUnderLineView.do {
+            $0.backgroundColor = .zoocDarkGreen
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(deleteAccountButton, deleteAccountButtonUnderLineView)
+    }
+    
+    private func layout() {
         deleteAccountButton.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()

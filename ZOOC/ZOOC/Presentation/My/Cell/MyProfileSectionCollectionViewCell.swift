@@ -24,37 +24,17 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     
     //MARK: - UI Components
     
-    public var profileImageView = UIImageView().then {
-        $0.layer.cornerRadius = 36
-        $0.layer.borderColor = UIColor.zoocGray1.cgColor
-        $0.layer.borderWidth = 2
-        $0.clipsToBounds = true
-        $0.layer.masksToBounds = true
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    public var profileNameLabel = UILabel().then {
-        $0.textColor = .zoocDarkGray2
-        $0.font = .zoocHeadLine
-    }
-    
-    public var editProfileButton = UIButton().then {
-        $0.setTitle("편집", for: .normal)
-        $0.titleLabel!.font = .zoocCaption
-        $0.setTitleColor(.zoocGray2, for: .normal)
-        $0.backgroundColor = .zoocWhite1
-        $0.layer.cornerRadius = 12
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.zoocLightGreen.cgColor
-        $0.clipsToBounds = true
-    }
-    
+    public var profileImageView = UIImageView()
+    public var profileNameLabel = UILabel()
+    public var editProfileButton = UIButton()
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -62,10 +42,33 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     }
     
     //MARK: - Custom Method
-
-    private func setLayout() {
-        addSubviews(profileImageView, profileNameLabel, editProfileButton)
+    private func style() {
+        profileImageView.do {
+            $0.makeCornerRadius(ratio: 36)
+            $0.makeCornerBorder(borderWidth: 2, borderColor: .zoocGray1)
+            $0.contentMode = .scaleAspectFill
+        }
         
+        profileNameLabel.do {
+            $0.textColor = .zoocDarkGray2
+            $0.font = .zoocHeadLine
+        }
+        
+        editProfileButton.do {
+            $0.setTitle("편집", for: .normal)
+            $0.titleLabel!.font = .zoocCaption
+            $0.setTitleColor(.zoocGray2, for: .normal)
+            $0.backgroundColor = .zoocWhite1
+            $0.makeCornerRadius(ratio: 12)
+            $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGreen)
+        }
+    }
+    
+    private func hierarchy() {
+        addSubviews(profileImageView, profileNameLabel, editProfileButton)
+    }
+    
+    private func layout() {
         profileImageView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(38)
             $0.leading.equalToSuperview().offset(38)

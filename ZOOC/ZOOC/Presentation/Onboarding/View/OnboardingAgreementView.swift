@@ -14,43 +14,20 @@ final class OnboardingAgreementView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    private var agreeTitleLabel = UILabel().then {
-        $0.text = "더 나은 서비스 제공을 위해 \n약관동의가 필요해요"
-        $0.textColor = .zoocDarkGray2
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-    }
-    
-    public var agreeTableView = UITableView(frame: .zero, style: .grouped).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.separatorStyle = .none
-        $0.isScrollEnabled = false
-    }
-    
-    public var signUpButton = UIButton().then {
-        $0.setTitle("회원가입", for: .normal)
-        $0.setTitleColor(.zoocWhite1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.layer.cornerRadius = 27
-        $0.clipsToBounds = true
-        $0.backgroundColor = .zoocGray1
-        $0.isEnabled = false
-    }
+    public var backButton = UIButton()
+    private var agreeTitleLabel = UILabel()
+    public var agreeTableView = UITableView(frame: .zero, style: .grouped)
+    public var signUpButton = UIButton()
     
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
         register()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -59,13 +36,51 @@ final class OnboardingAgreementView: UIView {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        self.backgroundColor = .zoocBackgroundGreen
+    private func register() {
+        agreeTableView.register(
+            OnboardingAgreementTableViewCell.self,
+            forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
+        agreeTableView.register(
+            OnboardingAgreementTableHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
     
-    private func setLayout() {
-        addSubviews(backButton, agreeTitleLabel, agreeTableView, signUpButton)
+    private func style() {
+        self.backgroundColor = .zoocBackgroundGreen
         
+        backButton.do {
+            $0.setImage(Image.back, for: .normal)
+        }
+        
+        agreeTitleLabel.do {
+            $0.text = "더 나은 서비스 제공을 위해 \n약관동의가 필요해요"
+            $0.textColor = .zoocDarkGray2
+            $0.textAlignment = .left
+            $0.font = .zoocDisplay1
+            $0.numberOfLines = 2
+        }
+        
+        agreeTableView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.separatorStyle = .none
+            $0.isScrollEnabled = false
+        }
+        
+        signUpButton.do {
+            $0.setTitle("회원가입", for: .normal)
+            $0.setTitleColor(.zoocWhite1, for: .normal)
+            $0.titleLabel?.font = .zoocSubhead1
+            $0.titleLabel?.textAlignment = .center
+            $0.makeCornerRadius(ratio: 27)
+            $0.backgroundColor = .zoocGray1
+            $0.isEnabled = false
+        }
+    }
+    private func hierarchy() {
+        addSubviews(backButton, agreeTitleLabel, agreeTableView, signUpButton)
+    }
+    
+    private func layout() {
         backButton.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(17)
             $0.leading.equalToSuperview().offset(15)
@@ -91,10 +106,4 @@ final class OnboardingAgreementView: UIView {
             $0.height.equalTo(54)
         }
     }
-    
-    private func register() {
-        agreeTableView.register(OnboardingAgreementTableViewCell.self, forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
-        agreeTableView.register(OnboardingAgreementTableHeaderView.self, forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
-    }
 }
-

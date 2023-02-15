@@ -13,6 +13,7 @@ import Then
 final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Properties
+    
     var isPhoto: Bool = false
     var image: UIImage?
     
@@ -26,19 +27,12 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         self.view = onboardingRegisterProfileImageView
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        register()
+        target()
         
-        let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
-        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                       value: UIColor.zoocGradientGreen,
-                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
-                
-        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
-     
+        style()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,21 +49,19 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Custom Method
     
-    private func register() {
-        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
-        
-        onboardingRegisterProfileImageView.backButton.addTarget(self,
-                                                                action: #selector(backButtonDidTap),
-                                                                for: .touchUpInside)
-        
-        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self,
-                                                                                action: #selector(chooseProfileImage),
-                                                                                for: .touchUpInside)
+    private func style() {
+        let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
+        attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                       value: UIColor.zoocGradientGreen,
+                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
+                
+        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
     }
     
-    private func pushToCompleteProfileView() {
-        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
-        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
+    private func target() {
+        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
+        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
     }
     
     func dataSend(profileName: String) {
@@ -79,43 +71,43 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Action Method
     
-    @objc
-    func createProfileButtonDidTap() {
+    @objc func createProfileButtonDidTap() {
         onboardingRegisterProfileImageView.createProfileButton.isEnabled = false
         onboardingRegisterProfileImageView.createProfileButton.backgroundColor = .zoocGray1
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
                                     nickName: profileName,
                                     photo: image)
         { result in
-            
             print(result)
             guard let result = self.validateResult(result) as? MyUser else { return }
             self.pushToCompleteProfileView()
         }
-        
     }
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    func chooseProfileImage() {
+    @objc func chooseProfileImage() {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true)
-        
     }
 }
+
 extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            isPhoto = true
-            self.image = image
-            onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
-        }
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        isPhoto = true
+        self.image = image
+        onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
+    }
+}
+
+private extension OnboardingRegisterProfileImageViewController {
+    func pushToCompleteProfileView() {
+        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
+        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
     }
 }

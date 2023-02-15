@@ -11,25 +11,17 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public var petImageView = UIImageView().then {
-        $0.image = Image.mockPet2
-        $0.layer.cornerRadius = 17
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-    }
+    public var petImageView = UIImageView()
+    public var petNameLabel = UILabel()
     
-    public var petNameLabel = UILabel().then {
-        $0.font = .zoocCaption
-        $0.textColor = .zoocDarkGray1
-    }
-
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
-        setLayout()
+        style()
+        hierarchy()
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -38,18 +30,31 @@ final class MyPetCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Custom Method
     
-    private func setUI() {
-        contentView.backgroundColor = .zoocWhite2
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.zoocLightGray.cgColor
-        contentView.layer.cornerRadius = 21
-        contentView.clipsToBounds = true
+    private func style() {
+        contentView.do {
+            $0.backgroundColor = .zoocWhite2
+            $0.makeCornerRadius(ratio: 21)
+            $0.makeCornerBorder(borderWidth: 1, borderColor: .zoocLightGray)
+        }
         
+        petImageView.do {
+            $0.image = Image.mockPet2
+            $0.layer.cornerRadius = 17
+            $0.clipsToBounds = true
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        petNameLabel.do {
+            $0.font = .zoocCaption
+            $0.textColor = .zoocDarkGray1
+        }
     }
     
-    private func setLayout() {
+    private func hierarchy() {
         contentView.addSubviews(petImageView, petNameLabel)
-        
+    }
+    
+    private func layout() {
         petImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(3)

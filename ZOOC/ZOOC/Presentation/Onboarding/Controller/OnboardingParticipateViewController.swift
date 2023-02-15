@@ -26,32 +26,27 @@ final class OnboardingParticipateViewController: BaseViewController {
         super.viewDidLoad()
         
         register()
+        target()
     }
     
     //MARK: - Custom Method
     
     func register() {
-        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        
-        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        
         onboardingParticipateView.familyCodeTextField.delegate = self
     }
     
-    func pushToParticipateCompletedView() {
-        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
-        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
+    func target() {
+        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
     
-    @objc
-    private func backButtonDidTap() {
+    @objc private func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc
-    private func nextButtonDidTap() {
+    @objc private func nextButtonDidTap() {
         registerUser()
     }
 }
@@ -61,24 +56,15 @@ extension OnboardingParticipateViewController {
         guard let code = onboardingParticipateView.familyCodeTextField.text else { return }
         let param = OnboardingRegisterUserRequestDto(code: code)
         OnboardingAPI.shared.registerUser(param: param) { result in
-            switch result {
-            case .success(_):
-                self.pushToParticipateCompletedView()
-            case .requestErr(let message):
-                self.onboardingParticipateView.nextButton.isEnabled = false
-                self.onboardingParticipateView.nextButton.backgroundColor = .zoocGray1
-                self.presentBottomAlert(message)
-            case .decodedErr:
-                break
-            case .pathErr:
-                break
-            case .serverErr:
-                break
-            case .networkFail:
-                break
-            }
-
+            guard let result = self.validateResult(result) as? SimpleResponse else { return }
+            
+            print(result)
         }
+    }
+    
+    func pushToParticipateCompletedView() {
+        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
+        self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
     }
 }
 
@@ -90,7 +76,3 @@ extension OnboardingParticipateViewController: UITextFieldDelegate {
         self.onboardingParticipateView.nextButton.isEnabled = true
     }
 }
-
-
-
-
