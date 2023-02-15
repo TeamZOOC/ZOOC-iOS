@@ -22,7 +22,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
     private var detailArchiveMockData: HomeDetailArchiveModel = HomeDetailArchiveModel.mockData
     
     var petID: String = "1"
-    var isFirst = true
+    var isNewPage = true
     
     private var detailArchiveData: HomeDetailArchiveResult? {
         didSet{
@@ -327,8 +327,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
             $0.height.greaterThanOrEqualTo(height)
         }
         
-        if isFirst{
-            isFirst = false
+        if isNewPage{
+            isNewPage = false
         } else{
             scrollView.layoutSubviews()
             self.scrollView.setContentOffset(CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height), animated: true)
@@ -340,6 +340,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         HomeAPI.shared.getDetailPetArchive(recordID: recordID, petID: petID) { result in
             guard let result = self.validateResult(result) as?  HomeDetailArchiveResult else { return }
             
+            self.isNewPage = true
             self.detailArchiveData = result
             self.commentsData = result.comments
         }
