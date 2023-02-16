@@ -19,7 +19,7 @@ final class OnboardingCompleteProfileView: UIView {
     private let completedProgressBarView = UIView()
     public let completeProfileLabel = UILabel()
     public let completeProfileSubLabel = UILabel()
-    private let completeImage = UIImageView()
+    public let completeImage = UIImageView()
     public lazy var getCodeButton = UIButton()
     public lazy var notGetCodeButton = UIButton()
     

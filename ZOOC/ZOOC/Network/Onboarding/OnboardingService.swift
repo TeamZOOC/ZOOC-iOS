@@ -15,6 +15,7 @@ enum OnboardingService {
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
     case postRegisterPet(param: OnboardingRegisterPetRequestDto)
     case postKakaoSocialLogin(accessToken: String)
+    //case postAppleSocialLogin
 }
 
 extension OnboardingService: BaseTargetType {
@@ -27,7 +28,9 @@ extension OnboardingService: BaseTargetType {
         case .postRegisterPet(param: _):
             return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
         case .postKakaoSocialLogin:
-            return URLs.socialLogin
+            return URLs.kakaoLogin
+//        case .postAppleSocialLogin:
+//            return URLs.appleLogin
         }
     }
     
@@ -41,8 +44,11 @@ extension OnboardingService: BaseTargetType {
             return .post
         case .postKakaoSocialLogin:
             return .post
+//        case .postAppleSocialLogin:
+//            return .post
         }
     }
+    
     
     var task: Task {
         switch self {
@@ -52,6 +58,8 @@ extension OnboardingService: BaseTargetType {
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
+//        case .postAppleSocialLogin:
+//            return .requestPlain
         case .postRegisterPet(param: let param):
             var multipartFormDatas: [MultipartFormData] = []
             
@@ -92,8 +100,9 @@ extension OnboardingService: BaseTargetType {
         case .postKakaoSocialLogin(accessToken: let accessToken):
             return [APIConstants.contentType: APIConstants.applicationJSON,
                     APIConstants.auth : accessToken]
+        //case .postAppleSocialLogin:
         }
     }
-    
 }
+
 

@@ -56,17 +56,34 @@ final class OnboardingLoginViewController: BaseViewController {
 
 private extension OnboardingLoginViewController {
     func kakaoSocialLogin() {
-        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-            guard let oauthToken = oauthToken else {
-                guard let error = error else { return }
-                print(error)
-                return
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                print("카카오 oauth 토큰 \(oauthToken)")
+                guard let oauthToken = oauthToken else {
+                    guard let error = error else { return }
+                    print(error)
+                    return
+                }
+                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+                    User.jwtToken = result.jwtToken
+                }
+                self.pushToAgreementView()
             }
-            OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                User.jwtToken = result.jwtToken
+        } else {
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                print("카카오 oauth 토큰 \(oauthToken)")
+                guard let oauthToken = oauthToken else {
+                    guard let error = error else { return }
+                    print(error)
+                    return
+                }
+                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+                    User.jwtToken = result.jwtToken
+                }
+                self.pushToAgreementView()
             }
-            self.pushToAgreementView()
         }
     }
     
@@ -104,25 +121,25 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
             let email = appleIDCredential.email
             if  let authorizationCode = appleIDCredential.authorizationCode,
                 let identityToken = appleIDCredential.identityToken,
-                let authString = String(data: authorizationCode, encoding: .utf8),
-                let tokenString = String(data: identityToken, encoding: .utf8) {
+                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
+                let identityTokenString = String(data: identityToken, encoding: .utf8) {
                 print("authorizationCode: \(authorizationCode)")
                 print("identityToken: \(identityToken)")
-                print("authString: \(authString)")
-                print("tokenString: \(tokenString)")
+                print("authorizationCodeString: \(authorizationCodeString)")
+                print("identityTokenString: \(identityTokenString)")
                 
             }
             print("User ID : \(userIdentifier)")
             print("User Email : \(email ?? "")")
             print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-                
-                
-            default:
-                break
-            }
-        }
-        
-        func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-            // Handle error.
+            
+            
+        default:
+            break
         }
     }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
