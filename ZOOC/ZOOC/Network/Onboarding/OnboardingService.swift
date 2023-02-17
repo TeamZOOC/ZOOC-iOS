@@ -15,7 +15,7 @@ enum OnboardingService {
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
     case postRegisterPet(param: OnboardingRegisterPetRequestDto)
     case postKakaoSocialLogin(accessToken: String)
-    //case postAppleSocialLogin
+    case postAppleSocialLogin(identityToken: String)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -29,8 +29,8 @@ extension OnboardingService: BaseTargetType {
             return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
         case .postKakaoSocialLogin:
             return URLs.kakaoLogin
-//        case .postAppleSocialLogin:
-//            return URLs.appleLogin
+        case .postAppleSocialLogin:
+            return URLs.appleLogin
         }
     }
     
@@ -44,8 +44,8 @@ extension OnboardingService: BaseTargetType {
             return .post
         case .postKakaoSocialLogin:
             return .post
-//        case .postAppleSocialLogin:
-//            return .post
+        case .postAppleSocialLogin:
+            return .post
         }
     }
     
@@ -58,8 +58,8 @@ extension OnboardingService: BaseTargetType {
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
-//        case .postAppleSocialLogin:
-//            return .requestPlain
+        case .postAppleSocialLogin:
+            return .requestPlain
         case .postRegisterPet(param: let param):
             var multipartFormDatas: [MultipartFormData] = []
             
@@ -100,7 +100,9 @@ extension OnboardingService: BaseTargetType {
         case .postKakaoSocialLogin(accessToken: let accessToken):
             return [APIConstants.contentType: APIConstants.applicationJSON,
                     APIConstants.auth : accessToken]
-        //case .postAppleSocialLogin:
+        case .postAppleSocialLogin(identityToken: let identityToken):
+            return [APIConstants.contentType: APIConstants.applicationJSON,
+                    APIConstants.auth : identityToken]
         }
     }
 }

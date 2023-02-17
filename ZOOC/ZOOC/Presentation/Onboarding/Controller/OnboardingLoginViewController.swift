@@ -58,7 +58,6 @@ private extension OnboardingLoginViewController {
     func kakaoSocialLogin() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                print("카카오 oauth 토큰 \(oauthToken)")
                 guard let oauthToken = oauthToken else {
                     guard let error = error else { return }
                     print(error)
@@ -72,7 +71,6 @@ private extension OnboardingLoginViewController {
             }
         } else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
-                print("카카오 oauth 토큰 \(oauthToken)")
                 guard let oauthToken = oauthToken else {
                     guard let error = error else { return }
                     print(error)
