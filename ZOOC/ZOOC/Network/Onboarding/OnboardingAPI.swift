@@ -44,8 +44,8 @@ extension OnboardingAPI {
                                 completion: completion)
         }
     }
-    public func postAppleSocialLogin(identityToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postAppleSocialLogin(identityToken: identityToken)) { (result) in
+    public func postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postAppleSocialLogin(param: param)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: OnboardingTokenData.self,
                                 completion: completion)

@@ -15,7 +15,7 @@ enum OnboardingService {
     case postRegisterUser(param: OnboardingRegisterUserRequestDto)
     case postRegisterPet(param: OnboardingRegisterPetRequestDto)
     case postKakaoSocialLogin(accessToken: String)
-    case postAppleSocialLogin(identityToken: String)
+    case postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -58,8 +58,8 @@ extension OnboardingService: BaseTargetType {
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
-        case .postAppleSocialLogin:
-            return .requestPlain
+        case .postAppleSocialLogin(param: let param):
+            return .requestJSONEncodable(param)
         case .postRegisterPet(param: let param):
             var multipartFormDatas: [MultipartFormData] = []
             
@@ -100,9 +100,8 @@ extension OnboardingService: BaseTargetType {
         case .postKakaoSocialLogin(accessToken: let accessToken):
             return [APIConstants.contentType: APIConstants.applicationJSON,
                     APIConstants.auth : accessToken]
-        case .postAppleSocialLogin(identityToken: let identityToken):
-            return [APIConstants.contentType: APIConstants.applicationJSON,
-                    APIConstants.auth : identityToken]
+        case .postAppleSocialLogin(param: _):
+            return APIConstants.noTokenHeader
         }
     }
 }

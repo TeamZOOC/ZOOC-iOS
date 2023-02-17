@@ -113,23 +113,24 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
             if  let authorizationCode = appleIDCredential.authorizationCode,
                 let identityToken = appleIDCredential.identityToken,
-                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
+//                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
                 let identityTokenString = String(data: identityToken, encoding: .utf8) {
-                print("authorizationCode: \(authorizationCode)")
-                print("identityToken: \(identityToken)")
-                print("authorizationCodeString: \(authorizationCodeString)")
+//                print("authorizationCode: \(authorizationCode)")
+//                print("identityToken: \(identityToken)")
+//                print("authorizationCodeString: \(authorizationCodeString)")
                 print("identityTokenString: \(identityTokenString)")
-                
+                OnboardingAPI.shared.postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto(identityTokenString: identityTokenString)) { result in
+                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+                    User.jwtToken = result.jwtToken
+                    print("드디어 받아온 jwt 토큰 \(User.jwtToken)")
+                }
+                self.pushToAgreementView()
             }
-            print("User ID : \(userIdentifier)")
-            print("User Email : \(email ?? "")")
-            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+//            print("User ID : \(userIdentifier)")
+//            print("User Email : \(email ?? "")")
+//            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
             
             
         default:
