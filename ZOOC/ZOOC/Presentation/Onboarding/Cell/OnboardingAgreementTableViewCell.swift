@@ -9,21 +9,23 @@ import UIKit
 
 //MARK: - ChekedButtonTappedDelegate
 
-protocol ChekedButtonTappedDelegate : AnyObject {
-    func cellButtonTapped(isSelected: Bool, index: Int)
+protocol CheckedButtonTappedDelegate : AnyObject {
+    func cellButtonTapped(index: Int)
 }
 
 final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    weak var delegate: ChekedButtonTappedDelegate?
+    let onboardingAgreementViewModel = OnboardingAgreementViewModel()
+    
+    weak var delegate: CheckedButtonTappedDelegate?
     var index: Int = 0
     
     //MARK: - UI Components
     
     public var menuLabel = UILabel()
-    private lazy var checkedButton = BaseButton()
+    public lazy var checkedButton = BaseButton()
     
     //MARK: - Life Cycles
     
@@ -99,13 +101,8 @@ private extension OnboardingAgreementTableViewCell {
     }
     
     func updatecheckButtonUI() {
-        if checkedButton.currentImage == Image.checkBox {
-            delegate?.cellButtonTapped(isSelected: true, index: index)
-            checkedButton.setImage(Image.checkBoxFill, for: .normal)
-        } else {
-            delegate?.cellButtonTapped(isSelected: false, index: index)
-            checkedButton.setImage(Image.checkBox, for: .normal)
-        }
+        delegate?.cellButtonTapped(index: index)
+        onboardingAgreementViewModel.updateAgreementClosure?()
     }
 }
 

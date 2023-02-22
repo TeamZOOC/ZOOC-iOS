@@ -9,7 +9,6 @@ import UIKit
 
 final class OnboardingAgreementViewModel {
     
-    
     var updateAgreementClosure: (() -> Void)?
     var updateAllAgreementClosure: (() -> Void)?
     
@@ -24,8 +23,10 @@ final class OnboardingAgreementViewModel {
     
     //  1. 각 동의 항목의 상태 변환 메소드
     
-    func updateAgreementState(index: Int) {
+    func updateAgreementState(index: Int, /*button: inout UIButton?*/) {
         agreementList[index] = agreementList[index] == true ? false : true
+//        let image = agreementList[index] ? Image.checkBoxFill : Image.checkBox
+//        button!.setImage(image, for: .normal)
     }
     
     //  2. 전체동의 버튼을 눌렀을 때 실행되는 메소드
@@ -50,6 +51,11 @@ final class OnboardingAgreementViewModel {
             color = .zoocGray1
         }
     }
+    
+//    // 동의 항목 버튼 이미지 변화
+//    func updateCheckBoxButton(index: Int, image: inout UIImage?) {
+//        image = agreementList[index] ? Image.checkBoxFill : Image.checkBox
+//    }
 }
 
 

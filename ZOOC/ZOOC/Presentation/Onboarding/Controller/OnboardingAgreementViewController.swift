@@ -14,10 +14,18 @@ final class OnboardingAgreementViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private var allSelected: Bool = false
-    
     private lazy var onboardingAgreementView = OnboardingAgreementView()
-    private var agreementData: [OnboardingAgreementModel] = OnboardingAgreementModel.agreementData
+    private let onboardingAgreementViewModel: OnboardingAgreementViewModel
+    
+    
+    init(onboardingAgreementViewModel: OnboardingAgreementViewModel) {
+        self.onboardingAgreementViewModel = onboardingAgreementViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - Life Cycle
     
@@ -35,8 +43,8 @@ final class OnboardingAgreementViewController: BaseViewController {
     //MARK: - Custom Method
     
     private func register() {
-        onboardingAgreementView.agreeTableView.delegate = self
-        onboardingAgreementView.agreeTableView.dataSource = self
+        onboardingAgreementView.agreementTableView.delegate = self
+        onboardingAgreementView.agreementTableView.dataSource = self
     }
     
     private func target() {
@@ -71,20 +79,28 @@ extension OnboardingAgreementViewController: UITableViewDelegate {
 
 extension OnboardingAgreementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return agreementData.count
+        return onboardingAgreementViewModel.agreementList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OnboardingAgreementTableViewCell.cellIdentifier, for: indexPath) as?
                 OnboardingAgreementTableViewCell else { return UITableViewCell() }
-        cell.dataBind(model: agreementData[indexPath.row], index: indexPath.row)
         cell.delegate = self
+        cell.checkedButton.tag = indexPath.row
+        
+        cell.onboardingAgreementViewModel.updateAgreementClosure = {
+            self.onboardingAgreementViewModel.updateAgreementState(
+                index: indexPath.row
+                //button: &cell.checkedButton
+            )
+            self.onboardingAgreementView.agreementTableView.reloadData()
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
-        cell.dataBind(all: allSelected)
+        //cell.dataBind(all: allSelected)
         cell.delegate = self
         return cell
     }
@@ -92,10 +108,10 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
 
 //MARK: - ChekedButtonTappedDelegate
 
-extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
-    func cellButtonTapped(isSelected: Bool, index: Int) {
-        updateUICellButtonTapped(isSelected: isSelected, index: index)
-        onboardingAgreementView.agreeTableView.reloadData()
+extension OnboardingAgreementViewController: CheckedButtonTappedDelegate {
+    func cellButtonTapped(index: Int) {
+        onboardingAgreementViewModel.index = index
+        onboardingAgreementView.agreementTableView.reloadData()
     }
 }
 
@@ -103,45 +119,45 @@ extension OnboardingAgreementViewController: ChekedButtonTappedDelegate {
 
 extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
     func allCellButtonTapped(isSelected: Bool) {
-        updateUICellAllButtonTapped(isSelected: isSelected)
-        onboardingAgreementView.agreeTableView.reloadData()
+//        onboardingAgreementViewModel.
+        onboardingAgreementView.agreementTableView.reloadData()
     }
 }
 
 extension OnboardingAgreementViewController {
-    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
-        agreementData[index].isSelected = isSelected
-        if (agreementData[0].isSelected == true &&
-            agreementData[1].isSelected == true &&
-            agreementData[3].isSelected == true) {
-            onboardingAgreementView.signUpButton.isEnabled = true
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-            allSelected = agreementData[2].isSelected ? true : false
-        } else {
-            onboardingAgreementView.signUpButton.isEnabled = false
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-            allSelected = false
-        }
-    }
-    
-    private func updateUICellAllButtonTapped(isSelected: Bool) {
-        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
-        if isSelected {
-            allSelected = true
-            onboardingAgreementView.signUpButton.isEnabled = true
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-            agreementDataIndexList.forEach {
-                agreementData[$0].isSelected = true
-            }
-        } else {
-            allSelected = false
-            onboardingAgreementView.signUpButton.isEnabled = false
-            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-            agreementDataIndexList.forEach {
-                agreementData[$0].isSelected = false
-            }
-        }
-    }
+//    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
+//        agreementData[index].isSelected = isSelected
+//        if (agreementData[0].isSelected == true &&
+//            agreementData[1].isSelected == true &&
+//            agreementData[3].isSelected == true) {
+//            onboardingAgreementView.signUpButton.isEnabled = true
+//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+//            allSelected = agreementData[2].isSelected ? true : false
+//        } else {
+//            onboardingAgreementView.signUpButton.isEnabled = false
+//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+//            allSelected = false
+//        }
+//    }
+//
+//    private func updateUICellAllButtonTapped(isSelected: Bool) {
+//        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
+//        if isSelected {
+//            allSelected = true
+//            onboardingAgreementView.signUpButton.isEnabled = true
+//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+//            agreementDataIndexList.forEach {
+//                agreementData[$0].isSelected = true
+//            }
+//        } else {
+//            allSelected = false
+//            onboardingAgreementView.signUpButton.isEnabled = false
+//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+//            agreementDataIndexList.forEach {
+//                agreementData[$0].isSelected = false
+//            }
+//        }
+//    }
     
     private func pushToWelcomeView() {
         let welcomeViewController = OnboardingWelcomeViewController()
@@ -149,3 +165,20 @@ extension OnboardingAgreementViewController {
     }
 }
 
+
+
+
+//cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
+//cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+//
+//
+//
+//self.onboardingPetRegisterViewModel.checkCanRegister(
+//    button:&self.onboardingRegisterPetView.registerPetButton.isEnabled,
+//    color:&self.onboardingRegisterPetView.registerPetButton.backgroundColor
+//)
+//
+//self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
+//
+//return cell
+//}

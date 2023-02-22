@@ -86,7 +86,7 @@ private extension OnboardingLoginViewController {
     }
     
     func pushToAgreementView() {
-        let agreementViewController = OnboardingAgreementViewController()
+        let agreementViewController = OnboardingAgreementViewController(onboardingAgreementViewModel: OnboardingAgreementViewModel())
         self.navigationController?.pushViewController(agreementViewController, animated: true)
     }
 }
