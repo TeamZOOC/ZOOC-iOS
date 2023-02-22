@@ -19,7 +19,8 @@ public enum URLs{
     
     //MARK: - User
     
-    static let socialLogin = "/user/kakao/signin"
+    static let kakaoLogin = "/user/kakao/signin"
+    static let appleLogin = "/user/apple/signin"
     static let editProfile = "/user/profile"
     static let signUp = "/user/create?code={code}"
     static let deleteUser = "/user"

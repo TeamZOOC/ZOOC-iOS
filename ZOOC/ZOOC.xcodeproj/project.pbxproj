@@ -149,6 +149,7 @@
 		D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */; };
 		D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */; };
 		D26C861C296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */; };
+		D2779742299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */; };
 		D27D9560296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */; };
 		D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */; };
 		D27D9564296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */; };
@@ -306,6 +307,7 @@
 		D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetViewController.swift; sourceTree = "<group>"; };
 		D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterModel.swift; sourceTree = "<group>"; };
 		D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetTableFooterView.swift; sourceTree = "<group>"; };
+		D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAppleSocailLoginRequestDto.swift; sourceTree = "<group>"; };
 		D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyView.swift; sourceTree = "<group>"; };
 		D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyViewController.swift; sourceTree = "<group>"; };
 		D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteCompletedFamilyView.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		D27D956B296CBA2D0097CD03 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		D27D95D4296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D27D95D6296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFamilySectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2D686BA299B59F400C290A8 /* ZOOC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZOOC.entitlements; sourceTree = "<group>"; };
 		D2DD45C6297D9612001722A1 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeModel.swift; sourceTree = "<group>"; };
 		D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeResult.swift; sourceTree = "<group>"; };
@@ -764,6 +767,7 @@
 				D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */,
 				D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */,
 				D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift */,
+				D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -771,8 +775,8 @@
 		87A76ABD295F775C0096F669 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */,
 				D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */,
+				D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */,
 				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
 			);
 			path = Model;
@@ -799,6 +803,7 @@
 		87B6623F29521E7500B6FFA9 /* ZOOC */ = {
 			isa = PBXGroup;
 			children = (
+				D2D686BA299B59F400C290A8 /* ZOOC.entitlements */,
 				87B6625429521EAC00B6FFA9 /* Application */,
 				876483162952351500F74882 /* Global */,
 				87B6625629521EBC00B6FFA9 /* Resource */,
@@ -1094,6 +1099,7 @@
 				D27D95D7296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
+				D2779742299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
 				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
 				D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */,
@@ -1297,11 +1303,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_URL = "http://3.36.236.44:3000";
+				CODE_SIGN_ENTITLEMENTS = ZOOC/ZOOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "반려동물을 기록하기 위해선 카메라 접근 권한이 필요합니다. 계속하시겠습니까?";
 				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
@@ -1336,11 +1344,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_URL = "http://3.36.236.44:3000";
+				CODE_SIGN_ENTITLEMENTS = ZOOC/ZOOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T6DNHAHXG9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZOOC/Application/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCameraUsageDescription = "반려동물을 기록하기 위해선 카메라 접근 권한이 필요합니다. 계속하시겠습니까?";
 				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";

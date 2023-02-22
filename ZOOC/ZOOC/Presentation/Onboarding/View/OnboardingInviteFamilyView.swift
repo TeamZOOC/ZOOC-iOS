@@ -14,55 +14,14 @@ final class OnboardingReInviteFamilyView: UIView {
     
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    private let titleLabel = UILabel().then {
-        $0.text = "가족을 초대해보세요"
-        $0.textColor = .zoocDarkGray1
-        $0.font = .zoocDisplay1
-        $0.textAlignment = .left
-    }
-    
-    private let descriptionLabel = UILabel().then {
-        $0.text = "다시 링크를 복사하고 싶으면 \n하단의 초대링크 복사를 눌러보세요"
-        $0.textColor = .zoocGray1
-        $0.textAlignment = .left
-        $0.font = .zoocBody3
-        $0.numberOfLines = 2
-    }
-    
-    private let inviteImageView = UIImageView().then {
-        $0.image = Image.graphics3
-        $0.contentMode = .scaleAspectFill
-    }
-    
-    public lazy var inviteLatelyButton = UIButton().then {
-        $0.setTitle("초대링크 복사", for: .normal)
-        $0.setTitleColor(.zoocGray1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.setUnderline()
-        
-    }
-    
-    public lazy var inviteButton = UIButton().then {
-        $0.setTitle("다음", for: .normal)
-        $0.setTitleColor(.zoocWhite1, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.backgroundColor = .zoocGradientGreen
-        $0.makeCornerRadius(ratio: 27)
-    }
+    public lazy var backButton = UIButton()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
+    private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let inviteImageView = UIImageView()
+    public lazy var inviteLatelyButton = UIButton()
+    public lazy var inviteButton = UIButton()
     
     //MARK: - Life Cycle
     

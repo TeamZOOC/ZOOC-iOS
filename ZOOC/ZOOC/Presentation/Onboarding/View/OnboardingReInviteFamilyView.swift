@@ -15,8 +15,8 @@ final class OnboardingInviteFamilyView: UIView {
     //MARK: - UI Components
     
     public lazy var backButton = UIButton()
-    public var progressBarView = UIView()
-    public var completedProgressBarView = UIView()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let inviteImageView = UIImageView()

@@ -13,3 +13,5 @@ struct OnboardingRegisterPetResult: Codable {
     let name: String
     let photo: String?
 }
+
+

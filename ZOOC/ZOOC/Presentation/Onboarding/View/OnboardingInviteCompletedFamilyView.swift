@@ -14,50 +14,13 @@ final class OnboardingInviteCompletedFamilyView: UIView {
 
     //MARK: - UI Components
     
-    public var backButton = UIButton().then {
-        $0.setImage(Image.back, for: .normal)
-    }
-    
-    public var progressBarView = UIView().then {
-        $0.backgroundColor = .zoocLightGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    public var completedProgressBarView = UIView().then {
-        $0.backgroundColor = .zoocMainGreen
-        $0.makeCornerRadius(ratio: 2)
-    }
-    
-    private var completeProfileLabel = UILabel().then {
-        $0.text = "이제 추억을 쌓을 시간이에요!"
-        $0.textColor = .zoocDarkGray1
-        $0.textAlignment = .left
-        $0.font = .zoocDisplay1
-        $0.numberOfLines = 2
-        $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
-    }
-    
-    private var completeProfileSubLabel = UILabel().then {
-        $0.text = "가족과 기록한 순간들이 \nZOOC 소중한 추억으로 남을게예요"
-        $0.textColor = .zoocGray1
-        $0.textAlignment = .left
-        $0.font = .zoocBody2
-        $0.numberOfLines = 2
-    }
-    
-    private var completeImage = UIImageView().then {
-        $0.image = Image.graphics4
-        $0.contentMode = .scaleAspectFit
-    }
-    
-    public var startButton = UIButton().then {
-        $0.setTitle("시작하기", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
-        $0.titleLabel?.font = .zoocSubhead1
-        $0.titleLabel?.textAlignment = .center
-        $0.makeCornerRadius(ratio: 27)
-        $0.backgroundColor = .zoocGradientGreen
-    }
+    public lazy var backButton = UIButton()
+    public let progressBarView = UIView()
+    public let completedProgressBarView = UIView()
+    private let completeProfileLabel = UILabel()
+    private let completeProfileSubLabel = UILabel()
+    private let completeImage = UIImageView()
+    public lazy var startButton = UIButton()
     
     //MARK: - Life Cycles
     

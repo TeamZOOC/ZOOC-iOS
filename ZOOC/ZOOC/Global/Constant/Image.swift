@@ -32,6 +32,7 @@ public enum Image{
     static let gridFill = UIImage(named: "grid.fill")!
     static let grid = UIImage(named: "grid")!
     static let home = UIImage(named: "home")!
+    static let kakaoLogin = UIImage(named: "kakaoLogin")!
     static let listFill = UIImage(named: "list.fill")!
     static let list = UIImage(named: "list")!
     static let next = UIImage(named: "next")!
