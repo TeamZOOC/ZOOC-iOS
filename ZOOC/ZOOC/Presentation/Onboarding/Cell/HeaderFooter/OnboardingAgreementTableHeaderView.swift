@@ -10,12 +10,14 @@ import UIKit
 //MARK: - AllChekedButtonTappedDelegate
 
 protocol AllChekedButtonTappedDelegate : AnyObject {
-    func allCellButtonTapped(isSelected: Bool)
+    func allCellButtonTapped()
 }
 
 final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - Properties
+    
+    let onboardingAgreementViewModel = OnboardingAgreementViewModel()
     
     private var isSelected: Bool = false
     weak var delegate: AllChekedButtonTappedDelegate?
@@ -24,7 +26,7 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     private var allAgreementView = UIView()
     private var allAgreementLabel = UILabel()
-    private lazy var allCheckedButton = BaseButton()
+    public lazy var allCheckedButton = BaseButton()
     
     //MARK: - Life Cycle
     
@@ -109,14 +111,7 @@ private extension OnboardingAgreementTableHeaderView {
     }
     
     func updateAllCheckedButtonUI() {
-        if isSelected {
-            isSelected = false
-            allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
-            delegate?.allCellButtonTapped(isSelected: false)
-        } else {
-            isSelected = true
-            allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
-            delegate?.allCellButtonTapped(isSelected: true)
-        }
+        delegate?.allCellButtonTapped()
+        onboardingAgreementViewModel.updateAllAgreementClosure?()
     }
 }

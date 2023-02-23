@@ -78,10 +78,6 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
-    public func dataBind(model: OnboardingAgreementModel, index: Int) {
-        updateUI(model: model, index: index)
-    }
-    
     //MARK: - Action Method
     
     @objc func checkButtonDidTap() {
@@ -90,16 +86,6 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
 }
 
 private extension OnboardingAgreementTableViewCell {
-    func updateUI(model: OnboardingAgreementModel, index: Int) {
-        self.index = index
-        menuLabel.text = model.title
-        if model.isSelected {
-            checkedButton.setImage(Image.checkBoxFill, for: .normal)
-        } else {
-            checkedButton.setImage(Image.checkBox, for: .normal)
-        }
-    }
-    
     func updatecheckButtonUI() {
         delegate?.cellButtonTapped(index: index)
         onboardingAgreementViewModel.updateAgreementClosure?()

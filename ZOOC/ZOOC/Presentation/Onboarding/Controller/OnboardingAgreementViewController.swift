@@ -17,7 +17,6 @@ final class OnboardingAgreementViewController: BaseViewController {
     private lazy var onboardingAgreementView = OnboardingAgreementView()
     private let onboardingAgreementViewModel: OnboardingAgreementViewModel
     
-    
     init(onboardingAgreementViewModel: OnboardingAgreementViewModel) {
         self.onboardingAgreementViewModel = onboardingAgreementViewModel
         super.init(nibName: nil, bundle: nil)
@@ -95,7 +94,6 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
             cell.checkedButton.setImage(Image.checkBox, for: .normal)
         }
         
-        
         cell.onboardingAgreementViewModel.updateAgreementClosure = {
             self.onboardingAgreementViewModel.updateAgreementState(
                 index: indexPath.row
@@ -109,6 +107,16 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
         cell.delegate = self
+        if self.onboardingAgreementViewModel.allAgreement { cell.allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
+        } else {
+            cell.allCheckedButton.setImage(Image.checkBox, for: .normal)
+        }
+        
+        cell.onboardingAgreementViewModel.updateAllAgreementClosure = {
+            self.onboardingAgreementViewModel.updateAllAgreementState()
+            self.onboardingAgreementViewModel.updateAllAgreementButtonTapped()
+            self.onboardingAgreementView.agreementTableView.reloadData()
+        }
         return cell
     }
 }
@@ -125,66 +133,48 @@ extension OnboardingAgreementViewController: CheckedButtonTappedDelegate {
 //MARK: - AllChekedButtonTappedDelegate
 
 extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
-    func allCellButtonTapped(isSelected: Bool) {
-//        onboardingAgreementViewModel.
+    func allCellButtonTapped() {
         onboardingAgreementView.agreementTableView.reloadData()
     }
 }
 
 extension OnboardingAgreementViewController {
-//    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
-//        agreementData[index].isSelected = isSelected
-//        if (agreementData[0].isSelected == true &&
-//            agreementData[1].isSelected == true &&
-//            agreementData[3].isSelected == true) {
-//            onboardingAgreementView.signUpButton.isEnabled = true
-//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-//            allSelected = agreementData[2].isSelected ? true : false
-//        } else {
-//            onboardingAgreementView.signUpButton.isEnabled = false
-//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-//            allSelected = false
-//        }
-//    }
-//
-//    private func updateUICellAllButtonTapped(isSelected: Bool) {
-//        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
-//        if isSelected {
-//            allSelected = true
-//            onboardingAgreementView.signUpButton.isEnabled = true
-//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-//            agreementDataIndexList.forEach {
-//                agreementData[$0].isSelected = true
-//            }
-//        } else {
-//            allSelected = false
-//            onboardingAgreementView.signUpButton.isEnabled = false
-//            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-//            agreementDataIndexList.forEach {
-//                agreementData[$0].isSelected = false
-//            }
-//        }
-//    }
+    //    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
+    //        agreementData[index].isSelected = isSelected
+    //        if (agreementData[0].isSelected == true &&
+    //            agreementData[1].isSelected == true &&
+    //            agreementData[3].isSelected == true) {
+    //            onboardingAgreementView.signUpButton.isEnabled = true
+    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+    //            allSelected = agreementData[2].isSelected ? true : false
+    //        } else {
+    //            onboardingAgreementView.signUpButton.isEnabled = false
+    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+    //            allSelected = false
+    //        }
+    //    }
+    //
+    //    private func updateUICellAllButtonTapped(isSelected: Bool) {
+    //        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
+    //        if isSelected {
+    //            allSelected = true
+    //            onboardingAgreementView.signUpButton.isEnabled = true
+    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
+    //            agreementDataIndexList.forEach {
+    //                agreementData[$0].isSelected = true
+    //            }
+    //        } else {
+    //            allSelected = false
+    //            onboardingAgreementView.signUpButton.isEnabled = false
+    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
+    //            agreementDataIndexList.forEach {
+    //                agreementData[$0].isSelected = false
+    //            }
+    //        }
+    //    }
     
     private func pushToWelcomeView() {
         let welcomeViewController = OnboardingWelcomeViewController()
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
 }
-
-
-
-
-
-//
-//
-//
-//self.onboardingPetRegisterViewModel.checkCanRegister(
-//    button:&self.onboardingRegisterPetView.registerPetButton.isEnabled,
-//    color:&self.onboardingRegisterPetView.registerPetButton.backgroundColor
-//)
-//
-//self.onboardingPetRegisterViewModel.hideDeleteButton(button: &cell.deletePetProfileButton.isHidden)
-//
-//return cell
-//}
