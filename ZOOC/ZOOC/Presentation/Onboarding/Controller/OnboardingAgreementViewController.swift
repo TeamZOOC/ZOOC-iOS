@@ -97,10 +97,12 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
         cell.onboardingAgreementViewModel.updateAgreementClosure = {
             self.onboardingAgreementViewModel.updateAgreementState(
                 index: indexPath.row
-                //button: &cell.checkedButton
             )
             self.onboardingAgreementView.agreementTableView.reloadData()
         }
+        self.onboardingAgreementViewModel.updateNextButton(
+            button:&onboardingAgreementView.signUpButton.isEnabled,
+            color: &onboardingAgreementView.signUpButton.backgroundColor)
         return cell
     }
     
@@ -114,9 +116,11 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
         
         cell.onboardingAgreementViewModel.updateAllAgreementClosure = {
             self.onboardingAgreementViewModel.updateAllAgreementState()
-            self.onboardingAgreementViewModel.updateAllAgreementButtonTapped()
             self.onboardingAgreementView.agreementTableView.reloadData()
         }
+        self.onboardingAgreementViewModel.updateNextButton(
+            button:&onboardingAgreementView.signUpButton.isEnabled,
+            color: &onboardingAgreementView.signUpButton.backgroundColor)
         return cell
     }
 }
