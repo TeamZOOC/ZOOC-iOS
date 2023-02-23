@@ -87,6 +87,14 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
                 OnboardingAgreementTableViewCell else { return UITableViewCell() }
         cell.delegate = self
         cell.checkedButton.tag = indexPath.row
+        cell.menuLabel.text = self.onboardingAgreementViewModel.agreementList[indexPath.row].title
+        
+        if self.onboardingAgreementViewModel.agreementList[indexPath.row].isSelected {
+            cell.checkedButton.setImage(Image.checkBoxFill, for: .normal)
+        } else {
+            cell.checkedButton.setImage(Image.checkBox, for: .normal)
+        }
+        
         
         cell.onboardingAgreementViewModel.updateAgreementClosure = {
             self.onboardingAgreementViewModel.updateAgreementState(
@@ -100,7 +108,6 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
-        //cell.dataBind(all: allSelected)
         cell.delegate = self
         return cell
     }
@@ -168,8 +175,7 @@ extension OnboardingAgreementViewController {
 
 
 
-//cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
-//cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+
 //
 //
 //

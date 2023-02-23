@@ -778,9 +778,9 @@
 			isa = PBXGroup;
 			children = (
 				D26C85E92968CF7E00AEAF9B /* OnboardingAgreementModel.swift */,
-				D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */,
-				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
 				D26989A729A60EE7008A5ACC /* OnboardingAgreementViewModel.swift */,
+				D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */,
+				D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

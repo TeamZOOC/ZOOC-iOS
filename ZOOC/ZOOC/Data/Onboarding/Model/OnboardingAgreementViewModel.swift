@@ -13,7 +13,7 @@ final class OnboardingAgreementViewModel {
     var updateAllAgreementClosure: (() -> Void)?
     
     // 1. 동의항목 bool타입 배열 프로퍼티
-    var agreementList: [Bool] = []
+    var agreementList: [OnboardingAgreementModel] = OnboardingAgreementModel.agreementData
     
     // 2. 눌린 버튼이 무엇인지 식별할 수 있는 index int 타입 프로퍼티
     var index: Int = 0
@@ -23,8 +23,9 @@ final class OnboardingAgreementViewModel {
     
     //  1. 각 동의 항목의 상태 변환 메소드
     
-    func updateAgreementState(index: Int, /*button: inout UIButton?*/) {
-        agreementList[index] = agreementList[index] == true ? false : true
+    func updateAgreementState(index: Int /*button: inout UIButton?*/) {
+        agreementList[index].isSelected = agreementList[index].isSelected == true ? false : true
+        print(agreementList[index])
 //        let image = agreementList[index] ? Image.checkBoxFill : Image.checkBox
 //        button!.setImage(image, for: .normal)
     }
@@ -37,13 +38,13 @@ final class OnboardingAgreementViewModel {
     // 3. 동의 항목 상태에 따른 전체동의 버튼 상태 변화 메소드
     func updateAllAgreementButtonTapped() {
         for index in 0..<agreementList.count {
-            agreementList[index] = allAgreement
+            agreementList[index].isSelected = allAgreement
         }
     }
     
     // 4. 다음 버튼 활성화 메소드
     func updateNextButton(button: inout Bool, color: inout UIColor) {
-        if (agreementList[0] && agreementList[1] && agreementList[3] == true) {
+        if (agreementList[0].isSelected && agreementList[1].isSelected && agreementList[3].isSelected == true) {
             button = true
             color = .zoocGradientGreen
         } else {
