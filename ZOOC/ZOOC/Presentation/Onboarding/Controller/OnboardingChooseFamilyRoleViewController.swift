@@ -10,6 +10,56 @@ import UIKit
 import SnapKit
 import Then
 
+enum TextFieldState {
+    case isFull
+    case isEmpty
+    case isWritten
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocGray1
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocDarkGreen
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocDarkGreen
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocGray1
+        }
+    }
+    
+    var buttonColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocGradientGreen
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocGradientGreen
+        }
+    }
+    
+    var isEnabled: Bool {
+        switch self {
+        case .isFull:
+            return true
+        case .isEmpty:
+            return false
+        case .isWritten:
+            return true
+        }
+    }
+}
+
 final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
     //MARK: - Properties
@@ -96,7 +146,6 @@ private extension OnboardingChooseFamilyRoleViewController {
     func textFieldIsWritten() {
         onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
         onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
-        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
         onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
         onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
     }

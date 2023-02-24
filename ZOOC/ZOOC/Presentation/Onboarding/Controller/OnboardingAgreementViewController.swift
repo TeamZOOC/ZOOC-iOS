@@ -143,40 +143,6 @@ extension OnboardingAgreementViewController: AllChekedButtonTappedDelegate {
 }
 
 extension OnboardingAgreementViewController {
-    //    private func updateUICellButtonTapped(isSelected: Bool, index: Int) {
-    //        agreementData[index].isSelected = isSelected
-    //        if (agreementData[0].isSelected == true &&
-    //            agreementData[1].isSelected == true &&
-    //            agreementData[3].isSelected == true) {
-    //            onboardingAgreementView.signUpButton.isEnabled = true
-    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-    //            allSelected = agreementData[2].isSelected ? true : false
-    //        } else {
-    //            onboardingAgreementView.signUpButton.isEnabled = false
-    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-    //            allSelected = false
-    //        }
-    //    }
-    //
-    //    private func updateUICellAllButtonTapped(isSelected: Bool) {
-    //        let agreementDataIndexList: [Int] = [0, 1, 2, 3]
-    //        if isSelected {
-    //            allSelected = true
-    //            onboardingAgreementView.signUpButton.isEnabled = true
-    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGradientGreen
-    //            agreementDataIndexList.forEach {
-    //                agreementData[$0].isSelected = true
-    //            }
-    //        } else {
-    //            allSelected = false
-    //            onboardingAgreementView.signUpButton.isEnabled = false
-    //            onboardingAgreementView.signUpButton.backgroundColor = .zoocGray1
-    //            agreementDataIndexList.forEach {
-    //                agreementData[$0].isSelected = false
-    //            }
-    //        }
-    //    }
-    
     private func pushToWelcomeView() {
         let welcomeViewController = OnboardingWelcomeViewController()
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
