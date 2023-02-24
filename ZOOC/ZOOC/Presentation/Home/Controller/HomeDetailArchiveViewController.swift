@@ -39,6 +39,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - UI Components
     
+    private let emojiBottomSheetViewController = HomeDetailArchiveEmojiBottomSheet()
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -128,6 +130,10 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     private func style() {
+        emojiBottomSheetViewController.do{
+            $0.modalPresentationStyle = .overFullScreen
+        }
+        
         scrollView.do {
             $0.bounces = false
             $0.showsVerticalScrollIndicator = false
@@ -390,11 +396,6 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     @objc
-    internal func emojiButtonDidTap() {
-        presentBottomAlert("이모지 기능은 곧 만나요~")
-    }
-    
-    @objc
     private func keyboardWillShow(notification: NSNotification){
         
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -466,12 +467,20 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - CommentViewDelegate
 
 extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
-    
+   
     func uploadButtonDidTap(_ textField: UITextField, text: String) {
         guard let id = detailArchiveData?.record.id else { return }
         textField.text = nil
         requestCommentsAPI(recordID: String(id), text: text)
     }
+    
+    func emojiButtonDidTap() {
+        
+        present(emojiBottomSheetViewController, animated: false)
+    }
+    
+    
+    
     
     
 }

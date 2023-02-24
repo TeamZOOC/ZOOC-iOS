@@ -48,12 +48,6 @@ final class HomeDetailArchiveCommentView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        //commentTextField.makeCornerRadius(ratio: 2)
-    }
-    
     //MARK: - Custom Method
     
     private func register() {
@@ -161,7 +155,7 @@ final class HomeDetailArchiveCommentView : UIView {
     
     @objc
     private func emojiButtonDidTap() {
-        print(#function)
+        delegate?.emojiButtonDidTap()
     }
    
     
