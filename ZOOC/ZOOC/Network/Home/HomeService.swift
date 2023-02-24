@@ -17,6 +17,7 @@ enum HomeService {
     case getDetailPetArchive(familyID: String, recordID: String, petID: String)
     case getNotice
     case postComment(recordID: String, comment: String)
+    case postEmojiComment(recordID: String, emojiID: Int)
 }
 
 extension HomeService: BaseTargetType {
@@ -37,16 +38,9 @@ extension HomeService: BaseTargetType {
                 .replacingOccurrences(of: "{familyId}", with: familyID)
                 .replacingOccurrences(of: "{petId}", with: petID)
             
-        case .getDetailArchive(familyID: let familyID, recordID: let recordID):
+        case .getDetailArchive(familyID: let familyID, recordID: let recordID):  //아마 사용안함
             return URLs.detailRecord
                 .replacingOccurrences(of: "{familyId}", with: familyID)
-                .replacingOccurrences(of: "{recordId}", with: recordID)
-            
-        case .getNotice:
-            return URLs.getNotice
-            
-        case .postComment(recordID: let recordID, comment: _):
-            return URLs.postComment
                 .replacingOccurrences(of: "{recordId}", with: recordID)
             
         case .getDetailPetArchive(familyID: let familyID,
@@ -56,6 +50,17 @@ extension HomeService: BaseTargetType {
                 .replacingOccurrences(of: "{familyId}", with: familyID)
                 .replacingOccurrences(of: "{petId}", with: petID)
                 .replacingOccurrences(of: "{recordId}", with: recordID)
+            
+        case .getNotice:
+            return URLs.getNotice
+            
+        case .postComment(recordID: let recordID, comment: _):
+            return URLs.postComment
+                .replacingOccurrences(of: "{recordId}", with: recordID)
+            
+        case .postEmojiComment(recordID: let recordID, emojiID: _):
+            return URLs.postEmojiComment
+                .replacingOccurrences(of: "{recordId}", with: recordID)
         }
     }
         
@@ -63,18 +68,27 @@ extension HomeService: BaseTargetType {
         switch self {
         case .getMission:
             return .get
+            
         case .getTotalPet:
             return .get
+            
         case .getTotalArchive:
             return .get
+            
         case .getDetailArchive:
             return .get
+            
         case .getNotice:
             return .get
+            
         case .postComment:
             return .post
+            
         case .getDetailPetArchive:
             return .get
+            
+        case .postEmojiComment:
+            return .post
         }
     }
     
@@ -82,19 +96,29 @@ extension HomeService: BaseTargetType {
         switch self {
         case .getMission:
             return .requestPlain
+            
         case .getTotalPet:
             return .requestPlain
+            
         case .getTotalArchive:
             return .requestPlain
+            
         case .getDetailArchive:
             return .requestPlain
+            
+        case .getDetailPetArchive:
+            return .requestPlain
+            
         case .getNotice:
             return .requestPlain
+            
         case .postComment(recordID: _, comment: let comment):
             let body = HomeCommentReqeust(content: comment)
             return .requestJSONEncodable(body)
-        case .getDetailPetArchive:
-            return .requestPlain
+            
+        case .postEmojiComment(recordID: _, emojiID: let emojiID):
+            let body = HomeEmojiCommentReqeust(emoji: emojiID)
+            return .requestJSONEncodable(body)
         }
     }
 }

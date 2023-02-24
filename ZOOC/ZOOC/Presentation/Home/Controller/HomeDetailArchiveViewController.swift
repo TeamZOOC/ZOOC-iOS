@@ -361,6 +361,14 @@ final class HomeDetailArchiveViewController : BaseViewController {
         }
     }
     
+    private func requestEmojiCommentAPI(recordID: String, emojiID: Int) {
+        HomeAPI.shared.postEmojiComment(recordID: recordID, emojiID: emojiID) { result in
+            guard let result = self.validateResult(result) as? [CommentResult] else { return }
+            
+            self.commentsData = result
+        }
+    }
+    
     //MARK: - Action Method
     
     @objc
@@ -476,7 +484,6 @@ extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
     }
     
     func emojiButtonDidTap() {
-        
         present(emojiBottomSheetViewController, animated: false)
     }
 }
@@ -485,6 +492,7 @@ extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
 
 extension HomeDetailArchiveViewController: EmojiBottomSheetDelegate{
     func emojiDidSelected(tag: Int) {
-        print(tag)
+        guard let id = detailArchiveData?.record.id else { return }
+        requestEmojiCommentAPI(recordID: String(id), emojiID: tag)
     }
 }
