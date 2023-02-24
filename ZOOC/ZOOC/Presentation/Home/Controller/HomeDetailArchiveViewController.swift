@@ -478,9 +478,9 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
 extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
    
     func uploadButtonDidTap(_ textField: UITextField, text: String) {
-        guard let id = detailArchiveData?.record.id else { return }
+        guard let recordID = detailArchiveData?.record.id else { return }
         textField.text = nil
-        requestCommentsAPI(recordID: String(id), text: text)
+        requestCommentsAPI(recordID: String(recordID), text: text)
     }
     
     func emojiButtonDidTap() {
@@ -491,8 +491,8 @@ extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
 //MARK: - 구역
 
 extension HomeDetailArchiveViewController: EmojiBottomSheetDelegate{
-    func emojiDidSelected(tag: Int) {
-        guard let id = detailArchiveData?.record.id else { return }
-        requestEmojiCommentAPI(recordID: String(id), emojiID: tag)
+    func emojiDidSelected(emojiID: Int) {
+        guard let recordID = detailArchiveData?.record.id else { return }
+        requestEmojiCommentAPI(recordID: String(recordID), emojiID: emojiID)
     }
 }

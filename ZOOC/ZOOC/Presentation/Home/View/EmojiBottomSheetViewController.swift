@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol EmojiBottomSheetDelegate: AnyObject{
-    func emojiDidSelected(tag: Int)
+    func emojiDidSelected(emojiID: Int)
 }
 
 
@@ -20,7 +20,7 @@ final class EmojiBottomSheetViewController: UIViewController {
     //MARK: - Properties
     
     weak var delegate: EmojiBottomSheetDelegate?
-    private let emojiData = EmojiModel.data
+    private let emojisData = EmojiModel.data
     private lazy var dimmedTapGesture = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped))
     
     //MARK: - UI Components
@@ -147,14 +147,14 @@ final class EmojiBottomSheetViewController: UIViewController {
 
 extension EmojiBottomSheetViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojiData.count
+        return emojisData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
                                                                 EmojiCollectionViewCell.cellIdentifier,
                                                             for: indexPath) as? EmojiCollectionViewCell else { return UICollectionViewCell()}
-        cell.dataBind(data: emojiData[indexPath.item])
+        cell.dataBind(data: emojisData[indexPath.item])
         return cell
     }
 }
@@ -162,8 +162,8 @@ extension EmojiBottomSheetViewController: UICollectionViewDataSource {
 extension EmojiBottomSheetViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell else { return }
-        guard let tag = cell.emojiData?.tag else { return }
-        delegate?.emojiDidSelected(tag: tag)
+        guard let emojiID = cell.emojiData?.id else { return }
+        delegate?.emojiDidSelected(emojiID: emojiID)
         dismissBottomSheet()
     }
 }
