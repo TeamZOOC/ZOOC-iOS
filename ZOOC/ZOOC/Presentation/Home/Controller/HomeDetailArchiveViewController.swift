@@ -39,7 +39,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - UI Components
     
-    private let emojiBottomSheetViewController = HomeDetailArchiveEmojiBottomSheet()
+    private let emojiBottomSheetViewController = EmojiBottomSheetViewController()
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -106,6 +106,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
         commentView.delegate = self
+        emojiBottomSheetViewController.delegate = self
         
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
@@ -466,7 +467,7 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - CommentViewDelegate
 
-extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
+extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
    
     func uploadButtonDidTap(_ textField: UITextField, text: String) {
         guard let id = detailArchiveData?.record.id else { return }
@@ -478,9 +479,12 @@ extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
         
         present(emojiBottomSheetViewController, animated: false)
     }
-    
-    
-    
-    
-    
+}
+
+//MARK: - 구역
+
+extension HomeDetailArchiveViewController: EmojiBottomSheetDelegate{
+    func emojiDidSelected(tag: Int) {
+        print(tag)
+    }
 }

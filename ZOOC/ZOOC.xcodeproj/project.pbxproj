@@ -33,7 +33,7 @@
 		871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35E2971628D00D0E8CC /* Encodable+.swift */; };
 		8731C4B029A93EF500006743 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4AF29A93EF500006743 /* EmojiModel.swift */; };
 		8731C4B229A9400D00006743 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */; };
-		8747389E299E84B400C4CC52 /* HomeDetailArchiveEmojiBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747389D299E84B400C4CC52 /* HomeDetailArchiveEmojiBottomSheet.swift */; };
+		8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -198,7 +198,7 @@
 		871EA35E2971628D00D0E8CC /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		8731C4AF29A93EF500006743 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 		8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
-		8747389D299E84B400C4CC52 /* HomeDetailArchiveEmojiBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveEmojiBottomSheet.swift; sourceTree = "<group>"; };
+		8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBottomSheetViewController.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 				8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */,
 				87DDDD91298E5BE500CBEC79 /* HomeDetailArchiveCommentView.swift */,
 				D26C68F32970AD930088DC9A /* HomeNoticeView.swift */,
-				8747389D299E84B400C4CC52 /* HomeDetailArchiveEmojiBottomSheet.swift */,
+				8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1134,7 +1134,7 @@
 				D21DADC1298BFF2700CCC089 /* MyPetRegisterViewModel.swift in Sources */,
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
-				8747389E299E84B400C4CC52 /* HomeDetailArchiveEmojiBottomSheet.swift in Sources */,
+				8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,

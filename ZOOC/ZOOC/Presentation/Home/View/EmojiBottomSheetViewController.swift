@@ -10,10 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
+protocol EmojiBottomSheetDelegate: AnyObject{
+    func emojiDidSelected(tag: Int)
+}
+
+
+final class EmojiBottomSheetViewController: UIViewController {
     
     //MARK: - Properties
     
+    weak var delegate: EmojiBottomSheetDelegate?
     private let emojiData = EmojiModel.data
     private lazy var dimmedTapGesture = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped))
     
@@ -139,7 +145,7 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
     }
 }
 
-extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDataSource {
+extension EmojiBottomSheetViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return emojiData.count
     }
@@ -153,14 +159,16 @@ extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDataSource {
     }
 }
 
-extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDelegate {
+extension EmojiBottomSheetViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell else { return }
-        print(cell.emojiData?.tag)
+        guard let tag = cell.emojiData?.tag else { return }
+        delegate?.emojiDidSelected(tag: tag)
+        dismissBottomSheet()
     }
 }
 
-extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDelegateFlowLayout {
+extension EmojiBottomSheetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 4
         let height = width
