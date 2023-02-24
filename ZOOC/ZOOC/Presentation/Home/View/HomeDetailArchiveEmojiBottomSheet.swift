@@ -14,18 +14,21 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
     
     //MARK: - Properties
     
+    private let emojiData = EmojiModel.data
     private lazy var dimmedTapGesture = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped))
     
     //MARK: - UI Components
     
     private let dimmedView = UIView()
     private let bottomSheet = UIView()
+    private let emojiCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        register()
         gesture()
         style()
         hierarchy()
@@ -39,12 +42,20 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
     
     //MARK: - Custom Method
     
+    private func register() {
+        emojiCollectionView.delegate = self
+        emojiCollectionView.dataSource = self
+        
+        emojiCollectionView.register(EmojiCollectionViewCell.self,
+                                     forCellWithReuseIdentifier: EmojiCollectionViewCell.cellIdentifier)
+        
+    }
+    
     private func gesture() {
         dimmedView.addGestureRecognizer(dimmedTapGesture)
     }
     
     private func style() {
-        
         dimmedView.do{
             $0.backgroundColor = .black
             $0.alpha = 0
@@ -57,10 +68,20 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
             $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             $0.clipsToBounds = true
         }
+        
+        emojiCollectionView.do {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .vertical
+            
+            $0.collectionViewLayout = layout
+            $0.showsVerticalScrollIndicator = false
+            $0.backgroundColor = .clear
+        }
     }
     
     private func hierarchy() {
         view.addSubviews(dimmedView,bottomSheet)
+        bottomSheet.addSubview(emojiCollectionView)
     }
     
     private func layout() {
@@ -71,6 +92,12 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
         bottomSheet.snp.makeConstraints {
             $0.top.equalTo(view.snp.bottom)
             $0.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        emojiCollectionView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(30)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().offset(-45)
         }
     }
     
@@ -93,7 +120,6 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
             self.presentStyle()
             self.view.layoutIfNeeded()
         }
-        
     }
     
     private func dismissBottomSheet() {
@@ -109,8 +135,44 @@ final class HomeDetailArchiveEmojiBottomSheet: UIViewController {
     
     @objc
     private func dimmedViewTapped() {
-        print(#function)
         dismissBottomSheet()
     }
 }
 
+extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return emojiData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+                                                                EmojiCollectionViewCell.cellIdentifier,
+                                                            for: indexPath) as? EmojiCollectionViewCell else { return UICollectionViewCell()}
+        cell.dataBind(data: emojiData[indexPath.item])
+        return cell
+    }
+}
+
+extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell else { return }
+        print(cell.emojiData?.tag)
+    }
+}
+
+extension HomeDetailArchiveEmojiBottomSheet: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 4
+        let height = width
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+}
