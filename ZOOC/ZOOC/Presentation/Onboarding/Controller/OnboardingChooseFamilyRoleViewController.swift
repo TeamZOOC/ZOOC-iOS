@@ -10,55 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-enum TextFieldState {
-    case isFull
-    case isEmpty
-    case isWritten
-    
-    var backgroundColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocGray1
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocDarkGreen
-        }
-    }
-    
-    var textColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocDarkGreen
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocGray1
-        }
-    }
-    
-    var buttonColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocGradientGreen
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocGradientGreen
-        }
-    }
-    
-    var isEnabled: Bool {
-        switch self {
-        case .isFull:
-            return true
-        case .isEmpty:
-            return false
-        case .isWritten:
-            return true
-        }
-    }
-}
+
 
 final class OnboardingChooseFamilyRoleViewController: UIViewController{
     
@@ -102,18 +54,20 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     @objc private func textDidChange(_ notification: Notification) {
         guard let textField = notification.object as? UITextField else { return }
         guard let text = textField.text else { return }
+        var textFieldState: TextFieldState
         switch text.count {
         case 1...9:
-            textFieldIsWritten()
+            textFieldState = .isWritten
         case 10...:
+            textFieldState = .isFull
             textField.resignFirstResponder()
             let index = text.index(text.startIndex, offsetBy: 10)
             let newString = text[text.startIndex..<index]
             textField.text = String(newString)
-            textFieldIsFull()
         default:
-            textFieldIsEmpty()
+            textFieldState = .isEmpty
         }
+        setTextFieldState(textFieldState: textFieldState)
     }
     
     @objc private func pushToRegisterProfileImageView() {
@@ -129,24 +83,61 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
 }
 
 private extension OnboardingChooseFamilyRoleViewController {
-    func textFieldIsFull() {
-        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
-        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
-        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
-        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
-    }
-    
-    func textFieldIsEmpty() {
-        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocGray1
-        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocGray1
-        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGray1
-        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = false
-    }
-    
-    func textFieldIsWritten() {
-        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = .zoocDarkGreen
-        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = .zoocDarkGreen
-        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = .zoocGradientGreen
-        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = true
+    func setTextFieldState(textFieldState: TextFieldState) {
+        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = textFieldState.backgroundColor
+        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = textFieldState.textColor
+        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = textFieldState.buttonColor
+        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = textFieldState.isEnabled
     }
 }
+
+enum TextFieldState {
+    case isFull
+    case isEmpty
+    case isWritten
+    
+    var backgroundColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocGray1
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocDarkGreen
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocDarkGreen
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocDarkGreen
+        }
+    }
+    
+    var buttonColor: UIColor {
+        switch self {
+        case .isFull:
+            return .zoocGradientGreen
+        case .isEmpty:
+            return .zoocGray1
+        case .isWritten:
+            return .zoocGradientGreen
+        }
+    }
+    
+    var isEnabled: Bool {
+        switch self {
+        case .isFull:
+            return true
+        case .isEmpty:
+            return false
+        case .isWritten:
+            return true
+        }
+    }
+}
+
