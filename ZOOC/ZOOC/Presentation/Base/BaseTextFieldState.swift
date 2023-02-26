@@ -56,13 +56,13 @@ enum TextFieldState {
         }
     }
     
-    func setTextFieldState(textField: UITextField,
-                           underLineView: UIView,
-                           button: UIButton,
+    func setTextFieldState(textField: UITextField?,
+                           underLineView: UIView?,
+                           button: UIButton?,
                            textFieldState: TextFieldState) {
-        underLineView.backgroundColor = textFieldState.backgroundColor
-        textField.textColor = textFieldState.textColor
-        button.backgroundColor = textFieldState.buttonColor
-        button.isEnabled = textFieldState.isEnabled
+        underLineView?.backgroundColor = textFieldState.backgroundColor
+        textField?.textColor = textFieldState.textColor
+        button?.backgroundColor = textFieldState.buttonColor
+        button?.isEnabled = textFieldState.isEnabled
     }
 }

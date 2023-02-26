@@ -89,18 +89,27 @@ final class EditProfileViewController: BaseViewController {
     @objc private func textDidChange(_ notification: Notification) {
         guard let textField = notification.object as? UITextField else { return }
         guard let text = textField.text else { return }
+        var textFieldState: TextFieldState
         switch text.count {
         case 1...9:
-            textFieldIsWritten(textCount: text.count)
+            textFieldState = .isWritten
         case 10...:
-            textField.resignFirstResponder()
+            textFieldState = .isFull
             let index = text.index(text.startIndex, offsetBy: 10)
             let newString = text[text.startIndex..<index]
             textField.text = String(newString)
-            textFieldIsFull()
         default:
-            textFieldIsEmpty(textCount: text.count)
+            textFieldState = .isEmpty
         }
+        
+        textFieldState.setTextFieldState(
+            textField: nil,
+            underLineView: editProfileView.profileNameTextFieldUnderLineView,
+            button: editProfileView.editCompletedButton,
+            textFieldState: textFieldState
+        )
+        setTextFieldText(textCount: text.count)
+        
     }
     
     @objc func editCompleteButtonDidTap(){
@@ -119,22 +128,8 @@ final class EditProfileViewController: BaseViewController {
 }
 
 extension EditProfileViewController {
-    func textFieldIsFull() {
-        editProfileView.profileNameCountLabel.text = "10/10"
-    }
-    
-    func textFieldIsWritten(textCount: Int) {
-        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGradientGreen
-        editProfileView.editCompletedButton.backgroundColor = .zoocGradientGreen
-        editProfileView.editCompletedButton.isEnabled = true
-        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
-    }
-    
-    func textFieldIsEmpty(textCount: Int) {
-        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
-        editProfileView.editCompletedButton.backgroundColor = .zoocGray1
-        editProfileView.editCompletedButton.isEnabled = false
-        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
+    func setTextFieldText(textCount: Int) {
+        editProfileView.profileNameCountLabel.text =  textCount < 10 ? "\(textCount)/10" : "10/10"
     }
     
     func setDefaultProfileImage() {
