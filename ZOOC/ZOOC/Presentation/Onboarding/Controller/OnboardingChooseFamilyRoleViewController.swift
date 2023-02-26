@@ -67,7 +67,12 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         default:
             textFieldState = .isEmpty
         }
-        setTextFieldState(textFieldState: textFieldState)
+        
+        textFieldState.setTextFieldState(
+            textField: onboardingChooseFamilyRoleView.chooseFamilyTextField,
+            underLineView: onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView,
+            button: onboardingChooseFamilyRoleView.chooseFamilyButton,
+            textFieldState: textFieldState)
     }
     
     @objc private func pushToRegisterProfileImageView() {
@@ -82,62 +87,5 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     }
 }
 
-private extension OnboardingChooseFamilyRoleViewController {
-    func setTextFieldState(textFieldState: TextFieldState) {
-        onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView.backgroundColor = textFieldState.backgroundColor
-        onboardingChooseFamilyRoleView.chooseFamilyTextField.textColor = textFieldState.textColor
-        onboardingChooseFamilyRoleView.chooseFamilyButton.backgroundColor = textFieldState.buttonColor
-        onboardingChooseFamilyRoleView.chooseFamilyButton.isEnabled = textFieldState.isEnabled
-    }
-}
 
-enum TextFieldState {
-    case isFull
-    case isEmpty
-    case isWritten
-    
-    var backgroundColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocGray1
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocDarkGreen
-        }
-    }
-    
-    var textColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocDarkGreen
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocDarkGreen
-        }
-    }
-    
-    var buttonColor: UIColor {
-        switch self {
-        case .isFull:
-            return .zoocGradientGreen
-        case .isEmpty:
-            return .zoocGray1
-        case .isWritten:
-            return .zoocGradientGreen
-        }
-    }
-    
-    var isEnabled: Bool {
-        switch self {
-        case .isFull:
-            return true
-        case .isEmpty:
-            return false
-        case .isWritten:
-            return true
-        }
-    }
-}
 
