@@ -18,7 +18,7 @@ final class OnboardingPetRegisterViewModel {
     var tag: Int = 0
     
     func addCell() {
-        let cell: OnboardingPetRegisterModel = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "")
+        let cell: OnboardingPetRegisterModel = OnboardingPetRegisterModel(image: Image.defaultProfilePet, name: "")
         petList.append(cell)
         petCount += 1
     }
@@ -29,7 +29,7 @@ final class OnboardingPetRegisterViewModel {
     }
     
     func uploadImage(index: Int, image: UIImage) {
-        petList[index].profileImage = image
+        petList[index].image = image
     }
     
     func hideFooterView(button: inout Bool) {
@@ -45,10 +45,10 @@ final class OnboardingPetRegisterViewModel {
         color = .zoocGradientGreen
         print("추가할 수 있어요! \(button)")
         for pet in petList {
-            if pet.profileName.count == 0 {
+            if pet.name.count == 0 {
                 button = false
                 color = .zoocGray1
-                print("\(pet.profileName) 때문에 추가할 수 없어요! \(button)")
+                print("\(pet.name) 때문에 추가할 수 없어요! \(button)")
                 break
             }
         }

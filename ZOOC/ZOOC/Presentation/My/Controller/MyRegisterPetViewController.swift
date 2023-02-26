@@ -10,13 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class MyRegisterPetViewController: UIViewController {
+final class MyRegisterPetViewController: BaseViewController {
     
     //MARK: - Properties
     
     private let myRegisterPetView = MyRegisterPetView()
     private let myPetRegisterViewModel: MyPetRegisterViewModel
-    private let defaultpetProfile = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
     
     private var myPetMemberData: [MyPet] = []
     
@@ -24,7 +23,6 @@ final class MyRegisterPetViewController: UIViewController {
     
     init(myPetRegisterViewModel: MyPetRegisterViewModel) {
         self.myPetRegisterViewModel = myPetRegisterViewModel
-        myPetRegisterViewModel.petList = [defaultpetProfile]
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,6 +56,7 @@ final class MyRegisterPetViewController: UIViewController {
     
     func dataSend(myPetMemberData: [MyPet]) {
         self.myPetMemberData = myPetMemberData
+        myPetRegisterViewModel.petCount = self.myPetMemberData.count
     }
     
     //MARK: - Action Method
@@ -67,7 +66,34 @@ final class MyRegisterPetViewController: UIViewController {
     }
     
     @objc private func registerPetButtonDidTap() {
-        registerPet()
+        var names: [String] = []
+        var photos: [Data] = []
+        var photo: Data
+        var isPhotos: [Bool] = []
+        var isPhoto: Bool = true
+        
+        for pet in self.myPetRegisterViewModel.petList {
+            guard let photo = pet.profileImage.jpegData(compressionQuality: 1.0) else {
+                photo = Data()
+                isPhoto = false
+                return
+            }
+            names.append(pet.profileName!)
+            photos.append(photo)
+            isPhotos.append(isPhoto)
+        }
+        
+        MyAPI.shared.registerPet(
+            param: MyRegisterPetRequestDto(petNames: names, files: photos, isPetPhotos: isPhotos)
+        ) { result in
+            guard let result = self.validateResult(result) as? [MyRegisterPetResult] else {
+                return
+            }
+            
+            print(result)
+            self.dismiss(animated: true)
+        }
+        
     }
 }
 

@@ -12,7 +12,7 @@ final class MyPetRegisterViewModel {
     var deleteCellClosure: (() -> Void)?
     
     var petList: [MyPetRegisterModel] = []
-    var petCount: Int = 4
+    var petCount: Int = 0
     var index: Int = 0
     var tag: Int = 0
     
@@ -28,7 +28,7 @@ final class MyPetRegisterViewModel {
     }
     
     func hideFooterView(button: inout Bool) {
-        button = petList.count == 4 ? true : false
+        button = petCount == 4 ? true : false
     }
     
     func hideDeleteButton(button: inout Bool) {

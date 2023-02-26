@@ -15,7 +15,7 @@ final class MyAPI: BaseAPI {
 }
 
 extension MyAPI{
-    func getMyPageData(completion: @escaping (NetworkResult<Any>) -> Void) {
+    public func getMyPageData(completion: @escaping (NetworkResult<Any>) -> Void) {
         myProvider.request(.getMyPageData) { (result) in
             self.disposeNetwork(result,
                                 dataModel: MyResult.self,
@@ -23,7 +23,7 @@ extension MyAPI{
         }
     }
     
-    func patchMyProfile(isPhoto: Bool,
+    public func patchMyProfile(isPhoto: Bool,
                         nickName: String,
                         photo: UIImage?,
                         completion: @escaping (NetworkResult<Any>) -> Void){
@@ -36,10 +36,19 @@ extension MyAPI{
         }
     }
     
-    func deleteAccount(completion: @escaping (NetworkResult<Any>) -> Void) {
+    public func deleteAccount(completion: @escaping (NetworkResult<Any>) -> Void) {
         myProvider.request(.deleteAccount) { (result) in
             self.disposeNetwork(result,
                                 dataModel: MyResult.self,
+                                completion: completion)
+        }
+    }
+    
+    public func registerPet(param: MyRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        myProvider.request(.postRegisterPet(param: param)) {
+            (result) in
+            self.disposeNetwork(result,
+                                dataModel: [MyRegisterPetResult].self,
                                 completion: completion)
         }
     }
