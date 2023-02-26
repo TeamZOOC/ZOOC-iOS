@@ -66,7 +66,11 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     }
     
     private func hierarchy() {
-        addSubviews(profileImageView, profileNameLabel, editProfileButton)
+        self.addSubviews(
+            profileImageView,
+            profileNameLabel,
+            editProfileButton
+        )
     }
     
     private func layout() {

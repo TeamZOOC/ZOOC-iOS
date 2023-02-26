@@ -126,10 +126,7 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
-                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                    User.jwtToken = result.jwtToken
-                }
+                self.postKakaoSocialLogin(oauthToken: oauthToken)
                 self.pushToAgreementView()
             }
         } else {
@@ -139,12 +136,16 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
-                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                    User.jwtToken = result.jwtToken
-                }
+                self.postKakaoSocialLogin(oauthToken: oauthToken)
                 self.pushToAgreementView()
             }
+        }
+    }
+    
+    func postKakaoSocialLogin(oauthToken: OAuthToken) {
+        OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+            guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+            User.jwtToken = result.jwtToken
         }
     }
     

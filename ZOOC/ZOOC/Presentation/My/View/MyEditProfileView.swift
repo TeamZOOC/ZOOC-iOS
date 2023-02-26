@@ -88,7 +88,7 @@ final class EditProfileView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
+        self.addSubviews(backButton,
                     appInformationLabel,
                     editProfileImageButton,
                     editProfileCameraIconImageView,

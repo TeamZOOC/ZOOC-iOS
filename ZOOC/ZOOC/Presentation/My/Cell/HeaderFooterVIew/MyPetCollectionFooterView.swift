@@ -57,7 +57,7 @@ final class MyPetCollectionFooterView: UICollectionReusableView {
     }
     
     private func hierarchy() {
-        addSubview(registerPetButton)
+        self.addSubview(registerPetButton)
     }
     
     private func layout() {

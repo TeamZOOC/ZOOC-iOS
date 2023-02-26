@@ -77,7 +77,7 @@ final class AppInformationView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
+        self.addSubviews(backButton,
                     appInformationLabel,
                     currentVersionTitleLabel,
                     currentVersionLabel,
