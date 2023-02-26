@@ -90,7 +90,7 @@ final class OnboardingRegisterProfileImageView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
+        self.addSubviews(backButton,
                     progressBarView,
                     registerProfileImageLabel,
                     registerProfileImageSubLabel,

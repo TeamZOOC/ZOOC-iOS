@@ -83,13 +83,3 @@ final class OnboardingRegisterPetTableFooterView: UITableViewHeaderFooterView {
         onboardingPetRegisterViewModel.addCellClosure?()
     }
 }
-
-private extension OnboardingRegisterPetTableFooterView {
-    func checkIsHidden(isHidden: Bool) {
-        if isHidden {
-            petRegisterButtonSeparatorLineView.isHidden = true
-            addPetProfileButton.isHidden = true
-            addPetProfileButton.isEnabled = false
-        }
-    }
-}

@@ -100,13 +100,14 @@ final class OnboardingRegisterPetView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
-                    progressBarView,
-                    registerPetTitleLabel,
-                    registerPetSubTitleLabel,
-                    registerPetTableView,
-                    registerPetButton)
-        
+        self.addSubviews(
+            backButton,
+            progressBarView,
+            registerPetTitleLabel,
+            registerPetSubTitleLabel,
+            registerPetTableView,
+            registerPetButton
+        )
         progressBarView.addSubview(completedProgressBarView)
     }
     

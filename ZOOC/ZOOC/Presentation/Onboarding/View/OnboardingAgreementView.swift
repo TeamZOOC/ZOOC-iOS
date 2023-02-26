@@ -77,7 +77,12 @@ final class OnboardingAgreementView: UIView {
         }
     }
     private func hierarchy() {
-        addSubviews(backButton, agreeTitleLabel, agreementTableView, signUpButton)
+        self.addSubviews(
+            backButton,
+            agreeTitleLabel,
+            agreementTableView,
+            signUpButton
+        )
     }
     
     private func layout() {

@@ -93,10 +93,6 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    func dataBind(all: Bool){
-        updateUI(all: all)
-    }
-    
     //MARK: - Action Method
     
     @objc func checkedButtonDidTap() {
@@ -105,11 +101,6 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
 }
 
 private extension OnboardingAgreementTableHeaderView {
-    func updateUI(all: Bool) {
-        let checkButtonImage = all ? Image.checkBoxFill : Image.checkBox
-        allCheckedButton.setImage(checkButtonImage, for: .normal)
-    }
-    
     func updateAllCheckedButtonUI() {
         delegate?.allCellButtonTapped()
         onboardingAgreementViewModel.updateAllAgreementClosure?()
