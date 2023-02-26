@@ -26,9 +26,8 @@ extension MyService: BaseTargetType {
         case .deleteAccount:
             return "/user"
         case .postRegisterPet:
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "2")
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
         }
-        
     }
     
     var method: Moya.Method {

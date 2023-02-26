@@ -170,8 +170,6 @@
 		D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */; };
 		D2F98F9D2967154D00CC82DE /* ZoocAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
-		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
-		D2F98FA72967939100CC82DE /* MyMemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA62967939100CC82DE /* MyMemberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -333,8 +331,6 @@
 		D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingResult.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
-		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
-		D2F98FA62967939100CC82DE /* MyMemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMemberModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -753,8 +749,6 @@
 			children = (
 				D23502FC2961F85100F01101 /* MySettingModel.swift */,
 				D23503042964743100F01101 /* MyAppInformationModel.swift */,
-				D2F98FA62967939100CC82DE /* MyMemberModel.swift */,
-				D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */,
 				D26C68EB296DE7B60088DC9A /* MyPetRegisterModel.swift */,
 				D21DADC0298BFF2700CCC089 /* MyPetRegisterViewModel.swift */,
 			);
@@ -1050,8 +1044,6 @@
 				D26C8608296B585600AEAF9B /* OnboardingParticipateView.swift in Sources */,
 				871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */,
 				87A76A92295F6DA50096F669 /* RecordViewController.swift in Sources */,
-				D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */,
-				D2F98FA72967939100CC82DE /* MyMemberModel.swift in Sources */,
 				87648325295236BE00F74882 /* UIFont+.swift in Sources */,
 				D26C85DB2968A12000AEAF9B /* MyNoticeSettingView.swift in Sources */,
 				D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */,
