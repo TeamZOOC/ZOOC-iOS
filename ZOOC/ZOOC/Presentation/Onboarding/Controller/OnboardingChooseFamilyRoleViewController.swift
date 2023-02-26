@@ -71,8 +71,8 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         textFieldState.setTextFieldState(
             textField: onboardingChooseFamilyRoleView.chooseFamilyTextField,
             underLineView: onboardingChooseFamilyRoleView.chooseFamilyTextFeildUnderLineView,
-            button: onboardingChooseFamilyRoleView.chooseFamilyButton,
-            textFieldState: textFieldState)
+            button: onboardingChooseFamilyRoleView.chooseFamilyButton
+        )
     }
     
     @objc private func pushToRegisterProfileImageView() {

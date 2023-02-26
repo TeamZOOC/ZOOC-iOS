@@ -105,8 +105,7 @@ final class EditProfileViewController: BaseViewController {
         textFieldState.setTextFieldState(
             textField: nil,
             underLineView: editProfileView.profileNameTextFieldUnderLineView,
-            button: editProfileView.editCompletedButton,
-            textFieldState: textFieldState
+            button: editProfileView.editCompletedButton
         )
         setTextFieldText(textCount: text.count)
         
