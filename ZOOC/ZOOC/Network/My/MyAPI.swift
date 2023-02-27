@@ -31,7 +31,7 @@ extension MyAPI{
                                              nickName: nickName,
                                              photo: photo)) { result in
             self.disposeNetwork(result,
-                                dataModel: MyUser.self,
+                                dataModel: UserResult.self,
                                 completion: completion)
         }
     }

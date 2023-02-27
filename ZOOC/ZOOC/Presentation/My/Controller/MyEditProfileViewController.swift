@@ -10,21 +10,24 @@ import UIKit
 import SnapKit
 import Then
 
-final class EditProfileViewController: BaseViewController {
+final class MyEditProfileViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private lazy var editProfileView = EditProfileView()
-    private var myProfileData: MyUser?
+    private var myProfileData: UserResult?
     
     private var isPhoto: Bool = true
     private var myProfileImage: UIImage?
     private var myProfileNickName: String?
     
+    //MARK: - UIComponents
+    
+    private lazy var rootView = MyEditProfileView()
+    
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = editProfileView
+        self.view = rootView
     }
     
     override func viewDidLoad() {
@@ -36,17 +39,17 @@ final class EditProfileViewController: BaseViewController {
     //MARK: - Custom Method
     
     private func target() {
-        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        rootView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
-        editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
+        rootView.completeButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         
-        editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
+        rootView.profileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
-    func dataSend(data: MyUser?) {
-        editProfileView.editProfileNameTextField.placeholder = data?.nickName
+    func dataSend(data: UserResult?) {
+        rootView.nameTextField.placeholder = data?.nickName
         data?.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: (data?.photo!)!)
         guard let name = data?.nickName else { return }
         myProfileNickName = name
@@ -66,7 +69,7 @@ final class EditProfileViewController: BaseViewController {
         })
         
         let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
-            self.editProfileView.editProfileImageButton.setImage(Image.defaultProfilePet, for: .normal)
+            self.rootView.profileImageButton.setImage(Image.defaultProfilePet, for: .normal)
             self.isPhoto = false
         })
         
@@ -104,13 +107,12 @@ final class EditProfileViewController: BaseViewController {
     }
     
     @objc func editCompleteButtonDidTap(){
-        guard let text = editProfileView.editProfileNameTextField.text else { return }
+        guard let text = rootView.nameTextField.text else { return }
         myProfileNickName = text
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
                                     nickName: myProfileNickName ?? "닉네임이 없습니다.",
-                                    photo: myProfileImage)
-        { result in
-            guard let result = self.validateResult(result) as? MyUser else { return }
+                                    photo: myProfileImage) { result in
+            guard let result = self.validateResult(result) as? UserResult else { return }
             print(result)
             
             self.popToMyProfileView()
@@ -118,31 +120,31 @@ final class EditProfileViewController: BaseViewController {
     }
 }
 
-extension EditProfileViewController {
+extension MyEditProfileViewController {
     func textFieldIsFull() {
-        editProfileView.profileNameCountLabel.text = "10/10"
+        rootView.numberOfNameCharactersLabel.text = "10/10"
     }
     
     func textFieldIsWritten(textCount: Int) {
-        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGradientGreen
-        editProfileView.editCompletedButton.backgroundColor = .zoocGradientGreen
-        editProfileView.editCompletedButton.isEnabled = true
-        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
+        rootView.underLineView.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.isEnabled = true
+        rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
     func textFieldIsEmpty(textCount: Int) {
-        editProfileView.profileNameTextFieldUnderLineView.backgroundColor = .zoocGray1
-        editProfileView.editCompletedButton.backgroundColor = .zoocGray1
-        editProfileView.editCompletedButton.isEnabled = false
-        editProfileView.profileNameCountLabel.text = "\(textCount)/10"
+        rootView.underLineView.backgroundColor = .zoocGray1
+        rootView.completeButton.backgroundColor = .zoocGray1
+        rootView.completeButton.isEnabled = false
+        rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
     func setDefaultProfileImage() {
-        editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+        rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
     }
     
     func setFamilyMemberProfileImage(photo: String) {
-        editProfileView.editProfileImageButton.kfSetButtonImage(url: photo)
+        rootView.profileImageButton.kfSetButtonImage(url: photo)
     }
     
     private func popToMyProfileView() {
@@ -152,11 +154,11 @@ extension EditProfileViewController {
     }
 }
 
-extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        editProfileView.editProfileImageButton.setImage(image, for: .normal)
+        rootView.profileImageButton.setImage(image, for: .normal)
         self.myProfileImage = image
     }
 }

@@ -79,7 +79,7 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
                                     photo: image)
         { result in
             print(result)
-            guard let result = self.validateResult(result) as? MyUser else { return }
+            guard let result = self.validateResult(result) as? UserResult else { return }
             self.pushToCompleteProfileView()
         }
     }

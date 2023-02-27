@@ -22,7 +22,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
     
     var delegate: MyRegisterPetButtonTappedDelegate?
     private let myRegisterPetView = MyRegisterPetView()
-    private lazy var myPetMemberData: [MyPet] = []
+    private lazy var myPetMemberData: [PetResult] = []
     
     //MARK: - UI Components
     
@@ -112,7 +112,7 @@ final class MyPetSectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(myPetMemberData : [MyPet]) {
+    public func dataBind(myPetMemberData : [PetResult]) {
         self.myPetMemberData = myPetMemberData
         petCountLabel.text = "\(myPetMemberData.count)/4"
         self.petCollectionView.reloadData()

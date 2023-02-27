@@ -10,18 +10,19 @@ import UIKit
 import SnapKit
 import Then
 
-final class EditProfileView: UIView {
+final class MyEditProfileView: UIView {
     
     //MARK: - UI Components
     
     public var backButton = UIButton()
-    private var appInformationLabel = UILabel()
-    public var editProfileImageButton = UIButton()
-    private var editProfileCameraIconImageView = UIImageView()
-    public var editProfileNameTextField = UITextField()
-    public var profileNameTextFieldUnderLineView = UIView()
-    public var profileNameCountLabel = UILabel()
-    public var editCompletedButton = UIButton()
+    private var titleLabel = UILabel()
+    
+    public var profileImageButton = UIButton()
+    private var cameraIconImageView = UIImageView()
+    public var nameTextField = UITextField()
+    public var underLineView = UIView()
+    public var numberOfNameCharactersLabel = UILabel()
+    public var completeButton = UIButton()
     
     //MARK: - Life Cycles
     
@@ -46,41 +47,41 @@ final class EditProfileView: UIView {
             $0.setImage(Image.back, for: .normal)
         }
 
-        appInformationLabel.do {
+        titleLabel.do {
             $0.font = .zoocHeadLine
             $0.text = "프로필 수정"
             $0.textColor = .zoocDarkGray2
         }
         
-        editProfileImageButton.do {
+        profileImageButton.do {
             $0.setImage(Image.logoSymbol, for: .normal)
             $0.makeCornerRadius(ratio: 54.5)
             $0.contentMode = .scaleAspectFill
         }
         
-        editProfileCameraIconImageView.do {
+        cameraIconImageView.do {
             $0.image = Image.cameraCircleGreen
             $0.contentMode = .scaleAspectFill
             $0.makeCornerRadius(ratio: 17.5)
         }
         
-        editProfileNameTextField.do {
+        nameTextField.do {
             $0.textAlignment = .center
             $0.font = .zoocHeadLine
             $0.tintColor = .zoocGradientGreen
         }
         
-        profileNameTextFieldUnderLineView.do {
+        underLineView.do {
             $0.backgroundColor = .zoocGray1
         }
         
-        profileNameCountLabel.do {
+        numberOfNameCharactersLabel.do {
             $0.font = .zoocCaption
             $0.text = "/10"
             $0.textColor = .zoocGray3
         }
         
-        editCompletedButton.do {
+        completeButton.do {
             $0.backgroundColor = .zoocGray1
             $0.setTitle("완료", for: .normal)
             $0.makeCornerRadius(ratio: 27)
@@ -89,13 +90,13 @@ final class EditProfileView: UIView {
     
     private func hierarchy() {
         addSubviews(backButton,
-                    appInformationLabel,
-                    editProfileImageButton,
-                    editProfileCameraIconImageView,
-                    editProfileNameTextField,
-                    profileNameTextFieldUnderLineView,
-                    profileNameCountLabel,
-                    editCompletedButton)
+                    titleLabel,
+                    profileImageButton,
+                    cameraIconImageView,
+                    nameTextField,
+                    underLineView,
+                    numberOfNameCharactersLabel,
+                    completeButton)
     }
     
     private func layout() {
@@ -105,41 +106,41 @@ final class EditProfileView: UIView {
             $0.size.equalTo(42)
         }
         
-        appInformationLabel.snp.makeConstraints {
+        titleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(19)
             $0.leading.equalTo(self.backButton.snp.trailing).offset(83)
         }
         
-        editProfileImageButton.snp.makeConstraints {
-            $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(190)
+        profileImageButton.snp.makeConstraints {
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(190)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(109)
         }
         
-        editProfileCameraIconImageView.snp.makeConstraints {
-            $0.top.equalTo(self.appInformationLabel.snp.bottom).offset(268)
+        cameraIconImageView.snp.makeConstraints {
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(268)
             $0.leading.equalToSuperview().offset(210)
             $0.size.equalTo(30)
         }
         
-        editProfileNameTextField.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileImageButton.snp.bottom).offset(29)
+        nameTextField.snp.makeConstraints {
+            $0.top.equalTo(self.profileImageButton.snp.bottom).offset(29)
             $0.centerX.equalToSuperview()
         }
         
-        profileNameTextFieldUnderLineView.snp.makeConstraints {
-            $0.top.equalTo(self.editProfileNameTextField.snp.bottom).offset(9)
+        underLineView.snp.makeConstraints {
+            $0.top.equalTo(self.nameTextField.snp.bottom).offset(9)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(205)
             $0.height.equalTo(1)
         }
         
-        profileNameCountLabel.snp.makeConstraints {
-            $0.top.equalTo(self.profileNameTextFieldUnderLineView).offset(9)
-            $0.trailing.equalTo(self.profileNameTextFieldUnderLineView)
+        numberOfNameCharactersLabel.snp.makeConstraints {
+            $0.top.equalTo(self.underLineView).offset(9)
+            $0.trailing.equalTo(self.underLineView)
         }
         
-        editCompletedButton.snp.makeConstraints {
+        completeButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(27)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)
