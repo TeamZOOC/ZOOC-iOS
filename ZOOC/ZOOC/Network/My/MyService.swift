@@ -25,7 +25,7 @@ extension MyService: BaseTargetType {
             return "/user/profile"
         case .deleteAccount:
             return "/user"
-        case .postRegisterPet:
+        case .postRegisterPet(param: _):
             return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
         }
     }
@@ -38,7 +38,7 @@ extension MyService: BaseTargetType {
             return .patch
         case .deleteAccount:
             return .delete
-        case .postRegisterPet:
+        case .postRegisterPet(param: _):
             return .post
         }
     }
@@ -79,14 +79,14 @@ extension MyService: BaseTargetType {
                     provider: .data("\(name)".data(using: .utf8)!),
                     name: "petNames"))
             }
-            
+
             //photo! 나중에 바꿔주기
             for photo in param.files {
-                multipartFormDatas.append(MultipartFormData(
-                    provider: .data("\(photo!)".data(using: .utf8)!),
-                    name: "files",
-                    fileName: "image.jpeg",
-                    mimeType: "image/jpeg"))
+                    multipartFormDatas.append(MultipartFormData(
+                        provider: .data("\(photo!)".data(using: .utf8)!),
+                        name: "files",
+                        fileName: "image.jpeg",
+                        mimeType: "image/jpeg"))
             }
             
             for isPhoto in param.isPetPhotos {
@@ -94,23 +94,23 @@ extension MyService: BaseTargetType {
                     provider: .data("\(isPhoto)".data(using: .utf8)!),
                     name: "isPetPhotos"))
             }
-            
+
             return .uploadMultipart(multipartFormDatas)
         }
     }
     
     var headers: [String : String]?{
         switch self {
-        case .postRegisterPet:
+        case .getMyPageData:
+            return APIConstants.hasTokenHeader
+        case .patchUserProfile:
+            return APIConstants.hasTokenHeader
+        case .deleteAccount:
+            return APIConstants.hasTokenHeader
+        case .postRegisterPet(param: _):
             return [APIConstants.contentType: APIConstants.multipartFormData,
                     APIConstants.auth : APIConstants.accessToken]
-        default:
-            return APIConstants.hasTokenHeader
         }
-        
         
     }
 }
-
-
-

@@ -8,7 +8,7 @@
 import UIKit
 
 struct MyPetRegisterModel {
-    var name: String?
+    var name: String
     var image: UIImage
 }
 

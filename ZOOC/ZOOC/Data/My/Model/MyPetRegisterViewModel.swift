@@ -40,7 +40,7 @@ final class MyPetRegisterViewModel {
         color = .zoocGradientGreen
         print("추가할 수 있어요! \(button)")
         for pet in petList {
-            if pet.name?.count == 0 {
+            if pet.name.count == 0 {
                 button = false
                 color = .zoocGray1
                 print("\(pet.name) 때문에 추가할 수 없어요! \(button)")

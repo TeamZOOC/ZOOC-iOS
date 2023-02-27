@@ -78,7 +78,7 @@ final class MyRegisterPetViewController: BaseViewController {
                 isPhoto = false
                 return
             }
-            names.append(pet.name!)
+            names.append(pet.name)
             photos.append(photo)
             isPhotos.append(isPhoto)
         }
@@ -133,11 +133,13 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisteredPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisteredPetTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             cell.dataBind(data: myPetMemberData[indexPath.row], index: indexPath.row, petData: myPetMemberData)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisterPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisterPetTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             cell.delegate = self
             
             [cell.deletePetProfileButton,
