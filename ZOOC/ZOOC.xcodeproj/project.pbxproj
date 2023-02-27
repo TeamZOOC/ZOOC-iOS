@@ -31,6 +31,10 @@
 		871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */; };
 		871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */; };
 		871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35E2971628D00D0E8CC /* Encodable+.swift */; };
+		8731C4B029A93EF500006743 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4AF29A93EF500006743 /* EmojiModel.swift */; };
+		8731C4B229A9400D00006743 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */; };
+		8731C4B429A94A6900006743 /* HomeEmojiCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */; };
+		8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -194,6 +198,10 @@
 		871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPetResult.swift; sourceTree = "<group>"; };
 		871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		871EA35E2971628D00D0E8CC /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		8731C4AF29A93EF500006743 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
+		8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
+		8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmojiCommentRequest.swift; sourceTree = "<group>"; };
+		8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBottomSheetViewController.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -500,6 +508,7 @@
 				871EA3452970109E00D0E8CC /* HomeArchiveListWriterCollectionViewCell.swift */,
 				8782C7F2296CC13A00C9324B /* HomeCommentCollectionViewCell.swift */,
 				D26C68F52970B0640088DC9A /* HomeNoticeTableViewCell.swift */,
+				8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 				877E57EF2966C046006D82FC /* HomeArchiveModel.swift */,
 				8782C7F0296CADE300C9324B /* HomeDetailArchiveModel.swift */,
 				D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */,
+				8731C4AF29A93EF500006743 /* EmojiModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -538,6 +548,7 @@
 				8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */,
 				87DDDD91298E5BE500CBEC79 /* HomeDetailArchiveCommentView.swift */,
 				D26C68F32970AD930088DC9A /* HomeNoticeView.swift */,
+				8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -717,6 +728,7 @@
 				871EA3492970403300D0E8CC /* HomeDetailArchiveResult.swift */,
 				D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */,
 				87C109242971A5B40086466F /* HomeCommentRequest.swift */,
+				8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1021,6 +1033,7 @@
 			files = (
 				D23503012964702400F01101 /* MyAppInformationView.swift in Sources */,
 				D235030729647B4200F01101 /* MyAppInformationViewController.swift in Sources */,
+				8731C4B229A9400D00006743 /* EmojiCollectionViewCell.swift in Sources */,
 				87A76AA3295F6EB80096F669 /* HomeService.swift in Sources */,
 				D26C68E8296DE65E0088DC9A /* MyRegisterPetViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
@@ -1087,6 +1100,8 @@
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
 				D25543A4299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
+				8731C4B429A94A6900006743 /* HomeEmojiCommentRequest.swift in Sources */,
+				8731C4B029A93EF500006743 /* EmojiModel.swift in Sources */,
 				D26C85FC296B21A600AEAF9B /* OnboardingRegisterProfileImageView.swift in Sources */,
 				D2DD45C7297D9612001722A1 /* BaseButton.swift in Sources */,
 				871EA351297042D800D0E8CC /* RecordResult.swift in Sources */,
@@ -1129,6 +1144,7 @@
 				D21DADC1298BFF2700CCC089 /* MyPetRegisterViewModel.swift in Sources */,
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
+				8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,

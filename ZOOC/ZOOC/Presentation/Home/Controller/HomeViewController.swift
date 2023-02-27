@@ -19,7 +19,7 @@ final class HomeViewController : BaseViewController {
             rootView.petCollectionView.reloadData()
         }
     }
-    private var archiveData: [HomeArchiveResult] = []{
+    private var archiveData: [HomeArchiveResult] = [] {
         didSet{
             rootView.archiveListCollectionView.reloadData()
             rootView.archiveGridCollectionView.reloadData()
