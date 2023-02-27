@@ -200,7 +200,7 @@ extension MyViewController {
     private func pushToEditProfileView() {
         let editProfileViewController = MyEditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData)
+        editProfileViewController.dataBind(data: myProfileData)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }

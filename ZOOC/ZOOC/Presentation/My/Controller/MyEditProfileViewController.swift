@@ -17,8 +17,8 @@ final class MyEditProfileViewController: BaseViewController {
     private var myProfileData: UserResult?
     
     private var isPhoto: Bool = true
-    private var myProfileImage: UIImage?
-    private var myProfileNickName: String?
+    private var profileImage: UIImage?
+    private var nickName: String?
     
     //MARK: - UIComponents
     
@@ -48,11 +48,16 @@ final class MyEditProfileViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
-    func dataSend(data: UserResult?) {
+    func dataBind(data: UserResult?) {
         rootView.nameTextField.placeholder = data?.nickName
-        data?.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: (data?.photo!)!)
-        guard let name = data?.nickName else { return }
-        myProfileNickName = name
+        
+        if let photoURL = data?.photo{
+            rootView.profileImageButton.kfSetButtonImage(url: photoURL)
+        } else {
+            rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
+        }
+        
+        self.nickName = data?.nickName
     }
     
     //MARK: - Action Method
@@ -108,10 +113,10 @@ final class MyEditProfileViewController: BaseViewController {
     
     @objc func editCompleteButtonDidTap(){
         guard let text = rootView.nameTextField.text else { return }
-        myProfileNickName = text
+        nickName = text
         MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
-                                    nickName: myProfileNickName ?? "닉네임이 없습니다.",
-                                    photo: myProfileImage) { result in
+                                    nickName: nickName ?? "닉네임이 없습니다.",
+                                    photo: profileImage) { result in
             guard let result = self.validateResult(result) as? UserResult else { return }
             print(result)
             
@@ -139,14 +144,6 @@ extension MyEditProfileViewController {
         rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
-    func setDefaultProfileImage() {
-        rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
-    }
-    
-    func setFamilyMemberProfileImage(photo: String) {
-        rootView.profileImageButton.kfSetButtonImage(url: photo)
-    }
-    
     private func popToMyProfileView() {
         guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
         beforeVC.getMyPageAPI()
@@ -159,6 +156,6 @@ extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINaviga
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         rootView.profileImageButton.setImage(image, for: .normal)
-        self.myProfileImage = image
+        self.profileImage = image
     }
 }
