@@ -54,6 +54,7 @@ final class MyEditProfileViewController: BaseViewController {
     func dataBind(data: UserResult?) {
         rootView.nameTextField.text = data?.nickName
         editMyProfileData.nickName = data?.nickName ?? ""
+        textFieldIsEmpty(textCount: data?.nickName.count ?? 0)
         
         if let photoURL = data?.photo{
             rootView.profileImageButton.kfSetButtonImage(url: photoURL)
