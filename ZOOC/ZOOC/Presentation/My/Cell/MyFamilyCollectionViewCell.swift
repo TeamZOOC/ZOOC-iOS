@@ -66,7 +66,7 @@ final class MyFamilyCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(data: MyUser, myProfileData: MyUser?) {
+    public func dataBind(data: UserResult, myProfileData: UserResult?) {
         familyNameLabel.text = data.nickName
         data.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: data.photo!)
         data.nickName == myProfileData?.nickName ? configMyProfile() : configFamilyProfile()

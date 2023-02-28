@@ -88,7 +88,7 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
         }
     }
     
-    func dataBind(data: MyUser?) {
+    func dataBind(data: UserResult?) {
         profileNameLabel.text = data?.nickName
         data?.photo == nil ? setDefaultProfileImage() : setProfileImage(photo: (data?.photo)!)
     }

@@ -15,9 +15,9 @@ final class MyViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private var myFamilyMemberData: [MyUser] = []
-    private var myPetMemberData: [MyPet] = []
-    private var myProfileData: MyUser?
+    private var myFamilyMemberData: [UserResult] = []
+    private var myPetMemberData: [PetResult] = []
+    private var myProfileData: UserResult?
     
     //MARK: - UI Components
     
@@ -48,7 +48,7 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.dataSource = self
     }
     
-    func dataSend(myprofileData: MyUser?) {
+    func dataSend(myprofileData: UserResult?) {
         guard let nickNameData = myProfileData?.nickName else { return }
         guard let photoData = myProfileData?.photo else { return }
         myView.myCollectionView.reloadData()
@@ -198,15 +198,15 @@ extension MyViewController: MyRegisterPetButtonTappedDelegate {
 
 extension MyViewController {
     private func pushToEditProfileView() {
-        let editProfileViewController = EditProfileViewController()
+        let editProfileViewController = MyEditProfileViewController()
         editProfileViewController.hidesBottomBarWhenPushed = true
-        editProfileViewController.dataSend(data: myProfileData)
+        editProfileViewController.dataBind(data: myProfileData)
         
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
     
     private func pushToAppInformationView() {
-        let appInformationViewController = AppInformationViewController()
+        let appInformationViewController = MyAppInformationViewController()
         appInformationViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(appInformationViewController, animated: true)
     }

@@ -65,7 +65,7 @@ final class MyRegisteredPetTableViewCell: UITableViewCell {
         }
     }
     
-    func dataBind(data: MyPet, index: Int, petData: [MyPet]) {
+    func dataBind(data: PetResult, index: Int, petData: [PetResult]) {
         petProfileNameLabel.text = data.name
         data.photo == nil ? setDefaultPetProfileImage() : setPetMemberProfileImage(photo: data.photo!)
     }

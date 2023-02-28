@@ -18,7 +18,7 @@ final class MyRegisterPetViewController: UIViewController {
     private let myPetRegisterViewModel: MyPetRegisterViewModel
     private let defaultpetProfile = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
     
-    private var myPetMemberData: [MyPet] = []
+    private var myPetMemberData: [PetResult] = []
     
     //MARK: - Life Cycle
     
@@ -56,7 +56,7 @@ final class MyRegisterPetViewController: UIViewController {
         myRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
-    func dataSend(myPetMemberData: [MyPet]) {
+    func dataSend(myPetMemberData: [PetResult]) {
         self.myPetMemberData = myPetMemberData
     }
     

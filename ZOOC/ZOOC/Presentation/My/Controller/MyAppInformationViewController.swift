@@ -10,11 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class AppInformationViewController: BaseViewController {
+final class MyAppInformationViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private lazy var appInformationView = AppInformationView()
+    private lazy var appInformationView = MyAppInformationView()
     
     //MARK: - Life Cycle
     
@@ -50,7 +50,7 @@ final class AppInformationViewController: BaseViewController {
 
 //MARK: - UITableViewDelegate
 
-extension AppInformationViewController: UITableViewDelegate {
+extension MyAppInformationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 63
     }
@@ -58,7 +58,7 @@ extension AppInformationViewController: UITableViewDelegate {
 
 //MARK: - UITableViewDataSource
 
-extension AppInformationViewController: UITableViewDataSource {
+extension MyAppInformationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MyAppInformationModel.appInformationData.count
     }

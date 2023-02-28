@@ -14,17 +14,18 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Properties
     
-    var isPhoto: Bool = false
-    var image: UIImage?
-    
-    private var profileName: String = ""
+    private var registerMyProfileData = EditProfileRequest(hasPhoto: false)
     private var familyRoleLabel: String = ""
-    private let onboardingRegisterProfileImageView = OnboardingRegisterProfileImageView()
+    
+    
+    //MARK: - UI Components
+    
+    private let rootView = OnboardingRegisterProfileImageView()
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingRegisterProfileImageView
+        self.view = rootView
     }
     
     override func viewDidLoad() {
@@ -53,35 +54,35 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
                                        value: UIColor.zoocGradientGreen,
-                                       range: (familyRoleLabel as NSString).range(of: "\(profileName)!"))
+                                       range: (familyRoleLabel as NSString).range(of: "\(registerMyProfileData.nickName)!"))
                 
-        onboardingRegisterProfileImageView.registerProfileImageLabel.attributedText = attributtedString
+        rootView.registerProfileImageLabel.attributedText = attributtedString
     }
     
     private func target() {
-        onboardingRegisterProfileImageView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
-        onboardingRegisterProfileImageView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        onboardingRegisterProfileImageView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
+        rootView.createProfileButton.addTarget(self, action: #selector(createProfileButtonDidTap), for: .touchUpInside)
+        rootView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        rootView.registerProfileImageButton.addTarget(self, action: #selector(chooseProfileImage), for: .touchUpInside)
     }
     
-    func dataSend(profileName: String) {
-        self.familyRoleLabel = "\(profileName)! \n프로필 사진을 등록할까요?"
-        self.profileName = "\(profileName)"
+    func dataBind(nickName: String) {
+        registerMyProfileData.nickName = nickName
+        familyRoleLabel = "\(nickName)! \n프로필 사진을 등록할까요?"
+    }
+    
+    private func requestRegisterProfileAPI() {
+        MyAPI.shared.patchMyProfile(requset: registerMyProfileData) { result in
+            guard let result = self.validateResult(result) as? UserResult else { return }
+            self.pushToCompleteProfileView()
+        }
     }
     
     //MARK: - Action Method
     
     @objc func createProfileButtonDidTap() {
-        onboardingRegisterProfileImageView.createProfileButton.isEnabled = false
-        onboardingRegisterProfileImageView.createProfileButton.backgroundColor = .zoocGray1
-        MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
-                                    nickName: profileName,
-                                    photo: image)
-        { result in
-            print(result)
-            guard let result = self.validateResult(result) as? MyUser else { return }
-            self.pushToCompleteProfileView()
-        }
+        rootView.createProfileButton.isEnabled = false
+        rootView.createProfileButton.backgroundColor = .zoocGray1
+        requestRegisterProfileAPI()
     }
     
     @objc private func backButtonDidTap() {
@@ -99,9 +100,10 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
 extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        isPhoto = true
-        self.image = image
-        onboardingRegisterProfileImageView.registerProfileImageButton.setImage(image, for: .normal)
+        
+        registerMyProfileData.hasPhoto = true
+        registerMyProfileData.profileImage = image
+        rootView.registerProfileImageButton.setImage(image, for: .normal)
     }
 }
 

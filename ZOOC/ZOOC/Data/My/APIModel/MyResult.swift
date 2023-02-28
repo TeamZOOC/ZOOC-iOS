@@ -9,13 +9,13 @@ import Foundation
 
 // MARK: - MyResult
 struct MyResult: Codable {
-    let user: MyUser
-    let familyMember: [MyUser]
-    let pet: [MyPet]
+    let user: UserResult
+    let familyMember: [UserResult]
+    let pet: [PetResult]
 }
 
 // MARK: - User
-struct MyUser: Codable {
+struct UserResult: Codable {
     let id: Int
     var nickName: String
     var photo: String?
@@ -28,7 +28,7 @@ struct MyUser: Codable {
 }
 
 // MARK: - Pet
-struct MyPet: Codable {
+struct PetResult: Codable {
     let id: Int
     let name: String
     let photo: String?
