@@ -15,10 +15,7 @@ final class MyEditProfileViewController: BaseViewController {
     //MARK: - Properties
     
     private var myProfileData: UserResult?
-    
-    private var isPhoto: Bool = true
-    private var profileImage: UIImage?
-    private var nickName: String?
+    private var editMyProfileData = EditProfileRequest()
     
     //MARK: - UIComponents
     
@@ -49,15 +46,21 @@ final class MyEditProfileViewController: BaseViewController {
     }
     
     func dataBind(data: UserResult?) {
-        rootView.nameTextField.placeholder = data?.nickName
+        rootView.nameTextField.text = data?.nickName
+        editMyProfileData.nickName = data?.nickName ?? ""
         
         if let photoURL = data?.photo{
             rootView.profileImageButton.kfSetButtonImage(url: photoURL)
         } else {
             rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
         }
-        
-        self.nickName = data?.nickName
+    }
+    
+    private func requestPatchUserProfileAPI() {
+        MyAPI.shared.patchMyProfile(requset: editMyProfileData) { result in
+            guard let result = self.validateResult(result) as? UserResult else { return }
+            self.popToMyProfileView()
+        }
     }
     
     //MARK: - Action Method
@@ -75,7 +78,8 @@ final class MyEditProfileViewController: BaseViewController {
         
         let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
             self.rootView.profileImageButton.setImage(Image.defaultProfilePet, for: .normal)
-            self.isPhoto = false
+            //self.isPhoto = false
+            self.editMyProfileData.hasPhoto = false
         })
         
         let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
@@ -112,16 +116,9 @@ final class MyEditProfileViewController: BaseViewController {
     }
     
     @objc func editCompleteButtonDidTap(){
-        guard let text = rootView.nameTextField.text else { return }
-        nickName = text
-        MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
-                                    nickName: nickName ?? "닉네임이 없습니다.",
-                                    photo: profileImage) { result in
-            guard let result = self.validateResult(result) as? UserResult else { return }
-            print(result)
-            
-            self.popToMyProfileView()
-        }
+        guard let nickName = rootView.nameTextField.text else { return }
+        self.editMyProfileData.nickName = nickName
+        requestPatchUserProfileAPI()
     }
 }
 
@@ -156,6 +153,6 @@ extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINaviga
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         rootView.profileImageButton.setImage(image, for: .normal)
-        self.profileImage = image
+        self.editMyProfileData.profileImage = image
     }
 }
