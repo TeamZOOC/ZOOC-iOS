@@ -21,7 +21,8 @@ final class MyEditProfileViewController: BaseViewController {
     
     private lazy var rootView = MyEditProfileView()
     private let galleryAlertController = GalleryAlertController()
-    
+    private lazy var imagePickerController = UIImagePickerController()
+
     //MARK: - Life Cycle
     
     override func loadView() {
@@ -33,12 +34,14 @@ final class MyEditProfileViewController: BaseViewController {
         
         delegate()
         target()
+        style()
     }
     
     //MARK: - Custom Method
     
     private func delegate() {
         galleryAlertController.delegate = self
+        imagePickerController.delegate = self
     }
     
     private func target() {
@@ -49,6 +52,12 @@ final class MyEditProfileViewController: BaseViewController {
         rootView.profileImageButton.addTarget(self, action: #selector(profileImageButtonDidTap) , for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
+    }
+    
+    private func style() {
+        imagePickerController.do { 
+            $0.sourceType = .photoLibrary
+        }
     }
     
     func dataBind(data: UserResult?) {
@@ -65,7 +74,7 @@ final class MyEditProfileViewController: BaseViewController {
     
     private func requestPatchUserProfileAPI() {
         MyAPI.shared.patchMyProfile(requset: editMyProfileData) { result in
-            guard let result = self.validateResult(result) as? UserResult else { return }
+            //guard let result = self.validateResult(result) as? UserResult else { return }
             self.popToMyProfileView()
         }
     }
@@ -137,29 +146,26 @@ extension MyEditProfileViewController {
 
 extension MyEditProfileViewController: GalleryAlertControllerDelegate {
     func galleryButtonDidTap() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true)
+        present(imagePickerController, animated: true)
     }
     
     func deleteButtonDidTap() {
         rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
         editMyProfileData.hasPhoto = false
     }
-    
-    
 }
 
 //MARK: - UIImagePickerControllerDelegate
 
 extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         rootView.profileImageButton.setImage(image, for: .normal)
         rootView.completeButton.backgroundColor = .zoocGradientGreen
         rootView.completeButton.isEnabled = true
         self.editMyProfileData.profileImage = image
+        dismiss(animated: true)
     }
 }
