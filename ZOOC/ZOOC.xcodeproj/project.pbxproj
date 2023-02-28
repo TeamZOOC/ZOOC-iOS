@@ -18,6 +18,7 @@
 		870D062A297BEB7900ADAD04 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D0629297BEB7900ADAD04 /* HomeView.swift */; };
 		8718A06429AD3445001C7460 /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718A06329AD3445001C7460 /* EditProfileRequest.swift */; };
 		8718A06829ADB423001C7460 /* GalleryAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718A06729ADB423001C7460 /* GalleryAlertController.swift */; };
+		8718A06A29ADE6E8001C7460 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718A06929ADE6E8001C7460 /* BaseTextField.swift */; };
 		871EA33C296F3E6200D0E8CC /* HomePetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33B296F3E6200D0E8CC /* HomePetResult.swift */; };
 		871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33D296F529C00D0E8CC /* UIImageView+.swift */; };
 		871EA340296F6E5000D0E8CC /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33F296F6E5000D0E8CC /* BaseAPI.swift */; };
@@ -188,6 +189,7 @@
 		870D0629297BEB7900ADAD04 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8718A06329AD3445001C7460 /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
 		8718A06729ADB423001C7460 /* GalleryAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAlertController.swift; sourceTree = "<group>"; };
+		8718A06929ADE6E8001C7460 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		871EA33B296F3E6200D0E8CC /* HomePetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetResult.swift; sourceTree = "<group>"; };
 		871EA33D296F529C00D0E8CC /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		871EA33F296F6E5000D0E8CC /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				8765549E295846F3006BBDA9 /* ZoocTabBarController.swift */,
 				876554A2295848D5006BBDA9 /* BaseViewController.swift */,
 				D2DD45C6297D9612001722A1 /* BaseButton.swift */,
+				8718A06929ADE6E8001C7460 /* BaseTextField.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1151,6 +1154,7 @@
 				D21DADC1298BFF2700CCC089 /* MyPetRegisterViewModel.swift in Sources */,
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
+				8718A06A29ADE6E8001C7460 /* BaseTextField.swift in Sources */,
 				8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */,
 				8718A06829ADB423001C7460 /* GalleryAlertController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
