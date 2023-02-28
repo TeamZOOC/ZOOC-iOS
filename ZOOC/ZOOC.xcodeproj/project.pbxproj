@@ -17,6 +17,7 @@
 		4C8A7C33297063F400783979 /* OnboardingInviteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */; };
 		870D062A297BEB7900ADAD04 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870D0629297BEB7900ADAD04 /* HomeView.swift */; };
 		8718A06429AD3445001C7460 /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718A06329AD3445001C7460 /* EditProfileRequest.swift */; };
+		8718A06829ADB423001C7460 /* GalleryAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718A06729ADB423001C7460 /* GalleryAlertController.swift */; };
 		871EA33C296F3E6200D0E8CC /* HomePetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33B296F3E6200D0E8CC /* HomePetResult.swift */; };
 		871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33D296F529C00D0E8CC /* UIImageView+.swift */; };
 		871EA340296F6E5000D0E8CC /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA33F296F6E5000D0E8CC /* BaseAPI.swift */; };
@@ -186,6 +187,7 @@
 		4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteResult.swift; sourceTree = "<group>"; };
 		870D0629297BEB7900ADAD04 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8718A06329AD3445001C7460 /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
+		8718A06729ADB423001C7460 /* GalleryAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAlertController.swift; sourceTree = "<group>"; };
 		871EA33B296F3E6200D0E8CC /* HomePetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetResult.swift; sourceTree = "<group>"; };
 		871EA33D296F529C00D0E8CC /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		871EA33F296F6E5000D0E8CC /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				D26C85DA2968A12000AEAF9B /* MyNoticeSettingView.swift */,
 				D26C85D829689D0800AEAF9B /* MyDeleteAccountAlertViewController.swift */,
 				D26C68E2296DE4F80088DC9A /* MyRegisterPetView.swift */,
+				8718A06729ADB423001C7460 /* GalleryAlertController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
 				8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */,
+				8718A06829ADB423001C7460 /* GalleryAlertController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,
 				4C6B186E296DBFE40059840D /* RecordAlertViewController.swift in Sources */,
 				87A76AA5295F6EC40096F669 /* HomeAPI.swift in Sources */,

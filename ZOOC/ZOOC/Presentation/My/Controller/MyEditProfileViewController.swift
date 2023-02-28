@@ -20,6 +20,7 @@ final class MyEditProfileViewController: BaseViewController {
     //MARK: - UIComponents
     
     private lazy var rootView = MyEditProfileView()
+    private let galleryAlertController = GalleryAlertController()
     
     //MARK: - Life Cycle
     
@@ -30,17 +31,22 @@ final class MyEditProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate()
         target()
     }
     
     //MARK: - Custom Method
+    
+    private func delegate() {
+        galleryAlertController.delegate = self
+    }
     
     private func target() {
         rootView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
         rootView.completeButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         
-        rootView.profileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
+        rootView.profileImageButton.addTarget(self, action: #selector(profileImageButtonDidTap) , for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
@@ -65,31 +71,9 @@ final class MyEditProfileViewController: BaseViewController {
     
     //MARK: - Action Method
     
-    @objc func chooseProfileImage() {
-        let actionSheetController = UIAlertController()
-        
-        let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
-            print("ok")
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            self.present(imagePicker, animated: true)
-        })
-        
-        let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
-            self.rootView.profileImageButton.setImage(Image.defaultProfilePet, for: .normal)
-            //self.isPhoto = false
-            self.editMyProfileData.hasPhoto = false
-        })
-        
-        let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
-            print("cancel")
-        })
-        
-        actionSheetController.addAction(presentToGalleryButton)
-        actionSheetController.addAction(deleteProfileImageButton)
-        actionSheetController.addAction(cancleButton)
-        self.present(actionSheetController, animated: true)
+    @objc
+    private func profileImageButtonDidTap() {
+        present(galleryAlertController,animated: true)
     }
     
     @objc func backButtonDidTap() {
@@ -123,18 +107,18 @@ final class MyEditProfileViewController: BaseViewController {
 }
 
 extension MyEditProfileViewController {
-    func textFieldIsFull() {
+    private func textFieldIsFull() {
         rootView.numberOfNameCharactersLabel.text = "10/10"
     }
     
-    func textFieldIsWritten(textCount: Int) {
+    private func textFieldIsWritten(textCount: Int) {
         rootView.underLineView.backgroundColor = .zoocGradientGreen
         rootView.completeButton.backgroundColor = .zoocGradientGreen
         rootView.completeButton.isEnabled = true
         rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
-    func textFieldIsEmpty(textCount: Int) {
+    private func textFieldIsEmpty(textCount: Int) {
         rootView.underLineView.backgroundColor = .zoocGray1
         rootView.completeButton.backgroundColor = .zoocGray1
         rootView.completeButton.isEnabled = false
@@ -148,7 +132,27 @@ extension MyEditProfileViewController {
     }
 }
 
-extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+//MARK: - GalleryAlertControllerDelegate
+
+extension MyEditProfileViewController: GalleryAlertControllerDelegate {
+    func galleryButtonDidTap() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true)
+    }
+    
+    func deleteButtonDidTap() {
+        rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
+        editMyProfileData.hasPhoto = false
+    }
+    
+    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
