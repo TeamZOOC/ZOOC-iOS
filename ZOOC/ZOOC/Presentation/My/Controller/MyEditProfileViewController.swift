@@ -158,6 +158,8 @@ extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINaviga
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         rootView.profileImageButton.setImage(image, for: .normal)
+        rootView.completeButton.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.isEnabled = true
         self.editMyProfileData.profileImage = image
     }
 }
