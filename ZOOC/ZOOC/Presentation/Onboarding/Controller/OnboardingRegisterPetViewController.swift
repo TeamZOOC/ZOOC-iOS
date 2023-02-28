@@ -209,5 +209,6 @@ extension OnboardingRegisterPetViewController: UIImagePickerControllerDelegate, 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         self.onboardingPetRegisterViewModel.petList[self.onboardingPetRegisterViewModel.index].profileImage = image
         self.onboardingRegisterPetView.registerPetTableView.reloadData()
+        dismiss(animated: true)
     }
 }

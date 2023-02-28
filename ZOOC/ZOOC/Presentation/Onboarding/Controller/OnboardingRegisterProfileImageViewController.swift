@@ -17,10 +17,10 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     private var registerMyProfileData = EditProfileRequest(hasPhoto: false)
     private var familyRoleLabel: String = ""
     
-    
     //MARK: - UI Components
     
     private let rootView = OnboardingRegisterProfileImageView()
+    private let imagePickerController = UIImagePickerController()
     
     //MARK: - Life Cycle
     
@@ -32,7 +32,7 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
         super.viewDidLoad()
         
         target()
-        
+        delegate()
         style()
     }
     
@@ -50,6 +50,10 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     //MARK: - Custom Method
     
+    private func delegate() {
+        imagePickerController.delegate = self
+    }
+    
     private func style() {
         let attributtedString = NSMutableAttributedString(string: familyRoleLabel)
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor,
@@ -57,6 +61,10 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
                                        range: (familyRoleLabel as NSString).range(of: "\(registerMyProfileData.nickName)!"))
                 
         rootView.registerProfileImageLabel.attributedText = attributtedString
+        
+        imagePickerController.do {
+            $0.sourceType = .photoLibrary
+        }
     }
     
     private func target() {
@@ -72,7 +80,7 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     
     private func requestRegisterProfileAPI() {
         MyAPI.shared.patchMyProfile(requset: registerMyProfileData) { result in
-            guard let result = self.validateResult(result) as? UserResult else { return }
+            //guard let result = self.validateResult(result) as? UserResult else { return }
             self.pushToCompleteProfileView()
         }
     }
@@ -86,14 +94,11 @@ final class OnboardingRegisterProfileImageViewController: BaseViewController{
     }
     
     @objc private func backButtonDidTap() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func chooseProfileImage() {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            self.present(imagePicker, animated: true)
+        present(imagePickerController, animated: true)
     }
 }
 
@@ -104,6 +109,7 @@ extension OnboardingRegisterProfileImageViewController: UIImagePickerControllerD
         registerMyProfileData.hasPhoto = true
         registerMyProfileData.profileImage = image
         rootView.registerProfileImageButton.setImage(image, for: .normal)
+        dismiss(animated: true)
     }
 }
 
