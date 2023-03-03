@@ -113,7 +113,6 @@ private extension OnboardingLoginViewController {
         OnboardingAPI.shared.postAppleSocialLogin(request: OnboardingAppleSocialLoginRequest(identityTokenString: identityTokenString)) { result in
             guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
             User.shared.jwtToken = result.jwtToken
-            print("드디어 받아온 jwt 토큰 \(User.shared.jwtToken)")
             
             if result.isExistedUser{
                 self.requestFamilyAPI()
@@ -129,9 +128,8 @@ private extension OnboardingLoginViewController {
             guard let result = self.validateResult(result) as? [OnboardingFamilyResult] else { return }
             
             if result.count != 0 {
-                guard let familyID = result[0].id as? String else { return }
+                let familyID = String(result[0].id)
                 User.shared.familyID = familyID
-                print(User.shared.familyID)
                 self.changeRootViewController(ZoocTabBarController())
             } else {
                 self.pushToAgreementView()
