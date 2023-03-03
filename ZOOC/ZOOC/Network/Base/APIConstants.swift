@@ -22,8 +22,8 @@ struct APIConstants{
 extension APIConstants{
     static let noTokenHeader = [contentType: applicationJSON]
     static let hasTokenHeader = [contentType: applicationJSON,
-                                       auth : accessToken]
+                                       auth : User.jwtToken]
     static let multipartHeader = [contentType: multipartFormData,
-                                        auth : accessToken]
+                                        auth : User.jwtToken]
     
 }
