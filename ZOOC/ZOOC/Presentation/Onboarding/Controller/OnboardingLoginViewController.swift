@@ -89,7 +89,13 @@ private extension OnboardingLoginViewController {
         OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
             guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
             User.jwtToken = result.jwtToken
-            self.pushToAgreementView()
+            
+            if result.isExistedUser{
+                self.changeRootViewController(ZoocTabBarController())
+            } else {
+                self.pushToAgreementView()
+            }
+            
         }
     }
     
@@ -108,7 +114,13 @@ private extension OnboardingLoginViewController {
             guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
             User.jwtToken = result.jwtToken
             print("드디어 받아온 jwt 토큰 \(User.jwtToken)")
-            self.pushToAgreementView()
+            
+            if result.isExistedUser{
+                self.changeRootViewController(ZoocTabBarController())
+            } else {
+                self.pushToAgreementView()
+            }
+            
         }
     }
 }

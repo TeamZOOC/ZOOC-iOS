@@ -11,8 +11,5 @@ import Foundation
 
 struct OnboardingJWTTokenResult: Codable {
     let jwtToken: String
-    
-    enum CodingKeys: String, CodingKey {
-        case jwtToken
-    }
+    let isExistedUser: Bool
 }
