@@ -11,29 +11,31 @@ import AuthenticationServices
 import KakaoSDKCommon
 import KakaoSDKAuth
 
+import FirebaseMessaging
+import FirebaseCore
+
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        print(#function)
+        
+        
         KakaoSDK.initSDK(appKey: "d594d72f1d6a6935702b35865faf122f")
+        FirebaseApp.configure()
         
-//        let appleIDProvider = ASAuthorizationAppleIDProvider()
-//        appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, error) in
-//            switch credentialState {
-//            case .authorized:
-//                print("해당 ID는 연동되어있습니다.")
-//            case .revoked:
-//                print("해당 ID는 연동되어있지않습니다.")
-//            case .notFound:
-//                print("해당 ID는 찾을 수 없습니다.")
-//            default:
-//                break
-//            }
-//        }
-        
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+        application.registerForRemoteNotifications()
         return true
+        
         
         //        let appleIDProvider = ASAuthorizationAppleIDProvider()
         //        appleIDProvider.getCredentialState(forUserID: /* 로그인에 사용한 User Identifier */) { (credentialState, error) in
@@ -54,6 +56,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        return true
         
     }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
+        print("Firebase registration token: \(String(describing: fcmToken))")
+
+          let dataDict: [String: String] = ["token": fcmToken ?? ""]
+          NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: dataDict
+          )
+        
+        
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM registration token: \(error)")
+              } else if let token = token {
+                print("FCM registration token: \(token)")
+              }
+        }
+        
+        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func application(_ application: UIApplication,
+                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+       print("Unable to register for remote notifications: \(error.localizedDescription)")
+     }
+    
+    
+    
+    
 }
     
 //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -75,7 +114,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        return true
 //    }
+
     
+    
+
+
     // MARK: UISceneSession Lifecycle
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
