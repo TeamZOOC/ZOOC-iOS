@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct OnboardingRegisterUserRequestDto: Codable {
+struct OnboardingRegisterUserRequest: Codable {
     let code: String
 }

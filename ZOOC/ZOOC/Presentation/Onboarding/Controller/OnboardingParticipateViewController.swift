@@ -54,8 +54,8 @@ final class OnboardingParticipateViewController: BaseViewController {
 extension OnboardingParticipateViewController {
     func registerUser() {
         guard let code = onboardingParticipateView.familyCodeTextField.text else { return }
-        let param = OnboardingRegisterUserRequestDto(code: code)
-        OnboardingAPI.shared.registerUser(param: param) { result in
+        let param = OnboardingRegisterUserRequest(code: code)
+        OnboardingAPI.shared.postRegisterUser(requset: param) { result in
             guard let result = self.validateResult(result) as? SimpleResponse else { return }
             
             print(result)

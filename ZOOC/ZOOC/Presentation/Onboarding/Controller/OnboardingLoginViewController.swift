@@ -7,11 +7,12 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
-import SnapKit
-import Then
 
 final class OnboardingLoginViewController: BaseViewController {
     
@@ -39,14 +40,19 @@ final class OnboardingLoginViewController: BaseViewController {
         onboardingLoginView.appleLoginButton.addTarget(self, action: #selector(appleLoginButtonDidTap), for: .touchUpInside)
     }
     
+    private func pushToAgreementView() {
+        let agreementViewController = OnboardingAgreementViewController()
+        self.navigationController?.pushViewController(agreementViewController, animated: true)
+    }
+    
     //MARK: - Action Method
     
     @objc func kakaoLoginButtonDidTap() {
-        kakaoSocialLogin()
+        requestKakaoSocialLoginAPI()
     }
     
     @objc func appleLoginButtonDidTap() {
-        appleSocialLogin()
+        requestAppleSocialLoginAPI()
     }
     
     @objc func goHomeButtonDidTap(){
@@ -54,8 +60,10 @@ final class OnboardingLoginViewController: BaseViewController {
     }
 }
 
+//MARK: - API Method
+
 private extension OnboardingLoginViewController {
-    func kakaoSocialLogin() {
+    private func requestKakaoSocialLoginAPI() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 guard let oauthToken = oauthToken else {
@@ -63,11 +71,7 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
-                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                    User.jwtToken = result.jwtToken
-                }
-                self.pushToAgreementView()
+                self.requestZOOCKaKaoLoginAPI(oauthToken)
             }
         } else {
             UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
@@ -76,38 +80,46 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
-                OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                    User.jwtToken = result.jwtToken
-                }
-                self.pushToAgreementView()
+                self.requestZOOCKaKaoLoginAPI(oauthToken)
             }
         }
     }
     
-    func pushToAgreementView() {
-        let agreementViewController = OnboardingAgreementViewController()
-        self.navigationController?.pushViewController(agreementViewController, animated: true)
+    private func requestZOOCKaKaoLoginAPI(_ oauthToken: OAuthToken) {
+        OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+            guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
+            User.jwtToken = result.jwtToken
+            self.pushToAgreementView()
+        }
+    }
+    
+    private func requestAppleSocialLoginAPI() {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
+    private func requestZOOCAppleSocialLoginAPI(_ identityTokenString: String) {
+        OnboardingAPI.shared.postAppleSocialLogin(request: OnboardingAppleSocialLoginRequest(identityTokenString: identityTokenString)) { result in
+            guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
+            User.jwtToken = result.jwtToken
+            print("드디어 받아온 jwt 토큰 \(User.jwtToken)")
+            self.pushToAgreementView()
+        }
     }
 }
+
+
+//MARK: - ASAuthorizationControllerDelegate
 
 extension OnboardingLoginViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
-    }
-    
-    func appleSocialLogin() {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        
-        
-        request.requestedScopes = [.fullName, .email]
-        
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -117,22 +129,15 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
                 let identityToken = appleIDCredential.identityToken,
 //                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
                 let identityTokenString = String(data: identityToken, encoding: .utf8) {
+                requestZOOCAppleSocialLoginAPI(identityTokenString)
 //                print("authorizationCode: \(authorizationCode)")
 //                print("identityToken: \(identityToken)")
 //                print("authorizationCodeString: \(authorizationCodeString)")
                 print("identityTokenString: \(identityTokenString)")
-                OnboardingAPI.shared.postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto(identityTokenString: identityTokenString)) { result in
-                    guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-                    User.jwtToken = result.jwtToken
-                    print("드디어 받아온 jwt 토큰 \(User.jwtToken)")
-                }
-                self.pushToAgreementView()
             }
 //            print("User ID : \(userIdentifier)")
 //            print("User Email : \(email ?? "")")
 //            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
-            
-            
         default:
             break
         }

@@ -112,7 +112,7 @@
 		D2350309296490A700F01101 /* MyEditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2350308296490A700F01101 /* MyEditProfileView.swift */; };
 		D235030B2964991700F01101 /* MyEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D235030A2964991700F01101 /* MyEditProfileViewController.swift */; };
 		D25543A22996B22E0072BF0D /* OnboardingRegisterPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */; };
-		D25543A4299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift */; };
+		D25543A4299A239B0072BF0D /* OnboardingRegisterPetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequest.swift */; };
 		D26996A42989AB7500025774 /* OnboardingPetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */; };
 		D26C68E3296DE4F80088DC9A /* MyRegisterPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C68E2296DE4F80088DC9A /* MyRegisterPetView.swift */; };
 		D26C68E6296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C68E5296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift */; };
@@ -156,7 +156,7 @@
 		D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */; };
 		D26C861A296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */; };
 		D26C861C296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */; };
-		D2779742299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */; };
+		D2779742299F76FD008A237D /* OnboardingAppleSocialLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2779741299F76FD008A237D /* OnboardingAppleSocialLoginRequest.swift */; };
 		D27D9560296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */; };
 		D27D9562296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */; };
 		D27D9564296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */; };
@@ -169,8 +169,8 @@
 		D2DD45C7297D9612001722A1 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DD45C6297D9612001722A1 /* BaseButton.swift */; };
 		D2F193612970B3FB00AD87D3 /* HomeNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */; };
 		D2F193632970B95E00AD87D3 /* HomeNoticeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */; };
-		D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */; };
-		D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */; };
+		D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequest.swift */; };
+		D2F1936729713FCD00AD87D3 /* OnboardingJWTTokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F1936629713FCD00AD87D3 /* OnboardingJWTTokenResult.swift */; };
 		D2F98F9D2967154D00CC82DE /* ZoocAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */; };
 		D2F98F9F29676E3300CC82DE /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */; };
 		D2F98FA5296782AE00CC82DE /* MyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */; };
@@ -277,7 +277,7 @@
 		D2350308296490A700F01101 /* MyEditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* MyEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileViewController.swift; sourceTree = "<group>"; };
 		D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetResult.swift; sourceTree = "<group>"; };
-		D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetRequestDto.swift; sourceTree = "<group>"; };
+		D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetRequest.swift; sourceTree = "<group>"; };
 		D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterViewModel.swift; sourceTree = "<group>"; };
 		D26C68E2296DE4F80088DC9A /* MyRegisterPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterPetView.swift; sourceTree = "<group>"; };
 		D26C68E5296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterPetTableViewCell.swift; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 		D26C8615296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetViewController.swift; sourceTree = "<group>"; };
 		D26C8619296C0FC800AEAF9B /* OnboardingPetRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterModel.swift; sourceTree = "<group>"; };
 		D26C861B296C1A8A00AEAF9B /* OnboardingRegisterPetTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetTableFooterView.swift; sourceTree = "<group>"; };
-		D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAppleSocailLoginRequestDto.swift; sourceTree = "<group>"; };
+		D2779741299F76FD008A237D /* OnboardingAppleSocialLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAppleSocialLoginRequest.swift; sourceTree = "<group>"; };
 		D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyView.swift; sourceTree = "<group>"; };
 		D27D9561296CA4640097CD03 /* OnboardingInviteFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteFamilyViewController.swift; sourceTree = "<group>"; };
 		D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInviteCompletedFamilyView.swift; sourceTree = "<group>"; };
@@ -335,8 +335,8 @@
 		D2DD45C6297D9612001722A1 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		D2F193602970B3FB00AD87D3 /* HomeNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeModel.swift; sourceTree = "<group>"; };
 		D2F193622970B95E00AD87D3 /* HomeNoticeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoticeResult.swift; sourceTree = "<group>"; };
-		D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterUserRequestDto.swift; sourceTree = "<group>"; };
-		D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingResult.swift; sourceTree = "<group>"; };
+		D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterUserRequest.swift; sourceTree = "<group>"; };
+		D2F1936629713FCD00AD87D3 /* OnboardingJWTTokenResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingJWTTokenResult.swift; sourceTree = "<group>"; };
 		D2F98F9C2967154D00CC82DE /* ZoocAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoocAlertViewController.swift; sourceTree = "<group>"; };
 		D2F98F9E29676E3300CC82DE /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		D2F98FA4296782AE00CC82DE /* MyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileModel.swift; sourceTree = "<group>"; };
@@ -784,11 +784,11 @@
 			isa = PBXGroup;
 			children = (
 				4C8A7C32297063F400783979 /* OnboardingInviteResult.swift */,
-				D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift */,
-				D2F1936629713FCD00AD87D3 /* OnboardingResult.swift */,
+				D2F193642970E72500AD87D3 /* OnboardingRegisterUserRequest.swift */,
+				D2779741299F76FD008A237D /* OnboardingAppleSocialLoginRequest.swift */,
+				D2F1936629713FCD00AD87D3 /* OnboardingJWTTokenResult.swift */,
+				D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequest.swift */,
 				D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */,
-				D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift */,
-				D2779741299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1047,7 +1047,7 @@
 				D26C68E8296DE65E0088DC9A /* MyRegisterPetViewController.swift in Sources */,
 				8764831D2952368100F74882 /* UIView+.swift in Sources */,
 				871EA33E296F529C00D0E8CC /* UIImageView+.swift in Sources */,
-				D2F1936729713FCD00AD87D3 /* OnboardingResult.swift in Sources */,
+				D2F1936729713FCD00AD87D3 /* OnboardingJWTTokenResult.swift in Sources */,
 				D26C8600296B27B100AEAF9B /* OnboardingCompleteProfileView.swift in Sources */,
 				D27D95D5296DDF4F0097CD03 /* MyFamilyCollectionViewCell.swift in Sources */,
 				8764832B295238EB00F74882 /* UITextField+.swift in Sources */,
@@ -1108,7 +1108,7 @@
 				4C6B186C296CB8730059840D /* RecordCompleteViewController.swift in Sources */,
 				4C6B1864296B6C600059840D /* RecordRegisterModel.swift in Sources */,
 				87A76AA1295F6EA90096F669 /* OnboardingAPI.swift in Sources */,
-				D25543A4299A239B0072BF0D /* OnboardingRegisterPetRequestDto.swift in Sources */,
+				D25543A4299A239B0072BF0D /* OnboardingRegisterPetRequest.swift in Sources */,
 				D26C85F029693C8500AEAF9B /* OnboardingWelcomeView.swift in Sources */,
 				8731C4B429A94A6900006743 /* HomeEmojiCommentRequest.swift in Sources */,
 				8731C4B029A93EF500006743 /* EmojiModel.swift in Sources */,
@@ -1124,7 +1124,7 @@
 				D27D95D7296DE0E30097CD03 /* MyFamilySectionCollectionViewCell.swift in Sources */,
 				87A76AA9295F6ED70096F669 /* MyAPI.swift in Sources */,
 				D26C85D1296869DD00AEAF9B /* UICollectionReusableView+.swift in Sources */,
-				D2779742299F76FD008A237D /* OnboardingAppleSocailLoginRequestDto.swift in Sources */,
+				D2779742299F76FD008A237D /* OnboardingAppleSocialLoginRequest.swift in Sources */,
 				8764831B2952367400F74882 /* UIViewController+.swift in Sources */,
 				87A76AC82960430A0096F669 /* MoyaLoggerPlugin.swift in Sources */,
 				D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */,
@@ -1175,7 +1175,7 @@
 				D26C68EC296DE7B60088DC9A /* MyPetRegisterModel.swift in Sources */,
 				871EA342296F73DE00D0E8CC /* User.swift in Sources */,
 				87C109252971A5B40086466F /* HomeCommentRequest.swift in Sources */,
-				D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequestDto.swift in Sources */,
+				D2F193652970E72500AD87D3 /* OnboardingRegisterUserRequest.swift in Sources */,
 				8782C7F5296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift in Sources */,
 				871EA344296F768100D0E8CC /* HomeArchiveResult.swift in Sources */,
 				87D5AF622960CFE500CA7F12 /* HomeGuideCollectionViewCell.swift in Sources */,

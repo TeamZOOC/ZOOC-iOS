@@ -9,16 +9,7 @@ import Foundation
 
 // MARK: - MyResult
 
-struct OnboardingResult: Codable {
-    let status: Int
-    let success: Bool
-    let message: String
-    let data: OnboardingTokenData
-}
-
-// MARK: - DataClass
-
-struct OnboardingTokenData: Codable {
+struct OnboardingJWTTokenResult: Codable {
     let jwtToken: String
     
     enum CodingKeys: String, CodingKey {

@@ -20,16 +20,16 @@ extension OnboardingAPI {
         }
     }
     
-    public func registerUser(param: OnboardingRegisterUserRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterUser(param: param)) { (result) in
+    public func postRegisterUser(requset: OnboardingRegisterUserRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterUser(requset)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: SimpleResponse.self,
                                 completion: completion)
         }
     }
     
-    public func registerPet(param: OnboardingRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterPet(param: param)) {
+    public func postRegisterPet(request: OnboardingRegisterPetRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postRegisterPet(request)) {
             (result) in
             self.disposeNetwork(result,
                                 dataModel: [OnboardingRegisterPetResult].self,
@@ -40,14 +40,14 @@ extension OnboardingAPI {
     public func postKakaoSocialLogin(accessToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postKakaoSocialLogin(accessToken: accessToken)) { (result) in
             self.disposeNetwork(result,
-                                dataModel: OnboardingTokenData.self,
+                                dataModel: OnboardingJWTTokenResult.self,
                                 completion: completion)
         }
     }
-    public func postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postAppleSocialLogin(param: param)) { (result) in
+    public func postAppleSocialLogin(request: OnboardingAppleSocialLoginRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postAppleSocialLogin(request)) { (result) in
             self.disposeNetwork(result,
-                                dataModel: OnboardingTokenData.self,
+                                dataModel: OnboardingJWTTokenResult.self,
                                 completion: completion)
         }
     }
