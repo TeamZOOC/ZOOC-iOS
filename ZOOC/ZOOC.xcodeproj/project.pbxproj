@@ -62,6 +62,7 @@
 		877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeArchiveModel.swift */; };
 		877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */; };
 		8781DE4829B20F61005ABF23 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8781DE4729B20F61005ABF23 /* FirebaseMessaging */; };
+		8781DE4C29B25472005ABF23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8781DE4B29B25471005ABF23 /* GoogleService-Info.plist */; };
 		8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7D9296857A600C9324B /* KakaoSDKShare */; };
 		8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */; };
 		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
@@ -229,6 +230,7 @@
 		877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveListCollectionViewCell.swift; sourceTree = "<group>"; };
 		877E57EF2966C046006D82FC /* HomeArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeArchiveModel.swift; path = ZOOC/Data/Home/Model/HomeArchiveModel.swift; sourceTree = SOURCE_ROOT; };
 		877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveViewController.swift; sourceTree = "<group>"; };
+		8781DE4B29B25471005ABF23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
 		8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveIndicatorView.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 		87B6623F29521E7500B6FFA9 /* ZOOC */ = {
 			isa = PBXGroup;
 			children = (
+				8781DE4B29B25471005ABF23 /* GoogleService-Info.plist */,
 				D2D686BA299B59F400C290A8 /* ZOOC.entitlements */,
 				87B6625429521EAC00B6FFA9 /* Application */,
 				876483162952351500F74882 /* Global */,
@@ -1034,6 +1037,7 @@
 				87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */,
 				877BAFC4295EEA7700C2AA1C /* Pretendard-Medium.otf in Resources */,
 				871EA359297078C900D0E8CC /* loading.json in Resources */,
+				8781DE4C29B25472005ABF23 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
