@@ -15,8 +15,10 @@ class OnboardingAPI: BaseAPI {
 
 extension OnboardingAPI {
     public func getInviteCode(familyID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.getInviteCode(familyId: familyID)) {
-            (result) in self.disposeNetwork(result, dataModel: OnboardingInviteResult.self, completion: completion)
+        onboardingProvider.request(.getInviteCode(familyId: familyID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: OnboardingInviteResult.self,
+                                completion: completion)
         }
     }
     
@@ -29,8 +31,7 @@ extension OnboardingAPI {
     }
     
     public func postRegisterPet(request: OnboardingRegisterPetRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterPet(request)) {
-            (result) in
+        onboardingProvider.request(.postRegisterPet(request)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: [OnboardingRegisterPetResult].self,
                                 completion: completion)
@@ -44,6 +45,7 @@ extension OnboardingAPI {
                                 completion: completion)
         }
     }
+    
     public func postAppleSocialLogin(request: OnboardingAppleSocialLoginRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
         onboardingProvider.request(.postAppleSocialLogin(request)) { (result) in
             self.disposeNetwork(result,
@@ -51,4 +53,14 @@ extension OnboardingAPI {
                                 completion: completion)
         }
     }
+    
+    public func getFamily(completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.getFamily) {(result) in
+            self.disposeNetwork(result,
+                                dataModel: [OnboardingFamilyResult].self,
+                                completion: completion)
+        }
+    }
+    
+    
 }

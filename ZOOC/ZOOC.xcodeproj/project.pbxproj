@@ -61,6 +61,7 @@
 		877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */; };
 		877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeArchiveModel.swift */; };
 		877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */; };
+		8781DE4E29B273FB005ABF23 /* OnboardingFamilyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781DE4D29B273FB005ABF23 /* OnboardingFamilyResult.swift */; };
 		8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7D9296857A600C9324B /* KakaoSDKShare */; };
 		8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */; };
 		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
@@ -228,6 +229,7 @@
 		877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveListCollectionViewCell.swift; sourceTree = "<group>"; };
 		877E57EF2966C046006D82FC /* HomeArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeArchiveModel.swift; path = ZOOC/Data/Home/Model/HomeArchiveModel.swift; sourceTree = SOURCE_ROOT; };
 		877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailArchiveViewController.swift; sourceTree = "<group>"; };
+		8781DE4D29B273FB005ABF23 /* OnboardingFamilyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFamilyResult.swift; sourceTree = "<group>"; };
 		8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetCollectionViewCell.swift; sourceTree = "<group>"; };
 		8782C7E52968C0F000C9324B /* HomePetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetModel.swift; sourceTree = "<group>"; };
 		8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArchiveIndicatorView.swift; sourceTree = "<group>"; };
@@ -789,6 +791,7 @@
 				D2F1936629713FCD00AD87D3 /* OnboardingJWTTokenResult.swift */,
 				D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequest.swift */,
 				D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */,
+				8781DE4D29B273FB005ABF23 /* OnboardingFamilyResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				D26C68E6296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift in Sources */,
 				D23502F52961A69E00F01101 /* MyView.swift in Sources */,
 				D26C8616296BEF9800AEAF9B /* OnboardingRegisterPetViewController.swift in Sources */,
+				8781DE4E29B273FB005ABF23 /* OnboardingFamilyResult.swift in Sources */,
 				876554A3295848D6006BBDA9 /* BaseViewController.swift in Sources */,
 				4C6B1860296B40C00059840D /* RecordModel.swift in Sources */,
 				D23502F92961F34100F01101 /* MySettingSectionCollectionViewCell.swift in Sources */,

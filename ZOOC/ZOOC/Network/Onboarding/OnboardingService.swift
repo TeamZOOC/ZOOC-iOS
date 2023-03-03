@@ -11,6 +11,7 @@ import Moya
 import UIKit
 
 enum OnboardingService {
+    case getFamily
     case getInviteCode(familyId: String)
     case postRegisterUser(_ request: OnboardingRegisterUserRequest)
     case postRegisterPet(_ request: OnboardingRegisterPetRequest)
@@ -26,11 +27,13 @@ extension OnboardingService: BaseTargetType {
         case .postRegisterUser:
             return URLs.registerUser
         case .postRegisterPet(let request):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1") //TODO: 1로 고정되어있음 꽤 큰 작업이 될지도
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 1로 고정되어있음 꽤 큰 작업이 될지도
         case .postKakaoSocialLogin:
             return URLs.kakaoLogin
         case .postAppleSocialLogin:
             return URLs.appleLogin
+        case .getFamily:
+            return URLs.getFamily
         }
     }
     
@@ -46,6 +49,8 @@ extension OnboardingService: BaseTargetType {
             return .post
         case .postAppleSocialLogin:
             return .post
+        case .getFamily:
+            return .get
         }
     }
     
@@ -85,7 +90,10 @@ extension OnboardingService: BaseTargetType {
             }
 
             return .uploadMultipart(multipartFormDatas)
+        case .getFamily:
+            return .requestPlain
         }
+        
     }
     
     var headers: [String : String]?{
@@ -102,6 +110,8 @@ extension OnboardingService: BaseTargetType {
                     APIConstants.auth : accessToken]
         case .postAppleSocialLogin(param: _):
             return APIConstants.noTokenHeader
+        case .getFamily:
+            return APIConstants.hasTokenHeader
         }
     }
 }

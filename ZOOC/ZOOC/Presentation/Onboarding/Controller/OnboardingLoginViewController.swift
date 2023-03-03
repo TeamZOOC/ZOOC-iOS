@@ -88,10 +88,10 @@ private extension OnboardingLoginViewController {
     private func requestZOOCKaKaoLoginAPI(_ oauthToken: OAuthToken) {
         OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
             guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
-            User.jwtToken = result.jwtToken
+            User.shared.jwtToken = result.jwtToken
             
             if result.isExistedUser{
-                self.changeRootViewController(ZoocTabBarController())
+                self.requestFamilyAPI()
             } else {
                 self.pushToAgreementView()
             }
@@ -112,15 +112,30 @@ private extension OnboardingLoginViewController {
     private func requestZOOCAppleSocialLoginAPI(_ identityTokenString: String) {
         OnboardingAPI.shared.postAppleSocialLogin(request: OnboardingAppleSocialLoginRequest(identityTokenString: identityTokenString)) { result in
             guard let result = self.validateResult(result) as? OnboardingJWTTokenResult else { return }
-            User.jwtToken = result.jwtToken
-            print("드디어 받아온 jwt 토큰 \(User.jwtToken)")
+            User.shared.jwtToken = result.jwtToken
+            print("드디어 받아온 jwt 토큰 \(User.shared.jwtToken)")
             
             if result.isExistedUser{
-                self.changeRootViewController(ZoocTabBarController())
+                self.requestFamilyAPI()
             } else {
                 self.pushToAgreementView()
             }
             
+        }
+    }
+    
+    private func requestFamilyAPI() {
+        OnboardingAPI.shared.getFamily { result in
+            guard let result = self.validateResult(result) as? [OnboardingFamilyResult] else { return }
+            
+            if result.count != 0 {
+                guard let familyID = result[0].id as? String else { return }
+                User.shared.familyID = familyID
+                print(User.shared.familyID)
+                self.changeRootViewController(ZoocTabBarController())
+            } else {
+                self.pushToAgreementView()
+            }
         }
     }
 }
