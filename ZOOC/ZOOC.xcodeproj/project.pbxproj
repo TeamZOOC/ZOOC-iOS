@@ -61,6 +61,7 @@
 		877E57EE2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57ED2966AAE6006D82FC /* HomeArchiveListCollectionViewCell.swift */; };
 		877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57EF2966C046006D82FC /* HomeArchiveModel.swift */; };
 		877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E57F12966D13E006D82FC /* HomeDetailArchiveViewController.swift */; };
+		8781DE4829B20F61005ABF23 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8781DE4729B20F61005ABF23 /* FirebaseMessaging */; };
 		8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 8782C7D9296857A600C9324B /* KakaoSDKShare */; };
 		8782C7E42968B03500C9324B /* HomePetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E32968B03500C9324B /* HomePetCollectionViewCell.swift */; };
 		8782C7E62968C0F000C9324B /* HomePetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8782C7E52968C0F000C9324B /* HomePetModel.swift */; };
@@ -350,6 +351,7 @@
 			files = (
 				8764833B29523C0100F74882 /* Kingfisher in Frameworks */,
 				8782C7DA296857A600C9324B /* KakaoSDKShare in Frameworks */,
+				8781DE4829B20F61005ABF23 /* FirebaseMessaging in Frameworks */,
 				871EA35629706F4300D0E8CC /* Lottie in Frameworks */,
 				8764833229523BBD00F74882 /* SnapKit in Frameworks */,
 				8764833529523BCA00F74882 /* Then in Frameworks */,
@@ -974,6 +976,7 @@
 				87A76AB9295F760C0096F669 /* KakaoSDKUser */,
 				8782C7D9296857A600C9324B /* KakaoSDKShare */,
 				871EA35529706F4300D0E8CC /* Lottie */,
+				8781DE4729B20F61005ABF23 /* FirebaseMessaging */,
 			);
 			productName = ZOOC;
 			productReference = 87B6623D29521E7500B6FFA9 /* ZOOC.app */;
@@ -1010,6 +1013,7 @@
 				8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				87A76AB4295F760C0096F669 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				871EA35429706F4300D0E8CC /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				8781DE4629B20F61005ABF23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 87B6623E29521E7500B6FFA9 /* Products */;
 			projectDirPath = "";
@@ -1471,6 +1475,14 @@
 				kind = branch;
 			};
 		};
+		8781DE4629B20F61005ABF23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		87A76AB4295F760C0096F669 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
@@ -1506,6 +1518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8764833929523C0100F74882 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		8781DE4729B20F61005ABF23 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8781DE4629B20F61005ABF23 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		8782C7D9296857A600C9324B /* KakaoSDKShare */ = {
 			isa = XCSwiftPackageProductDependency;
