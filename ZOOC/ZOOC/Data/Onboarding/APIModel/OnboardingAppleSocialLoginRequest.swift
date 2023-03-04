@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct OnboardingAppleSocailLoginRequestDto: Codable {
+struct OnboardingAppleSocialLoginRequest: Codable {
     let identityTokenString: String
 }

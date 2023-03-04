@@ -8,9 +8,11 @@
 import Foundation
 
 struct User {
-    static var id: String = "1"
-    static var familyID: String = "1"
-    static var jwtToken: String = ""
+    static var shared = User()
+    private init() {}
     
+    var id: String = "1"
+    var familyID: String = "1"
+    var jwtToken: String = ""
 }
 
