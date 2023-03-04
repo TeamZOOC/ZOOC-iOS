@@ -14,9 +14,6 @@ struct APIConstants{
     static let applicationJSON = "application/json"
     static let multipartFormData = "multipart/form"
     static let auth = "Authorization"
-    static let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE2NzM0NjMzMTIsImV4cCI6MTgwMDAwMDAwMH0.mg8gzpzGvaAcJqCgi1QgaYGDZmsRpA184KNtPmYUch4"
-    
-    
 }
 
 extension APIConstants{
@@ -25,5 +22,4 @@ extension APIConstants{
                                        auth : User.shared.jwtToken]
     static let multipartHeader = [contentType: multipartFormData,
                                         auth : User.shared.jwtToken]
-    
 }

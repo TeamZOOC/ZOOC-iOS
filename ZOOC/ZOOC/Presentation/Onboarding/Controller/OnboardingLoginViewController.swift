@@ -80,6 +80,7 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
+        
                 self.requestZOOCKaKaoLoginAPI(oauthToken)
             }
         }
@@ -130,12 +131,15 @@ private extension OnboardingLoginViewController {
             if result.count != 0 {
                 let familyID = String(result[0].id)
                 User.shared.familyID = familyID
+                
                 self.changeRootViewController(ZoocTabBarController())
             } else {
                 self.pushToAgreementView()
             }
         }
     }
+    
+    
 }
 
 
