@@ -11,11 +11,12 @@ import Moya
 import UIKit
 
 enum OnboardingService {
+    case getFamily
     case getInviteCode(familyId: String)
-    case postRegisterUser(param: OnboardingRegisterUserRequestDto)
-    case postRegisterPet(param: OnboardingRegisterPetRequestDto)
+    case postRegisterUser(_ request: OnboardingRegisterUserRequest)
+    case postRegisterPet(_ request: OnboardingRegisterPetRequest)
     case postKakaoSocialLogin(accessToken: String)
-    case postAppleSocialLogin(param: OnboardingAppleSocailLoginRequestDto)
+    case postAppleSocialLogin(_ request: OnboardingAppleSocialLoginRequest)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -25,12 +26,14 @@ extension OnboardingService: BaseTargetType {
             return URLs.getInviteCode.replacingOccurrences(of: "{familyId}", with: familyId)
         case .postRegisterUser:
             return URLs.registerUser
-        case .postRegisterPet(param: _):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
+        case .postRegisterPet(let request):
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 1로 고정되어있음 꽤 큰 작업이 될지도
         case .postKakaoSocialLogin:
             return URLs.kakaoLogin
         case .postAppleSocialLogin:
             return URLs.appleLogin
+        case .getFamily:
+            return URLs.getFamily
         }
     }
     
@@ -38,14 +41,16 @@ extension OnboardingService: BaseTargetType {
         switch self {
         case .getInviteCode:
             return .get
-        case .postRegisterUser(param: _):
+        case .postRegisterUser:
             return .post
-        case .postRegisterPet(param: _):
+        case .postRegisterPet:
             return .post
         case .postKakaoSocialLogin:
             return .post
         case .postAppleSocialLogin:
             return .post
+        case .getFamily:
+            return .get
         }
     }
     
@@ -54,13 +59,13 @@ extension OnboardingService: BaseTargetType {
         switch self {
         case .getInviteCode:
             return .requestPlain
-        case .postRegisterUser(param: let param):
+        case .postRegisterUser(let param):
             return .requestJSONEncodable(param)
         case .postKakaoSocialLogin:
             return .requestPlain
-        case .postAppleSocialLogin(param: let param):
+        case .postAppleSocialLogin(let param):
             return .requestJSONEncodable(param)
-        case .postRegisterPet(param: let param):
+        case .postRegisterPet(let param):
             var multipartFormDatas: [MultipartFormData] = []
             
             for name in param.petNames {
@@ -85,7 +90,10 @@ extension OnboardingService: BaseTargetType {
             }
 
             return .uploadMultipart(multipartFormDatas)
+        case .getFamily:
+            return .requestPlain
         }
+        
     }
     
     var headers: [String : String]?{
@@ -102,6 +110,8 @@ extension OnboardingService: BaseTargetType {
                     APIConstants.auth : accessToken]
         case .postAppleSocialLogin(param: _):
             return APIConstants.noTokenHeader
+        case .getFamily:
+            return APIConstants.hasTokenHeader
         }
     }
 }
