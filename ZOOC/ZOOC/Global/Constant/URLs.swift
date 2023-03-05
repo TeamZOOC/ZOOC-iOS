@@ -15,7 +15,7 @@ public enum URLs{
     static let getFamily = "/family/"
     static let getInviteCode = "/family/code/{familyId}"
     static let registerPet = "/family/pets/{familyId}"
-    static let registerUser = "/family/user"
+    static let joinFamily = "/family/user"
     
     //MARK: - User
     
@@ -24,6 +24,7 @@ public enum URLs{
     static let editProfile = "/user/profile"
     static let signUp = "/user/create?code={code}"
     static let deleteUser = "/user"
+    static let fcmToken = "/user/fcm_token"
     
     //MARK: - Record
     static let getMission = "/record/mission/{familyId}"

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateViewController: BaseViewController {
+final class OnboardingJoinFamilyViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -47,30 +47,37 @@ final class OnboardingParticipateViewController: BaseViewController {
     }
     
     @objc private func nextButtonDidTap() {
-        registerUser()
+        requestJoinFamilyAPI()
     }
 }
 
-extension OnboardingParticipateViewController {
-    func registerUser() {
+extension OnboardingJoinFamilyViewController {
+    private func requestJoinFamilyAPI() {
         guard let code = onboardingParticipateView.familyCodeTextField.text else { return }
-        let param = OnboardingRegisterUserRequest(code: code)
-        OnboardingAPI.shared.postRegisterUser(requset: param) { result in
-            guard let result = self.validateResult(result) as? SimpleResponse else { return }
+        let param = OnboardingJoinFamilyRequest(code: code)
+        OnboardingAPI.shared.postJoinFamily(requset: param) { result in
+            guard let result = self.validateResult(result) as? OnboardingJoinFamilyResult else { return }
+            User.shared.familyID = String(result.familyID)
+            self.requestFCMTokenAPI()
+        }
+    }
+    
+    private func requestFCMTokenAPI() {
+        OnboardingAPI.shared.patchFCMToken(fcmToken: User.shared.fcmToken) { result in
+            self.pushToParticipateCompletedView()
             
-            print(result)
         }
     }
     
     func pushToParticipateCompletedView() {
-        let onboardingParticipateCompletedViewController = OnboardingParticipateCompletedViewController()
+        let onboardingParticipateCompletedViewController = OnboardingJoinFamilyCompletedViewController()
         self.navigationController?.pushViewController(onboardingParticipateCompletedViewController, animated: true)
     }
 }
 
 //MARK: - UITextFieldDelegate
 
-extension OnboardingParticipateViewController: UITextFieldDelegate {
+extension OnboardingJoinFamilyViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.onboardingParticipateView.nextButton.backgroundColor = .zoocGradientGreen
         self.onboardingParticipateView.nextButton.isEnabled = true
