@@ -13,10 +13,11 @@ import UIKit
 enum OnboardingService {
     case getFamily
     case getInviteCode(familyId: String)
-    case postRegisterUser(_ request: OnboardingRegisterUserRequest)
+    case postJoinFamily(_ request: OnboardingJoinFamilyRequest)
     case postRegisterPet(_ request: OnboardingRegisterPetRequest)
     case postKakaoSocialLogin(accessToken: String)
     case postAppleSocialLogin(_ request: OnboardingAppleSocialLoginRequest)
+    case patchFCMToken(fcmToken: String)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -24,8 +25,8 @@ extension OnboardingService: BaseTargetType {
         switch self {
         case .getInviteCode(let familyId):
             return URLs.getInviteCode.replacingOccurrences(of: "{familyId}", with: familyId)
-        case .postRegisterUser:
-            return URLs.registerUser
+        case .postJoinFamily:
+            return URLs.joinFamily
         case .postRegisterPet(let request):
             return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 1로 고정되어있음 꽤 큰 작업이 될지도
         case .postKakaoSocialLogin:
@@ -34,6 +35,8 @@ extension OnboardingService: BaseTargetType {
             return URLs.appleLogin
         case .getFamily:
             return URLs.getFamily
+        case .patchFCMToken:
+            return URLs.fcmToken
         }
     }
     
@@ -41,7 +44,7 @@ extension OnboardingService: BaseTargetType {
         switch self {
         case .getInviteCode:
             return .get
-        case .postRegisterUser:
+        case .postJoinFamily:
             return .post
         case .postRegisterPet:
             return .post
@@ -51,6 +54,8 @@ extension OnboardingService: BaseTargetType {
             return .post
         case .getFamily:
             return .get
+        case .patchFCMToken:
+            return .patch
         }
     }
     
@@ -59,12 +64,16 @@ extension OnboardingService: BaseTargetType {
         switch self {
         case .getInviteCode:
             return .requestPlain
-        case .postRegisterUser(let param):
+            
+        case .postJoinFamily(let param):
             return .requestJSONEncodable(param)
+            
         case .postKakaoSocialLogin:
             return .requestPlain
+            
         case .postAppleSocialLogin(let param):
             return .requestJSONEncodable(param)
+            
         case .postRegisterPet(let param):
             var multipartFormDatas: [MultipartFormData] = []
             
@@ -74,7 +83,7 @@ extension OnboardingService: BaseTargetType {
                     name: "petNames"))
             }
 
-            //photo! 나중에 바꿔주기
+            //TODO: photo! 나중에 바꿔주기
             for photo in param.files {
                     multipartFormDatas.append(MultipartFormData(
                         provider: .data("\(photo!)".data(using: .utf8)!),
@@ -88,10 +97,14 @@ extension OnboardingService: BaseTargetType {
                     provider: .data("\(isPhoto)".data(using: .utf8)!),
                     name: "isPetPhotos"))
             }
-
             return .uploadMultipart(multipartFormDatas)
+            
         case .getFamily:
             return .requestPlain
+            
+        case .patchFCMToken(fcmToken: let fcmToken):
+            return .requestParameters(parameters: ["fcmToken": fcmToken],
+                                      encoding: JSONEncoding.default)
         }
         
     }
@@ -101,7 +114,7 @@ extension OnboardingService: BaseTargetType {
         case .getInviteCode(familyId: _):
             return APIConstants.hasTokenHeader
             
-        case .postRegisterUser(param: _):
+        case .postJoinFamily(param: _):
             return APIConstants.hasTokenHeader
             
         case .postRegisterPet(param: _):
@@ -115,6 +128,9 @@ extension OnboardingService: BaseTargetType {
             return APIConstants.noTokenHeader
             
         case .getFamily:
+            return APIConstants.hasTokenHeader
+            
+        case .patchFCMToken:
             return APIConstants.hasTokenHeader
         }
     }
