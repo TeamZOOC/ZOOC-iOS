@@ -69,7 +69,7 @@ private extension OnboardingCompleteProfileViewController {
     }
     
     func pushToParticipateCompletedView() {
-        let onboardingParticipateViewController = OnboardingParticipateViewController()
+        let onboardingParticipateViewController = OnboardingJoinFamilyViewController()
         self.navigationController?.pushViewController(onboardingParticipateViewController, animated: true)
     }
     

@@ -28,7 +28,6 @@ final class OnboardingLoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         target()
     }
     
@@ -56,7 +55,7 @@ final class OnboardingLoginViewController: BaseViewController {
     }
     
     @objc func goHomeButtonDidTap(){
-        changeRootViewController(ZoocTabBarController())
+        presentBottomAlert("해당 이스터에그 기능은 종료되었습니다.\n 소셜로그인을 이용해주세요.")
     }
 }
 
@@ -80,6 +79,7 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
+        
                 self.requestZOOCKaKaoLoginAPI(oauthToken)
             }
         }
@@ -130,12 +130,19 @@ private extension OnboardingLoginViewController {
             if result.count != 0 {
                 let familyID = String(result[0].id)
                 User.shared.familyID = familyID
-                self.changeRootViewController(ZoocTabBarController())
+                self.requestFCMTokenAPI()
             } else {
                 self.pushToAgreementView()
             }
         }
     }
+    
+    private func requestFCMTokenAPI() {
+        OnboardingAPI.shared.patchFCMToken(fcmToken: User.shared.fcmToken) { result in
+            self.changeRootViewController(ZoocTabBarController())
+        }
+    }
+    
 }
 
 

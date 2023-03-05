@@ -22,10 +22,10 @@ extension OnboardingAPI {
         }
     }
     
-    public func postRegisterUser(requset: OnboardingRegisterUserRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterUser(requset)) { (result) in
+    public func postJoinFamily(requset: OnboardingJoinFamilyRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.postJoinFamily(requset)) { (result) in
             self.disposeNetwork(result,
-                                dataModel: SimpleResponse.self,
+                                dataModel: OnboardingJoinFamilyResult.self,
                                 completion: completion)
         }
     }
@@ -62,5 +62,12 @@ extension OnboardingAPI {
         }
     }
     
+    public func patchFCMToken(fcmToken: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.patchFCMToken(fcmToken: fcmToken)) {(result) in
+            self.disposeNetwork(result,
+                                dataModel: VoidResult.self,
+                                completion: completion)
+        }
+    }
     
 }
