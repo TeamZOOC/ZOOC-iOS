@@ -38,6 +38,7 @@
 		8731C4B229A9400D00006743 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */; };
 		8731C4B429A94A6900006743 /* HomeEmojiCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */; };
 		8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */; };
+		874AE9F829B49D5A007A637D /* VoidResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874AE9F729B49D5A007A637D /* VoidResult.swift */; };
 		876483192952366A00F74882 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876483182952366A00F74882 /* Image.swift */; };
 		8764831B2952367400F74882 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831A2952367400F74882 /* UIViewController+.swift */; };
 		8764831D2952368100F74882 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8764831C2952368100F74882 /* UIView+.swift */; };
@@ -211,6 +212,7 @@
 		8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmojiCommentRequest.swift; sourceTree = "<group>"; };
 		8747389D299E84B400C4CC52 /* EmojiBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiBottomSheetViewController.swift; sourceTree = "<group>"; };
+		874AE9F729B49D5A007A637D /* VoidResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidResult.swift; sourceTree = "<group>"; };
 		876483182952366A00F74882 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		8764831A2952367400F74882 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8764831C2952368100F74882 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -381,7 +383,6 @@
 		871EA34C2970413D00D0E8CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				871EA341296F73DE00D0E8CC /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				871EA350297042D800D0E8CC /* RecordResult.swift */,
+				874AE9F729B49D5A007A637D /* VoidResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -500,12 +502,12 @@
 			isa = PBXGroup;
 			children = (
 				87A76ABE2960423C0096F669 /* GenericResponse.swift */,
+				871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */,
 				87A76AC22960427C0096F669 /* APIConstants.swift */,
 				87A76AC7296043090096F669 /* MoyaLoggerPlugin.swift */,
 				87D5AF5929606AC900CA7F12 /* NetworkResult.swift */,
 				87D5AF5B29606AFC00CA7F12 /* BaseTargetType.swift */,
 				871EA33F296F6E5000D0E8CC /* BaseAPI.swift */,
-				871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -879,6 +881,7 @@
 		87B6625729521EC200B6FFA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				871EA341296F73DE00D0E8CC /* User.swift */,
 				871EA34B2970413700D0E8CC /* Common */,
 				87A76A96295F6DE50096F669 /* Onboarding */,
 				87A76A99295F6E0A0096F669 /* Home */,
@@ -1167,6 +1170,7 @@
 				D27D9568296CB5930097CD03 /* OnboardingReInviteFamilyView.swift in Sources */,
 				D27D9566296CA99B0097CD03 /* OnboardingInviteFamilyCompletedViewController.swift in Sources */,
 				8718A06A29ADE6E8001C7460 /* BaseTextField.swift in Sources */,
+				874AE9F829B49D5A007A637D /* VoidResult.swift in Sources */,
 				8747389E299E84B400C4CC52 /* EmojiBottomSheetViewController.swift in Sources */,
 				8718A06829ADB423001C7460 /* GalleryAlertController.swift in Sources */,
 				D26C85FA296B109500AEAF9B /* OnboardingChooseFamilyRoleViewController.swift in Sources */,

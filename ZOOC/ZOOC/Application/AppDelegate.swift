@@ -73,7 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
               } else if let token = token {
-                print("FCM registration token: \(token)")
+                  User.shared.fcmToken = token
+                 print("FCM registration token: \(token)")
               }
         }
         

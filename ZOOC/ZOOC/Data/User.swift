@@ -14,5 +14,6 @@ struct User {
     var id: String = "1"
     var familyID: String = "1"
     var jwtToken: String = ""
+    var fcmToken: String = ""
 }
 
