@@ -92,7 +92,7 @@ final class OnboardingLoginViewController: BaseViewController {
     }
     
     private func pushToAgreementView() {
-        let agreementViewController = OnboardingAgreementViewController()
+        let agreementViewController = OnboardingAgreementViewController(onboardingAgreementViewModel: OnboardingAgreementViewModel())
         self.navigationController?.pushViewController(agreementViewController, animated: true)
     }
     
@@ -131,7 +131,7 @@ private extension OnboardingLoginViewController {
                     print(error)
                     return
                 }
-        
+                
                 self.requestZOOCKaKaoLoginAPI(oauthToken)
             }
         }
@@ -147,26 +147,7 @@ private extension OnboardingLoginViewController {
             } else {
                 self.pushToAgreementView()
             }
-            
         }
-    }
-    
-    func postKakaoSocialLogin(oauthToken: OAuthToken) {
-        OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
-            guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
-            User.jwtToken = result.jwtToken
-        }
-    }
-    
-    func pushToAgreementView() {
-        let agreementViewController = OnboardingAgreementViewController(onboardingAgreementViewModel: OnboardingAgreementViewModel())
-        self.navigationController?.pushViewController(agreementViewController, animated: true)
-    }
-}
-extension OnboardingLoginViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
-    
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
     }
     
     private func requestAppleSocialLoginAPI() {
@@ -232,14 +213,14 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
                 //                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
                 let identityTokenString = String(data: identityToken, encoding: .utf8) {
                 requestZOOCAppleSocialLoginAPI(identityTokenString)
-//                print("authorizationCode: \(authorizationCode)")
-//                print("identityToken: \(identityToken)")
-//                print("authorizationCodeString: \(authorizationCodeString)")
+                //                print("authorizationCode: \(authorizationCode)")
+                //                print("identityToken: \(identityToken)")
+                //                print("authorizationCodeString: \(authorizationCodeString)")
                 print("identityTokenString: \(identityTokenString)")
             }
-//            print("User ID : \(userIdentifier)")
-//            print("User Email : \(email ?? "")")
-//            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
+            //            print("User ID : \(userIdentifier)")
+            //            print("User Email : \(email ?? "")")
+            //            print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
         default:
             break
         }

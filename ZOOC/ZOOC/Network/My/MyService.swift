@@ -110,8 +110,7 @@ extension MyService: BaseTargetType {
         case .deleteAccount:
             return APIConstants.hasTokenHeader
         case .postRegisterPet(param: _):
-            return [APIConstants.contentType: APIConstants.multipartFormData,
-                    APIConstants.auth : APIConstants.accessToken]
+            return APIConstants.multipartHeader
         }
         
     }
