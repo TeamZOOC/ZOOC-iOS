@@ -89,14 +89,14 @@ final class MyEditProfileView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
-                    titleLabel,
-                    profileImageButton,
-                    cameraIconImageView,
-                    nameTextField,
-                    underLineView,
-                    numberOfNameCharactersLabel,
-                    completeButton)
+        self.addSubviews(backButton,
+                    appInformationLabel,
+                    editProfileImageButton,
+                    editProfileCameraIconImageView,
+                    editProfileNameTextField,
+                    profileNameTextFieldUnderLineView,
+                    profileNameCountLabel,
+                    editCompletedButton)
     }
     
     private func layout() {

@@ -93,14 +93,15 @@ final class OnboardingInviteFamilyView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
-                    progressBarView,
-                    titleLabel,
-                    descriptionLabel,
-                    inviteImageView,
-                    inviteLatelyButton,
-                    inviteButton)
-        
+        self.addSubviews(
+            backButton,
+            progressBarView,
+            titleLabel,
+            descriptionLabel,
+            inviteImageView,
+            inviteLatelyButton,
+            inviteButton
+        )
         progressBarView.addSubview(completedProgressBarView)
     }
     

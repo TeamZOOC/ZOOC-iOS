@@ -10,13 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class MyRegisterPetViewController: UIViewController {
+final class MyRegisterPetViewController: BaseViewController {
     
     //MARK: - Properties
     
     private let myRegisterPetView = MyRegisterPetView()
     private let myPetRegisterViewModel: MyPetRegisterViewModel
-    private let defaultpetProfile = MyPetRegisterModel(profileName: "", profileImage: Image.defaultProfilePet)
     
     private var myPetMemberData: [PetResult] = []
     
@@ -24,7 +23,6 @@ final class MyRegisterPetViewController: UIViewController {
     
     init(myPetRegisterViewModel: MyPetRegisterViewModel) {
         self.myPetRegisterViewModel = myPetRegisterViewModel
-        myPetRegisterViewModel.petList = [defaultpetProfile]
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,6 +56,7 @@ final class MyRegisterPetViewController: UIViewController {
     
     func dataSend(myPetMemberData: [PetResult]) {
         self.myPetMemberData = myPetMemberData
+        myPetRegisterViewModel.petCount = self.myPetMemberData.count
     }
     
     //MARK: - Action Method
@@ -67,7 +66,34 @@ final class MyRegisterPetViewController: UIViewController {
     }
     
     @objc private func registerPetButtonDidTap() {
-        registerPet()
+        var names: [String] = []
+        var photos: [Data] = []
+        var photo: Data
+        var isPhotos: [Bool] = []
+        var isPhoto: Bool = true
+        
+        for pet in self.myPetRegisterViewModel.petList {
+            guard let photo = pet.image.jpegData(compressionQuality: 1.0) else {
+                photo = Data()
+                isPhoto = false
+                return
+            }
+            names.append(pet.name)
+            photos.append(photo)
+            isPhotos.append(isPhoto)
+        }
+        
+        MyAPI.shared.registerPet(
+            param: MyRegisterPetRequestDto(petNames: names, files: photos, isPetPhotos: isPhotos)
+        ) { result in
+            guard let result = self.validateResult(result) as? [MyRegisterPetResult] else {
+                return
+            }
+            
+            print(result)
+            self.dismiss(animated: true)
+        }
+        
     }
 }
 
@@ -107,19 +133,21 @@ extension MyRegisterPetViewController: UITableViewDataSource {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisteredPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisteredPetTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             cell.dataBind(data: myPetMemberData[indexPath.row], index: indexPath.row, petData: myPetMemberData)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyRegisterPetTableViewCell.cellIdentifier, for: indexPath)
                     as? MyRegisterPetTableViewCell else { return UITableViewCell() }
+            cell.selectionStyle = .none
             cell.delegate = self
             
             [cell.deletePetProfileButton,
              cell.petProfileImageButton,
              cell.petProfileNameTextField].forEach { $0.tag = indexPath.row }
             
-            cell.petProfileNameTextField.text = self.myPetRegisterViewModel.petList[indexPath.row].profileName
-            cell.petProfileImageButton.setImage(self.myPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
+            cell.petProfileNameTextField.text = self.myPetRegisterViewModel.petList[indexPath.row].name
+            cell.petProfileImageButton.setImage(self.myPetRegisterViewModel.petList[indexPath.row].image, for: .normal)
             
             cell.myPetRegisterViewModel.deleteCellClosure = {
                 self.myPetRegisterViewModel.deleteCell(index: self.myPetRegisterViewModel.index)
@@ -184,7 +212,7 @@ extension MyRegisterPetViewController: MyDeleteButtonTappedDelegate {
     
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage) {
         if let _ = myRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
-            self.myPetRegisterViewModel.petList[tag] = MyPetRegisterModel(profileName: text, profileImage: image)
+            self.myPetRegisterViewModel.petList[tag] = MyPetRegisterModel(name: text, image: image)
         }
         self.myPetRegisterViewModel.checkCanRegister(
             button: &self.myRegisterPetView.registerPetButton.isEnabled,
@@ -203,7 +231,7 @@ extension MyRegisterPetViewController {
 extension MyRegisterPetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        self.myPetRegisterViewModel.petList[self.myPetRegisterViewModel.index].profileImage = image
+        self.myPetRegisterViewModel.petList[self.myPetRegisterViewModel.index].image = image
         self.myRegisterPetView.registerPetTableView.reloadData()
     }
 }

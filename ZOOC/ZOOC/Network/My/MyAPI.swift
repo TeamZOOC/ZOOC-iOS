@@ -15,7 +15,7 @@ final class MyAPI: BaseAPI {
 }
 
 extension MyAPI{
-    func getMyPageData(completion: @escaping (NetworkResult<Any>) -> Void) {
+    public func getMyPageData(completion: @escaping (NetworkResult<Any>) -> Void) {
         myProvider.request(.getMyPageData) { (result) in
             self.disposeNetwork(result,
                                 dataModel: MyResult.self,
@@ -51,6 +51,15 @@ extension MyAPI{
         myProvider.request(.deleteAccount) { (result) in
             self.disposeNetwork(result,
                                 dataModel: MyResult.self,
+                                completion: completion)
+        }
+    }
+    
+    public func registerPet(param: MyRegisterPetRequestDto, completion: @escaping (NetworkResult<Any>) -> Void) {
+        myProvider.request(.postRegisterPet(param: param)) {
+            (result) in
+            self.disposeNetwork(result,
+                                dataModel: [MyRegisterPetResult].self,
                                 completion: completion)
         }
     }

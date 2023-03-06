@@ -7,12 +7,50 @@
 
 import UIKit
 
+enum MyProfile {
+    case family
+    case my
+    
+    var borderWidth: CGFloat {
+        switch self {
+        case .family:
+            return 0
+        case .my:
+            return 2
+        }
+    }
+    
+    var borderColor: UIColor {
+        switch self {
+        case .family:
+            return UIColor.clear
+        case .my:
+            return UIColor.zoocMainGreen
+        }
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .family:
+            return .zoocDarkGray1
+        case .my:
+            return .zoocMainGreen
+        }
+    }
+    
+    func configProfile(imageView: UIImageView, label: UILabel) {
+        imageView.layer.borderWidth = self.borderWidth
+        imageView.layer.borderColor = self.borderColor.cgColor
+        label.textColor = self.textColor
+    }
+}
+
 final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Components
     
-    public var familyImageView = UIImageView()
-    public var familyNameLabel = UILabel()
+    public var profileImageView = UIImageView()
+    public var profileNameLabel = UILabel()
     
     //MARK: - Life Cycles
     
@@ -30,19 +68,17 @@ final class MyFamilyCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        configFamilyProfile()
     }
     
     //MARK: - Custom Method
     
     private func style() {
-        familyImageView.do {
+        profileImageView.do {
             $0.makeCornerRadius(ratio: 24)
             $0.contentMode = .scaleAspectFill
         }
         
-        familyNameLabel.do {
+        profileNameLabel.do {
             $0.textAlignment = .center
             $0.font = .zoocCaption
             $0.textColor = .zoocDarkGray1
@@ -50,47 +86,36 @@ final class MyFamilyCollectionViewCell: UICollectionViewCell {
     }
     
     private func hierarchy() {
-        contentView.addSubviews(familyImageView, familyNameLabel)
+        contentView.addSubviews(profileImageView, profileNameLabel)
     }
     
     private func layout() {
-        familyImageView.snp.makeConstraints {
+        profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.size.equalTo(48)
         }
         
-        familyNameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.familyImageView.snp.bottom).offset(6)
+        profileNameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.profileImageView.snp.bottom).offset(6)
             $0.leading.trailing.equalToSuperview()
         }
     }
     
-    public func dataBind(data: UserResult, myProfileData: UserResult?) {
-        familyNameLabel.text = data.nickName
+    public func dataBind(data: MyUser, myProfileData: MyUser?) {
+        profileNameLabel.text = data.nickName
         data.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: data.photo!)
-        data.nickName == myProfileData?.nickName ? configMyProfile() : configFamilyProfile()
+        let profile: MyProfile = data.nickName == myProfileData?.nickName ? .my : .family
+        profile.configProfile(imageView: profileImageView, label: profileNameLabel)
     }
 }
 
 extension MyFamilyCollectionViewCell {
-    func configFamilyProfile() {
-        familyImageView.layer.borderWidth = 0
-        familyImageView.layer.borderColor = UIColor.clear.cgColor
-        familyNameLabel.textColor = .zoocDarkGray1
-    }
-    
-    func configMyProfile() {
-        familyImageView.layer.borderWidth = 2
-        familyImageView.layer.borderColor = UIColor.zoocMainGreen.cgColor
-        familyNameLabel.textColor = .zoocMainGreen
-    }
-    
     func setDefaultProfileImage() {
-        familyImageView.image = Image.defaultProfile
+        profileImageView.image = Image.defaultProfile
     }
     
     func setFamilyMemberProfileImage(photo: String) {
-        familyImageView.kfSetImage(url: photo)
+        profileImageView.kfSetImage(url: photo)
     }
 }

@@ -8,6 +8,6 @@
 import UIKit
 
 struct OnboardingPetRegisterModel {
-    var profileImage: UIImage
-    var profileName: String
+    var image: UIImage
+    var name: String
 }

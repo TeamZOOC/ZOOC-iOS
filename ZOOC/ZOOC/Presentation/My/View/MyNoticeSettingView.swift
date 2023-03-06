@@ -93,7 +93,7 @@ final class MyNoticeSettingView: UIView {
     }
     
     private func hierarchy() {
-        addSubviews(backButton,
+        self.addSubviews(backButton,
                     noticeSettingLabel,
                     noticeSettingSubView)
         

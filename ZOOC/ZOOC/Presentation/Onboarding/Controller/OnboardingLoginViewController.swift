@@ -14,6 +14,58 @@ import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
 
+//enum KakaoLogin {
+//    case kakaoTalk
+//    case kakaoAccount
+//
+////    func loginKakao() async -> Bool {
+////        var success: Bool = false
+////        switch self {
+////        case .kakaoTalk:
+////            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+////                guard let oauthToken = oauthToken else {
+////                    guard let error = error else { return }
+////                    print(error)
+////                    return
+////                }
+////                self.postKakaoSocialLogin(oauthToken: oauthToken)
+////            }
+////
+////        case .kakaoAccount:
+////            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+////                guard let oauthToken = oauthToken else {
+////                    guard let error = error else { return }
+////                    print(error)
+////                    return
+////                }
+////                self.postKakaoSocialLogin(oauthToken: oauthToken)
+////            }
+////        }
+////        success = User.jwtToken != "" ? true : false
+////        return success
+////    }
+////
+////    func postKakaoSocialLogin(oauthToken: OAuthToken) {
+////        OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+////            switch result {
+////            case .success(let data):
+////                guard let data = data as? OnboardingTokenData else { return}
+////                User.jwtToken = data.jwtToken
+////            case .requestErr(let message):
+////                print(message)
+////            case .decodedErr:
+////                print("디코딩 오류가 발생했습니다.")
+////            case .pathErr:
+////                print("잘못된 경로입니다.")
+////            case .serverErr:
+////                print("서버 오류 혹은 메소드 오류입니다.")
+////            case .networkFail:
+////                print("네트워크가 불안정합니다.")
+////            }
+////        }
+////    }
+////}
+
 final class OnboardingLoginViewController: BaseViewController {
     
     //MARK: - Properties
@@ -99,6 +151,24 @@ private extension OnboardingLoginViewController {
         }
     }
     
+    func postKakaoSocialLogin(oauthToken: OAuthToken) {
+        OnboardingAPI.shared.postKakaoSocialLogin(accessToken: "Bearer \(oauthToken.accessToken)") { result in
+            guard let result = self.validateResult(result) as? OnboardingTokenData else { return }
+            User.jwtToken = result.jwtToken
+        }
+    }
+    
+    func pushToAgreementView() {
+        let agreementViewController = OnboardingAgreementViewController(onboardingAgreementViewModel: OnboardingAgreementViewModel())
+        self.navigationController?.pushViewController(agreementViewController, animated: true)
+    }
+}
+extension OnboardingLoginViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
     private func requestAppleSocialLoginAPI() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
@@ -159,7 +229,7 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             if  let authorizationCode = appleIDCredential.authorizationCode,
                 let identityToken = appleIDCredential.identityToken,
-//                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
+                //                let authorizationCodeString = String(data: authorizationCode, encoding: .utf8),
                 let identityTokenString = String(data: identityToken, encoding: .utf8) {
                 requestZOOCAppleSocialLoginAPI(identityTokenString)
 //                print("authorizationCode: \(authorizationCode)")
@@ -179,3 +249,4 @@ extension OnboardingLoginViewController: ASAuthorizationControllerPresentationCo
         // Handle error.
     }
 }
+

@@ -79,25 +79,9 @@ final class MyRegisterPetTableFooterView: UITableViewHeaderFooterView {
         }
     }
     
-    public func dataBind(isFull: Bool) {
-        updateUI(isFull: isFull)
-    }
-    
     //MARK: - Action Method
     
     @objc func addPetProfileButtonDidTap() {
         myPetRegisterViewModel.addCellClosure?()
-    }
-}
-
-extension MyRegisterPetTableFooterView {
-    func updateUI(isFull: Bool) {
-       if isFull{
-           petRegisterButtonSeparatorLineView.isHidden = true
-           addPetProfileButton.isHidden = true
-        } else {
-            petRegisterButtonSeparatorLineView.isHidden = false
-            addPetProfileButton.isHidden = false
-        }
     }
 }
