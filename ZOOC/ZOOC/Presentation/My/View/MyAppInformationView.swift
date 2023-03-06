@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class AppInformationView: UIView {
+final class MyAppInformationView: UIView {
     
     //MARK: - UI Components
     

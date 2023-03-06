@@ -33,7 +33,7 @@ extension HomeAPI{
     }
     
     func getTotalArchive(petID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getTotalArchive(familyID: User.familyID, petID: petID)) { (result) in
+        homeProvider.request(.getTotalArchive(familyID: User.shared.familyID, petID: petID)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: [HomeArchiveResult].self,
                                 completion: completion)
@@ -41,7 +41,15 @@ extension HomeAPI{
     }
     
     func getDetailArchive(recordID: String, completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getDetailArchive(familyID: User.familyID, recordID: recordID)) { (result) in
+        homeProvider.request(.getDetailArchive(familyID: User.shared.familyID, recordID: recordID)) { (result) in
+            self.disposeNetwork(result,
+                                dataModel: HomeDetailArchiveResult.self,
+                                completion: completion)
+        }
+    } //아마 사용안함
+    
+    func getDetailPetArchive(recordID: String, petID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.getDetailPetArchive(familyID: User.shared.familyID, recordID: recordID, petID: petID)) { (result) in
             self.disposeNetwork(result,
                                 dataModel: HomeDetailArchiveResult.self,
                                 completion: completion)
@@ -60,13 +68,13 @@ extension HomeAPI{
         }
     }
     
-    func getDetailPetArchive(recordID: String, petID: String ,completion: @escaping (NetworkResult<Any>) -> Void) {
-        homeProvider.request(.getDetailPetArchive(familyID: User.familyID, recordID: recordID, petID: petID)) { (result) in
-            self.disposeNetwork(result,
-                                dataModel: HomeDetailArchiveResult.self,
-                                completion: completion)
+    func postEmojiComment(recordID: String, emojiID: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        homeProvider.request(.postEmojiComment(recordID: recordID, emojiID: emojiID)) { (result) in
+            self.disposeNetwork(result, dataModel: [CommentResult].self, completion: completion)
         }
     }
+    
+    
 }
 
 

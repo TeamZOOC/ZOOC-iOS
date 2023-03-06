@@ -39,6 +39,8 @@ final class HomeDetailArchiveViewController : BaseViewController {
     
     //MARK: - UI Components
     
+    private let emojiBottomSheetViewController = EmojiBottomSheetViewController()
+    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     
@@ -104,6 +106,7 @@ final class HomeDetailArchiveViewController : BaseViewController {
         commentCollectionView.delegate = self
         commentCollectionView.dataSource = self
         commentView.delegate = self
+        emojiBottomSheetViewController.delegate = self
         
         commentCollectionView.register(HomeCommentCollectionViewCell.self,
                                        forCellWithReuseIdentifier: HomeCommentCollectionViewCell.cellIdentifier)
@@ -128,6 +131,10 @@ final class HomeDetailArchiveViewController : BaseViewController {
     }
     
     private func style() {
+        emojiBottomSheetViewController.do{
+            $0.modalPresentationStyle = .overFullScreen
+        }
+        
         scrollView.do {
             $0.bounces = false
             $0.showsVerticalScrollIndicator = false
@@ -354,6 +361,14 @@ final class HomeDetailArchiveViewController : BaseViewController {
         }
     }
     
+    private func requestEmojiCommentAPI(recordID: String, emojiID: Int) {
+        HomeAPI.shared.postEmojiComment(recordID: recordID, emojiID: emojiID) { result in
+            guard let result = self.validateResult(result) as? [CommentResult] else { return }
+            
+            self.commentsData = result
+        }
+    }
+    
     //MARK: - Action Method
     
     @objc
@@ -387,11 +402,6 @@ final class HomeDetailArchiveViewController : BaseViewController {
         }
         
         requestDetailArchiveAPI(recordID: String(id), petID: petID)
-    }
-    
-    @objc
-    internal func emojiButtonDidTap() {
-        presentBottomAlert("이모지 기능은 곧 만나요~")
     }
     
     @objc
@@ -465,13 +475,24 @@ extension HomeDetailArchiveViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - CommentViewDelegate
 
-extension HomeDetailArchiveViewController: HomeCommentViewDelegate{
-    
+extension HomeDetailArchiveViewController: HomeCommentViewDelegate {
+   
     func uploadButtonDidTap(_ textField: UITextField, text: String) {
-        guard let id = detailArchiveData?.record.id else { return }
+        guard let recordID = detailArchiveData?.record.id else { return }
         textField.text = nil
-        requestCommentsAPI(recordID: String(id), text: text)
+        requestCommentsAPI(recordID: String(recordID), text: text)
     }
     
-    
+    func emojiButtonDidTap() {
+        present(emojiBottomSheetViewController, animated: false)
+    }
+}
+
+//MARK: - 구역
+
+extension HomeDetailArchiveViewController: EmojiBottomSheetDelegate{
+    func emojiDidSelected(emojiID: Int) {
+        guard let recordID = detailArchiveData?.record.id else { return }
+        requestEmojiCommentAPI(recordID: String(recordID), emojiID: emojiID)
+    }
 }

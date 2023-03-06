@@ -78,7 +78,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     @objc private func pushToRegisterProfileImageView() {
         let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
         let profileName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
-        onboardingRegisterProfileImageViewController.dataSend(profileName: profileName)
+        onboardingRegisterProfileImageViewController.dataBind(nickName: profileName)
         self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
     }
     

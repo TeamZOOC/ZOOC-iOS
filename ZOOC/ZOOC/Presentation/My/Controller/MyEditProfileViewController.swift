@@ -10,74 +10,80 @@ import UIKit
 import SnapKit
 import Then
 
-final class EditProfileViewController: BaseViewController {
+final class MyEditProfileViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private lazy var editProfileView = EditProfileView()
-    private var myProfileData: MyUser?
+    private var myProfileData: UserResult?
+    private var editMyProfileData = EditProfileRequest()
     
-    private var isPhoto: Bool = true
-    private var myProfileImage: UIImage?
-    private var myProfileNickName: String?
+    //MARK: - UIComponents
     
+    private lazy var rootView = MyEditProfileView()
+    private let galleryAlertController = GalleryAlertController()
+    private lazy var imagePickerController = UIImagePickerController()
+
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = editProfileView
+        self.view = rootView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate()
         target()
+        style()
     }
     
     //MARK: - Custom Method
     
+    private func delegate() {
+        galleryAlertController.delegate = self
+        imagePickerController.delegate = self
+    }
+    
     private func target() {
-        editProfileView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        rootView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         
-        editProfileView.editCompletedButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
+        rootView.completeButton.addTarget(self, action: #selector(editCompleteButtonDidTap), for: .touchUpInside)
         
-        editProfileView.editProfileImageButton.addTarget(self, action: #selector(chooseProfileImage) , for: .touchUpInside)
+        rootView.profileImageButton.addTarget(self, action: #selector(profileImageButtonDidTap) , for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
     }
     
-    func dataSend(data: MyUser?) {
-        editProfileView.editProfileNameTextField.placeholder = data?.nickName
-        data?.photo == nil ? setDefaultProfileImage() : setFamilyMemberProfileImage(photo: (data?.photo!)!)
-        guard let name = data?.nickName else { return }
-        myProfileNickName = name
+    private func style() {
+        imagePickerController.do { 
+            $0.sourceType = .photoLibrary
+        }
+    }
+    
+    func dataBind(data: UserResult?) {
+        rootView.nameTextField.text = data?.nickName
+        editMyProfileData.nickName = data?.nickName ?? ""
+        textFieldIsEmpty(textCount: data?.nickName.count ?? 0)
+        
+        if let photoURL = data?.photo{
+            rootView.profileImageButton.kfSetButtonImage(url: photoURL)
+        } else {
+            rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
+        }
+    }
+    
+    private func requestPatchUserProfileAPI() {
+        MyAPI.shared.patchMyProfile(requset: editMyProfileData) { result in
+            //guard let result = self.validateResult(result) as? UserResult else { return }
+            self.popToMyProfileView()
+        }
     }
     
     //MARK: - Action Method
     
-    @objc func chooseProfileImage() {
-        let actionSheetController = UIAlertController()
-        
-        let presentToGalleryButton = UIAlertAction(title: "사진 보관함", style: .default, handler: {action in
-            print("ok")
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            self.present(imagePicker, animated: true)
-        })
-        
-        let deleteProfileImageButton = UIAlertAction(title: "사진 삭제", style: .destructive, handler: {action in
-            self.editProfileView.editProfileImageButton.setImage(Image.defaultProfilePet, for: .normal)
-            self.isPhoto = false
-        })
-        
-        let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: {action in
-            print("cancel")
-        })
-        
-        actionSheetController.addAction(presentToGalleryButton)
-        actionSheetController.addAction(deleteProfileImageButton)
-        actionSheetController.addAction(cancleButton)
-        self.present(actionSheetController, animated: true)
+    @objc
+    private func profileImageButtonDidTap() {
+        present(galleryAlertController,animated: true)
     }
     
     @objc func backButtonDidTap() {
@@ -112,17 +118,9 @@ final class EditProfileViewController: BaseViewController {
     }
     
     @objc func editCompleteButtonDidTap(){
-        guard let text = editProfileView.editProfileNameTextField.text else { return }
-        myProfileNickName = text
-        MyAPI.shared.patchMyProfile(isPhoto: isPhoto,
-                                    nickName: myProfileNickName ?? "닉네임이 없습니다.",
-                                    photo: myProfileImage)
-        { result in
-            guard let result = self.validateResult(result) as? MyUser else { return }
-            print(result)
-            
-            self.popToMyProfileView()
-        }
+        guard let nickName = rootView.nameTextField.text else { return }
+        self.editMyProfileData.nickName = nickName
+        requestPatchUserProfileAPI()
     }
 }
 
@@ -146,11 +144,30 @@ extension EditProfileViewController {
     }
 }
 
-extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//MARK: - GalleryAlertControllerDelegate
+
+extension MyEditProfileViewController: GalleryAlertControllerDelegate {
+    func galleryButtonDidTap() {
+        present(imagePickerController, animated: true)
+    }
+    
+    func deleteButtonDidTap() {
+        rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
+        editMyProfileData.hasPhoto = false
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate
+
+extension MyEditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        editProfileView.editProfileImageButton.setImage(image, for: .normal)
-        self.myProfileImage = image
+        rootView.profileImageButton.setImage(image, for: .normal)
+        rootView.completeButton.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.isEnabled = true
+        self.editMyProfileData.profileImage = image
+        dismiss(animated: true)
     }
 }

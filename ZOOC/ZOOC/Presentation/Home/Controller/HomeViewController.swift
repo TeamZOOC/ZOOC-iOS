@@ -19,7 +19,7 @@ final class HomeViewController : BaseViewController {
             rootView.petCollectionView.reloadData()
         }
     }
-    private var archiveData: [HomeArchiveResult] = []{
+    private var archiveData: [HomeArchiveResult] = [] {
         didSet{
             rootView.archiveListCollectionView.reloadData()
             rootView.archiveGridCollectionView.reloadData()
@@ -138,7 +138,7 @@ final class HomeViewController : BaseViewController {
     //MARK: - Network
     
     private func requestMissionAPI() {
-        HomeAPI.shared.getMission(familyID: User.familyID) { result in
+        HomeAPI.shared.getMission(familyID: User.shared.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomeMissionResult] else { return }
             
@@ -147,7 +147,7 @@ final class HomeViewController : BaseViewController {
     }
 
     private func requestTotalPetAPI() {
-        HomeAPI.shared.getTotalPet(familyID: User.familyID) { result in
+        HomeAPI.shared.getTotalPet(familyID: User.shared.familyID) { result in
             
             guard let result = self.validateResult(result) as? [HomePetResult] else { return }
             

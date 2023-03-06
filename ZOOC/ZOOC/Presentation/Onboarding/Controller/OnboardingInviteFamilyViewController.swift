@@ -100,7 +100,7 @@ private extension OnboardingInviteFamilyViewController {
     }
     
     func getInviteCode() {
-        OnboardingAPI.shared.getInviteCode(familyID: User.familyID) { result in
+        OnboardingAPI.shared.getInviteCode(familyID: User.shared.familyID) { result in
             guard let result = self.validateResult(result) as? OnboardingInviteResult else { return }
             let code = result.code
             self.invitedCode = code

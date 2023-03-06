@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateCompletedViewController: UIViewController{
+final class OnboardingJoinFamilyCompletedViewController: BaseViewController{
     
     //MARK: - Properties
     

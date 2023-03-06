@@ -17,7 +17,7 @@ final class MyRegisterPetViewController: BaseViewController {
     private let myRegisterPetView = MyRegisterPetView()
     private let myPetRegisterViewModel: MyPetRegisterViewModel
     
-    private var myPetMemberData: [MyPet] = []
+    private var myPetMemberData: [PetResult] = []
     
     //MARK: - Life Cycle
     
@@ -54,7 +54,7 @@ final class MyRegisterPetViewController: BaseViewController {
         myRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
-    func dataSend(myPetMemberData: [MyPet]) {
+    func dataSend(myPetMemberData: [PetResult]) {
         self.myPetMemberData = myPetMemberData
         myPetRegisterViewModel.petCount = self.myPetMemberData.count
     }

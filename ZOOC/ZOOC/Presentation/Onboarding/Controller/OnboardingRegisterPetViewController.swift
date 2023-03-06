@@ -83,8 +83,8 @@ final class OnboardingRegisterPetViewController: BaseViewController{
             isPhotos.append(isPhoto)
         }
         
-        OnboardingAPI.shared.registerPet(
-            param: OnboardingRegisterPetRequestDto(petNames: names, files: photos, isPetPhotos: isPhotos)
+        OnboardingAPI.shared.postRegisterPet(
+            request: OnboardingRegisterPetRequest(petNames: names, files: photos, isPetPhotos: isPhotos)
         ) { result in
             guard let result = self.validateResult(result) as? [OnboardingRegisterPetResult] else {
                 return
@@ -209,5 +209,6 @@ extension OnboardingRegisterPetViewController: UIImagePickerControllerDelegate, 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         self.onboardingPetRegisterViewModel.petList[self.onboardingPetRegisterViewModel.index].image = image
         self.onboardingRegisterPetView.registerPetTableView.reloadData()
+        dismiss(animated: true)
     }
 }

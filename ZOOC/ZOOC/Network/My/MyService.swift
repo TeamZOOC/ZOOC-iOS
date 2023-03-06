@@ -11,7 +11,8 @@ import Moya
 
 enum MyService {
     case getMyPageData
-    case patchUserProfile(isPhoto: Bool, nickName: String, photo: UIImage?)
+    //case patchUserProfile(isPhoto: Bool, nickName: String, photo: UIImage?)
+    case patchUserProfile(_ request: EditProfileRequest)
     case deleteAccount
     case postRegisterPet(param: MyRegisterPetRequestDto)
 }
@@ -47,14 +48,15 @@ extension MyService: BaseTargetType {
         switch self {
         case .getMyPageData:
             return .requestPlain
-        case .patchUserProfile(isPhoto: let isPhoto, nickName: let nickName, photo: let photo):
+            
+        case .patchUserProfile(let request):
             
             var multipartFormData: [MultipartFormData] = []
             
-            let nickNameData = MultipartFormData(provider: .data(nickName.data(using: String.Encoding.utf8)!),
-                                                 name: "nickName",
-                                                 mimeType: "application/json")
-            if let photo = photo{
+            let nickNameData = MultipartFormData(provider: .data(request.nickName.data(using: String.Encoding.utf8)!),
+                                                           name: "nickName",
+                                                           mimeType: "application/json")
+            if let photo = request.profileImage{
                 print("포토있음")
                 let photo = photo.jpegData(compressionQuality: 1.0) ?? Data()
                 let imageData = MultipartFormData(provider: .data(photo),
@@ -66,9 +68,9 @@ extension MyService: BaseTargetType {
             
             
             multipartFormData.append(nickNameData)
-            return .uploadCompositeMultipart(multipartFormData, urlParameters: ["photo": isPhoto ? "true" : "false"])
-            
-            
+            return .uploadCompositeMultipart(multipartFormData, urlParameters: ["photo": request.hasPhoto ? "true" : "false"])
+
+
         case .deleteAccount:
             return .requestPlain
         case .postRegisterPet(param: let param):

@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 class BaseAPI{
-    public func judgeStatus<T: Codable>(by statusCode: Int, _ data: Data, _ object: T.Type) -> NetworkResult<Any> {
+    private func judgeStatus<T: Codable>(by statusCode: Int, _ data: Data, _ object: T.Type) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<T>.self, from: data)
         else {
@@ -33,14 +33,40 @@ class BaseAPI{
         }
     }
     
-    func disposeNetwork<T: Codable>(_ result: Result<Response, MoyaError>, dataModel: T.Type, completion: @escaping (NetworkResult<Any>) -> Void) {
+    private func judgeSimpleResponseStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(SimpleResponse.self, from: data)
+        else {
+            return .pathErr
+        }
+        
+        switch statusCode {
+        case 200..<205:
+            return .success(decodedData)
+        case 400..<500:
+            return .requestErr(decodedData.message ?? "요청에러")
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+    
+    public func disposeNetwork<T: Codable>(_ result: Result<Response, MoyaError>,
+                                    dataModel: T.Type,
+                                    completion: @escaping (NetworkResult<Any>) -> Void) {
         switch result{
         case .success(let response):
             let statusCode = response.statusCode
             let data = response.data
-            let networkResult = self.judgeStatus(by: statusCode, data, dataModel.self)
             
-           completion(networkResult)
+            if dataModel != VoidResult.self{
+                let networkResult = self.judgeStatus(by: statusCode, data, dataModel.self)
+                completion(networkResult)
+            } else {
+                let networkResult = self.judgeSimpleResponseStatus(by: statusCode, data)
+                completion(networkResult)
+            }
             
         case .failure(let err):
             print(err)

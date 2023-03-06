@@ -14,8 +14,8 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     
-    private var myProfileData: MyUser?
-    private var myFamilyData: [MyUser] = []
+    private var myProfileData: UserResult?
+    private var myFamilyData: [UserResult] = []
     
     //MARK: - UI Components
     
@@ -130,7 +130,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func dataBind(myFamilyData: [MyUser], myProfileData: MyUser?) {
+    public func dataBind(myFamilyData: [UserResult], myProfileData: UserResult?) {
         self.myProfileData = myProfileData
         self.myFamilyData = myFamilyData
         familyCountLabel.text = "\(myFamilyData.count)/8"
