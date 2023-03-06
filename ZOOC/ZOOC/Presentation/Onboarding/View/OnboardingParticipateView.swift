@@ -87,14 +87,13 @@ final class OnboardingParticipateView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(
-            backButton,
-            progressBarView,
-            participateTitleLabel,
-            familyCodeTextField,
-            participateImage,
-            nextButton
-        )
+        addSubviews(backButton,
+                    progressBarView,
+                    participateTitleLabel,
+                    familyCodeTextField,
+                    participateImage,
+                    nextButton)
+        
         progressBarView.addSubview(completedProgressBarView)
     }
     

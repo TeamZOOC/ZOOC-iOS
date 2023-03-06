@@ -80,7 +80,7 @@ extension OnboardingService: BaseTargetType {
             for name in param.petNames {
                 multipartFormDatas.append(MultipartFormData(
                     provider: .data("\(name)".data(using: .utf8)!),
-                    name: "petNames[]"))
+                    name: "petNames"))
             }
 
             //TODO: photo! 나중에 바꿔주기
@@ -95,7 +95,7 @@ extension OnboardingService: BaseTargetType {
             for isPhoto in param.isPetPhotos {
                 multipartFormDatas.append(MultipartFormData(
                     provider: .data("\(isPhoto)".data(using: .utf8)!),
-                    name: "isPetPhotos[]"))
+                    name: "isPetPhotos"))
             }
             return .uploadMultipart(multipartFormDatas)
             

@@ -16,7 +16,7 @@ final class OnboardingAgreementView: UIView {
     
     public lazy var backButton = UIButton()
     private let agreeTitleLabel = UILabel()
-    public lazy var agreementTableView = UITableView(frame: .zero, style: .grouped)
+    public lazy var agreeTableView = UITableView(frame: .zero, style: .grouped)
     public lazy var signUpButton = UIButton()
     
     //MARK: - Life Cycles
@@ -37,10 +37,10 @@ final class OnboardingAgreementView: UIView {
     //MARK: - Custom Method
     
     private func register() {
-        agreementTableView.register(
+        agreeTableView.register(
             OnboardingAgreementTableViewCell.self,
             forCellReuseIdentifier: OnboardingAgreementTableViewCell.cellIdentifier)
-        agreementTableView.register(
+        agreeTableView.register(
             OnboardingAgreementTableHeaderView.self,
             forHeaderFooterViewReuseIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier)
     }
@@ -60,7 +60,7 @@ final class OnboardingAgreementView: UIView {
             $0.numberOfLines = 2
         }
         
-        agreementTableView.do {
+        agreeTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.separatorStyle = .none
             $0.isScrollEnabled = false
@@ -77,12 +77,7 @@ final class OnboardingAgreementView: UIView {
         }
     }
     private func hierarchy() {
-        self.addSubviews(
-            backButton,
-            agreeTitleLabel,
-            agreementTableView,
-            signUpButton
-        )
+        addSubviews(backButton, agreeTitleLabel, agreeTableView, signUpButton)
     }
     
     private func layout() {
@@ -97,7 +92,7 @@ final class OnboardingAgreementView: UIView {
             $0.leading.equalToSuperview().offset(34)
         }
         
-        agreementTableView.snp.makeConstraints {
+        agreeTableView.snp.makeConstraints {
             $0.top.equalTo(self.agreeTitleLabel.snp.bottom).offset(43)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(315)

@@ -58,6 +58,7 @@ final class MyRegisterPetTableViewCell: UITableViewCell {
     
     private func target() {
         deletePetProfileButton.addTarget(self, action: #selector(deletePetProfileButtonDidTap), for: .touchUpInside)
+        
         petProfileImageButton.addTarget(self, action: #selector(petProfileImageButtonDidTap), for: .touchUpInside)
     }
     

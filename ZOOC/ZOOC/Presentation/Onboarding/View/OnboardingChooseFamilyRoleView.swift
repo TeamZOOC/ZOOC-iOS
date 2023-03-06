@@ -93,15 +93,14 @@ final class OnboardingChooseFamilyRoleView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(
-            backButton,
-            progressBarView,
-            chooseFamilyLabel,
-            chooseFamilySubLabel,
-            chooseFamilyTextField,
-            chooseFamilyTextFeildUnderLineView,
-            chooseFamilyButton
-        )
+        self.addSubviews(backButton,
+                         progressBarView,
+                         chooseFamilyLabel,
+                         chooseFamilySubLabel,
+                         chooseFamilyTextField,
+                         chooseFamilyTextFeildUnderLineView,
+                         chooseFamilyButton)
+        
         progressBarView.addSubview(completedProgressBarView)
     }
     

@@ -16,7 +16,7 @@ final class OnboardingRegisterPetViewController: BaseViewController{
     
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
     private let onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel
-    private let defaultpetProfile = OnboardingPetRegisterModel(image: Image.defaultProfilePet, name: "")
+    private let defaultpetProfile = OnboardingPetRegisterModel(profileImage: Image.defaultProfilePet, profileName: "")
     
     //MARK: - Life Cycle
     
@@ -73,12 +73,12 @@ final class OnboardingRegisterPetViewController: BaseViewController{
         var isPhoto: Bool = true
         
         for pet in self.onboardingPetRegisterViewModel.petList {
-            guard let photo = pet.image.jpegData(compressionQuality: 1.0) else {
+            guard let photo = pet.profileImage.jpegData(compressionQuality: 1.0) else {
                 photo = Data()
                 isPhoto = false
                 return
             }
-            names.append(pet.name)
+            names.append(pet.profileName)
             photos.append(photo)
             isPhotos.append(isPhoto)
         }
@@ -126,8 +126,8 @@ extension OnboardingRegisterPetViewController: UITableViewDataSource {
          cell.petProfileImageButton,
          cell.petProfileNameTextField].forEach { $0.tag = indexPath.row }
         
-        cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].name
-        cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].image, for: .normal)
+        cell.petProfileNameTextField.text = self.onboardingPetRegisterViewModel.petList[indexPath.row].profileName
+        cell.petProfileImageButton.setImage(self.onboardingPetRegisterViewModel.petList[indexPath.row].profileImage, for: .normal)
         
         cell.onboardingPetRegisterViewModel.deleteCellClosure = {
             self.onboardingPetRegisterViewModel.deleteCell(index: self.onboardingPetRegisterViewModel.index)
@@ -185,7 +185,7 @@ extension OnboardingRegisterPetViewController: DeleteButtonTappedDelegate {
     
     func collectionViewCell(valueChangedIn textField: UITextField, delegatedFrom cell: UITableViewCell, tag: Int, image: UIImage) {
         if let _ = onboardingRegisterPetView.registerPetTableView.indexPath(for: cell), let text = textField.text {
-            self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(image: image, name: text)
+            self.onboardingPetRegisterViewModel.petList[tag] = OnboardingPetRegisterModel(profileImage: image, profileName: text)
         }
         
         self.onboardingPetRegisterViewModel.checkCanRegister(
@@ -207,7 +207,7 @@ private extension OnboardingRegisterPetViewController {
 extension OnboardingRegisterPetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        self.onboardingPetRegisterViewModel.petList[self.onboardingPetRegisterViewModel.index].image = image
+        self.onboardingPetRegisterViewModel.petList[self.onboardingPetRegisterViewModel.index].profileImage = image
         self.onboardingRegisterPetView.registerPetTableView.reloadData()
         dismiss(animated: true)
     }

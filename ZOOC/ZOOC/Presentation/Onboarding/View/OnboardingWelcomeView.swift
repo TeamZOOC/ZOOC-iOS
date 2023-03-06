@@ -78,13 +78,7 @@ final class OnboardingWelcomeView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(
-            backButton,
-            welcomeLabel,
-            welcomeSubLabel,
-            welcomeImage,
-            nextButton
-        )
+        addSubviews(backButton, welcomeLabel, welcomeSubLabel, welcomeImage, nextButton)
     }
     
     private func layout() {

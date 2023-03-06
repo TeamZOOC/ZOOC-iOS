@@ -101,15 +101,14 @@ final class OnboardingCompleteProfileView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(
-            backButton,
-            progressBarView,
-            completeProfileLabel,
-            completeProfileSubLabel,
-            completeImage,
-            getCodeButton,
-            notGetCodeButton
-        )
+        addSubviews(backButton,
+                    progressBarView,
+                    completeProfileLabel,
+                    completeProfileSubLabel,
+                    completeImage,
+                    getCodeButton,
+                    notGetCodeButton)
+        
         progressBarView.addSubview(completedProgressBarView)
     }
     

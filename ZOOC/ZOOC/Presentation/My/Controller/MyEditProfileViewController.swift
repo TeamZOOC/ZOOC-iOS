@@ -95,26 +95,18 @@ final class MyEditProfileViewController: BaseViewController {
     @objc private func textDidChange(_ notification: Notification) {
         guard let textField = notification.object as? UITextField else { return }
         guard let text = textField.text else { return }
-        var textFieldState: TextFieldState
         switch text.count {
         case 1...9:
-            textFieldState = .isWritten
+            textFieldIsWritten(textCount: text.count)
         case 10...:
-            textFieldState = .isFull
+            textField.resignFirstResponder()
             let index = text.index(text.startIndex, offsetBy: 10)
             let newString = text[text.startIndex..<index]
             textField.text = String(newString)
+            textFieldIsFull()
         default:
-            textFieldState = .isEmpty
+            textFieldIsEmpty(textCount: text.count)
         }
-        
-        textFieldState.setTextFieldState(
-            textField: nil,
-            underLineView: editProfileView.profileNameTextFieldUnderLineView,
-            button: editProfileView.editCompletedButton
-        )
-        setTextFieldText(textCount: text.count)
-        
     }
     
     @objc func editCompleteButtonDidTap(){
@@ -124,17 +116,23 @@ final class MyEditProfileViewController: BaseViewController {
     }
 }
 
-extension EditProfileViewController {
-    func setTextFieldText(textCount: Int) {
-        editProfileView.profileNameCountLabel.text =  textCount < 10 ? "\(textCount)/10" : "10/10"
+extension MyEditProfileViewController {
+    private func textFieldIsFull() {
+        rootView.numberOfNameCharactersLabel.text = "10/10"
     }
     
-    func setDefaultProfileImage() {
-        editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+    private func textFieldIsWritten(textCount: Int) {
+        rootView.underLineView.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.backgroundColor = .zoocGradientGreen
+        rootView.completeButton.isEnabled = true
+        rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
-    func setFamilyMemberProfileImage(photo: String) {
-        editProfileView.editProfileImageButton.kfSetButtonImage(url: photo)
+    private func textFieldIsEmpty(textCount: Int) {
+        rootView.underLineView.backgroundColor = .zoocGray1
+        rootView.completeButton.backgroundColor = .zoocGray1
+        rootView.completeButton.isEnabled = false
+        rootView.numberOfNameCharactersLabel.text = "\(textCount)/10"
     }
     
     private func popToMyProfileView() {

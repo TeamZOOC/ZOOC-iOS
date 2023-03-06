@@ -90,7 +90,7 @@ final class MyFamilySectionCollectionViewCell: UICollectionViewCell {
     }
     
     private func hierarchy() {
-        self.addSubviews(familyLabel,
+        addSubviews(familyLabel,
                     familyCountLabel,
                     inviteButton,
                     familyCollectionView,

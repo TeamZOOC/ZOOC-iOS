@@ -72,7 +72,7 @@ final class MyView: UIView  {
     }
     
     private func hierarchy() {
-        self.addSubview(myCollectionView)
+        addSubviews(myCollectionView)
     }
     
     private func layout() {

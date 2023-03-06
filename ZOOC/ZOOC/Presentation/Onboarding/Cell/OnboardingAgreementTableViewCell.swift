@@ -9,23 +9,21 @@ import UIKit
 
 //MARK: - ChekedButtonTappedDelegate
 
-protocol CheckedButtonTappedDelegate : AnyObject {
-    func cellButtonTapped(index: Int)
+protocol ChekedButtonTappedDelegate : AnyObject {
+    func cellButtonTapped(isSelected: Bool, index: Int)
 }
 
 final class OnboardingAgreementTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    let onboardingAgreementViewModel = OnboardingAgreementViewModel()
-    
-    weak var delegate: CheckedButtonTappedDelegate?
+    weak var delegate: ChekedButtonTappedDelegate?
     var index: Int = 0
     
     //MARK: - UI Components
     
     public var menuLabel = UILabel()
-    public lazy var checkedButton = BaseButton()
+    private lazy var checkedButton = BaseButton()
     
     //MARK: - Life Cycles
     
@@ -78,6 +76,10 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
         }
     }
     
+    public func dataBind(model: OnboardingAgreementModel, index: Int) {
+        updateUI(model: model, index: index)
+    }
+    
     //MARK: - Action Method
     
     @objc func checkButtonDidTap() {
@@ -86,9 +88,24 @@ final class OnboardingAgreementTableViewCell: UITableViewCell {
 }
 
 private extension OnboardingAgreementTableViewCell {
+    func updateUI(model: OnboardingAgreementModel, index: Int) {
+        self.index = index
+        menuLabel.text = model.title
+        if model.isSelected {
+            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+        } else {
+            checkedButton.setImage(Image.checkBox, for: .normal)
+        }
+    }
+    
     func updatecheckButtonUI() {
-        delegate?.cellButtonTapped(index: index)
-        onboardingAgreementViewModel.updateAgreementClosure?()
+        if checkedButton.currentImage == Image.checkBox {
+            delegate?.cellButtonTapped(isSelected: true, index: index)
+            checkedButton.setImage(Image.checkBoxFill, for: .normal)
+        } else {
+            delegate?.cellButtonTapped(isSelected: false, index: index)
+            checkedButton.setImage(Image.checkBox, for: .normal)
+        }
     }
 }
 

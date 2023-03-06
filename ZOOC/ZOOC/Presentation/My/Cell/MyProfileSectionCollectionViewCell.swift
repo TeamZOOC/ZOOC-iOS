@@ -27,7 +27,6 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     public var profileImageView = UIImageView()
     public var profileNameLabel = UILabel()
     public var editProfileButton = UIButton()
-    
     //MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -66,11 +65,7 @@ final class MyProfileSectionCollectionViewCell: UICollectionViewCell  {
     }
     
     private func hierarchy() {
-        self.addSubviews(
-            profileImageView,
-            profileNameLabel,
-            editProfileButton
-        )
+        addSubviews(profileImageView, profileNameLabel, editProfileButton)
     }
     
     private func layout() {
