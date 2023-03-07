@@ -54,7 +54,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     @objc private func textDidChange(_ notification: Notification) {
         guard let textField = notification.object as? UITextField else { return }
         guard let text = textField.text else { return }
-        var textFieldState: TextFieldState
+        var textFieldState: BaseTextFieldState
         switch text.count {
         case 1...9:
             textFieldState = .isWritten

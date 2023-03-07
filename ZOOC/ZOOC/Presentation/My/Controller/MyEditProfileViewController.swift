@@ -9,6 +9,15 @@ import UIKit
 
 import SnapKit
 import Then
+public var backButton = UIButton()
+private var titleLabel = UILabel()
+
+public var profileImageButton = UIButton()
+private var cameraIconImageView = UIImageView()
+public var nameTextField = UITextField()
+public var underLineView = UIView()
+public var numberOfNameCharactersLabel = UILabel()
+public var completeButton = UIButton()
 
 final class MyEditProfileViewController: BaseViewController {
     
@@ -63,7 +72,6 @@ final class MyEditProfileViewController: BaseViewController {
     func dataBind(data: UserResult?) {
         rootView.nameTextField.text = data?.nickName
         editMyProfileData.nickName = data?.nickName ?? ""
-        textFieldIsEmpty(textCount: data?.nickName.count ?? 0)
         
         if let photoURL = data?.photo{
             rootView.profileImageButton.kfSetButtonImage(url: photoURL)
@@ -95,7 +103,7 @@ final class MyEditProfileViewController: BaseViewController {
     @objc private func textDidChange(_ notification: Notification) {
         guard let textField = notification.object as? UITextField else { return }
         guard let text = textField.text else { return }
-        var textFieldState: TextFieldState
+        var textFieldState: BaseTextFieldState
         switch text.count {
         case 1...9:
             textFieldState = .isWritten
@@ -110,13 +118,12 @@ final class MyEditProfileViewController: BaseViewController {
         
         textFieldState.setTextFieldState(
             textField: nil,
-            underLineView: editProfileView.profileNameTextFieldUnderLineView,
-            button: editProfileView.editCompletedButton
+            underLineView: rootView.underLineView,
+            button: rootView.completeButton
         )
         setTextFieldText(textCount: text.count)
         
     }
-    
     @objc func editCompleteButtonDidTap(){
         guard let nickName = rootView.nameTextField.text else { return }
         self.editMyProfileData.nickName = nickName
@@ -124,17 +131,17 @@ final class MyEditProfileViewController: BaseViewController {
     }
 }
 
-extension EditProfileViewController {
+extension MyEditProfileViewController {
     func setTextFieldText(textCount: Int) {
-        editProfileView.profileNameCountLabel.text =  textCount < 10 ? "\(textCount)/10" : "10/10"
+        rootView.numberOfNameCharactersLabel.text =  textCount < 10 ? "\(textCount)/10" : "10/10"
     }
     
     func setDefaultProfileImage() {
-        editProfileView.editProfileImageButton.setImage(Image.defaultProfile, for: .normal)
+        rootView.profileImageButton.setImage(Image.defaultProfile, for: .normal)
     }
     
     func setFamilyMemberProfileImage(photo: String) {
-        editProfileView.editProfileImageButton.kfSetButtonImage(url: photo)
+        rootView.profileImageButton.kfSetButtonImage(url: photo)
     }
     
     private func popToMyProfileView() {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TextFieldState {
+enum BaseTextFieldState {
     case isFull
     case isEmpty
     case isWritten
