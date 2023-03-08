@@ -17,6 +17,7 @@ public enum Image{
     
     //MARK: - Icon
     
+    static let arrowDown = UIImage(named: "arrow.down")
     static let backCircle = UIImage(named: "back.circle")!
     static let back = UIImage(named: "back")!
     static let cameraCircleBig = UIImage(named: "camera.circle.big")!
@@ -70,6 +71,7 @@ public enum Image{
     static let graphics5 = UIImage(named: "graphics_5")!
     static let graphics6 = UIImage(named: "graphics_6")!
     static let graphics7 = UIImage(named: "graphics_7")!
+    static let graphics8 = UIImage(named: "graphics_8")!
     
     //MARK: - Mock
     

@@ -34,6 +34,7 @@
 		871EA35B2970BE8400D0E8CC /* RecordPetResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */; };
 		871EA35D2970CFA700D0E8CC /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */; };
 		871EA35F2971628D00D0E8CC /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871EA35E2971628D00D0E8CC /* Encodable+.swift */; };
+		872F638929B89D9B002EC413 /* HomeGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F638829B89D9B002EC413 /* HomeGuideView.swift */; };
 		8731C4B029A93EF500006743 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4AF29A93EF500006743 /* EmojiModel.swift */; };
 		8731C4B229A9400D00006743 /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */; };
 		8731C4B429A94A6900006743 /* HomeEmojiCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */; };
@@ -211,6 +212,7 @@
 		871EA35A2970BE8400D0E8CC /* RecordPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPetResult.swift; sourceTree = "<group>"; };
 		871EA35C2970CFA700D0E8CC /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		871EA35E2971628D00D0E8CC /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		872F638829B89D9B002EC413 /* HomeGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGuideView.swift; sourceTree = "<group>"; };
 		8731C4AF29A93EF500006743 /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
 		8731C4B129A9400D00006743 /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		8731C4B329A94A6900006743 /* HomeEmojiCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmojiCommentRequest.swift; sourceTree = "<group>"; };
@@ -291,8 +293,8 @@
 		D2350308296490A700F01101 /* MyEditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileView.swift; sourceTree = "<group>"; };
 		D235030A2964991700F01101 /* MyEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditProfileViewController.swift; sourceTree = "<group>"; };
 		D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetResult.swift; sourceTree = "<group>"; };
-		D26989A729A60EE7008A5ACC /* OnboardingAgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementViewModel.swift; sourceTree = "<group>"; };
 		D25543A3299A239B0072BF0D /* OnboardingRegisterPetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRegisterPetRequest.swift; sourceTree = "<group>"; };
+		D26989A729A60EE7008A5ACC /* OnboardingAgreementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAgreementViewModel.swift; sourceTree = "<group>"; };
 		D26996A32989AB7500025774 /* OnboardingPetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPetRegisterViewModel.swift; sourceTree = "<group>"; };
 		D26C68E2296DE4F80088DC9A /* MyRegisterPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterPetView.swift; sourceTree = "<group>"; };
 		D26C68E5296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterPetTableViewCell.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				870D0629297BEB7900ADAD04 /* HomeView.swift */,
+				872F638829B89D9B002EC413 /* HomeGuideView.swift */,
 				8782C7EA296AC58B00C9324B /* HomeArchiveIndicatorView.swift */,
 				8782C7F4296DB7FC00C9324B /* HomeDetailArchiveCommentTextField.swift */,
 				87DDDD91298E5BE500CBEC79 /* HomeDetailArchiveCommentView.swift */,
@@ -1095,6 +1098,7 @@
 				877E57F02966C046006D82FC /* HomeArchiveModel.swift in Sources */,
 				D26C860A296B5C7400AEAF9B /* OnboardingJoinFamilyViewController.swift in Sources */,
 				D26C85CF2968681900AEAF9B /* MyPetCollectionFooterView.swift in Sources */,
+				872F638929B89D9B002EC413 /* HomeGuideView.swift in Sources */,
 				8765549F295846F3006BBDA9 /* ZoocTabBarController.swift in Sources */,
 				D26C8602296B285700AEAF9B /* OnboardingCompleteProfileViewController.swift in Sources */,
 				D26C68E6296DE61F0088DC9A /* MyRegisterPetTableViewCell.swift in Sources */,
