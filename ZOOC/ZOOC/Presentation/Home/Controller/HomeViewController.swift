@@ -19,12 +19,20 @@ final class HomeViewController : BaseViewController {
             rootView.petCollectionView.reloadData()
         }
     }
+    
     private var archiveData: [HomeArchiveResult] = [] {
         didSet{
-            rootView.archiveListCollectionView.reloadData()
-            rootView.archiveGridCollectionView.reloadData()
+            if archiveData.count == 0 {
+                self.view = rootGuideView
+            } else {
+                self.view = rootView
+                rootView.archiveListCollectionView.reloadData()
+                rootView.archiveGridCollectionView.reloadData()
+            }
+            
         }
     }
+    
     //MARK: - UI Components
     
     private let rootGuideView = HomeGuideView()
@@ -33,7 +41,7 @@ final class HomeViewController : BaseViewController {
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = rootGuideView
+        self.view = rootView
     }
     
     override func viewDidLoad() {
@@ -83,6 +91,7 @@ final class HomeViewController : BaseViewController {
                                                                       action: #selector(bottomViewDidTap)))
     }
     
+   
     
     private func pushToDetailViewController(recordID: String) {
         guard let index = rootView.petCollectionView.indexPathsForSelectedItems?[0].item else {
