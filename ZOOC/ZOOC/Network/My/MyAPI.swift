@@ -23,19 +23,6 @@ extension MyAPI{
         }
     }
     
-//    func patchMyProfile(isPhoto: Bool,
-//                        nickName: String,
-//                        photo: UIImage?,
-//                        completion: @escaping (NetworkResult<Any>) -> Void){
-//        myProvider.request(.patchUserProfile(isPhoto: isPhoto,
-//                                             nickName: nickName,
-//                                             photo: photo)) { result in
-//            self.disposeNetwork(result,
-//                                dataModel: UserResult.self,
-//                                completion: completion)
-//        }
-//    }
-    
     func patchMyProfile(requset: EditProfileRequest,
                         completion: @escaping (NetworkResult<Any>) -> Void){
         myProvider.request(.patchUserProfile(requset)) { result in

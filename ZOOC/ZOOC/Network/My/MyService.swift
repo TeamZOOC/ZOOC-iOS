@@ -11,7 +11,6 @@ import Moya
 
 enum MyService {
     case getMyPageData
-    //case patchUserProfile(isPhoto: Bool, nickName: String, photo: UIImage?)
     case patchUserProfile(_ request: EditProfileRequest)
     case deleteAccount
     case postRegisterPet(param: MyRegisterPetRequestDto)
@@ -27,7 +26,7 @@ extension MyService: BaseTargetType {
         case .deleteAccount:
             return "/user"
         case .postRegisterPet(param: _):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 이 위치가 맞을까..
         }
     }
     
