@@ -108,7 +108,7 @@ final class RecordRegisterFourCollectionViewCell: UICollectionViewCell {
         if let imageURL = data.petImageURL{
             profilePetImageView.kfSetImage(url: imageURL)
         } else {
-            profilePetImageView.image = Image.defaultProfilePet
+            profilePetImageView.image = Image.cameraCircle
         }
             
         petNameLabel.text = data.petName

@@ -88,7 +88,9 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
     }
     
     private func hierarchy() {
-        contentView.addSubviews(petProfileImageButton, petProfileNameTextField, deletePetProfileButton)
+        contentView.addSubviews(petProfileImageButton,
+                                petProfileNameTextField,
+                                deletePetProfileButton)
     }
     
     private func layout() {
@@ -144,6 +146,8 @@ final class OnboardingRegisterPetTableViewCell: UITableViewCell {
 
 extension OnboardingRegisterPetTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField, delegatedFrom: self, tag: textField.tag, image: petProfileImageButton.currentImage!)
+        delegate?.collectionViewCell(valueChangedIn: petProfileNameTextField,
+                                     delegatedFrom: self, tag: textField.tag,
+                                     image: petProfileImageButton.currentImage!)
     }
 }

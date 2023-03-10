@@ -16,7 +16,7 @@ final class OnboardingRegisterPetViewController: BaseViewController{
     
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
     private let onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel
-    private let defaultpetProfile = OnboardingPetRegisterModel(image: Image.defaultProfilePet, name: "")
+    private let defaultpetProfile = OnboardingPetRegisterModel(image: Image.cameraCircle, name: "")
     
     //MARK: - Life Cycle
     
