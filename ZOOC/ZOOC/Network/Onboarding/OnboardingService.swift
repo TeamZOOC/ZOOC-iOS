@@ -88,7 +88,7 @@ extension OnboardingService: BaseTargetType {
             for photo in param.files {
                     
                     multipartFormDatas.append(MultipartFormData(
-                        provider: .data("\(photo!)".data(using: .utf8)!),
+                        provider: .data(photo!),
                         name: "files",
                         fileName: "image.jpeg",
                         mimeType: "image/jpeg"))
