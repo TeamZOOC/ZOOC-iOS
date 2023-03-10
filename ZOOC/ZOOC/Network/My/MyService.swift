@@ -45,6 +45,7 @@ extension MyService: BaseTargetType {
     }
     
     var task: Moya.Task {
+        
         switch self {
         case .getMyPageData:
             return .requestPlain
@@ -73,6 +74,7 @@ extension MyService: BaseTargetType {
 
         case .deleteAccount:
             return .requestPlain
+            
         case .postRegisterPet(param: let param):
             var multipartFormDatas: [MultipartFormData] = []
             
