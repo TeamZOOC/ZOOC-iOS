@@ -11,7 +11,6 @@ import Moya
 
 enum MyService {
     case getMyPageData
-    //case patchUserProfile(isPhoto: Bool, nickName: String, photo: UIImage?)
     case patchUserProfile(_ request: EditProfileRequest)
     case deleteAccount
     case postRegisterPet(param: MyRegisterPetRequestDto)
@@ -27,7 +26,7 @@ extension MyService: BaseTargetType {
         case .deleteAccount:
             return "/user"
         case .postRegisterPet(param: _):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: "1")
+            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 이 위치가 맞을까..
         }
     }
     
@@ -45,6 +44,7 @@ extension MyService: BaseTargetType {
     }
     
     var task: Moya.Task {
+        
         switch self {
         case .getMyPageData:
             return .requestPlain
@@ -73,6 +73,7 @@ extension MyService: BaseTargetType {
 
         case .deleteAccount:
             return .requestPlain
+            
         case .postRegisterPet(param: let param):
             var multipartFormDatas: [MultipartFormData] = []
             
@@ -85,7 +86,7 @@ extension MyService: BaseTargetType {
             //photo! 나중에 바꿔주기
             for photo in param.files {
                     multipartFormDatas.append(MultipartFormData(
-                        provider: .data("\(photo!)".data(using: .utf8)!),
+                        provider: .data(photo!),
                         name: "files",
                         fileName: "image.jpeg",
                         mimeType: "image/jpeg"))

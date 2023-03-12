@@ -22,7 +22,7 @@ public enum Image{
     static let back = UIImage(named: "back")!
     static let cameraCircleBig = UIImage(named: "camera.circle.big")!
     static let cameraCircleGreen = UIImage(named: "camera.circle.green")!
-    static let cameraCircleSmall = UIImage(named: "camera.circle.small")!
+    static let cameraCircle = UIImage(named: "camera.circle")!
     static let check = UIImage(named: "check")!
     static let checkBoxFill = UIImage(named: "checkbox.fill")!
     static let checkBox = UIImage(named: "checkbox")!
@@ -48,7 +48,6 @@ public enum Image{
     
     //MARK: - Default
     
-    static let defaultProfilePet = UIImage(named: "default_profile_pet")!
     static let defaultProfile = UIImage(named: "default_profile")!
     
     //MARK: - Emoji

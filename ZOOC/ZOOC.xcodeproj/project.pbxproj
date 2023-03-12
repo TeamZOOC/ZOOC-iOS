@@ -94,6 +94,7 @@
 		87B6624329521E7500B6FFA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6624229521E7500B6FFA9 /* SceneDelegate.swift */; };
 		87B6624A29521E7600B6FFA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624929521E7600B6FFA9 /* Assets.xcassets */; };
 		87B6624D29521E7600B6FFA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B6624B29521E7600B6FFA9 /* LaunchScreen.storyboard */; };
+		87BCA64429BB524D00D8DB58 /* OnboardingMakeFamilyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BCA64329BB524D00D8DB58 /* OnboardingMakeFamilyResult.swift */; };
 		87C109252971A5B40086466F /* HomeCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C109242971A5B40086466F /* HomeCommentRequest.swift */; };
 		87D5AF5629605C0100CA7F12 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5529605C0100CA7F12 /* URLs.swift */; };
 		87D5AF5A29606AC900CA7F12 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5AF5929606AC900CA7F12 /* NetworkResult.swift */; };
@@ -266,6 +267,7 @@
 		87B6624929521E7600B6FFA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87B6624C29521E7600B6FFA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B6624E29521E7600B6FFA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87BCA64329BB524D00D8DB58 /* OnboardingMakeFamilyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMakeFamilyResult.swift; sourceTree = "<group>"; };
 		87C109242971A5B40086466F /* HomeCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentRequest.swift; sourceTree = "<group>"; };
 		87D5AF5529605C0100CA7F12 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		87D5AF5929606AC900CA7F12 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				D25543A12996B22E0072BF0D /* OnboardingRegisterPetResult.swift */,
 				8781DE4D29B273FB005ABF23 /* OnboardingFamilyResult.swift */,
 				874AE9F929B4A12F007A637D /* OnboardingJoinUserResult.swift */,
+				87BCA64329BB524D00D8DB58 /* OnboardingMakeFamilyResult.swift */,
 			);
 			path = APIModel;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				D26C85EE2968D51F00AEAF9B /* UITableViewHeaderFooterView+.swift in Sources */,
 				D26C85F8296B0B4E00AEAF9B /* OnboardingChooseFamilyRoleView.swift in Sources */,
 				87D5AF5C29606AFC00CA7F12 /* BaseTargetType.swift in Sources */,
+				87BCA64429BB524D00D8DB58 /* OnboardingMakeFamilyResult.swift in Sources */,
 				D27D9564296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift in Sources */,
 				877E57F22966D13E006D82FC /* HomeDetailArchiveViewController.swift in Sources */,
 				4C6B1862296B69070059840D /* RecordRegisterViewController.swift in Sources */,

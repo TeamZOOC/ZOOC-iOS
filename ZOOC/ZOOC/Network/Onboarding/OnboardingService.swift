@@ -11,13 +11,13 @@ import Moya
 import UIKit
 
 enum OnboardingService {
+    case patchFCMToken(fcmToken: String)
+    case postKakaoSocialLogin(accessToken: String)
+    case postAppleSocialLogin(_ request: OnboardingAppleSocialLoginRequest)
     case getFamily
     case getInviteCode(familyId: String)
     case postJoinFamily(_ request: OnboardingJoinFamilyRequest)
-    case postRegisterPet(_ request: OnboardingRegisterPetRequest)
-    case postKakaoSocialLogin(accessToken: String)
-    case postAppleSocialLogin(_ request: OnboardingAppleSocialLoginRequest)
-    case patchFCMToken(fcmToken: String)
+    case makeFamily(_ request: OnboardingRegisterPetRequest)
 }
 
 extension OnboardingService: BaseTargetType {
@@ -27,8 +27,8 @@ extension OnboardingService: BaseTargetType {
             return URLs.getInviteCode.replacingOccurrences(of: "{familyId}", with: familyId)
         case .postJoinFamily:
             return URLs.joinFamily
-        case .postRegisterPet(let request):
-            return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 1로 고정되어있음 꽤 큰 작업이 될지도
+        case .makeFamily:
+            return URLs.makeFamily
         case .postKakaoSocialLogin:
             return URLs.kakaoLogin
         case .postAppleSocialLogin:
@@ -46,7 +46,7 @@ extension OnboardingService: BaseTargetType {
             return .get
         case .postJoinFamily:
             return .post
-        case .postRegisterPet:
+        case .makeFamily:
             return .post
         case .postKakaoSocialLogin:
             return .post
@@ -74,7 +74,8 @@ extension OnboardingService: BaseTargetType {
         case .postAppleSocialLogin(let param):
             return .requestJSONEncodable(param)
             
-        case .postRegisterPet(let param):
+        case .makeFamily(let param):
+            print(param)
             var multipartFormDatas: [MultipartFormData] = []
             
             for name in param.petNames {
@@ -85,8 +86,9 @@ extension OnboardingService: BaseTargetType {
 
             //TODO: photo! 나중에 바꿔주기
             for photo in param.files {
+                    
                     multipartFormDatas.append(MultipartFormData(
-                        provider: .data("\(photo!)".data(using: .utf8)!),
+                        provider: .data(photo!),
                         name: "files",
                         fileName: "image.jpeg",
                         mimeType: "image/jpeg"))
@@ -111,21 +113,21 @@ extension OnboardingService: BaseTargetType {
     
     var headers: [String : String]?{
         switch self {
-        case .getInviteCode(familyId: _):
-            return APIConstants.hasTokenHeader
-            
-        case .postJoinFamily(param: _):
-            return APIConstants.hasTokenHeader
-            
-        case .postRegisterPet(param: _):
-            return APIConstants.multipartHeader
-            
         case .postKakaoSocialLogin(accessToken: let accessToken):
             return [APIConstants.contentType: APIConstants.applicationJSON,
                     APIConstants.auth : accessToken]
             
         case .postAppleSocialLogin(param: _):
             return APIConstants.noTokenHeader
+            
+        case .getInviteCode(familyId: _):
+            return APIConstants.hasTokenHeader
+            
+        case .postJoinFamily(param: _):
+            return APIConstants.hasTokenHeader
+            
+        case .makeFamily:
+            return APIConstants.multipartHeader
             
         case .getFamily:
             return APIConstants.hasTokenHeader
@@ -135,5 +137,3 @@ extension OnboardingService: BaseTargetType {
         }
     }
 }
-
-

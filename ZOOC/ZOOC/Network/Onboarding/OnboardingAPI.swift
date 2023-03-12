@@ -30,10 +30,10 @@ extension OnboardingAPI {
         }
     }
     
-    public func postRegisterPet(request: OnboardingRegisterPetRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
-        onboardingProvider.request(.postRegisterPet(request)) { (result) in
+    public func postMakeFamily(request: OnboardingRegisterPetRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        onboardingProvider.request(.makeFamily(request)) { (result) in
             self.disposeNetwork(result,
-                                dataModel: [OnboardingRegisterPetResult].self,
+                                dataModel: OnboardingMakeFamilyResult.self,
                                 completion: completion)
         }
     }

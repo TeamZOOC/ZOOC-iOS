@@ -53,9 +53,9 @@ class BaseViewController : UIViewController{
         case .requestErr(let message):
             presentBottomAlert(message)
         case .pathErr:
-            presentBottomAlert("잘못된 경로입니다.")
+            presentBottomAlert("path 혹은 method 오류입니다.")
         case .serverErr:
-            presentBottomAlert("서버 오류 혹은 메소드 오류입니다.")
+            presentBottomAlert("서버 내 오류입니다.")
         case .networkFail:
             presentBottomAlert("네트워크가 불안정합니다.")
         case .decodedErr:

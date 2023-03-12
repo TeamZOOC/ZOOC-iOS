@@ -16,7 +16,7 @@ final class OnboardingRegisterPetViewController: BaseViewController{
     
     private let onboardingRegisterPetView = OnboardingRegisterPetView()
     private let onboardingPetRegisterViewModel: OnboardingPetRegisterViewModel
-    private let defaultpetProfile = OnboardingPetRegisterModel(image: Image.defaultProfilePet, name: "")
+    private let defaultpetProfile = OnboardingPetRegisterModel(image: Image.cameraCircle, name: "")
     
     //MARK: - Life Cycle
     
@@ -59,6 +59,15 @@ final class OnboardingRegisterPetViewController: BaseViewController{
         onboardingRegisterPetView.registerPetButton.addTarget(self, action: #selector(registerPetButtonDidTap), for: .touchUpInside)
     }
     
+    private func requestMakeFamilyAPI(_ request: OnboardingRegisterPetRequest) {
+        OnboardingAPI.shared.postMakeFamily(request: request) { result in
+            guard let result = self.validateResult(result) as? OnboardingMakeFamilyResult else { return }
+            User.shared.familyID = String(result.familyId)
+            
+            self.pushToInviteFamilyViewController()
+        }
+    }
+    
     //MARK: - Action Method
     
     @objc private func backButtonDidTap() {
@@ -66,6 +75,9 @@ final class OnboardingRegisterPetViewController: BaseViewController{
     }
     
     @objc private func registerPetButtonDidTap() {
+        onboardingRegisterPetView.registerPetButton.isEnabled = false
+        onboardingRegisterPetView.registerPetButton.backgroundColor = .zoocGray1
+        
         var names: [String] = []
         var photos: [Data] = []
         var photo: Data
@@ -74,6 +86,7 @@ final class OnboardingRegisterPetViewController: BaseViewController{
         
         for pet in self.onboardingPetRegisterViewModel.petList {
             guard let photo = pet.image.jpegData(compressionQuality: 1.0) else {
+                print("가드문 들어옴")
                 photo = Data()
                 isPhoto = false
                 return
@@ -83,17 +96,9 @@ final class OnboardingRegisterPetViewController: BaseViewController{
             isPhotos.append(isPhoto)
         }
         
-        OnboardingAPI.shared.postRegisterPet(
-            request: OnboardingRegisterPetRequest(petNames: names, files: photos, isPetPhotos: isPhotos)
-        ) { result in
-            guard let result = self.validateResult(result) as? [OnboardingRegisterPetResult] else {
-                return
-            }
-            
-            print(result)
-            self.pushToInviteFamilyViewController()
-        }
+        let request = OnboardingRegisterPetRequest(petNames: names, files: photos, isPetPhotos: isPhotos)
         
+        requestMakeFamilyAPI(request)
     }
 }
 

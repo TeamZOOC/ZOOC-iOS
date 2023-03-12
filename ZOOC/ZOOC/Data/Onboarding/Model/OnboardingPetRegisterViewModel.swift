@@ -18,7 +18,7 @@ final class OnboardingPetRegisterViewModel {
     var tag: Int = 0
     
     func addCell() {
-        let cell: OnboardingPetRegisterModel = OnboardingPetRegisterModel(image: Image.defaultProfilePet, name: "")
+        let cell: OnboardingPetRegisterModel = OnboardingPetRegisterModel(image: Image.cameraCircle, name: "")
         petList.append(cell)
         petCount += 1
     }

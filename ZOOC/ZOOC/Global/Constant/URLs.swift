@@ -10,9 +10,11 @@ import Foundation
 public enum URLs{
     
     //MARK: - Family
+    
+    static let makeFamily = "/family"
     static let getNotice = "/alarm/list"
     static let myPage = "/family/mypage"
-    static let getFamily = "/family/"
+    static let getFamily = "/family"
     static let getInviteCode = "/family/code/{familyId}"
     static let registerPet = "/family/pets/{familyId}"
     static let joinFamily = "/family/user"
