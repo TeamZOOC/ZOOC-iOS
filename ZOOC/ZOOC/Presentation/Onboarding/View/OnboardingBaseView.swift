@@ -45,19 +45,16 @@ class OnboardingBaseView: UIView {
         firstProgressBar.do {
             $0.backgroundColor = .zoocLightGray
             $0.makeCornerRadius(ratio: 2)
-//            $0.isHidden = true
         }
         
         secondProgressBar.do {
             $0.backgroundColor = .zoocLightGray
             $0.makeCornerRadius(ratio: 2)
-//            $0.isHidden = true
         }
         
         thirdProgressBar.do {
             $0.backgroundColor = .zoocLightGray
             $0.makeCornerRadius(ratio: 2)
-//            $0.isHidden = true
         }
     }
     private func hierarchy() {
@@ -97,6 +94,29 @@ class OnboardingBaseView: UIView {
             $0.height.equalTo(4)
             
         }
+    }
+}
+
+extension OnboardingBaseView {
+    func allHidden() {
+        firstProgressBar.isHidden = true
+        secondProgressBar.isHidden = true
+        thirdProgressBar.isHidden = true
+    }
+    
+    func firstStep() {
+        firstProgressBar.backgroundColor = .zoocMainGreen
+    }
+    
+    func secondStep() {
+        firstProgressBar.backgroundColor = .zoocMainGreen
+        secondProgressBar.backgroundColor = .zoocMainGreen
+    }
+    
+    func thirdStep() {
+        firstProgressBar.backgroundColor = .zoocMainGreen
+        secondProgressBar.backgroundColor = .zoocMainGreen
+        thirdProgressBar.backgroundColor = .zoocMainGreen
     }
 }
 

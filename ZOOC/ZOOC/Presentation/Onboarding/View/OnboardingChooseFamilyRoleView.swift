@@ -14,8 +14,6 @@ final class OnboardingChooseFamilyRoleView: OnboardingBaseView {
     
     //MARK: - UI Components
     
-    //public lazy var backButton = UIButton()
-//    public let progressBarView = UIView()
     public let completedProgressBarView = UIView()
     private let chooseFamilyLabel = UILabel()
     private let chooseFamilySubLabel = UILabel()
@@ -41,6 +39,8 @@ final class OnboardingChooseFamilyRoleView: OnboardingBaseView {
     
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
+        
+        firstStep()
         
         chooseFamilyLabel.do {
             $0.text = "가족에서 \n어떤 역할을 맡고 있나요?"
@@ -81,22 +81,19 @@ final class OnboardingChooseFamilyRoleView: OnboardingBaseView {
     
     private func hierarchy() {
         self.addSubviews(
-//            backButton,
-//            progressBarView,
             chooseFamilyLabel,
             chooseFamilySubLabel,
             chooseFamilyTextField,
             chooseFamilyTextFeildUnderLineView,
             chooseFamilyButton
         )
-        //progressBarView.addSubview(completedProgressBarView)
     }
     
     private func layout() {
         
         chooseFamilyLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(backButton.snp.bottom).offset(56)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
         }
         
         chooseFamilySubLabel.snp.makeConstraints {

@@ -10,13 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingRegisterPetView: UIView {
+final class OnboardingRegisterPetView: OnboardingBaseView {
 
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
-    public let progressBarView = UIView()
-    public let completedProgressBarView = UIView()
     private let registerPetTitleLabel = UILabel()
     private let registerPetSubTitleLabel = UILabel()
     public lazy var registerPetTableView = UITableView(frame: .zero, style: .plain)
@@ -52,19 +49,7 @@ final class OnboardingRegisterPetView: UIView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
-        
-        progressBarView.do {
-            $0.backgroundColor = .zoocLightGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
-        
-        completedProgressBarView.do {
-            $0.backgroundColor = .zoocMainGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
+        secondStep()
         
         registerPetTitleLabel.do {
             $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
@@ -101,35 +86,14 @@ final class OnboardingRegisterPetView: UIView {
     
     private func hierarchy() {
         self.addSubviews(
-            backButton,
-            progressBarView,
             registerPetTitleLabel,
             registerPetSubTitleLabel,
             registerPetTableView,
             registerPetButton
         )
-        progressBarView.addSubview(completedProgressBarView)
     }
     
     private func layout() {
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(6)
-            $0.leading.equalToSuperview().offset(17)
-            $0.size.equalTo(42)
-        }
-        
-        progressBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(4)
-        }
-        
-        completedProgressBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(107)
-            $0.bottom.equalToSuperview()
-        }
         
         registerPetTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.backButton.snp.bottom).offset(56)

@@ -10,15 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingRegisterProfileImageView: UIView {
-
+final class OnboardingRegisterProfileImageView: OnboardingBaseView {
+    
     //MARK: - Properties
     
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
-    public let progressBarView = UIView()
-    public let completedProgressBarView = UIView()
     public let registerProfileImageLabel = UILabel()
     private let registerProfileImageSubLabel = UILabel()
     public lazy var registerProfileImageButton = UIButton()
@@ -43,19 +40,7 @@ final class OnboardingRegisterProfileImageView: UIView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
-        
-        progressBarView.do {
-            $0.backgroundColor = .zoocLightGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
-        
-        completedProgressBarView.do {
-            $0.backgroundColor = .zoocMainGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
+        firstStep()
         
         registerProfileImageLabel.do {
             $0.textColor = .zoocDarkGray1
@@ -90,39 +75,17 @@ final class OnboardingRegisterProfileImageView: UIView {
     }
     
     private func hierarchy() {
-        self.addSubviews(backButton,
-                    progressBarView,
-                    registerProfileImageLabel,
-                    registerProfileImageSubLabel,
-                    registerProfileImageButton,
-                    createProfileButton)
-        
-        progressBarView.addSubview(completedProgressBarView)
+        self.addSubviews(
+            registerProfileImageLabel,
+            registerProfileImageSubLabel,
+            registerProfileImageButton,
+            createProfileButton)
     }
     
     private func layout() {
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().offset(17)
-            $0.size.equalTo(42)
-        }
-        
-        progressBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(4)
-        }
-        
-        completedProgressBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(211)
-            $0.bottom.equalToSuperview()
-        }
-        
         registerProfileImageLabel.snp.makeConstraints {
             $0.top.equalTo(self.backButton.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(30)
+            $0.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
         }
         
         registerProfileImageSubLabel.snp.makeConstraints {

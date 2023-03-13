@@ -602,6 +602,7 @@
 		87A76A8C295F6D7E0096F669 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2EA37EE29BEAB57007EF4B7 /* OnboardingBaseView.swift */,
 				D26C85DE2968C26500AEAF9B /* OnboardingLoginView.swift */,
 				D26C85E22968C88800AEAF9B /* OnboardingAgreementView.swift */,
 				D26C85EF29693C8500AEAF9B /* OnboardingWelcomeView.swift */,
@@ -614,7 +615,6 @@
 				D27D955F296C9F5D0097CD03 /* OnboardingInviteFamilyView.swift */,
 				D27D9567296CB5930097CD03 /* OnboardingReInviteFamilyView.swift */,
 				D27D9563296CA9720097CD03 /* OnboardingInviteCompletedFamilyView.swift */,
-				D2EA37EE29BEAB57007EF4B7 /* OnboardingBaseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
