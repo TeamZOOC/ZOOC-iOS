@@ -76,21 +76,21 @@ class OnboardingBaseView: UIView {
         firstProgressBar.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(24)
             $0.top.equalTo(self.backButton.snp.bottom).offset(11)
-            $0.width.equalTo(106)
+            $0.width.equalTo(106.03)
             $0.height.equalTo(4)
         }
         
         secondProgressBar.snp.makeConstraints {
-            $0.leading.equalTo(self.firstProgressBar.snp.trailing).offset(4)
+            $0.leading.equalTo(self.firstProgressBar.snp.trailing).offset(3.96)
             $0.top.equalTo(self.backButton.snp.bottom).offset(11)
-            $0.width.equalTo(106)
+            $0.width.equalTo(106.03)
             $0.height.equalTo(4)
             
         }
         thirdProgressBar.snp.makeConstraints {
-            $0.leading.equalTo(self.secondProgressBar.snp.trailing).offset(4)
+            $0.leading.equalTo(self.secondProgressBar.snp.trailing).offset(3.96)
             $0.top.equalTo(self.backButton.snp.bottom).offset(11)
-            $0.width.equalTo(106)
+            $0.width.equalTo(106.03)
             $0.height.equalTo(4)
             
         }
