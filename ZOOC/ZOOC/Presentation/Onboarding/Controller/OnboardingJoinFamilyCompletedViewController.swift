@@ -14,12 +14,12 @@ final class OnboardingJoinFamilyCompletedViewController: BaseViewController{
     
     //MARK: - Properties
     
-    private let onboardingParticipateCompletedView = OnboardingParticipateCompletedView()
+    private let onboardingJoinFamilyCompletedView = OnboardingJoinFamilyCompletedView()
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingParticipateCompletedView
+        self.view = onboardingJoinFamilyCompletedView
     }
     
     override func viewDidLoad() {
@@ -31,8 +31,8 @@ final class OnboardingJoinFamilyCompletedViewController: BaseViewController{
     //MARK: - Custom Method
     
     func target() {
-        onboardingParticipateCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        onboardingParticipateCompletedView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
+        onboardingJoinFamilyCompletedView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingJoinFamilyCompletedView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -42,6 +42,7 @@ final class OnboardingJoinFamilyCompletedViewController: BaseViewController{
     }
     
     @objc private func startButtonDidTap(){
-        changeRootViewController(ZoocTabBarController())
+        let onboardingInviteFamilyCompletedViewController = OnboardingInviteFamilyCompletedViewController()
+        self.navigationController?.pushViewController(onboardingInviteFamilyCompletedViewController, animated: true)
     }
 }

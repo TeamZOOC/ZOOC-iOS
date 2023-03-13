@@ -10,11 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingAgreementView: UIView {
+final class OnboardingAgreementView: OnboardingBaseView {
 
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
     private let agreeTitleLabel = UILabel()
     public lazy var agreementTableView = UITableView(frame: .zero, style: .grouped)
     public lazy var signUpButton = UIButton()
@@ -48,9 +47,7 @@ final class OnboardingAgreementView: UIView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
+        allHidden()
         
         agreeTitleLabel.do {
             $0.text = "더 나은 서비스 제공을 위해 \n약관동의가 필요해요"
@@ -58,6 +55,7 @@ final class OnboardingAgreementView: UIView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 6)
         }
         
         agreementTableView.do {
@@ -78,7 +76,6 @@ final class OnboardingAgreementView: UIView {
     }
     private func hierarchy() {
         self.addSubviews(
-            backButton,
             agreeTitleLabel,
             agreementTableView,
             signUpButton
@@ -86,15 +83,11 @@ final class OnboardingAgreementView: UIView {
     }
     
     private func layout() {
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(17)
-            $0.leading.equalToSuperview().offset(15)
-            $0.size.equalTo(42)
-        }
-        
         agreeTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
-            $0.leading.equalToSuperview().offset(34)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         agreementTableView.snp.makeConstraints {

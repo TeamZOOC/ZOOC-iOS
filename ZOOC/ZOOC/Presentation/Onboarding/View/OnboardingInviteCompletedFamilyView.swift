@@ -10,13 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingInviteCompletedFamilyView: UIView {
+final class OnboardingInviteCompletedFamilyView: OnboardingBaseView {
 
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
-    public let progressBarView = UIView()
-    public let completedProgressBarView = UIView()
     private let completeProfileLabel = UILabel()
     private let completeProfileSubLabel = UILabel()
     private let completeImage = UIImageView()
@@ -41,19 +38,7 @@ final class OnboardingInviteCompletedFamilyView: UIView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
-        
-        progressBarView.do {
-            $0.backgroundColor = .zoocLightGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
-        
-        completedProgressBarView.do {
-            $0.backgroundColor = .zoocMainGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
+        thirdStep()
         
         completeProfileLabel.do {
             $0.text = "이제 추억을 쌓을 시간이에요!"
@@ -61,7 +46,6 @@ final class OnboardingInviteCompletedFamilyView: UIView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
-            $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
         }
         
         completeProfileSubLabel.do {
@@ -70,6 +54,7 @@ final class OnboardingInviteCompletedFamilyView: UIView {
             $0.textAlignment = .left
             $0.font = .zoocBody2
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 2)
         }
         
         completeImage.do {
@@ -89,44 +74,26 @@ final class OnboardingInviteCompletedFamilyView: UIView {
     
     private func hierarchy() {
         self.addSubviews(
-            backButton,
-            progressBarView,
             completeProfileLabel,
             completeProfileSubLabel,
             completeImage,
             startButton
         )
-        progressBarView.addSubview(completedProgressBarView)
     }
     
     private func layout() {
-        
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().offset(17)
-            $0.size.equalTo(42)
-        }
-        
-        progressBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(4)
-        }
-        
-        completedProgressBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
-        
         completeProfileLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(103)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(290)
+            $0.height.equalTo(34)
         }
         
         completeProfileSubLabel.snp.makeConstraints {
             $0.top.equalTo(self.completeProfileLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(220)
+            $0.height.equalTo(50)
         }
         
         completeImage.snp.makeConstraints {

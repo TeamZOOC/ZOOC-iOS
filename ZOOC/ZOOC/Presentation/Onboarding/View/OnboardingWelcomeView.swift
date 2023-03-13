@@ -10,11 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingWelcomeView: UIView {
+final class OnboardingWelcomeView: OnboardingBaseView {
 
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
     public let welcomeLabel = UILabel()
     public let welcomeSubLabel = UILabel()
     public let welcomeImage = UIImageView()
@@ -39,9 +38,7 @@ final class OnboardingWelcomeView: UIView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
+        allHidden()
         
         welcomeLabel.do {
             $0.text = "안녕하세요! \nZOOC에 온 걸 환영해요"
@@ -49,6 +46,7 @@ final class OnboardingWelcomeView: UIView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 6)
         }
         
         welcomeSubLabel.do {
@@ -58,6 +56,7 @@ final class OnboardingWelcomeView: UIView {
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
             $0.isHidden = true
+            $0.setLineSpacing(spacing: 6)
         }
         
         welcomeImage.do {
@@ -79,7 +78,6 @@ final class OnboardingWelcomeView: UIView {
     
     private func hierarchy() {
         self.addSubviews(
-            backButton,
             welcomeLabel,
             welcomeSubLabel,
             welcomeImage,
@@ -88,24 +86,22 @@ final class OnboardingWelcomeView: UIView {
     }
     
     private func layout() {
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().offset(17)
-            $0.size.equalTo(42)
-        }
-        
         welcomeLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(30)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         welcomeSubLabel.snp.makeConstraints {
             $0.top.equalTo(self.welcomeLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         welcomeImage.snp.makeConstraints {
-            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(30)
+            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(51)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.nextButton.snp.top).offset(-30)
