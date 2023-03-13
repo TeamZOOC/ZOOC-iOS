@@ -46,7 +46,6 @@ final class OnboardingInviteCompletedFamilyView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
-            $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
         }
         
         completeProfileSubLabel.do {
@@ -55,6 +54,7 @@ final class OnboardingInviteCompletedFamilyView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocBody2
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 2)
         }
         
         completeImage.do {
@@ -83,13 +83,17 @@ final class OnboardingInviteCompletedFamilyView: OnboardingBaseView {
     
     private func layout() {
         completeProfileLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(103)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(290)
+            $0.height.equalTo(34)
         }
         
         completeProfileSubLabel.snp.makeConstraints {
             $0.top.equalTo(self.completeProfileLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(220)
+            $0.height.equalTo(50)
         }
         
         completeImage.snp.makeConstraints {

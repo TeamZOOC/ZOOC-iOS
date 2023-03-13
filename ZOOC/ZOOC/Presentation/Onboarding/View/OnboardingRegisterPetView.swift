@@ -52,11 +52,12 @@ final class OnboardingRegisterPetView: OnboardingBaseView {
         secondStep()
         
         registerPetTitleLabel.do {
-            $0.text = "먼저 서비스 사용을 위해 \n우리 사랑둥이를 입력해주세요"
+            $0.text = "좋아요!\n먼저 반려동물을 등록해볼까요?"
             $0.textColor = .zoocDarkGray2
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 6)
         }
         
         registerPetSubTitleLabel.do {
@@ -97,7 +98,9 @@ final class OnboardingRegisterPetView: OnboardingBaseView {
         
         registerPetTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.backButton.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         registerPetSubTitleLabel.snp.makeConstraints {

@@ -14,12 +14,12 @@ final class OnboardingJoinFamilyViewController: BaseViewController {
     
     //MARK: - Properties
     
-    private let onboardingParticipateView = OnboardingParticipateView()
+    private let onboardingJoinFamilyView = OnboardingJoinFamilyView()
     
     //MARK: - Life Cycle
     
     override func loadView() {
-        self.view = onboardingParticipateView
+        self.view = onboardingJoinFamilyView
     }
     
     override func viewDidLoad() {
@@ -32,12 +32,12 @@ final class OnboardingJoinFamilyViewController: BaseViewController {
     //MARK: - Custom Method
     
     func register() {
-        onboardingParticipateView.familyCodeTextField.delegate = self
+        onboardingJoinFamilyView.familyCodeTextField.delegate = self
     }
     
     func target() {
-        onboardingParticipateView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
-        onboardingParticipateView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        onboardingJoinFamilyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+        onboardingJoinFamilyView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     //MARK: - Action Method
@@ -53,13 +53,14 @@ final class OnboardingJoinFamilyViewController: BaseViewController {
 
 extension OnboardingJoinFamilyViewController {
     private func requestJoinFamilyAPI() {
-        guard let code = onboardingParticipateView.familyCodeTextField.text else { return }
+        guard let code = onboardingJoinFamilyView.familyCodeTextField.text else { return }
         let param = OnboardingJoinFamilyRequest(code: code)
         OnboardingAPI.shared.postJoinFamily(requset: param) { result in
             guard let result = self.validateResult(result) as? OnboardingJoinFamilyResult else { return }
             User.shared.familyID = String(result.familyID)
             self.requestFCMTokenAPI()
         }
+        self.pushToParticipateCompletedView()
     }
     
     private func requestFCMTokenAPI() {
@@ -79,7 +80,7 @@ extension OnboardingJoinFamilyViewController {
 
 extension OnboardingJoinFamilyViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.onboardingParticipateView.nextButton.backgroundColor = .zoocGradientGreen
-        self.onboardingParticipateView.nextButton.isEnabled = true
+        self.onboardingJoinFamilyView.nextButton.backgroundColor = .zoocGradientGreen
+        self.onboardingJoinFamilyView.nextButton.isEnabled = true
     }
 }

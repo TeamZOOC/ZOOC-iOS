@@ -17,6 +17,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     //MARK: - Properties
     
     private let onboardingChooseFamilyRoleView = OnboardingChooseFamilyRoleView()
+    private var registerMyProfileData = EditProfileRequest(hasPhoto: false)
     
     //MARK: - Life Cycle
     
@@ -45,7 +46,7 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     func target() {
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
-        onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(pushToRegisterProfileImageView), for: .touchUpInside)
+        onboardingChooseFamilyRoleView.chooseFamilyButton.addTarget(self, action: #selector(chooseFamilyButtonDidTap), for: .touchUpInside)
         onboardingChooseFamilyRoleView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
@@ -75,11 +76,12 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
         )
     }
     
-    @objc private func pushToRegisterProfileImageView() {
-        let onboardingRegisterProfileImageViewController = OnboardingRegisterProfileImageViewController()
-        let profileName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
-        onboardingRegisterProfileImageViewController.dataBind(nickName: profileName)
-        self.navigationController?.pushViewController(onboardingRegisterProfileImageViewController, animated: true)
+    @objc private func chooseFamilyButtonDidTap() {
+        registerMyProfileData.nickName = onboardingChooseFamilyRoleView.chooseFamilyTextField.text!
+        MyAPI.shared.patchMyProfile(requset: registerMyProfileData) { result in
+            //guard let result = self.validateResult(result) as? UserResult else { return }
+            self.pushToCompleteProfileView()
+        }
     }
     
     @objc private func backButtonDidTap() {
@@ -87,5 +89,10 @@ final class OnboardingChooseFamilyRoleViewController: UIViewController{
     }
 }
 
-
+extension OnboardingChooseFamilyRoleViewController {
+    func pushToCompleteProfileView() {
+        let onboardingCompleteProfileViewController = OnboardingCompleteProfileViewController()
+        self.navigationController?.pushViewController(onboardingCompleteProfileViewController, animated: true)
+    }
+}
 

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateCompletedView: OnboardingBaseView {
+final class OnboardingJoinFamilyCompletedView: OnboardingBaseView {
 
     //MARK: - UI Components
 
@@ -38,27 +38,26 @@ final class OnboardingParticipateCompletedView: OnboardingBaseView {
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
         
-        secondStep()
+        thirdStep()
         
         completeProfileLabel.do {
-            $0.text = "합류 완료! \n이제 추억을 쌓을 시간이에요!"
-            $0.textColor = .zoocDarkGray1
+            $0.text = "가족 합류 완료!"
+            $0.textColor = .zoocMainGreen
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
-            $0.numberOfLines = 2
-            $0.asColor(targetString: "합류 완료!", color: .zoocMainGreen)
         }
         
         completeProfileSubLabel.do {
-            $0.text = "가족과 기록한 순간들이 \nZOOC 소중한 추억으로 남을게예요"
+            $0.text = "가족에 올바르게 합류가\n완료되었어요!"
             $0.textColor = .zoocGray1
             $0.textAlignment = .left
             $0.font = .zoocBody2
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 2)
         }
         
         completeImage.do {
-            $0.image = Image.graphics4
+            $0.image = Image.graphics9
             $0.contentMode = .scaleAspectFit
         }
         
@@ -86,11 +85,15 @@ final class OnboardingParticipateCompletedView: OnboardingBaseView {
         completeProfileLabel.snp.makeConstraints {
             $0.top.equalTo(self.backButton.snp.bottom).offset(56)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(315)
+            $0.height.equalTo(34)
         }
         
         completeProfileSubLabel.snp.makeConstraints {
             $0.top.equalTo(self.completeProfileLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(155)
+            $0.height.equalTo(48)
         }
         
         completeImage.snp.makeConstraints {

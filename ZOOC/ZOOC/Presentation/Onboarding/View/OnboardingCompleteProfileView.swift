@@ -47,6 +47,7 @@ final class OnboardingCompleteProfileView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 6)
         }
         
         completeProfileSubLabel.do {
@@ -98,13 +99,17 @@ final class OnboardingCompleteProfileView: OnboardingBaseView {
     private func layout() {
         
         completeProfileLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(103)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         completeProfileSubLabel.snp.makeConstraints {
-            $0.top.equalTo(self.completeProfileLabel.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(30)
+            $0.top.equalTo(self.completeProfileLabel.snp.bottom).offset(18)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(34)
         }
         
         completeImage.snp.makeConstraints {

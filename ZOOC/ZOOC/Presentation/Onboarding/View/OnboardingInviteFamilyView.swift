@@ -54,6 +54,7 @@ final class OnboardingReInviteFamilyView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocBody3
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 2)
         }
         
         inviteImageView.do {
@@ -90,13 +91,17 @@ final class OnboardingReInviteFamilyView: OnboardingBaseView {
     
     private func layout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(103)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(215)
+            $0.height.equalTo(34)
         }
         
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(16)
             $0.leading.equalTo(self.titleLabel)
+            $0.width.equalTo(250)
+            $0.height.equalTo(48)
         }
         
         inviteImageView.snp.makeConstraints {

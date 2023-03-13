@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingParticipateView: OnboardingBaseView {
+final class OnboardingJoinFamilyView: OnboardingBaseView {
     
     //MARK: - UI Components
     
@@ -46,6 +46,7 @@ final class OnboardingParticipateView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setAttributeLabel(targetString: ["가족코드"], color: .zoocMainGreen, spacing: 6)
         }
         
         familyCodeTextField.do {
@@ -54,6 +55,7 @@ final class OnboardingParticipateView: OnboardingBaseView {
             $0.textColor = .zoocDarkGreen
             $0.placeholder = "  ex) SEF33210"
             $0.makeCornerRadius(ratio: 8)
+            $0.addLeftPadding(inset: 6)
         }
         
         participateImage.do {
@@ -82,8 +84,10 @@ final class OnboardingParticipateView: OnboardingBaseView {
     
     private func layout() {
         participateTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.backButton.snp.bottom).offset(56)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(103)
             $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(200)
+            $0.height.equalTo(68)
         }
         
         familyCodeTextField.snp.makeConstraints {
