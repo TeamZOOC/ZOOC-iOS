@@ -28,4 +28,22 @@ extension UILabel {
         attributedText = attributeString
     }
     
+    func setAttributeLabel(targetString: [String], color: UIColor?, spacing: CGFloat) {
+        let fullText = text ?? ""
+        let style = NSMutableParagraphStyle()
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        for target in targetString {
+            let range = (fullText as NSString).range(of: target)
+            attributedString.addAttributes([.font: font as Any, .foregroundColor: color as Any], range: range)
+        }
+        
+        style.lineSpacing = spacing
+        attributedString.addAttribute(.paragraphStyle,
+                                     value: style,
+                                     range: NSRange(location: 0, length: attributedString.length))
+        attributedText = attributedString
+        
+    }
+
 }

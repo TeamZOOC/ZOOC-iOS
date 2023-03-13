@@ -68,8 +68,8 @@ class OnboardingBaseView: UIView {
 
     private func layout() {
         backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(17)
-            $0.leading.equalToSuperview().offset(15)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalToSuperview().offset(17)
             $0.size.equalTo(42)
         }
         

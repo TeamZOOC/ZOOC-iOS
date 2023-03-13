@@ -24,7 +24,7 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     
     //MARK: - UI Components
     
-    private var allAgreementView = UIView()
+    public var allAgreementView = UIView()
     private var allAgreementLabel = UILabel()
     public lazy var allCheckedButton = BaseButton()
     
@@ -51,9 +51,12 @@ final class OnboardingAgreementTableHeaderView: UITableViewHeaderFooterView {
     }
     
     private func style() {
+        contentView.backgroundColor = .zoocBackgroundGreen
+        
         allAgreementView.do {
             $0.makeCornerRadius(ratio: 12)
-            $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocMainGreen)
+            $0.backgroundColor = .white
+            $0.makeCornerBorder(borderWidth: 1, borderColor: UIColor.zoocLightGray)
         }
         
         allAgreementLabel.do {

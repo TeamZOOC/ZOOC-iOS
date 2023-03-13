@@ -48,20 +48,21 @@ final class OnboardingLoginView: UIView {
         }
         
         loginTitleLabel.do {
-            $0.text = "가족의 추억을 쭉 \n기록하는 손쉬운 방법"
+            $0.text = "초코와의 추억을 쭉 \n추억하는 우리만의 방법"
             $0.textColor = .zoocDarkGray2
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
-            $0.asColor(targetString: "쭉", color: .zoocGradientGreen)
+            $0.setAttributeLabel(targetString: ["쭉", "우리만의"], color: .zoocMainGreen, spacing: 2)
         }
         
         loginDescribeLabel.do {
-            $0.text = "ZOOC에서 가족들과 함께 잊지 못할 \n추억을 쭉 쌓아보세요"
+            $0.text = "ZOOC에서 가족들과 함께\n잊지 못할 추억을 쭉 쌓아보세요"
             $0.textColor = .zoocGray2
             $0.textAlignment = .left
             $0.font = .zoocBody2
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 2)
         }
         
         graphicsImageView.do {
@@ -97,17 +98,21 @@ final class OnboardingLoginView: UIView {
         }
         
         loginTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(108)
-            $0.leading.equalToSuperview().offset(40)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(78)
+            $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(281)
+            $0.height.equalTo(82)
         }
         
         loginDescribeLabel.snp.makeConstraints {
-            $0.top.equalTo(self.loginTitleLabel.snp.bottom).offset(12)
+            $0.top.equalTo(self.loginTitleLabel.snp.bottom).offset(18)
             $0.leading.equalTo(self.loginTitleLabel)
+            $0.width.equalTo(185)
+            $0.height.equalTo(48)
         }
         
         graphicsImageView.snp.makeConstraints {
-            $0.top.equalTo(loginDescribeLabel.snp.bottom).offset(60)
+            $0.top.equalTo(loginDescribeLabel.snp.bottom).offset(40)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(kakaoLoginButton.snp.top).offset(-60)
         }

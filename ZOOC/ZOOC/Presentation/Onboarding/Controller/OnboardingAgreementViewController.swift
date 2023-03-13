@@ -65,12 +65,12 @@ final class OnboardingAgreementViewController: BaseViewController {
 //MARK: - UITableViewDelegate
 
 extension OnboardingAgreementViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 37
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 37
     }
 }
 
@@ -110,8 +110,10 @@ extension OnboardingAgreementViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: OnboardingAgreementTableHeaderView.cellIdentifier) as? OnboardingAgreementTableHeaderView else { return UITableViewHeaderFooterView() }
         cell.delegate = self
         if self.onboardingAgreementViewModel.allAgreement { cell.allCheckedButton.setImage(Image.checkBoxFill, for: .normal)
+            cell.allAgreementView.layer.borderColor = UIColor.zoocMainGreen.cgColor
         } else {
             cell.allCheckedButton.setImage(Image.checkBox, for: .normal)
+            cell.allAgreementView.layer.borderColor = UIColor.lightGray.cgColor
         }
         
         cell.onboardingAgreementViewModel.updateAllAgreementClosure = {

@@ -55,6 +55,7 @@ final class OnboardingAgreementView: OnboardingBaseView {
             $0.textAlignment = .left
             $0.font = .zoocDisplay1
             $0.numberOfLines = 2
+            $0.setLineSpacing(spacing: 6)
         }
         
         agreementTableView.do {
@@ -82,10 +83,11 @@ final class OnboardingAgreementView: OnboardingBaseView {
     }
     
     private func layout() {
-        
         agreeTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(77)
-            $0.leading.equalToSuperview().offset(34)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(315)
+            $0.height.equalTo(68)
         }
         
         agreementTableView.snp.makeConstraints {

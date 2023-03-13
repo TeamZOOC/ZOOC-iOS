@@ -101,7 +101,7 @@ final class OnboardingWelcomeView: OnboardingBaseView {
         }
         
         welcomeImage.snp.makeConstraints {
-            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(30)
+            $0.top.equalTo(self.welcomeSubLabel.snp.bottom).offset(51)
             $0.centerX.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.nextButton.snp.top).offset(-30)
