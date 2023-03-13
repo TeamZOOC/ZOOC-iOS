@@ -10,12 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
-final class OnboardingChooseFamilyRoleView: UIView {
+final class OnboardingChooseFamilyRoleView: OnboardingBaseView {
     
     //MARK: - UI Components
     
-    public lazy var backButton = UIButton()
-    public let progressBarView = UIView()
+    //public lazy var backButton = UIButton()
+//    public let progressBarView = UIView()
     public let completedProgressBarView = UIView()
     private let chooseFamilyLabel = UILabel()
     private let chooseFamilySubLabel = UILabel()
@@ -41,19 +41,6 @@ final class OnboardingChooseFamilyRoleView: UIView {
     
     private func style() {
         self.backgroundColor = .zoocBackgroundGreen
-        
-        backButton.do {
-            $0.setImage(Image.back, for: .normal)
-        }
-        progressBarView.do {
-            $0.backgroundColor = .zoocLightGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
-        
-        completedProgressBarView.do {
-            $0.backgroundColor = .zoocMainGreen
-            $0.makeCornerRadius(ratio: 2)
-        }
         
         chooseFamilyLabel.do {
             $0.text = "가족에서 \n어떤 역할을 맡고 있나요?"
@@ -94,36 +81,18 @@ final class OnboardingChooseFamilyRoleView: UIView {
     
     private func hierarchy() {
         self.addSubviews(
-            backButton,
-            progressBarView,
+//            backButton,
+//            progressBarView,
             chooseFamilyLabel,
             chooseFamilySubLabel,
             chooseFamilyTextField,
             chooseFamilyTextFeildUnderLineView,
             chooseFamilyButton
         )
-        progressBarView.addSubview(completedProgressBarView)
+        //progressBarView.addSubview(completedProgressBarView)
     }
     
     private func layout() {
-        backButton.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().offset(17)
-            $0.size.equalTo(42)
-        }
-        
-        progressBarView.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(57)
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(4)
-        }
-        
-        completedProgressBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(263)
-            $0.bottom.equalToSuperview()
-        }
         
         chooseFamilyLabel.snp.makeConstraints {
             $0.top.equalTo(self.backButton.snp.bottom).offset(56)
