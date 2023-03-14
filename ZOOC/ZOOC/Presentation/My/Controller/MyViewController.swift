@@ -67,10 +67,19 @@ final class MyViewController: BaseViewController {
         }
     }
     
+    private func requestLogoutAPI() {
+        MyAPI.shared.logout { result in
+            self.validateResult(result)
+        }
+    }
+    
     private func logout() {
+        requestLogoutAPI()
         User.shared.clearData()
         changeRootViewController(OnboardingLoginViewController())
     }
+    
+    
     
     //MARK: - Action Method
     
