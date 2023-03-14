@@ -32,8 +32,6 @@ extension MyAPI{
         }
     }
     
-    
-    
     func deleteAccount(completion: @escaping (NetworkResult<Any>) -> Void) {
         myProvider.request(.deleteAccount) { (result) in
             self.disposeNetwork(result,
@@ -47,6 +45,14 @@ extension MyAPI{
             (result) in
             self.disposeNetwork(result,
                                 dataModel: [MyRegisterPetResult].self,
+                                completion: completion)
+        }
+    }
+    
+    public func logout(completion: @escaping (NetworkResult<Any>) -> Void) {
+        myProvider.request(.logout) { result in
+            self.disposeNetwork(result,
+                                dataModel: VoidResult.self,
                                 completion: completion)
         }
     }

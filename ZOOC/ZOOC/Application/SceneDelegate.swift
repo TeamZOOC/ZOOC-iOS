@@ -28,9 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let onboardingNVC = UINavigationController(rootViewController: OnboardingLoginViewController())
         onboardingNVC.setNavigationBarHidden(true, animated: true)
         
-        //홈 Flow 부터
-        let zoocTabBarController = ZoocTabBarController()
-        
         window?.rootViewController = onboardingNVC //
         self.window?.backgroundColor = .white
         window?.makeKeyAndVisible()
