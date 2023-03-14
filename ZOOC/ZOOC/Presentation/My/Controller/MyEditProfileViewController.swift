@@ -146,7 +146,7 @@ extension MyEditProfileViewController {
     
     private func popToMyProfileView() {
         guard let beforeVC = self.navigationController?.previousViewController as? MyViewController else { return }
-        beforeVC.getMyPageAPI()
+        beforeVC.requestMyPageAPI()
         self.navigationController?.popViewController(animated: true)
     }
 }

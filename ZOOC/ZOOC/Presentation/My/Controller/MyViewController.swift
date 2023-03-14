@@ -38,7 +38,7 @@ final class MyViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getMyPageAPI()
+        requestMyPageAPI()
     }
     
     //MARK: - Custom Method
@@ -54,7 +54,7 @@ final class MyViewController: BaseViewController {
         myView.myCollectionView.reloadData()
     }
     
-    func getMyPageAPI(){
+    func requestMyPageAPI(){
         MyAPI.shared.getMyPageData() { result in
             
             guard let result = self.validateResult(result) as? MyResult else { return }
@@ -65,6 +65,11 @@ final class MyViewController: BaseViewController {
             
             self.myView.myCollectionView.reloadData()
         }
+    }
+    
+    private func logout() {
+        User.shared.clearData()
+        changeRootViewController(OnboardingLoginViewController())
     }
     
     //MARK: - Action Method
@@ -182,6 +187,8 @@ extension MyViewController: SettingMenuTableViewCellDelegate {
             pushToNoticeSettingView()
         case 4:
             pushToAppInformationView()
+        case 5:
+            logout()
         default:
             break
         }

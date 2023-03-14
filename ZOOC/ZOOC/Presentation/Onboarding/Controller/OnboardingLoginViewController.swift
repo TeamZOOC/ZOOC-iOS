@@ -83,6 +83,11 @@ final class OnboardingLoginViewController: BaseViewController {
         target()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     //MARK: - Custom Method
     
     private func target() {

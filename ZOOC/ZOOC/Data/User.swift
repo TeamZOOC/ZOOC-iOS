@@ -11,9 +11,16 @@ struct User {
     static var shared = User()
     private init() {}
     
-    var id: String = "1"
-    var familyID: String = "1"
+    var id: String = ""
+    var familyID: String = ""
     var jwtToken: String = ""
     var fcmToken: String = ""
+    
+    public mutating func clearData() {
+        id = ""
+        familyID = ""
+        jwtToken = ""
+    }
 }
+
 
