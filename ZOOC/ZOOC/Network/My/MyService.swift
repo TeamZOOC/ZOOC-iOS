@@ -14,6 +14,7 @@ enum MyService {
     case patchUserProfile(_ request: EditProfileRequest)
     case deleteAccount
     case postRegisterPet(param: MyRegisterPetRequestDto)
+    case logout
 }
 
 extension MyService: BaseTargetType {
@@ -27,6 +28,8 @@ extension MyService: BaseTargetType {
             return "/user"
         case .postRegisterPet(param: _):
             return URLs.registerPet.replacingOccurrences(of: "{familyId}", with: User.shared.familyID) //TODO: 이 위치가 맞을까..
+        case .logout:
+            return URLs.logout
         }
     }
     
@@ -40,6 +43,8 @@ extension MyService: BaseTargetType {
             return .delete
         case .postRegisterPet(param: _):
             return .post
+        case .logout:
+            return .patch
         }
     }
     
@@ -99,6 +104,10 @@ extension MyService: BaseTargetType {
             }
 
             return .uploadMultipart(multipartFormDatas)
+            
+        case .logout:
+            return .requestParameters(parameters: ["fcmToken": User.shared.fcmToken],
+                                      encoding: JSONEncoding.default)
         }
     }
     
@@ -112,6 +121,8 @@ extension MyService: BaseTargetType {
             return APIConstants.hasTokenHeader
         case .postRegisterPet(param: _):
             return APIConstants.multipartHeader
+        case .logout:
+            return APIConstants.hasTokenHeader
         }
         
     }

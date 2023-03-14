@@ -27,6 +27,7 @@ public enum URLs{
     static let signUp = "/user/create?code={code}"
     static let deleteUser = "/user"
     static let fcmToken = "/user/fcm_token"
+    static let logout = "/user/signout"
     
     //MARK: - Record
     static let getMission = "/record/mission/{familyId}"
