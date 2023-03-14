@@ -35,6 +35,14 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
         onboardingInviteCompletedFamilyView.startButton.addTarget(self, action: #selector(startButtonDidTap), for: .touchUpInside)
     }
     
+    
+    private func requestFCMTokenAPI() {
+        OnboardingAPI.shared.patchFCMToken(fcmToken: User.shared.fcmToken) { result in
+            self.changeRootViewController(ZoocTabBarController())
+        }
+    }
+    
+    
     //MARK: - Action Method
     
     @objc private func backButtonDidTap() {
@@ -42,6 +50,6 @@ final class OnboardingInviteFamilyCompletedViewController: UIViewController{
     }
     
     @objc private func startButtonDidTap(){
-        self.changeRootViewController(ZoocTabBarController())
+        requestFCMTokenAPI()
     }
 }
